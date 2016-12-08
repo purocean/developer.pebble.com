@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Vector Animations // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to use vector images in icons and animations.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/tutorials/advanced/vector-animations/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started active"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+<div class="section-menu section-menu--getting-started section-menu--dark">
+  <div class="section-menu__header">
+    <h3><a href="/tutorials/">Tutorials</a></h3>
+  </div>
+  <ul>
+    <li class="section-menu__item"><a href="/tutorials/watchface-tutorial/part1/">Build a Watchface in C</a>
+      <ul>
+        <li class="section-menu__subitem active"><a href="/tutorials/watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part2/"><span>Part 2 - Customizing the Watchface</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part3/"><span>Part 3 - Adding Web Content</a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part4/"><span>Part 4 - Adding a Battery Bar</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part5/"><span>Part 5 - Vibrate on Disconnect</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/js-watchface-tutorial/part1/">Build a Watchface in JS</a>
+      <ul>
+        <li class="section-menu__subitem active"><a href="/tutorials/js-watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/js-watchface-tutorial/part2/"><span>Part 2 - Adding Web Content</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item open"><a href="/tutorials/advanced/vector-animations/">Advanced Tutorials</a>
+      <ul>
+        <li class="section-menu__subitem active"><a href="/tutorials/advanced/vector-animations/"><span>Vector Animations</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="what-are-vector-images">What Are Vector Images?</option>
+          
+            <option value="creating-compatible-files">Creating Compatible Files</option>
+          
+            <option value="pdc-icons">- PDC icons</option>
+          
+            <option value="getting-started">Getting Started</option>
+          
+            <option value="drawing-a-pdc-image">Drawing a PDC Image</option>
+          
+            <option value="playing-a-pdc-sequence">Playing a PDC Sequence</option>
+          
+            <option value="what-39-s-next">What&#39;s Next?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-l-8">
+      <h1>Vector Animations</h1>
+      
+      <div class="alert alert--fg-white alert--bg-purple alert--medium">
+        <p>
+          <strong>PLATFORM NOTICE</strong><br>
+          This guide only applies for apps built to run on the Basalt platform
+          (Pebble Time watches).
+        </p>
+      </div>
+      
+      <div class="markdown markdown--staff">
+      
+      <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+      
+      <p>Some of the best Pebble apps make good use of the <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> and the
+<a href="/docs/c/Graphics/" title="Graphics" class="link--docs"><code>Graphics Context</code></a> to create beautiful and eye-catching user
+interfaces that look better than those created with just the standard <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>
+types.</p><p>Taking a good design a step further may involve using the <a href="/docs/c/Graphics/Draw_Commands/" title="Draw Commands" class="link--docs"><code>Draw Commands</code></a> API
+to load vector icons and images, and to animate them on a point-by-point basis
+at runtime. An additional capability of the <a href="/docs/c/Graphics/Draw_Commands/" title="Draw Commands" class="link--docs"><code>Draw Commands</code></a> API is the draw
+command sequence, allowing multiple frames to be incorporated into a single
+resource and played out frame by frame.</p><p>This tutorial will guide you through the process of using these types of image
+files in your own projects.</p><h2 id="what-are-vector-images" class="anchor">What Are Vector Images?</h2><p>As opposed to bitmaps which contain data for every pixel to be drawn, a vector
+file contains only instructions about points contained in the image and how to
+draw lines connecting them up. Instructions such as fill color, stroke color,
+and stroke width are also included.</p><p>Vector images on Pebble are implemented using the <a href="/docs/c/Graphics/Draw_Commands/" title="Draw Commands" class="link--docs"><code>Draw Commands</code></a> APIs, which
+load and display PDC (Pebble Draw Command) images and sequences that contain
+sets of these instructions. An example is the weather icon used in weather
+timeline pins. The benefit of using vector graphics for this icon is that is
+allows the image to stretch in the familiar manner as it moves between the
+timeline view and the pin detail view:</p><p><img src="/assets/images/tutorials/advanced/weather.png" alt="weather" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>By including two or more vector images in a single file, an animation can be
+created to enable fast and detailed animated sequences to be played. Examples
+can be seen in the Pebble system UI, such as when an action is completed:</p><p><img src="/assets/images/tutorials/advanced/action-completed.gif" alt="action-completed" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>The main benefits of vectors over bitmaps for simple images and icons are:</p>
+<ul>
+<li><p>Smaller resource size - instructions for joining points are less memory
+expensive than per-pixel bitmap data.</p></li>
+<li><p>Flexible rendering - vector images can be rendered as intended, or manipulated
+at runtime to move the individual points around. This allows icons to appear
+more organic and life-like than static PNG images. Scaling and distortion is
+also made possible.</p></li>
+<li><p>Longer animations - a side benefit of taking up less space is the ability to
+make animations longer.</p></li>
+</ul>
+<p>However, there are also some drawbacks to choosing vector images in certain
+cases:</p>
+<ul>
+<li><p>Vector files require more specialized tools to create than bitmaps, and so are
+harder to produce.</p></li>
+<li><p>Complicated vector files may take more time to render than if they were simply
+drawn per-pixel as a bitmap, depending on the drawing implementation.</p></li>
+</ul>
+<h2 id="creating-compatible-files" class="anchor">Creating Compatible Files</h2><p>The file format of vector image files on Pebble is the PDC (Pebble Draw Command)
+format, which includes all the instructions necessary to allow drawing of
+vectors. These files are created from compatible SVG (Scalar Vector Graphics)
+files using the
+<a href="https://github.com/pebble-examples/cards-example/blob/master/tools/svg2pdc.py" title="" class=""><code>svg2pdc</code></a>
+tool.</p>
+<div class="alert alert--fg-white alert--bg-dark-red">
+Pebble Draw Command files can only be used from app resources, and cannot be
+created at runtime.
+</div>
+<p>To convert an SVG file to a PDC image of the same name:</p><div class="highlight"><pre><span class="nv">$ </span>python svg2pdc.py image.svg
+</pre></div><p>To create a PDCS (Pebble Draw Command Sequence) from individual SVG frames,
+specify the directory containing the frames with the <code>--sequence</code> flag when
+running <code>svg2pdc</code>:</p><div class="highlight"><pre><span class="nv">$ </span>ls frames/
+1.svg          2.svg          3.svg
+4.svg          5.svg
+
+<span class="nv">$ </span>python svg2pdc.py --sequence frames/
+</pre></div><p>In the example above, this will create an output file in the <code>frames</code> directory
+called <code>frames.pdc</code> that contains draw command data for the complete animation.</p>
+<div class="alert alert--fg-white alert--bg-dark-red">
+<p><strong>Limitations</strong></p><p>The <code>svg2pdc</code> tool currently supports SVG files that use <strong>only</strong> the following
+elements: <code>g</code>, <code>layer</code>, <code>path</code>, <code>rect</code>, <code>polyline</code>, <code>polygon</code>, <code>line</code>, <code>circle</code>.</p><p>We recommend using Adobe Illustrator to create compatible SVG icons and images.</p>
+</div>
+<p>For simplicity, compatible image and sequence files will be provided for you to
+use in your own project.</p><h3 id="pdc-icons" class="anchor">PDC icons</h3><p>Example PDC image files are available for the icons listed in
+<a href="/guides/app-resources/app-assets/" title="" class=""><em>App Assets</em></a>.
+These are ideal for use in many common types of apps, such as notification or
+weather apps.</p><p><a href="https://developer-assets.getpebble.com/assets/other/pebble-timeline-icons-pdc.zip" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">Download PDC icon files</a></p><h2 id="getting-started" class="anchor">Getting Started</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Begin a new <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> project using the
+blank template and add code only to push an initial <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, such as the
+example below:</p><p class="platform-specific" data-sdk-platform="local">Begin a new project using <code>pebble new-project</code> and create a simple app that
+pushes a blank <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, such as the example below:</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
+
+<span class="k">static</span> <span class="n">Window</span> <span class="o">*</span><span class="n">s_main_window</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Layer</span> <span class="o">*</span><span class="n">window_layer</span> <span class="o">=</span> <span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+  <span class="n">GRect</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">layer_get_bounds</span><span class="p">(</span><span class="n">window_layer</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_unload</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">s_main_window</span> <span class="o">=</span> <span class="n">window_create</span><span class="p">();</span>
+  <span class="n">window_set_window_handlers</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="p">(</span><span class="n">WindowHandlers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">main_window_load</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">unload</span> <span class="o">=</span> <span class="n">main_window_unload</span><span class="p">,</span>
+  <span class="p">});</span>
+  <span class="n">window_stack_push</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">deinit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">window_destroy</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">init</span><span class="p">();</span>
+  <span class="n">app_event_loop</span><span class="p">();</span>
+  <span class="n">deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><h2 id="drawing-a-pdc-image" class="anchor">Drawing a PDC Image</h2><p>For this tutorial, use the example
+<a href="/assets/other/weather_image.pdc" title="" class=""><code>weather_image.pdc</code></a> file provided.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Add the PDC file as a project resource using the &#39;Add new&#39; under
+&#39;Resources&#39; on the left-hand side of the CloudPebble editor, with an
+&#39;Identifier&#39; of <code>WEATHER_IMAGE</code>, and a type of &#39;raw binary blob&#39;. The file is
+assumed to be called <code>weather_image.pdc</code>.</p><p class="platform-specific" data-sdk-platform="local">Add the PDC file to your project resources in <code>package.json</code> as shown
+below. Set the &#39;name&#39; field to <code>WEATHER_IMAGE</code>, and the &#39;type&#39; field to <code>raw</code>.
+The file is assumed to be called <code>weather_image.pdc</code>:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="s2">&quot;media&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;raw&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;WEATHER_IMAGE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;file&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;weather_image.pdc&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p class="platform-specific" data-sdk-platform="local">Drawing a Pebble Draw Command image is just as simple as drawing a normal PNG
+image to a graphics context, requiring only one draw call. First, load the
+<code>.pdc</code> file from resources, for example with the <code>name</code> defined as
+<code>WEATHER_IMAGE</code>, as shown below.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Drawing a Pebble Draw Command image is just as simple as drawing a normal
+PNG image to a graphics context, requiring only one draw call. First, load the
+<code>.pdc</code> file from resources, for example with the &#39;Identifier&#39; defined as
+<code>WEATHER_IMAGE</code>. This will be available in code as <code>RESOURCE_ID_WEATHER_IMAGE</code>,
+as shown below.</p><p>Declare a pointer of type <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandImage" title="GDrawCommandImage" class="link--docs"><code>GDrawCommandImage</code></a> at the top of the file:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">GDrawCommandImage</span> <span class="o">*</span><span class="n">s_command_image</span><span class="p">;</span>
+</pre></div><p>Create and assign the <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandImage" title="GDrawCommandImage" class="link--docs"><code>GDrawCommandImage</code></a> in <code>init()</code>, before calling
+<code>window_stack_push()</code>:</p><div class="highlight no-copy"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+
+  <span class="c1">// Create the object from resource file</span>
+  <span class="n">s_command_image</span> <span class="o">=</span> <span class="n">gdraw_command_image_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_WEATHER_IMAGE</span><span class="p">);</span>
+
+  <span class="cm">/* ... */</span>
+<span class="p">}</span>
+</pre></div><p>Next, define the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a> that will be used to draw the PDC image:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">update_proc</span><span class="p">(</span><span class="n">Layer</span> <span class="o">*</span><span class="n">layer</span><span class="p">,</span> <span class="n">GContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Set the origin offset from the context for drawing the image</span>
+  <span class="n">GPoint</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+
+  <span class="c1">// Draw the GDrawCommandImage to the GContext</span>
+  <span class="n">gdraw_command_image_draw</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">s_command_image</span><span class="p">,</span> <span class="n">origin</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Next, create a <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> to display the image:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">Layer</span> <span class="o">*</span><span class="n">s_canvas_layer</span><span class="p">;</span>
+</pre></div><p>Next, set the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a> that will do the rendering and add it to the
+desired <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="cm">/* ... */</span>
+
+  <span class="c1">// Create the canvas Layer</span>
+  <span class="n">s_canvas_layer</span> <span class="o">=</span> <span class="n">layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">w</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">h</span><span class="p">));</span>
+
+  <span class="c1">// Set the LayerUpdateProc</span>
+  <span class="n">layer_set_update_proc</span><span class="p">(</span><span class="n">s_canvas_layer</span><span class="p">,</span> <span class="n">update_proc</span><span class="p">);</span>
+
+  <span class="c1">// Add to parent Window</span>
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_layer</span><span class="p">,</span> <span class="n">s_canvas_layer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Finally, don&#39;t forget to free the memory used by the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>&#39;s sub-components
+in <code>main_window_unload()</code>:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_unload</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">layer_destroy</span><span class="p">(</span><span class="n">s_canvas_layer</span><span class="p">);</span>
+  <span class="n">gdraw_command_image_destroy</span><span class="p">(</span><span class="n">s_command_image</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>When run, the PDC image will be loaded, and rendered in the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a>.
+To put the image into contrast, we will finally change the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> background
+color after <code>window_create()</code>:</p><div class="highlight"><pre><span class="n">window_set_background_color</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="n">GColorBlueMoon</span><span class="p">);</span>
+</pre></div><p>The result will look similar to the example shown below.</p><p><img src="/assets/images/tutorials/advanced/weather-image.png" alt="weather-image" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="playing-a-pdc-sequence" class="anchor">Playing a PDC Sequence</h2><p>The <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandSequence" title="GDrawCommandSequence" class="link--docs"><code>GDrawCommandSequence</code></a> API allows developers to use vector graphics as
+individual frames in a larger animation. Just like <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandImage" title="GDrawCommandImage" class="link--docs"><code>GDrawCommandImage</code></a>s, each
+<a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandFrame" title="GDrawCommandFrame" class="link--docs"><code>GDrawCommandFrame</code></a> is drawn to a graphics context in a <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a>.</p><p>For this tutorial, use the example
+<a href="/assets/other/clock_sequence.pdc" title="" class=""><code>clock_sequence.pdc</code></a> file provided.</p><p>Begin a new app, with a C file containing the <a href="#getting-started" title="" class="">template</a> provided above.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Next, add the file as a <code>raw</code> resource in the same way as for a PDC image,
+for example with an <code>Identifier</code> specified as <code>CLOCK_SEQUENCE</code>.</p><p class="platform-specific" data-sdk-platform="local">Next, add the file as a <code>raw</code> resource in the same way as for a PDC image,
+for example with the <code>name</code> field specified in <code>package.json</code> as
+<code>CLOCK_SEQUENCE</code>.</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="s2">&quot;media&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;raw&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CLOCK_SEQUENCE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;file&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;clock_sequence.pdc&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Load the PDCS in your app by first declaring a <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandSequence" title="GDrawCommandSequence" class="link--docs"><code>GDrawCommandSequence</code></a> pointer:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">GDrawCommandSequence</span> <span class="o">*</span><span class="n">s_command_seq</span><span class="p">;</span>
+</pre></div><p>Next, initialize the object in <code>init()</code> before calling <code>window_stack_push()</code>:</p><div class="highlight no-copy"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* ... */</span>
+
+  <span class="c1">// Load the sequence</span>
+  <span class="n">s_command_seq</span> <span class="o">=</span> <span class="n">gdraw_command_sequence_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_CLOCK_SEQUENCE</span><span class="p">);</span>
+
+  <span class="cm">/* ... */</span>
+<span class="p">}</span>
+</pre></div><p>Get the next frame and draw it in the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a>. Then register a timer
+to draw the next frame:</p><div class="highlight"><pre><span class="c1">// Milliseconds between frames</span>
+<span class="cp">#define DELTA 13</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">s_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/* ... */</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">next_frame_handler</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Draw the next frame</span>
+  <span class="n">layer_mark_dirty</span><span class="p">(</span><span class="n">s_canvas_layer</span><span class="p">);</span>
+
+  <span class="c1">// Continue the sequence</span>
+  <span class="n">app_timer_register</span><span class="p">(</span><span class="n">DELTA</span><span class="p">,</span> <span class="n">next_frame_handler</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">update_proc</span><span class="p">(</span><span class="n">Layer</span> <span class="o">*</span><span class="n">layer</span><span class="p">,</span> <span class="n">GContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Get the next frame</span>
+  <span class="n">GDrawCommandFrame</span> <span class="o">*</span><span class="n">frame</span> <span class="o">=</span> <span class="n">gdraw_command_sequence_get_frame_by_index</span><span class="p">(</span><span class="n">s_command_seq</span><span class="p">,</span> <span class="n">s_index</span><span class="p">);</span>
+
+  <span class="c1">// If another frame was found, draw it</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">frame</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">gdraw_command_frame_draw</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">s_command_seq</span><span class="p">,</span> <span class="n">frame</span><span class="p">,</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Advance to the next frame, wrapping if neccessary</span>
+  <span class="kt">int</span> <span class="n">num_frames</span> <span class="o">=</span> <span class="n">gdraw_command_sequence_get_num_frames</span><span class="p">(</span><span class="n">s_command_seq</span><span class="p">);</span>
+  <span class="n">s_index</span><span class="o">++</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">s_index</span> <span class="o">==</span> <span class="n">num_frames</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">s_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>Next, create a new <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> to utilize the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a> and add it to the
+desired <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>.</p><p>Create the <code>Window</code> pointer:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">Layer</span> <span class="o">*</span><span class="n">s_canvas_layer</span><span class="p">;</span>
+</pre></div><p>Next, create the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> and assign it to the new pointer. Set its update
+procedure and add it to the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Get Window information</span>
+  <span class="n">Layer</span> <span class="o">*</span><span class="n">window_layer</span> <span class="o">=</span> <span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+  <span class="n">GRect</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">layer_get_bounds</span><span class="p">(</span><span class="n">window_layer</span><span class="p">);</span>
+
+  <span class="c1">// Create the canvas Layer</span>
+  <span class="n">s_canvas_layer</span> <span class="o">=</span> <span class="n">layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">w</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">h</span><span class="p">));</span>
+
+  <span class="c1">// Set the LayerUpdateProc</span>
+  <span class="n">layer_set_update_proc</span><span class="p">(</span><span class="n">s_canvas_layer</span><span class="p">,</span> <span class="n">update_proc</span><span class="p">);</span>
+
+  <span class="c1">// Add to parent Window</span>
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_layer</span><span class="p">,</span> <span class="n">s_canvas_layer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Start the animation loop using a timer at the end of initialization:</p><div class="highlight"><pre><span class="c1">// Start the animation</span>
+<span class="n">app_timer_register</span><span class="p">(</span><span class="n">DELTA</span><span class="p">,</span> <span class="n">next_frame_handler</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div><p>Finally, remember to destroy the <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandSequence" title="GDrawCommandSequence" class="link--docs"><code>GDrawCommandSequence</code></a> and <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> in
+<code>main_window_unload()</code>:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_unload</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">layer_destroy</span><span class="p">(</span><span class="n">s_canvas_layer</span><span class="p">);</span>
+  <span class="n">gdraw_command_sequence_destroy</span><span class="p">(</span><span class="n">s_command_seq</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>When run, the animation will be played by the timer at a framerate dictated by
+<code>DELTA</code>, looking similar to the example shown below:</p><p><img src="/assets/images/tutorials/advanced/pdcs-example.gif" alt="pdcs-example" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>You have now learned how to add vector images and animations to your apps.
+Complete examples for these APIs are available under the <code>pebble-examples</code>
+GitHub organization:</p>
+<ul>
+<li><p><a href="https://github.com/pebble-examples/pdc-image" title="" class=""><code>pdc-image</code></a> - Example
+implementation of a Pebble Draw Command Image.</p></li>
+<li><p><a href="https://github.com/pebble-examples/pdc-sequence" title="" class=""><code>pdc-sequence</code></a> - Example
+implementation of a Pebble Draw Command Sequence animated icon.</p></li>
+</ul>
+<p>More advanced tutorials will be added here in the future, so keep checking back!</p>
+      </div>
+    </div>
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#what-are-vector-images">What Are Vector Images?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#creating-compatible-files">Creating Compatible Files</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#pdc-icons">PDC icons</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#getting-started">Getting Started</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#drawing-a-pdc-image">Drawing a PDC Image</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#playing-a-pdc-sequence">Playing a PDC Sequence</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
+    
+  </ul>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

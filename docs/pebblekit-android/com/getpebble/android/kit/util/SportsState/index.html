@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SportsState // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/pebblekit-android/">PebbleKit Android</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/pebblekit-android/com/getpebble/android/kit/">com.getpebble.android.kit</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/Constants"><span>Constants</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/PebbleKit"><span>PebbleKit</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.FirmwareVersionInfo"><span>PebbleKit.FirmwareVersionInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleAckReceiver"><span>PebbleKit.PebbleAckReceiver</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleDataLogReceiver"><span>PebbleKit.PebbleDataLogReceiver</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleDataReceiver"><span>PebbleKit.PebbleDataReceiver</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/PebbleKit.PebbleNackReceiver"><span>PebbleKit.PebbleNackReceiver</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/Constants.PebbleAppType"><span>Constants.PebbleAppType</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/Constants.PebbleDataType"><span>Constants.PebbleDataType</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/pebblekit-android/com/getpebble/android/kit/util/">com.getpebble.android.kit.util</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/util/PebbleDictionary"><span>PebbleDictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/util/PebbleTuple"><span>PebbleTuple</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open active">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState"><span>SportsState</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/util/PebbleDictionary.PebbleDictTypeException"><span>PebbleDictionary.PebbleDictTypeException</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/util/PebbleDictionary.TupleOverflowException"><span>PebbleDictionary.TupleOverflowException</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-android/com/getpebble/android/kit/util/PebbleTuple.ValueOverflowException"><span>PebbleTuple.ValueOverflowException</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <h1 class="pagetitle">SportsState</h1>
+
+<div class="documentation__android">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><div class="contentContainer">
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li>com.getpebble.android.kit.util.SportsState</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public class <span class="typeNameLabel">SportsState</span>
+extends java.lang.Object</pre>
+<div class="block">This container class includes new values of time, distance, and pace or speed. To send the values
+ to the watch use `synchronize`. This class is mutable, so consumers can update the values and
+ synchronize the same instance again. Modifying the values of this class will not send the values.
+ The consumer needs to invoke `synchronize` every time the UI needs to be updated.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList">
+<a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#SportsState--">SportsState</a></span>()</code> </td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList">
+<a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#getCustomLabel--">getCustomLabel</a></span>()</code>
+<div class="block">The custom label to show in the sports UI.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#getCustomValue--">getCustomValue</a></span>()</code>
+<div class="block">The custom value to show in the sports UI.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#getDistance--">getDistance</a></span>()</code>
+<div class="block">The current distance in kilometers or miles.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>byte</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#getHeartBPM--">getHeartBPM</a></span>()</code>
+<div class="block">The current heart rate in beats per minute.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#getPaceInSec--">getPaceInSec</a></span>()</code>
+<div class="block">The current pace in seconds per kilometer or seconds per mile.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#getSpeed--">getSpeed</a></span>()</code>
+<div class="block">The current speed in kilometers per hour or miles per hour.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#getTimeInSec--">getTimeInSec</a></span>()</code>
+<div class="block">The current time in seconds.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#setCustomLabel-java.lang.String-">setCustomLabel</a></span>(java.lang.String customLabel)</code>
+<div class="block">Set the custom label to show in the sports UI.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#setCustomValue-java.lang.String-">setCustomValue</a></span>(java.lang.String customValue)</code>
+<div class="block">Set the custom value to show in the sports UI.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#setDistance-float-">setDistance</a></span>(float distance)</code>
+<div class="block">Set the current distance in kilometers or miles.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#setHeartBPM-byte-">setHeartBPM</a></span>(byte heartBPM)</code>
+<div class="block">Set the current heart rate in beats per minute.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#setPaceInSec-int-">setPaceInSec</a></span>(int paceInSec)</code>
+<div class="block">Set the current pace in seconds per kilometer or seconds per mile.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#setSpeed-float-">setSpeed</a></span>(float speed)</code>
+<div class="block">Set the current speed in kilometers per hour or miles per hour.</div>
+</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#setTimeInSec-int-">setTimeInSec</a></span>(int timeInSec)</code>
+<div class="block">Set the current time in seconds.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast">
+<code><span class="memberNameLink"><a href="/docs/pebblekit-android/com/getpebble/android/kit/util/SportsState/#synchronize-android.content.Context-">synchronize</a></span>(android.content.Context context)</code>
+<div class="block">Synchronizes the current state of the Sports App to the connected watch.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList">
+<a name="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class java.lang.Object</h3>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList">
+<a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="SportsState--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>SportsState</h4>
+<pre>public SportsState()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList">
+<a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getTimeInSec--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTimeInSec</h4>
+<pre>public int getTimeInSec()</pre>
+<div class="block">The current time in seconds.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the current activity duration in seconds</dd>
+</dl>
+</li>
+</ul>
+<a name="setTimeInSec-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTimeInSec</h4>
+<pre>public void setTimeInSec(int timeInSec)</pre>
+<div class="block">Set the current time in seconds.
+
+ The possible range is currently limited from 0 to 35999,
+ inclusive (9h 59min 59sec). Values larger or smaller than the limits will
+ be transformed into the maximum or minimum, respectively.
+
+ It will be presented as a duration string in the UI. Hours, minutes and
+ seconds will be separated by colons. The hours value will only appear if
+ the value is more than 1 hour.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd>
+<code>timeInSec</code> - The current time to set, in seconds.</dd>
+</dl>
+</li>
+</ul>
+<a name="getDistance--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDistance</h4>
+<pre>public float getDistance()</pre>
+<div class="block">The current distance in kilometers or miles.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the current distance</dd>
+</dl>
+</li>
+</ul>
+<a name="setDistance-float-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDistance</h4>
+<pre>public void setDistance(float distance)</pre>
+<div class="block">Set the current distance in kilometers or miles.
+
+ The possible range is currently limited from 0 to 99.9, inclusive. Values
+ larger or smaller than the limits will be transformed into the maximum or
+ minimum, respectively.
+
+ It will be presented as a decimal number in the UI. The decimal part will be
+ rounded to one digit.
+
+ The unit of distance is dependent on the current unit setting.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd>
+<code>distance</code> - The current distance to set, in kilometers or miles.</dd>
+</dl>
+</li>
+</ul>
+<a name="getPaceInSec--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPaceInSec</h4>
+<pre>public int getPaceInSec()</pre>
+<div class="block">The current pace in seconds per kilometer or seconds per mile.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the current pace</dd>
+</dl>
+</li>
+</ul>
+<a name="setPaceInSec-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setPaceInSec</h4>
+<pre>public void setPaceInSec(int paceInSec)</pre>
+<div class="block">Set the current pace in seconds per kilometer or seconds per mile.
+
+ The possible range is currently limited from 0 to 3599,
+ inclusive (59min 59sec). Values larger or smaller than the limits will be
+ transformed into the maximum or minimum, respectively.
+
+ It will be presented as a duration string in the UI. Minutes and seconds will
+ be separated by colons.
+
+ Currently pace and speed cannot be presented at the same time. Setting speed
+ will discard the value set through pace.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd>
+<code>paceInSec</code> - The pace to set, in seconds per kilometer or seconds per mile.</dd>
+</dl>
+</li>
+</ul>
+<a name="getSpeed--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSpeed</h4>
+<pre>public float getSpeed()</pre>
+<div class="block">The current speed in kilometers per hour or miles per hour.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the current speed</dd>
+</dl>
+</li>
+</ul>
+<a name="setSpeed-float-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSpeed</h4>
+<pre>public void setSpeed(float speed)</pre>
+<div class="block">Set the current speed in kilometers per hour or miles per hour.
+
+ The possible range is currently limited from 0 to 99.9, inclusive. Values
+ larger or smaller than the limits will be transformed into the maximum or
+ minimum, respectively.
+
+ It will be presented as a decimal number in the UI. The decimal part will be
+ rounded to one digit.
+
+ Currently pace and speed cannot be presented at the same time. Setting pace
+ will discard the value set through speed.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd>
+<code>speed</code> - The current speed to set, in kilometers per hour or miles per hour.</dd>
+</dl>
+</li>
+</ul>
+<a name="getHeartBPM--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getHeartBPM</h4>
+<pre>public byte getHeartBPM()</pre>
+<div class="block">The current heart rate in beats per minute.
+
+ If the heart rate has never been set before, this property will return zero.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the current heart rate</dd>
+</dl>
+</li>
+</ul>
+<a name="setHeartBPM-byte-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setHeartBPM</h4>
+<pre>public void setHeartBPM(byte heartBPM)</pre>
+<div class="block">Set the current heart rate in beats per minute.
+
+ Currently there is no way to stop sending heart rate values if one heart rate
+ value was sent. The last value will be shown in the UI.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd>
+<code>heartBPM</code> - The current heart rate to set, in beats per minute.</dd>
+</dl>
+</li>
+</ul>
+<a name="getCustomLabel--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCustomLabel</h4>
+<pre>public java.lang.String getCustomLabel()</pre>
+<div class="block">The custom label to show in the sports UI.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the custom label</dd>
+</dl>
+</li>
+</ul>
+<a name="setCustomLabel-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCustomLabel</h4>
+<pre>public void setCustomLabel(java.lang.String customLabel)</pre>
+<div class="block">Set the custom label to show in the sports UI.
+
+ The maximum number of characters is ~10, but this maximum is not enforced.
+ The label will be sent in upper case to the watch.
+
+ To be sent, both customLabel and customValue have to be set to non-null values.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd>
+<code>customLabel</code> - The custom label to set.</dd>
+</dl>
+</li>
+</ul>
+<a name="getCustomValue--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCustomValue</h4>
+<pre>public java.lang.String getCustomValue()</pre>
+<div class="block">The custom value to show in the sports UI.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the custom value</dd>
+</dl>
+</li>
+</ul>
+<a name="setCustomValue-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCustomValue</h4>
+<pre>public void setCustomValue(java.lang.String customValue)</pre>
+<div class="block">Set the custom value to show in the sports UI.
+
+ The maximum number of characters is ~8, but the maximum is not enforced.
+
+ To be sent, both customValue and customLabel have to be set to non-null values.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd>
+<code>customValue</code> - The custom value to set.</dd>
+</dl>
+</li>
+</ul>
+<a name="synchronize-android.content.Context-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>synchronize</h4>
+<pre>public void synchronize(android.content.Context context)</pre>
+<div class="block">Synchronizes the current state of the Sports App to the connected watch.
+
+ The method tries to send the minimal set of changes since the last time the
+ method was used, to try to minimize communication with the watch.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd>
+<code>context</code> - The context used to send the broadcast.</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></body></html>
+
+</div>
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

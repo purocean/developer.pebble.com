@@ -1,0 +1,7 @@
+.noscript--show {
+  display: inherit;
+}
+
+.noscript--hide {
+  display: none;
+}

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Vector Graphics // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to draw simple images using vector images, instead of bitmaps.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/graphics-and-animations/vector-graphics/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/graphics-and-animations/animations/"><span>Animations</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/graphics-and-animations/drawing-primitives-images-and-text/"><span>Drawing Primitives, Images and Text</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/graphics-and-animations/framebuffer-graphics/"><span>Framebuffer Graphics</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/graphics-and-animations/vector-graphics/"><span>Vector Graphics</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="vector-graphics-on-pebble">Vector Graphics on Pebble</option>
+          
+            <option value="creating-compatible-files">Creating Compatible Files</option>
+          
+            <option value="drawing-vector-graphics">Drawing Vector Graphics</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Vector Graphics</h1>
+    
+<!-- 
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+    <p>This is an overview of drawing vector images using Pebble Draw Command files.
+See the <a href="/tutorials/advanced/vector-animations" title="" class=""><em>Vector Animations</em></a> tutorial
+for more information.</p><h2 id="vector-graphics-on-pebble" class="anchor">Vector Graphics on Pebble</h2><p>As opposed to bitmaps which contain data for every pixel to be drawn, a vector
+file contains only instructions about points contained in the image and how to
+draw lines connecting them up. Instructions such as fill color, stroke color,
+and stroke width are also included.</p><p>Vector images on Pebble are implemented using the <a href="/docs/c/Graphics/Draw_Commands/" title="Draw Commands" class="link--docs"><code>Draw Commands</code></a> API, which
+allows apps to load and display PDC (Pebble Draw Command) images and sequences
+that contain sets of these instructions. An example is the weather icon used in
+weather timeline pins. The benefit of using vector graphics for this icon is
+that is allows the image to stretch in the familiar manner as it moves between
+the timeline view and the pin detail view:</p><p><img src="/assets/images/tutorials/advanced/weather.png" alt="weather" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>The main benefits of vectors over bitmaps for simple images and icons are:</p>
+<ul>
+<li><p>Smaller resource size - instructions for joining points are less memory
+expensive than per-pixel bitmap data.</p></li>
+<li><p>Flexible rendering - vector images can be rendered as intended, or manipulated
+at runtime to move the individual points around. This allows icons to appear
+more organic and life-like than static PNG images. Scaling and distortion is
+also made possible.</p></li>
+</ul>
+<p>However, there are also some drawbacks to choosing vector images in certain
+cases:</p>
+<ul>
+<li><p>Vector files require more specialized tools to create than bitmaps, and so are
+harder to produce.</p></li>
+<li><p>Complicated vector files may take more time to render than if they were simply
+drawn per-pixel as a bitmap, depending on the drawing implementation.</p></li>
+</ul>
+<h2 id="creating-compatible-files" class="anchor">Creating Compatible Files</h2><p>The file format of vector image files on Pebble is the PDC (Pebble Draw Command)
+format, which includes all the instructions necessary to allow drawing of
+vectors. These files are created from compatible SVG (Scalar Vector Graphics)
+files. Read <a href="/guides/app-resources/converting-svg-to-pdc/"><em>Converting SVG to PDC</em></a> for more
+information.</p>
+<div class="alert alert--fg-white alert--bg-dark-red">
+Pebble Draw Command files can only be used from app resources, and cannot be
+created at runtime.
+</div>
+<h2 id="drawing-vector-graphics" class="anchor">Drawing Vector Graphics</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Add the PDC file as a project resource using the &#39;Add new&#39; under
+&#39;Resources&#39; on the left-hand side of the CloudPebble editor as a &#39;raw binary
+blob&#39;.</p><p class="platform-specific" data-sdk-platform="local">Add the PDC file to the project resources in <code>package.json</code> with the
+&#39;type&#39; field to <code>raw</code>:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="s2">&quot;media&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;raw&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;EXAMPLE_IMAGE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;file&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;example_image.pdc&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p class="platform-specific" data-sdk-platform="local">Drawing a Pebble Draw Command image is just as simple as drawing a normal
+PNG image to a graphics context, requiring only one draw call. First, load the
+<code>.pdc</code> file from resources as shown below.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Drawing a Pebble Draw Command image is just as simple as drawing a normal
+PNG image to a graphics context, requiring only one draw call. First, load the
+<code>.pdc</code> file from resources, as shown below.</p><p>First, declare a pointer of type <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandImage" title="GDrawCommandImage" class="link--docs"><code>GDrawCommandImage</code></a> at the top of the file:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">GDrawCommandImage</span> <span class="o">*</span><span class="n">s_command_image</span><span class="p">;</span>
+</pre></div><p>Create and assign the <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandImage" title="GDrawCommandImage" class="link--docs"><code>GDrawCommandImage</code></a> in <code>init()</code>, before calling
+<code>window_stack_push()</code>:</p><div class="highlight no-copy"><pre><span class="c1">// Create the object from resource file</span>
+<span class="n">s_command_image</span> <span class="o">=</span> <span class="n">gdraw_command_image_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_EXAMPLE_IMAGE</span><span class="p">);</span>
+</pre></div><p>Next, define the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a> that will be used to draw the PDC image:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">update_proc</span><span class="p">(</span><span class="n">Layer</span> <span class="o">*</span><span class="n">layer</span><span class="p">,</span> <span class="n">GContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Set the origin offset from the context for drawing the image</span>
+  <span class="n">GPoint</span> <span class="n">origin</span> <span class="o">=</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+
+  <span class="c1">// Draw the GDrawCommandImage to the GContext</span>
+  <span class="n">gdraw_command_image_draw</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">s_command_image</span><span class="p">,</span> <span class="n">origin</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Next, create a <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> to display the image:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">Layer</span> <span class="o">*</span><span class="n">s_canvas_layer</span><span class="p">;</span>
+</pre></div><p>Assign the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a> that will do the rendering to the canvas
+<a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> and add it to the desired <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> during <code>window_load()</code>:</p><div class="highlight"><pre><span class="c1">// Create the canvas Layer</span>
+<span class="n">s_canvas_layer</span> <span class="o">=</span> <span class="n">layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">w</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">h</span><span class="p">));</span>
+
+<span class="c1">// Set the LayerUpdateProc</span>
+<span class="n">layer_set_update_proc</span><span class="p">(</span><span class="n">s_canvas_layer</span><span class="p">,</span> <span class="n">update_proc</span><span class="p">);</span>
+
+<span class="c1">// Add to parent Window</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_layer</span><span class="p">,</span> <span class="n">s_canvas_layer</span><span class="p">);</span>
+</pre></div><p>Finally, don&#39;t forget to free the memory used by the sub-components of the
+<a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> in <code>main_window_unload()</code>:</p><div class="highlight"><pre><span class="c1">// Destroy the canvas Layer</span>
+<span class="n">layer_destroy</span><span class="p">(</span><span class="n">s_canvas_layer</span><span class="p">);</span>
+
+<span class="c1">// Destroy the PDC image</span>
+<span class="n">gdraw_command_image_destroy</span><span class="p">(</span><span class="n">s_command_image</span><span class="p">);</span>
+</pre></div><p>When run, the PDC image will be loaded, and rendered in the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a>.
+To put the image into contrast, optionally change the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> background
+color after <code>window_create()</code>:</p><div class="highlight"><pre><span class="n">window_set_background_color</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="n">GColorBlueMoon</span><span class="p">);</span>
+</pre></div><p>The result will look similar to the example shown below.</p><p><img src="/assets/images/tutorials/advanced/weather-image.png" alt="weather-image" class="pebble-screenshot pebble-screenshot--time-red" /></p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/graphics-and-animations/vector-graphics/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#vector-graphics-on-pebble">Vector Graphics on Pebble</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#creating-compatible-files">Creating Compatible Files</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#drawing-vector-graphics">Drawing Vector Graphics</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Graphics/Draw_Commands/">Draw Commands</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/pdc-image" target="_blank">PDC Image</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/pdc-sequence" target="_blank">PDC Sequence</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

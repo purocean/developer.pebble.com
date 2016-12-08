@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Layers // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/User_Interface/Layers/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open active">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+<option value="#modules">MODULES</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/">ActionBarLayer</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/">BitmapLayer</option>
+
+  <option value="/docs/c/User_Interface/Layers/MenuLayer/">MenuLayer</option>
+
+  <option value="/docs/c/User_Interface/Layers/RotBitmapLayer/">RotBitmapLayer</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/">ScrollLayer</option>
+
+  <option value="/docs/c/User_Interface/Layers/SimpleMenuLayer/">SimpleMenuLayer</option>
+
+  <option value="/docs/c/User_Interface/Layers/StatusBarLayer/">StatusBarLayer</option>
+
+  <option value="/docs/c/User_Interface/Layers/TextLayer/">TextLayer</option>
+
+
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_create">layer_create</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_create_with_data">layer_create_with_data</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_destroy">layer_destroy</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_mark_dirty">layer_mark_dirty</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_set_update_proc">layer_set_update_proc</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_set_frame">layer_set_frame</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_get_frame">layer_get_frame</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_set_bounds">layer_set_bounds</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_get_bounds">layer_get_bounds</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_convert_point_to_screen">layer_convert_point_to_screen</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_convert_rect_to_screen">layer_convert_rect_to_screen</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_get_window">layer_get_window</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_remove_from_parent">layer_remove_from_parent</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_remove_child_layers">layer_remove_child_layers</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_add_child">layer_add_child</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_insert_below_sibling">layer_insert_below_sibling</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_insert_above_sibling">layer_insert_above_sibling</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_set_hidden">layer_set_hidden</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_get_hidden">layer_get_hidden</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_set_clips">layer_set_clips</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_get_clips">layer_get_clips</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_get_data">layer_get_data</option>
+
+
+
+          
+
+          
+
+          
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/User_Interface/Layers/#Layer">Layer</option>
+
+  <option value="/docs/c/User_Interface/Layers/#LayerUpdateProc">LayerUpdateProc</option>
+
+
+
+          
+<option value="#defines">MACRO DEFINTIONS</option>
+
+  <option value="/docs/c/User_Interface/Layers/#layer_get_unobstructed_bounds">layer_get_unobstructed_bounds</option>
+
+
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">Layers</h1>
+
+      <p>User interface layers for displaying graphic components. </p>
+      <p>Layers are objects that can be displayed on a Pebble watchapp window, enabling users to see visual objects, like text or images. Each layer stores the information about its state necessary to draw or redraw the object that it represents and uses graphics routines along with this state to draw itself when asked. Layers can be used to display various graphics.</p>
+<p>Layers are the basic building blocks for your application UI. Layers can be nested inside each other. Every window has a root layer which is always the topmost layer. You provide a function that is called to draw the content of the layer when needed; or you can use standard layers that are provided by the system, such as text layer, image layer, menu layer, action bar layer, and so on.</p>
+<p>The Pebble layer hierarchy is the list of things that need to be drawn to the screen. Multiple layers can be arranged into a hierarchy. This enables ordering (front to back), layout and hierarchy. Through relative positioning, visual objects that are grouped together by adding them into the same layer can be moved all at once. This means that the child layers will move accordingly. If a parent layer has clipping enabled, all the children will be clipped to the frame of the parent.</p>
+<p>Pebble OS provides convenience layers with built-in logic for displaying different graphic components, like text and bitmap layers.</p>
+<p>Refer to the <a href="https://developer.getpebble.com/guides/pebble-apps/display-and-animations/layers/">User Interface Layers chapter in the Pebble Developer Guides</a> (chapter "Layers") for a conceptual overview of Layers and relevant code examples.</p>
+<p>The Modules listed here contain what can be thought of conceptually as subclasses of Layer. The listed types can be safely type-casted to <code>Layer</code> (or <code>Layer *</code> in case of a pointer). The <code>layer_...</code> functions can then be used with the data structures of these subclasses. <br>
+For example, the following is legal: <div class="highlight"><pre><span class="n">TextLayer</span> <span class="o">*</span><span class="n">text_layer</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="n">layer_set_hidden</span><span class="p">((</span><span class="n">Layer</span> <span class="o">*</span><span class="p">)</span><span class="n">text_layer</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+</pre></div> </p>
+
+      
+
+      
+
+
+      
+        <h2 class="anchor" id="modules">Modules</h2>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Layers/ActionBarLayer/">ActionBarLayer</a></h4>
+            
+            <p>Vertical, bar-shaped control widget on the right edge of the window. </p>
+            
+          </div>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Layers/BitmapLayer/">BitmapLayer</a></h4>
+            
+            <p>Layer that displays a bitmap image. </p>
+            
+          </div>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Layers/MenuLayer/">MenuLayer</a></h4>
+            
+            <p>Layer that displays a standard list menu. Data is provided using callbacks. </p>
+            
+          </div>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/">RotBitmapLayer</a></h4>
+            
+            <p>Layer that displays a rotated bitmap image. </p>
+            
+          </div>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Layers/ScrollLayer/">ScrollLayer</a></h4>
+            
+            <p>Layer that scrolls its contents, animated. </p>
+            
+          </div>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/">SimpleMenuLayer</a></h4>
+            
+            <p>Wrapper around <a refid="group___menu_layer" kindref="compound" href="/docs/c/User_Interface/Layers/MenuLayer/">MenuLayer</a>, that uses static data to display a list menu. </p>
+            
+          </div>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Layers/StatusBarLayer/">StatusBarLayer</a></h4>
+            
+            <p>Layer that serves as a configurable status bar. </p>
+            
+          </div>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Layers/TextLayer/">TextLayer</a></h4>
+            
+            <p>Layer that displays and formats a text string. </p>
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="layer_create">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>Layer * </span><span class="docs__item__name">layer_create</span><span>(</span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> frame</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates a layer on the heap and sets its frame and bounds. Default values: </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><ul>
+<li><p><code>bounds</code> : origin (0, 0) and a size equal to the frame that is passed in.</p></li>
+<li><p><code>clips</code> : <code>true</code></p></li>
+<li><p><code>hidden</code> : <code>false</code></p></li>
+<li><p><code>update_proc</code> : <code>NULL</code> (draws nothing) 
+
+
+</p></li>
+</ul>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> frame</dt>
+  <dd><p>The frame at which the layer should be initialized. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the layer. <code>NULL</code> if the layer could not be created </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="group___layer_1ga5a984a17781b97ce00ae34c437171934" kindref="member" href="/docs/c/User_Interface/Layers/#layer_set_frame">layer_set_frame()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_create_with_data">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>Layer * </span><span class="docs__item__name">layer_create_with_data</span><span>(</span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> frame</span><span>, </span><span class="docs__item__param"><a refid="group___standard_memory_1ga7b60c5629e55e8ec87a4547dd4abced4" kindref="member" href="/docs/c/Standard_C/Memory/#size_t">size_t</a> data_size</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates a layer on the heap with extra space for callback data, and set its frame andbounds. Default values: </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><ul>
+<li><p><code>bounds</code> : origin (0, 0) and a size equal to the frame that is passed in.</p></li>
+<li><p><code>clips</code> : <code>true</code></p></li>
+<li><p><code>hidden</code> : <code>false</code></p></li>
+<li><p><code>update_proc</code> : <code>NULL</code> (draws nothing) 
+
+
+</p></li>
+</ul>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> frame</dt>
+  <dd><p>The frame at which the layer should be initialized. </p></dt>
+  
+  <dt><span style="color: #777"></span> data_size</dt>
+  <dd><p>The size (in bytes) of memory to allocate for callback data. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the layer. <code>NULL</code> if the layer could not be created </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="group___layer_1gaa14dfd196c850be588b1ab30804690c0" kindref="member" href="/docs/c/User_Interface/Layers/#layer_create">layer_create()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_destroy">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_destroy</span><span>(</span><span class="docs__item__param">Layer * layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroys a layer previously created by layer_create. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_mark_dirty">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_mark_dirty</span><span>(</span><span class="docs__item__param">Layer * layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Marks the complete layer as "dirty", awaiting to be asked by the system to redraw itself. Typically, this function is called whenever state has changed that affects what the layer is displaying. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><ul>
+<li><p>The layer's <code>.update_proc</code> will not be called before this function returns, but will be called asynchronously, shortly.</p></li>
+<li><p>Internally, a call to this function will schedule a re-render of the window that the layer belongs to. In effect, all layers in that window's layer hierarchy will be asked to redraw.</p></li>
+<li><p>If an earlier re-render request is still pending, this function is a no-op. 
+</p></li>
+</ul>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer to mark dirty </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_set_update_proc">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_set_update_proc</span><span>(</span><span class="docs__item__param">Layer * layer</span><span>, </span><span class="docs__item__param"><a refid="group___layer_1ga5bf7c903e32df0edcb1ec0b23d367bf0" kindref="member" href="/docs/c/User_Interface/Layers/#LayerUpdateProc">LayerUpdateProc</a> update_proc</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the layer's render function. The system will call the <code>update_proc</code> automatically when the layer needs to redraw itself, see also <a refid="group___layer_1ga00bc895642aa02ae2d224659529382c8" kindref="member" href="/docs/c/User_Interface/Layers/#layer_mark_dirty">layer_mark_dirty()</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>Pointer to the layer structure. </p></dt>
+  
+  <dt><span style="color: #777"></span> update_proc</dt>
+  <dd><p>Pointer to the function that will be called when the layer needs to be rendered. Typically, one performs a series of drawing commands in the implementation of the <code>update_proc</code>, see <a refid="group___drawing" kindref="compound" href="/docs/c/Graphics/Drawing_Primitives/">Drawing Primitives</a>, <a refid="group___path_drawing" kindref="compound" href="/docs/c/Graphics/Drawing_Paths/">Drawing Paths</a> and <a refid="group___text_drawing" kindref="compound" href="/docs/c/Graphics/Drawing_Text/">Drawing Text</a>. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_set_frame">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_set_frame</span><span>(</span><span class="docs__item__param">Layer * layer</span><span>, </span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> frame</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the frame of the layer, which is it's bounding box relative to the coordinate system of its parent layer. The size of the layer's bounds will be extended automatically, so that the bounds cover the new frame. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to set the frame </p></dt>
+  
+  <dt><span style="color: #777"></span> frame</dt>
+  <dd><p>The new frame </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___layer_1ga0a99dca38b75b52264c0734b934c865c" kindref="member" href="/docs/c/User_Interface/Layers/#layer_set_bounds">layer_set_bounds()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_get_frame">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> </span><span class="docs__item__name">layer_get_frame</span><span>(</span><span class="docs__item__param">const Layer * layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the frame of the layer, which is it's bounding box relative to the coordinate system of its parent layer. If the frame has changed, <a refid="group___layer_1ga00bc895642aa02ae2d224659529382c8" kindref="member" href="/docs/c/User_Interface/Layers/#layer_mark_dirty">layer_mark_dirty()</a> will be called automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to get the frame </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The frame of the layer </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="group___layer_1ga5a984a17781b97ce00ae34c437171934" kindref="member" href="/docs/c/User_Interface/Layers/#layer_set_frame">layer_set_frame</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_set_bounds">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_set_bounds</span><span>(</span><span class="docs__item__param">Layer * layer</span><span>, </span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> bounds</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the bounds of the layer, which is it's bounding box relative to its frame. If the bounds has changed, <a refid="group___layer_1ga00bc895642aa02ae2d224659529382c8" kindref="member" href="/docs/c/User_Interface/Layers/#layer_mark_dirty">layer_mark_dirty()</a> will be called automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to set the bounds </p></dt>
+  
+  <dt><span style="color: #777"></span> bounds</dt>
+  <dd><p>The new bounds </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___layer_1ga5a984a17781b97ce00ae34c437171934" kindref="member" href="/docs/c/User_Interface/Layers/#layer_set_frame">layer_set_frame()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_get_bounds">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> </span><span class="docs__item__name">layer_get_bounds</span><span>(</span><span class="docs__item__param">const Layer * layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the bounds of the layer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to get the bounds </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The bounds of the layer </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="group___layer_1ga0a99dca38b75b52264c0734b934c865c" kindref="member" href="/docs/c/User_Interface/Layers/#layer_set_bounds">layer_set_bounds</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_convert_point_to_screen">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> </span><span class="docs__item__name">layer_convert_point_to_screen</span><span>(</span><span class="docs__item__param">const Layer * layer</span><span>, </span><span class="docs__item__param"><a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> point</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Converts a point from the layer's local coordinate system to screen coordinates. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>If the layer isn't part of the view hierarchy the result is undefined. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The view whose coordinate system will be used to convert the value to the screen. </p></dt>
+  
+  <dt><span style="color: #777"></span> point</dt>
+  <dd><p>A point specified in the local coordinate system (bounds) of the layer. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The point converted to the coordinate system of the screen. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_convert_rect_to_screen">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> </span><span class="docs__item__name">layer_convert_rect_to_screen</span><span>(</span><span class="docs__item__param">const Layer * layer</span><span>, </span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> rect</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Converts a rectangle from the layer's local coordinate system to screen coordinates. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>If the layer isn't part of the view hierarchy the result is undefined. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The view whose coordinate system will be used to convert the value to the screen. </p></dt>
+  
+  <dt><span style="color: #777"></span> rect</dt>
+  <dd><p>A rectangle specified in the local coordinate system (bounds) of the layer. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The rectangle converted to the coordinate system of the screen. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_get_window">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>struct Window * </span><span class="docs__item__name">layer_get_window</span><span>(</span><span class="docs__item__param">const Layer * layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the window that the layer is currently attached to. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to get the window </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The window that this layer is currently attached to, or <code>NULL</code> if it has not been added to a window's layer hierarchy. </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="group___window_1ga8a0233aa7927ebc51a0b2d8708f52fe0" kindref="member" href="/docs/c/User_Interface/Window/#window_get_root_layer">window_get_root_layer()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_remove_from_parent">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_remove_from_parent</span><span>(</span><span class="docs__item__param">Layer * child</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Removes the layer from its current parent layer If removed successfully, the child's parent layer will be marked dirty automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> child</dt>
+  <dd><p>The layer to remove </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_remove_child_layers">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_remove_child_layers</span><span>(</span><span class="docs__item__param">Layer * parent</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Removes child layers from given layer If removed successfully, the child's parent layer will be marked dirty automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> parent</dt>
+  <dd><p>The layer from which to remove all child layers </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_add_child">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_add_child</span><span>(</span><span class="docs__item__param">Layer * parent</span><span>, </span><span class="docs__item__param">Layer * child</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Adds the child layer to a given parent layer, making it appear in front of its parent and in front of any existing child layers of the parent. If the child layer was already part of a layer hierarchy, it will be removed from its old parent first. If added successfully, the parent (and children) will be marked dirty automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> parent</dt>
+  <dd><p>The layer to which to add the child layer </p></dt>
+  
+  <dt><span style="color: #777"></span> child</dt>
+  <dd><p>The layer to add to the parent layer </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_insert_below_sibling">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_insert_below_sibling</span><span>(</span><span class="docs__item__param">Layer * layer_to_insert</span><span>, </span><span class="docs__item__param">Layer * below_sibling_layer</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Inserts the layer as a sibling behind another layer. If the layer to insert was already part of a layer hierarchy, it will be removed from its old parent first. The below_layer has to be a child of a parent layer, otherwise this function will be a noop. If inserted successfully, the parent (and children) will be marked dirty automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer_to_insert</dt>
+  <dd><p>The layer to insert into the hierarchy </p></dt>
+  
+  <dt><span style="color: #777"></span> below_sibling_layer</dt>
+  <dd><p>The layer that will be used as the sibling layer above which the insertion will take place </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_insert_above_sibling">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_insert_above_sibling</span><span>(</span><span class="docs__item__param">Layer * layer_to_insert</span><span>, </span><span class="docs__item__param">Layer * above_sibling_layer</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Inserts the layer as a sibling in front of another layer. The above_layer has to be a child of a parent layer, otherwise this function will be a noop. If inserted successfully, the parent (and children) will be marked dirty automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer_to_insert</dt>
+  <dd><p>The layer to insert into the hierarchy </p></dt>
+  
+  <dt><span style="color: #777"></span> above_sibling_layer</dt>
+  <dd><p>The layer that will be used as the sibling layer below which the insertion will take place </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_set_hidden">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_set_hidden</span><span>(</span><span class="docs__item__param">Layer * layer</span><span>, </span><span class="docs__item__param">bool hidden</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the visibility of the layer. If the visibility has changed, <a refid="group___layer_1ga00bc895642aa02ae2d224659529382c8" kindref="member" href="/docs/c/User_Interface/Layers/#layer_mark_dirty">layer_mark_dirty()</a> will be called automatically on the parent layer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to set the visibility </p></dt>
+  
+  <dt><span style="color: #777"></span> hidden</dt>
+  <dd><p>Supply <code>true</code> to make the layer hidden, or <code>false</code> to make it non-hidden. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_get_hidden">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">layer_get_hidden</span><span>(</span><span class="docs__item__param">const Layer * layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the visibility of the layer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to get the visibility </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>True if the layer is hidden, false if it is not hidden. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_set_clips">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">layer_set_clips</span><span>(</span><span class="docs__item__param">Layer * layer</span><span>, </span><span class="docs__item__param">bool clips</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets whether clipping is enabled for the layer. If enabled, whatever the layer <em>and its children</em> will draw using their <code>.update_proc</code> callbacks, will be clipped by the this layer's frame. If the clipping has changed, <a refid="group___layer_1ga00bc895642aa02ae2d224659529382c8" kindref="member" href="/docs/c/User_Interface/Layers/#layer_mark_dirty">layer_mark_dirty()</a> will be called automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to set the clipping property </p></dt>
+  
+  <dt><span style="color: #777"></span> clips</dt>
+  <dd><p>Supply <code>true</code> to make the layer clip to its frame, or <code>false</code> to make it non-clipping. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_get_clips">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">layer_get_clips</span><span>(</span><span class="docs__item__param">const Layer * layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets whether clipping is enabled for the layer. If enabled, whatever the layer <em>and its children</em> will draw using their <code>.update_proc</code> callbacks, will be clipped by the this layer's frame. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to get the clipping property </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>True if clipping is enabled for the layer, false if clipping is not enabled for the layer. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="layer_get_data">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void * </span><span class="docs__item__name">layer_get_data</span><span>(</span><span class="docs__item__param">const Layer * layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the data from a layer that has been created with an extra data region. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer to get the data region from. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A void pointer to the data region. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+      
+
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="Layer">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct Layer <span class="docs__item__name">Layer</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="LayerUpdateProc">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">LayerUpdateProc</span>)(struct Layer *layer, GContext *ctx)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature for a Layer's render callback (the name of the type is derived from the words 'update procedure'). The system will call the <code>.update_proc</code> callback whenever the Layer needs to be rendered. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer that needs to be rendered </p></dt>
+  
+  <dt><span style="color: #777"></span> ctx</dt>
+  <dd><p>The destination graphics context to draw into </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___graphics" kindref="compound" href="/docs/c/Graphics/">Graphics</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="defines">Macro Definition<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="layer_get_unobstructed_bounds">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">layer_get_unobstructed_bounds </span><span>(</span><span class="docs__item__param"> layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Get the largest unobstructed bounds rectangle of a layer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to get the unobstructed bounds. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The unobstructed bounds of the layer. </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="group___unobstructed_area" kindref="compound" href="/docs/c/User_Interface/UnobstructedArea/">UnobstructedArea</a>
+
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> </span><span class="docs__item__name">layer_get_unobstructed_bounds </span><span>(</span><span class="docs__item__param">const Layer * layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Get the largest unobstructed bounds rectangle of a layer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>The layer for which to get the unobstructed bounds. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The unobstructed bounds of the layer. </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="group___unobstructed_area" kindref="compound" href="/docs/c/User_Interface/UnobstructedArea/">UnobstructedArea</a>
+
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+<h3><a href="#modules">Modules</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/">ActionBarLayer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/">BitmapLayer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/MenuLayer/">MenuLayer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/">RotBitmapLayer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/">ScrollLayer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/">SimpleMenuLayer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/">StatusBarLayer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/TextLayer/">TextLayer</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_create">layer_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_create_with_data">layer_create_with_data</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_destroy">layer_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_mark_dirty">layer_mark_dirty</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_set_update_proc">layer_set_update_proc</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_set_frame">layer_set_frame</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_get_frame">layer_get_frame</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_set_bounds">layer_set_bounds</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_get_bounds">layer_get_bounds</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_convert_point_to_screen">layer_convert_point_to_screen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_convert_rect_to_screen">layer_convert_rect_to_screen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_get_window">layer_get_window</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_remove_from_parent">layer_remove_from_parent</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_remove_child_layers">layer_remove_child_layers</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_add_child">layer_add_child</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_insert_below_sibling">layer_insert_below_sibling</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_insert_above_sibling">layer_insert_above_sibling</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_set_hidden">layer_set_hidden</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_get_hidden">layer_get_hidden</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_set_clips">layer_set_clips</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_get_clips">layer_get_clips</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_get_data">layer_get_data</a></li>
+  
+</ul>
+
+
+      
+
+      
+
+      
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#Layer">Layer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#LayerUpdateProc">LayerUpdateProc</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#defines">Macro Defintions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/#layer_get_unobstructed_bounds">layer_get_unobstructed_bounds</a></li>
+  
+</ul>
+
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Watch Analytics with Strap // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2014/07/02/Watch-analytics-with-strap/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="1-create-an-app-on-the-strap-dashboard">1) Create an app on the Strap dashboard.</option>
+          
+            <option value="2-make-note-of-your-app-id">2) Make note of your app ID.</option>
+          
+            <option value="3-download-the-strap-metrics-pebble-sdk-from-github">3) Download the Strap Metrics Pebble SDK from Github.</option>
+          
+            <option value="4-add-the-c-source-to-your-project">4) Add the C source to your project.</option>
+          
+            <option value="5-add-the-js-api-to-your-javascript-code">5) Add the JS API to your JavaScript code</option>
+          
+            <option value="6-add-the-appmessage-event-handler-to-your-javascript-code">6) Add the AppMessage event handler to your JavaScript code</option>
+          
+            <option value="7-add-the-c-api-to-your-c-code">7) Add the C API to your C code</option>
+          
+            <option value="8-initialize-strap-in-your-c-code">8) Initialize Strap in your C code</option>
+          
+            <option value="9-add-strap-api-calls-to-track-events-optional-but-recommended">9) Add Strap API calls to track events (optional, but recommended)</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Watch Analytics with Strap</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>02 July 2014</li>
+    <li><a href="/blog/authors/alex/">Alex Lin</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/at-the-pub/">At the Pub</a>
+      
+    </li>
+    <li><a href="/blog/2014/07/02/Watch-analytics-with-strap/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<blockquote>
+<p>We&#39;d like to share a blog post from our friends at
+<a href="https://www.straphq.com/" title="" class="">Strap</a> on how to add analytics to your Pebble app.
+Strap is an analytics platform targeted at wearables and helps to gather
+valuable metrics to help developers with their projects. We hope you find this
+valuable and follow the links below to try it out:</p></blockquote>
+<p>There are an increasing number of users downloading your Pebble watchfaces and
+watchapps, but there is really no good way for you to figure out where those
+users are coming from, how long they stay, and what they do with your app. You
+can now gain these insights and more with Strap Metrics, the world&#39;s first
+analytics platform built for wearable developers. Strap Metrics has spent the
+past couple of months in private beta, and we are excited to go public today
+with support for both PebbleKit JS apps and Pebble companion apps on iOS and
+Android.</p><p>Just like traditional web and mobile analytics platforms, there is an
+integration step which requires you to include our API in your project. By
+default, you can include the API and call a couple of init functions to track
+things like sessions (with duration), unique users, geographic location, device
+battery performance, user agents, and activity. You can take this a step further
+by logging events at the C level to paint a complete picture of what users are
+doing inside of your application.</p><p>To demonstrate a simple use case, I&#39;ll walk you through integration with a
+Pebble JS watch app that I wrote a while back. Watch3words is the official
+Pebble app for <a href="http://www.what3words.com" title="" class="">What3Words</a>, an awesome platform that
+lets you share your precise location in just three words. This is a fairly
+typical Pebble JS app - it communicates via AppMessage and AppSync to interact
+with the REST service provided by What3Words.</p><p>Note: If you have a companion app for iOS or Android, we&#39;ve got you covered! We
+have 
+<a href="https://github.com/strap/strap_sdk_pebble/tree/master/companion" title="" class="">quick start guides</a> 
+for those platforms on our developer portal.</p><p>Before you get started, signup for an account at
+<a href="https://www.straphq.com/register">https://www.straphq.com/register</a> - it&#39;s free without limits during our public
+beta!</p><h5 id="1-create-an-app-on-the-strap-dashboard" class="anchor">1) Create an app on the Strap dashboard.</h5><p><img src="/assets/images/blog/strap1.png" alt="1" /></p><h5 id="2-make-note-of-your-app-id" class="anchor">2) Make note of your app ID.</h5><p><img src="/assets/images/blog/strap2.png" alt="2" /></p><h5 id="3-download-the-strap-metrics-pebble-sdk-from-github" class="anchor">3) <a href="https://github.com/strap/strap_sdk_pebble" title="" class="">Download the Strap Metrics Pebble SDK from Github.</a></h5><h5 id="4-add-the-c-source-to-your-project" class="anchor">4) Add the C source to your project.</h5><p><em>The easy way:</em></p><p>Run this from the &quot;src&quot; directory:</p><div class="highlight"><pre><span class="vg">curl</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="vg">pebble</span><span class="o">-</span><span class="vg">install</span><span class="o">.</span><span class="vg">straphq</span><span class="o">.</span><span class="vg">com</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="vg">sh</span>
+</pre></div><p><em>Or manually:</em></p><p>Copy /src/c to a &quot;strap&quot; directory in your project. </p><h5 id="5-add-the-js-api-to-your-javascript-code" class="anchor">5) Add the JS API to your JavaScript code</h5><p>In the SDK you&#39;ll find a sample pebble-js-app.js which contains the API. Copy
+the API portion of the code to the top of your js file.</p><p><img src="/assets/images/blog/strap3.png" alt="3" /></p><h5 id="6-add-the-appmessage-event-handler-to-your-javascript-code" class="anchor">6) Add the AppMessage event handler to your JavaScript code</h5><p>Also in the sample pebble-js-app.js is an AppMessage event handler block. If you
+already have an AppMessage event handler, just copy the relevant Strap portion
+into it. Make sure you change the app_id to the one you created in Step 1.
+Pebble.addEventListener(&quot;appmessage&quot;),</p><div class="highlight"><pre><span class="vg">Pebble</span><span class="o">.</span><span class="vg">addEventListener</span><span class="p">(</span><span class="s2">"appmessage"</span><span class="p">,</span>
+<span class="w">  </span><span class="vg">function</span><span class="p">(</span><span class="vg">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">//</span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="s2">"appmessage: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vg">JSON</span><span class="o">.</span><span class="vg">stringify</span><span class="p">(</span><span class="vg">e</span><span class="o">.</span><span class="vg">payload</span><span class="p">));</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="vg">Strap</span><span class="w"> </span><span class="nl">API:</span><span class="w"> </span><span class="vg">Developer</span><span class="w"> </span><span class="vg">updates</span><span class="w"> </span><span class="vg">these</span><span class="w"> </span><span class="vg">parameters</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">fit</span>
+<span class="w">    </span><span class="vg">var</span><span class="w"> </span><span class="vg">strap_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nl">app_id:</span><span class="w"> </span><span class="s2">"xyzabc123abcxyz"</span><span class="p">,</span>
+<span class="w">      </span><span class="nl">resolution:</span><span class="w"> </span><span class="s2">"144x168"</span><span class="p">,</span>
+<span class="w">      </span><span class="nl">useragent:</span><span class="w"> </span><span class="s2">"PEBBLE/2.0"</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="o">-------------------------</span>
+<span class="w">    </span><span class="o">//</span><span class="w">  </span><span class="vg">Strap</span><span class="w"> </span><span class="vg">API</span><span class="w"> </span><span class="vg">inclusion</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">appmessage</span>
+<span class="w">    </span><span class="o">//</span><span class="w">  </span><span class="vg">This</span><span class="w"> </span><span class="vg">allows</span><span class="w"> </span><span class="vg">Strap</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">process</span><span class="w"> </span><span class="vg">Strap</span><span class="o">-</span><span class="vg">related</span><span class="w"> </span><span class="vg">messages</span>
+<span class="w">    </span><span class="o">//</span><span class="w">  </span><span class="kr">DO</span><span class="w"> </span><span class="ow">NOT</span><span class="w"> </span><span class="vg">EDIT</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="o">-------------------------</span>
+<span class="w">    </span><span class="vg">if</span><span class="p">(</span><span class="vg">strap_api_can_handle_msg</span><span class="p">(</span><span class="vg">e</span><span class="o">.</span><span class="vg">payload</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="vg">clearTimeout</span><span class="p">(</span><span class="vg">strap_api_timer_send</span><span class="p">);</span>
+<span class="w">      </span><span class="vg">var</span><span class="w"> </span><span class="vg">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">strap_api_clone</span><span class="p">(</span><span class="vg">strap_params</span><span class="p">);</span>
+<span class="w">      </span><span class="vg">strap_api_log</span><span class="p">(</span><span class="vg">e</span><span class="o">.</span><span class="vg">payload</span><span class="p">,</span><span class="w"> </span><span class="il">200</span><span class="p">,</span><span class="w"> </span><span class="vg">params</span><span class="p">);</span>
+<span class="w">      </span><span class="vg">strap_api_timer_send</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">setTimeout</span><span class="p">(</span><span class="vg">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="vg">strap_api_log</span><span class="p">({},</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="w"> </span><span class="vg">params</span><span class="p">);</span>
+<span class="w">      </span><span class="p">},</span><span class="w"> </span><span class="il">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="il">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="o">-------------------------</span>
+
+<span class="w">  </span><span class="p">}</span>
+<span class="p">);</span>
+</pre></div><h5 id="7-add-the-c-api-to-your-c-code" class="anchor">7) Add the C API to your C code</h5><p>Include strap.h in any of your source that contains actions you want to track in
+Strap. At a minimum, you must include the Strap header and call the init
+functions in the next step for Strap to track anything. Make sure you correct
+the path relative to your source if needed.</p><div class="highlight"><pre><span class="c">#include "strap/strap.h"</span>
+</pre></div><h5 id="8-initialize-strap-in-your-c-code" class="anchor">8) Initialize Strap in your C code</h5><p>In a typical Pebble pattern, your main() calls an init() and deinit() function.
+Here, you&#39;ll need to include the strap_init() and strap_deinit() functions,
+respectively. <strong>Important: Your code must call app_message_open for Strap to
+communicate!</strong></p><p>Here is a sample init function with the Strap init calls.</p><div class="highlight"><pre><span class="vg">static</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="vg">init</span><span class="p">(</span><span class="vg">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">window_create</span><span class="p">();</span>
+<span class="w">  </span><span class="vg">window_set_click_config_provider</span><span class="p">(</span><span class="vg">window</span><span class="p">,</span><span class="w"> </span><span class="vg">click_config_provider</span><span class="p">);</span>
+<span class="w">  </span><span class="vg">window_set_window_handlers</span><span class="p">(</span><span class="vg">window</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="vg">WindowHandlers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">.</span><span class="vg">load</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">window_load</span><span class="p">,</span>
+<span class="w">    </span><span class="o">.</span><span class="vg">unload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">window_unload</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="vg">const</span><span class="w"> </span><span class="vg">bool</span><span class="w"> </span><span class="vg">animated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">true</span><span class="p">;</span>
+<span class="w">  </span><span class="vg">window_stack_push</span><span class="p">(</span><span class="vg">window</span><span class="p">,</span><span class="w"> </span><span class="vg">animated</span><span class="p">);</span>
+<span class="w">  </span><span class="vg">app_message_register_inbox_received</span><span class="p">(</span><span class="vg">in_received_handler</span><span class="p">);</span>
+<span class="w">  </span><span class="vg">int</span><span class="w"> </span><span class="vg">in_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">app_message_inbox_size_maximum</span><span class="p">();</span>
+<span class="w">  </span><span class="vg">int</span><span class="w"> </span><span class="vg">out_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">app_message_outbox_size_maximum</span><span class="p">();</span>
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="vg">required</span><span class="w"> </span><span class="vg">for</span><span class="w"> </span><span class="vg">Strap</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">communicate!</span><span class="w"> </span>
+<span class="w">  </span><span class="vg">app_message_open</span><span class="p">(</span><span class="vg">in_size</span><span class="p">,</span><span class="w"> </span><span class="vg">out_size</span><span class="p">);</span>
+
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="vg">initialize</span><span class="w"> </span><span class="vg">strap!</span>
+<span class="w">  </span><span class="vg">strap_init</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="vg">static</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="vg">deinit</span><span class="p">(</span><span class="vg">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="vg">unload</span><span class="w"> </span><span class="vg">strap</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">deinit!</span>
+<span class="w">  </span><span class="vg">strap_deinit</span><span class="p">();</span>
+<span class="w">  </span><span class="vg">window_destroy</span><span class="p">(</span><span class="vg">window</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="vg">int</span><span class="w"> </span><span class="vg">main</span><span class="p">(</span><span class="vg">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">init</span><span class="p">();</span>
+<span class="w">  </span><span class="vg">app_event_loop</span><span class="p">();</span>
+<span class="w">  </span><span class="vg">deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><h5 id="9-add-strap-api-calls-to-track-events-optional-but-recommended" class="anchor">9) Add Strap API calls to track events (optional, but recommended)</h5><p>We recommend sending events in a simple URI format.</p><div class="highlight"><pre><span class="vg">static</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="vg">select_button_click_handler</span><span class="p">(</span><span class="vg">ClickRecognizerRef</span><span class="w"> </span><span class="vg">recognizer</span><span class="p">,</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="o">*</span><span class="vg">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="vg">do</span><span class="w"> </span><span class="vg">something</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">your</span><span class="w"> </span><span class="vg">Pebble</span><span class="w"> </span>
+
+<span class="w">  </span><span class="vg">strap_log_event</span><span class="p">(</span><span class="s2">"/select-button-event"</span><span class="p">);</span><span class="w"> </span>
+
+<span class="p">}</span>
+</pre></div><p>If you made it this far, congrats! You&#39;ve successfully integrated Strap into
+your Pebble application. We&#39;ll start crunching the numbers as data starts to
+flow into Strap, and you&#39;ll be seeing reports on the dashboard in about an hour.
+We have tested Strap in a variety of app configurations, but your feedback is
+extremely important to us in this beta period! If you have any questions,
+concerns, or problems with Strap Metrics, please let us know. You can <a href="https://github.com/strap/strap_sdk_pebble/issues" title="" class="">open an
+issue on GitHub</a>, visit our
+community support portal at <a href="http://strap.uservoice.com">http://strap.uservoice.com</a>, email us at
+<a href="mailto:support@straphq.com">support@straphq.com</a>, or tweet us
+<a href="https://www.google.com/url?q=http://www.twitter.com/getstrap" title="" class="">@getstrap</a>.</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2014/07/02/Watch-analytics-with-strap/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#1-create-an-app-on-the-strap-dashboard">1) Create an app on the Strap dashboard.</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#2-make-note-of-your-app-id">2) Make note of your app ID.</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#3-download-the-strap-metrics-pebble-sdk-from-github">3) Download the Strap Metrics Pebble SDK from Github.</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#4-add-the-c-source-to-your-project">4) Add the C source to your project.</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#5-add-the-js-api-to-your-javascript-code">5) Add the JS API to your JavaScript code</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#6-add-the-appmessage-event-handler-to-your-javascript-code">6) Add the AppMessage event handler to your JavaScript code</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#7-add-the-c-api-to-your-c-code">7) Add the C API to your C code</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#8-initialize-strap-in-your-c-code">8) Initialize Strap in your C code</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#9-add-strap-api-calls-to-track-events-optional-but-recommended">9) Add Strap API calls to track events (optional, but recommended)</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                <strong>At the Pub</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                <strong>Alex Lin</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

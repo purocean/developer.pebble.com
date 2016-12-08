@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble Developer Blog: Freshly Baked // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/tags/freshly-baked/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle pagetitle--skinny">
+  <a href="/blog/">Pebble Developer Blog</a>
+</h1>
+<h2 class="pagesubtitle">Freshly Baked</h2>
+<div class="blog-index">
+  
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Nov 23, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/11/23/Announcing-Pebble-SDK-4.3/">Announcing Pebble SDK 4.3</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Things have been a bit &#39;quiet&#39; recently, but we&#39;re back with another fresh
+Pebble SDK! In this release we&#39;ve included one of the most frequently requested
+APIs, exposed the raw HRM sensor value, released PebbleKit 4.0, plus added an
+exciting new BLE HRM mode.</p></div>
+    <div class="text-right"><a href="/blog/2016/11/23/Announcing-Pebble-SDK-4.3/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Oct 11, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/10/11/Emery-SDK-Beta/">4.2-beta4 SDK - Emery Edition!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>We&#39;re incredibly excited to announce the first public beta of the Pebble SDK
+4.2. This is the first time that developers can experience the new &#39;Emery&#39;
+platform which is specifically created for the upcoming
+<a href="https://www.pebble.com/buy-pebble-time-2-smartwatch" title="" class="">Pebble Time 2</a>.</p></div>
+    <div class="text-right"><a href="/blog/2016/10/11/Emery-SDK-Beta/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Oct 04, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/10/04/ready-for-pebble-2/">Ready for Pebble 2</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>The latest 4.1 releases of the firmware, mobile apps and SDK bring support for
+the new Pebble 2 smartwatches, which have started appearing on the wrists of
+developers and reviewers around the globe.</p></div>
+    <div class="text-right"><a href="/blog/2016/10/04/ready-for-pebble-2/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Sep 06, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/09/06/timeline-the-future-of-the-past/">Timeline - The Future of the Past!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>If you’ve been living under a rock, or have just been sunning yourself on the
+beach for the past week, you might have missed the
+<a href="/blog/2016/08/30/announcing-pebble-sdk4/" title="" class="">launch of Pebble OS 4.0</a>. This new
+version introduced some fantastic new features, such as the
+<a href="https://blog.getpebble.com/2016/08/30/fw4-0/" title="" class="">updated health app</a>,
+<a href="/guides/user-interfaces/unobstructed-area/"><em>timeline quick view</em></a>,
+<a href="/guides/user-interfaces/appglance-c/"><em>app glances</em></a>,
+<a href="/blog/2016/08/15/introducing-rockyjs-watchfaces/" title="" class="">Rocky.js</a> and a new
+<a href="/blog/2016/08/19/prime-time-is-approaching-for-os-4.0/#menu-icon-in-the-launcher" title="" class="">system launcher</a>.</p></div>
+    <div class="text-right"><a href="/blog/2016/09/06/timeline-the-future-of-the-past/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Aug 30, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/08/30/announcing-pebble-sdk4/">Announcing Pebble SDK 4.0</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Today we have the pleasure of announcing the release of Pebble SDK 4.0. We have
+published an updated version of the Pebble Tool, the SDK itself, and we&#39;ve
+deployed 4.0 onto <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a>. It&#39;s time to get
+busy!</p></div>
+    <div class="text-right"><a href="/blog/2016/08/30/announcing-pebble-sdk4/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Aug 19, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/08/19/prime-time-is-approaching-for-os-4.0/">Prime Time is Approaching for OS 4.0</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Pebble developers of the world unite! Pebble OS 4.0 is just around the corner
+and it&#39;s now time to put those finishing touches on your projects, and prepare
+them for publishing!</p></div>
+    <div class="text-right"><a href="/blog/2016/08/19/prime-time-is-approaching-for-os-4.0/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Aug 15, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/08/15/introducing-rockyjs-watchfaces/">Introducing Rocky.js Watchfaces!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>We&#39;re incredibly excited and proud to announce the first public beta version of
+Rocky.js watchfaces for Pebble. Rocky.js is ECMAScript 5.1 JavaScript running
+natively on Pebble smartwatches, thanks to
+<a href="https://github.com/Samsung/jerryscript/wiki/JerryScriptWorkshopApril2016" title="" class="">our collaboration</a>
+with <a href="https://github.com/pebble/jerryscript" title="" class="">JerryScript</a>. This is an incredible
+feat of engineering!</p></div>
+    <div class="text-right"><a href="/blog/2016/08/15/introducing-rockyjs-watchfaces/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars3.githubusercontent.com/u/6402435?v=3&s=100" width=80 height=80>
+    
+    <p>Jul 01, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/07/01/creating-native-companion-apps-with-js-and-cordova/">Creating Native Companion Apps with JS and Cordova</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/rperryng/">Ryan Perry-Nguyen</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Creating companion apps using 
+<a href="/guides/communication/using-pebblekit-android/" title="" class="">PebbleKit Android</a> and 
+<a href="/guides/communication/using-pebblekit-ios/" title="" class="">PebbleKit iOS</a> is a great way to 
+extend the functionality of your Pebble watchfaces and apps, but what if Java 
+or Objective C just isn&#39;t your thing?  What if you love JavaScript? What if 
+you just don&#39;t want to write the same companion app twice?</p><p>Now you don&#39;t have to! Enter <a href="http://cordova.apache.org/" title="" class="">Cordova</a> - an open
+source framework for building cross-platform mobile apps using web technologies
+such as HTML5 and JavaScript.  What does this mean for you?  One framework, and
+one codebase for building Pebble companion apps for iOS and Android!</p></div>
+    <div class="text-right"><a href="/blog/2016/07/01/creating-native-companion-apps-with-js-and-cordova/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/3537963?v=3&s=100" width=80 height=80>
+    
+    <p>Jun 24, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/06/24/introducing-clay/">Introducing Clay - App configuration made easy</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/keegan/">Keegan Lillo</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>It is with great pleasure that I present to you, Clay, a Pebble package that makes it easy to add offline configuration pages to your Pebble apps. All you need to get started is a couple lines of JavaScript and a JSON file; no servers, HTML or CSS required.</p></div>
+    <div class="text-right"><a href="/blog/2016/06/24/introducing-clay/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/1187089?v=3&s=100" width=80 height=80>
+    
+    <p>Jun 15, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/06/15/sdk4-preview/">A Wild SDK Appears</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/cat/">Cat Haines</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Developers rejoice - we’ve released the first version of our <a href="/sdk4" title="" class="">SDK 4</a>
+developer preview! This SDK enables you to start building applications for the
+new Diorite platform (Pebble 2), and includes a set of new APIs for interacting
+with the 4.0 user experience.</p><p>In this blog post we’ll dive into the <a href="/docs/c/Foundation/App_Glance/" title="" class="">App Glance</a>,
+<a href="/docs/c/User_Interface/UnobstructedArea/" title="" class=""><code>UnobstructedArea</code></a>, and
+<a href="/docs/c/Foundation/Exit_Reason/" title="" class=""><code>AppExitReason</code></a> APIs, and explain
+how you can use them to create great experiences for your users!</p></div>
+    <div class="text-right"><a href="/blog/2016/06/15/sdk4-preview/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Jun 07, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/06/07/pebble-packages/">Introducing Pebble Packages</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>I am thrilled to announce that, as part of SDK 3.13 and Pebble Tool 4.3, we have
+launched our own packaging system: Pebble Packages!</p></div>
+    <div class="text-right"><a href="/blog/2016/06/07/pebble-packages/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/1187089?v=3&s=100" width=80 height=80>
+    
+    <p>May 24, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/05/24/Kickstarter-3/">Time to Expand Our Core Business!!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/cat/">Cat Haines</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>You might have noticed a bit of a buzz around Pebble today - we have officially
+launched our <strong><a href="https://pebble.com/kickstarter" title="" class="">third Kickstarter campaign</a></strong>,
+and it is jam packed with exciting new products and features for developers to
+explore and hack on. We have been hard at work not only creating the next
+generation of health-focused smartwatches, but also refining what great wearable
+user and developer experiences look like. We are introducing an entirely new
+class of wearable device, and adding a modern JavaScript SDK that takes
+advantage of the Web APIs JavaScript developers around the world know and love.</p><p>There is a lot to take in, so we’re here to help break down what’s new and
+exciting for our favorite developer community!</p></div>
+    <div class="text-right"><a href="/blog/2016/05/24/Kickstarter-3/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars2.githubusercontent.com/u/4428900?v=3&s=100" width=80 height=80>
+    
+    <p>May 16, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/05/16/Pebble-JS-Round/">Pebble.js Support for Chalk!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/meiguro/">Meiguro</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>After many morning coding sessions on the weekends,
+<a href="/docs/pebblejs/" title="" class="">Pebble.js</a> has been updated to
+support the Chalk platform (Pebble Time Round). This update is available in
+<a href="https://cloudpebble.net/" title="" class="">CloudPebble</a>, and ready for you to work with right in
+your browser with no setup!</p><p>Supporting Chalk required a ton of bug crushing to become compatible with the
+new 3.0 style status bar, changes to accommodate reduced memory on the 3.x
+Aplite platform, adding new features such as text flow and paging, and making it
+easier to target multiple platforms by adding a feature detection API.</p></div>
+    <div class="text-right"><a href="/blog/2016/05/16/Pebble-JS-Round/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars3.githubusercontent.com/u/5732010?v=3&s=100" width=80 height=80>
+    
+    <p>Mar 09, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/03/09/Dont-Panic-We-Are-Here-To-Guide-You/">Don't Panic - We're Here to Guide You</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/chrislewis/">Chris Lewis</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>New developers typically begin their journey by following our tutorials, and
+then moving on to projects of their own. The guides section of our documentation
+is intended to help developers go beyond the basics - to help understand some of
+the more complex APIs and concepts required to develop a Pebble app. Ultimately,
+we want developers to feel comfortable enough with our platform that the
+reference documentation can be their primary source of information.</p><p>We’ve known for a while that our guides section was a bit of a weak link (sorry
+for the inconvenience!) - and to that end, we’ve spent a lot of time thinking
+about, and writing, a new set of guides that should help to better guide you
+along your path to becoming an awesome Pebble developer!</p></div>
+    <div class="text-right"><a href="/blog/2016/03/09/Dont-Panic-We-Are-Here-To-Guide-You/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Mar 07, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/03/07/Take-the-Pebble-Health-API-in-your-Stride/">Take the Pebble Health API in your Stride</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>I&#39;ve been desperate to write a blog post about the Pebble <a href="https://developer.pebble.com/docs/c/Foundation/Event_Service/HealthService/" title="" class="">HealthService API</a>
+since it&#39;s initial release last month, and now I can finally share its
+awesomeness with you. I&#39;m also going to show you how you can use this exciting
+new API to build an ultra-cool clone of the <a href="https://apps.getpebble.com/en_US/application/56b15c5c9c4b20ed5300006c" title="" class="">Stride watchface</a> by
+Pebble.</p></div>
+    <div class="text-right"><a href="/blog/2016/03/07/Take-the-Pebble-Health-API-in-your-Stride/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Feb 29, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/02/29/introducing-app-debugging/">Introducing App Debugging</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Happy leap day! Today is a once-every-four-years day of bizarre date-related
+bugs, and thus an opportune moment for us to introduce our latest developer
+feature: app debugging in the emulator! This gives you a powerful new way to
+hunt down errors in your apps.</p></div>
+    <div class="text-right"><a href="/blog/2016/02/29/introducing-app-debugging/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/1187089?v=3&s=100" width=80 height=80>
+    
+    <p>Feb 19, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/02/19/JavaScript-Libraries-for-C-Developers-pt-1/">JavaScript Libraries for C Developers (pt. 1)</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/cat/">Cat Haines</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
+      
+    </p>
+    <div><p>One of the exciting changes introduced in <a href="/sdk/changelogs/3.9/" title="" class="">SDK 3.9</a> was support for
+including <a href="/blog/2016/01/29/Multiple-JavaScript-Files/" title="" class="">Multiple JavaScript Files</a> to your projects. While this
+feature doesn’t allow you to run any JavaScript you previously couldn’t, it
+makes organizing your PebbleKit JS code a heck of a lot easier.</p><p>In this blog post, we&#39;ll look at how to refactor some exisiting JavaScript
+&#39;library code&#39; into an actual module for PebbleKit JS, making it simpler to use
+and share!</p></div>
+    <div class="text-right"><a href="/blog/2016/02/19/JavaScript-Libraries-for-C-Developers-pt-1/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Feb 09, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/02/09/Hands-on-with-the-RePhone-smartstrap-kit-for-Pebble-Time/">Hands-on with the RePhone smartstrap kit for Pebble Time</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>For those that don’t already know, the RePhone smartstrap kit was part of a
+highly successful <a href="https://www.kickstarter.com/projects/seeed/rephone-kit-worlds-first-open-source-and-modular-p" title="" class="">Kickstarter campaign</a>
+by <a href="http://www.seeed.cc/" title="" class="">Seeed Studio</a> to create the world’s first open source
+and modular smartphone. Part of their campaign was to create a smartstrap kit
+for Pebble Time that integrates with RePhone modules such as GPS, NFC, and
+external batteries. This is the first commercial smartstrap project I’ve managed
+to lay my hands on, and it’s awesome!</p></div>
+    <div class="text-right"><a href="/blog/2016/02/09/Hands-on-with-the-RePhone-smartstrap-kit-for-Pebble-Time/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Jan 29, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/01/29/Multiple-JavaScript-Files/">Multiple JavaScript Files</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>In SDK 3.9 we will introduce a new feature to the Pebble SDK: the ability to
+cleanly use multiple JavaScript files in the PebbleKit JS app portion of
+your project.</p></div>
+    <div class="text-right"><a href="/blog/2016/01/29/Multiple-JavaScript-Files/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars3.githubusercontent.com/u/5732010?v=3&s=100" width=80 height=80>
+    
+    <p>Dec 02, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/12/02/Bringing-the-Family-Back-Together/">Bringing the Family Back Together - 3.x on Aplite is Almost Here!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/chrislewis/">Chris Lewis</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>The time has almost come for Pebble Classic and Pebble Steel to get firmware
+3.x!</p><p>This is great news for users who get access to all the improvements and fixes
+since 2.x, as well as new features such as timeline, Quiet Time, no more eight
+app limit, Standby Mode, and last but not least one new color (gray)!</p><p>But let us not forget about Basalt and Chalk app developers, who also have a lot
+to get excited about - a huge new user base of Aplite watch wearers!</p><p>This blog post aims to help developers using SDK 2.x features and APIs to
+migrate their apps to a single 3.x codebase. As well as bringing compatibility
+to all older watches when they upgrade to firmware 3.x, these changes will also
+serve to remove a lot of complex and ugly conditional code that has needed to
+exist in the meantime. Let&#39;s fix some apps!</p></div>
+    <div class="text-right"><a href="/blog/2015/12/02/Bringing-the-Family-Back-Together/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Dec 02, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/12/02/Bitmap-Resources/">Unifying bitmap resources</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>With the upcoming release of firmware 3.8 on Pebble and Pebble Steel, and the
+associated SDK 3.8, we have decided to redesign how image resources work in
+Pebble apps.</p></div>
+    <div class="text-right"><a href="/blog/2015/12/02/Bitmap-Resources/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Dec 01, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/12/01/A-New-Pebble-Tool/">Introducing Pebble Tool 4.0</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>I am pleased to today announce that version 4.0-rc4 of the <code>pebble</code> tool is now
+available. The key new feature is a new paradigm for dealing with firmware and
+SDK versions. This makes it much easier to deal with differing SDK versions, or
+to test code on multiple (emulated) firmware versions.</p><p><em>A note: while the tool is now at version 4.0, the SDK, firmware and mobile apps
+will not be following. Pebble tool versioning is now completely independent of
+the rest of the Pebble ecosystem.</em></p></div>
+    <div class="text-right"><a href="/blog/2015/12/01/A-New-Pebble-Tool/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/876597?v=3&s=100" width=80 height=80>
+    
+    <p>Nov 10, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/11/10/Nuance-Brings-Pebble-The-Freedom-Of-Speech/">Nuance Brings Pebble The Freedom Of Speech</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/jonb/">Jon Barlow</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>In October, we gave developers access to the microphone in the Pebble Time via
+our new
+<a href="/docs/c/Foundation/Dictation/" title="Dictation" class="link--docs">Dictation API</a>,
+and almost instantly we began seeing awesome projects utilising speech input.
+Voice recognition is an exciting new method of interaction for Pebble and it has
+created an opportunity for developers to enhance their existing applications, or
+create highly engaging new applications designed around the spoken word.</p><p>Speech-to-text has been integrated with Pebble by using the
+<a href="http://www.nuance.com/for-business/automatic-speech-recognition/automated-ivr/index.htm" title="" class="">Recognizer</a>
+cloud service from Nuance, a leading provider of voice and language solutions.</p></div>
+    <div class="text-right"><a href="/blog/2015/11/10/Nuance-Brings-Pebble-The-Freedom-Of-Speech/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="/assets/images/blog/authors/alex-lin.jpeg" width=80 height=80>
+    
+    <p>Oct 29, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/10/29/ios-migration/">Migrating to Pebblekit iOS 3.0</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/alex/">Alex Lin</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Starting with Pebble Time Round, we are moving towards communicating with Bluetooth
+Low-Energy only. This means there are some updates to PebbleKit iOS to support this. Here are
+the major changes and steps to take to support the new BLE connection.</p><p><strong>What&#39;s New</strong></p>
+<ul>
+<li>Companion apps have dedicated, persistent communication channels</li>
+<li>Start mobile apps from Pebble</li>
+<li>8K AppMessage buffers</li>
+<li>Swift support</li>
+</ul>
+</div>
+    <div class="text-right"><a href="/blog/2015/10/29/ios-migration/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Sep 23, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/09/23/Pebble-Time-Round-SDK-Developer-Preview-2/">Pebble Time Round SDK - Developer Preview 2</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/pebble/">Team Pebble</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>You may have heard about <a href="https://www.pebble.com/timeround" title="" class="">Pebble Time Round</a>,
+our newest addition to the Pebble family which adds a whole bunch of new
+possibilities, challenges, and opportunities for our dedicated developers to get
+creative with.</p><p>With a new platform usually comes a new SDK to play with. Well, why wait? All
+developers can now get their hands on the new <a href="/sdk/" title="" class="">SDK 3.6-dp2</a> or use it
+on <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a>. This is a preview of the
+first Pebble Time Round-compatible SDK, allowing developers to realize their
+ideas for new and improved watchapps and watchfaces. Have a favorite classic
+round watchface that looks cumbersome on a rectangular display? Try it out on
+this one!</p></div>
+    <div class="text-right"><a href="/blog/2015/09/23/Pebble-Time-Round-SDK-Developer-Preview-2/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Apr 03, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/04/03/The-Road-To-Pebble-SDK-3.0-In-Ten-Questions/">The Road to Pebble SDK 3.0 in Ten Questions</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>We launched the first version of our new SDK with support for Pebble Time two
+days into our Kickstarter campaign. Since then, we have updated it every week,
+releasing six iterations of our developer preview. Some of these versions
+included major new features like support for color in the emulator and support
+for the timeline. Some other features were more subtle, like the new
+antialiased drawing mode and the updates to the animation system. All these
+changes together, and a bunch more that you have not seen yet, will form the
+SDK that you will use to build watchfaces, watchapps and timeline apps for all
+models of Pebble watches in the coming months.</p><p>These updates include lots of changes, and no matter how hard we try to
+document everything there are a lot of unanswered questions. Some subjects have
+just not been addressed by the developer previews yet, some need more
+explaining and as always there are things we just missed in our communication
+efforts.</p><p>In this update, I want to answer publicly the most frequent questions received
+from the community in the last few weeks. I will cover components that have
+been released but also those that are still to come so you have the information
+needed to plan ahead and prepare your apps for the Pebble Time launch.</p></div>
+    <div class="text-right"><a href="/blog/2015/04/03/The-Road-To-Pebble-SDK-3.0-In-Ten-Questions/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Mar 03, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/03/03/Get-Ready-For-Smartstraps/">Get Ready For Smartstraps - Warm Up Your 3D Printer!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/pebble/">Team Pebble</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Many of you have read about smartstraps on 
+<a href="http://kickstarter.com/projects/597507018/pebble-time-awesome-smartwatch-no-compromises" title="" class="">our Kickstarter page</a> 
+and contacted us for more details. Today we are releasing mechanical and
+electrical designs so you can start working on the next generation of straps:
+Straps that expand the functionality of Pebble Time and Pebble Time Steel.</p><p>The smartstrap connector is situated on the back of your new favorite watch.
+Smartstraps can extend below the watch to reach that connector while Pebble Time
+is worn. In the 3D files we are releasing today, you will find a generic
+connector that can work with most straps. Of course, you can also design
+completely new straps if your project calls for one!</p></div>
+    <div class="text-right"><a href="/blog/2015/03/03/Get-Ready-For-Smartstraps/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Feb 26, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/02/26/KS-update-for-developers/">Time to Add Color to These Pebbles</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/pebble/">Team Pebble</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>You <a href="https://www.kickstarter.com/blog/six-hours-in-pebble-time" title="" class="">might</a> <a href="http://techcrunch.com/2015/02/24/pebble-smashes-through-6-5m-on-kickstarter-in-half-a-day/" title="" class="">have</a> <a href="http://www.cnn.com/videos/tech/2015/02/25/ns-pebble-time-smartwatch-ceo.cnn" title="" class="">noticed</a> <a href="http://www.cnbc.com/id/102455422" title="" class="">on</a> <a href="http://www.theverge.com/2015/2/24/8091175/pebble-time-watch-wearable-platform-eric-migicovsky-interview" title="" class="">the</a> <a href="http://www.reddit.com/r/IAmA/comments/2x5aj4/were_eric_migicovsky_the_creators_of_pebble_time/" title="" class="">Internet</a> that we announced the brand new Pebble Time on Tuesday. Almost 50,000 members of our community have already backed the <a href="https://www.kickstarter.com/projects/597507018/pebble-time-awesome-smartwatch-no-compromises" title="" class="">project on Kickstarter</a> this week.</p><p>Most important for all of you is that today we are announcing the first developer preview of Pebble SDK 3.0. This new SDK is available right now to all Pebble developers, via <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> or to <a href="/sdk/download/" title="" class="">install on your computer</a>. Both versions include an emulator with support for the new hardware, and of course the color screen!</p></div>
+    <div class="text-right"><a href="/blog/2015/02/26/KS-update-for-developers/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Jan 22, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/01/22/cloudpebble-pebble-emulator/">Pebble Smartwatch Emulator in CloudPebble!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>, 
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>We&#39;re thrilled to announce the latest addition to CloudPebble: a Pebble smartwatch
+emulator!</p></div>
+    <div class="text-right"><a href="/blog/2015/01/22/cloudpebble-pebble-emulator/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars3.githubusercontent.com/u/5732010?v=3&s=100" width=80 height=80>
+    
+    <p>Jan 09, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/01/09/A-New-Year-Of-Hackathons/">A New Year of Hackathons!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/chrislewis/">Chris Lewis</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>It&#39;s a brand new year, which for developers and hackers can mean only one thing -
+a new year of hackathons! Throughout January and beyond, Pebble will be making
+appearances at various events (large and small) so if you spot an event near
+you, be sure to come along. We will be giving away Pebble swag and selling
+refurbished Pebbles for $50, and will also be on hand to answer any questions
+you have as well as help you create the best hacks on Pebble. We saw some
+awesome apps and hacks arise from hackathons in 2014, but we think the best is
+yet to come!</p><p>See below for details on the most immediate dates, or the Pebble Developers
+website <a href="/community/events" title="" class="">Events page</a> for all our plans for future events. If
+you are organizing a hacking event that we could attend, be sure to 
+<a href="/contact/" title="" class="">get in touch</a>.</p></div>
+    <div class="text-right"><a href="/blog/2015/01/09/A-New-Year-Of-Hackathons/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars3.githubusercontent.com/u/5732010?v=3&s=100" width=80 height=80>
+    
+    <p>Jan 03, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/01/03/Happy-New-Year/">Happy New Year!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/chrislewis/">Chris Lewis</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Hey Pebble Devs!</p><p>It&#39;s been a great year for us at Pebble as well as all the awesome community
+developers that come up with ever more surprising and useful apps for Pebble.
+We would not be <a href="http://www.fastcompany.com/3040235/app-economy/pebble-passes-5000-smartwatch-apps-how-it-got-there-and-what-comes-next" title="" class="">where we are today with over 5000 apps without all the hard
+work that you guys put into your
+apps</a>,
+so <strong>thank you</strong>!</p><p>We look forward to another amazing year with you in 2015, May your hands always be busy!</p><p>Alex, Cherie, Chris, Heiko, Katharine, Katherine, Łukasz, Matthew H, Matthew T, Thomas</p></div>
+    <div class="text-right"><a href="/blog/2015/01/03/Happy-New-Year/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars3.githubusercontent.com/u/5732010?v=3&s=100" width=80 height=80>
+    
+    <p>Dec 15, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/12/15/Parlez-vous-Pebble/">Parlez-vous Pebble? Sprechen sie Pebble? ¿Hablas Pebble?</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/chrislewis/">Chris Lewis</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>The official Pebble Android and iOS apps have been updated to 2.2 and 2.6
+respectively. These updates add support for the French, German and Spanish
+languages. The Pebble firmware, the mobile apps and the appstore are all
+translated.</p></div>
+    <div class="text-right"><a href="/blog/2014/12/15/Parlez-vous-Pebble/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars3.githubusercontent.com/u/5732010?v=3&s=100" width=80 height=80>
+    
+    <p>Dec 05, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/12/05/Translate-Your-Apps/">Translate Your Apps, More Fun in SF and more!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/chrislewis/">Chris Lewis</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Here&#39;s another newsletter blog post to keep you up-to-date on the Pebble
+community happenings. This time we&#39;ve got stories of success and tips on
+expanding your app&#39;s audience!</p></div>
+    <div class="text-right"><a href="/blog/2014/12/05/Translate-Your-Apps/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars3.githubusercontent.com/u/5732010?v=3&s=100" width=80 height=80>
+    
+    <p>Nov 28, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/11/28/Firmware-2-8-Android-2-1-Meetups/">Firmware 2.8, Android 2.1 and Pebble London Meetup!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/chrislewis/">Chris Lewis</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Another newsletter detailing our new releases for the Pebble firmware, Android
+and iOS apps is reproduced here for your blog reading pleasure. In addition, we 
+also have some exciting news about the Pebble appstore!</p></div>
+    <div class="text-right"><a href="/blog/2014/11/28/Firmware-2-8-Android-2-1-Meetups/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars3.githubusercontent.com/u/5732010?v=3&s=100" width=80 height=80>
+    
+    <p>Nov 15, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/11/15/New-Developer-Site-CloudPebble-Improvements-Android-Beta-Meetups/">New Developer Site, CloudPebble Improvements, New Android Beta and Meetups!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/chrislewis/">Chris Lewis</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>There was so much to pack into the last newsletter, we had to make a blog post 
+about it!</p></div>
+    <div class="text-right"><a href="/blog/2014/11/15/New-Developer-Site-CloudPebble-Improvements-Android-Beta-Meetups/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/8052313?v=3&s=100" width=80 height=80>
+    
+    <p>Nov 08, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/11/08/Pebble-Developer-Retreat-2014-Recap/">Pebble Developer Retreat 2014 Recap</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katherine/">Katherine McAuliffe</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Can you believe it&#39;s already been a month since the developer retreat? This blog post is long overdue but it was waiting for some very important content so that I could share some highlights from the retreat! I asked the retreat attendees what their favorite presentations/parts of the retreat were and I think these represent some of the best. If you don&#39;t agree, then tell me in the comments!</p><p>Check out the <a href="/community/events/developer-retreat-2014/" title="" class="">full developer retreat recap</a> broken down day by day in the community section of our new developer website!  We&#39;re still working on a video montage of the robotics competition so that should be on the website soon! For even more detail on what this awesome group of 100 developers from around the world got up to check out our <a href="/community/events/developer-retreat-2014/detailed-schedule/" title="" class="">full schedule</a>.</p></div>
+    <div class="text-right"><a href="/blog/2014/11/08/Pebble-Developer-Retreat-2014-Recap/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Oct 09, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/10/09/CloudPebble-code-completion/">New CloudPebble Code Completion</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>CloudPebble today gains significantly enhanced support for code completion, as
+well as inline syntax checking and the ability to &quot;go to definition&quot;.</p><p>Check it out!</p></div>
+    <div class="text-right"><a href="/blog/2014/10/09/CloudPebble-code-completion/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Sep 30, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/09/30/SDK-2.6-Meetup-More/">Build background apps with SDK 2.6.1</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Today we released SDK 2.6.1, which includes support for background workers. This
+enables great activity tracking apps like Misfit and Jawbone&#39;s Up to keep
+counting in the background — and you can use them too! Head over to our
+<a href="/guides/events-and-services/background-worker/" title="" class="">background worker guide</a>
+and read through the <a href="/docs/c/Foundation/AppWorker/" title="AppWorker" class="link--docs">API documentation</a> to find out how.</p><p>We have also added APIs for direct access to the framebuffer, and to retrieve
+information on the watch, including its color and firmware version.</p><p>Browse through <a href="/sdk/changelogs/2.6" title="" class="">the release notes</a> for full details.</p></div>
+    <div class="text-right"><a href="/blog/2014/09/30/SDK-2.6-Meetup-More/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/8052313?v=3&s=100" width=80 height=80>
+    
+    <p>Sep 16, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/09/16/Pebble-XDA-Challenge-Winners/">XDA - Pebble Developer Challenge Winners!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katherine/">Katherine McAuliffe</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Almost two months ago the XDA Forums and Pebble set out on a mission to find
+three amazing apps/watchfaces and their developers. We called it the XDA -
+Pebble Developer Challenge and last Friday it all came to a close! These three
+developers have taken the Pebble and truly stretched its limits to create some
+amazing products and we want to show them to you!</p><p>The XDA - Pebble Developer Challenge was a 3-week competition - your opportunity
+to pitch your proposal for the best Pebble app and bring it to life with a
+Pebble of your own. Of the 20 proposals that we selected for the second phase,
+the developers of the best three Pebble apps have been invited to attend the 2014
+Pebble Developer Retreat in October. We also gave each of them a Pebble Steel to flaunt!</p><p>There were a lot of really great entries to the second phase of the competition
+and all of them deserve a quick download! Check out the complete list of apps
+and watchfaces that were made during the competition on the
+<a href="http://www.xda-developers.com/android/the-xda-pebble-developer-challenge-voting-has-begun/" title="" class="">XDA forums</a>.</p></div>
+    <div class="text-right"><a href="/blog/2014/09/16/Pebble-XDA-Challenge-Winners/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Aug 26, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/08/26/Getting-Ready-for-Automatic-App-Updates/">Getting Ready for Automatic App Updates</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>We are pleased to announce that we will soon be automatically updating apps installed from the Pebble
+appstore. We believe this will be a significant improvement to your ability to get your work into
+the hands of your users, as well as to the user experience.</p><p>However, as developers, you need to make sure that your app is ready for these updates. In
+particular, you will need to make sure that your app conforms to our new version numbering, and
+that it can tolerate persistent storage left over from old app versions.</p></div>
+    <div class="text-right"><a href="/blog/2014/08/26/Getting-Ready-for-Automatic-App-Updates/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Aug 08, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/08/08/CloudPebble-Graphical-UI-Editor/">CloudPebble Graphical UI Editor</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>Today we&#39;re adding a new feature to <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> that will make it easier than
+ever to build your watchfaces and watchapps! The new UI Editor will let you
+graphically build the user interface for your C app; you can then use the
+generated C to build anything you like.</p></div>
+    <div class="text-right"><a href="/blog/2014/08/08/CloudPebble-Graphical-UI-Editor/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/8052313?v=3&s=100" width=80 height=80>
+    
+    <p>Jul 21, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/07/21/Pebble-XDA-Challenge/">XDA Forums - Pebble Developer Challenge</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katherine/">Katherine McAuliffe</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Can you #MakeAwesomeHappen? Your app idea could win a Pebble and a trip to our
+2nd Annual Pebble Developer Retreat in Mountain View, CA!</p><p>The XDA - Pebble Developer Challenge is a 3-week competition - your opportunity
+to pitch your proposal for the best Pebble app and bring it to life with a
+Pebble of your own. We&#39;ll be awarding Pebbles to the 20 best app proposals to
+give even first time developers a chance to work on our platform. Of the 20
+proposals that we select the best 3 Pebble apps created will be invited to
+attend the 2014 Pebble Developer Retreat in October and we&#39;ll give them each a
+Pebble Steel.</p></div>
+    <div class="text-right"><a href="/blog/2014/07/21/Pebble-XDA-Challenge/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Jun 12, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/06/12/Android-Beta-Channel/">Android for Pebble Beta Channel</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/ryan/">Ryan Case</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p><em>And what rough beast, its hour come round at last, slouches towards the Play
+Store to be born?</em></p><p>Sign up for the Pebble Android
+<a href="https://groups.google.com/group/pebble-android-beta" title="" class="">Beta Channel</a> to find out!</p><p>New Pebble Android releases will be made available to beta testers on this
+channel.
+Once you have joined the Google Group, you will need to
+<a href="https://play.google.com/apps/testing/com.getpebble.android" title="" class="">opt-in</a>.
+Once signed up and opted-in, you will receive beta versions of the Pebble
+Android APK through the Play Store.
+There may be a delay before Google Play transitions you from the release channel
+to the beta channel.</p></div>
+    <div class="text-right"><a href="/blog/2014/06/12/Android-Beta-Channel/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/318582?v=1&s=100" width=80 height=80>
+    
+    <p>May 15, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/05/15/Pebble-2.1-Released/">Pebble Updates, MakerFaire & MakingAwesomeHappen</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/cherie/">Cherie Williams</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Last week, we released both the 2.1 Pebble firmware, as well as the 2.1 Pebble 
+SDK. Please make sure you have the latest version of the SDK (2.1.1) -- the 
+latest update is available from the 
+<a href="/sdk/" title="" class="">developer site</a>.</p></div>
+    <div class="text-right"><a href="/blog/2014/05/15/Pebble-2.1-Released/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Apr 14, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/04/14/API-documentation-in-CloudPebble/">API documentation now inside CloudPebble</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>To help make your Pebble development experience even better, CloudPebble can now display the API
+documentation for any function directly in the editor view.</p></div>
+    <div class="text-right"><a href="/blog/2014/04/14/API-documentation-in-CloudPebble/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Apr 04, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/04/04/Easier-app-deployment-from-Cloudpebble/">Easier app deployment from CloudPebble</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>We now have an even easier way for you to deploy apps to your watches! No longer will you
+have to launch the app, turn on the development server, and type in your IP address. Instead, you
+now simply need to select your phone from a list.</p></div>
+    <div class="text-right"><a href="/blog/2014/04/04/Easier-app-deployment-from-Cloudpebble/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Mar 28, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/03/28/Finalists-of-the-Pebble-App-Challenge/">Finalists Of The Pebble App Challenge</a></h3>
+    <p class="blog-index__tags">
+       &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p><strong>UPDATE:</strong> The next round of Pebble App Challenge voting—narrowing down our 16 finalists—has been postponed for now. We will update the voting schedule after <a href="https://forums.getpebble.com/discussion/12296/issue-pebble-ios-app-v2-1-updated-31-mar-crashing/p1" title="" class="">a recent issue with the iOS Pebble app</a> has been resolved.</p><p>The public has spoken! The Top16 finalists for the Pebble App Challenge have been selected!</p></div>
+    <div class="text-right"><a href="/blog/2014/03/28/Finalists-of-the-Pebble-App-Challenge/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Mar 14, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/03/14/CloudPebble-now-supports-Simplyjs/">CloudPebble now supports Simply.js</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>It&#39;s now even easier to get started with Pebble development or prototype new ideas!</p><p>CloudPebble recently gained support for building Simply.js projects – which means you
+can now write, build and install simple apps entirely in JavaScript and inside your
+web browser.</p></div>
+    <div class="text-right"><a href="/blog/2014/03/14/CloudPebble-now-supports-Simplyjs/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Mar 10, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/03/10/Pebble-App-Challenge/">Pebble App Challenge</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>
+      
+    </p>
+    <div><p>Dear Developers,</p><p>We are celebrating the <a href="https://blog.getpebble.com/2014/03/07/the-pebble-appstore-now-with-android-support-and-more-partners/" title="" class="">launch of the Pebble appstore on Android</a> by announcing the <strong>Pebble App Challenge</strong>, featuring a $5000 grand prize for the first place app developer(s) and a Pebble Steel for each of the Top 16 finalists.</p><p>The Pebble App Challenge starts today. <a href="http://pebble.challengepost.com/" title="" class="">Enter your Pebble application(s) in the challenge now!</a></p></div>
+    <div class="text-right"><a href="/blog/2014/03/10/Pebble-App-Challenge/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Mar 03, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/03/03/Android-Beta11/">Android Beta11</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Android Beta 11 was just released. This version is a huge improvement to BETA10, it fixes the most annoying bugs in BETA10 but also improves stability considerably.</p></div>
+    <div class="text-right"><a href="/blog/2014/03/03/Android-Beta11/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/268126?v=1&s=100" width=80 height=80>
+    
+    <p>Feb 21, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/02/21/oneline-sdkinstall/">Installing the Pebble SDK just got simpler</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/alexey/">Alexey Komissarouk</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Until today, installing the Pebble SDK meant downloading and unzipping the SDK and arm tools, installing some python requirements and updating your bash_profile.</p></div>
+    <div class="text-right"><a href="/blog/2014/02/21/oneline-sdkinstall/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Feb 19, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/02/19/Android-Beta10/">Android Beta10</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p><strong>Update:</strong> <a href="/blog/2014/03/03/android-beta11/" title="" class="">A new version is available</a>.</p><p>Dear Developers,</p><p>We just published Pebble Android 2.0 Beta 10. We are getting close to a final release and you can help by testing this build on your devices.</p></div>
+    <div class="text-right"><a href="/blog/2014/02/19/Android-Beta10/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Feb 10, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/02/10/New-Android-Beta/">New Android Beta</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p><strong>Update:</strong> <a href="/blog/2014/03/03/android-beta11/" title="" class="">A new version is available</a>.</p><p>We just released a new version of Pebble Android 2.0 Beta with the Pebble appstore.</p></div>
+    <div class="text-right"><a href="/blog/2014/02/10/New-Android-Beta/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Feb 03, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/02/03/Android-appstore-beta/">Android appstore beta</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p><strong>Update:</strong> <a href="/blog/2014/03/03/android-beta11/" title="" class="">A new version is available</a>.</p><p>This morning <a href="/blog/2014/02/03/pebble-appstore-is-live/" title="" class="">we released the Pebble appstore for iOS</a>. We love Android and feature parity is extremely important for us. We are releasing today a beta of the Pebble Android mobile app that includes the Pebble appstore to all developers.</p></div>
+    <div class="text-right"><a href="/blog/2014/02/03/Android-appstore-beta/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Feb 03, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/02/03/Pebble-appstore-is-live/">Pebble appstore is live!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>This is a big day for Pebble developers and the wearable ecosystem in general! Almost one year after the first version of Pebble SDK, this morning we have released a new version of the Pebble iOS app including the Pebble appstore. For the first time in the history of wearable computing, users can browse and download third party apps: <strong>your apps</strong>.</p><p>This is an important milestone. First and foremost we want to thank you for your journey with us. In just 3 months since the first beta of SDK 2 you have blown us away with your talent and creativity!</p></div>
+    <div class="text-right"><a href="/blog/2014/02/03/Pebble-appstore-is-live/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Jan 23, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/01/23/Pebble-SDK-BETA7/">Pebble SDK 2.0 BETA7</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Attention developers! Pebble SDK 2.0 BETA7 <a href="/sdk/download" title="" class="">just landed on the developer site</a>! Go get it now and <a href="/sdk/changelogs/2.0-BETA7" title="" class="">do read the release notice</a>. iOS users will need to delete any existing Pebble app before they can upgrade.</p></div>
+    <div class="text-right"><a href="/blog/2014/01/23/Pebble-SDK-BETA7/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Jan 17, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/01/17/Pebble-SDK-BETA6/">Pebble SDK 2.0 BETA6 - Season Finale?</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Another week and another release of Pebble SDK 2.0. In this version you will find that the iOS application now includes the Pebble appstore and will give you a chance to see how your application looks and feels with the new store. If you had a 1.x application, you should also make sure that the automatic upgrade works properly for your app.</p></div>
+    <div class="text-right"><a href="/blog/2014/01/17/Pebble-SDK-BETA6/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/318582?v=1&s=100" width=80 height=80>
+    
+    <p>Jan 10, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/01/10/Pebble-SDK-BETA5/">Pebble SDK 2.0 BETA5 is now available!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/cherie/">Cherie Williams</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>We&#39;ve had a pretty awesome start to 2014 and we couldn&#39;t have done it without you! First, we kicked off the year by sponsoring the wildly successful <a href="https://devsummit.att.com/" title="" class="">AT&amp;T Developer Summit hackathon</a>, which was followed shortly after by our announcement of the new <a href="https://www.pebble.com/steel" title="" class="">Pebble Steel</a> during <a href="https://www.cesweb.org/" title="" class="">CES</a>. In addition, we announced that 2.0 will be publicly released along with the Pebble appstore at the end of January. Here&#39;s a sneak peek of what the appstore will look like.</p></div>
+    <div class="text-right"><a href="/blog/2014/01/10/Pebble-SDK-BETA5/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Jan 06, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/01/06/Pebble-appstore/">A once in a lifetime opportunity&#58; Pebble appstore launch</a></h3>
+    <p class="blog-index__tags">
+       &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Dear Developers,</p><p>Have you submitted your apps to the Pebble appstore?</p><p><a href="https://blog.getpebble.com/?p=187" title="" class="">Eric announced this morning at CES</a> that the appstore will be officially released in late January. The 2.0 BETA period is coming to an end; users will soon get their hands on the amazing apps you have created.</p><p>Eric also announced a brand new Pebble: <a href="https://www.pebble.com/steel" title="" class="">Pebble Steel</a>. We have a few to give away to the developer community. Keep reading for more information!</p></div>
+    <div class="text-right"><a href="/blog/2014/01/06/Pebble-appstore/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Dec 23, 2013</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2013/12/23/Pebble-SDK-BETA4/">Pebble Sdk Beta4</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Busy times for the Pebble elves! Beta3 last week, <a href="/blog/2013/12/18/all-aboard-the-pebble-app-store/" title="" class="">the app store announcement</a> on wednesday and now a new BETA! <a href="/sdk/download" title="" class="">Pebble SDK BETA4 is available on our website now</a>. Existing iOS developers will receive an email with a link to install it; if you are not on that list yet, please <a href="https://docs.google.com/a/pulse-dev.net/forms/d/14r3MHPsdH5ha-BCkfuquQuAKuQSEJLmxm--XXpBA8mg/viewform" title="" class="">fill the form</a> to request it.</p></div>
+    <div class="text-right"><a href="/blog/2013/12/23/Pebble-SDK-BETA4/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Dec 18, 2013</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2013/12/18/All-Aboard-the-Pebble-app-store/">All Aboard the Pebble appstore</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>We are extremely excited to announce the Pebble appstore! Many of you, as developers, have asked for it and we are happy to announce that it will go live with Pebble SDK 2.0 early next year.</p><p>Pebble appstore will be included in the official Pebble smartphone application and will be the first place where Pebble users look for Pebble apps. For developers, the Pebble appstore is the best way to promote and distribute your Pebble applications to users.</p></div>
+    <div class="text-right"><a href="/blog/2013/12/18/All-Aboard-the-Pebble-app-store/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Dec 12, 2013</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2013/12/12/SDK-BETA3-Now-Available/">Sdk Beta3 Now Available</a></h3>
+    <p class="blog-index__tags">
+      cherie & thomas &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>This holiday season is off to a great start and the Pebble community is getting larger every day! We wanted to take the time today to thank you all for your ongoing support and feedback on the Pebble SDK, and more importantly, for sticking with us through all of the bugs and issues. You are the most amazing people we could have to work with -- thanks!!!</p></div>
+    <div class="text-right"><a href="/blog/2013/12/12/SDK-BETA3-Now-Available/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/318582?v=1&s=100" width=80 height=80>
+    
+    <p>Nov 20, 2013</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2013/11/20/Win-A-Pebble/">Win A Pebble</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/cherie/">Cherie Williams</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>
+      
+    </p>
+    <div><p>We recently introduced our <a href="/sdk/" title="" class="">Pebble SDK 2.0 beta</a> and we&#39;re excited to now also announce a new way for you to earn a Pebble to develop your 2.0 apps on!</p></div>
+    <div class="text-right"><a href="/blog/2013/11/20/Win-A-Pebble/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Nov 06, 2013</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2013/11/06/A-New-Era-of-Apps/">A New Era Of Apps</a></h3>
+    <p class="blog-index__tags">
+      team pebble &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Hi Pebble Developers!</p><p>Today we are excited to announce Pebble SDK - Version 2.0. This new release adds tons of new features and makes it even easier for developers to build awesome apps and watchfaces for Pebble.</p><p>Since we launched the first version of our SDK in April, we’ve been getting feedback and suggestions from developers around the world, and we’ve been working hard to incorporate your suggestions in this new release.</p></div>
+    <div class="text-right"><a href="/blog/2013/11/06/A-New-Era-of-Apps/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/318582?v=1&s=100" width=80 height=80>
+    
+    <p>Nov 03, 2013</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2013/11/03/Developer-News-and-Reddit-and-Open-Lab/">Developer News And Reddit And Open Lab</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/cherie/">Cherie Williams</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>
+      
+    </p>
+    <div><p>Hi Pebblers!</p><p>It&#39;s no secret that we&#39;ve been hard at work developing better software for Pebble and this Wednesday, November 6th, we&#39;ll be making a very important announcement. You&#39;re invited to join our livestream event at 10AM PST to hear what awesome new things we&#39;ve been working on to make Pebble a more robust and feature-rich platform. To tune in, visit <a href="https://www.getpebble.com" title="" class="">https://www.getpebble.com</a> on Wednesday morning after 9AM PST to obtain a link for the livestream. After the live broadcast hosted by Eric and our very own <a href="https://www.twitter.com/sarfata" title="" class="">Thomas</a>, we will be leading a Reddit AMA discussion at noon (12PM PST) to answer any lingering questions you may have.</p></div>
+    <div class="text-right"><a href="/blog/2013/11/03/Developer-News-and-Reddit-and-Open-Lab/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/318582?v=1&s=100" width=80 height=80>
+    
+    <p>Oct 29, 2013</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2013/10/29/Meet-the-Pebble-Developer-Evangelists/">Meet The Pebble Developer Evangelists</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/cherie/">Cherie Williams</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Hi Pebblers!</p><p>It’s been awhile since our last update to the developer’s blog, but we have some exciting news to share!</p><p>As many of you have probably noticed, the developer evangelism team here at Pebble has been growing over the last few months and we’re excited to introduce our newest additions!</p></div>
+    <div class="text-right"><a href="/blog/2013/10/29/Meet-the-Pebble-Developer-Evangelists/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
+    
+    <p>Jul 03, 2013</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2013/07/03/Lots-of-goodies-In-Pebble-SDK-1.12/">Lots Of Goodies In Pebble Sdk 1.12</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
+      
+    </p>
+    <div><p><a href="https://forums.getpebble.com/discussion/6222/announcing-pebbleos-v1-12-firmware-release-notes/1" title="" class="">Pebble firmware 1.12</a> was released earlier this week. The changelog announced &quot;lots of goodies for watchapp developers&quot; and many of you are curious to see what they are!</p></div>
+    <div class="text-right"><a href="/blog/2013/07/03/Lots-of-goodies-In-Pebble-SDK-1.12/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                <strong>Freshly Baked</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

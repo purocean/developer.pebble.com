@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>PebbleKit iOS // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to use PebbleKit to communicate with a watchapp on iOS.">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/communication/using-pebblekit-ios/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/advanced-communication/"><span>Advanced Communication</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/datalogging/"><span>Datalogging</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-pebblekit-android/"><span>PebbleKit Android</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-pebblekit-js/"><span>PebbleKit JS</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/communication/using-pebblekit-ios/"><span>PebbleKit iOS</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/sending-and-receiving-data/"><span>Sending and Receiving Data</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-the-sports-api/"><span>Sports API</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="setting-up-pebblekit-ios">Setting Up PebbleKit iOS</option>
+          
+            <option value="targeting-a-companion-app">Targeting a Companion App</option>
+          
+            <option value="becoming-a-delegate">Becoming a Delegate</option>
+          
+            <option value="initiating-bluetooth-communication">Initiating Bluetooth Communication</option>
+          
+            <option value="sending-messages-from-ios">Sending Messages from iOS</option>
+          
+            <option value="receiving-messages-on-ios">Receiving Messages on iOS</option>
+          
+            <option value="other-capabilities">Other Capabilities</option>
+          
+            <option value="limitations-of-pebblekit-on-ios">Limitations of PebbleKit on iOS</option>
+          
+            <option value="bluetooth-low-energy-ble-connections">- Bluetooth Low Energy (BLE) Connections</option>
+          
+            <option value="communication-with-firmware-older-than-3-0">- Communication with firmware older than 3.0</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">PebbleKit iOS</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p><a href="https://github.com/pebble/pebble-ios-sdk/" title="" class="">PebbleKit iOS</a> is an Objective-C
+framework that works with the Pebble SDK and can be embedded in any iOS
+application for <strong>iOS 7.1</strong> and above. Using the classes and methods in this
+framework, an iOS app can find and exchange data with a Pebble watch.</p><p>This section assumes that the reader has a basic knowledge of Objective-C, Xcode
+as an IDE, and the delegate and block patterns.</p>
+<blockquote>
+<p>PebbleKit iOS should be compatible if your app uses Swift. The framework
+itself is written in Objective-C to avoid the requirement of the Swift runtime
+in pure Objective-C apps, and to improve the backwards and forwards
+compatibility.</p></blockquote>
+<h3 id="setting-up-pebblekit-ios" class="anchor">Setting Up PebbleKit iOS</h3><p>If the project is using <a href="http://cocoapods.org/" title="" class="">CocoaPods</a> (which is the
+recommended approach), just add <code>pod &#39;PebbleKit&#39;</code> to the <code>Podfile</code> and execute
+<code>pod install</code>.</p><p>After installing PebbleKit iOS in the project, perform these final steps:</p>
+<ul>
+<li>If the iOS app needs to run in the background, you should update your target’s
+“Capabilities” in Xcode. Enable “Background Modes” and select both “Uses
+Bluetooth LE accessories” and “Acts as a Bluetooth LE accessory”. This should
+add the keys <code>bluetooth-peripheral</code> (“App shares data using CoreBluetooth”)
+and <code>bluetooth-central</code> (“App communicates using CoreBluetooth”) to your
+target’s <code>Info.plist</code> file.</li>
+<li>If you are using Xcode 8 or greater (and recommended for previous versions),
+you must also add the key <code>NSBluetoothPeripheralUsageDescription</code> (“Privacy -
+Bluetooth Peripheral Usage Description”) to your <code>Info.plist</code>.</li>
+</ul>
+
+<blockquote>
+<p>To add PebbleKit iOS manually, or some other alternatives follow the steps in
+the <a href="https://github.com/pebble/pebble-ios-sdk/" title="" class="">repository</a>. The documentation
+might also include more information that might be useful. Read it carefully.</p></blockquote>
+<h3 id="targeting-a-companion-app" class="anchor">Targeting a Companion App</h3><p>Before an iOS companion app can start communicating or exchange messages with a
+watchapp on Pebble, it needs to give PebbleKit a way to identify the watchapp.
+The UUID of your watchapp is used for this purpose.</p><p>Set the app UUID associated with the PBPebbleCentral instance. A simple way to
+create a UUID in standard representation to <code>NSUUID</code> is shown here:</p><div class="highlight"><pre><span class="c1">// Set UUID of watchapp</span>
+<span class="bp">NSUUID</span> <span class="o">*</span><span class="n">myAppUUID</span> <span class="o">=</span> 
+    <span class="p">[[</span><span class="bp">NSUUID</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithUUIDString</span><span class="p">:</span><span class="s">@"226834ae-786e-4302-a52f-6e7efc9f990b"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">].</span><span class="n">appUUID</span> <span class="o">=</span> <span class="n">myAppUUID</span><span class="p">;</span>
+</pre></div><p>If you are trying to communicate with the built-in Sports or Golf apps, their
+UUID are available as part of PebbleKit with <code>PBSportsUUID</code> and
+<code>PBGolfUUID</code>. You must register those UUID if you intend to communicate with
+those apps.</p><h3 id="becoming-a-delegate" class="anchor">Becoming a Delegate</h3><p>To communicate with a Pebble watch, the class must implement
+<code>PBPebbleCentralDelegate</code>:</p><div class="highlight"><pre><span class="k">@interface</span> <span class="nc">ViewController</span> <span class="p">()</span> <span class="o">&lt;</span><span class="n">PBPebbleCentralDelegate</span><span class="o">&gt;</span>
+</pre></div><p>The <code>PBPebbleCentral</code> class should not be instantiated directly. Instead, always
+use the singleton provided by <code>[PBPebbleCentral defaultCentral]</code>. An example is
+shown below, with the Golf app UUID:</p><div class="highlight"><pre><span class="n">central</span> <span class="o">=</span> <span class="p">[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">];</span>
+<span class="n">central</span><span class="p">.</span><span class="n">appUUID</span> <span class="o">=</span> <span class="n">myAppUUID</span><span class="p">;</span>
+<span class="p">[</span><span class="n">central</span> <span class="n">run</span><span class="p">];</span>
+</pre></div><p>Once this is done, set the class to be the delegate:</p><div class="highlight"><pre><span class="p">[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">].</span><span class="n">delegate</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+</pre></div><p>This delegate will get two callbacks: <code>pebbleCentral:watchDidConnect:isNew:</code> and
+<code>pebbleCentral:watchDidDisconnect:</code> every time a Pebble connects or disconnects.
+The app won&#39;t get connection callbacks if the Pebble is already connected when
+the delegate is set.</p><p>Implement these to receive the associated connection/disconnection events:</p><div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">pebbleCentral:</span><span class="p">(</span><span class="n">PBPebbleCentral</span> <span class="o">*</span><span class="p">)</span><span class="nv">central</span> <span class="nf">watchDidConnect:</span><span class="p">(</span><span class="n">PBWatch</span> <span class="o">*</span><span class="p">)</span><span class="nv">watch</span> <span class="nf">isNew:</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nv">isNew</span> <span class="p">{</span>
+  <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Pebble connected: %@"</span><span class="p">,</span> <span class="n">watch</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+
+  <span class="c1">// Keep a reference to this watch</span>
+  <span class="nb">self</span><span class="p">.</span><span class="n">connectedWatch</span> <span class="o">=</span> <span class="n">watch</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">pebbleCentral:</span><span class="p">(</span><span class="n">PBPebbleCentral</span> <span class="o">*</span><span class="p">)</span><span class="nv">central</span> <span class="nf">watchDidDisconnect:</span><span class="p">(</span><span class="n">PBWatch</span> <span class="o">*</span><span class="p">)</span><span class="nv">watch</span> <span class="p">{</span>
+  <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Pebble disconnected: %@"</span><span class="p">,</span> <span class="n">watch</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+
+  <span class="c1">// If this was the recently connected watch, forget it</span>
+  <span class="k">if</span> <span class="p">([</span><span class="n">watch</span> <span class="nl">isEqual</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">connectedWatch</span><span class="p">])</span> <span class="p">{</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">connectedWatch</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="initiating-bluetooth-communication" class="anchor">Initiating Bluetooth Communication</h3><p>Once the iOS app is correctly set up to communicate with Pebble, the final step
+is to actually begin communication. No communication can take place until the
+following is called:</p><div class="highlight"><pre><span class="p">[[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">]</span> <span class="n">run</span><span class="p">];</span>
+</pre></div>
+<blockquote>
+<p>Once this occurs, the user <em>may</em> be shown a dialog asking for confirmation
+that they want the app to communicate. This means the app should not call
+<code>run:</code> until the appropriate moment in the UI.</p></blockquote>
+<h3 id="sending-messages-from-ios" class="anchor">Sending Messages from iOS</h3><p>Since iOS apps are built separately from their companion Pebble apps, there is
+no way for the build system to automatically create matching app message keys.
+You must therefore manually specify them in <code>package.json</code>, like so:</p><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">"Temperature"</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">"WindSpeed"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">"WindDirection"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s2">"RequestData"</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="s2">"LocationName"</span><span class="o">:</span> <span class="mi">4</span>
+<span class="p">}</span>
+</pre></div><p>These numeric values can then be used as app message keys in your iOS app.</p><p>Messages are constructed with the <code>NSDictionary</code> class and sent to the C
+watchapp or watchface by the <code>PBPebbleCentralDelegate</code> when the
+<code>appMessagesPushUpdate:</code> function is invoked.</p><p>To send a message, prepare an <code>NSDictionary</code> object with the data to be sent to
+the C watchapp. Data items are added to the 
+<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDictionary_Class/" title="" class=""><code>NSDictionary</code></a>
+using key-value pairs of standard data types. An example containing a string and
+an integer is shown below:</p><div class="highlight"><pre><span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">update</span> <span class="o">=</span> <span class="l">@{</span> <span class="l">@(</span><span class="mi">0</span><span class="l">)</span><span class="o">:</span><span class="p">[</span><span class="bp">NSNumber</span> <span class="nl">pb_numberWithUint8</span><span class="p">:</span><span class="mi">42</span><span class="p">],</span>
+                          <span class="l">@(</span><span class="mi">1</span><span class="l">)</span><span class="o">:</span><span class="s">@"a string"</span> <span class="l">}</span><span class="p">;</span>
+</pre></div><p>Send this dictionary to the watchapp using <code>appMessagesPushUpdate:</code>. The first
+argument is the update dictionary to send and the second argument is a callback
+block that will be invoked when the data has been acknowledged by the watch (or
+if an error occurs).</p><div class="highlight"><pre><span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">connectedWatch</span> <span class="nl">appMessagesPushUpdate</span><span class="p">:</span><span class="n">update</span> <span class="nl">onSent</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">PBWatch</span> <span class="o">*</span><span class="n">watch</span><span class="p">,</span> <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">update</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Successfully sent message."</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Error sending message: %@"</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}];</span>
+</pre></div><p>Once delivered, this dictionary will be available in the C app via the
+<a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" title="AppMessageInboxReceived" class="link--docs"><code>AppMessageInboxReceived</code></a> callback, as detailed in
+<a href="/guides/communication/sending-and-receiving-data/#inbox-received"><em>Sending and Receiving Data</em></a>.</p><h3 id="receiving-messages-on-ios" class="anchor">Receiving Messages on iOS</h3><p>To receive messages from a watchapp, register a receive handler (a block)
+with <code>appMessagesAddReceiveUpdateHandler:</code>. This block will be invoked with two
+parameters - a pointer to a <code>PBWatch</code> object describing the Pebble that sent the
+message and an <code>NSDictionary</code> with the message received.</p><div class="highlight"><pre><span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">connectedWatch</span> <span class="nl">appMessagesAddReceiveUpdateHandler</span><span class="p">:</span><span class="o">^</span><span class="kt">BOOL</span><span class="p">(</span><span class="n">PBWatch</span> <span class="o">*</span><span class="n">watch</span><span class="p">,</span> <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">update</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Received message: %@"</span><span class="p">,</span> <span class="n">update</span><span class="p">);</span>
+
+    <span class="c1">// Send Ack to Pebble</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}];</span>
+</pre></div>
+<blockquote>
+<p>Always return <code>YES</code> in the handler. This instructs PebbleKit to automatically
+send an ACK to Pebble, to avoid the message timing out.</p></blockquote>
+<p>Data can be read from the <code>NSDictionary</code> by first testing for each key&#39;s
+presence using a <code>!= nil</code> check, and reading the value if it is present:</p><div class="highlight"><pre><span class="bp">NSNumber</span> <span class="o">*</span><span class="n">key</span> <span class="o">=</span> <span class="mi">@1</span><span class="p">;</span>
+
+<span class="c1">// If the key is present in the received dictionary</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">update</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="p">{</span>
+  <span class="c1">// Read the integer value</span>
+  <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">update</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="n">intValue</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div><h3 id="other-capabilities" class="anchor">Other Capabilities</h3><p>In addition to sending and receiving messages, PebbleKit iOS also allows
+more intricate interactions with Pebble. See the
+<a href="/docs/pebblekit-ios/" title="" class="">PebbleKit iOS Documentation</a> 
+for more information. Some examples are shown below of what is possible:</p>
+<ul>
+<li>Checking if the watch is connected using the <code>connected</code> property of a
+<code>PBWatch</code>.</li>
+</ul>
+<div class="highlight"><pre>  <span class="kt">BOOL</span> <span class="n">isConnected</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">watch</span><span class="p">.</span><span class="n">connected</span><span class="p">;</span>
+</pre></div>
+<ul>
+<li>Receiving <code>watchDidConnect</code> and <code>watchDidDisconnect</code> events through being a
+<code>PBDataloggingServiceDelegate</code>.</li>
+</ul>
+<h3 id="limitations-of-pebblekit-on-ios" class="anchor">Limitations of PebbleKit on iOS</h3><p>The iOS platform imposes some restrictions on what apps can do with accessories.
+It also limits the capabilities of apps that are in the background. It is
+critical to understand these limitations when developing an app that relies on
+PebbleKit iOS.</p><p>On iOS, all communication between a mobile app and Pebble is managed through a
+communication session. This communication session is a protocol specific to iOS,
+with notable limitations that the reader should know and understand when
+developing an iOS companion app for Pebble.</p><h4 id="bluetooth-low-energy-ble-connections" class="anchor">Bluetooth Low Energy (BLE) Connections</h4><p>For Pebble apps that communicate with Pebble in BLE mode, a session can be
+created for each app that requires one. This removes the &#39;one session only&#39;
+restriction, but only for these BLE apps. Currently, there are several
+BLE only devices, such as Pebble Time Round, and Pebble 2, but all the devices
+using a firmware 3.8 or greater can use BLE to communicate with PebbleKit.</p><p>For BLE apps, the &#39;phone must launch&#39; restriction is removed. The iOS
+companion app can be restarted by the watchapp if it stops working if user
+force-quits iOS app, or it crashes. Note that the app will not work after
+rebooting iOS device, which requires it be launched by the iPhone user once
+after boot.</p><h4 id="communication-with-firmware-older-than-3-0" class="anchor">Communication with firmware older than 3.0</h4><p>PebbleKit iOS 3.1.1 is the last PebbleKit that supports communication with
+firmwares older than 3.0. PebbleKit iOS 4.0.0 can only communicate with Pebble
+devices with firmware newer than 3.0.</p><p>For newer devices like Pebble Time, Pebble Time Steel, Pebble Time Round, and
+Pebble 2 there should be no problem. For previous generation devices like Pebble
+and Pebble Steel it means that their users should upgrade their firmware to the
+latest firmware available for their devices using the new apps.</p><p>This change allows better compatibility and new features to be developed by 3rd
+parties.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/communication/using-pebblekit-ios/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#setting-up-pebblekit-ios">Setting Up PebbleKit iOS</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#targeting-a-companion-app">Targeting a Companion App</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#becoming-a-delegate">Becoming a Delegate</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#initiating-bluetooth-communication">Initiating Bluetooth Communication</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#sending-messages-from-ios">Sending Messages from iOS</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#receiving-messages-on-ios">Receiving Messages on iOS</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#other-capabilities">Other Capabilities</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#limitations-of-pebblekit-on-ios">Limitations of PebbleKit on iOS</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#bluetooth-low-energy-ble-connections">Bluetooth Low Energy (BLE) Connections</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#communication-with-firmware-older-than-3-0">Communication with firmware older than 3.0</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Timeline Spotlight - Hackawatch // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2015/04/17/timeline-feature-hackawatch/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="q-amp-a-with-the-hackawatch-team">Q&amp;A with the Hackawatch Team</option>
+          
+            <option value="future-steps">Future Steps</option>
+          
+            <option value="inspired-to-start-hacking-on-pebble">Inspired to Start Hacking on Pebble?</option>
+          
+            <option value="want-to-hang-out-with-pebble">Want to Hang Out with Pebble?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Timeline Spotlight - Hackawatch</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>17 April 2015</li>
+    <li><a href="/blog/authors/niharika/">Niharika Bedekar</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </li>
+    <li><a href="/blog/2015/04/17/timeline-feature-hackawatch/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p><img src="/assets/images/blog/hackawatch.png"></p>
+
+<p>Hackathons are packed with tutorials, tech talks, and demos, and it’s simple for
+important activities to sometimes slip through the cracks. However, thanks to
+<a href="http://challengepost.com/software/hackawatch" title="" class="">Hackawatch</a>, Pebblers will never
+ miss an event at a hackathon again! Hackawatch is a Pebble application created
+at LA Hacks that allows hackathon organizers to push pins to hackers’ timelines
+to notify them about important events.</p>
+<ol>
+<li><strong>Who</strong>: 3 Arizona State University students: Jack Ketcham, Tim Kaing, and Tim Horng.</li>
+<li><strong>What</strong>: Hackawatch, a Pebble application that allows hackathon attendees to see
+important events during the hackathon on their timeline.</li>
+<li><strong>Where</strong>: LA Hacks </li>
+<li><strong>When</strong>: April 3rd- 5th</li>
+<li><strong>Why</strong>: The team is going to be organizing their own hackathon during the fall of
+2015, Desert Hacks, and thought it would be a useful application to have in place
+during their event.</li>
+<li><strong>How</strong>: Using the <a href="/guides/" title="" class="">guides</a>, <a href="/docs/" title="" class="">documentation</a>, and 
+<a href="/blog/2015/03/20/Getting-Started-With-Timeline/" title="" class="">blog posts</a> online!</li>
+</ol>
+<h2 id="q-amp-a-with-the-hackawatch-team" class="anchor">Q&amp;A with the Hackawatch Team</h2><p>We recently talked to these first time Pebble hackers, and got their story.</p><p><strong>How did you get started with your project?</strong></p><p>When we started setting up the project and needed to learn more about developing
+on the Pebble, the first place we went to was Pebble&#39;s developer site, and we
+looked through the relevant documentation for Pebble C and PebbleKit JS, as well
+ as the guide for the timeline.  In addition, we found the Pebble examples on
+ GitHub to be very helpful, both the regular Pebble C examples and the new timeline
+examples.</p><p><strong>Why did you decide to use the timeline interface?</strong></p><p>We decided we wanted to use the timeline interface because we felt it was exactly
+ what we needed to solve our hackathon event feed problem for attendees, and also
+ because we found out about it through all of us pre-ordering the Pebble Time. We
+ thought it would be great to build something we would be using ourselves in just
+ a couple months. Not to mention, we also thought it would be the best thing to
+hack on since it&#39;s one of the newest API features and something that all Pebble
+watches would have eventually anyway.</p><p><strong>Which frameworks did you use for your project?</strong></p><p>I used the native SDK emulator on my MacBook Pro to test out the app as we were 
+developing it, and we used PebbleKit JS running on the user&#39;s phone to retrieve 
+the user&#39;s timeline token as well as our own NodeJS API. Further, we would send 
+HTTP requests to our API, sending along the user&#39;s timeline token and their 
+preferences for what they wanted to subscribe to so we could use the 
+<a href="https://www.npmjs.com/package/pebble-api" title="" class="">pebble-api-node module</a> on our end.</p><p>Also, when I was working on implementing the 
+<a href="https://www.npmjs.com/package/pebble-api" title="" class="">pebble-api-node module</a> in our backend, 
+I also found some missing API functionality.  At the hackathon, I was able to add 
+the functionality (deleting user pins) with appropriate tests and submitted a pull 
+request, which got merged in shortly after the event!</p><p><strong>What was the hardest part about making the app?</strong> </p><p>I&#39;d say the hardest part about developing the app was ramping up on the Pebble C 
+library for creating the user interface on the Pebble, because it was a new API for 
+us and none of us had any prior experience writing C.  Again, to combat that, we 
+looked at the available documentation and examples, and also got help from the Pebble
+ Engineers that were on site throughout the hackathon (they were awesome!).</p><p><strong>What was your favorite part about making the app?</strong></p><p>I’d say the best part about developing this app would be gaining experience developing 
+on Pebble&#39;s newest API.  This is the next big move for the company and for the people 
+that own these watches, and being able to be a part of that and show what we can make 
+with the new functionality is really amazing.</p><h2 id="future-steps" class="anchor">Future Steps</h2><p>Hackathon organizers, take note! The story hasn’t ended here for Hackawatch. The team 
+is going to continue adding functionality to their app: soon, they want to have an 
+RSVP action for certain activities or tech talks. Their ultimate goal is to make it 
+as easy as possible for any other hackathon organizers to fork the project into their 
+own repo and adapt it for their event. </p><h2 id="inspired-to-start-hacking-on-pebble" class="anchor">Inspired to Start Hacking on Pebble?</h2><p>Follow the Hackawatch team’s lead and hack your heart out! We have tons of 
+<a href="/guides/" title="" class="">guides</a> and <a href="/docs/" title="" class="">documentation</a> online that are perfect for first 
+time hackers. If you want to share your project, enter it into the 
+<a href="/blog/2015/04/14/the-timeline-challenge-is-live/" title="" class="">Timeline Challenge</a>! 
+For the next twelve weeks, we’re going to be giving out free Pebble Times, swag, and 
+prizes, so fire up <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> and hack away! </p><h2 id="want-to-hang-out-with-pebble" class="anchor">Want to Hang Out with Pebble?</h2><p>If you’re going to be in San Francisco next week, come to our
+ <a href="http://www.meetup.com/PebbleSF/events/221717043/" title="" class="">Meetup</a>! We’ll be talking 
+specifically about timeline and all the cool features that come with it. Otherwise, 
+keep an eye on our <a href="/community/events/" title="" class="">Events</a> page to figure out where we’ll be 
+soon. We have a busy few months coming up, and want to see as many Pebblers as 
+possible. We can’t wait to meet you! </p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2015/04/17/timeline-feature-hackawatch/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#q-amp-a-with-the-hackawatch-team">Q&amp;A with the Hackawatch Team</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#future-steps">Future Steps</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#inspired-to-start-hacking-on-pebble">Inspired to Start Hacking on Pebble?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#want-to-hang-out-with-pebble">Want to Hang Out with Pebble?</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                <strong>Timeline</strong>
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                <strong>Niharika Bedekar</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

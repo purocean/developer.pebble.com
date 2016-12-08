@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bezier Curves and GPaths on Pebble // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2015/02/13/Bezier-Curves-And-GPaths/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="why-bezier-curves">Why Bezier Curves?</option>
+          
+            <option value="drawing-bezier-curves">Drawing Bezier Curves</option>
+          
+            <option value="optimizing-for-pebble">Optimizing for Pebble</option>
+          
+            <option value="applying-code-to-gpath">Applying Code to GPath</option>
+          
+            <option value="conclusion">Conclusion</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Bezier Curves and GPaths on Pebble</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>13 February 2015</li>
+    <li><a href="/blog/authors/lukasz/">Łukasz Zalewski</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
+      
+    </li>
+    <li><a href="/blog/2015/02/13/Bezier-Curves-And-GPaths/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p><img src="/assets/images/blog/bezier-banner.png"></p>
+
+<p>Drawing complex paths requires a lot of manual work on Pebble. Here I&#39;ll show
+you how to do this efficiently and quickly using a Pebble-optimized <a href="/docs/c/Graphics/Drawing_Paths/#GPath" title="GPath" class="link--docs"><code>GPath</code></a>
+algorithm and Bezier curves.</p><h2 id="why-bezier-curves" class="anchor">Why Bezier Curves?</h2><p>Typically, when a developer wants to create curve-based graphics on Pebble he
+has to use prepared bitmaps or complex GPaths (or generate paths with 
+<a href="http://gpathsvg.org/" title="" class="">svg2gpath</a>). Both of those approaches have serious 
+downsides: bitmaps require resource space to store, memory to process and
+rotating bitmaps is a complex operation. Detailed GPaths, while fast in
+processing, can take a long time to design without special tools.</p><p>Bezier curves are a very interesting solution, which may seem computationally
+excessive but solves the obstacles of both the previous methods. Because they&#39;re
+so simple to use they are common elements in many graphic systems, primarly
+vector based graphics.</p><h2 id="drawing-bezier-curves" class="anchor">Drawing Bezier Curves</h2><p>The mathematical formula for a Bezier curve can be found on
+<a href="http://en.wikipedia.org/wiki/Composite_B%C3%A9zier_curve" title="" class="">Wikipedia</a>. We can 
+fairly easily turn it into C code, but we have to make a couple of important
+decisions. The formula itself is linear and requires us to decide how many steps
+we want to take in order to draw our Bezier curve. It&#39;s safe to assume that
+calculating 1000 points on our Bezier curve should be enough to display a
+continuous line on the small Pebbles screen.</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">naive_bezier</span><span class="p">(</span><span class="n">GContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GPoint</span> <span class="n">points</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">double</span> <span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">t</span><span class="o">&lt;</span><span class="mf">1.0</span><span class="p">;</span> <span class="n">t</span> <span class="o">+=</span> <span class="mf">0.001</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">tx</span> <span class="o">=</span> <span class="n">pow_d</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">t</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">pow_d</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">x</span> <span class="o">+</span>
+                  <span class="mi">3</span> <span class="o">*</span> <span class="n">pow_d</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">points</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">x</span> <span class="o">+</span> <span class="n">pow_d</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">x</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">ty</span> <span class="o">=</span> <span class="n">pow_d</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">t</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">t</span> <span class="o">*</span> <span class="n">pow_d</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">y</span> <span class="o">+</span>
+                  <span class="mi">3</span> <span class="o">*</span> <span class="n">pow_d</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">points</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="n">y</span> <span class="o">+</span> <span class="n">pow_d</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="n">graphics_draw_pixel</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GPoint</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">ty</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p><strong>Notes:</strong></p>
+<ul>
+<li><p><code>pow_d(double a, int b)</code> is simply a function which returns <code>b</code> to the power
+of <code>a</code>.</p></li>
+<li><p><code>points</code> contains array of 4 points used as parameters for drawing the Bezier
+curve.</p></li>
+</ul>
+<p>While this approach gives us precise results its also very computationally
+expensive. Most of the work done by the CPU is redundant as most of those points
+overlap each other due to the low screen resolution.</p><h2 id="optimizing-for-pebble" class="anchor">Optimizing for Pebble</h2><p>The simplest optimization would be reducing the number of steps and drawing
+lines between computed points. While this will significantly reduce calculation
+time, it will also make the curve less precise and pleasing to the eye. But what
+if we could dynamically calculate the number of segments needed to create
+perfectly smooth curve? Here&#39;s a method published by Maxim Shermanev which you
+can find out more about on his website:
+<a href="http://www.antigrain.com/research/adaptive_bezier/index.html" title="" class="">www.antigrain.com</a>.</p><p>Below you can see code from his research adapted to work efficiently on the
+Pebble architecture:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">recursive_bezier_fixed</span><span class="p">(</span><span class="kt">int</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="p">,</span> 
+                            <span class="kt">int</span> <span class="n">x2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="p">,</span> 
+                            <span class="kt">int</span> <span class="n">x3</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y3</span><span class="p">,</span> 
+                            <span class="kt">int</span> <span class="n">x4</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y4</span><span class="p">){</span>
+  <span class="c1">// Calculate all the mid-points of the line segments</span>
+  <span class="kt">int</span> <span class="n">x12</span>   <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">y12</span>   <span class="o">=</span> <span class="p">(</span><span class="n">y1</span> <span class="o">+</span> <span class="n">y2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">x23</span>   <span class="o">=</span> <span class="p">(</span><span class="n">x2</span> <span class="o">+</span> <span class="n">x3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">y23</span>   <span class="o">=</span> <span class="p">(</span><span class="n">y2</span> <span class="o">+</span> <span class="n">y3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">x34</span>   <span class="o">=</span> <span class="p">(</span><span class="n">x3</span> <span class="o">+</span> <span class="n">x4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">y34</span>   <span class="o">=</span> <span class="p">(</span><span class="n">y3</span> <span class="o">+</span> <span class="n">y4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">x123</span>  <span class="o">=</span> <span class="p">(</span><span class="n">x12</span> <span class="o">+</span> <span class="n">x23</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">y123</span>  <span class="o">=</span> <span class="p">(</span><span class="n">y12</span> <span class="o">+</span> <span class="n">y23</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">x234</span>  <span class="o">=</span> <span class="p">(</span><span class="n">x23</span> <span class="o">+</span> <span class="n">x34</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">y234</span>  <span class="o">=</span> <span class="p">(</span><span class="n">y23</span> <span class="o">+</span> <span class="n">y34</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">x1234</span> <span class="o">=</span> <span class="p">(</span><span class="n">x123</span> <span class="o">+</span> <span class="n">x234</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">y1234</span> <span class="o">=</span> <span class="p">(</span><span class="n">y123</span> <span class="o">+</span> <span class="n">y234</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="c1">// Angle Condition</span>
+  <span class="kt">int32_t</span> <span class="n">a23</span> <span class="o">=</span> <span class="n">atan2_lookup</span><span class="p">((</span><span class="n">y3</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span> <span class="o">/</span> <span class="n">fixedpoint_base</span><span class="p">,</span> <span class="p">(</span><span class="n">x3</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span> <span class="o">/</span> <span class="n">fixedpoint_base</span><span class="p">);</span>
+  <span class="kt">int32_t</span> <span class="n">da1</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">a23</span> <span class="o">-</span> <span class="n">atan2_lookup</span><span class="p">((</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">/</span> <span class="n">fixedpoint_base</span><span class="p">,</span> <span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">/</span> <span class="n">fixedpoint_base</span><span class="p">));</span>
+  <span class="kt">int32_t</span> <span class="n">da2</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">atan2_lookup</span><span class="p">((</span><span class="n">y4</span> <span class="o">-</span> <span class="n">y3</span><span class="p">)</span> <span class="o">/</span> <span class="n">fixedpoint_base</span><span class="p">,</span> <span class="p">(</span><span class="n">x4</span> <span class="o">-</span> <span class="n">x3</span><span class="p">)</span> <span class="o">/</span> <span class="n">fixedpoint_base</span><span class="p">)</span> <span class="o">-</span> <span class="n">a23</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">da1</span> <span class="o">&gt;=</span> <span class="n">TRIG_MAX_ANGLE</span><span class="p">)</span> <span class="n">da1</span> <span class="o">=</span> <span class="n">TRIG_MAX_ANGLE</span> <span class="o">-</span> <span class="n">da1</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">da2</span> <span class="o">&gt;=</span> <span class="n">TRIG_MAX_ANGLE</span><span class="p">)</span> <span class="n">da2</span> <span class="o">=</span> <span class="n">TRIG_MAX_ANGLE</span> <span class="o">-</span> <span class="n">da2</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">da1</span> <span class="o">+</span> <span class="n">da2</span> <span class="o">&lt;</span> <span class="n">m_angle_tolerance</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="c1">// Finally we can stop the recursion</span>
+    <span class="n">add_point</span><span class="p">(</span><span class="n">x1234</span> <span class="o">/</span> <span class="n">fixedpoint_base</span><span class="p">,</span> <span class="n">y1234</span> <span class="o">/</span> <span class="n">fixedpoint_base</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Continue subdivision</span>
+  <span class="n">recursive_bezier_fixed</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x12</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">x123</span><span class="p">,</span> <span class="n">y123</span><span class="p">,</span> <span class="n">x1234</span><span class="p">,</span> <span class="n">y1234</span><span class="p">);</span> 
+  <span class="n">recursive_bezier_fixed</span><span class="p">(</span><span class="n">x1234</span><span class="p">,</span> <span class="n">y1234</span><span class="p">,</span> <span class="n">x234</span><span class="p">,</span> <span class="n">y234</span><span class="p">,</span> <span class="n">x34</span><span class="p">,</span> <span class="n">y34</span><span class="p">,</span> <span class="n">x4</span><span class="p">,</span> <span class="n">y4</span><span class="p">);</span> 
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">bezier_fixed</span><span class="p">(</span><span class="n">GPathBuilder</span> <span class="o">*</span><span class="n">builder</span><span class="p">,</span> <span class="n">GPoint</span> <span class="n">p1</span><span class="p">,</span> <span class="n">GPoint</span> <span class="n">p2</span><span class="p">,</span> <span class="n">GPoint</span> <span class="n">p3</span><span class="p">,</span> <span class="n">GPoint</span> <span class="n">p4</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Translate points to fixedpoint realms</span>
+  <span class="kt">int32_t</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">fixedpoint_base</span><span class="p">;</span>
+  <span class="kt">int32_t</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">p2</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">fixedpoint_base</span><span class="p">;</span>
+  <span class="kt">int32_t</span> <span class="n">x3</span> <span class="o">=</span> <span class="n">p3</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">fixedpoint_base</span><span class="p">;</span>
+  <span class="kt">int32_t</span> <span class="n">x4</span> <span class="o">=</span> <span class="n">p4</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">fixedpoint_base</span><span class="p">;</span>
+  <span class="kt">int32_t</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">fixedpoint_base</span><span class="p">;</span>
+  <span class="kt">int32_t</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">p2</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">fixedpoint_base</span><span class="p">;</span>
+  <span class="kt">int32_t</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">p3</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">fixedpoint_base</span><span class="p">;</span>
+  <span class="kt">int32_t</span> <span class="n">y4</span> <span class="o">=</span> <span class="n">p4</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">fixedpoint_base</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">recursive_bezier_fixed</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">x4</span><span class="p">,</span> <span class="n">y4</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">gpath_builder_line_to_point</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">p4</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div><p><strong>Notes:</strong></p>
+<ul>
+<li><p>This code uses fixedpoint integers since the Pebble CPU doesn&#39;t support
+floating point operations. You can find more about that in a talk given by
+Matthew Hungerford during 2014 Pebble Developer Retreat (video available
+<a href="https://www.youtube.com/watch?v=8tOhdUXcSkw" title="" class="">here</a>).</p></li>
+<li><p>To determine the angle, the algorithm calculates parameters of the curve at
+given points. This implementation is very effective since Pebble&#39;s
+<code>atan2_lookup</code> is just looking up that value in a precomputed table.</p></li>
+<li><p><code>m_angle_tolerance</code> is the angle of the curve we&#39;re looking for, expressed in
+degrees. In our case it&#39;s 10 degrees: <code>int32_t m_angle_tolerance =
+(TRIG_MAX_ANGLE / 360) * 10;</code></p></li>
+</ul>
+<h2 id="applying-code-to-gpath" class="anchor">Applying Code to GPath</h2><p>In order to make it easy for developers, we have prepared the GPathBuilder
+library which will ease the process of creating GPaths out of a few Bezier
+curves and/or lines. The resulting path can already be manipulated with the 
+<a href="/docs/c/group___path_drawing.html#ga1ba79344b9a34432a44af09bed8b00fd" title="" class="">existing APIs</a>. You can find it on the
+<a href="https://github.com/pebble-hacks/gpath-bezier" title="" class="">pebble-hacks Github page</a> along 
+with a simple demo app.</p><p>Usage is extremely simple. Here are the main functions in the API:</p>
+<ul>
+<li><code>GPathBuilder* gpath_builder_create(uint32_t max_points)</code> will create the
+GPathBuilder object you will need to use in order to create a GPath with
+Bezier curves. <code>max_points</code> sets the limit on number of points created in the
+process.</li>
+<li><code>void gpath_builder_destroy(GPathBuilder *builder)</code> will destroy the
+GPathBuilder object and free the memory it used.</li>
+<li><code>bool gpath_builder_line_to_point(GPathBuilder *builder, GPoint to_point)</code>
+will create a straight line from last point to the given point.</li>
+<li><code>bool gpath_builder_curve_to_point(GPathBuilder *builder, GPoint to_point,
+GPoint control_point_1, GPoint control_point_2)</code> will create a Bezier curve
+from the last point to a given point (<code>to_point</code>), <code>control_point_1</code> and
+<code>control_point_2</code> are used as parameters for the Bezier curve for last point
+and given point respectively.</li>
+<li><code>GPath* gpath_builder_create_path(GPathBuilder *builder)</code> will return a GPath
+object ready to be used in your graphic routine. Remember that the
+GPathBuilder is not being destroyed in the process and you have to do that
+manually.</li>
+</ul>
+<p>Below is shown a simple shape involving two curves and the code required to
+create the path:</p><p><img src="/assets/images/blog/bezier-result.png" alt="result" class="pebble-screenshot pebble-screenshot--steel-black" /></p><div class="highlight"><pre><span class="c1">// Create GPathBuilder object</span>
+<span class="n">GPathBuilder</span> <span class="o">*</span><span class="n">builder</span> <span class="o">=</span> <span class="n">gpath_builder_create</span><span class="p">(</span><span class="n">MAX_POINTS</span><span class="p">);</span>
+
+<span class="c1">// Move to the starting point of the GPath</span>
+<span class="n">gpath_builder_move_to_point</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">));</span>
+<span class="c1">// Create curve</span>
+<span class="n">gpath_builder_curve_to_point</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">));</span>
+<span class="c1">// Create straight line</span>
+<span class="n">gpath_builder_line_to_point</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">GPoint</span><span class="p">(</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="c1">// Create another curve</span>
+<span class="n">gpath_builder_curve_to_point</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">GPoint</span><span class="p">(</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="n">GPoint</span><span class="p">(</span><span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">60</span><span class="p">));</span>
+<span class="c1">// Create another straight line</span>
+<span class="n">gpath_builder_line_to_point</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">));</span>
+
+<span class="c1">// Create GPath object out of our GPathBuilder object</span>
+<span class="n">s_path</span> <span class="o">=</span> <span class="n">gpath_builder_create_path</span><span class="p">(</span><span class="n">builder</span><span class="p">);</span>
+<span class="c1">// Destroy GPathBuilder object</span>
+<span class="n">gpath_builder_destroy</span><span class="p">(</span><span class="n">builder</span><span class="p">);</span>
+
+<span class="c1">// Get window bounds</span>
+<span class="n">GRect</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">layer_get_bounds</span><span class="p">(</span><span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">));</span>
+<span class="c1">// Move newly created GPath to the center of the screen</span>
+<span class="n">gpath_move_to</span><span class="p">(</span><span class="n">s_path</span><span class="p">,</span> <span class="n">GPoint</span><span class="p">((</span><span class="kt">int16_t</span><span class="p">)(</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="kt">int16_t</span><span class="p">)(</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)));</span>
+</pre></div><p>And there you have it, complex GPaths built with a few lines of code.</p><h2 id="conclusion" class="anchor">Conclusion</h2><p>This library should make it easier to create amazing graphics on Pebble and can
+be used in animations as it&#39;s lightweight and fast. Bear in mind that the
+GPathBuilder temporarily uses RAM proportinal to <code>max_points</code> until
+<code>gpath_builder_destroy</code> is called. You can find the example app and library code 
+on the <a href="https://github.com/pebble-hacks/gpath-bezier" title="" class="">pebble-hacks Github page</a>.</p><p>We are also looking forward to this technology being used in online tools such
+as <a href="http://gpathsvg.org/" title="" class="">SVG to Pebble GPath Converter</a> by awesome Pebble
+developer <a href="https://github.com/ardnejar" title="" class="">Rajendra Serber</a>.</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2015/02/13/Bezier-Curves-And-GPaths/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#why-bezier-curves">Why Bezier Curves?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#drawing-bezier-curves">Drawing Bezier Curves</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#optimizing-for-pebble">Optimizing for Pebble</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#applying-code-to-gpath">Applying Code to GPath</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                <strong>Beautiful Code</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                <strong>Łukasz Zalewski</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

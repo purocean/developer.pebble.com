@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble SDK Tutorial (Part 1) // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2014/06/10/Pebble-SDK-Tutorial-1/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="your-first-watchapp">Your First Watchapp</option>
+          
+            <option value="introduction">- Introduction</option>
+          
+            <option value="development-environment">- Development Environment</option>
+          
+            <option value="first-steps">- First Steps</option>
+          
+            <option value="setting-up-the-basics">- Setting Up the Basics</option>
+          
+            <option value="using-the-sdk">- Using the SDK</option>
+          
+            <option value="displaying-content">- Displaying Content</option>
+          
+            <option value="compilation-and-installation">- Compilation and Installation</option>
+          
+            <option value="conclusions">- Conclusions</option>
+          
+            <option value="source-code">- Source Code</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Pebble SDK Tutorial (Part 1)</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>10 June 2014</li>
+    <li>Chris Lewis</li>
+    
+  </ul>
+</div>
+
+<h2 id="your-first-watchapp" class="anchor">Your First Watchapp</h2><h3 id="introduction" class="anchor">Introduction</h3><p>This is the first in a series of articles that will hopefully help newcomers and
+seasoned programmers alike begin to flex their creative muscles and make their
+own Pebble watchapps. If you prefer a more visual approach, Thomas has made
+videos you can watch
+<a href="https://www.youtube.com/channel/UCFnawAsyEiux7oPWvGPJCJQ" title="" class="">here</a> to help you get
+started.</p><p>Firstly, make sure you are familiar with the following basic C language
+concepts. Pebble has <a href="/guides/" title="" class="">Developer Guides</a> that may help:</p>
+<ul>
+<li>Variables and variable scope (local or global?)</li>
+<li>Functions (definitions and calls)</li>
+<li>Structures</li>
+<li>Pointers</li>
+<li>Program flow (if, else etc.)</li>
+<li>Preprocessor statements (<code>#define</code>, <code>#include</code> etc.)</li>
+</ul>
+<p>Up to speed? Good! Let&#39;s create our first watchapp.</p><h3 id="development-environment" class="anchor">Development Environment</h3><p>The easiest way to get started is to use <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a>
+, a free online IDE for Pebble. This approach requires no installations to start
+making watchapps. Advanced users can install the SDK on Linux, OS X or Windows
+(via VM such as <a href="https://www.virtualbox.org/" title="" class="">VirtualBox</a>) for a more hands-on
+approach. Instructions for installing the native SDK can be found on the
+<a href="/sdk/install/linux/" title="" class="">Pebble Developer site</a>
+. For this tutorial, we will be using CloudPebble.</p><h3 id="first-steps" class="anchor">First Steps</h3><p>To get started, log into <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> and choose
+&#39;Create Project&#39;.</p>
+<ol>
+<li>Enter a suitable name for the project such as &#39;My First App&#39;.</li>
+<li>Set the project type to &#39;Pebble C SDK&#39;.</li>
+<li>Set the template as &#39;Empty project&#39;.</li>
+<li>Confirm with &#39;Create&#39;.</li>
+</ol>
+<p>To start entering code, choose &#39;New C file&#39; on the left hand pane. C language
+source files typically have the extension &#39;.c&#39;. A suggested standard name is
+<code>main.c</code>, although this can be anything you like.</p><h3 id="setting-up-the-basics" class="anchor">Setting Up the Basics</h3><p>The power behind the C language comes from its ability to be adapted for many
+different devices and platforms, such as the Pebble watch, through the use of
+SDKs such as this one. Therefore, to be able to use all the features the Pebble
+SDK has to offer us, we must include it at the start of the file by using the
+<code>#include</code> preprocessor statement (meaning it is processed before the rest of
+the code):</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
+</pre></div><p>All C applications begin with a call to a function called <code>main()</code> by the host
+operating system, also known as the ‘entry point’ of the program. This must
+contain <a href="/docs/c/Foundation/App/#app_event_loop" title="app_event_loop" class="link--docs"><code>app_event_loop()</code></a>, and by convention also contains two other
+functions to manage the start and end of the watchapp&#39;s life:</p>
+<ul>
+<li><code>init()</code> - Used to create (or initialize) our app.</li>
+<li><a href="/docs/c/Foundation/App/#app_event_loop" title="app_event_loop" class="link--docs"><code>app_event_loop()</code></a> - Handles all events that happen from the start of the
+app to the end of its life.</li>
+<li><code>deinit()</code> - Used to clean up after ourselves and make sure any memory we use
+is free for apps that are run after us.</li>
+</ul>
+<p>Following these rules, our first function, <code>main()</code> looks like this:</p><div class="highlight"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">init</span><span class="p">();</span>
+  <span class="n">app_event_loop</span><span class="p">();</span>
+  <span class="n">deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>All functions we call must be defined before they are used so that they are
+known to the compiler when the first call is encountered. To this end we will
+define our <code>init()</code> and <code>deinit()</code> functions before they are called in <code>main()</code>
+by placing them after the <code>#include</code> preprocessor statement and before the
+definition of <code>main()</code> itself. The resulting code file now looks like this:</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
+
+<span class="kt">void</span> <span class="nf">init</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//Create app elements here</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">deinit</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//Destroy app elements here</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">init</span><span class="p">();</span>
+  <span class="n">app_event_loop</span><span class="p">();</span>
+  <span class="n">deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><h3 id="using-the-sdk" class="anchor">Using the SDK</h3><p>With the boilerplate app structure done, let&#39;s begin using the Pebble C SDK to
+create our first watchapp. The first element we will use is the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>. We
+will declare our first instance of a <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> outside the scope of any
+function in what is known as a &#39;global variable&#39;, before it is first used. The
+reason for this is for us to be able to use this reference from any location
+within the program. By convention, a global variable&#39;s name is prefixed with
+<code>g_</code> to make it easily identifiable as such. An ideal place for these
+declarations is below the preprocessor statements in the source file.</p><p>Declare a pointer to a <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> structure to be created later like so:</p><div class="highlight"><pre><span class="n">Window</span> <span class="o">*</span><span class="n">g_window</span><span class="p">;</span>
+</pre></div><p>At the moment, this pointer does not point anywhere and is unusable. The next
+step is to use the <a href="/docs/c/User_Interface/Window/#window_create" title="window_create" class="link--docs"><code>window_create()</code></a> function to construct a <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>
+element for the pointer to point to. Once this is done, we also register two
+references to the <code>window_load()</code> and <code>window_unload()</code> functions (known as
+handlers) which will manage the creation and destruction of the elements within
+that window. This is shown below:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">init</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//Create the app elements here!</span>
+  <span class="n">g_window</span> <span class="o">=</span> <span class="n">window_create</span><span class="p">();</span>
+  <span class="n">window_set_window_handlers</span><span class="p">(</span><span class="n">g_window</span><span class="p">,</span> <span class="p">(</span><span class="n">WindowHandlers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">window_load</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">unload</span> <span class="o">=</span> <span class="n">window_unload</span><span class="p">,</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</pre></div><p>The next logical step is to define what we mean by <code>window_load()</code> and
+<code>window_unload()</code>. In a similar fashion to <code>init()</code> and <code>deinit()</code>, these must
+be defined before they are first used; above <code>init()</code>, but below the definition
+of <code>g_window</code> at the top of the file. Think of them as the <code>init()</code> and
+<code>deinit()</code> equivalent functions for the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//We will add the creation of the Window's elements here soon!</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">window_unload</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//We will safely destroy the Window's elements here!</span>
+<span class="p">}</span>
+</pre></div><p>This modular approach to app creation allows a developer to create apps with all
+relevant sub-elements managed within the life of that particular <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>.
+This process is shown visually in the diagram below:</p><p><img src="/assets/images/blog/tut_1_lifecycle.png" title="Lifecycle" alt="Lifecycle" /></p><p>As a responsible app developer, it is a good practice to free up any memory we
+use to the system when our app is closed. Pebble SDK elements use functions
+suffixed with <code>_destroy</code> for this purpose, which can be done for our <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>
+element in <code>deinit()</code>:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">deinit</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//We will safely destroy the Window's elements here!</span>
+  <span class="n">window_destroy</span><span class="p">(</span><span class="n">g_window</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>The final step in this process is to make the app actually appear when it is
+chosen from the Pebble menu. To do this we push our window to the top of the
+window stack using <a href="/docs/c/User_Interface/Window_Stack/#window_stack_push" title="window_stack_push" class="link--docs"><code>window_stack_push()</code></a>, placing it in the foreground in
+front of the user. This is done after the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> is created, and so we will
+place this call at the end of <code>init()</code>:</p><div class="highlight"><pre><span class="n">window_stack_push</span><span class="p">(</span><span class="n">g_window</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+</pre></div><p>The second argument denotes whether we want the push to be animated. This looks
+cool, so we use <code>true</code>! The app will now launch, but will be completely blank.
+Let&#39;s rectify that.</p><h3 id="displaying-content" class="anchor">Displaying Content</h3><p>So far we have created and pushed an empty <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> element. So far so good.
+Now let&#39;s add our first sub-element to make it show some text. Introducing the
+<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>! This is an element used to show any standard string of characters
+in a pre-defined area, called a &#39;frame&#39;. As with any element in the SDK, we
+begin with a global pointer to a structure-to-be of that type:</p><div class="highlight"><pre><span class="n">TextLayer</span> <span class="o">*</span><span class="n">g_text_layer</span><span class="p">;</span>
+</pre></div><p>The rest of the process of using the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> is very similar to that of
+the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>. This is by design, and means it is easy to tell which functions
+to use as they are named in a &#39;plain English&#39; style. Creating the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>
+will be done within the <code>window_load()</code> function, as it will be shown within the
+parent <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> (here called <code>g_window</code>).</p><p>The functions we call to perform this setup are almost self-explanatory, but I
+will go through them after the following segment. Can you spot the pattern in
+the SDK function names?</p><div class="highlight"><pre><span class="n">g_text_layer</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">168</span><span class="p">));</span>
+<span class="n">text_layer_set_background_color</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="n">GColorClear</span><span class="p">);</span>
+<span class="n">text_layer_set_text_color</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">);</span>
+
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">));</span>
+</pre></div><p>Now the explanation:</p>
+<ol>
+<li><a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_create" title="text_layer_create" class="link--docs"><code>text_layer_create()</code></a> - This creates the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> and sets its frame
+to that in the <a href="/docs/c/Graphics/Graphics_Types/#GRect" title="GRect" class="link--docs"><code>GRect</code></a> supplied as its only argument to x = 0, y = 0, width
+= 144 pixels and height = 168 pixels (this is the size of the entire screen).
+Just like <a href="/docs/c/User_Interface/Window/#window_create" title="window_create" class="link--docs"><code>window_create()</code></a>, this function returns a pointer to the newly
+created <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a></li>
+<li><a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_set_background_color" title="text_layer_set_background_color" class="link--docs"><code>text_layer_set_background_color()</code></a> - This also does what it says: sets the
+<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>&#39;s background color to <a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorClear" title="GColorClear" class="link--docs"><code>GColorClear</code></a>, which is transparent.</li>
+<li><a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_set_text_color" title="text_layer_set_text_color" class="link--docs"><code>text_layer_set_text_color()</code></a> - Similar to the last function, but sets the
+text color to <a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlack" title="GColorBlack" class="link--docs"><code>GColorBlack</code></a>.</li>
+<li><a href="/docs/c/User_Interface/Layers/#layer_add_child" title="layer_add_child" class="link--docs"><code>layer_add_child()</code></a> - This is used to add the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>&#39;s &quot;root&quot;
+<a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> (which is the part drawn to the screen) as a &#39;child&#39; of the
+<a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>&#39;s root layer. Simply put, all child <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>s are drawn in front
+of their &#39;parents&#39; and allows us to control layering of <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>s and in
+which order they are drawn.</li>
+</ol>
+<p>As should always be the case, we must add the required destruction function
+calls to free up the memory we used in creating the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. This is done
+in the parent <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>&#39;s <code>window_unload()</code> function, which now looks like
+this:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">window_unload</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//We will safely destroy the Window's elements here!</span>
+  <span class="n">text_layer_destroy</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Now for what we have been working towards all this time - making the app show
+any text we want! After creating the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>, add a call to
+<a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_set_text" title="text_layer_set_text" class="link--docs"><code>text_layer_set_text()</code></a> to set the text it should display, such as the example
+below:</p><div class="highlight"><pre><span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="s">"Anything you want, as long as it is in quotes!"</span><span class="p">);</span>
+</pre></div><p>Now you should be ready to see the fruits of your labor on your wrist! To do
+this we must compile our C source code into a <code>.pbw</code> package file that the
+Pebble app will install for us.</p><h3 id="compilation-and-installation" class="anchor">Compilation and Installation</h3><p>To do this, make sure you save your C file. Then go to the &#39;Compilation&#39; screen
+in the left pane and click &#39;Run build&#39;. After the compiler returns &#39;Succeeded&#39;,
+you can use either of the following options to install the app on your Pebble:</p>
+<ul>
+<li>Ensure you have enabled the
+<a href="/guides/tools-and-resources/developer-connection/" title="" class="">Pebble Developer Connection</a>
+and enter the IP address shown into the &#39;Phone IP&#39; box. Click &#39;Install and
+Run&#39; to install your app.</li>
+<li>Use the &#39;Get PBW&#39; button in your phone&#39;s browser to install via the Pebble app.</li>
+</ul>
+<p>If your code does not compile, compare it to the
+<a href="https://gist.github.com/C-D-Lewis/a911f0b053260f209390" title="" class="">sample code</a> to see
+where you might have made an error. Once this is successful, you should see
+something similar to the screenshot below:</p><p><img src="/assets/images/blog/tut_1_preview.png" title="Screenshot" alt="Screenshot" /></p><h3 id="conclusions" class="anchor">Conclusions</h3><p>There you have it, a <em>very</em> simple watchapp to show some text of your choosing.
+This was done by:</p>
+<ol>
+<li>Setting up boilerplate app structure.</li>
+<li>Creating a <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> with a child layer, in this case the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>.</li>
+<li>Creating a <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> to show text on the screen.</li>
+</ol>
+<p>By adding more types of layers such as <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> and <code>InverterLayer</code> we
+create much more sophisticated apps. By extension with <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a>s and
+<a href="/docs/c/User_Interface/Clicks/" title="Clicks" class="link--docs"><code>Clicks</code></a> we can begin to respond to user data and input. All this and more to
+come in future instalments!</p><h3 id="source-code" class="anchor">Source Code</h3><p>The full source code file we have built up over the course of this article can
+be found <a href="https://gist.github.com/C-D-Lewis/a911f0b053260f209390" title="" class="">here</a> and
+directly imported into CloudPebble
+<a href="https://cloudpebble.net/ide/gist/a911f0b053260f209390" title="" class="">as a new project</a>. If
+your code doesn&#39;t compile, have a look at this and see where you may have gone
+wrong.</p><p>Best of luck, and let me know what you come up with! Send any feedback or
+questions to <a href="http://twitter.com/PebbleDev" title="" class="">@PebbleDev</a> or
+<a href="http://twitter.com/Chris_DL" title="" class="">@Chris_DL</a>.</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2014/06/10/Pebble-SDK-Tutorial-1/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#your-first-watchapp">Your First Watchapp</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#introduction">Introduction</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#development-environment">Development Environment</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#first-steps">First Steps</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#setting-up-the-basics">Setting Up the Basics</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#using-the-sdk">Using the SDK</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#displaying-content">Displaying Content</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#compilation-and-installation">Compilation and Installation</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#conclusions">Conclusions</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#source-code">Source Code</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

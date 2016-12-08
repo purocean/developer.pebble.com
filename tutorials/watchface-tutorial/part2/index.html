@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Customizing Your Watchface // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A guide to personalizing your new Pebble watchface">
+  <link rel="canonical" href="http://developer.getpebble.com/tutorials/watchface-tutorial/part2/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started active"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+<div class="section-menu section-menu--getting-started section-menu--dark">
+  <div class="section-menu__header">
+    <h3><a href="/tutorials/">Tutorials</a></h3>
+  </div>
+  <ul>
+    <li class="section-menu__item open"><a href="/tutorials/watchface-tutorial/part1/">Build a Watchface in C</a>
+      <ul>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem active"><a href="/tutorials/watchface-tutorial/part2/"><span>Part 2 - Customizing the Watchface</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part3/"><span>Part 3 - Adding Web Content</a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part4/"><span>Part 4 - Adding a Battery Bar</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part5/"><span>Part 5 - Vibrate on Disconnect</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/js-watchface-tutorial/part1/">Build a Watchface in JS</a>
+      <ul>
+        <li class="section-menu__subitem"><a href="/tutorials/js-watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem active"><a href="/tutorials/js-watchface-tutorial/part2/"><span>Part 2 - Adding Web Content</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/advanced/vector-animations/">Advanced Tutorials</a>
+      <ul>
+        <li class="section-menu__subitem"><a href="/tutorials/advanced/vector-animations/"><span>Vector Animations</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="first-steps">First Steps</option>
+          
+            <option value="adding-a-custom-font">Adding a Custom Font</option>
+          
+            <option value="adding-a-bitmap">Adding a Bitmap</option>
+          
+            <option value="conclusion">Conclusion</option>
+          
+            <option value="what-39-s-next">What&#39;s Next?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-l-8">
+      <h1>Customizing Your Watchface</h1>
+      
+      <div class="markdown markdown--staff">
+      
+      <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+      
+      <p>In the previous page of the tutorial, you learned how to create a new Pebble
+project, set it up as a basic watchface and use <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a> to display
+the current time. However, the design was pretty basic, so let&#39;s improve it with
+some customization!</p><p>In order to do this we will be using some new Pebble SDK concepts, including:</p>
+<ul>
+<li>Resource management</li>
+<li>Custom fonts (using <a href="/docs/c/Graphics/Fonts/#GFont" title="GFont" class="link--docs"><code>GFont</code></a>)</li>
+<li>Images (using <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> and <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>)</li>
+</ul>
+<p>These will allow us to completely change the look and feel of the watchface. We
+will provide some sample materials to use, but once you understand the process
+be sure to replace these with your own to truly make it your own! Once we&#39;re
+done, you should end up with a watchface looking like this:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/2-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/2-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/2-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<h2 id="first-steps" class="anchor">First Steps</h2><p>To continue from the last part, you can either modify your existing Pebble
+project or create a new one, using the code from that project&#39;s main <code>.c</code> file
+as a starting template. For reference, that should look
+<a href="https://gist.github.com/pebble-gists/9b9d50b990d742a3ae34" title="" class="">something like this</a>.</p><p class="platform-specific" data-sdk-platform="cloudpebble">You can create a new CloudPebble project from this template by
+<a href="https://cloudpebble.net/ide/gist/9b9d50b990d742a3ae34" title="" class="">clicking here</a>.</p><p>The result of the first part should look something like this - a basic time
+display:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-time~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-time~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-time~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>Let&#39;s improve it!</p><h2 id="adding-a-custom-font" class="anchor">Adding a Custom Font</h2><p class="platform-specific" data-sdk-platform="cloudpebble">To add a custom font resource to use for the time display <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>,
+click &#39;Add New&#39; on the left of the CloudPebble editor. Set the &#39;Resource Type&#39;
+to &#39;TrueType font&#39; and upload a font file. Choose an &#39;Identifier&#39;, which is the
+value we will use to refer to the font resource in the <code>.c</code> file. This must end
+with the desired font size, which must be small enough to show a wide time such
+as &#39;23:50&#39; in the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. If it does not fit, you can always return here
+to try another size. Click save and the font will be added to your project.</p><p class="platform-specific" data-sdk-platform="local">App resources (fonts and images etc.) are managed in the <code>package.json</code>
+file in the project&#39;s root directory, as detailed in
+<a href="/guides/app-resources/" title="" class=""><em>App Resources</em></a>. All image files and fonts must 
+reside in subfolders of the <code>/resources</code> folder of your project. Below is an 
+example entry in the <code>media</code> array:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="s2">&quot;media&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;font&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FONT_PERFECT_DOS_48&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;file&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fonts/perfect-dos-vga.ttf&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;compatibility&quot;</span><span class="o">:</span><span class="s2">&quot;2.7&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p class="platform-specific" data-sdk-platform="local">In the example above, we would place our <code>perfect-dos-vga.ttf</code> file in the
+<code>/resources/fonts/</code> folder of our project.</p><p>A custom font file must be a
+<a href="http://en.wikipedia.org/wiki/TrueType" title="" class="">TrueType</a> font in the <code>.ttf</code> file format.
+<a href="/assets/fonts/getting-started/watchface-tutorial/perfect-dos-vga.ttf" title="" class="">Here is an example font to use</a>
+(<a href="http://www.dafont.com/perfect-dos-vga-437.font" title="" class="">source</a>).</p><p>Now we will substitute the system font used before (<code>FONT_KEY_BITHAM_42_BOLD</code>)
+for our newly imported one.</p><p>To do this, we will declare a <a href="/docs/c/Graphics/Fonts/#GFont" title="GFont" class="link--docs"><code>GFont</code></a> globally.</p><div class="highlight"><pre><span class="c1">// Declare globally</span>
+<span class="k">static</span> <span class="n">GFont</span> <span class="n">s_time_font</span><span class="p">;</span>
+</pre></div><p>Next, we add the creation and substitution of the new <a href="/docs/c/Graphics/Fonts/#GFont" title="GFont" class="link--docs"><code>GFont</code></a> in the existing
+call to <a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_set_font" title="text_layer_set_font" class="link--docs"><code>text_layer_set_font()</code></a> in <code>main_window_load()</code>. Shown here is an
+example identifier used when uploading the font earlier, <code>FONT_PERFECT_DOS_48</code>,
+which is always pre-fixed with <code>RESOURCE_ID_</code>:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">main_window_load</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="c1">// Create GFont</span>
+  <span class="n">s_time_font</span> <span class="o">=</span> <span class="n">fonts_load_custom_font</span><span class="p">(</span><span class="n">resource_get_handle</span><span class="p">(</span><span class="n">RESOURCE_ID_FONT_PERFECT_DOS_48</span><span class="p">));</span>
+
+  <span class="c1">// Apply to TextLayer</span>
+  <span class="n">text_layer_set_font</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="n">s_time_font</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div><p>And finally, safe destruction of the <a href="/docs/c/Graphics/Fonts/#GFont" title="GFont" class="link--docs"><code>GFont</code></a> in <code>main_window_unload()</code>:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">main_window_unload</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="c1">// Unload GFont</span>
+  <span class="n">fonts_unload_custom_font</span><span class="p">(</span><span class="n">s_time_font</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div><p class="platform-specific" data-sdk-platform="cloudpebble">After re-compiling and re-installing (either by using the green &#39;Play&#39;
+button to the top right of the CloudPebble editor, or by clicking &#39;Run Build&#39;
+and &#39;Install and Run&#39; on the &#39;Compilation&#39; screen), the watchface should feature
+a much more interesting font.</p><p class="platform-specific" data-sdk-platform="local">After re-compiling and re-installing with <code>pebble build &amp;&amp; pebble install</code>,
+the watchface should feature a much more interesting font.</p><p>An example screenshot is shown below:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/2-custom-font~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/2-custom-font~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/2-custom-font~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<h2 id="adding-a-bitmap" class="anchor">Adding a Bitmap</h2><p>The Pebble SDK also allows you to use a 2-color (black and white) bitmap image
+in your watchface project. You can ensure that you meet this requirement by
+checking the export settings in your graphics package, or by purely using only
+white (<code>#FFFFFF</code>) and black (<code>#000000</code>) in the image&#39;s creation. Another
+alternative is to use a dithering tool such as
+<a href="http://2002-2010.tinrocket.com/software/hyperdither/index.html" title="" class="">HyperDither</a>.
+This will be loaded from the watchface&#39;s resources into a <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> data
+structure before being displayed using a <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> element. These two
+behave in a similar fashion to <a href="/docs/c/Graphics/Fonts/#GFont" title="GFont" class="link--docs"><code>GFont</code></a> and <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>, so let&#39;s get
+started.</p><p class="platform-specific" data-sdk-platform="cloudpebble">The first step is the same as using a custom font; import the bitmap into
+CloudPebble as a resource by clicking &#39;Add New&#39; next to &#39;Resources&#39; on the left
+of the CloudPebble project screen. Ensure the &#39;Resource Type&#39; is &#39;Bitmap image&#39;,
+choose an identifier for the resource and upload your file.</p><p class="platform-specific" data-sdk-platform="local">You add a bitmap to the <code>package.json</code> file in the
+<a href="/guides/app-resources/fonts" title="" class="">same way</a> as a font, except the new <code>media</code> array
+object will have a <code>type</code> of <code>bitmap</code>. Below is an example:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bitmap&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;IMAGE_BACKGROUND&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;file&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;images/background.png&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As before, here is an example bitmap we have created for you to use, which looks
+like this:</p><p><a href="/assets/images/getting-started/watchface-tutorial/background.png" title="" class=""><img src="/assets/images/getting-started/watchface-tutorial/background.png" title="background" alt="background" /></a></p><p>Once this has been added to the project, return to your <code>.c</code> file and declare
+two more pointers, one each of <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> and <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> near the top of
+the file:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">BitmapLayer</span> <span class="o">*</span><span class="n">s_background_layer</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">GBitmap</span> <span class="o">*</span><span class="n">s_background_bitmap</span><span class="p">;</span>
+</pre></div><p>Now we will create both of these in <code>main_window_load()</code>. After both elements
+are created, we set the <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> to use our <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> and then add it
+as a child of the main <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> as we did for the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>.</p><p>However, is should be noted that the <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> must be added to the
+<a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> before the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. This will ensure that the text is drawn <em>on
+top of</em> the image. Otherwise, the text will be drawn behind the image and remain
+invisible to us. Here is that process in full, to be as clear as possible:</p><div class="highlight"><pre><span class="c1">// Create GBitmap</span>
+<span class="n">s_background_bitmap</span> <span class="o">=</span> <span class="n">gbitmap_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_IMAGE_BACKGROUND</span><span class="p">);</span>
+
+<span class="c1">// Create BitmapLayer to display the GBitmap</span>
+<span class="n">s_background_layer</span> <span class="o">=</span> <span class="n">bitmap_layer_create</span><span class="p">(</span><span class="n">bounds</span><span class="p">);</span>
+
+<span class="c1">// Set the bitmap onto the layer and add to the window</span>
+<span class="n">bitmap_layer_set_bitmap</span><span class="p">(</span><span class="n">s_background_layer</span><span class="p">,</span> <span class="n">s_background_bitmap</span><span class="p">);</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_layer</span><span class="p">,</span> <span class="n">bitmap_layer_get_layer</span><span class="p">(</span><span class="n">s_background_layer</span><span class="p">));</span>
+</pre></div><p>As always, the final step should be to ensure we free up the memory consumed by
+these new elements in <code>main_window_unload()</code>:</p><div class="highlight"><pre><span class="c1">// Destroy GBitmap</span>
+<span class="n">gbitmap_destroy</span><span class="p">(</span><span class="n">s_background_bitmap</span><span class="p">);</span>
+
+<span class="c1">// Destroy BitmapLayer</span>
+<span class="n">bitmap_layer_destroy</span><span class="p">(</span><span class="n">s_background_layer</span><span class="p">);</span>
+</pre></div><p>The final step is to set the background color of the main <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> to match
+the background image. Do this in <code>init()</code>:</p><div class="highlight"><pre><span class="n">window_set_background_color</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">);</span>
+</pre></div><p>With all this in place, the example background image should nicely frame the
+time and match the style of the new custom font. Of course, if you have used
+your own font and bitmap (highly recommended!) then your watchface will not look
+exactly like this.</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/2-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/2-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/2-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<h2 id="conclusion" class="anchor">Conclusion</h2><p>After adding a custom font and a background image, our new watchface now looks
+much nicer. If you want to go a bit further, try adding a new <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> in
+the same way as the time display one to show the current date (hint: look at the
+<a href="http://www.cplusplus.com/reference/ctime/strftime/" title="" class="">formatting options</a>
+available for <code>strftime()</code>!)</p><p>As with last time, you can compare your own code to the example source code
+using the button below.</p><p class="platform-specific" data-sdk-platform="cloudpebble"><a href="https://cloudpebble.net/ide/gist/d216d9e0b840ed296539" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">Edit in CloudPebble</a></p><p class="platform-specific" data-sdk-platform="local"><a href="https://gist.github.com/d216d9e0b840ed296539" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">View Source Code</a></p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>The next section of the tutorial will introduce PebbleKit JS for adding
+web-based content to your watchface.</p><p><a href="/tutorials/watchface-tutorial/part3/" title="" class="btn btn--markdown btn--wide btn--bg-dark-red btn--fg-white">Go to Part 3 &rarr;</a></p>
+      </div>
+    </div>
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#first-steps">First Steps</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#adding-a-custom-font">Adding a Custom Font</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#adding-a-bitmap">Adding a Bitmap</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
+    
+  </ul>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

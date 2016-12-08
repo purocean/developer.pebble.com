@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Public Web API // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to push Pebble timeline data to an app's users using the public web API.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/pebble-timeline/timeline-public/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/pin-structure/"><span>Creating Pins</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-libraries/"><span>Libraries for Pushing Pins</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-js/"><span>Managing Subscriptions</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/pebble-timeline/timeline-public/"><span>Public Web API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-architecture/"><span>Service Architecture</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="pushing-pins">Pushing Pins</option>
+          
+            <option value="create-a-pin">- Create a Pin</option>
+          
+            <option value="curl-example">- - Curl Example</option>
+          
+            <option value="update-a-pin">- Update a Pin</option>
+          
+            <option value="curl-example">- - Curl Example</option>
+          
+            <option value="delete-a-pin">- Delete a Pin</option>
+          
+            <option value="curl-example">- - Curl Example</option>
+          
+            <option value="shared-pins">Shared Pins</option>
+          
+            <option value="create-a-shared-pin">- Create a Shared Pin</option>
+          
+            <option value="curl-example">- - Curl Example</option>
+          
+            <option value="delete-a-shared-pin">- Delete a Shared Pin</option>
+          
+            <option value="curl-example">- - Curl Example</option>
+          
+            <option value="listing-topic-subscriptions">Listing Topic Subscriptions</option>
+          
+            <option value="curl-example">- - Curl Example</option>
+          
+            <option value="pin-time-limitations">Pin Time Limitations</option>
+          
+            <option value="error-handling">Error Handling</option>
+          
+            <option value="rate-limiting">Rate Limiting</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Public Web API</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>While users can register subscriptions and receive data from the timeline using
+the PebbleKit JS subscriptions API 
+(detailed in <a href="/guides/pebble-timeline/timeline-js/"><em>Managing Subscriptions</em></a>), app developers can
+use the public timeline web API to provide that data by pushing pins. Developers
+will need to create a simple web server to enable them to process and send the
+data they want to display in the timeline. Each pin represents a specific event
+in the past or the future, and will be shown on the watch once pushed to the
+public timeline web API and automatically synchronized with the watch via the
+Pebble mobile applications.</p><p>The Pebble SDK emulator supports the timeline and automatically synchronizes
+every 30 seconds.</p><h2 id="pushing-pins" class="anchor">Pushing Pins</h2><p>Developers can push data to the timeline using their own backend servers. Pins
+are created and updated using HTTPS requests to the Pebble timeline web API.</p>
+<blockquote>
+<p>Pins pushed to the Pebble timeline web API may take <strong>up to</strong> 15 minutes to
+appear on a user&#39;s watch. Although most pins can arrive faster than this, we
+recommend developers do not design apps that rely on near-realtime updating of
+pins.</p></blockquote>
+<h3 id="create-a-pin" class="anchor">Create a Pin</h3><p>To create a pin, send a <code>PUT</code> request to the following URL scheme, where <code>ID</code> is
+the <code>id</code> of the pin object. For example &#39;reservation-1395203&#39;:</p><div class="highlight"><pre>PUT https://timeline-api.getpebble.com/v1/user/pins/ID
+</pre></div><p>Use the following headers, where <code>X-User-Token</code> is the user&#39;s
+timeline token (read 
+<a href="/guides/pebble-timeline/timeline-js/#get-a-timeline-token"><em>Get a Timeline Token</em></a> 
+to learn how to get a token):</p><div class="highlight"><pre>Content-Type: application/json
+X-User-Token: a70b23d3820e9ee640aeb590fdf03a56
+</pre></div><p>Include the JSON object as the request body from a file such as <code>pin.json</code>. A
+sample of an object is shown below:</p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"reservation-1395203"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2014-03-07T08:01:10.229Z"</span><span class="p">,</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"shortTitle"</span><span class="p">:</span> <span class="s2">"Dinner at La Fondue"</span><span class="p">,</span>
+    <span class="err">...</span>
+  <span class="p">},</span>
+  <span class="err">...</span>
+<span class="p">}</span>
+</pre></div><h4 id="curl-example" class="anchor">Curl Example</h4><div class="highlight"><pre><span class="nv">$ </span>curl -X PUT https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203 <span class="se">\</span>
+    --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    --header <span class="s2">"X-User-Token: a70b23d3820e9ee640aeb590fdf03a56"</span> <span class="se">\</span>
+    -d @pin.json
+OK
+</pre></div><h3 id="update-a-pin" class="anchor">Update a Pin</h3><p>To update a pin, send a <code>PUT</code> request with a new JSON object with the <strong>same
+<code>id</code></strong>.</p><div class="highlight"><pre>PUT https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203
+
+</pre></div><p>Remember to include the user token in the headers.</p><div class="highlight"><pre>X-User-Token: a70b23d3820e9ee640aeb590fdf03a56
+</pre></div><p>When an update to an existing pin is issued, it replaces the original
+pin entirely, so all fields (including those that have not changed) should be
+included. The example below shows an event updated with a new <code>time</code>:</p><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"reservation-1395203"</span><span class="p">,</span>
+    <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2014-03-07T09:01:10.229Z"</span><span class="p">,</span>
+    <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"shortTitle"</span><span class="p">:</span> <span class="s2">"Dinner at La Fondue"</span><span class="p">,</span>
+      <span class="err">...</span>
+    <span class="p">},</span>
+    <span class="err">...</span>
+<span class="p">}</span>
+</pre></div><h4 id="curl-example" class="anchor">Curl Example</h4><div class="highlight"><pre><span class="nv">$ </span>curl -X PUT https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203 <span class="se">\</span>
+    --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    --header <span class="s2">"X-User-Token: a70b23d3820e9ee640aeb590fdf03a56"</span> <span class="se">\</span>
+    -d @pin.json
+OK
+</pre></div><h3 id="delete-a-pin" class="anchor">Delete a Pin</h3><p>Delete a pin by issuing a HTTP <code>DELETE</code> request.</p><div class="highlight"><pre>DELETE https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203
+</pre></div><p>Remember to include the user token in the headers.</p><div class="highlight"><pre>X-User-Token: a70b23d3820e9ee640aeb590fdf03a56
+</pre></div><p>This pin will then be removed from that timeline on the user&#39;s watch.
+In some cases it may be preferred to simply update a pin with a cancelled
+event&#39;s details so that it can remain visible and useful to the user.</p><h4 id="curl-example" class="anchor">Curl Example</h4><div class="highlight"><pre><span class="nv">$ </span>curl -X DELETE https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203 <span class="se">\</span>
+    --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    --header <span class="s2">"X-User-Token: a70b23d3820e9ee640aeb590fdf03a56"</span>
+OK
+</pre></div><h2 id="shared-pins" class="anchor">Shared Pins</h2><h3 id="create-a-shared-pin" class="anchor">Create a Shared Pin</h3><p>It is possible to send a pin (and updates) to multiple users at once by
+modifying the <code>PUT</code> header to include <code>X-Pin-Topics</code> (the topics a user must be
+subscribed to in order to receive this pin) and <code>X-API-Key</code> (issued by the
+<a href="https://dev-portal.getpebble.com/" title="" class="">Developer Portal</a>). In this case, the URL is
+also modified:</p><div class="highlight"><pre>PUT /v1/shared/pins/giants-game-1
+</pre></div><p>The new headers:</p><div class="highlight"><pre>Content-Type: application/json
+X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9
+X-Pin-Topics: giants,redsox,baseball
+</pre></div><p>The pin body remains the same:</p><div class="highlight"><pre><span class="p">{</span>
+    <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"giants-game-1"</span><span class="p">,</span>
+    <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2014-03-07T10:01:10.229Z"</span><span class="p">,</span>
+    <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Giants vs Red Sox: 5-3"</span><span class="p">,</span>
+      <span class="err">...</span>
+    <span class="p">},</span>
+    <span class="err">...</span>
+<span class="p">}</span>
+</pre></div><h4 id="curl-example" class="anchor">Curl Example</h4><div class="highlight"><pre><span class="nv">$ </span>curl -X PUT https://timeline-api.getpebble.com/v1/shared/pins/giants-game-1 <span class="se">\</span>
+    --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    --header <span class="s2">"X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9"</span> <span class="se">\</span>
+    --header <span class="s2">"X-Pin-Topics: giants,redsox,baseball"</span> <span class="se">\</span>
+    -d @pin.json
+OK
+</pre></div><h3 id="delete-a-shared-pin" class="anchor">Delete a Shared Pin</h3><p>Similar to deleting a user pin, shared pins can be deleted by issuing a <code>DELETE</code>
+request:</p><div class="highlight"><pre>DELETE /v1/shared/pins/giants-game-1
+</pre></div><p>As with creating a shared pin, the API key must also be provided in the request
+headers:</p><div class="highlight"><pre>X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9
+</pre></div><h4 id="curl-example" class="anchor">Curl Example</h4><div class="highlight"><pre><span class="nv">$ </span>curl -X DELETE https://timeline-api.getpebble.com/v1/shared/pins/giants-game-1 <span class="se">\</span>
+    --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+    --header <span class="s2">"X-API-Key: fbbd2e4c5a8e1dbef2b00b97bf83bdc9"</span> <span class="se">\</span>
+OK
+</pre></div><h2 id="listing-topic-subscriptions" class="anchor">Listing Topic Subscriptions</h2><p>Developers can also query the public web API for a given user&#39;s currently
+subscribed pin topics with a <code>GET</code> request:</p><div class="highlight"><pre>GET /v1/user/subscriptions
+</pre></div><p>This requires the user&#39;s timeline token:</p><div class="highlight"><pre>X-User-Token: a70b23d3820e9ee640aeb590fdf03a56
+</pre></div><h4 id="curl-example" class="anchor">Curl Example</h4><div class="highlight"><pre><span class="nv">$ </span>curl -X GET https://timeline-api.getpebble.com/v1/user/subscriptions <span class="se">\</span>
+    --header <span class="s2">"X-User-Token: a70b23d3820e9ee640aeb590fdf03a56"</span> <span class="se">\</span>
+</pre></div><p>The response will be a JSON object containing an array of topics the user is
+currently subscribed to for that app:</p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"topics"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"topic1"</span><span class="p">,</span>
+    <span class="s2">"topic2"</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div><h2 id="pin-time-limitations" class="anchor">Pin Time Limitations</h2><p>The <code>time</code> property on a pin pushed to the public API must not be more than two
+days in the past, or a year in the future. The same condition applies to the
+<code>time</code> associated with a pin&#39;s reminders and notifications.</p><p>Any pins that fall outside these conditions may be rejected by the web API. In
+addition, the actual range of events shown on the watch may be different under
+some conditions.</p><p>For shared pins, the date and time of an event will vary depending on the user&#39;s
+timezone.</p><h2 id="error-handling" class="anchor">Error Handling</h2><p>In the event of an error pushing a pin, the public timeline API will return one
+of the following responses.</p>
+<table><thead>
+<tr>
+<th>HTTP Status</th>
+<th>Response Body</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>None</td>
+<td>Success.</td>
+</tr>
+<tr>
+<td>400</td>
+<td><code>{ &quot;errorCode&quot;: &quot;INVALID_JSON&quot; }</code></td>
+<td>The pin object submitted was invalid.</td>
+</tr>
+<tr>
+<td>403</td>
+<td><code>{ &quot;errorCode&quot;: &quot;INVALID_API_KEY&quot; }</code></td>
+<td>The API key submitted was invalid.</td>
+</tr>
+<tr>
+<td>410</td>
+<td><code>{ &quot;errorCode&quot;: &quot;INVALID_USER_TOKEN&quot; }</code></td>
+<td>The user token has been invalidated, or does not exist. All further updates with this user token will fail. You should not send further updates for this user token. A user token can become invalidated when a user uninstalls an app for example.</td>
+</tr>
+<tr>
+<td>429</td>
+<td><code>{ &quot;errorCode&quot;: &quot;RATE_LIMIT_EXCEEDED&quot; }</code></td>
+<td>Server is sending updates too quickly, and has been rate limited (see <a href="#rate-limiting" title="" class=""><em>Rate Limiting</em></a> below).</td>
+</tr>
+<tr>
+<td>503</td>
+<td><code>{ &quot;errorCode&quot;: &quot;SERVICE_UNAVAILABLE&quot; }</code></td>
+<td>Could not save pin due to a temporary server error.</td>
+</tr>
+</tbody></table>
+<h2 id="rate-limiting" class="anchor">Rate Limiting</h2><p>For requests using API Keys, developers can make up to 5000 requests per minute.
+For requests using User Tokens, up to 300 requests every 15 minutes can be made.
+Check the returned HTTP headers of any API request to see the current rate limit
+status:</p><div class="highlight"><pre>$ curl -i https://timeline-api.getpebble.com/v1/user/pins/reservation-1395203
+
+HTTP/1.1 429 OK
+date: Wed, 13 May 2015 21:36:58 GMT
+x-ratelimit-percent: 100
+retry-after: 43
+</pre></div><p>The headers contain information about the current rate limit status:</p>
+<table><thead>
+<tr>
+<th>Header Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>x-ratelimit-percent</code></td>
+<td>The percentage of the rate limit currently utilized.</td>
+</tr>
+<tr>
+<td><code>retry-after</code></td>
+<td>When <code>x-ratelimit-percent</code> has reached <code>100</code>, this header will be set to the number of seconds after which the rate limit will reset.</td>
+</tr>
+</tbody></table>
+<p>When the rate limit is exceeded, the response body also reports the error:</p><div class="highlight"><pre>{ "errorCode":"RATE_LIMIT_EXCEEDED" }
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/pebble-timeline/timeline-public/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#pushing-pins">Pushing Pins</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#create-a-pin">Create a Pin</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#curl-example">Curl Example</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#update-a-pin">Update a Pin</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#curl-example">Curl Example</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#delete-a-pin">Delete a Pin</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#curl-example">Curl Example</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#shared-pins">Shared Pins</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#create-a-shared-pin">Create a Shared Pin</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#curl-example">Curl Example</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#delete-a-shared-pin">Delete a Shared Pin</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#curl-example">Curl Example</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#listing-topic-subscriptions">Listing Topic Subscriptions</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#curl-example">Curl Example</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pin-time-limitations">Pin Time Limitations</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#error-handling">Error Handling</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#rate-limiting">Rate Limiting</a></li>
+    
+  </ul>
+
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/hello-timeline" target="_blank">Hello Timeline</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/timeline-tv-tracker" target="_blank">Timeline TV Tracker</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/timeline-push-pin" target="_blank">Timeline Push Pin</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

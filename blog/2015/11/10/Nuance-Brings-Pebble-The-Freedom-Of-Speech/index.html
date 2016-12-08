@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Nuance Brings Pebble The Freedom Of Speech // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2015/11/10/Nuance-Brings-Pebble-The-Freedom-Of-Speech/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="the-pebble-dictation-process">The Pebble Dictation Process</option>
+          
+            <option value="but-how-does-it-actually-work">But How Does It Actually Work?</option>
+          
+            <option value="about-the-dictation-api">About the Dictation API</option>
+          
+            <option value="voice-enabled-watchapps">Voice-enabled Watchapps</option>
+          
+            <option value="final-thoughts">Final Thoughts</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Nuance Brings Pebble The Freedom Of Speech</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>10 November 2015</li>
+    <li><a href="/blog/authors/jonb/">Jon Barlow</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </li>
+    <li><a href="/blog/2015/11/10/Nuance-Brings-Pebble-The-Freedom-Of-Speech/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p>In October, we gave developers access to the microphone in the Pebble Time via
+our new
+<a href="/docs/c/Foundation/Dictation/" title="Dictation" class="link--docs">Dictation API</a>,
+and almost instantly we began seeing awesome projects utilising speech input.
+Voice recognition is an exciting new method of interaction for Pebble and it has
+created an opportunity for developers to enhance their existing applications, or
+create highly engaging new applications designed around the spoken word.</p><p>Speech-to-text has been integrated with Pebble by using the
+<a href="http://www.nuance.com/for-business/automatic-speech-recognition/automated-ivr/index.htm" title="" class="">Recognizer</a>
+cloud service from Nuance, a leading provider of voice and language solutions.</p><h2 id="the-pebble-dictation-process" class="anchor">The Pebble Dictation Process</h2><p>The Dictation API has been made incredibly easy for developers to integrate into
+their watchapps. It’s also intuitive and simple for users to interact with.
+Here’s an overview of the the dictation process:</p>
+<ol>
+<li><p>The user begins by pressing a designated button or by triggering an event
+within the watchapp to indicate they want to start dictating. The watchapp’s
+UI should make this obvious.</p></li>
+<li><p>The watchapp
+<a href="/docs/c/Foundation/Dictation/#dictation_session_start" title="" class="">initiates a dictation session</a>,
+assigning a
+<a href="/docs/c/Foundation/Dictation/#DictationSessionStatusCallback" title="" class="">callback function</a>
+to handle the response from the system. This response will be either
+successful and return the dictated string, or fail with an error code.</p></li>
+<li><p>The system Dictation UI appears and guides the user through recording their
+voice. The stages in the image below illustrate:</p><p>a. The system prepares its buffers and checks connectivity with the cloud
+   service.</p><p>b. The system begins listening for speech and automatically stops listening
+   when the user finishes talking.</p><p>c. The audio is compressed and sent to the cloud service via the mobile
+   application.</p><p>d. The audio is transcribed by the cloud service and the transcribed text is
+   returned and displayed for the user to accept or reject (this behaviour
+   can be
+   <a href="/docs/c/Foundation/Dictation/#dictation_session_enable_confirmation" title="" class="">programmatically overridden</a>).</p></li>
+<li><p>Once the process has completed, the registered callback method is fired and
+the watchapp can deal with the response.</p></li>
+</ol>
+<p><img src="/assets/images/blog/dictation-flow.png" alt="dictation-flow" /></p><h2 id="but-how-does-it-actually-work" class="anchor">But How Does It Actually Work?</h2><p>Let’s take a closer look at what’s happening behind the scenes to see what’s
+really going on.</p><p><img src="/assets/images/blog/dictation-recognizer.png" alt="dictation-recognizer" /></p>
+<ol>
+<li><p>To capture audio, Pebble Time (including Time Steel and Time Round) has a
+single <a href="https://en.wikipedia.org/wiki/Microelectromechanical_systems" title="" class="">MEMS</a>
+microphone. This device produces output at 1 MHz in a
+<a href="https://en.wikipedia.org/wiki/Pulse-density_modulation" title="" class="">PDM</a> format.</p></li>
+<li><p>This 1 bit PDM signal needs to be converted into 16-bit
+<a href="https://en.wikipedia.org/wiki/Pulse-code_modulation" title="" class="">PCM</a> data at 16 kHz
+before it can be compressed.</p></li>
+<li><p>Compression is performed using the <a href="http://www.speex.org/" title="" class="">Speex</a> encoder,
+which was specifically designed for speech compression. Compression needs to
+occur in order to reduce the overall size of the data before it’s transferred
+via bluetooth to the mobile application. Speex also has some additional
+advantages like tuneable quality/compression and recovery from dropped
+frames.</p></li>
+<li><p>The mobile application sends the compressed data to Nuance Recognizer, along
+with some additional information like the user’s selected language.</p></li>
+<li><p>Nuance performs its magic and returns the textual representation of the
+spoken phrase to the mobile application, which is then automatically passed
+back to the watchapp.</p></li>
+<li><p>The Dictation UI presents the transcribed text back to the user where they
+can choose to accept or reject it.</p></li>
+</ol>
+<h2 id="about-the-dictation-api" class="anchor">About the Dictation API</h2><p>Behind the scenes there’s a lot going on, but let’s take a look at how minimal
+the code needs to be in order to use the API.</p>
+<ol>
+<li><p>Create a static variable as a reference to the dictation session:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">DictationSession</span> <span class="o">*</span><span class="n">s_dictation_session</span><span class="p">;</span>
+</pre></div></li>
+<li><p>Create a callback function to receive the dictation response:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">dictation_session_callback</span><span class="p">(</span><span class="n">DictationSession</span> <span class="o">*</span><span class="n">session</span><span class="p">,</span> <span class="n">DictationSessionStatus</span> <span class="n">status</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">transcription</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">DictationSessionStatusSuccess</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_DEBUG</span><span class="p">,</span> <span class="s">"Transcription:</span><span class="se">\n\n</span><span class="s">%s"</span><span class="p">,</span> <span class="n">transcription</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_DEBUG</span><span class="p">,</span> <span class="s">"Transcription failed.</span><span class="se">\n\n</span><span class="s">Error ID:</span><span class="se">\n</span><span class="s">%d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">status</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div></li>
+<li><p>Within a button click or other event, create a <a href="/docs/c/Foundation/Dictation/#DictationSession" title="DictationSession" class="link--docs"><code>DictationSession</code></a> to begin
+the process:</p><div class="highlight"><pre><span class="n">s_dictation_session</span> <span class="o">=</span> <span class="n">dictation_session_create</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">dictation_session_callback</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div></li>
+<li><p>Before your app exits, don’t forget to destroy the session:</p><div class="highlight"><pre><span class="n">dictation_session_destroy</span><span class="p">(</span><span class="n">s_dictation_session</span><span class="p">);</span>
+</pre></div></li>
+</ol>
+<h2 id="voice-enabled-watchapps" class="anchor">Voice-enabled Watchapps</h2><p>Here’s a small sample of some of the watchapps which are already available in
+the Pebble appstore which utilise the Dictation API.</p>
+<ul>
+<li><p><a href="http://apps.getpebble.com/en_US/application/561f9188bcb7ac903a00005b" title="" class="">Voice2Timeline</a>
+is a handy tool for quickly creating pins on your timeline by using your
+voice. It already works in 6 different languages. You can leave notes in the
+past, or even create reminders for the future (e.g. “Don’t forget the milk in
+1 hour”).</p></li>
+<li><p><a href="http://apps.getpebble.com/en_US/application/561ff3cbbcb7aca6250000a3" title="" class="">Translate (Vox Populi)</a>
+allows a user to translate short phrases and words into a different language.
+It uses the <a href="https://translate.yandex.com/" title="" class="">Yandex</a> machine translator API
+which supports more than 60 different languages.</p></li>
+<li><p><a href="http://apps.getpebble.com/en_US/application/5620e876768e7ada4e00007a" title="" class="">Checklist</a>
+is a really simple tool which generates a list of items using your voice. It
+even allows you to enter multiple items at once, by specifying a comma or
+period. You can easily mark them as completed by pressing the ‘select’ button
+on each item.</p></li>
+<li><p><a href="https://itunes.apple.com/gb/app/smartwatch-pro-for-pebble/id673907094?mt=8" title="" class="">Smartwatch Pro</a>
+(iOS) has been updated to give users voice controlled music playback, create
+reminders and even create tweets by using their voice.</p></li>
+</ul>
+<h2 id="final-thoughts" class="anchor">Final Thoughts</h2><p>Why not also checkout this video of Andrew Stapleton (Embedded Developer) as he 
+deep dives into the internals of the Pebble Dictation API during his presentation 
+at the <a href="/community/events/developer-retreat-2015/" title="" class="">Pebble Developer Retreat 2015</a>.</p><p><div class="embed embed--youtube"><div class="video-wrapper"><iframe width="640" height="360" frameborder="0" allowfullscreen src="//www.youtube.com/embed/D-8Ng24RXwo?rel=0" ></iframe></div></div></p><p>We hope you’ve seen how flexible and easy it is to use the new Dictation API,
+and perhaps it will inspire you to integrate voice into your own application or
+watchface - if you create a voice enabled watchapp, let us know by tweeting
+<a href="https://twitter.com/pebbledev" title="" class="">@pebbledev</a>.</p><p>If you’re looking to find out more about voice integration, checkout our
+<a href="/guides/events-and-services/dictation/" title="" class="">developer guide</a>,
+<a href="/docs/c/Foundation/Dictation/" title="Dictation" class="link--docs">API documentation</a>
+and our
+<a href="https://github.com/pebble-examples/simple-voice-demo" title="" class="">simple example app</a>. We
+also have a very friendly and helpful Pebble community on Discord; why not
+<a href="http://discord.gg/aRUAYFN" title="" class="">join us</a>?</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2015/11/10/Nuance-Brings-Pebble-The-Freedom-Of-Speech/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#the-pebble-dictation-process">The Pebble Dictation Process</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#but-how-does-it-actually-work">But How Does It Actually Work?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#about-the-dictation-api">About the Dictation API</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#voice-enabled-watchapps">Voice-enabled Watchapps</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#final-thoughts">Final Thoughts</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                <strong>Freshly Baked</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                <strong>Jon Barlow</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

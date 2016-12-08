@@ -1,0 +1,4295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>HealthService // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/Foundation/Event_Service/HealthService/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem active"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum">health_service_sum</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum_today">health_service_sum_today</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum_averaged">health_service_sum_averaged</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_peek_current_activities">health_service_peek_current_activities</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_activities_iterate">health_service_activities_iterate</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_accessible">health_service_metric_accessible</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_averaged_accessible">health_service_metric_averaged_accessible</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_any_activity_accessible">health_service_any_activity_accessible</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_events_subscribe">health_service_events_subscribe</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_events_unsubscribe">health_service_events_unsubscribe</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_get_minute_history">health_service_get_minute_history</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_get_measurement_system_for_display">health_service_get_measurement_system_for_display</option>
+
+
+
+          
+<option value="#structs">DATA STRUCTURES</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthMinuteData">HealthMinuteData</option>
+
+
+
+          
+
+          
+<option value="#enums">ENUMS</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthAggregation">HealthAggregation</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthActivity">HealthActivity</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthIterationDirection">HealthIterationDirection</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthEventType">HealthEventType</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#AmbientLightLevel">AmbientLightLevel</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#MeasurementSystem">MeasurementSystem</option>
+
+
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthMetricAlert">HealthMetricAlert</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityIteratorCB">HealthActivityIteratorCB</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthEventHandler">HealthEventHandler</option>
+
+
+
+          
+<option value="#defines">MACRO DEFINTIONS</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_peek_current_value">health_service_peek_current_value</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_aggregate_averaged">health_service_aggregate_averaged</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMaskAll">HealthActivityMaskAll</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_aggregate_averaged_accessible">health_service_metric_aggregate_averaged_accessible</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_set_heart_rate_sample_period">health_service_set_heart_rate_sample_period</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_get_heart_rate_sample_period_expiration_sec">health_service_get_heart_rate_sample_period_expiration_sec</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_register_metric_alert">health_service_register_metric_alert</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#health_service_cancel_metric_alert">health_service_cancel_metric_alert</option>
+
+  <option value="/docs/c/Foundation/Event_Service/HealthService/#PBL_IF_HEALTH_ELSE">PBL_IF_HEALTH_ELSE</option>
+
+
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">HealthService</h1>
+
+      <p>Get access to health information like step count, sleep totals, etc. </p>
+      <p>The HealthService provides your app access to the step count and sleep activity of the user. </p>
+
+      
+
+      
+
+
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="health_service_sum">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1ga3d3db71ea01c7346038ef4de2c9e6869" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a> </span><span class="docs__item__name">health_service_sum</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return the sum of a <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a>'s values over a time range. The <code>time_start</code> and <code>time_end</code> parameters define the range of time you want the sum for. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>The value returned will be an average since midnight, weighted for the length of the specified time range. This may change in the future. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query for data. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>UTC time of the earliest data item to incorporate into the sum. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>UTC time of the most recent data item to incorporate into the sum. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The sum of that metric over the given time range, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1ga3d3db71ea01c7346038ef4de2c9e6869" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a> </span><span class="docs__item__name">health_service_sum</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return the sum of a <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a>'s values over a time range. The <code>time_start</code> and <code>time_end</code> parameters define the range of time you want the sum for. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>The value returned will be based on daily totals, weighted for the length of the specified time range. This may change in the future. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query for data. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>UTC time of the earliest data item to incorporate into the sum. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>UTC time of the most recent data item to incorporate into the sum. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The sum of that metric over the given time range, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_sum_today">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1ga3d3db71ea01c7346038ef4de2c9e6869" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a> </span><span class="docs__item__name">health_service_sum_today</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience wrapper for <a refid="group___health_service_1ga88dd4742916eda84dbf2b15f7171c34c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum">health_service_sum()</a> that returns the sum for today. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query for data. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The sum of that metric's data for today, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1ga3d3db71ea01c7346038ef4de2c9e6869" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a> </span><span class="docs__item__name">health_service_sum_today</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience wrapper for <a refid="group___health_service_1ga88dd4742916eda84dbf2b15f7171c34c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum">health_service_sum()</a> that returns the sum for today. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The sum of that metric's data for today, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_sum_averaged">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1ga3d3db71ea01c7346038ef4de2c9e6869" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a> </span><span class="docs__item__name">health_service_sum_averaged</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> scope</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return the average value of a metric's sum over a given time range between <code>time_start</code> and <code>time_end</code>. Using this call you can specify the time range that you are interested in getting the average for, as well as a <code>scope</code> specifier on how to compute that average. For example, if you want to get the average number of steps taken from 12 AM (midnight) to 9 AM across all days you would specify: <code>time_t time_start = <ref refid="group___standard_time_1gaad04b872745a08a1e531f6590194bd9b" kindref="member">time_start_of_today()</ref></code>, <code>time_t time_end = time_start + (9 * SECONDS_PER_HOUR)</code>, and <code>HealthServiceTimeScope scope = HealthServiceTimeScopeDaily</code>. If you want the average number of steps taken on a weekday (Monday to Friday) and today is a Monday (in the local timezone) you would specify: <code>time_start = <ref refid="group___standard_time_1gaad04b872745a08a1e531f6590194bd9b" kindref="member">time_start_of_today()</ref></code>, <code>time_end = time_start + SECONDS_PER_DAY</code>, and <code>scope = HealthServiceTimeScopeDailyWeekdayOrWeekend</code>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>Which <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> to query. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>UTC time of the start of the query interval. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>UTC time of the end of the query interval. </p></dt>
+  
+  <dt><span style="color: #777"></span> scope</dt>
+  <dd><p><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> value describing how the average should be computed. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The average of the sum of the given metric over the given time range, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1ga3d3db71ea01c7346038ef4de2c9e6869" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a> </span><span class="docs__item__name">health_service_sum_averaged</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> scope</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return the value of a metric's sum over a given time range between <code>time_start</code> and <code>time_end</code>. Using this call you can specify the time range that you are interested in getting the average for, as well as a <code>scope</code> specifier on how to compute an average of the sum. For example, if you want to get the average number of steps taken from 12 AM (midnight) to 9 AM across all days you would specify: <code>time_t time_start = <ref refid="group___standard_time_1gaad04b872745a08a1e531f6590194bd9b" kindref="member">time_start_of_today()</ref>;</code> <code>time_t time_end = time_start + (9 * SECONDS_PER_HOUR);</code> <code>HealthValue value = health_service_sum_averaged(HealthMetricStepCount, time_start, time_end, HealthServiceTimeScopeDaily);</code> </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>If you want the average number of steps taken on a weekday (Monday to Friday) and today is a Monday (in the local timezone) you would specify: <code>time_start = <ref refid="group___standard_time_1gaad04b872745a08a1e531f6590194bd9b" kindref="member">time_start_of_today()</ref>;</code> <code>time_end = time_start + SECONDS_PER_DAY;</code> <code>HealthValue value = health_service_sum_averaged(HealthMetricStepCount, time_start, time_end, HealthServiceTimeScopeDailyWeekdayOrWeekend);</code></p>
+<p>Note that this call is the same as calling <code>health_service_aggregate_averaged(metric, time_start, time_end, HealthAggregationSum, scope)</code></p>
+<p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>Which <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> to query. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>UTC time of the start of the query interval. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>UTC time of the end of the query interval. </p></dt>
+  
+  <dt><span style="color: #777"></span> scope</dt>
+  <dd><p><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> value describing how the average should be computed. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The average of the sum of the given metric over the given time range, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_peek_current_activities">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1ga1d5cc8116a00623340c27accec560642" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</a> </span><span class="docs__item__name">health_service_peek_current_activities</span><span>(</span><span class="docs__item__param">void</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return a <a refid="group___health_service_1ga1d5cc8116a00623340c27accec560642" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</a> containing a set of bits, one set for each activity that is currently active. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p>A bitmask with zero or more <a refid="group___health_service_1ga1d5cc8116a00623340c27accec560642" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</a> bits set as appropriate. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_activities_iterate">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">health_service_activities_iterate</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga1d5cc8116a00623340c27accec560642" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</a> activity_mask</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga3e51f2b31333a3a34b9b801c660ba412" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthIterationDirection">HealthIterationDirection</a> direction</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1gaf98531f385662941f139e555825a61aa" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityIteratorCB">HealthActivityIteratorCB</a> callback</span><span>, </span><span class="docs__item__param">void * context</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Iterates backwards or forward within a given time span to list all recorded activities. For example, this can be used to find the last recorded sleep phase or all deep sleep phases in a given time range. Any activity that overlaps with <code>time_start</code> and <code>time_end</code> will be included, even if the start time starts before <code>time_start</code> or end time ends after <code>time_end</code>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> activity_mask</dt>
+  <dd><p>A bitmask containing set of activities you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>UTC time of the earliest time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>UTC time of the latest time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> direction</dt>
+  <dd><p>The direction in which to iterate. </p></dt>
+  
+  <dt><span style="color: #777"></span> callback</dt>
+  <dd><p>Developer-supplied callback that is called for each activity iterated over. </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>Developer-supplied context pointer that is passed to the callback. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_metric_accessible">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a> </span><span class="docs__item__name">health_service_metric_accessible</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Check if a certain combination of metric and time span is accessible by returning a value of <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a>. Developers should check if the return value is <a refid="group___health_service_1ggaf190ee0fcb0c06560199a35156eac226a0701b27f4f15811fb72665286b6eea0c" kindref="member">HealthServiceAccessibilityMaskAvailable</a> before calling any other HealthService APIs that involve the given metric. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query for data. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>Earliest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>Latest UTC time you are interested in. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a> representing the accessible metrics in this time range. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a> </span><span class="docs__item__name">health_service_metric_accessible</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Check if a certain combination of metric and time span is accessible using <a refid="group___health_service_1ga88dd4742916eda84dbf2b15f7171c34c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum">health_service_sum</a> by returning a value of <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a>. Developers should check if the return value is <a refid="group___health_service_1ggaf190ee0fcb0c06560199a35156eac226a0701b27f4f15811fb72665286b6eea0c" kindref="member">HealthServiceAccessibilityMaskAvailable</a> before calling <a refid="group___health_service_1ga88dd4742916eda84dbf2b15f7171c34c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum">health_service_sum</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>Note that this call is the same as calling <code>health_service_metric_averaged_accessible(metric, time_start, time_end, HealthServiceTimeScopeOnce)</code></p>
+<p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query for data. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>Earliest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>Latest UTC time you are interested in. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a> representing the accessible metrics in this time range. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_metric_averaged_accessible">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a> </span><span class="docs__item__name">health_service_metric_averaged_accessible</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> scope</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Check if a certain combination of metric, time span, and scope is accessible for calculating averaged data by returning a value of <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a>. Developers should check if the return value is <a refid="group___health_service_1ggaf190ee0fcb0c06560199a35156eac226a0701b27f4f15811fb72665286b6eea0c" kindref="member">HealthServiceAccessibilityMaskAvailable</a> before calling any other HealthService APIs that involve the given metric with the given scope (like <a refid="group___health_service_1ga648ca6a090db119e09e15bc77b4eb47d" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum_averaged">health_service_sum_averaged</a>). </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query for averaged data. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>Earliest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>Latest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> scope</dt>
+  <dd><p><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> value describing how the average should be computed. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A  value decribing whether averaged data is available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a> </span><span class="docs__item__name">health_service_metric_averaged_accessible</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> scope</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Check if a certain combination of metric, time span, and scope is accessible for calculating summed, averaged data by returning a value of <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a>. Developers should check if the return value is <a refid="group___health_service_1ggaf190ee0fcb0c06560199a35156eac226a0701b27f4f15811fb72665286b6eea0c" kindref="member">HealthServiceAccessibilityMaskAvailable</a> before calling <a refid="group___health_service_1ga648ca6a090db119e09e15bc77b4eb47d" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum_averaged">health_service_sum_averaged</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>Note that this call is the same as calling <code>health_service_metric_aggregate_averaged_accessible(metric, time_start, time_end, HealthAggregationSum, HealthServiceTimeScopeOnce)</code></p>
+<p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query for averaged data. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>Earliest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>Latest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> scope</dt>
+  <dd><p><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> value describing how the average should be computed. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A  value decribing whether averaged data is available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_any_activity_accessible">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a> </span><span class="docs__item__name">health_service_any_activity_accessible</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga1d5cc8116a00623340c27accec560642" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</a> activity_mask</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Check if a certain combination of metric, <a refid="group___health_service_1ga1d5cc8116a00623340c27accec560642" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</a> and time span is accessible. Developers should check if the return value is <a refid="group___health_service_1ggaf190ee0fcb0c06560199a35156eac226a0701b27f4f15811fb72665286b6eea0c" kindref="member">HealthServiceAccessibilityMaskAvailable</a> before calling any other HealthService APIs that involve the given activities. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> activity_mask</dt>
+  <dd><p>A bitmask of activities you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>Earliest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>Latest UTC time you are interested in. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a> representing which of the passed <a refid="group___health_service_1ga1d5cc8116a00623340c27accec560642" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</a> values are available under the given constraints. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_events_subscribe">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">health_service_events_subscribe</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8a371c43a6017bf8423a1bfcdeeb0b58" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthEventHandler">HealthEventHandler</a> handler</span><span>, </span><span class="docs__item__param">void * context</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Subscribe to HealthService events. This allocates a cache on the application's heap of up to 2048 bytes that will be de-allocated if you call <a refid="group___health_service_1gaea64b699d2c04f24c221b2ae11644b38" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_events_unsubscribe">health_service_events_unsubscribe()</a>. If there's not enough heap available, this function will return <code>false</code> and will not subscribe to any events. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> handler</dt>
+  <dd><p>Developer-supplied event handler function. </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>Developer-supplied context pointer. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>true</code> on success, <code>false</code> on failure. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_events_unsubscribe">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">health_service_events_unsubscribe</span><span>(</span><span class="docs__item__param">void</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Unsubscribe from HealthService events. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>true</code> on success, <code>false</code> on failure. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_get_minute_history">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___standard_c_1gad53b3f685c3f3153f35ec87ea6f349d1" kindref="member" href="/docs/c/Standard_C/#uint32_t">uint32_t</a> </span><span class="docs__item__name">health_service_get_minute_history</span><span>(</span><span class="docs__item__param"><a refid="struct_health_minute_data" kindref="compound" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMinuteData">HealthMinuteData</a> * minute_data</span><span>, </span><span class="docs__item__param"><a refid="group___standard_c_1gad53b3f685c3f3153f35ec87ea6f349d1" kindref="member" href="/docs/c/Standard_C/#uint32_t">uint32_t</a> max_records</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> * time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> * time_end</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return historical minute data records. This fills in the <code>minute_data</code> array parameter with minute by minute statistics of the user's steps, average watch orientation, etc. The data is returned in time order, with the oldest minute data returned at <code>minute_data[0]</code>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>If the return value is zero, <code>time_start</code> and <code>time_end</code> are meaningless. It's not guaranteed that all records contain valid data, even if the return value is greater than zero. Check <code><ref refid="struct_health_minute_data_1ab8393912a432b53f7b530011462308d6" kindref="member">HealthMinuteData.is_invalid</ref></code> to see if a given record contains valid data. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> minute_data</dt>
+  <dd><p>Pointer to an array of <a refid="struct_health_minute_data" kindref="compound" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMinuteData">HealthMinuteData</a> records that will be filled in with the historical minute data. </p></dt>
+  
+  <dt><span style="color: #777"></span> max_records</dt>
+  <dd><p>The maximum number of records the <code>minute_data</code> array can hold. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start (inout)</dt>
+  <dd><p>On entry, the UTC time of the first requested record. On exit, the UTC time of the first second of the first record actually returned. If <code>time_start</code> on entry is somewhere in the middle of a minute interval, this function behaves as if the caller passed in the start of that minute. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end (inout)</dt>
+  <dd><p>On entry, the UTC time of the end of the requested range of records. On exit, the UTC time of the end of the last record actually returned (i.e. start time of last record + 60). If <code>time_end</code> on entry is somewhere in the middle of a minute interval, this function behaves as if the caller passed in the end of that minute. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>Actual number of records returned. May be less then the maximum requested. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_get_measurement_system_for_display">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___health_service_1ga5290ef739be94d7ae1cc8ba16bdc808d" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#MeasurementSystem">MeasurementSystem</a> </span><span class="docs__item__name">health_service_get_measurement_system_for_display</span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Get the preferred measurement system for a given <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a>, if the user has chosen a preferred system and it is applicable to that metric. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>A metric value chosen from <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a>. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A value from <a refid="group___health_service_1ga5290ef739be94d7ae1cc8ba16bdc808d" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#MeasurementSystem">MeasurementSystem</a> if applicable, else <a refid="group___health_service_1gga5290ef739be94d7ae1cc8ba16bdc808daf792fca6c330fe27cd69291fb2e41ac0" kindref="member">MeasurementSystemUnknown</a>. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="structs">Data Structure<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="HealthMinuteData">
+            
+              
+<div class="docs__item docs__item--struct">
+  <div class="docs__item__header">struct <span class="docs__item__name">HealthMinuteData</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Structure representing a single minute data record returned by <a refid="group___health_service_1gad42347be400c448e5fceda786019611c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_get_minute_history">health_service_get_minute_history()</a>. The <code>orientation</code> field encodes the angle of the watch in the x-y plane (the "yaw") in the lower 4 bits (360 degrees linearly mapped to 1 of 16 different values) and the angle to the z axis (the "pitch") in the upper 4 bits. The <code>vmc</code> value is a measure of the total amount of movement seen by the watch. More vigorous movement yields higher VMC values. </p>
+</div>
+
+
+    
+
+    
+
+    <h4>Data Fields</h4>
+    <dl>
+      
+      
+      
+      <dt><span style="color: #777">uint8_t</span> steps</dt>
+      <dd><p>Number of steps taken in this minute. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777">uint8_t</span> orientation</dt>
+      <dd><p>Quantized average orientation. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___standard_c_1gabf6633e0fef9023e8a1e8d727f4023e1" kindref="member" href="/docs/c/Standard_C/#uint16_t">uint16_t</a></type></span> vmc</dt>
+      <dd><p>Vector Magnitude Counts (vmc). </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777">bool</span> is_invalid</dt>
+      <dd><p><code>true</code> if the item doesn't represents actual data &lt; and should be ignored. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___health_service_1gaccbf0605e07a25743f59dfb10ff50c0e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#AmbientLightLevel">AmbientLightLevel</a></type></span> light</dt>
+      <dd><p>Instantaneous light level during this minute. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777">uint8_t</span> padding</dt>
+      <dd>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777">uint8_t</span> heart_rate_bpm</dt>
+      <dd><p>heart rate in beats per minute </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777">uint8_t</span> reserved</dt>
+      <dd><p>Reserved for future use. </p>
+      </dt>
+      
+
+      
+      
+    </dl>
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+      
+        <h2 class="anchor" id="enums">Enum<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="HealthMetric">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthMetric</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Health metric values used to retrieve health data. For example, using <a refid="group___health_service_1ga88dd4742916eda84dbf2b15f7171c34c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum">health_service_sum()</a>. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthMetricStepCount" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricStepCount</dt>
+        <dd>
+          
+          <p>The number of steps counted. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricActiveSeconds" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricActiveSeconds</dt>
+        <dd>
+          
+          <p>The number of seconds spent active (i.e. not resting). </p>
+        </dd>
+      
+      
+      <span id="HealthMetricWalkedDistanceMeters" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricWalkedDistanceMeters</dt>
+        <dd>
+          
+          <p>The distance walked, in meters. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricSleepSeconds" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricSleepSeconds</dt>
+        <dd>
+          
+          <p>The number of seconds spent sleeping. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricSleepRestfulSeconds" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricSleepRestfulSeconds</dt>
+        <dd>
+          
+          <p>The number of sleep seconds in the 'restful' or deep sleep state. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricRestingKCalories" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricRestingKCalories</dt>
+        <dd>
+          
+          <p>The number of kcal (Calories) burned while resting due to resting metabolism. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricActiveKCalories" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricActiveKCalories</dt>
+        <dd>
+          
+          <p>The number of kcal (Calories) burned while active. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricHeartRateBPM" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricHeartRateBPM</dt>
+        <dd>
+          
+          <p>The heart rate, in beats per minute. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricRestingHeartRateBPM" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricRestingHeartRateBPM</dt>
+        <dd>
+          
+          <p>The resting heart rate, in beats per minute. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricHeartRateRawBPM" class="docs__item__anchor"></span>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthMetric</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Health metric values used to retrieve health data. For example, using <a refid="group___health_service_1ga88dd4742916eda84dbf2b15f7171c34c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum">health_service_sum()</a>. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthMetricStepCount" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricStepCount</dt>
+        <dd>
+          
+          <p>The number of steps counted. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricActiveSeconds" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricActiveSeconds</dt>
+        <dd>
+          
+          <p>The number of seconds spent active (i.e. not resting). </p>
+        </dd>
+      
+      
+      <span id="HealthMetricWalkedDistanceMeters" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricWalkedDistanceMeters</dt>
+        <dd>
+          
+          <p>The distance walked, in meters. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricSleepSeconds" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricSleepSeconds</dt>
+        <dd>
+          
+          <p>The number of seconds spent sleeping. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricSleepRestfulSeconds" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricSleepRestfulSeconds</dt>
+        <dd>
+          
+          <p>The number of sleep seconds in the 'restful' or deep sleep state. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricRestingKCalories" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricRestingKCalories</dt>
+        <dd>
+          
+          <p>The number of kcal (Calories) burned while resting due to resting metabolism. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricActiveKCalories" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricActiveKCalories</dt>
+        <dd>
+          
+          <p>The number of kcal (Calories) burned while active. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricHeartRateBPM" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricHeartRateBPM</dt>
+        <dd>
+          
+          <p>The heart rate, in beats per minute. This is a filtered value that is at most 15 minutes old. </p>
+        </dd>
+      
+      
+      <span id="HealthMetricRestingHeartRateBPM" class="docs__item__anchor"></span>
+      
+      
+      <span id="HealthMetricHeartRateRawBPM" class="docs__item__anchor"></span>
+      
+        <dt>HealthMetricHeartRateRawBPM</dt>
+        <dd>
+          
+          <p>The raw heart rate value of the most recent sample, in beats per minute. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthServiceTimeScope">
+            
+            
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthServiceTimeScope</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Used by <a refid="group___health_service_1ga648ca6a090db119e09e15bc77b4eb47d" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum_averaged">health_service_sum_averaged()</a> to specify how the average is computed. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthServiceTimeScopeOnce" class="docs__item__anchor"></span>
+      
+        <dt>HealthServiceTimeScopeOnce</dt>
+        <dd>
+          
+          <p>No average computed. The result is the same as calling <a refid="group___health_service_1ga88dd4742916eda84dbf2b15f7171c34c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum">health_service_sum()</a>. </p>
+        </dd>
+      
+      
+      <span id="HealthServiceTimeScopeWeekly" class="docs__item__anchor"></span>
+      
+        <dt>HealthServiceTimeScopeWeekly</dt>
+        <dd>
+          
+          <p>Compute average using the same day from each week. For example, every Monday if the passed in time range falls on a Monday. </p>
+        </dd>
+      
+      
+      <span id="HealthServiceTimeScopeDailyWeekdayOrWeekend" class="docs__item__anchor"></span>
+      
+        <dt>HealthServiceTimeScopeDailyWeekdayOrWeekend</dt>
+        <dd>
+          
+          <p>Compute average using either weekdays (Monday to Friday) or weekends (Saturday and Sunday), depending on which day the passed in time range falls. </p>
+        </dd>
+      
+      
+      <span id="HealthServiceTimeScopeDaily" class="docs__item__anchor"></span>
+      
+        <dt>HealthServiceTimeScopeDaily</dt>
+        <dd>
+          
+          <p>Compute average across all days of the week. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthAggregation">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthAggregation</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Used by <a refid="group___health_service_1gab4e3939c8f96eb97531e19523654e4de" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_aggregate_averaged">health_service_aggregate_averaged()</a> to specify what type of aggregation to perform. This aggregation is applied to the metric before the average is computed. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthAggregationSum" class="docs__item__anchor"></span>
+      
+        <dt>HealthAggregationSum</dt>
+        <dd>
+          
+          <p>Sum the metric. The result is the same as calling <a refid="group___health_service_1ga648ca6a090db119e09e15bc77b4eb47d" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum_averaged">health_service_sum_averaged()</a>. This operation is only applicable for metrics that accumulate, like HealthMetricStepCount, HealthMetricActiveSeconds, etc. </p>
+        </dd>
+      
+      
+      <span id="HealthAggregationAvg" class="docs__item__anchor"></span>
+      
+        <dt>HealthAggregationAvg</dt>
+        <dd>
+          
+          <p>Use the average of the metric. This is only applicable for metrics that measure instantaneous values, like HealthMetricHeartRateBPM. </p>
+        </dd>
+      
+      
+      <span id="HealthAggregationMin" class="docs__item__anchor"></span>
+      
+        <dt>HealthAggregationMin</dt>
+        <dd>
+          
+          <p>Use the minimum value of the metric. This is only applicable for metrics that measure instantaneous values, like HealthMetricHeartRateBPM. </p>
+        </dd>
+      
+      
+      <span id="HealthAggregationMax" class="docs__item__anchor"></span>
+      
+        <dt>HealthAggregationMax</dt>
+        <dd>
+          
+          <p>Use the maximum value of the metric. This is only applicable for metrics that measure instantaneous values, like HealthMetricHeartRateBPM. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthAggregation</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Used by <a refid="group___health_service_1gab550229af26f6438505bc8a07f090afd" kindref="member">health_service_aggregate_averaged()</a> to specify what type of aggregation to perform. This aggregation is applied to the metric before the average is computed. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthAggregationSum" class="docs__item__anchor"></span>
+      
+        <dt>HealthAggregationSum</dt>
+        <dd>
+          
+          <p>Sum the metric. The result is the same as calling <a refid="group___health_service_1ga648ca6a090db119e09e15bc77b4eb47d" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum_averaged">health_service_sum_averaged()</a>. This operation is only applicable for metrics that accumulate, like HealthMetricStepCount, HealthMetricActiveSeconds, etc. </p>
+        </dd>
+      
+      
+      <span id="HealthAggregationAvg" class="docs__item__anchor"></span>
+      
+        <dt>HealthAggregationAvg</dt>
+        <dd>
+          
+          <p>Use the average of the metric. This is only applicable for metrics that measure instantaneous values, like HealthMetricHeartRateBPM. </p>
+        </dd>
+      
+      
+      <span id="HealthAggregationMin" class="docs__item__anchor"></span>
+      
+        <dt>HealthAggregationMin</dt>
+        <dd>
+          
+          <p>Use the minimum value of the metric. This is only applicable for metrics that measure instantaneous values, like HealthMetricHeartRateBPM. </p>
+        </dd>
+      
+      
+      <span id="HealthAggregationMax" class="docs__item__anchor"></span>
+      
+        <dt>HealthAggregationMax</dt>
+        <dd>
+          
+          <p>Use the maximum value of the metric. This is only applicable for metrics that measure instantaneous values, like HealthMetricHeartRateBPM. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthActivity">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthActivity</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Health-related activities that can be accessed using <a refid="group___health_service_1ga8d822a2968297e755b078430cc365b4b" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_peek_current_activities">health_service_peek_current_activities()</a> and <a refid="group___health_service_1gafc77a68038973cedaf79cac32307077c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_activities_iterate">health_service_activities_iterate()</a>. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthActivityNone" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivityNone</dt>
+        <dd>
+          
+          <p>No special activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivitySleep" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivitySleep</dt>
+        <dd>
+          
+          <p>The 'sleeping' activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivityRestfulSleep" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivityRestfulSleep</dt>
+        <dd>
+          
+          <p>The 'restful sleeping' activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivityWalk" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivityWalk</dt>
+        <dd>
+          
+          <p>The 'walk' activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivityRun" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivityRun</dt>
+        <dd>
+          
+          <p>The 'run' activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivityOpenWorkout" class="docs__item__anchor"></span>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthActivity</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Health-related activities that can be accessed using. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthActivityNone" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivityNone</dt>
+        <dd>
+          
+          <p>No special activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivitySleep" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivitySleep</dt>
+        <dd>
+          
+          <p>The 'sleeping' activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivityRestfulSleep" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivityRestfulSleep</dt>
+        <dd>
+          
+          <p>The 'restful sleeping' activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivityWalk" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivityWalk</dt>
+        <dd>
+          
+          <p>The 'walk' activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivityRun" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivityRun</dt>
+        <dd>
+          
+          <p>The 'run' activity. </p>
+        </dd>
+      
+      
+      <span id="HealthActivityOpenWorkout" class="docs__item__anchor"></span>
+      
+        <dt>HealthActivityOpenWorkout</dt>
+        <dd>
+          
+          <p>The 'generic' activity. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthIterationDirection">
+            
+            
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthIterationDirection</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Iteration direction, passed to <a refid="group___health_service_1gafc77a68038973cedaf79cac32307077c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_activities_iterate">health_service_activities_iterate()</a>. When iterating backwards (<code>HealthIterationDirectionPast</code>), activities that have a greater value for <code>time_end</code> come first. When iterating forward (<code>HealthIterationDirectionFuture</code>), activities that have a smaller value for <code>time_start</code> come first. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthIterationDirectionPast" class="docs__item__anchor"></span>
+      
+        <dt>HealthIterationDirectionPast</dt>
+        <dd>
+          
+          <p>Iterate into the past. </p>
+        </dd>
+      
+      
+      <span id="HealthIterationDirectionFuture" class="docs__item__anchor"></span>
+      
+        <dt>HealthIterationDirectionFuture</dt>
+        <dd>
+          
+          <p>Iterate into the future. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthServiceAccessibilityMask">
+            
+            
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthServiceAccessibilityMask</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Possible values returned by <a refid="group___health_service_1ga3304f85962047c248c80be3d23ddf87d" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_accessible">health_service_metric_accessible()</a>. The values are used in combination as a bitmask. For example, to check if any data is available for a given request use: bool any_data_available = value &amp; HealthServiceAccessibilityMaskAvailable;. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthServiceAccessibilityMaskAvailable" class="docs__item__anchor"></span>
+      
+        <dt>HealthServiceAccessibilityMaskAvailable</dt>
+        <dd>
+          
+          <p>Return values are available and represent the collected health information. </p>
+        </dd>
+      
+      
+      <span id="HealthServiceAccessibilityMaskNoPermission" class="docs__item__anchor"></span>
+      
+        <dt>HealthServiceAccessibilityMaskNoPermission</dt>
+        <dd>
+          
+          <p>The user hasn't granted permission. </p>
+        </dd>
+      
+      
+      <span id="HealthServiceAccessibilityMaskNotSupported" class="docs__item__anchor"></span>
+      
+        <dt>HealthServiceAccessibilityMaskNotSupported</dt>
+        <dd>
+          
+          <p>The queried combination of time span and <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> or <a refid="group___health_service_1ga1d5cc8116a00623340c27accec560642" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</a> is currently unsupported. </p>
+        </dd>
+      
+      
+      <span id="HealthServiceAccessibilityMaskNotAvailable" class="docs__item__anchor"></span>
+      
+        <dt>HealthServiceAccessibilityMaskNotAvailable</dt>
+        <dd>
+          
+          <p>No samples were recorded for the given time span. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthEventType">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthEventType</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Health event enum. Passed into the <a refid="group___health_service_1ga8a371c43a6017bf8423a1bfcdeeb0b58" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthEventHandler">HealthEventHandler</a>. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthEventSignificantUpdate" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventSignificantUpdate</dt>
+        <dd>
+          
+          <p>All data is considered as outdated and apps should re-read all health data. This happens after an app is subscribed via <a refid="group___health_service_1ga29280e11a9628779a3dcaa6d62d90d4a" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_events_subscribe">health_service_events_subscribe()</a>, on a change of the day, or in other cases that significantly change the underlying data. </p>
+        </dd>
+      
+      
+      <span id="HealthEventMovementUpdate" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventMovementUpdate</dt>
+        <dd>
+          
+          <p>Recent values around <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3a5cecb29b3d75c6c0a7bb2bd3656ebf5e" kindref="member">HealthMetricStepCount</a>, <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3ad7ca8b311a4fe1033cdd4b6222ee132a" kindref="member">HealthMetricActiveSeconds</a>, or <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3a0f434943f49f2f3d0e55c4d6f394dfa1" kindref="member">HealthMetricWalkedDistanceMeters</a> have changed. </p>
+        </dd>
+      
+      
+      <span id="HealthEventSleepUpdate" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventSleepUpdate</dt>
+        <dd>
+          
+          <p>Recent values around <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3ade6eaa01705db69180da4c11fce4195f" kindref="member">HealthMetricSleepSeconds</a>, <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3a6b8cddaa42ff5c77af7f952afcfbbc72" kindref="member">HealthMetricSleepRestfulSeconds</a>, <a refid="group___health_service_1gga34a9840fdec40a4c494e28b07a968e4da9639d25463a742602ad0b39b79875026" kindref="member">HealthActivitySleep</a>, and <a refid="group___health_service_1gga34a9840fdec40a4c494e28b07a968e4da4d92fd276157107bcd12f8df113ab299" kindref="member">HealthActivityRestfulSleep</a> changed. </p>
+        </dd>
+      
+      
+      <span id="HealthEventMetricAlert" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventMetricAlert</dt>
+        <dd>
+          
+          <p>A metric has either entered or exited the range set by <a refid="group___health_service_1ga2b804d3a9927c2a6284d4deaad74bb35" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_register_metric_alert">health_service_register_metric_alert</a>. </p>
+        </dd>
+      
+      
+      <span id="HealthEventHeartRateUpdate" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventHeartRateUpdate</dt>
+        <dd>
+          
+          <p>Recent values around <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3af1c65a9410883fe8b5f84def71a29130" kindref="member">HealthMetricHeartRateBPM</a> or <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3afa8da591661c2c9f5523fe4c128c44fc" kindref="member">HealthMetricRestingHeartRateBPM</a> have changed. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">HealthEventType</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Health event enum. Passed into the <a refid="group___health_service_1ga8a371c43a6017bf8423a1bfcdeeb0b58" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthEventHandler">HealthEventHandler</a>. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="HealthEventSignificantUpdate" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventSignificantUpdate</dt>
+        <dd>
+          
+          <p>All data is considered as outdated and apps should re-read all health data. This happens after an app is subscribed via <a refid="group___health_service_1ga29280e11a9628779a3dcaa6d62d90d4a" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_events_subscribe">health_service_events_subscribe()</a>, on a change of the day, or in other cases that significantly change the underlying data. </p>
+        </dd>
+      
+      
+      <span id="HealthEventMovementUpdate" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventMovementUpdate</dt>
+        <dd>
+          
+          <p>Recent values around <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3a5cecb29b3d75c6c0a7bb2bd3656ebf5e" kindref="member">HealthMetricStepCount</a>, <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3ad7ca8b311a4fe1033cdd4b6222ee132a" kindref="member">HealthMetricActiveSeconds</a>, or <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3a0f434943f49f2f3d0e55c4d6f394dfa1" kindref="member">HealthMetricWalkedDistanceMeters</a> have changed. </p>
+        </dd>
+      
+      
+      <span id="HealthEventSleepUpdate" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventSleepUpdate</dt>
+        <dd>
+          
+          <p>Recent values around <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3ade6eaa01705db69180da4c11fce4195f" kindref="member">HealthMetricSleepSeconds</a>, <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3a6b8cddaa42ff5c77af7f952afcfbbc72" kindref="member">HealthMetricSleepRestfulSeconds</a>, <a refid="group___health_service_1gga34a9840fdec40a4c494e28b07a968e4da9639d25463a742602ad0b39b79875026" kindref="member">HealthActivitySleep</a>, and <a refid="group___health_service_1gga34a9840fdec40a4c494e28b07a968e4da4d92fd276157107bcd12f8df113ab299" kindref="member">HealthActivityRestfulSleep</a> changed. </p>
+        </dd>
+      
+      
+      <span id="HealthEventMetricAlert" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventMetricAlert</dt>
+        <dd>
+          
+          <p>A metric has crossed the threshold set by <a refid="group___health_service_1gaacf801cd6c1d01592661a1ccea18f518" kindref="member">health_service_register_metric_alert</a>. </p>
+        </dd>
+      
+      
+      <span id="HealthEventHeartRateUpdate" class="docs__item__anchor"></span>
+      
+        <dt>HealthEventHeartRateUpdate</dt>
+        <dd>
+          
+          <p>Value of <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3af1c65a9410883fe8b5f84def71a29130" kindref="member">HealthMetricHeartRateBPM</a> or <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3abf4c5ef41540465e271dc0b3c9b04c57" kindref="member">HealthMetricHeartRateRawBPM</a> has changed. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="AmbientLightLevel">
+            
+            
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">AmbientLightLevel</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Light level enum. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="AmbientLightLevelUnknown" class="docs__item__anchor"></span>
+      
+        <dt>AmbientLightLevelUnknown</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+      <span id="AmbientLightLevelVeryDark" class="docs__item__anchor"></span>
+      
+        <dt>AmbientLightLevelVeryDark</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+      <span id="AmbientLightLevelDark" class="docs__item__anchor"></span>
+      
+        <dt>AmbientLightLevelDark</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+      <span id="AmbientLightLevelLight" class="docs__item__anchor"></span>
+      
+        <dt>AmbientLightLevelLight</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+      <span id="AmbientLightLevelVeryLight" class="docs__item__anchor"></span>
+      
+        <dt>AmbientLightLevelVeryLight</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="MeasurementSystem">
+            
+            
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">MeasurementSystem</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Types of measurement system a <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> may be measured in. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="MeasurementSystemUnknown" class="docs__item__anchor"></span>
+      
+        <dt>MeasurementSystemUnknown</dt>
+        <dd>
+          
+          <p>The measurement system is unknown, or does not apply to the chosen metric. </p>
+        </dd>
+      
+      
+      <span id="MeasurementSystemMetric" class="docs__item__anchor"></span>
+      
+        <dt>MeasurementSystemMetric</dt>
+        <dd>
+          
+          <p>The metric measurement system. </p>
+        </dd>
+      
+      
+      <span id="MeasurementSystemImperial" class="docs__item__anchor"></span>
+      
+        <dt>MeasurementSystemImperial</dt>
+        <dd>
+          
+          <p>The imperial measurement system. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="HealthMetricAlert">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct <a refid="group___health_service_1ga4c9dd4f3c6dad8e00b3a63a0edd51ced" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetricAlert">HealthMetricAlert</a> * <span class="docs__item__name">HealthMetricAlert</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Type used as a handle to a registered metric alert (returned by <a refid="group___health_service_1ga2b804d3a9927c2a6284d4deaad74bb35" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_register_metric_alert">health_service_register_metric_alert</a>) </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct <a refid="group___health_service_1ga86ade35770156a641962400e527357ef" kindref="member">HealthMetricAlert</a> <span class="docs__item__name">HealthMetricAlert</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Type used as a handle to a registered metric alert (returned by <a refid="group___health_service_1gaacf801cd6c1d01592661a1ccea18f518" kindref="member">health_service_register_metric_alert</a>) </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthValue">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef int32_t <span class="docs__item__name">HealthValue</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Type used to represent HealthMetric values. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthActivityMask">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef <a refid="group___standard_c_1gad53b3f685c3f3153f35ec87ea6f349d1" kindref="member" href="/docs/c/Standard_C/#uint32_t">uint32_t</a> <span class="docs__item__name">HealthActivityMask</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Expresses a set of <a refid="group___health_service_1ga34a9840fdec40a4c494e28b07a968e4d" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivity">HealthActivity</a> values as a bitmask. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthActivityIteratorCB">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef bool(* <span class="docs__item__name">HealthActivityIteratorCB</span>)(HealthActivity activity, time_t time_start, time_t time_end, void *context)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Callback used by <a refid="group___health_service_1gafc77a68038973cedaf79cac32307077c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_activities_iterate">health_service_activities_iterate()</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> activity</dt>
+  <dd><p>Which activity the caller is being informed about. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>Start UTC time of the activity. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>End UTC time of the activity. </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>The <code>context</code> parameter initially passed to <a refid="group___health_service_1gafc77a68038973cedaf79cac32307077c" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_activities_iterate">health_service_activities_iterate()</a>. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>true</code> if you are interested in more activities, or <code>false</code> to stop iterating. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthEventHandler">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">HealthEventHandler</span>)(HealthEventType event, void *context)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Developer-supplied event handler, called when a health-related event occurs after subscribing via <a refid="group___health_service_1ga29280e11a9628779a3dcaa6d62d90d4a" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_events_subscribe">health_service_events_subscribe()</a>;. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> event</dt>
+  <dd><p>The type of health-related event that occured. </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>The developer-supplied context pointer. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="defines">Macro Definition<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="health_service_peek_current_value">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">health_service_peek_current_value </span><span>(</span><span class="docs__item__param"> metric</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function for peeking at the current value of a metric. This is useful for metrics like <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3af1c65a9410883fe8b5f84def71a29130" kindref="member">HealthMetricHeartRateBPM</a> that represent instantaneous values. It is NOT applicable for metrics like <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3a5cecb29b3d75c6c0a7bb2bd3656ebf5e" kindref="member">HealthMetricStepCount</a> that must be accumulated over time (it will return 0 if passed that type of metric). This call is equivalent to calling <code>health_service_aggregate_averaged(metric, time(NULL), time(NULL), HealthAggregateAvg, HealthServiceTimeScopeOnce)</code> </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The current value of that metric, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define <a refid="group___health_service_1ga3d3db71ea01c7346038ef4de2c9e6869" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a> </span><span class="docs__item__name">health_service_peek_current_value </span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function for peeking at the current value of a metric. This is useful for metrics like <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3af1c65a9410883fe8b5f84def71a29130" kindref="member">HealthMetricHeartRateBPM</a> that represent instantaneous values. It is NOT applicable for metrics like <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3a5cecb29b3d75c6c0a7bb2bd3656ebf5e" kindref="member">HealthMetricStepCount</a> that must be accumulated over time (it will return 0 if passed that type of metric). This call is equivalent to calling <code>health_service_aggregate_averaged(metric, time(NULL), time(NULL), HealthAggregationAvg, HealthServiceTimeScopeOnce)</code> </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The current value of that metric, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_aggregate_averaged">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">health_service_aggregate_averaged </span><span>(</span><span class="docs__item__param"> metric</span><span>, </span><span class="docs__item__param"> time_start</span><span>, </span><span class="docs__item__param"> time_end</span><span>, </span><span class="docs__item__param"> aggregation</span><span>, </span><span class="docs__item__param"> scope</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return the value of an aggregated metric over a given time range. This call is more flexible than health_service_sum_averaged because it lets you specify which aggregation function to perform. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>The aggregation function <code>aggregation</code> is applied to the metric <code>metric</code> over the given time range <code>time_start</code> to <code>time_end</code> first, and then an average is computed based on the passed in <code>scope</code>.</p>
+<p>For example, if you want to get the average number of steps taken from 12 AM (midnight) to 9 AM across all days you would specify: <code>time_t time_start = <ref refid="group___standard_time_1gaad04b872745a08a1e531f6590194bd9b" kindref="member">time_start_of_today()</ref>;</code> <code>time_t time_end = time_start + (9 * SECONDS_PER_HOUR);</code> <code>HealthValue value = health_service_aggregate_averaged(HealthMetricStepCount, time_start, time_end, HealthAggregationSum, HealthServiceTimeScopeDaily);</code></p>
+<p>If you want to compute the average heart rate on Mondays and today is a Monday, you would specify: <code>time_t time_start = <ref refid="group___standard_time_1gaad04b872745a08a1e531f6590194bd9b" kindref="member">time_start_of_today()</ref></code>, <code>time_t time_end = time_start + SECONDS_PER_DAY</code>, <code>HealthValue value = health_service_aggregate_averaged(HealthMetricHeartRateBPM, time_start, time_end, HealthAggregationAvg, HealthServiceTimeScopeWeekly);</code> To get the average of the minimum heart rate seen on Mondays for example, you would instead pass in <code>HealthAggregationMin</code></p>
+<p>Certain HealthAggregation operations are only applicable to certain types of metrics. See the notes above on <a refid="group___health_service_1ga5c64b0ab1489de7fd5d34f3c2085562f" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthAggregation">HealthAggregation</a> for details. Use <a refid="group___health_service_1ga51938c613d68529cf393ef4e24512dd4" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_aggregate_averaged_accessible">health_service_metric_aggregate_averaged_accessible</a> to check for applicability at run time.</p>
+<p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>Which <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> to query. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>UTC time of the start of the query interval. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>UTC time of the end of the query interval. </p></dt>
+  
+  <dt><span style="color: #777"></span> aggregation</dt>
+  <dd><p>the aggregation function to perform on the metric. This operation is performed across the passed in time range <code>time_start</code> to <code>time_end</code>. </p></dt>
+  
+  <dt><span style="color: #777"></span> scope</dt>
+  <dd><p><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> value describing how the average should be computed. Use <code>HealthServiceTimeScopeOnce</code> to not compute an average. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The average of the aggregation performed on the given metric over the given time range, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define <a refid="group___health_service_1ga3d3db71ea01c7346038ef4de2c9e6869" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a> </span><span class="docs__item__name">health_service_aggregate_averaged </span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga5c64b0ab1489de7fd5d34f3c2085562f" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthAggregation">HealthAggregation</a> aggregation</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> scope</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return the value of an aggregated metric over a given time range. This call is more flexible than health_service_sum_averaged because it lets you specify which aggregation function to perform. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>The aggregation function <code>aggregation</code> is applied to the metric <code>metric</code> over the given time range <code>time_start</code> to <code>time_end</code> first, and then an average is computed based on the passed in <code>scope</code>.</p>
+<p>For example, if you want to get the average number of steps taken from 12 AM (midnight) to 9 AM across all days you would specify: <code>time_t time_start = <ref refid="group___standard_time_1gaad04b872745a08a1e531f6590194bd9b" kindref="member">time_start_of_today()</ref>;</code> <code>time_t time_end = time_start + (9 * SECONDS_PER_HOUR);</code> <code>HealthValue value = health_service_aggregate_averaged(HealthMetricStepCount, time_start, time_end, HealthAggregationSum, HealthServiceTimeScopeDaily);</code></p>
+<p>If you want to compute the average heart rate on Mondays and today is a Monday, you would specify: <code>time_t time_start = <ref refid="group___standard_time_1gaad04b872745a08a1e531f6590194bd9b" kindref="member">time_start_of_today()</ref></code>, <code>time_t time_end = time_start + SECONDS_PER_DAY</code>, <code>HealthValue value = health_service_aggregate_averaged(HealthMetricHeartRateBPM, time_start, time_end, HealthAggregationAvg, HealthServiceTimeScopeWeekly);</code> To get the average of the minimum heart rate seen on Mondays for example, you would instead pass in <code>HealthAggregationMin</code></p>
+<p>Certain HealthAggregation operations are only applicable to certain types of metrics. See the notes above on <a refid="group___health_service_1ga5c64b0ab1489de7fd5d34f3c2085562f" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthAggregation">HealthAggregation</a> for details. Use <a refid="group___health_service_1gaae36aba04f5eedb015f03593b2af735b" kindref="member">health_service_metric_aggregate_averaged_accessible</a> to check for applicability at run time.</p>
+<p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>Which <a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> to query. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>UTC time of the start of the query interval. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>UTC time of the end of the query interval. </p></dt>
+  
+  <dt><span style="color: #777"></span> aggregation</dt>
+  <dd><p>the aggregation function to perform on the metric. This operation is performed across the passed in time range <code>time_start</code> to <code>time_end</code>. </p></dt>
+  
+  <dt><span style="color: #777"></span> scope</dt>
+  <dd><p><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> value describing how the average should be computed. Use <code>HealthServiceTimeScopeOnce</code> to not compute an average. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The average of the aggregation performed on the given metric over the given time range, if available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="HealthActivityMaskAll">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">HealthActivityMaskAll </span> ((<a refid="group___health_service_1gga34a9840fdec40a4c494e28b07a968e4da317c349cc654706c3d88955c211a2d24" kindref="member">HealthActivityRun</a> &lt;&lt; 1) - 1)</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>A mask value representing all available activities. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">HealthActivityMaskAll </span> ((<a refid="group___health_service_1gga34a9840fdec40a4c494e28b07a968e4da54d0b891a7e32edd762906e9fa9f59f3" kindref="member">HealthActivityOpenWorkout</a> &lt;&lt; 1) - 1)</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>A mask value representing all available activities. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_metric_aggregate_averaged_accessible">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">health_service_metric_aggregate_averaged_accessible </span><span>(</span><span class="docs__item__param"> metric</span><span>, </span><span class="docs__item__param"> time_start</span><span>, </span><span class="docs__item__param"> time_end</span><span>, </span><span class="docs__item__param"> aggregation</span><span>, </span><span class="docs__item__param"> scope</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Check if a certain combination of metric, time span, aggregation operation, and scope is accessible for calculating aggregated, averaged data by returning a value of <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a>. Developers should check if the return value is <a refid="group___health_service_1ggaf190ee0fcb0c06560199a35156eac226a0701b27f4f15811fb72665286b6eea0c" kindref="member">HealthServiceAccessibilityMaskAvailable</a> before calling <a refid="group___health_service_1gab4e3939c8f96eb97531e19523654e4de" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_aggregate_averaged">health_service_aggregate_averaged</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query for averaged data. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>Earliest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>Latest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> aggregation</dt>
+  <dd><p>The aggregation to perform </p></dt>
+  
+  <dt><span style="color: #777"></span> scope</dt>
+  <dd><p><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> value describing how the average should be computed. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A  value decribing whether averaged data is available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a> </span><span class="docs__item__name">health_service_metric_aggregate_averaged_accessible </span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_start</span><span>, </span><span class="docs__item__param"><a refid="group___standard_time_1gaffa4d193759c763a2623cc49d69b15f5" kindref="member" href="/docs/c/Standard_C/Time/#time_t">time_t</a> time_end</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga5c64b0ab1489de7fd5d34f3c2085562f" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthAggregation">HealthAggregation</a> aggregation</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> scope</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Check if a certain combination of metric, time span, aggregation operation, and scope is accessible for calculating aggregated, averaged data by returning a value of <a refid="group___health_service_1gaf190ee0fcb0c06560199a35156eac226" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a>. Developers should check if the return value is <a refid="group___health_service_1ggaf190ee0fcb0c06560199a35156eac226a0701b27f4f15811fb72665286b6eea0c" kindref="member">HealthServiceAccessibilityMaskAvailable</a> before calling <a refid="group___health_service_1gab550229af26f6438505bc8a07f090afd" kindref="member">health_service_aggregate_averaged</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> metric</dt>
+  <dd><p>The metric to query for averaged data. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_start</dt>
+  <dd><p>Earliest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> time_end</dt>
+  <dd><p>Latest UTC time you are interested in. </p></dt>
+  
+  <dt><span style="color: #777"></span> aggregation</dt>
+  <dd><p>The aggregation to perform </p></dt>
+  
+  <dt><span style="color: #777"></span> scope</dt>
+  <dd><p><a refid="group___health_service_1ga84f7e66171302b36daa84acf1e93949e" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a> value describing how the average should be computed. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A  value decribing whether averaged data is available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_set_heart_rate_sample_period">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">health_service_set_heart_rate_sample_period </span><span>(</span><span class="docs__item__param"> interval_sec</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Set the desired sampling period for heart rate readings. Normally, the system will sample the heart rate using a sampling period that is automatically chosen to provide useful information without undue battery drain (it automatically samples more often during periods of intense activity, and less often when the user is idle). If desired though, an application can request a specific sampling period using this call. The system will use this as a suggestion, but does not guarantee that the requested period will be used. The actual sampling period may be greater or less due to system needs or heart rate sensor reading quality issues. Each time a new heart rate reading becomes available, a <code>HealthEventHeartRateUpdate</code> event will be sent to the application's <code>HealthEventHandler</code>. The sample period request will remain in effect the entire time the app is running unless it is explicity cancelled (by calling this method again with 0 as the desired interval). If the app exits without first cancelling the request, it will remain in effect even for a limited time afterwards. To determine how long it will remain active after the app exits, use <code>health_service_get_heart_rate_sample_period_expiration_sec</code>. Unless the app explicitly needs to access to historical high-resolution heart rate data, it is best practice to always cancel the sample period request before exiting in order to maximize battery life. Historical heart rate data can be accessed using the <code>health_service_get_minute_history</code> call. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>The fastest sampling rate that will be acknowledged by the system is 60 seconds. Values passed in that are smaller than 60 seconds will be changed to 60 seconds. The end result of this is that a <code>HealthEventHeartRateUpdate</code> will be sent to the application's <code>HealthEventHandler</code> no more frequently than 60 seconds. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> interval_sec</dt>
+  <dd><p>desired interval between heart rate reading updates. Pass 0 to go back to automatically chosen intervals. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>true</code> on success, <code>false</code> on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define bool </span><span class="docs__item__name">health_service_set_heart_rate_sample_period </span><span>(</span><span class="docs__item__param"><a refid="group___standard_c_1gabf6633e0fef9023e8a1e8d727f4023e1" kindref="member" href="/docs/c/Standard_C/#uint16_t">uint16_t</a> interval_sec</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Set the desired sampling period for heart rate readings. Normally, the system will sample the heart rate using a sampling period that is automatically chosen to provide useful information without undue battery drain (it automatically samples more often during periods of intense activity, and less often when the user is idle). If desired though, an application can request a specific sampling period using this call. The system will use this as a suggestion, but does not guarantee that the requested period will be used. The actual sampling period may be greater or less due to system needs or heart rate sensor reading quality issues. Each time a new heart rate reading becomes available, a <code>HealthEventHeartRateUpdate</code> event will be sent to the application's <code>HealthEventHandler</code>. The sample period request will remain in effect the entire time the app is running unless it is explicitly cancelled (by calling this method again with 0 as the desired interval). If the app exits without first cancelling the request, it will remain in effect even for a limited time afterwards. To determine how long it will remain active after the app exits, use <code>health_service_get_heart_rate_sample_period_expiration_sec</code>. Unless the app explicitly needs to access to historical high-resolution heart rate data, it is best practice to always cancel the sample period request before exiting in order to maximize battery life. Historical heart rate data can be accessed using the <code>health_service_get_minute_history</code> call. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> interval_sec</dt>
+  <dd><p>desired interval between heart rate reading updates. Pass 0 to go back to automatically chosen intervals. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>true</code> on success, <code>false</code> on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_get_heart_rate_sample_period_expiration_sec">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">health_service_get_heart_rate_sample_period_expiration_sec </span><span>(</span><span class="docs__item__param"></span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return how long a heart rate sample period request (sent via <code>health_service_set_heart_rate_sample_period</code>) will remain active after the app exits. If there is no current request by this app, this call will return 0. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p>The number of seconds the heart rate sample period request will remain active after the app exits, or 0 if there is no active request by this app. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define <a refid="group___standard_c_1gabf6633e0fef9023e8a1e8d727f4023e1" kindref="member" href="/docs/c/Standard_C/#uint16_t">uint16_t</a> </span><span class="docs__item__name">health_service_get_heart_rate_sample_period_expiration_sec </span><span>(</span><span class="docs__item__param">void</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Return how long a heart rate sample period request (sent via <code>health_service_set_heart_rate_sample_period</code>) will remain active after the app exits. If there is no current request by this app, this call will return 0. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p>The number of seconds the heart rate sample period request will remain active after the app exits, or 0 if there is no active request by this app. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_register_metric_alert">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">health_service_register_metric_alert </span><span>(</span><span class="docs__item__param"> metric</span><span>, </span><span class="docs__item__param"> threshold</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Register for an alert when a metric crosses a given threshold. When the metric crosses this threshold (either goes above or below it), a HealthEventMetricRange event will be generated. To cancel this registration, pass the returned <a refid="group___health_service_1ga4c9dd4f3c6dad8e00b3a63a0edd51ced" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetricAlert">HealthMetricAlert</a> value to <a refid="group___health_service_1gabbd8416054c2b779c2ee5b48fbc5b581" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_cancel_metric_alert">health_service_cancel_metric_alert</a>. The only metrics currently supported by this call are <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3af1c65a9410883fe8b5f84def71a29130" kindref="member">HealthMetricHeartRateBPM</a> and <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3afa8da591661c2c9f5523fe4c128c44fc" kindref="member">HealthMetricRestingHeartRateBPM</a>, but future versions may support additional metrics. To see if a specific metric is supported by this call, use <code>time_t now = time(NULL); health_service_metric_aggregate_averaged_accessible(metric, now, now, HealthAggregateAvg, HealthServiceTimeScopeOnce)</code> </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> threshold</dt>
+  <dd><p>the threshold value </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>handle to the alert registration on success, NULL on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define <a refid="group___health_service_1ga86ade35770156a641962400e527357ef" kindref="member">HealthMetricAlert</a> * </span><span class="docs__item__name">health_service_register_metric_alert </span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga8d2c6a34cef5b66c9d4612f53b9a60a3" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a> metric</span><span>, </span><span class="docs__item__param"><a refid="group___health_service_1ga3d3db71ea01c7346038ef4de2c9e6869" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a> threshold</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Register for an alert when a metric crosses the given threshold. When the metric crosses this threshold (either goes above or below it), a <a refid="group___health_service_1ggacb8b01b2eb863fa85913d491ec5cd214ab12ebe7dd7b5644beabffd8d99cdcc38" kindref="member">HealthEventMetricAlert</a> event will be generated. To cancel this registration, pass the returned <a refid="group___health_service_1ga86ade35770156a641962400e527357ef" kindref="member">HealthMetricAlert</a> value to <a refid="group___health_service_1gad4cb3b65f31c344de41428ec50d0a281" kindref="member">health_service_cancel_metric_alert</a>. The only metric currently supported by this call is <a refid="group___health_service_1gga8d2c6a34cef5b66c9d4612f53b9a60a3af1c65a9410883fe8b5f84def71a29130" kindref="member">HealthMetricHeartRateBPM</a>, but future versions may support additional metrics. To see if a specific metric is supported by this call, use: `time_t now = time(NULL); HealthServiceAccessibilityMask accessible = health_service_metric_aggregate_averaged_accessible(metric, now, now, HealthAggregationAvg, HealthServiceTimeScopeOnce); bool alert_supported = (accessible &amp; HealthServiceAccessibilityMaskAvailable); ` In the current implementation, only one alert per metric can be registered at a time. Future implementations may support two or more simulataneous alert registrations per metric. To change the alert threshold in the current implementation, cancel the original registration using <code>health_service_cancel_metric_alert</code> before registering the new threshold. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> threshold</dt>
+  <dd><p>the threshold value </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>handle to the alert registration on success, NULL on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="health_service_cancel_metric_alert">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">health_service_cancel_metric_alert </span><span>(</span><span class="docs__item__param"> alert</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Cancel an metric alert previously created with <a refid="group___health_service_1ga2b804d3a9927c2a6284d4deaad74bb35" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_register_metric_alert">health_service_register_metric_alert</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> alert</dt>
+  <dd><p>the <a refid="group___health_service_1ga4c9dd4f3c6dad8e00b3a63a0edd51ced" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetricAlert">HealthMetricAlert</a> previously returned by <a refid="group___health_service_1ga2b804d3a9927c2a6284d4deaad74bb35" kindref="member" href="/docs/c/Foundation/Event_Service/HealthService/#health_service_register_metric_alert">health_service_register_metric_alert</a> </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>true</code> on success, <code>false</code> on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define bool </span><span class="docs__item__name">health_service_cancel_metric_alert </span><span>(</span><span class="docs__item__param"><a refid="group___health_service_1ga86ade35770156a641962400e527357ef" kindref="member">HealthMetricAlert</a> * alert</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Cancel an metric alert previously created with <a refid="group___health_service_1gaacf801cd6c1d01592661a1ccea18f518" kindref="member">health_service_register_metric_alert</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> alert</dt>
+  <dd><p>the <a refid="group___health_service_1ga86ade35770156a641962400e527357ef" kindref="member">HealthMetricAlert</a> previously returned by <a refid="group___health_service_1gaacf801cd6c1d01592661a1ccea18f518" kindref="member">health_service_register_metric_alert</a> </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>true</code> on success, <code>false</code> on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="PBL_IF_HEALTH_ELSE">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">PBL_IF_HEALTH_ELSE </span><span>(</span><span class="docs__item__param"> if_true</span><span>, </span><span class="docs__item__param"> if_false</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience macro to switch between two expressions depending on health support. On platforms with health support the first expression will be chosen, the second otherwise. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">PBL_IF_HEALTH_ELSE </span><span>(</span><span class="docs__item__param"> if_true</span><span>, </span><span class="docs__item__param"> if_false</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience macro to switch between two expressions depending on health support. On platforms with health support the first expression will be chosen, the second otherwise. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum">health_service_sum</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum_today">health_service_sum_today</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum_averaged">health_service_sum_averaged</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_peek_current_activities">health_service_peek_current_activities</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_activities_iterate">health_service_activities_iterate</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_accessible">health_service_metric_accessible</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_averaged_accessible">health_service_metric_averaged_accessible</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_any_activity_accessible">health_service_any_activity_accessible</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_events_subscribe">health_service_events_subscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_events_unsubscribe">health_service_events_unsubscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_get_minute_history">health_service_get_minute_history</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_get_measurement_system_for_display">health_service_get_measurement_system_for_display</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#structs">Data Structures</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMinuteData">HealthMinuteData</a></li>
+  
+</ul>
+
+
+      
+
+      
+<h3><a href="#enums">Enums</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric">HealthMetric</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope">HealthServiceTimeScope</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthAggregation">HealthAggregation</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivity">HealthActivity</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthIterationDirection">HealthIterationDirection</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask">HealthServiceAccessibilityMask</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthEventType">HealthEventType</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#AmbientLightLevel">AmbientLightLevel</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#MeasurementSystem">MeasurementSystem</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetricAlert">HealthMetricAlert</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthValue">HealthValue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask">HealthActivityMask</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityIteratorCB">HealthActivityIteratorCB</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthEventHandler">HealthEventHandler</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#defines">Macro Defintions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_peek_current_value">health_service_peek_current_value</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_aggregate_averaged">health_service_aggregate_averaged</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMaskAll">HealthActivityMaskAll</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_aggregate_averaged_accessible">health_service_metric_aggregate_averaged_accessible</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_set_heart_rate_sample_period">health_service_set_heart_rate_sample_period</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_get_heart_rate_sample_period_expiration_sec">health_service_get_heart_rate_sample_period_expiration_sec</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_register_metric_alert">health_service_register_metric_alert</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_cancel_metric_alert">health_service_cancel_metric_alert</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Foundation/Event_Service/HealthService/#PBL_IF_HEALTH_ELSE">PBL_IF_HEALTH_ELSE</a></li>
+  
+</ul>
+
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

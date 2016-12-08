@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>RotBitmapLayer // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/User_Interface/Layers/RotBitmapLayer/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem active"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_create">rot_bitmap_layer_create</option>
+
+  <option value="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_destroy">rot_bitmap_layer_destroy</option>
+
+  <option value="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_set_corner_clip_color">rot_bitmap_layer_set_corner_clip_color</option>
+
+  <option value="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_set_angle">rot_bitmap_layer_set_angle</option>
+
+  <option value="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_increment_angle">rot_bitmap_layer_increment_angle</option>
+
+  <option value="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_set_src_ic">rot_bitmap_set_src_ic</option>
+
+  <option value="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_set_compositing_mode">rot_bitmap_set_compositing_mode</option>
+
+
+
+          
+
+          
+
+          
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/User_Interface/Layers/RotBitmapLayer/#RotBitmapLayer">RotBitmapLayer</option>
+
+
+
+          
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">RotBitmapLayer</h1>
+
+      <p>Layer that displays a rotated bitmap image. </p>
+      <p>A RotBitmapLayer is like a <a refid="group___bitmap_layer" kindref="compound" href="/docs/c/User_Interface/Layers/BitmapLayer/">BitmapLayer</a> but has the ability to be rotated (by default, around its center). The amount of rotation is specified using <a refid="group___rot_bitmap_layer_1ga0aa9e535226e88bad75410ce177c27af" kindref="member" href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_set_angle">rot_bitmap_layer_set_angle()</a> or <a refid="group___rot_bitmap_layer_1ga1392050689ca39d86949c8b4744ddaa2" kindref="member" href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_increment_angle">rot_bitmap_layer_increment_angle()</a>. The rotation argument to those functions is specified as an amount of clockwise rotation, where the value 0x10000 represents a full 360 degree rotation and 0 represent no rotation, and it scales linearly between those values, just like <a refid="group___math_1gad373193b20c68af1004a9dc2c35c2e48" kindref="member" href="/docs/c/Foundation/Math/#sin_lookup">sin_lookup</a>.</p>
+<p>The center of rotation in the source bitmap is always placed at the center of the RotBitmapLayer and the size of the RotBitmapLayer is automatically calculated so that the entire Bitmap can fit in at all rotation angles.</p>
+<p>For example, if the image is 10px wide and high, the RotBitmapLayer will be 14px wide ( sqrt(10^2+10^2) ).</p>
+<p>By default, the center of rotation in the source bitmap is the center of the bitmap but you can call <a refid="group___rot_bitmap_layer_1ga455a2e9f47703fe44a1054ff02396162" kindref="member" href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_set_src_ic">rot_bitmap_set_src_ic()</a> to change the center of rotation.</p>
+<p>
+</p>
+
+      
+
+      
+
+
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="rot_bitmap_layer_create">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>RotBitmapLayer * </span><span class="docs__item__name">rot_bitmap_layer_create</span><span>(</span><span class="docs__item__param">GBitmap * bitmap</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates a new RotBitmapLayer on the heap and initializes it with the default values: </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><ul>
+<li><p>Angle: 0</p></li>
+<li><p>Compositing mode: <a refid="group___graphics_types_1gga0d021422bd90a2a49e6c8d848e6d556fa3d668fac5e660241746c082d7155e059" kindref="member">GCompOpAssign</a></p></li>
+<li><p>Corner clip color: GColorClear</p></li>
+</ul>
+</p>
+<p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap</dt>
+  <dd><p>The bitmap to display in this RotBitmapLayer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the RotBitmapLayer. <code>NULL</code> if the RotBitmapLayer could not be created </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="rot_bitmap_layer_destroy">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">rot_bitmap_layer_destroy</span><span>(</span><span class="docs__item__param">RotBitmapLayer * bitmap</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroys a RotBitmapLayer and frees all associated memory. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>It is the developer responsibility to free the GBitmap. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap</dt>
+  <dd><p>The RotBitmapLayer to destroy. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="rot_bitmap_layer_set_corner_clip_color">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">rot_bitmap_layer_set_corner_clip_color</span><span>(</span><span class="docs__item__param">RotBitmapLayer * bitmap</span><span>, </span><span class="docs__item__param">GColor color</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Defines what color to use in areas that are not covered by the source bitmap. By default this is GColorClear. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap</dt>
+  <dd><p>The RotBitmapLayer on which to change the corner clip color </p></dt>
+  
+  <dt><span style="color: #777"></span> color</dt>
+  <dd><p>The corner clip color </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="rot_bitmap_layer_set_angle">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">rot_bitmap_layer_set_angle</span><span>(</span><span class="docs__item__param">RotBitmapLayer * bitmap</span><span>, </span><span class="docs__item__param">int32_t angle</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the rotation angle of this RotBitmapLayer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap</dt>
+  <dd><p>The RotBitmapLayer on which to change the rotation </p></dt>
+  
+  <dt><span style="color: #777"></span> angle</dt>
+  <dd><p>Rotation is an integer between 0 (no rotation) and 0x10000 (360 degree rotation). </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___math_1gad373193b20c68af1004a9dc2c35c2e48" kindref="member" href="/docs/c/Foundation/Math/#sin_lookup">sin_lookup()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="rot_bitmap_layer_increment_angle">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">rot_bitmap_layer_increment_angle</span><span>(</span><span class="docs__item__param">RotBitmapLayer * bitmap</span><span>, </span><span class="docs__item__param">int32_t angle_change</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Change the rotation angle of this RotBitmapLayer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap</dt>
+  <dd><p>The RotBitmapLayer on which to change the rotation </p></dt>
+  
+  <dt><span style="color: #777"></span> angle_change</dt>
+  <dd><p>The rotation angle change </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="rot_bitmap_set_src_ic">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">rot_bitmap_set_src_ic</span><span>(</span><span class="docs__item__param">RotBitmapLayer * bitmap</span><span>, </span><span class="docs__item__param"><a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> ic</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Defines the only point that will not be affected by the rotation in the source bitmap. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>For example, if you pass <a refid="group___graphics_types_1gabf9cee451faac8ad07157b775b951699" kindref="member" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint(0, 0)</a>, the image will rotate around the top-left corner.</p>
+<p>This point is always projected at the center of the RotBitmapLayer. Calling this function automatically adjusts the width and height of the RotBitmapLayer so that the entire bitmap can fit inside the layer at all rotation angles.</p>
+<p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap</dt>
+  <dd><p>The RotBitmapLayer on which to change the rotation </p></dt>
+  
+  <dt><span style="color: #777"></span> ic</dt>
+  <dd><p>The only point in the original image that will not be affected by the rotation. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="rot_bitmap_set_compositing_mode">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">rot_bitmap_set_compositing_mode</span><span>(</span><span class="docs__item__param">RotBitmapLayer * bitmap</span><span>, </span><span class="docs__item__param"><a refid="group___graphics_types_1ga0d021422bd90a2a49e6c8d848e6d556f" kindref="member" href="/docs/c/Graphics/Graphics_Types/#GCompOp">GCompOp</a> mode</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the compositing mode of how the bitmap image is composited onto what has been drawn beneath the RotBitmapLayer. By default this is <a refid="group___graphics_types_1gga0d021422bd90a2a49e6c8d848e6d556fa3d668fac5e660241746c082d7155e059" kindref="member">GCompOpAssign</a>. The RotBitmapLayer is automatically marked dirty after this operation. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap</dt>
+  <dd><p>The RotBitmapLayer on which to change the rotation </p></dt>
+  
+  <dt><span style="color: #777"></span> mode</dt>
+  <dd><p>The compositing mode to set </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___graphics_types_1ga0d021422bd90a2a49e6c8d848e6d556f" kindref="member" href="/docs/c/Graphics/Graphics_Types/#GCompOp">GCompOp</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+      
+
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="RotBitmapLayer">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct RotBitmapLayer <span class="docs__item__name">RotBitmapLayer</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_create">rot_bitmap_layer_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_destroy">rot_bitmap_layer_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_set_corner_clip_color">rot_bitmap_layer_set_corner_clip_color</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_set_angle">rot_bitmap_layer_set_angle</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_layer_increment_angle">rot_bitmap_layer_increment_angle</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_set_src_ic">rot_bitmap_set_src_ic</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/#rot_bitmap_set_compositing_mode">rot_bitmap_set_compositing_mode</a></li>
+  
+</ul>
+
+
+      
+
+      
+
+      
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/#RotBitmapLayer">RotBitmapLayer</a></li>
+  
+</ul>
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

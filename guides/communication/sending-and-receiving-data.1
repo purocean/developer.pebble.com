@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sending and Receiving Data // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to send and receive data between your watchapp and phone.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/communication/sending-and-receiving-data/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/advanced-communication/"><span>Advanced Communication</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/datalogging/"><span>Datalogging</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-pebblekit-android/"><span>PebbleKit Android</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-pebblekit-js/"><span>PebbleKit JS</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-pebblekit-ios/"><span>PebbleKit iOS</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/communication/sending-and-receiving-data/"><span>Sending and Receiving Data</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-the-sports-api/"><span>Sports API</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="message-structure">Message Structure</option>
+          
+            <option value="data-types">Data Types</option>
+          
+            <option value="buffer-sizes">Buffer Sizes</option>
+          
+            <option value="choosing-keys">Choosing Keys</option>
+          
+            <option value="using-callbacks">Using Callbacks</option>
+          
+            <option value="inbox-received">- Inbox Received</option>
+          
+            <option value="inbox-dropped">- Inbox Dropped</option>
+          
+            <option value="outbox-sent">- Outbox Sent</option>
+          
+            <option value="outbox-failed">- Outbox Failed</option>
+          
+            <option value="constructing-an-outgoing-message">Constructing an Outgoing Message</option>
+          
+            <option value="example-outgoing-message-construction">- Example Outgoing Message Construction</option>
+          
+            <option value="reading-an-incoming-message">Reading an Incoming Message</option>
+          
+            <option value="reading-an-integer">- Reading an Integer</option>
+          
+            <option value="reading-a-string">- Reading a String</option>
+          
+            <option value="reading-binary-data">- Reading Binary Data</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Sending and Receiving Data</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>Before using <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a>, a Pebble C app must set up the buffers used for the
+inbox and outbox. These are used to store received messages that have not yet
+been processed, and sent messages that have not yet been transmitted. In
+addition, callbacks may be registered to allow an app to respond to any success
+or failure events that occur when dealing with messages. Doing all of this is
+discussed in this guide.</p><h2 id="message-structure" class="anchor">Message Structure</h2><p>Every message sent or received using the <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> API is stored in a
+<a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a> structure, which is essentially a list of <a href="/docs/c/Foundation/Dictionary/#Tuple" title="Tuple" class="link--docs"><code>Tuple</code></a>
+objects. Each <a href="/docs/c/Foundation/Dictionary/#Tuple" title="Tuple" class="link--docs"><code>Tuple</code></a> contains a key used to &#39;label&#39; the value associated with
+that key. </p><p>When a message is sent, a <a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a> is filled with a <a href="/docs/c/Foundation/Dictionary/#Tuple" title="Tuple" class="link--docs"><code>Tuple</code></a> for
+each item of outgoing data. Conversely, when a message is received the
+<a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a> provided by the callback is examined for the presence of
+each key. If a key is present, the value associated with it can be read.</p><h2 id="data-types" class="anchor">Data Types</h2><p>The <a href="/docs/c/Foundation/Dictionary/#Tuple" title="Tuple" class="link--docs"><code>Tuple.value</code></a> union allows multiple data types to be stored in
+and read from each received message. These are detailed below:</p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Size in Bytes</th>
+<th>Signed?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uint8</td>
+<td><code>uint8_t</code></td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td><code>uint16_t</code></td>
+<td>2</td>
+<td>No</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td><code>uint32_t</code></td>
+<td>4</td>
+<td>No</td>
+</tr>
+<tr>
+<td>int8</td>
+<td><code>int8_t</code></td>
+<td>1</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>int16</td>
+<td><code>int16_t</code></td>
+<td>2</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>int32</td>
+<td><code>int32_t</code></td>
+<td>4</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>cstring</td>
+<td><code>char[]</code></td>
+<td>Variable length array</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>uint8_t[]</code></td>
+<td>Variable length array</td>
+<td>N/A</td>
+</tr>
+</tbody></table>
+<h2 id="buffer-sizes" class="anchor">Buffer Sizes</h2><p>The size of each of the outbox and inbox buffers must be set chosen such that
+the largest message that the app will ever send or receive will fit. Incoming
+messages that exceed the size of the inbox buffer, and outgoing messages that
+exceed that size of the outbox buffer will be dropped.</p><p>These sizes are specified when the <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> system is &#39;opened&#39;, allowing
+communication to occur:</p><div class="highlight"><pre><span class="c1">// Largest expected inbox and outbox message sizes</span>
+<span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">inbox_size</span> <span class="o">=</span> <span class="mi">64</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">outbox_size</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
+
+<span class="c1">// Open AppMessage</span>
+<span class="n">app_message_open</span><span class="p">(</span><span class="n">inbox_size</span><span class="p">,</span> <span class="n">outbox_size</span><span class="p">);</span>
+</pre></div><p>Each of these buffers is allocated at this moment, and comes out of the app&#39;s
+memory budget, so the sizes of the inbox and outbox should be conservative.
+Calculate the size of the buffer you require by summing the sizes of all the
+keys and values in the larges message the app will handle. For example, a
+message containing three integer keys and values will work with a 32 byte buffer
+size.</p><h2 id="choosing-keys" class="anchor">Choosing Keys</h2><p>For each message sent and received, the contents are accessible using keys-value
+pairs in a <a href="/docs/c/Foundation/Dictionary/#Tuple" title="Tuple" class="link--docs"><code>Tuple</code></a>. This allows each piece of data in the message to be
+uniquely identifiable using its key, and also allows many different data types
+to be stored inside a single message.</p><p>Each possible piece of data that may be transmitted should be assigned a unique
+key value, used to read the associated value when it is found in a received
+message. An example for a weather app is shown below::</p>
+<ul>
+<li>Temperature</li>
+<li>WindSpeed</li>
+<li>WindDirection</li>
+<li>RequestData</li>
+<li>LocationName</li>
+</ul>
+<p>These values will be made available in any file that includes <code>pebble.h</code> prefixed
+with <code>MESSAGE_KEY_</code>, such as <code>MESSAGE_KEY_Temperature</code> and <code>MESSAGE_KEY_WindSpeed</code>.</p><p>Examples of how these key values would be used in the phone-side app are
+shown in <a href="/guides/communication/using-pebblekit-js/"><em>PebbleKit JS</em></a>, 
+<a href="/guides/communication/using-pebblekit-ios/"><em>PebbleKit iOS</em></a>, and
+<a href="/guides/communication/using-pebblekit-android/"><em>PebbleKit Android</em></a>.</p><h2 id="using-callbacks" class="anchor">Using Callbacks</h2><p>Like many other aspects of the Pebble C API, the <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> system makes
+use of developer-defined callbacks to allow an app to gracefully handle all
+events that may occur, such as successfully sent or received messages as well as
+any errors that may occur.</p><p>These callback types are discussed below. Each is used by first creating a
+function that matches the signature of the callback type, and then registering
+it with the <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> system to be called when that event type occurs. Good
+use of callbacks to drive the app&#39;s UI will result in an improved user
+experience, especially when errors occur that the user can be guided in fixing.</p><h3 id="inbox-received" class="anchor">Inbox Received</h3><p>The <a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" title="AppMessageInboxReceived" class="link--docs"><code>AppMessageInboxReceived</code></a> callback is called when a new message has been
+received from the connected phone. This is the moment when the contents can be
+read and used to drive what the app does next, using the provided
+<a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a> to read the message. An example is shown below under
+<a href="#reading-an-incoming-message" title="" class=""><em>Reading an Incoming Message</em></a>:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_received_callback</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// A new message has been successfully received</span>
+
+<span class="p">}</span>
+</pre></div><p>Register this callback so that it is called at the appropriate time:</p><div class="highlight"><pre><span class="c1">// Register to be notified about inbox received events</span>
+<span class="n">app_message_register_inbox_received</span><span class="p">(</span><span class="n">inbox_received_callback</span><span class="p">);</span>
+</pre></div><h3 id="inbox-dropped" class="anchor">Inbox Dropped</h3><p>The <a href="/docs/c/Foundation/AppMessage/#AppMessageInboxDropped" title="AppMessageInboxDropped" class="link--docs"><code>AppMessageInboxDropped</code></a> callback is called when a message was received,
+but it was dropped. A common cause of this is that the message was too big for
+the inbox. The reason for failure can be determined using the
+<a href="/docs/c/Foundation/AppMessage/#AppMessageResult" title="AppMessageResult" class="link--docs"><code>AppMessageResult</code></a> provided by the callback:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_dropped_callback</span><span class="p">(</span><span class="n">AppMessageResult</span> <span class="n">reason</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// A message was received, but had to be dropped</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Message dropped. Reason: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">reason</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Register this callback so that it is called at the appropriate time:</p><div class="highlight"><pre><span class="c1">// Register to be notified about inbox dropped events</span>
+<span class="n">app_message_register_inbox_dropped</span><span class="p">(</span><span class="n">inbox_dropped_callback</span><span class="p">);</span>
+</pre></div><h3 id="outbox-sent" class="anchor">Outbox Sent</h3><p>The <a href="/docs/c/Foundation/AppMessage/#AppMessageOutboxSent" title="AppMessageOutboxSent" class="link--docs"><code>AppMessageOutboxSent</code></a> callback is called when a message sent from Pebble
+has been successfully delivered to the connected phone. The provided
+<a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a> can be optionally used to inspect the contents of the
+message just sent.</p>
+<blockquote>
+<p>When sending multiple messages in a short space of time, it is <strong>strongly</strong>
+recommended to make use of this callback to wait until the previous message
+has been sent before sending the next.</p></blockquote>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">outbox_sent_callback</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// The message just sent has been successfully delivered</span>
+
+<span class="p">}</span>
+</pre></div><p>Register this callback so that it is called at the appropriate time:</p><div class="highlight"><pre><span class="c1">// Register to be notified about outbox sent events</span>
+<span class="n">app_message_register_outbox_sent</span><span class="p">(</span><span class="n">outbox_sent_callback</span><span class="p">);</span>
+</pre></div><h3 id="outbox-failed" class="anchor">Outbox Failed</h3><p>The <a href="/docs/c/Foundation/AppMessage/#AppMessageOutboxFailed" title="AppMessageOutboxFailed" class="link--docs"><code>AppMessageOutboxFailed</code></a> callback is called when a message just sent
+failed to be successfully delivered to the connected phone. The reason can be
+determined by reading the value of the provided <a href="/docs/c/Foundation/AppMessage/#AppMessageResult" title="AppMessageResult" class="link--docs"><code>AppMessageResult</code></a>, and the
+contents of the failed message inspected with the provided
+<a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a>.</p><p>Use of this callback is strongly encouraged, since it allows an app to detect a
+failed message and either retry its transmission, or inform the user of the
+failure so that they can attempt their action again.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">outbox_failed_callback</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span>
+                                      <span class="n">AppMessageResult</span> <span class="n">reason</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// The message just sent failed to be delivered</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Message send failed. Reason: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">reason</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Register this callback so that it is called at the appropriate time:</p><div class="highlight"><pre><span class="c1">// Register to be notified about outbox failed events</span>
+<span class="n">app_message_register_outbox_failed</span><span class="p">(</span><span class="n">outbox_failed_callback</span><span class="p">);</span>
+</pre></div><h2 id="constructing-an-outgoing-message" class="anchor">Constructing an Outgoing Message</h2><p>A message is constructed and sent from the C app via <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> using a
+<a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a> object and the <a href="/docs/c/Foundation/Dictionary/" title="Dictionary" class="link--docs"><code>Dictionary</code></a> APIs. Ensure that
+<a href="/docs/c/Foundation/AppMessage/#app_message_open" title="app_message_open" class="link--docs"><code>app_message_open()</code></a> has been called before sending or receiving any messages.</p><p>The first step is to begin an outgoing message by preparing a
+<a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a> pointer, used to keep track of the state of the
+dictionary being constructed:</p><div class="highlight"><pre><span class="c1">// Declare the dictionary's iterator</span>
+<span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">out_iter</span><span class="p">;</span>
+
+<span class="c1">// Prepare the outbox buffer for this message</span>
+<span class="n">AppMessageResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">app_message_outbox_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">out_iter</span><span class="p">);</span>
+</pre></div><p>The <a href="/docs/c/Foundation/AppMessage/#AppMessageResult" title="AppMessageResult" class="link--docs"><code>AppMessageResult</code></a> should be checked to make sure the outbox was
+successfully prepared:</p><div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">APP_MSG_OK</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Construct the message</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// The outbox cannot be used right now</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Error preparing the outbox: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>If the result is <a href="/docs/c/Foundation/AppMessage/#APP_MSG_OK" title="APP_MSG_OK" class="link--docs"><code>APP_MSG_OK</code></a>, the message construction can continue. Data is
+now written to the dictionary according to data type using the <a href="/docs/c/Foundation/Dictionary/" title="Dictionary" class="link--docs"><code>Dictionary</code></a>
+APIs. An example from the hypothetical weather app is shown below:</p><div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">APP_MSG_OK</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// A dummy value</span>
+  <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// Add an item to ask for weather data</span>
+  <span class="n">dict_write_int</span><span class="p">(</span><span class="n">out_iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_RequestData</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span> <span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>After all desired data has been written to the dictionary, the message may be
+sent:</p><div class="highlight"><pre><span class="c1">// Send this message</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">app_message_outbox_send</span><span class="p">();</span>
+
+<span class="c1">// Check the result</span>
+<span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">APP_MSG_OK</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Error sending the outbox: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<div class="alert alert--fg-white alert--bg-dark-red">
+<p><strong>Important</strong></p><p>Any app that wishes to send data from the watch to the phone via PebbleKit JS
+must wait until the <code>ready</code> event has occured, indicating that the phone has
+loaded the JavaScript for the app and it is ready to receive data. See
+<a href="/guides/communication/advanced-communication#waiting-for-pebblekit-js" title="" class=""><em>Advanced Communication</em></a>
+for more information.</p>
+</div>
+<p>Once the message send operation has been completed, either the
+<a href="/docs/c/Foundation/AppMessage/#AppMessageOutboxSent" title="AppMessageOutboxSent" class="link--docs"><code>AppMessageOutboxSent</code></a> or <a href="/docs/c/Foundation/AppMessage/#AppMessageOutboxFailed" title="AppMessageOutboxFailed" class="link--docs"><code>AppMessageOutboxFailed</code></a> callbacks will be called
+(if they have been registered), depending on either a success or failure
+outcome.</p><h3 id="example-outgoing-message-construction" class="anchor">Example Outgoing Message Construction</h3><p>A complete example of assembling an outgoing message is shown below:</p><div class="highlight"><pre><span class="c1">// Declare the dictionary's iterator</span>
+<span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">out_iter</span><span class="p">;</span>
+
+<span class="c1">// Prepare the outbox buffer for this message</span>
+<span class="n">AppMessageResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">app_message_outbox_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">out_iter</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">APP_MSG_OK</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Add an item to ask for weather data</span>
+  <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">dict_write_int</span><span class="p">(</span><span class="n">out_iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_RequestData</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span> <span class="nb">true</span><span class="p">);</span>
+
+  <span class="c1">// Send this message</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">app_message_outbox_send</span><span class="p">();</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">APP_MSG_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Error sending the outbox: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">result</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// The outbox cannot be used right now</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Error preparing the outbox: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="reading-an-incoming-message" class="anchor">Reading an Incoming Message</h2><p>When a message is received from the connected phone the
+<a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" title="AppMessageInboxReceived" class="link--docs"><code>AppMessageInboxReceived</code></a> callback is called, and the message&#39;s contents can
+be read using the provided <a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a>. This should be done by
+looking for the presence of each expectd <code>Tuple</code> key value, and using the
+associated value as required.</p><p>Most apps will deal with integer values or strings to pass signals or some
+human-readable information respectively. These common use cases are discussed
+below.</p><h3 id="reading-an-integer" class="anchor">Reading an Integer</h3><p><strong>From JS</strong></p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">dict</span>  <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Temperature'</span><span class="o">:</span> <span class="mi">29</span>
+<span class="p">};</span>
+</pre></div><p><strong>In C</strong></p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_received_callback</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// A new message has been successfully received</span>
+
+  <span class="c1">// Does this message contain a temperature value?</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="n">temperature_tuple</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_Temperature</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">temperature_tuple</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This value was stored as JS Number, which is stored here as int32_t</span>
+    <span class="kt">int32_t</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature_tuple</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="reading-a-string" class="anchor">Reading a String</h3><p>A common use of transmitted strings is to display them in a <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. Since
+the displayed text is required to be long-lived, a <code>static</code> <code>char</code> buffer can be
+used when the data is received:</p><p><strong>From JS</strong></p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">dict</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'LocationName'</span><span class="o">:</span> <span class="s1">'London, UK'</span>
+<span class="p">};</span>
+</pre></div><p><strong>In C</strong></p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_received_callback</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Is the location name inside this message?</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="n">location_tuple</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_LocationName</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">location_tuple</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This value was stored as JS String, which is stored here as a char string</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">location_name</span> <span class="o">=</span> <span class="n">location_tuple</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">cstring</span><span class="p">;</span>
+
+    <span class="c1">// Use a static buffer to store the string for display</span>
+    <span class="k">static</span> <span class="kt">char</span> <span class="n">s_buffer</span><span class="p">[</span><span class="n">MAX_LENGTH</span><span class="p">];</span>
+    <span class="n">snprintf</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">),</span> <span class="s">"Location: %s"</span><span class="p">,</span> <span class="n">location_name</span><span class="p">);</span>
+
+    <span class="c1">// Display in the TextLayer</span>
+    <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">,</span> <span class="n">s_buffer</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="reading-binary-data" class="anchor">Reading Binary Data</h3><p>Apps that deal in packed binary data can send this data and pack/unpack as
+required on either side:</p><p><strong>From JS</strong></p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">dict</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Data'</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">]</span>
+<span class="p">};</span>
+</pre></div><p><strong>In C</strong></p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_received_callback</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Expected length of the binary data</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span>
+
+  <span class="c1">// Does this message contain the data tuple?</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="n">data_tuple</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_Data</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">data_tuple</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Read the binary data value</span>
+    <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="n">data_tuple</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+
+    <span class="c1">// Inspect the first byte, for example</span>
+    <span class="kt">uint8_t</span> <span class="n">byte_zero</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+    <span class="c1">// Store into an app-defined buffer</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+  <span class="p">}</span>
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/communication/sending-and-receiving-data/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#message-structure">Message Structure</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#data-types">Data Types</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#buffer-sizes">Buffer Sizes</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#choosing-keys">Choosing Keys</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#using-callbacks">Using Callbacks</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#inbox-received">Inbox Received</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#inbox-dropped">Inbox Dropped</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#outbox-sent">Outbox Sent</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#outbox-failed">Outbox Failed</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#constructing-an-outgoing-message">Constructing an Outgoing Message</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#example-outgoing-message-construction">Example Outgoing Message Construction</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#reading-an-incoming-message">Reading an Incoming Message</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#reading-an-integer">Reading an Integer</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#reading-a-string">Reading a String</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#reading-binary-data">Reading Binary Data</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

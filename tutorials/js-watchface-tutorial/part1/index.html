@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Build a Watchface in JavaScript using Rocky.js // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A guide to making a new Pebble watchface with Rocky.js">
+  <link rel="canonical" href="http://developer.getpebble.com/tutorials/js-watchface-tutorial/part1/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started active"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+<div class="section-menu section-menu--getting-started section-menu--dark">
+  <div class="section-menu__header">
+    <h3><a href="/tutorials/">Tutorials</a></h3>
+  </div>
+  <ul>
+    <li class="section-menu__item"><a href="/tutorials/watchface-tutorial/part1/">Build a Watchface in C</a>
+      <ul>
+        <li class="section-menu__subitem active"><a href="/tutorials/watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part2/"><span>Part 2 - Customizing the Watchface</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part3/"><span>Part 3 - Adding Web Content</a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part4/"><span>Part 4 - Adding a Battery Bar</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part5/"><span>Part 5 - Vibrate on Disconnect</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item open"><a href="/tutorials/js-watchface-tutorial/part1/">Build a Watchface in JS</a>
+      <ul>
+        <li class="section-menu__subitem active"><a href="/tutorials/js-watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/js-watchface-tutorial/part2/"><span>Part 2 - Adding Web Content</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/advanced/vector-animations/">Advanced Tutorials</a>
+      <ul>
+        <li class="section-menu__subitem active"><a href="/tutorials/advanced/vector-animations/"><span>Vector Animations</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="first-steps">First Steps</option>
+          
+            <option value="watchface-basics">Watchface Basics</option>
+          
+            <option value="creating-a-digital-watchface">Creating a Digital Watchface</option>
+          
+            <option value="first-compilation-and-installation">First Compilation and Installation</option>
+          
+            <option value="congratulations">Congratulations!</option>
+          
+            <option value="creating-an-analog-watchface">Creating an Analog Watchface</option>
+          
+            <option value="drawing-the-hands">- Drawing the Hands</option>
+          
+            <option value="putting-it-all-together">- Putting It All Together</option>
+          
+            <option value="troubleshooting-and-debugging">Troubleshooting and Debugging</option>
+          
+            <option value="rocky-js-linter">- Rocky.js Linter</option>
+          
+            <option value="locating-errors-using-logging">- Locating Errors Using Logging</option>
+          
+            <option value="i-39-m-still-having-problems">- I&#39;m still having problems!</option>
+          
+            <option value="conclusion">Conclusion</option>
+          
+            <option value="what-39-s-next">What&#39;s Next</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-l-8">
+      <h1>Build a Watchface in JavaScript using Rocky.js</h1>
+      
+      <div class="markdown markdown--staff">
+      
+      <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+      
+      <div class="alert alert--fg-white alert--bg-purple">
+  <p>  <strong>Device Compatibility</strong></p><p>  Rocky.js requires Pebble OS v4.x and therefore will not support Pebble Classic
+  or Pebble Steel.</p>
+</div>
+<p>In this tutorial we&#39;ll cover the basics of writing a simple watchface with
+Rocky.js, Pebble&#39;s JavaScript API. Rocky.js enables developers to create
+beautiful and feature-rich watchfaces with a modern programming language.</p><p>Rocky.js should not be confused with Pebble.js which also allowed developers to
+write applications in JavaScript. Unlike Pebble.js, Rocky.js runs natively on
+the watch and is now the only offically supported method for developing
+JavaScript applications for Pebble smartwatches.</p><p>We&#39;re going to start with some basics, then create a simple digital watchface
+and finally create an analog clock which looks just like this:</p><p><img src="/assets/images/tutorials/js-watchface-tutorial/tictoc.png" alt="rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="first-steps" class="anchor">First Steps</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Go to <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> and click
+&#39;Get Started&#39; to log in using your Pebble account, or create a new one if you do
+not already have one. Once you&#39;ve logged in, click &#39;Create&#39; to create a new
+project. Give your project a suitable name, such as &#39;Tutorial 1&#39; and set the
+&#39;Project Type&#39; as &#39;Rocky.js (beta)&#39;. This will create a completely empty
+project, so before you continue, you will need to click the &#39;Add New&#39; button in
+the left menu to create a new Rocky.js JavaScript file.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Next we need to change our project from a watchapp to a watchface. Click
+&#39;Settings&#39; in the left menu, then change the &#39;APP KIND&#39; to &#39;watchface&#39;.</p>
+<div class="platform-specific" data-sdk-platform="local">
+<p>If you haven&#39;t already, head over the <a href="/sdk/install/" title="" class="">SDK Page</a> to learn how to
+download and install the latest version of the Pebble Tool, and the latest SDK.</p><p>Once you&#39;ve installed the Pebble Tool and SDK 4.0, you can create a new Rocky.js
+project with the following command:</p><div class="highlight no-copy"><pre>$ pebble new-project --rocky helloworld
+</pre></div><p>This will create a new folder called <code>helloworld</code> and populate it with the basic
+structure required for a basic Rocky.js application.</p>
+</div>
+<h2 id="watchface-basics" class="anchor">Watchface Basics</h2><p>Watchface are essentially long running applications that update the display at
+a regular interval (typically once a minute, or when specific events occur). By
+minimizing the frequency that the screen is updated, we help to conserve
+battery life on the watch.</p><p class="platform-specific" data-sdk-platform="cloudpebble">We&#39;ll start by editing the <code>index.js</code> file that we created earlier. Click
+on the filename in the left menu and it will load, ready for editing.</p><p class="platform-specific" data-sdk-platform="local">The main entry point for the watchface is <code>/src/rocky/index.js</code>, so we&#39;ll
+start by editing this file.</p><p>The very first thing we must do is include the Rocky.js library, which gives us
+access to the APIs we need to create a Pebble watchface.</p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rocky</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'rocky'</span><span class="p">);</span>
+</pre></div><p>Next, the invocation of <code>rocky.on(&#39;minutechange&#39;, ...)</code> registers a callback
+method to the <code>minutechange</code> event - which is emitted every time the internal
+clock&#39;s minute changes (and also when the handler is registered). Watchfaces
+should invoke the <a href="/docs/rockyjs/rocky/#requestDraw" title="requestDraw" class="link--docs"><code>requestDraw</code></a> method as part of the <code>minutechange</code> event to
+redraw the screen.</p><div class="highlight"><pre><span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'minutechange'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">rocky</span><span class="p">.</span><span class="nx">requestDraw</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+<blockquote>
+<p><strong>NOTE</strong>: Watchfaces that need to update more or less frequently can also
+register the <code>secondchange</code>, <code>hourchange</code> or <code>daychange</code> events.</p></blockquote>
+<p>Next we register a callback method to the <code>draw</code> event - which is emitted after
+each call to <code>rocky.requestDraw()</code>. The <code>event</code> parameter passed into the
+callback function includes a <code>CanvasRenderingContext2D</code> object, which is used
+to determine the display characteristics and draw text or shapes on the display.</p><div class="highlight"><pre><span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'draw'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Get the CanvasRenderingContext2D object</span>
+  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">context</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div><p>The <a href="/docs/rockyjs/rocky/#RockyDrawCallback" title="RockyDrawCallback" class="link--docs"><code>RockyDrawCallback</code></a> is where we render the smartwatch display, using the
+methods provided to us through the <code>CanvasRenderingContext2D</code> object.</p>
+<blockquote>
+<p><strong>NOTE</strong>: The <code>draw</code> event may also be emitted at other times, such
+as when the handler is first registered.</p></blockquote>
+<h2 id="creating-a-digital-watchface" class="anchor">Creating a Digital Watchface</h2><p>In order to create a simple digital watchface, we will need to do the following
+things:</p>
+<ul>
+<li>Subscribe to the <code>minutechange</code> event.</li>
+<li>Subscribe to the <code>draw</code> event, so we can update the display.</li>
+<li>Clear the display each time we draw on the screen.</li>
+<li>Determine the width and height of the available content area of the screen.</li>
+<li>Obtain the current date and time.</li>
+<li>Set the text color to white.</li>
+<li>Center align the text.</li>
+<li>Display the current time, using the width and height to determine the center
+point of the screen.</li>
+</ul>
+<p class="platform-specific" data-sdk-platform="cloudpebble">To create our minimal watchface which displays the current time, let&#39;s
+replace the contents of our <code>index.js</code> file with the following code:</p><p class="platform-specific" data-sdk-platform="local">To create our minimal watchface which displays the current time, let&#39;s
+replace the contents of <code>/src/rocky/index.js</code> with the following code:</p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rocky</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'rocky'</span><span class="p">);</span>
+
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'draw'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Get the CanvasRenderingContext2D object</span>
+  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">context</span><span class="p">;</span>
+
+  <span class="c1">// Clear the screen</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">);</span>
+
+  <span class="c1">// Determine the width and height of the display</span>
+  <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedWidth</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedHeight</span><span class="p">;</span>
+
+  <span class="c1">// Current date/time</span>
+  <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+  <span class="c1">// Set the text color</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s1">'white'</span><span class="p">;</span>
+
+  <span class="c1">// Center align the text</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">textAlign</span> <span class="o">=</span> <span class="s1">'center'</span><span class="p">;</span>
+
+  <span class="c1">// Display the time, in the middle of the screen</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">(),</span> <span class="nx">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">w</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'minutechange'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Display a message in the system logs</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Another minute with your Pebble!"</span><span class="p">);</span>
+
+  <span class="c1">// Request the screen to be redrawn on next pass</span>
+  <span class="nx">rocky</span><span class="p">.</span><span class="nx">requestDraw</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div><h2 id="first-compilation-and-installation" class="anchor">First Compilation and Installation</h2><p class="platform-specific" data-sdk-platform="cloudpebble">To compile the watchface, click the &#39;PLAY&#39; button on the right hand side
+of the screen. This will save your file, compile the project and launch your
+watchface in the emulator.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Click the &#39;VIEW LOGS&#39; button.</p>
+<div class="platform-specific" data-sdk-platform="local">
+<p>To compile the watchface, make sure you have saved your project files, then
+run the following command from the project&#39;s root directory:</p><div class="highlight no-copy"><pre>$ pebble build
+</pre></div><p>After a successful compilation you will see a message reading <code>&#39;build&#39; finished
+successfully</code>.</p><p>If there are any problems with your code, the compiler will tell you which lines
+contain an error, so you can fix them. See
+<a href="#troubleshooting-and-debugging" title="" class="">Troubleshooting and Debugging</a> for further
+information.</p><p>Now install the watchapp and view the logs on the emulator by running:</p><div class="highlight no-copy"><pre>$ pebble install --logs --emulator basalt
+</pre></div>
+</div>
+<h2 id="congratulations" class="anchor">Congratulations!</h2><p>You should see a loading bar as the watchface is loaded, shortly followed by
+your watchface running in the emulator.</p><p><img src="/assets/images/tutorials/js-watchface-tutorial/rocky-time.png" alt="rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Your logs should also be displaying the message we told it to log with
+<code>console.log()</code>.</p><div class="highlight no-copy"><pre>Another minute with your Pebble!
+</pre></div>
+<blockquote>
+<p>Note: You should prevent execution of the log statements by commenting the
+code, if you aren&#39;t using them. e.g. <code>//console.log();</code></p></blockquote>
+<h2 id="creating-an-analog-watchface" class="anchor">Creating an Analog Watchface</h2><p>In order to draw an analog watchface, we will need to do the following things:</p>
+<ul>
+<li>Subscribe to the <code>minutechange</code> event.</li>
+<li>Subscribe to the <code>draw</code> event, so we can update the display.</li>
+<li>Obtain the current date and time.</li>
+<li>Clear the display each time we draw on the screen.</li>
+<li>Determine the width and height of the available content area of the screen.</li>
+<li>Use the width and height to determine the center point of the screen.</li>
+<li>Calculate the max length of the watch hands based on the available space.</li>
+<li>Determine the correct angle for minutes and hours.</li>
+<li>Draw the minute and hour hands, outwards from the center point.</li>
+</ul>
+<h3 id="drawing-the-hands" class="anchor">Drawing the Hands</h3><p>We&#39;re going to need to draw two lines, one representing the hour hand, and one
+representing the minute hand.</p><p>We need to implement a function to draw the hands, to prevent duplicating the
+same drawing code for hours and minutes.  We&#39;re going to use a series of
+<code>CanvasRenderingContext2D</code> methods to accomplish the desired effect.</p><p>First we need to find the center point in our display:</p><div class="highlight"><pre><span class="c1">// Determine the available width and height of the display</span>
+<span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedWidth</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedHeight</span><span class="p">;</span>
+
+<span class="c1">// Determine the center point of the display</span>
+<span class="kd">var</span> <span class="nx">cx</span> <span class="o">=</span> <span class="nx">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">cy</span> <span class="o">=</span> <span class="nx">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</pre></div><p>Now we know the starting point for the hands (<code>cx</code>, <code>cy</code>), but we still need to
+determine the end point. We can do this with a tiny bit of math:</p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">x2</span> <span class="o">=</span> <span class="nx">cx</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span> <span class="o">*</span> <span class="nx">length</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">y2</span> <span class="o">=</span> <span class="nx">cy</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span> <span class="o">*</span> <span class="nx">length</span><span class="p">;</span>
+</pre></div><p>Then we&#39;ll use the <code>ctx</code> parameter and configure the line width and color of
+the hand.</p><div class="highlight"><pre><span class="c1">// Configure how we want to draw the hand</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineWidth</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+</pre></div><p>Finally we draw the hand, starting from the center of the screen, drawing a
+straight line outwards.</p><div class="highlight"><pre><span class="c1">// Begin drawing</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+
+<span class="c1">// Move to the center point, then draw the line</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">cx</span><span class="p">,</span> <span class="nx">cy</span><span class="p">);</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">);</span>
+
+<span class="c1">// Stroke the line (output to display)</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+</pre></div><h3 id="putting-it-all-together" class="anchor">Putting It All Together</h3><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rocky</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'rocky'</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">fractionToRadian</span><span class="p">(</span><span class="nx">fraction</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">fraction</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">drawHand</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">cx</span><span class="p">,</span> <span class="nx">cy</span><span class="p">,</span> <span class="nx">angle</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Find the end points</span>
+  <span class="kd">var</span> <span class="nx">x2</span> <span class="o">=</span> <span class="nx">cx</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span> <span class="o">*</span> <span class="nx">length</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">y2</span> <span class="o">=</span> <span class="nx">cy</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span> <span class="o">*</span> <span class="nx">length</span><span class="p">;</span>
+
+  <span class="c1">// Configure how we want to draw the hand</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineWidth</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+
+  <span class="c1">// Begin drawing</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+
+  <span class="c1">// Move to the center point, then draw the line</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="nx">cx</span><span class="p">,</span> <span class="nx">cy</span><span class="p">);</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">);</span>
+
+  <span class="c1">// Stroke the line (output to display)</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'draw'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">context</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+  <span class="c1">// Clear the screen</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">);</span>
+
+  <span class="c1">// Determine the width and height of the display</span>
+  <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedWidth</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedHeight</span><span class="p">;</span>
+
+  <span class="c1">// Determine the center point of the display</span>
+  <span class="c1">// and the max size of watch hands</span>
+  <span class="kd">var</span> <span class="nx">cx</span> <span class="o">=</span> <span class="nx">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">cy</span> <span class="o">=</span> <span class="nx">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="c1">// -20 so we're inset 10px on each side</span>
+  <span class="kd">var</span> <span class="nx">maxLength</span> <span class="o">=</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">h</span><span class="p">)</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+  <span class="c1">// Calculate the minute hand angle</span>
+  <span class="kd">var</span> <span class="nx">minuteFraction</span> <span class="o">=</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">())</span> <span class="o">/</span> <span class="mi">60</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">minuteAngle</span> <span class="o">=</span> <span class="nx">fractionToRadian</span><span class="p">(</span><span class="nx">minuteFraction</span><span class="p">);</span>
+
+  <span class="c1">// Draw the minute hand</span>
+  <span class="nx">drawHand</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">cx</span><span class="p">,</span> <span class="nx">cy</span><span class="p">,</span> <span class="nx">minuteAngle</span><span class="p">,</span> <span class="nx">maxLength</span><span class="p">,</span> <span class="s2">"white"</span><span class="p">);</span>
+
+  <span class="c1">// Calculate the hour hand angle</span>
+  <span class="kd">var</span> <span class="nx">hourFraction</span> <span class="o">=</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getHours</span><span class="p">()</span> <span class="o">%</span> <span class="mi">12</span> <span class="o">+</span> <span class="nx">minuteFraction</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">hourAngle</span> <span class="o">=</span> <span class="nx">fractionToRadian</span><span class="p">(</span><span class="nx">hourFraction</span><span class="p">);</span>
+
+  <span class="c1">// Draw the hour hand</span>
+  <span class="nx">drawHand</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">cx</span><span class="p">,</span> <span class="nx">cy</span><span class="p">,</span> <span class="nx">hourAngle</span><span class="p">,</span> <span class="nx">maxLength</span> <span class="o">*</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s2">"lightblue"</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'minutechange'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Request the screen to be redrawn on next pass</span>
+  <span class="nx">rocky</span><span class="p">.</span><span class="nx">requestDraw</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div><p>Now compile and run your project in the emulator to see the results!</p><h2 id="troubleshooting-and-debugging" class="anchor">Troubleshooting and Debugging</h2><p>If your build didn&#39;t work, you&#39;ll see the error message: <code>Build Failed</code>. Let&#39;s
+take a look at some of the common types of errors:</p><h3 id="rocky-js-linter" class="anchor">Rocky.js Linter</h3><p>As part of the build process, your Rocky <code>index.js</code> file is automatically
+checked for errors using a process called
+<a href="https://en.wikipedia.org/wiki/Lint_%28software%29" title="" class="">&#39;linting&#39;</a>.</p><p>The first thing to check is the &#39;Lint Results&#39; section of the build output.</p><div class="highlight no-copy"><pre>========== Lint Results: index.js ==========
+
+src/rocky/index.js(7,39): error TS1005: ',' expected.
+src/rocky/index.js(9,8): error TS1005: ':' expected.
+src/rocky/index.js(9,37): error TS1005: ',' expected.
+src/rocky/index.js(7,1): warning TS2346: Supplied parameters do not match any signature of call target.
+src/rocky/index.js(7,24): warning TS2304: Cannot find name 'funtion'.
+
+Errors: 3, Warnings: 2
+Please fix the issues marked with 'error' above.
+</pre></div><p>In the error messages above, we see the filename which contains the error,
+followed by the line number and column number where the error occurs. For
+example:</p><div class="highlight no-copy"><pre>Filename: src/rocky/index.js
+Line number: 7
+Character: 24
+Description: Cannot find name 'funtion'.
+</pre></div><div class="highlight"><pre><span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'minutechange'</span><span class="p">,</span> <span class="nx">funtion</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">});</span>
+</pre></div><p>As we can see, this error relates to a typo, &#39;funtion&#39; should be &#39;function&#39;.
+Once this error has been fixed and you run <code>pebble build</code> again, you should
+see:</p><div class="highlight no-copy"><pre>========== Lint Results: index.js ==========
+
+Everything looks AWESOME!
+</pre></div><h3 id="locating-errors-using-logging" class="anchor">Locating Errors Using Logging</h3><p>So what do we do when the build is successful, but our code isn&#39;t functioning as
+expected? Logging!</p><p>Scatter a breadcrumb trail through your application code, that you can follow as
+your application is running. This will help to narrow down the location of
+the problem.</p><div class="highlight"><pre><span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'minutechange'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'minutechange fired!'</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">});</span>
+</pre></div><p>Once you&#39;ve added your logging statements, rebuild the application and view the
+logs:</p><p class="platform-specific" data-sdk-platform="cloudpebble">Click the &#39;PLAY&#39; button on the right hand side of the screen, then click
+the &#39;VIEW LOGS&#39; button.</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight no-copy"><pre>$ pebble build && pebble install --emulator basalt --logs
+</pre></div>
+</div>
+<p>If you find that one of your logging statements hasn&#39;t appeared in the log
+output, it probably means there is an issue in the preceding code.</p><h3 id="i-39-m-still-having-problems" class="anchor">I&#39;m still having problems!</h3><p>If you&#39;ve tried the steps above and you&#39;re still having problems, there are
+plenty of places to get help. You can post your question and code on the
+<a href="https://forums.pebble.com/c/development" title="" class="">Pebble Forums</a> or join our
+<a href="http://discord.gg/aRUAYFN" title="" class="">Discord Server</a> and ask for assistance.</p><h2 id="conclusion" class="anchor">Conclusion</h2><p>So there we have it, the basic process required to create a brand new Pebble
+watchface using JavaScript! To do this we:</p>
+<ol>
+<li>Created a new Rocky.js project.</li>
+<li>Included the <code>&#39;rocky&#39;</code> library.</li>
+<li>Subscribed to the <code>minutechange</code> event.</li>
+<li>Subscribed to the <code>draw</code> event.</li>
+<li>Used drawing commands to draw text and lines on the display.</li>
+</ol>
+<p>If you have problems with your code, check it against the sample source code
+provided using the button below.</p><p><a href="https://github.com/pebble-examples/rocky-watchface-tutorial-part1" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">View Source Code</a></p><h2 id="what-39-s-next" class="anchor">What&#39;s Next</h2><p>If you successfully built and run your application, you should have seen a very
+basic watchface that closely mimics the built-in TicToc. In the next tutorial,
+we&#39;ll use <code>postMessage</code> to pass information to the mobile device, and
+request weather data from the web.</p><p><a href="/tutorials/js-watchface-tutorial/part2/" title="" class="btn btn--markdown btn--wide btn--bg-dark-red btn--fg-white">Go to Part 2 &rarr;</a></p>
+      </div>
+    </div>
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#first-steps">First Steps</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#watchface-basics">Watchface Basics</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#creating-a-digital-watchface">Creating a Digital Watchface</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#first-compilation-and-installation">First Compilation and Installation</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#congratulations">Congratulations!</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#creating-an-analog-watchface">Creating an Analog Watchface</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#drawing-the-hands">Drawing the Hands</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#putting-it-all-together">Putting It All Together</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#troubleshooting-and-debugging">Troubleshooting and Debugging</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#rocky-js-linter">Rocky.js Linter</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#locating-errors-using-logging">Locating Errors Using Logging</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#i-39-m-still-having-problems">I&#39;m still having problems!</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next</a></li>
+    
+  </ul>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

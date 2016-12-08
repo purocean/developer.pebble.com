@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/pebblekit-js/Pebble/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/pebblekit-js/">PebbleKit JS</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/pebblekit-js/Pebble/">Pebble</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#addEventListener"><span>addEventListener</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#on"><span>on</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#removeEventListener"><span>removeEventListener</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#off"><span>off</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#showSimpleNotificationOnPebble"><span>showSimpleNotificationOnPebble</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#sendAppMessage"><span>sendAppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#postMessage"><span>postMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#getTimelineToken"><span>getTimelineToken</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#timelineSubscribe"><span>timelineSubscribe</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#timelineUnsubscribe"><span>timelineUnsubscribe</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#timelineSubscriptions"><span>timelineSubscriptions</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#getActiveWatchInfo"><span>getActiveWatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#getAccountToken"><span>getAccountToken</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#getWatchToken"><span>getWatchToken</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#appGlanceReload"><span>appGlanceReload</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#TimelineTopicsCallback"><span>TimelineTopicsCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#openURL"><span>openURL</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#AppGlanceReloadFailureCallback"><span>AppGlanceReloadFailureCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#AppMessageAckCallback"><span>AppMessageAckCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#AppMessageNackCallback"><span>AppMessageNackCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#EventCallback"><span>EventCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#TimelineTokenCallback"><span>TimelineTokenCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#AppGlanceReloadSuccessCallback"><span>AppGlanceReloadSuccessCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#PostMessageCallback"><span>PostMessageCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#PostMessageErrorCallback"><span>PostMessageErrorCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#PostMessageConnectedCallback"><span>PostMessageConnectedCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#PostMessageDisconnectedCallback"><span>PostMessageDisconnectedCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#WatchInfo"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-js/Pebble/#AppGlanceSlice"><span>AppGlanceSlice</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+<option value="#methods">METHODS</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#addEventListener">addEventListener</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#on">on</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#removeEventListener">removeEventListener</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#off">off</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#showSimpleNotificationOnPebble">showSimpleNotificationOnPebble</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#sendAppMessage">sendAppMessage</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#postMessage">postMessage</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#getTimelineToken">getTimelineToken</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#timelineSubscribe">timelineSubscribe</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#timelineUnsubscribe">timelineUnsubscribe</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#timelineSubscriptions">timelineSubscriptions</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#getActiveWatchInfo">getActiveWatchInfo</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#getAccountToken">getAccountToken</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#getWatchToken">getWatchToken</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#appGlanceReload">appGlanceReload</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#openURL">openURL</option>
+
+
+
+          
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#TimelineTopicsCallback">TimelineTopicsCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#AppGlanceReloadFailureCallback">AppGlanceReloadFailureCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#AppMessageAckCallback">AppMessageAckCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#AppMessageNackCallback">AppMessageNackCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#EventCallback">EventCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#TimelineTokenCallback">TimelineTokenCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#AppGlanceReloadSuccessCallback">AppGlanceReloadSuccessCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#PostMessageCallback">PostMessageCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#PostMessageErrorCallback">PostMessageErrorCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#PostMessageConnectedCallback">PostMessageConnectedCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#PostMessageDisconnectedCallback">PostMessageDisconnectedCallback</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#WatchInfo">WatchInfo</option>
+
+  <option value="/docs/pebblekit-js/Pebble/#AppGlanceSlice">AppGlanceSlice</option>
+
+
+
+
+          <h3><a href="#">Examples</a></h3>
+<ul class="toc">
+  <li class="toc__item"><a href="/tutorials/js-watchface-tutorial/part1/">Watchface Tutorial</a></li>
+  <li class="toc__item"><a href="https://github.com/pebble-examples/rocky-memorypressure">Memory Pressure</a></li>
+</ul>
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__js">
+
+      <!--
+<div class="alert alert--large alert--fg-white alert--bg-dark-red">
+    <p>
+        This documentation includes information about APIs and functionality
+        which is only available in Pebble SDK 4.2-BETA.
+    </p>
+</div>
+-->
+
+
+      <h1 class="pagetitle">Pebble</h1>
+
+      
+
+
+
+<p>The Pebble namespace is where all of the Pebble specific methods and properties exist. This class contains methods belonging to PebbleKit JS and allows bi-directional communication with a C or JavaScript watchapp, as well as managing the user's timeline subscriptions, creating AppGlance slices and obtaining information about the currently connected watch.</p>
+
+
+
+
+
+
+      
+        <h3 class="anchor" id="methods">Methods</h3>
+        
+          <div class="docs__item__anchor" id="addEventListener">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">addEventListener</span>(<span class="docs__item__param">type</span>, <span class="docs__item__param">callback</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Adds a listener for PebbleKit JS events, such as when an <code>AppMessage</code> is    received or the configuration view is opened or closed.</p>
+
+
+
+
+
+<h4><p>Event Type Options</p></h4>
+
+
+
+
+
+<p>  Possible values:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>ready</code> - The watchapp has been launched and the PebbleKit JS component is now ready to receive events.</p></li><li><p><code>appmessage</code> - The watch sent an <code>AppMessage</code> to PebbleKit JS. The AppMessage <code>Dictionary</code> is contained in the payload property (i.e: <code>event.payload</code>). The payload consists of key-value pairs, where the keys are strings containing integers (e.g: "0"), or aliases for keys defined in package.json (e.g: "KEY_EXAMPLE"). Values should be integers, strings or byte arrays (arrays of characters). This event is not available to <a href="/docs/rockyjs/">Rocky.js</a> applications, and attempting to register it will throw an exception.</p></li><li><p><code>showConfiguration</code> - The user has requested the app's configuration webview to be displayed. This can occur either upon the app's initial install or when the user taps 'Settings' in the 'My Pebble' view within the phone app.</p></li><li><p><code>webviewclosed</code> - The configuration webview was closed by the user. If the webview had a response, it will be contained in the response property (i.e: <code>event.response</code>). This response can be used to feed back user preferences to the watchapp.</p></li><li><p><code>message</code> - Provide a <a href="#PostMessageCallback">PostMessageCallback</a> as the callback. The message event is emitted every time PebbleKit JS receives a <a href="#postMessage">postMessage</a> from the <a href="/docs/rockyjs/">Rocky.js</a> application. The payload contains a simple JavaScript object. (i.e. <code>event.data</code>). This event type can only be used with <a href="/docs/rockyjs/">Rocky.js</a> applications.</p></li><li><p><code>postmessageconnected</code> - Provide a <a href="#PostMessageConnectedCallback">PostMessageConnectedCallback</a> as the callback. The event may be emitted immediately upon subscription, if the subsystem is already connected. It is also emitted when connectivity is established. This event type can only be used with <a href="/docs/rockyjs/">Rocky.js</a> applications.</p></li><li><p><code>postmessagedisconnected</code> - Provide a <a href="#PostMessageDisconnectedCallback">PostMessageDisconnectedCallback</a> as the callback. The event may be emitted immediately upon subscription, if the subsystem is already disconnected. It is also emitted when connectivity is lost. This event type can only be used with <a href="/docs/rockyjs/">Rocky.js</a> applications.</p></li><li><p><code>postmessageerror</code> - Provide a <a href="#PostMessageErrorCallback">PostMessageErrorCallback</a> as the callback. The event is emitted when a transmission error occurrs. Your message has not been delivered. The type of error is not provided. This event type can only be used with <a href="/docs/rockyjs/">Rocky.js</a> applications.</p></li>
+</ul>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> type</dt>
+        <dd>
+
+
+
+<p>The type of the event, from the list described above.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">EventCallback</span> callback</dt>
+        <dd>
+
+
+
+<p>The developer defined <a href="#EventCallback">EventCallback</a>   to receive any events of the type specified that occur.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="on">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">on</span>(<span class="docs__item__param">type</span>, <span class="docs__item__param">callback</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Attaches an event handler to the specified events. Synonymous with <a href="#addEventListener">Pebble.addEventListener()</a>. Only applicable to <a href="/docs/rockyjs/">Rocky.js</a> applications.</p>
+
+
+
+
+
+<p><code>Pebble.on(type, callback);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> type</dt>
+        <dd>
+
+
+
+<p>The type of the event, from the list described above.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">EventCallback</span> callback</dt>
+        <dd>
+
+
+
+<p>The developer defined <a href="#EventCallback">EventCallback</a>  to receive any events of the type specified that occur.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="removeEventListener">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">removeEventListener</span>(<span class="docs__item__param">type</span>, <span class="docs__item__param">callback</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Remove an existing event listener previously registered with   <a href="#addEventListener">Pebble.addEventListener()</a> or <a href="#on">Pebble.on()</a>.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> type</dt>
+        <dd>
+
+
+
+<p>The type of the event listener to be removed. See   <a href="#addEventListener">Pebble.addEventListener()</a> for a list of available event types.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Function</span> callback</dt>
+        <dd>
+
+
+
+<p>The existing developer-defined function that was   previously registered.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="off">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">off</span>(<span class="docs__item__param">type</span>, <span class="docs__item__param">callback</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Remove an existing event handler from the specified events. Synonymous        with <a href="#removeEventListener">Pebble.removeEventListener()</a>. Only applicable to       <a href="/docs/rockyjs/">Rocky.js</a> applications.</p>
+
+
+
+
+
+<p><code>Pebble.off(type, callback);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> type</dt>
+        <dd>
+
+
+
+<p>The type of the event listener to be removed. See   <a href="#addEventListener">Pebble.addEventListener()</a> for a list of available types.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Function</span> callback</dt>
+        <dd>
+
+
+
+<p>The existing developer-defined function that was   previously registered.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="showSimpleNotificationOnPebble">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">showSimpleNotificationOnPebble</span>(<span class="docs__item__param">title</span>, <span class="docs__item__param">body</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Show a simple modal notification on the connected watch.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> title</dt>
+        <dd>
+
+
+
+<p>The title of the notification</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">String</span> body</dt>
+        <dd>
+
+
+
+<p>The main content of the notification</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="sendAppMessage">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">sendAppMessage</span>(<span class="docs__item__param">data</span>, <span class="docs__item__param">onSuccess</span>, <span class="docs__item__param">onFailure</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Send an AppMessage to the app running on the watch. Messages should be     in the form of JSON objects containing key-value pairs. See     Pebble.sendAppMessage() for valid key and value data types.     <code>Pebble.sendAppMessage = function(data, onSuccess, onFailure) { };</code>     Please note that <code>sendAppMessage</code> is <code>undefined</code> in     <a href="/docs/rockyjs/">Rocky.js</a> applications, see <a href="#postMessage">postMessage</a> instead.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Object</span> data</dt>
+        <dd>
+
+
+
+<p>A JSON object containing key-value pairs to send to     the watch. Values in arrays that are greater then 255 will be mod 255     before sending.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">AppMessageAckCallback</span> onSuccess</dt>
+        <dd>
+
+
+
+<p>A developer-defined <a href="#AppMessageAckCallback">AppMessageAckCallback</a>     callback to run if the watch acknowledges (ACK) this message.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">AppMessageOnFailure</span> onFailure</dt>
+        <dd>
+
+
+
+<p>A developer-defined <a href="#AppMessageNackCallback">AppMessageNackCallback</a>     callback to run if the watch does NOT acknowledge (NACK) this message.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+    <h4>Returns</h4>
+    
+      
+
+
+
+<p>The transaction id for this message</p>
+
+
+
+
+
+    
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="postMessage">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">postMessage</span>(<span class="docs__item__param">data</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Sends a message to the <a href="/docs/rockyjs/">Rocky.js</a> component. Please be aware    that messages should be kept concise. Each message is queued, so    <code>postMessage()</code> can be called multiple times immediately. If there is a momentary loss of connectivity, queued    messages may still be delivered, or automatically removed from the queue    after a few seconds of failed connectivity. Any transmission failures, or    out of memory errors will be raised via the <code>postmessageerror</code> event.</p>
+
+
+
+
+
+<p><code>Pebble.postMessage({temperature: 30, conditions: 'Sunny'});</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Object</span> data</dt>
+        <dd>
+
+
+
+<p>A <a href="#PostMessageCallback">PostMessageCallback</a> containing         the data to deliver to the watch.        This will be received in the <code>data</code> field of the <code>type</code> delivered to         the <code>on('message', ...)</code> handler.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="getTimelineToken">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">getTimelineToken</span>(<span class="docs__item__param">onSuccess</span>, <span class="docs__item__param">onFailure</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Get the user's timeline token for this app. This is a string and is     unique per user per app. Note: In order for timeline tokens to be     available, the app must be submitted to the Pebble appstore, but does not     need to be public. Read more in the     <a href="/guides/pebble-timeline/timeline-js/">timeline guides</a>.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">TimelineTokenCallback</span> onSuccess</dt>
+        <dd>
+
+
+
+<p>A developer-defined <a href="#TimelineTokenCallback">TimelineTokenCallback</a>     callback to handle a successful attempt to get the timeline token.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Function</span> onFailure</dt>
+        <dd>
+
+
+
+<p>A developer-defined callback to handle a     failed attempt to get the timeline token.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="timelineSubscribe">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">timelineSubscribe</span>(<span class="docs__item__param">topic</span>, <span class="docs__item__param">onSuccess</span>, <span class="docs__item__param">onFailure</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Subscribe the user to a timeline topic for your app. This can be used     to filter the different pins a user could receive according to their     preferences, as well as maintain groups of users.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> topic</dt>
+        <dd>
+
+
+
+<p>The desired topic to be subscribed to. Users will     receive all pins pushed to this topic.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Function</span> onSuccess</dt>
+        <dd>
+
+
+
+<p>A developer-defined callback to handle a     successful subscription attempt.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Function</span> onFailure</dt>
+        <dd>
+
+
+
+<p>A developer-defined callback to handle a     failed subscription attempt.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="timelineUnsubscribe">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">timelineUnsubscribe</span>(<span class="docs__item__param">topic</span>, <span class="docs__item__param">onSuccess</span>, <span class="docs__item__param">onFailure</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Unsubscribe the user from a timeline topic for your app. Once     unsubscribed, the user will no longer receive any pins pushed to this     topic.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> topic</dt>
+        <dd>
+
+
+
+<p>The desired topic to be unsubscribed from.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Function</span> onSuccess</dt>
+        <dd>
+
+
+
+<p>A developer-defined callback to handle a     successful unsubscription attempt.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Function</span> onFailure</dt>
+        <dd>
+
+
+
+<p>A developer-defined callback to handle a     failed unsubscription attempt.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="timelineSubscriptions">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">timelineSubscriptions</span>(<span class="docs__item__param">onSuccess</span>, <span class="docs__item__param">onFailure</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Obtain a list of topics that the user is currently subscribed to. The     length of the list should be checked to determine whether the user is     subscribed to at least one topic.</p>
+
+
+
+
+
+<p>   <code>Pebble.timelineSubscriptions(function(topics) { console.log(topics); }, function() { console.log('error'); } );</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">TimelineTopicsCallback</span> onSuccess</dt>
+        <dd>
+
+
+
+<p>The developer-defined function to process the     retuned list of topic strings.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Function</span> onFailure</dt>
+        <dd>
+
+
+
+<p>The developer-defined function to gracefully     handle any errors in obtaining the user's subscriptions.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="getActiveWatchInfo">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">getActiveWatchInfo</span>()
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Obtain an object containing information on the currently connected     Pebble smartwatch.</p>
+
+
+
+
+
+
+
+  
+
+  
+    <h4>Returns</h4>
+    
+      
+
+
+
+<p>A <a href="#WatchInfo">WatchInfo</a> object detailing the     currently connected Pebble watch.</p>
+
+
+
+
+
+    
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="getAccountToken">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">getAccountToken</span>()
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Returns a unique account token that is associated with the Pebble     account of the current user.</p>
+
+
+
+
+
+
+
+  
+
+  
+    <h4>Returns</h4>
+    
+      
+
+
+
+<p>A string that is guaranteed to be identical across devices     if the user owns several Pebble or several mobile devices. From the     developer's perspective, the account token of a user is identical across     platforms and across all the developer's watchapps. If the user is not     logged in, this function will return an empty string ('').</p>
+
+
+
+
+
+    
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="getWatchToken">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">getWatchToken</span>()
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Returns a a unique token that can be used to identify a Pebble device.</p>
+
+
+
+
+
+  
+
+  
+    <h4>Returns</h4>
+    
+      
+
+
+
+<p>A string that is is guaranteed to be identical for each     Pebble device for the same app across different mobile devices. The token     is unique to your app and cannot be used to track Pebble devices across     applications.</p>
+
+
+
+
+
+    
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="appGlanceReload">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">appGlanceReload</span>(<span class="docs__item__param">appGlanceSlices</span>, <span class="docs__item__param">onSuccess</span>, <span class="docs__item__param">onFailure</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Triggers a reload of the app glance which first clears any existing  slices and then adds the provided slices.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">AppGlanceSlice</span> appGlanceSlices</dt>
+        <dd>
+
+
+
+<p><a href="#AppGlanceSlice">AppGlanceSlice</a>     JSON objects to add to the app glance.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">AppGlanceReloadSuccessCallback</span> onSuccess</dt>
+        <dd>
+
+
+
+<p>The developer-defined     callback which is called if the reload operation succeeds.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">AppGlanceReloadFailureCallback</span> onFailure</dt>
+        <dd>
+
+
+
+<p>The developer-defined     callback which is called if the reload operation fails.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="openURL">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">openURL</span>(<span class="docs__item__param">url</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>When an app is marked as configurable, the PebbleKit JS component must  implement <code>Pebble.openURL()</code> in the <code>showConfiguration</code> event handler. The  Pebble mobile app will launch the supplied URL to allow the user to configure  the watchapp or watchface. See the  <a href="/guides/user-interfaces/app-configuration-static/">App Configuration guide</a>.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> url</dt>
+        <dd>
+
+
+
+<p>The URL of the static configuration page.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+      
+
+      
+
+      
+        <h3 class="anchor" id="typedefs">Typedefs</h3>
+        
+          <div class="docs__item__anchor" id="TimelineTopicsCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">TimelineTopicsCallback</span>(<span class="docs__item__param">List</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Called when the user's list of subscriptions is available for processing by the developer.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777"></span> List</dt>
+        <dd>
+
+
+
+<p>of topic strings that the user is subscribed to</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="AppGlanceReloadFailureCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">AppGlanceReloadFailureCallback</span>(<span class="docs__item__param">AppGlanceSlices</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Called when AppGlanceReload has failed.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">AppGlanceSlice</span> AppGlanceSlices</dt>
+        <dd>
+
+
+
+<p>An <a href="#AppGlanceSlice">AppGlanceSlice</a> object     containing the app glance slices.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="AppMessageAckCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">AppMessageAckCallback</span>(<span class="docs__item__param">data</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Called when an AppMessage is acknowledged by the watch.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Object</span> data</dt>
+        <dd>
+
+
+
+<p>An object containing the callback data. This contains   the <code>transactionId</code> which is the transaction ID of the message.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="AppMessageNackCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">AppMessageNackCallback</span>(<span class="docs__item__param">data</span>, <span class="docs__item__param">error</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Called when an AppMessage is not acknowledged by the watch.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Object</span> data</dt>
+        <dd>
+
+
+
+<p>An object containing the callback data. This contains   the <code>transactionId</code> which is the transaction ID of the message</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">String</span> error</dt>
+        <dd>
+
+
+
+<p>The error message</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="EventCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">EventCallback</span>(<span class="docs__item__param">event</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Called when an event of any type previously registered occurs. The     parameters are different depending on the type of event, shown in     brackets for each parameter listed here.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Object</span> event</dt>
+        <dd>
+
+
+
+<p>An object containing the event information, including:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>type</code> - The type of event fired, from the list in the description of <a href="#addEventListener">Pebble.addEventListener()</a>.</p></li><li><p><code>payload</code> - The dictionary sent over <code>AppMessage</code> consisting of key-value pairs. </p></li><li><p><code>response</code> - The contents of the URL navigated to when the configuration page was closed, after the anchor. This may be encoded, which will require use of decodeURIComponent() before reading as an object. </p></li>
+</ul>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="TimelineTokenCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">TimelineTokenCallback</span>(<span class="docs__item__param">token</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Called when the user's timeline token is available.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> token</dt>
+        <dd>
+
+
+
+<p>The user's token.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="AppGlanceReloadSuccessCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">AppGlanceReloadSuccessCallback</span>(<span class="docs__item__param">AppGlanceSlices</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Called when AppGlanceReload is successful.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">AppGlanceSlice</span> AppGlanceSlices</dt>
+        <dd>
+
+
+
+<p>An <a href="#AppGlanceSlice">AppGlanceSlice</a> object     containing the app glance slices.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="PostMessageCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">PostMessageCallback</span>(<span class="docs__item__param">event</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>The callback function signature to be used with the <code>message</code>   <a href="#on">event</a>.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Object</span> event</dt>
+        <dd>
+
+
+
+<p>An object containing information about the event:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>type</code> - The type of event which was triggered.</p></li><li><p><code>data</code> - The data sent within the message.</p></li>
+</ul>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="PostMessageErrorCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">PostMessageErrorCallback</span>(<span class="docs__item__param">event</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>The callback function signature to be used with the <code>postmessageerror</code>   <a href="#on">event</a>.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Object</span> event</dt>
+        <dd>
+
+
+
+<p>An object containing information about the event:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>type</code> - The type of event which was triggered.</p></li><li><p><code>data</code> - The data failed to send within the message.</p></li>
+</ul>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="PostMessageConnectedCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">PostMessageConnectedCallback</span>(<span class="docs__item__param">event</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>The callback function signature to be used with the <code>postmessageconnected</code>   <a href="#on">event</a>.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Object</span> event</dt>
+        <dd>
+
+
+
+<p>An object containing information about the event:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>type</code> - The type of event which was triggered.</p></li>
+</ul>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="PostMessageDisconnectedCallback">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+   Pebble.<span class="docs__item__name">PostMessageDisconnectedCallback</span>(<span class="docs__item__param">event</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>The callback function signature to be used with the <code>postmessagedisconnected</code>   <a href="#on">event</a>.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Object</span> event</dt>
+        <dd>
+
+
+
+<p>An object containing information about the event:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>type</code> - The type of event which was triggered.</p></li>
+</ul>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="WatchInfo">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+                  <span class="docs__item__name">WatchInfo</span>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="docs__item__body">
+                  
+
+
+
+<p>Provides information about the connected Pebble smartwatch.</p>
+
+
+
+
+
+                  
+                  <h4>Properties</h4>
+                  <dl>
+                    
+                    <dt><span style="color: #777"></span> platform</dt>
+                    
+
+
+
+<p>The hardware platform, such as <code>basalt</code> or <code>emery</code>.</p>
+
+
+
+
+
+                    
+                    <dt><span style="color: #777"></span> model</dt>
+                    
+
+
+
+<p>The watch model, such as <code>pebble_black</code></p>
+
+
+
+
+
+                    
+                    <dt><span style="color: #777"></span> language</dt>
+                    
+
+
+
+<p>The user's currently selected language on    this watch.</p>
+
+
+
+
+
+                    
+                    <dt><span style="color: #777"></span> firmware</dt>
+                    
+
+
+
+<p>An object containing information about the    watch's firmware version, including:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>major</code> - The major version</p></li><li><p><code>minor</code> - The minor version</p></li><li><p><code>patch</code> - The patch version</p></li><li><p><code>suffix</code> - Any additional version information, such as <code>beta3</code></p></li>
+</ul>
+
+
+
+
+
+                    
+                  </dl>
+                  
+                </div>
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="AppGlanceSlice">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+                  <span class="docs__item__name">AppGlanceSlice</span>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="docs__item__body">
+                  
+
+
+
+<p>The structure of an app glance.</p>
+
+
+
+
+
+                  
+                  <h4>Properties</h4>
+                  <dl>
+                    
+                    <dt><span style="color: #777"></span> expirationTime</dt>
+                    
+
+
+
+<p>Optional ISO date-time string of when the entry should expire and no longer be shown in the app glance.</p>
+
+
+
+
+
+                    
+                    <dt><span style="color: #777"></span> layout</dt>
+                    
+
+
+
+<p>An object containing:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>icon</code> - URI string of the icon to display in the app glance, e.g. system://images/ALARM_CLOCK.</p></li><li><p><code>subtitleTemplateString</code> - Template string that will be displayed in the subtitle of the app glance.</p></li>
+</ul>
+
+
+
+
+
+                    
+                  </dl>
+                  
+                </div>
+              
+            </div>
+          </div>
+        
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+<h3><a href="#methods">Methods</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#addEventListener">addEventListener</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#on">on</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#removeEventListener">removeEventListener</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#off">off</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#showSimpleNotificationOnPebble">showSimpleNotificationOnPebble</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#sendAppMessage">sendAppMessage</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#postMessage">postMessage</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#getTimelineToken">getTimelineToken</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#timelineSubscribe">timelineSubscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#timelineUnsubscribe">timelineUnsubscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#timelineSubscriptions">timelineSubscriptions</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#getActiveWatchInfo">getActiveWatchInfo</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#getAccountToken">getAccountToken</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#getWatchToken">getWatchToken</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#appGlanceReload">appGlanceReload</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#openURL">openURL</a></li>
+  
+</ul>
+
+
+      
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#TimelineTopicsCallback">TimelineTopicsCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#AppGlanceReloadFailureCallback">AppGlanceReloadFailureCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#AppMessageAckCallback">AppMessageAckCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#AppMessageNackCallback">AppMessageNackCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#EventCallback">EventCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#TimelineTokenCallback">TimelineTokenCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#AppGlanceReloadSuccessCallback">AppGlanceReloadSuccessCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#PostMessageCallback">PostMessageCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#PostMessageErrorCallback">PostMessageErrorCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#PostMessageConnectedCallback">PostMessageConnectedCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#PostMessageDisconnectedCallback">PostMessageDisconnectedCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#WatchInfo">WatchInfo</a></li>
+  
+    <li class="toc__item"><a href="/docs/pebblekit-js/Pebble/#AppGlanceSlice">AppGlanceSlice</a></li>
+  
+</ul>
+
+
+
+      <h3><a href="#">Examples</a></h3>
+<ul class="toc">
+  <li class="toc__item"><a href="/tutorials/js-watchface-tutorial/part1/">Watchface Tutorial</a></li>
+  <li class="toc__item"><a href="https://github.com/pebble-examples/rocky-memorypressure">Memory Pressure</a></li>
+</ul>
+
+      <hr />
+<p>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API" 
+  target="_blank">Web API</a> by Mozilla Contributors is licensed under 
+  <a href="http://creativecommons.org/licenses/by-sa/2.5/" 
+  target="_blank">CC-BY-SA 2.5</a>.
+</p>
+
+    </div>
+  </div>
+</div>
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you need some help understanding the something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

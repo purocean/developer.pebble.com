@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Submission Guidelines // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/community/submission/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community active"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--community section-menu--dark">
+    <div class="section-menu__header">
+      <h3><a href="/community/">Community</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/community/events/">Events</a>
+        <ul>
+          <li class="section-menu__subitem"><a href="/community/events/developer-retreat-2015/"><span>Developer Retreat 2015</span></a></li>
+          <li class="section-menu__subitem"><a href="/community/events/developer-retreat-2014/"><span>Developer Retreat 2014</span></a></li>
+        </ul>
+      </li>
+      <li class="section-menu__item"><a href="/community/online/">Online Communities</a></li>
+      <li class="section-menu__item">
+        <a href="/community/apps/">Example Apps</a>
+        <ul>
+          
+            <li class="section-menu__subitem"><a href="/community/apps/Hello/"><span>Hello</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/apps/caltrain/"><span>Caltrain</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/apps/heroboard/"><span>HeroBoard</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/apps/multi-timer/"><span>Multi Timer</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/apps/resistor-time/"><span>Resistor Time</span></a></li>
+          
+        </ul>
+      </li>
+      <li class="section-menu__item">
+        <a href="/community/tools/">Tools</a>
+        <ul>
+          
+            <li class="section-menu__subitem"><a href="/community/tools/appmsgbridge/"><span>App Message Bridge</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/tools/badge-generator/"><span>Appstore Badge Generator</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/tools/gpath-svg/"><span>GPath.svg</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/tools/pbuild/"><span>pBuild Travis CI Build Tool</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/tools/sublime-text-package/"><span>Sublime Text Plugin</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/tools/watchface-generator/"><span>Watchface Generator</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/tools/watchstatus/"><span>Watch Status</span></a></li>
+          
+        </ul>
+      </li>
+      <li class="section-menu__item">
+        <a href="/community/libraries/">Libraries</a>
+        <ul>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/color-select-lib/"><span>Color Selector</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/custom-status-bar-for-pebble/"><span>Custom Status Bar for Pebble</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/effect-layer/"><span>EffectLayer</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/gbitmap-colour-palette-manipulator/"><span>GBitmap Colour Palette Manipulator</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/java-pebble-timeline/"><span>Java Pebble Timeline</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/js-message-queue/"><span>JS Message Queue</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/pebble-api-dotnet/"><span>Pebble Timeline API for DotNet (C#)</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/pebble-api-php/"><span>Pebble API PHP</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/pebble-timeline-api-ruby/"><span>PebbleTimeline API Ruby</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/php-pebble-timeline/"><span>PHPebbleTimeline</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/php-timeline-pinpusher/"><span>PinPusher</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/pypebbleapi/"><span>pypebbleapi</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/simple-dithering-library/"><span>Simple Dithering Library</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/t3-keyboard/"><span>T3 Keyboard</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/community/libraries/toastlayer/"><span>ToastLayer Library</span></a></li>
+          
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="example-apps">Example Apps</option>
+          
+            <option value="tags">- Tags</option>
+          
+            <option value="developer-tools">Developer Tools</option>
+          
+            <option value="libraries">Libraries</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-l-12">
+      <h1>Submission Guidelines</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-l-8">
+      <div class="markdown markdown--user">
+        <p>We are putting together a collection of community resources for a new section on
+the Pebble Developer Website, and we need <em>your</em> contributions!</p><p>There are three types of content we are looking for:</p>
+<ul>
+<li><strong><a href="#example-apps" title="" class="">Example Apps</a></strong></li>
+<li><strong><a href="#developer-tools" title="" class="">Developer Tools</a></strong></li>
+<li><strong><a href="#libraries" title="" class="">Libraries</a></strong></li>
+</ul>
+<p>To add your resource to the collection, simply <a href="https://github.com/pebble/community-resources/fork" title="" class="">fork this GitHub
+repository</a>, follow the relevant guide below to create a Markdown file in
+the right folder, and submit a pull request.</p><p>You can also take a look at some of the resources that have already been
+submitted to see how to do it.</p><h3 id="example-apps" class="anchor">Example Apps</h3><p>We are looking for well-written apps that other people can use to learn Pebble
+development.</p>
+<blockquote>
+<p><strong>NOTE:</strong> You must provide an open-source license for your apps in order for
+it to be approved. The best way to do that is to include a LICENSE file in
+your app repository. Indicate the license you have selected in the
+metadata block of your Markdown file.</p></blockquote>
+<p>To add your app, create a new Markdown file in the correct folder with the same
+name as your app (in a URL friendly style, such as <code>multi-timer.md</code> or
+<code>uk-transport.md</code>). Examples:</p><div class="highlight"><pre><span class="vg">apps</span><span class="o">/</span><span class="vg">multi</span><span class="o">-</span><span class="vg">timer</span><span class="o">.</span><span class="vg">md</span>
+<span class="vg">apps</span><span class="o">/</span><span class="vg">uk</span><span class="o">-</span><span class="vg">transport</span><span class="o">.</span><span class="vg">md</span>
+</pre></div><p>At the top of your Markdown file you will need to have a metadata block that
+contains the following properties:</p><div class="highlight"><pre><span class="nn">---</span>
+<span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Multi Timer</span>
+<span class="l-Scalar-Plain">creator</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Matthew Tole</span>
+<span class="l-Scalar-Plain">license</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">mit</span>
+<span class="l-Scalar-Plain">link</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">https://github.com/smallstoneapps/multi-timer/</span>
+<span class="l-Scalar-Plain">appstore</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">52bda40bdc2f4f552e000089</span>
+<span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">watchapp</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">js</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">storage</span>
+<span class="nn">---</span>
+</pre></div><p>Hopefully <code>name</code>, <code>creator</code> and <code>link</code> are self-explanatory. The <code>appstore</code>
+entry is the Pebble appstore ID for your app. If your app isn&#39;t on the Pebble
+appstore, omit this line. The <code>tags</code>  list will be used on the site to let
+people browse by different tags. See below for the list of all of the possible
+tags.</p><p>Below this metadata block you should write a description of your app. Include
+details of the key features it has.</p><h4 id="tags" class="anchor">Tags</h4><p>These are all the possible tags for your app. If you think a tag should be added
+to the list, get in touch with us <a href="/contact/" title="" class="">using the contact form</a>.</p>
+<table><thead>
+<tr>
+<th>Tag Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>watchapp</code></td>
+<td>The app is a watchapp</td>
+</tr>
+<tr>
+<td><code>watchface</code></td>
+<td>The app is a watchface</td>
+</tr>
+<tr>
+<td><code>android</code></td>
+<td>The app has an Android companion app</td>
+</tr>
+<tr>
+<td><code>ios</code></td>
+<td>The App has an iOS companion app</td>
+</tr>
+<tr>
+<td><code>js</code></td>
+<td>The app uses PebbleKitJS</td>
+</tr>
+<tr>
+<td><code>pebblejs</code></td>
+<td>The app is written with the Pebble.JS library</td>
+</tr>
+<tr>
+<td><code>storage</code></td>
+<td>The app uses Persistent Storage</td>
+</tr>
+<tr>
+<td><code>config</code></td>
+<td>The app has a config page</td>
+</tr>
+</tbody></table>
+<h3 id="developer-tools" class="anchor">Developer Tools</h3><p>To add your tool, create a new Markdown file in the correct folder with the same
+name as your tool, in a URL-friendly style, such as <code>pebble-local-simulator.md</code>
+or <code>watchface-generator.md</code>. Examples:</p><div class="highlight"><pre><span class="vg">tools</span><span class="o">/</span><span class="vg">pebble</span><span class="o">-</span><span class="vg">local</span><span class="o">-</span><span class="vg">simulator</span><span class="o">.</span><span class="vg">md</span>
+<span class="vg">tools</span><span class="o">/</span><span class="vg">watchface</span><span class="o">-</span><span class="vg">generator</span><span class="o">.</span><span class="vg">md</span>
+</pre></div><p>At the top of your Markdown file, you will need to have a metadata block that
+contains the following properties.</p><div class="highlight"><pre><span class="nn">---</span>
+<span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Watchface Generator</span>
+<span class="l-Scalar-Plain">creator</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Paul Rode</span>
+<span class="l-Scalar-Plain">link</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://watchface-generator.de</span>
+<span class="nn">---</span>
+</pre></div><p>Below this metadata block you should write a description of your tool.</p><h3 id="libraries" class="anchor">Libraries</h3>
+<blockquote>
+<p><strong>NOTE:</strong> You must provide an open-source license for your library in order for
+it to be approved. The best way to do that is to include a LICENSE file in the
+repository for your library. Indicate the license you have selected in the
+metadata block of your Markdown file.</p></blockquote>
+<p>To add your library create a new Markdown file in the <code>libraries</code> folder with
+the same name as your library, in a URL-friendly style, such as
+<code>js-message-queue.md</code> or <code>clock-layer.md</code>. Examples:</p><div class="highlight"><pre><span class="vg">libraries</span><span class="o">/</span><span class="vg">clock</span><span class="o">-</span><span class="vg">layer</span><span class="o">.</span><span class="vg">md</span>
+<span class="vg">libraries</span><span class="o">/</span><span class="vg">js</span><span class="o">-</span><span class="vg">message</span><span class="o">-</span><span class="vg">queue</span><span class="o">.</span><span class="vg">md</span>
+</pre></div><p>At the top of your Markdown file you will need to have a metadata block that
+contains the following properties.</p><div class="highlight"><pre><span class="nn">---</span>
+<span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">JS Message Queue</span>
+<span class="l-Scalar-Plain">creator</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Matthew Tole</span>
+<span class="l-Scalar-Plain">license</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">mit</span>
+<span class="l-Scalar-Plain">link</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">https://github.com/smallstoneapps/js-message-queue/</span>
+<span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">js</span>
+<span class="nn">---</span>
+</pre></div><p>The <code>language</code> property should be one of <code>c</code>, <code>js</code>, <code>android</code>, or <code>ios</code>. This
+will help people find your library.</p><p>Below the metadata block you should write a description of your library. Talk
+about what problem it aims to solve and how people should use it.</p>
+      </div>
+    </div>
+    
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#example-apps">Example Apps</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#tags">Tags</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#developer-tools">Developer Tools</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#libraries">Libraries</a></li>
+    
+  </ul>
+
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

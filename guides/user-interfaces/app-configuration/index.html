@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>App Configuration // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to allow users to customize an app with a configuration page.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/user-interfaces/app-configuration/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/user-interfaces/app-configuration/"><span>App Configuration</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/app-exit-reason/"><span>App Exit Reason</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/appglance-c/"><span>AppGlance C API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/appglance-rest/"><span>AppGlance REST API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/appglance-pebblekit-js/"><span>AppGlance in PebbleKit JS</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/content-size/"><span>Content Size</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/layers/"><span>Layers</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/round-app-ui/"><span>Round App UI</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/unobstructed-area/"><span>Unobstructed Area</span></a>
+                </li>
+              
+            
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="enabling-configuration">Enabling Configuration</option>
+          
+            <option value="installing-clay">Installing Clay</option>
+          
+            <option value="choosing-messagekeys">Choosing messageKeys</option>
+          
+            <option value="creating-the-clay-configuration">Creating the Clay Configuration</option>
+          
+            <option value="initializing-clay">Initializing Clay</option>
+          
+            <option value="receiving-config-data">Receiving Config Data</option>
+          
+            <option value="persisting-settings">Persisting Settings</option>
+          
+            <option value="what-39-s-next">What&#39;s Next</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">App Configuration</h1>
+    
+<!-- 
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+    <p>Many watchfaces and watchapps in the Pebble appstore include the ability to
+customize their behavior or appearance through the use of a configuration page.</p><p><a href="https://github.com/pebble/clay" title="" class="">Clay for Pebble</a> is the recommended approach
+for creating configuration pages, and is what will be covered in this guide.
+If you need to host your own configuration pages, please follow our
+<a href="/guides/user-interfaces/app-configuration-static/"><em>Manual Setup</em></a> guide.</p><p><img src="/assets/images/guides/user-interfaces/app-configuration/clay-sample.png" alt="Clay Sample" width="200" /></p><p>Clay for Pebble dramatically simplifies the process of creating a configuration
+page, by allowing developers to define their application settings using a
+simple <a href="https://en.wikipedia.org/wiki/JSON" title="" class="">JSON</a> file. Clay processes the
+JSON file and then dynamically generates a configuration page which matches the
+existing style of the Pebble mobile application, and it even works without an
+Internet connection.</p><h2 id="enabling-configuration" class="anchor">Enabling Configuration</h2><p class="platform-specific" data-sdk-platform="local">For an app to be configurable, it must include the &#39;configurable&#39; item in
+<code>package.json</code>.</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight"><pre><span class="s2">"capabilities"</span><span class="o">:</span> <span class="p">[</span> <span class="s2">"configurable"</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p class="platform-specific" data-sdk-platform="cloudpebble">For an app to be configurable, it must include the &#39;configurable&#39; item in
+&#39;Settings&#39;.</p><p>The presence of this value tells the mobile app to display the gear icon that
+is associated with the ability to launch the config page next to the app itself.</p><h2 id="installing-clay" class="anchor">Installing Clay</h2><p>Clay is available as a <a href="/guides/pebble-packages"><em>Pebble Package</em></a>, so it
+takes minimal effort to install.</p><p class="platform-specific" data-sdk-platform="local">Within your project folder, just type:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight no-copy"><pre>$ pebble package install pebble-clay
+</pre></div>
+</div>
+<p class="platform-specific" data-sdk-platform="cloudpebble">Go to the &#39;Dependencies&#39; tab, type &#39;pebble-clay&#39; into the search box and
+press &#39;Enter&#39; to add the dependency.</p><h2 id="choosing-messagekeys" class="anchor">Choosing messageKeys</h2><p>When passing data between the configuration page and the watch application, we
+define <code>messageKeys</code> to help us easily identify the different values.</p><p>In this example, we&#39;re going to allow users to control the background color,
+foreground color, whether the watchface ticks on seconds and whether any
+animations are displayed.</p><p class="platform-specific" data-sdk-platform="local">We define <code>messageKeys</code> in the <code>package.json</code> file for each configuration
+setting in our application:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight"><pre><span class="s2">"messageKeys"</span><span class="o">:</span> <span class="p">[</span>
+  <span class="s2">"BackgroundColor"</span><span class="p">,</span>
+  <span class="s2">"ForegroundColor"</span><span class="p">,</span>
+  <span class="s2">"SecondTick"</span><span class="p">,</span>
+  <span class="s2">"Animations"</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p class="platform-specific" data-sdk-platform="cloudpebble">We define <code>messageKeys</code> in the &#39;Settings&#39; tab for each configuration
+setting in our application. The &#39;Message Key Assignment Kind&#39; should be set to
+&#39;Automatic Assignment&#39;, then just enter each key name:</p>
+<div class="platform-specific" data-sdk-platform="cloudpebble">
+<p><img src="/assets/images/guides/user-interfaces/app-configuration/message-keys.png" alt="CloudPebble Settings" width="400" /></p>
+</div>
+<h2 id="creating-the-clay-configuration" class="anchor">Creating the Clay Configuration</h2><p class="platform-specific" data-sdk-platform="local">The Clay configuration file (<code>config.js</code>) should be created in your
+<code>src/pkjs/</code> folder. It allows the easy definition of each type of HTML form
+entity that is required. These types include:</p><p class="platform-specific" data-sdk-platform="cloudpebble">The Clay configuration file (<code>config.js</code>) needs to be added to your project
+by adding a new &#39;Javascript&#39; source file. It allows the easy definition of
+each type of HTML form entity that is required. These types include:</p>
+<ul>
+<li><a href="https://github.com/pebble/clay#section" title="" class="">Section</a></li>
+<li><a href="https://github.com/pebble/clay#heading" title="" class="">Heading</a></li>
+<li><a href="https://github.com/pebble/clay#text" title="" class="">Text</a></li>
+<li><a href="https://github.com/pebble/clay#input" title="" class="">Input</a></li>
+<li><a href="https://github.com/pebble/clay#toggle" title="" class="">Toggle</a></li>
+<li><a href="https://github.com/pebble/clay#select" title="" class="">Select</a></li>
+<li><a href="https://github.com/pebble/clay#color-picker" title="" class="">Color Picker</a></li>
+<li><a href="https://github.com/pebble/clay#radio-group" title="" class="">Radio Group</a></li>
+<li><a href="https://github.com/pebble/clay#checkbox-group" title="" class="">Checkbox Group</a></li>
+<li><a href="https://github.com/pebble/clay#generic-button" title="" class="">Generic Button</a></li>
+<li><a href="https://github.com/pebble/clay#range-slider" title="" class="">Range Slider</a></li>
+<li><a href="https://github.com/pebble/clay#submit" title="" class="">Submit Button</a></li>
+</ul>
+<p>In our example configuration page, we will add some introductory text, and group
+our fields into two sections. All configuration pages must have a submit button
+at the end, which is used to send the JSON data back to the watch.</p><p><img src="/assets/images/guides/user-interfaces/app-configuration/clay-actual.png" alt="Clay" width="200" /></p><p>Now start populating the configuration file with the sections you require, then
+add the required elements to each section. Be sure to assign the correct
+<code>messageKey</code> to each field.</p><div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"heading"</span><span class="p">,</span>
+    <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="s2">"App Configuration"</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"text"</span><span class="p">,</span>
+    <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="s2">"Here is some introductory text."</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"section"</span><span class="p">,</span>
+    <span class="s2">"items"</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"heading"</span><span class="p">,</span>
+        <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="s2">"Colors"</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"color"</span><span class="p">,</span>
+        <span class="s2">"messageKey"</span><span class="o">:</span> <span class="s2">"BackgroundColor"</span><span class="p">,</span>
+        <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="s2">"0x000000"</span><span class="p">,</span>
+        <span class="s2">"label"</span><span class="o">:</span> <span class="s2">"Background Color"</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"color"</span><span class="p">,</span>
+        <span class="s2">"messageKey"</span><span class="o">:</span> <span class="s2">"ForegroundColor"</span><span class="p">,</span>
+        <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="s2">"0xFFFFFF"</span><span class="p">,</span>
+        <span class="s2">"label"</span><span class="o">:</span> <span class="s2">"Foreground Color"</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"section"</span><span class="p">,</span>
+    <span class="s2">"items"</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"heading"</span><span class="p">,</span>
+        <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="s2">"More Settings"</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"toggle"</span><span class="p">,</span>
+        <span class="s2">"messageKey"</span><span class="o">:</span> <span class="s2">"SecondTick"</span><span class="p">,</span>
+        <span class="s2">"label"</span><span class="o">:</span> <span class="s2">"Enable Seconds"</span><span class="p">,</span>
+        <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="kc">false</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"toggle"</span><span class="p">,</span>
+        <span class="s2">"messageKey"</span><span class="o">:</span> <span class="s2">"Animations"</span><span class="p">,</span>
+        <span class="s2">"label"</span><span class="o">:</span> <span class="s2">"Enable Animations"</span><span class="p">,</span>
+        <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="kc">false</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"submit"</span><span class="p">,</span>
+    <span class="s2">"defaultValue"</span><span class="o">:</span> <span class="s2">"Save Settings"</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+</pre></div><h2 id="initializing-clay" class="anchor">Initializing Clay</h2><p>To initialize Clay, all you need to do is add the following JavaScript into
+your <code>index.js</code> file.</p><div class="highlight"><pre><span class="c1">// Import the Clay package</span>
+<span class="kd">var</span> <span class="nx">Clay</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'pebble-clay'</span><span class="p">);</span>
+<span class="c1">// Load our Clay configuration file</span>
+<span class="kd">var</span> <span class="nx">clayConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./config'</span><span class="p">);</span>
+<span class="c1">// Initialize Clay</span>
+<span class="kd">var</span> <span class="nx">clay</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Clay</span><span class="p">(</span><span class="nx">clayConfig</span><span class="p">);</span>
+</pre></div>
+<div class="platform-specific" data-sdk-platform="local">
+<blockquote>
+<p>When using the local SDK, it is possible to use a pure JSON
+configuration file (<code>config.json</code>). If this is the case, you must not include
+the <code>module.exports = []</code> in your configuration file, and you need to
+<code>var clayConfig = require(&#39;./config.json&#39;);</code></p></blockquote>
+
+</div>
+<h2 id="receiving-config-data" class="anchor">Receiving Config Data</h2><p>Within our watchapp we need to open a connection with <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> to begin
+listening for data from Clay, and also provide a handler to process the data
+once it has been received.</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">prv_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+
+  <span class="c1">// Open AppMessage connection</span>
+  <span class="n">app_message_register_inbox_received</span><span class="p">(</span><span class="n">prv_inbox_received_handler</span><span class="p">);</span>
+  <span class="n">app_message_open</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">);</span>
+
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div><p>Once triggered, our handler will receive a <a href="/docs/c/Foundation/Dictionary/#DictionaryIterator" title="DictionaryIterator" class="link--docs"><code>DictionaryIterator</code></a> containing
+<a href="/docs/c/Foundation/Dictionary/#Tuple" title="Tuple" class="link--docs"><code>Tuple</code></a> objects for each <code>messageKey</code>. Note that the key names need to be
+prefixed with <code>MESSAGE_KEY_</code>.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_inbox_received_handler</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Read color preferences</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="kt">bg_color_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_BackgroundColor</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="kt">bg_color_t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">GColor</span> <span class="n">bg_color</span> <span class="o">=</span> <span class="n">GColorFromHEX</span><span class="p">(</span><span class="kt">bg_color_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">Tuple</span> <span class="o">*</span><span class="kt">fg_color_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_ForegroundColor</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="kt">fg_color_t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">GColor</span> <span class="n">fg_color</span> <span class="o">=</span> <span class="n">GColorFromHEX</span><span class="p">(</span><span class="kt">fg_color_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Read boolean preferences</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="kt">second_tick_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_SecondTick</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="kt">second_tick_t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">second_ticks</span> <span class="o">=</span> <span class="kt">second_tick_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">Tuple</span> <span class="o">*</span><span class="kt">animations_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_Animations</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="kt">animations_t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">animations</span> <span class="o">=</span> <span class="kt">animations_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div><h2 id="persisting-settings" class="anchor">Persisting Settings</h2><p>By default, Clay will persist your settings in localStorage within the
+mobile application. It is common practice to also save settings within the
+persistent storage on the watch. This creates a seemless experience for users
+launching your application, as their settings can be applied on startup. This
+means there isn&#39;t an initial delay while the settings are loaded from the phone.</p><p>You could save each individual value within the persistent storage, or you could
+create a struct to hold all of your settings, and save that entire object. This
+has the benefit of simplicity, and because writing to persistent storage is
+slow, it also provides improved performance.</p><div class="highlight"><pre><span class="c1">// Persistent storage key</span>
+<span class="cp">#define SETTINGS_KEY 1</span>
+
+<span class="c1">// Define our settings struct</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">ClaySettings</span> <span class="p">{</span>
+  <span class="n">GColor</span> <span class="n">BackgroundColor</span><span class="p">;</span>
+  <span class="n">GColor</span> <span class="n">ForegroundColor</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">SecondTick</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">Animations</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">ClaySettings</span><span class="p">;</span>
+
+<span class="c1">// An instance of the struct</span>
+<span class="k">static</span> <span class="n">ClaySettings</span> <span class="n">settings</span><span class="p">;</span>
+
+<span class="c1">// AppMessage receive handler</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_inbox_received_handler</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Assign the values to our struct</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="kt">bg_color_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_BackgroundColor</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="kt">bg_color_t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">settings</span><span class="p">.</span><span class="n">BackgroundColor</span> <span class="o">=</span> <span class="n">GColorFromHEX</span><span class="p">(</span><span class="kt">bg_color_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+  <span class="n">prv_save_settings</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Save the settings to persistent storage</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_save_settings</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">persist_write_data</span><span class="p">(</span><span class="n">SETTINGS_KEY</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">settings</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">settings</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div><p>You can see a complete implementation of persisting a settings struct in the
+<a href="https://github.com/pebble-examples/clay-example" title="" class="">Pebble Clay Example</a>.</p><h2 id="what-39-s-next" class="anchor">What&#39;s Next</h2><p>If you&#39;re thinking that Clay won&#39;t be as flexible as hand crafting your own
+configuration pages, you&#39;re mistaken.</p><p>Developers can extend the functionality of Clay in a number of ways:</p>
+<ul>
+<li>Define a
+<a href="https://github.com/pebble/clay#custom-function" title="" class="">custom function</a> to enhance the
+interactivity of the page.</li>
+<li><a href="https://github.com/pebble/clay#handling-the-showconfiguration-and-webviewclosed-events-manually" title="" class="">Override events</a>
+and transform the format of the data before it&#39;s transferred to the watch.</li>
+<li>Create and share your own
+<a href="https://github.com/pebble/clay#custom-components" title="" class="">custom components</a>.</li>
+</ul>
+<p>Why not find out more about <a href="https://github.com/pebble/clay" title="" class="">Clay for Pebble</a>
+and perhaps even
+<a href="https://github.com/pebble/clay/blob/master/CONTRIBUTING.md" title="" class="">contribute</a> to the
+project, it&#39;s open source!</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/user-interfaces/app-configuration/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#enabling-configuration">Enabling Configuration</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#installing-clay">Installing Clay</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#choosing-messagekeys">Choosing messageKeys</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#creating-the-clay-configuration">Creating the Clay Configuration</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#initializing-clay">Initializing Clay</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#receiving-config-data">Receiving Config Data</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#persisting-settings">Persisting Settings</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next</a></li>
+    
+  </ul>
+
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/clay-example" target="_blank">Clay Example</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Publishing an App // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to upload and publish an app in the Pebble appstore.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/appstore-publishing/publishing-an-app/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/appstore-publishing/preparing-a-submission/"><span>Preparing a Submission</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/appstore-publishing/publishing-an-app/"><span>Publishing an App</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/appstore-publishing/appstore-analytics/"><span>Appstore Analytics</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/appstore-publishing/appstore-assets/"><span>Appstore Assets</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/appstore-publishing/whitelisting/"><span>iOS App Whitelisting</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="listing-resources">Listing Resources</option>
+          
+            <option value="publishing-a-watchface">Publishing a Watchface</option>
+          
+            <option value="publishing-a-watchapp">Publishing a Watchapp</option>
+          
+            <option value="publishing-a-companion-app">Publishing a Companion App</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Publishing an App</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>When an app is ready for publishing, the <code>.pbw</code> file needs to be uploaded to the
+Pebble <a href="https://dev-portal.getpebble.com/" title="" class="">Developer Portal</a>, where a listing is
+created. Depending on the type of app, different sets of additional resources
+are required. These resources are then used to generate the listing pages
+visible to potential users in the Pebble appstore, which is embedded within the Pebble mobile app. </p><p>You can also view the <a href="http://apps.getpebble.com/en_US/watchfaces" title="" class="">watchfaces</a> 
+and <a href="http://apps.getpebble.com/en_US/watchapps" title="" class="">watchapps</a> from a desktop 
+computer, as well as perform searches and get shareable links.</p><h2 id="listing-resources" class="anchor">Listing Resources</h2><p>The table below gives a summary of which types of resources required by
+different types of app. Use this to quickly assess how complete assets and
+resources are before creating the listing.</p>
+<table><thead>
+<tr>
+<th>Resource</th>
+<th>Watchface</th>
+<th>Watchapp</th>
+<th>Companion</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Title</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>.pbw</code> release build</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Asset collections</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Large and small icons</td>
+<td>-</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Compatible platforms</td>
+<td>-</td>
+<td>-</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Android or iOS companion appstore listing</td>
+<td>-</td>
+<td>-</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h2 id="publishing-a-watchface" class="anchor">Publishing a Watchface</h2>
+<ol>
+<li><p>After logging in, click &#39;Add a Watchface&#39;.</p></li>
+<li><p>Enter the basic details of the watchface, such as the title, source code URL,
+and support email (if different from the one associated with this developer
+account):</p><p><img src="/assets/images/guides/appstore-publishing/face-title.png" alt="face-title" /></p></li>
+<li><p>Click &#39;Create&#39; to be taken to the listing page. This page details the status
+of the listing, including links to subpages, a preview of the public page,
+and any missing information preventing release.</p><p><img src="/assets/images/guides/appstore-publishing/face-listing.png" alt="face-listing" /></p></li>
+<li><p>The status now says &#39;Missing: At least one published release&#39;. Click &#39;Add a
+release&#39; to upload the <code>.pbw</code>, optionally adding release notes:</p><p><img src="/assets/images/guides/appstore-publishing/face-release.png" alt="face-release" /></p></li>
+<li><p>Click &#39;Save&#39;. After reloading the page, make the release public by clicking
+&#39;Publish&#39; next to the release:</p><p><img src="/assets/images/guides/appstore-publishing/face-release-publish.png" alt="face-release-publish" /></p></li>
+<li><p>The status now says &#39;Missing: A complete X asset collection&#39; for
+each X supported platform. Click &#39;Manage Asset Collections&#39;, then click
+&#39;Create&#39; for a supported platform.</p></li>
+<li><p>Add a description, up to 5 screenshots, and optionally a marketing banner
+before clicking &#39;Create Asset Collection&#39;.</p><p><img src="/assets/images/guides/appstore-publishing/face-assets.png" alt="face-assets" /></p></li>
+<li><p>Once all asset collections required have been created, click &#39;Publish&#39; or
+&#39;Publish Privately&#39; to make the app available only to those viewing it
+through the direct link. Note that once made public, an app cannot then be
+made private.</p></li>
+<li><p>After publishing, reload the page to get the public appstore link for social
+sharing, as well as a deep link that can be used to directly open the
+appstore in the mobile app.</p></li>
+</ol>
+<h2 id="publishing-a-watchapp" class="anchor">Publishing a Watchapp</h2>
+<ol>
+<li><p>After logging in, click &#39;Add a Watchapp&#39;.</p></li>
+<li><p>Enter the basic details of the watchapp, such as the title, source code URL,
+and support email (if different from the one associated with this developer
+account):</p><p><img src="/assets/images/guides/appstore-publishing/app-title.png" alt="app-title" /></p></li>
+<li><p>Select the most appropriate category for the app, depending on the features
+it provides:</p><p><img src="/assets/images/guides/appstore-publishing/app-category.png" alt="app-category" /></p></li>
+<li><p>Upload the large and small icons representing the app:</p><p><img src="/assets/images/guides/appstore-publishing/app-icons.png" alt="app-icons" /></p></li>
+<li><p>Click &#39;Create&#39; to be taken to the listing page. This page details the status
+of the listing, including links to subpages, a preview of the public page,
+and any missing information preventing release.</p><p><img src="/assets/images/guides/appstore-publishing/app-listing.png" alt="app-listing" /></p></li>
+<li><p>The status now says &#39;Missing: At least one published release&#39;. Click &#39;Add a
+release&#39; to upload the <code>.pbw</code>, optionally adding release notes:</p><p><img src="/assets/images/guides/appstore-publishing/app-release.png" alt="app-release" /></p></li>
+<li><p>Click &#39;Save&#39;. After reloading the page, make the release public by clicking
+&#39;Publish&#39; next to the release:</p><p><img src="/assets/images/guides/appstore-publishing/face-release-publish.png" alt="face-release-publish" /></p></li>
+<li><p>The status now says &#39;Missing: A complete X asset collection&#39; for
+each X supported platform. Click &#39;Manage Asset Collections&#39;, then click
+&#39;Create&#39; for a supported platform.</p></li>
+<li><p>Add a description, up to 5 screenshots, optionally up to three header images,
+and a marketing banner before clicking &#39;Create Asset Collection&#39;.</p><p><img src="/assets/images/guides/appstore-publishing/app-assets.png" alt="app-assets" /></p></li>
+<li><p>Once all asset collections required have been created, click &#39;Publish&#39; or
+&#39;Publish Privately&#39; to make the app available only to those viewing it
+through the direct link.</p></li>
+<li><p>After publishing, reload the page to get the public appstore link for social
+sharing, as well as a deep link that can be used to directly open the
+appstore in the mobile app.</p></li>
+</ol>
+<h2 id="publishing-a-companion-app" class="anchor">Publishing a Companion App</h2>
+<blockquote>
+<p>A companion app is one that is written for Pebble, but exists on the Google
+Play store, or the Appstore. Adding it to the Pebble appstore allows users to
+discover it from the mobile app.</p></blockquote>
+
+<ol>
+<li><p>After logging in, click &#39;Add a Companion App&#39;.</p></li>
+<li><p>Enter the basic details of the companion app, such as the title, source code
+URL, and support email (if different from the one associated with this
+developer account):</p><p><img src="/assets/images/guides/appstore-publishing/companion-title.png" alt="companion-title" /></p></li>
+<li><p>Select the most appropriate category for the app, depending on the features
+it provides:</p><p><img src="/assets/images/guides/appstore-publishing/companion-category.png" alt="companion-category" /></p></li>
+<li><p>Check a box beside each hardware platform that the companion app supports.
+For example, it may be a photo viewer app that does not support Aplite.</p></li>
+<li><p>Upload the large and small icons representing the app:</p><p><img src="/assets/images/guides/appstore-publishing/companion-icons.png" alt="companion-icons" /></p></li>
+<li><p>Click &#39;Create&#39; to be taken to the listing page. The status will now read
+&#39;Missing: At least one iOS or Android application&#39;. Add the companion app
+with eithr the &#39;Add Android Companion&#39; or &#39;Add iOS Companion&#39; buttons (or
+both!).</p></li>
+<li><p>Add the companion app&#39;s small icon, the name of the other appstore app&#39;s
+name, as well as the direct link to it&#39;s location in the appropriate
+appstore. If it has been compiled with a PebbleKit 3.0, check that box:</p><p><img src="/assets/images/guides/appstore-publishing/companion-link.png" alt="companion-link" /></p></li>
+<li><p>Once the companion appstore link has been added, click &#39;Publish&#39; or &#39;Publish
+Privately&#39; to make the app available only to those viewing it through the
+direct link.</p></li>
+<li><p>After publishing, reload the page to get the public appstore link for social
+sharing, as well as a deep link that can be used to directly open the
+appstore in the mobile app.</p></li>
+</ol>
+
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/appstore-publishing/publishing-an-app/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#listing-resources">Listing Resources</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#publishing-a-watchface">Publishing a Watchface</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#publishing-a-watchapp">Publishing a Watchapp</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#publishing-a-companion-app">Publishing a Companion App</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

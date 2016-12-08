@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Accelerometer // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to use data and simple tap gestures from the onboard accelerometer.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/events-and-services/accelerometer/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/events-and-services/accelerometer/"><span>Accelerometer</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/background-worker/"><span>Background Worker</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/buttons/"><span>Buttons</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/compass/"><span>Compass</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/dictation/"><span>Dictation</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/events/"><span>Event Services</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/hrm/"><span>Heart Rate Monitor</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/health/"><span>Pebble Health</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/persistent-storage/"><span>Persistent Storage</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/wakeups/"><span>Wakeups</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="about-the-pebble-accelerometer">About the Pebble Accelerometer</option>
+          
+            <option value="using-taps">Using Taps</option>
+          
+            <option value="using-data-batches">Using Data Batches</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Accelerometer</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>The acceleromter sensor is included in every Pebble watch, and allows collection
+of acceleration and orientation data in watchapps and watchfaces. Data is
+available in two ways, each suitable to different types of watchapp:</p>
+<ul>
+<li><p>Taps events - Fires an event whenever a significant tap or shake of the watch
+occurs. Useful to &#39;shake to view&#39; features.</p></li>
+<li><p>Data batches - Allows collection of data in batches at specific intervals.
+Useful for general accelerometer data colleciton.</p></li>
+</ul>
+<p>As a significant source of regular callbacks, the accelerometer should be used
+as sparingly as possible to allow the watch to sleep and conserve power. For
+example, receiving data in batches once per second is more power efficient than
+receiving a single sample 25 times per second.</p><h2 id="about-the-pebble-accelerometer" class="anchor">About the Pebble Accelerometer</h2><p>The Pebble accelerometer is oriented according to the diagram below, showing the
+direction of each of the x, y, and z axes.</p><p><img src="/assets/images/guides/pebble-apps/sensors/accel.png" alt="accel-axes" /></p><p>In the API, each axis value contained in an <a href="/docs/c/Foundation/Event_Service/AccelerometerService/#AccelData" title="AccelData" class="link--docs"><code>AccelData</code></a> sample is measured in
+milli-Gs. The accelerometer is calibrated to measure a maximum acceleration of
+±4G. Therefore, the range of possible values for each axis is -4000 to +4000.</p><p>The <a href="/docs/c/Foundation/Event_Service/AccelerometerService/#AccelData" title="AccelData" class="link--docs"><code>AccelData</code></a> sample object also contains a <code>did_vibrate</code> field, set to
+<code>true</code> if the vibration motor was active during the sample collection. This
+could possibly contaminate those samples due to onboard vibration, so they
+should be discarded. Lastly, the <code>timestamp</code> field allows tracking of obtained
+accelerometer data over time.</p><h2 id="using-taps" class="anchor">Using Taps</h2><p>Adding a subscription to tap events allows a developer to react to any time the
+watch is tapped or experiences a shake along one of three axes. Tap events are
+received by registering an <a href="/docs/c/Foundation/Event_Service/AccelerometerService/#AccelTapHandler" title="AccelTapHandler" class="link--docs"><code>AccelTapHandler</code></a> function, such as the one below:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">accel_tap_handler</span><span class="p">(</span><span class="n">AccelAxisType</span> <span class="n">axis</span><span class="p">,</span> <span class="kt">int32_t</span> <span class="n">direction</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// A tap event occured</span>
+
+<span class="p">}</span>
+</pre></div><p>The <code>axis</code> parameter describes which axis the tap was detected along. The
+<code>direction</code> parameter is set to <code>1</code> for the positive direction, and <code>-1</code> for the
+negative direction.</p><p>A subscription can be added or removed at any time. While subscribed,
+<code>accel_tap_handler</code> will be called whenever a tap event is fired by the
+accelerometer. Adding a subscription is simple:</p><div class="highlight"><pre><span class="c1">// Subscribe to tap events</span>
+<span class="n">accel_tap_service_subscribe</span><span class="p">(</span><span class="n">accel_tap_handler</span><span class="p">);</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Unsubscribe from tap events</span>
+<span class="n">accel_tap_service_unsubscribe</span><span class="p">();</span>
+</pre></div><h2 id="using-data-batches" class="anchor">Using Data Batches</h2><p>Accelerometer data can be received in batches at a chosen sampling rate by
+subscribing to the Accelerometer Data Service at any time:</p><div class="highlight"><pre><span class="kt">uint32_t</span> <span class="n">num_samples</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">// Number of samples per batch/callback</span>
+
+<span class="c1">// Subscribe to batched data events</span>
+<span class="n">accel_data_service_subscribe</span><span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">accel_data_handler</span><span class="p">);</span>
+</pre></div><p>The <a href="/docs/c/Foundation/Event_Service/AccelerometerService/#AccelDataHandler" title="AccelDataHandler" class="link--docs"><code>AccelDataHandler</code></a> function (called <code>accel_data_handler</code> in the example
+above) is called when a new batch of data is ready for consumption by the
+watchapp. The rate at which these occur is dictated by two things:</p>
+<ul>
+<li><p>The sampling rate - The number of samples the accelerometer device measures
+per second. One value chosen from the <a href="/docs/c/Foundation/Event_Service/AccelerometerService/#AccelSamplingRate" title="AccelSamplingRate" class="link--docs"><code>AccelSamplingRate</code></a> <code>enum</code>.</p></li>
+<li><p>The number of samples per batch.</p></li>
+</ul>
+<p>Some simple math will determine how often the callback will occur. For example,
+at the <a href="/docs/c/Foundation/Event_Service/AccelerometerService/#ACCEL_SAMPLING_50HZ" title="ACCEL_SAMPLING_50HZ" class="link--docs"><code>ACCEL_SAMPLING_50HZ</code></a> sampling rate, and specifying 10 samples per
+batch will result in five calls per second.</p><p>When an event occurs, the acceleromater data can be read from the <a href="/docs/c/Foundation/Event_Service/AccelerometerService/#AccelData" title="AccelData" class="link--docs"><code>AccelData</code></a>
+pointer provided in the callback. An example reading the first set of values is
+shown below:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">accel_data_handler</span><span class="p">(</span><span class="n">AccelData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">num_samples</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Read sample 0's x, y, and z values</span>
+  <span class="kt">int16_t</span> <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">x</span><span class="p">;</span>
+  <span class="kt">int16_t</span> <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">y</span><span class="p">;</span>
+  <span class="kt">int16_t</span> <span class="n">z</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">z</span><span class="p">;</span>
+
+  <span class="c1">// Determine if the sample occured during vibration, and when it occured</span>
+  <span class="kt">bool</span> <span class="n">did_vibrate</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">did_vibrate</span><span class="p">;</span>
+  <span class="kt">uint64_t</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">timestamp</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">did_vibrate</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Print it out</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"t: %llu, x: %d, y: %d, z: %d"</span><span class="p">,</span>
+                                                          <span class="n">timestamp</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Discard with a warning</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_WARNING</span><span class="p">,</span> <span class="s">"Vibration occured during collection"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>The code above will output the first sample in each batch to app logs, which
+will look similar to the following:</p><div class="highlight no-copy"><pre>[15:33:18] -data-service.c:21> t: 1449012797098, x: -111, y: -280, z: -1153
+[15:33:18] -data-service.c:21> t: 1449012797305, x: -77, y: 40, z: -1014
+[15:33:18] -data-service.c:21> t: 1449012797507, x: -60, y: 4, z: -1080
+[15:33:19] -data-service.c:21> t: 1449012797710, x: -119, y: -55, z: -921
+[15:33:19] -data-service.c:21> t: 1449012797914, x: 628, y: 64, z: -506
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/events-and-services/accelerometer/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#about-the-pebble-accelerometer">About the Pebble Accelerometer</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#using-taps">Using Taps</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#using-data-batches">Using Data Batches</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Foundation/Event_Service/AccelerometerService/">AccelerometerService</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/feature-accel-discs" target="_blank">Feature Accel Discs</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

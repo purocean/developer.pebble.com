@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble SDK 2.0 BETA4 - Changelog // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/sdk/changelogs/2.0-BETA4/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk active"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--sdk section-menu--dark">
+    <div class="section-menu__header">
+      <h3><a href="/sdk/">SDK</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item"><a href="/sdk/download/">Download</a></li>
+      <li class="section-menu__item">
+        <a href="/sdk/install/">Installation</a>
+        <ul>
+          <li class="section-menu__subitem"><a href="/sdk/install/mac/"><span>Mac OS X</span></a></li>
+          <li class="section-menu__subitem"><a href="/sdk/install/linux/"><span>Linux</span></a></li>
+          <li class="section-menu__subitem"><a href="/sdk/install/windows/"><span>Windows</span></a></li>
+        </ul>
+      </li>
+      <li class="section-menu__item open">
+        <a href="/sdk/changelogs/4.3/">Changelog</a>
+        <ul>
+          
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.3/"><span>4.3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2.2/"><span>4.2.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2.1/"><span>4.2.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2/"><span>4.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2-beta5/"><span>4.2-beta5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2-beta4/"><span>4.2-beta4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.1.4/"><span>4.1.4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.1.2/"><span>4.1.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.1.1/"><span>4.1.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.1/"><span>4.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0.1/"><span>4.0.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0/"><span>4.0</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-rc20/"><span>4.0-rc20</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-beta17/"><span>4.0-beta17</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-dp3/"><span>4.0-dp3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.14/"><span>3.14</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-dp2/"><span>4.0-dp2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-dp1/"><span>4.0-dp1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.13.1/"><span>3.13.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.13/"><span>3.13</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.12/"><span>3.12</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.11.1/"><span>3.11.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.11/"><span>3.11</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10.1/"><span>3.10.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10/"><span>3.10</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10-beta6/"><span>3.10-beta6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10-beta2/"><span>3.10-beta2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10-beta1/"><span>3.10-beta1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9.2/"><span>3.9.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9.1/"><span>3.9.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9/"><span>3.9</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9-beta8/"><span>3.9-beta8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9-beta7/"><span>3.9-beta7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9-beta5/"><span>3.9-beta5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8.2/"><span>3.8.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8.1/"><span>3.8.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8/"><span>3.8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8-beta12/"><span>3.8-beta12</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8-beta10/"><span>3.8-beta10</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8-beta8/"><span>3.8-beta8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.7/"><span>3.7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6.2/"><span>3.6.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6/"><span>3.6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp8/"><span>3.6-dp8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp7/"><span>3.6-dp7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp6/"><span>3.6-dp6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp5/"><span>3.6-dp5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp2/"><span>3.6-dp2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.4/"><span>3.4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.3/"><span>3.3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.2.1/"><span>3.2.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.2/"><span>3.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.1/"><span>3.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0/"><span>3.0</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-beta12/"><span>3.0-beta12</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-beta11/"><span>3.0-beta11</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-beta10/"><span>3.0-beta10</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp9/"><span>3.0-dp9</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp8/"><span>3.0-dp8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp7/"><span>3.0-dp7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp6/"><span>3.0-dp6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp5/"><span>3.0-dp5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp4/"><span>3.0-dp4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp3/"><span>3.0-dp3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp2/"><span>3.0-dp2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp1/"><span>3.0-dp1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.9/"><span>2.9</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.8.1/"><span>2.8.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.8/"><span>2.8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.7/"><span>2.7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.6.1/"><span>2.6.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.6/"><span>2.6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.5/"><span>2.5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.4.1/"><span>2.4.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.4/"><span>2.4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.3/"><span>2.3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.2/"><span>2.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.1.1/"><span>2.1.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.1/"><span>2.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0.2/"><span>2.0.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0.1/"><span>2.0.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0.0/"><span>2.0.0</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA7/"><span>2.0-BETA7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA6/"><span>2.0-BETA6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA5/"><span>2.0-BETA5</span></a></li>
+          
+            <li class="section-menu__subitem active"><a href="/sdk/changelogs/2.0-BETA4/"><span>2.0-BETA4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA3/"><span>2.0-BETA3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA2/"><span>2.0-BETA2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA1/"><span>2.0-BETA1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA0/"><span>2.0-BETA0</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-DP3/"><span>2.0-DP3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-DP2/"><span>2.0-DP2</span></a></li>
+          
+        </ul>
+      </li>
+      <li class="section-menu__item"><a href="/sdk/round-getting-started/">Getting Started with Pebble Time Round</a></li>
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="what-has-changed-since-beta3">What has changed since BETA3</option>
+          
+            <option value="firmware">- Firmware</option>
+          
+            <option value="ios-app">- iOS App</option>
+          
+            <option value="android-app">- Android App</option>
+          
+            <option value="pebblekit-ios">- PebbleKit iOS</option>
+          
+            <option value="pebblekit-android">- PebbleKit Android</option>
+          
+            <option value="sdk-tools">- SDK Tools</option>
+          
+            <option value="examples">- Examples</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      <h1 class="pagetitle">Pebble SDK 2.0 BETA4 - Changelog</h1>
+      <div class="markdown markdown--staff">
+	      
+        <p>
+  <em>Release Date: December 23 2013</em>
+</p>
+<ul>
+<li>Pebble SDK 2.0 is currently in BETA and intended for developers only.</li>
+<li>SDK 2.0 will be released early next year as an over-the-air update to all Pebble users.</li>
+<li>Applications written for Pebble 1.x are not compatible with SDK 2.0</li>
+<li>If a 2.0 version of an application exists, the Pebble mobile applications will automatically install it when when a user upgrades her/his Pebble.</li>
+</ul>
+<p><strong>You can start uploading your application to the Pebble appstore TODAY - <a href="http://dev-portal.getpebble.com/" title="" class="">Please do so</a>!</strong></p><h2 id="what-has-changed-since-beta3" class="anchor">What has changed since BETA3</h2><p>Overview:</p>
+<ul>
+<li>Fixed a problem where the iOS app would get killed after a few minutes in the background</li>
+<li>Lots of Data Logging fixes on the firmware and on Android</li>
+<li>Added timestamps on accelerometer samples</li>
+<li>Improved error handling for PebbleKit JS apps on iOS and Android</li>
+</ul>
+<h3 id="firmware" class="anchor">Firmware</h3>
+<ul>
+<li>Developers of apps can now register single and multi click handlers on the back button</li>
+<li>Holding down the back button for 1.5s will force quit an existing app</li>
+<li>Fixed bugs and optimize the filesystem: faster persist times, less problems with persistent storage, fix a bunch of rather complex problems where the recovery firmware could be damaged</li>
+<li>Fixed scroll offset bug when displaying notifications</li>
+<li>Dismiss missed call notfication after 180s</li>
+<li>Fixed a bug where unicode characters were not supported in appinfo.json</li>
+<li>Changed graphics_text_layout_get_max_used_size() to <em>not</em> require a graphic context</li>
+<li>Fixed a few more bluetooth bugs</li>
+<li>Fixed a bug where Pebble could crash when you delete the last alarm</li>
+<li>Fixed memory read exception that can occur when using a malloc-ed appsync buffer</li>
+<li>Save notifications to storage during do not disturb</li>
+<li>Document AccelAxisType in API Documentation</li>
+<li>Fixed Music UI problems</li>
+<li>Automatically center on screen a selected cell in a SimpleMenuLayer</li>
+<li>Fixed bug where snprintf could crash the watch</li>
+<li>Display an error message if a 2.0 pebble is connected to a 1.x mobile app</li>
+<li>Fixed a bug where calling atoi() would crash an app</li>
+<li>Many DataLogging improvements and fixes based on new unit tests</li>
+<li>Display an alert on Pebble when we reset due to a system crash</li>
+<li>Ignore NULL pointer passed to text_layer_destroy()</li>
+<li>Limit the number of datalogging sessions to 20</li>
+<li>Fixed a race condition that occurs when you set the sampling rate immediately after subscribing to the accel service</li>
+<li>Keep persistent storage intact when upgrading an application</li>
+<li>Added timestamps on accelerometer samples and a flag indicating if the watch was vibrating at the time of the sample</li>
+<li>Fixed a bug where psleep could crash pebble</li>
+<li>Fixed a bug where text_layer could add ellipsis to the wrong line</li>
+</ul>
+<h3 id="ios-app" class="anchor">iOS App</h3>
+<ul>
+<li>Fixed a bug where the iOS app would get killed in the background after just a few minutes</li>
+<li>Show a local notification if a developer is connected but the app is about to get killed</li>
+<li>PebbleKit JS: Fixed a bug where apps could not access localStorage with the array syntax</li>
+<li>PebbleKit JS: Fixed a bug where a space in an URL opened with XmlHTTPRequest could crash the iOS app</li>
+<li>PebbleKit JS: Fixed a bug where sending a byte array with 0xff in it would send 0x00 instead</li>
+</ul>
+<h3 id="android-app" class="anchor">Android App</h3>
+<ul>
+<li>PebbleKit JS: Fixed a bug where a byte array would not be sent properly for named keys</li>
+<li>Use new Android KitKat (4.4) APIs to do pairing on 4.4</li>
+<li>PebbleKit JS: Do not send ack for ack/nack messages</li>
+<li>Fixed Android crashing with OutOfMemory error when using Data Logging</li>
+<li>Fixed Android Data Logging of byte array that was not working</li>
+</ul>
+<h3 id="pebblekit-ios" class="anchor">PebbleKit iOS</h3>
+<ul>
+<li>Do not ack ACKs...</li>
+</ul>
+<h3 id="pebblekit-android" class="anchor">PebbleKit Android</h3>
+<ul>
+<li>No changes</li>
+</ul>
+<h3 id="sdk-tools" class="anchor">SDK Tools</h3>
+<ul>
+<li>Added support to libpebble to trigger reboot to recovery firmware</li>
+<li>Added support for computers where python2 and python3 co-exist</li>
+<li>Fixed an exception when receiving APP_LOG with extended characters</li>
+<li>Fixed a bug where unicode characters were not supported in characterRegex field of <code>appinfo.json</code></li>
+<li>Fixed 30 second delay that can occur when building pebble apps on Ubuntu when there is no internet access</li>
+<li>Added Pillow python dependency: needed for the screenshot functionality</li>
+<li>Detect PIL/Pillow conflict and suggest a fix to the user</li>
+</ul>
+<h3 id="examples" class="anchor">Examples</h3>
+<ul>
+<li>Added a License to the examples</li>
+</ul>
+
+
+      </div>
+    </div>
+    <div class="col-l-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#what-has-changed-since-beta3">What has changed since BETA3</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#firmware">Firmware</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#ios-app">iOS App</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#android-app">Android App</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#pebblekit-ios">PebbleKit iOS</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#pebblekit-android">PebbleKit Android</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#sdk-tools">SDK Tools</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#examples">Examples</a></li>
+    
+  </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

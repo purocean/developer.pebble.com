@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Window // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/User_Interface/Window/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open active">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+<option value="#modules">MODULES</option>
+
+  <option value="/docs/c/User_Interface/Window/ActionMenu/">ActionMenu</option>
+
+  <option value="/docs/c/User_Interface/Window/NumberWindow/">NumberWindow</option>
+
+
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_create">window_create</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_destroy">window_destroy</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_set_click_config_provider">window_set_click_config_provider</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_set_click_config_provider_with_context">window_set_click_config_provider_with_context</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_get_click_config_provider">window_get_click_config_provider</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_get_click_config_context">window_get_click_config_context</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_set_window_handlers">window_set_window_handlers</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_get_root_layer">window_get_root_layer</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_set_background_color">window_set_background_color</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_is_loaded">window_is_loaded</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_set_user_data">window_set_user_data</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_get_user_data">window_get_user_data</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_single_click_subscribe">window_single_click_subscribe</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_single_repeating_click_subscribe">window_single_repeating_click_subscribe</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_multi_click_subscribe">window_multi_click_subscribe</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_long_click_subscribe">window_long_click_subscribe</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_raw_click_subscribe">window_raw_click_subscribe</option>
+
+  <option value="/docs/c/User_Interface/Window/#window_set_click_context">window_set_click_context</option>
+
+
+
+          
+<option value="#structs">DATA STRUCTURES</option>
+
+  <option value="/docs/c/User_Interface/Window/#WindowHandlers">WindowHandlers</option>
+
+
+
+          
+
+          
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/User_Interface/Window/#Window">Window</option>
+
+  <option value="/docs/c/User_Interface/Window/#WindowHandler">WindowHandler</option>
+
+
+
+          
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">Window</h1>
+
+      <p>The basic building block of the user interface. </p>
+      <p>Windows are the top-level elements in the UI hierarchy and the basic building blocks for a Pebble UI. A single window is always displayed at a time on Pebble, with the exception of when animating from one window to the other, which, in that case, is managed by the window stack. You can stack windows on top of each other, but only the topmost window will be visible.</p>
+<p>Users wearing a Pebble typically interact with the content and media displayed in a window, clicking and pressing buttons on the watch, depending on what they see and wish to respond to in a window.</p>
+<p>Windows serve to display a hierarchy of layers on the screen and handle user input. When a window is visible, its root Layer (and all its child layers) are drawn onto the screen automatically.</p>
+<p>You need a window, which always fills the entire screen, to display images, text, and graphics in your Pebble app. A layer by itself doesn’t display on Pebble; it must be in the current window’s layer hierarchy to be visible.</p>
+<p>The Window Stack serves as the global manager of what window is presented and makes sure that input events are forwarded to the topmost window.</p>
+<p>Refer to the <a href="https://developer.getpebble.com/guides/pebble-apps/display-and-animations/layers/">User Interface Layers chapter in the Pebble Developer Guides</a> (chapter "Window") for a conceptual overview of Window, the Window Stack and relevant code examples. </p>
+
+      
+
+      
+
+
+      
+        <h2 class="anchor" id="modules">Modules</h2>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Window/ActionMenu/">ActionMenu</a></h4>
+            
+            <p>&nbsp;</p>
+            
+          </div>
+        
+          <div class="docs__module">
+            <h4><a href="/docs/c/User_Interface/Window/NumberWindow/">NumberWindow</a></h4>
+            
+            <p>A ready-made Window prompting the user to pick a number. </p>
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="window_create">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>Window * </span><span class="docs__item__name">window_create</span><span>(</span><span class="docs__item__param">void</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates a new Window on the heap and initalizes it with the default values. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><ul>
+<li><p>Background color : <code>GColorWhite</code></p></li>
+<li><p>Root layer's <code>update_proc</code> : function that fills the window's background using <code>background_color</code>.</p></li>
+<li><p><code>click_config_provider</code> : <code>NULL</code></p></li>
+<li><p><code>window_handlers</code> : all <code>NULL</code> 
+</p></li>
+</ul>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the window. <code>NULL</code> if the window could not be created </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_destroy">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_destroy</span><span>(</span><span class="docs__item__param">Window * window</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroys a Window previously created by window_create. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_set_click_config_provider">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_set_click_config_provider</span><span>(</span><span class="docs__item__param">Window * window</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a> click_config_provider</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the click configuration provider callback function on the window. This will automatically setup the input handlers of the window as well to use the click recognizer subsystem. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to set the click config provider </p></dt>
+  
+  <dt><span style="color: #777"></span> click_config_provider</dt>
+  <dd><p>The callback that will be called to configure the click recognizers with the window </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___clicks" kindref="compound" href="/docs/c/User_Interface/Clicks/">Clicks</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_set_click_config_provider_with_context">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_set_click_config_provider_with_context</span><span>(</span><span class="docs__item__param">Window * window</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a> click_config_provider</span><span>, </span><span class="docs__item__param">void * context</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Same as <a refid="group___window_1gaeefbe33bc69ffee444337b056912440c" kindref="member" href="/docs/c/User_Interface/Window/#window_set_click_config_provider">window_set_click_config_provider()</a>, but will assign a custom context pointer (instead of the window pointer) that will be passed into the ClickHandler click event handlers. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to set the click config provider </p></dt>
+  
+  <dt><span style="color: #777"></span> click_config_provider</dt>
+  <dd><p>The callback that will be called to configure the click recognizers with the window </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>Pointer to application specific data that will be passed to the click configuration provider callback (defaults to the window). </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___clicks" kindref="compound" href="/docs/c/User_Interface/Clicks/">Clicks</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_get_click_config_provider">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a> </span><span class="docs__item__name">window_get_click_config_provider</span><span>(</span><span class="docs__item__param">const Window * window</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the current click configuration provider of the window. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to get the click config provider </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_get_click_config_context">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void * </span><span class="docs__item__name">window_get_click_config_context</span><span>(</span><span class="docs__item__param">Window * window</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the current click configuration provider context of the window. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to get the click config provider context </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_set_window_handlers">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_set_window_handlers</span><span>(</span><span class="docs__item__param">Window * window</span><span>, </span><span class="docs__item__param"><a refid="struct_window_handlers" kindref="compound" href="/docs/c/User_Interface/Window/#WindowHandlers">WindowHandlers</a> handlers</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the window handlers of the window. These handlers get called e.g. when the user enters or leaves the window. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to set the window handlers </p></dt>
+  
+  <dt><span style="color: #777"></span> handlers</dt>
+  <dd><p>The handlers for the specified window </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="struct_window_handlers" kindref="compound" href="/docs/c/User_Interface/Window/#WindowHandlers">WindowHandlers</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_get_root_layer">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>struct Layer * </span><span class="docs__item__name">window_get_root_layer</span><span>(</span><span class="docs__item__param">const Window * window</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the root Layer of the window. The root layer is the layer at the bottom of the layer hierarchy for this window. It is the window's "canvas" if you will. By default, the root layer only draws a solid fill with the window's background color. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to get the root layer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The window's root layer </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_set_background_color">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_set_background_color</span><span>(</span><span class="docs__item__param">Window * window</span><span>, </span><span class="docs__item__param">GColor background_color</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the background color of the window, which is drawn automatically by the root layer of the window. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to set the background color </p></dt>
+  
+  <dt><span style="color: #777"></span> background_color</dt>
+  <dd><p>The new background color </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___window_1ga8a0233aa7927ebc51a0b2d8708f52fe0" kindref="member" href="/docs/c/User_Interface/Window/#window_get_root_layer">window_get_root_layer()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_is_loaded">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">window_is_loaded</span><span>(</span><span class="docs__item__param">Window * window</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets whether the window has been loaded. If a window is loaded, its <code>.load</code> handler has been called (and the <code>.unload</code> handler has not been called since). </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window to query its loaded status </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true if the window is currently loaded or false if not. </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="struct_window_handlers" kindref="compound" href="/docs/c/User_Interface/Window/#WindowHandlers">WindowHandlers</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_set_user_data">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_set_user_data</span><span>(</span><span class="docs__item__param">Window * window</span><span>, </span><span class="docs__item__param">void * data</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets a pointer to developer-supplied data that the window uses, to provide a means to access the data at later times in one of the window event handlers. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to set the user data </p></dt>
+  
+  <dt><span style="color: #777"></span> data</dt>
+  <dd><p>A pointer to user data. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___window_1ga9292027b4df03c42e9f096ef777f9220" kindref="member" href="/docs/c/User_Interface/Window/#window_get_user_data">window_get_user_data</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_get_user_data">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void * </span><span class="docs__item__name">window_get_user_data</span><span>(</span><span class="docs__item__param">const Window * window</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the pointer to developer-supplied data that was previously set using <a refid="group___window_1gaaec64431b5c68ffbd51d6c9055891455" kindref="member" href="/docs/c/User_Interface/Window/#window_set_user_data">window_set_user_data()</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to get the user data </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___window_1gaaec64431b5c68ffbd51d6c9055891455" kindref="member" href="/docs/c/User_Interface/Window/#window_set_user_data">window_set_user_data</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_single_click_subscribe">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_single_click_subscribe</span><span>(</span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> handler</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Subscribe to single click events. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Must be called from the <a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a>. </p>
+<p></p>
+<p><a refid="group___window_1gae09d8d7299a9d5a750a898a70f64bdec" kindref="member" href="/docs/c/User_Interface/Window/#window_single_click_subscribe">window_single_click_subscribe()</a> and <a refid="group___window_1ga1ff2467f009b80f8bc97ef197e34d332" kindref="member" href="/docs/c/User_Interface/Window/#window_single_repeating_click_subscribe">window_single_repeating_click_subscribe()</a> conflict, and cannot both be used on the same button. </p>
+<p></p>
+<p>When there is a multi_click and/or long_click setup, there will be a delay before the single click </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The button events to subscribe to. </p></dt>
+  
+  <dt><span style="color: #777"></span> handler</dt>
+  <dd><p>The <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> to fire on this event. handler will get fired. On the other hand, when there is no multi_click nor long_click setup, the single click handler will fire directly on button down. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_single_repeating_click_subscribe">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_single_repeating_click_subscribe</span><span>(</span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span>, </span><span class="docs__item__param"><a refid="group___standard_c_1gabf6633e0fef9023e8a1e8d727f4023e1" kindref="member" href="/docs/c/Standard_C/#uint16_t">uint16_t</a> repeat_interval_ms</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> handler</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Subscribe to single click event, with a repeat interval. A single click is detected every time "repeat_interval_ms" has been reached. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Must be called from the <a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a>. </p>
+<p></p>
+<p><a refid="group___window_1gae09d8d7299a9d5a750a898a70f64bdec" kindref="member" href="/docs/c/User_Interface/Window/#window_single_click_subscribe">window_single_click_subscribe()</a> and <a refid="group___window_1ga1ff2467f009b80f8bc97ef197e34d332" kindref="member" href="/docs/c/User_Interface/Window/#window_single_repeating_click_subscribe">window_single_repeating_click_subscribe()</a> conflict, and cannot both be used on the same button. </p>
+<p></p>
+<p>The back button cannot be overridden with a repeating click. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The button events to subscribe to. </p></dt>
+  
+  <dt><span style="color: #777"></span> repeat_interval_ms</dt>
+  <dd><p>When holding down, how many milliseconds before the handler is fired again. A value of 0ms means "no repeat timer". The minimum is 30ms, and values below will be disregarded. If there is a long-click handler subscribed on this button, <code>repeat_interval_ms</code> will not be used. </p></dt>
+  
+  <dt><span style="color: #777"></span> handler</dt>
+  <dd><p>The <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> to fire on this event. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___window_1gae09d8d7299a9d5a750a898a70f64bdec" kindref="member" href="/docs/c/User_Interface/Window/#window_single_click_subscribe">window_single_click_subscribe</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_multi_click_subscribe">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_multi_click_subscribe</span><span>(</span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span>, </span><span class="docs__item__param">uint8_t min_clicks</span><span>, </span><span class="docs__item__param">uint8_t max_clicks</span><span>, </span><span class="docs__item__param"><a refid="group___standard_c_1gabf6633e0fef9023e8a1e8d727f4023e1" kindref="member" href="/docs/c/Standard_C/#uint16_t">uint16_t</a> timeout</span><span>, </span><span class="docs__item__param">bool last_click_only</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> handler</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Subscribe to multi click events. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Must be called from the <a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a>. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The button events to subscribe to. </p></dt>
+  
+  <dt><span style="color: #777"></span> min_clicks</dt>
+  <dd><p>Minimum number of clicks before handler is fired. Defaults to 2. </p></dt>
+  
+  <dt><span style="color: #777"></span> max_clicks</dt>
+  <dd><p>Maximum number of clicks after which the click counter is reset. A value of 0 means use "min" also as "max". </p></dt>
+  
+  <dt><span style="color: #777"></span> timeout</dt>
+  <dd><p>The delay after which a sequence of clicks is considered finished, and the click counter is reset. A value of 0 means to use the system default 300ms. </p></dt>
+  
+  <dt><span style="color: #777"></span> last_click_only</dt>
+  <dd><p>Defaults to false. When true, only the handler for the last multi-click is called. </p></dt>
+  
+  <dt><span style="color: #777"></span> handler</dt>
+  <dd><p>The <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> to fire on this event. Fired for multi-clicks, as "filtered" by the <code>last_click_only</code>, <code>min</code>, and <code>max</code> parameters. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_long_click_subscribe">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_long_click_subscribe</span><span>(</span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span>, </span><span class="docs__item__param"><a refid="group___standard_c_1gabf6633e0fef9023e8a1e8d727f4023e1" kindref="member" href="/docs/c/Standard_C/#uint16_t">uint16_t</a> delay_ms</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> down_handler</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> up_handler</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Subscribe to long click events. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Must be called from the <a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a>. </p>
+<p></p>
+<p>The back button cannot be overridden with a long click. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The button events to subscribe to. </p></dt>
+  
+  <dt><span style="color: #777"></span> delay_ms</dt>
+  <dd><p>Milliseconds after which "handler" is fired. A value of 0 means to use the system default 500ms. </p></dt>
+  
+  <dt><span style="color: #777"></span> down_handler</dt>
+  <dd><p>The <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> to fire as soon as the button has been held for <code>delay_ms</code>. This may be NULL to have no down handler. </p></dt>
+  
+  <dt><span style="color: #777"></span> up_handler</dt>
+  <dd><p>The <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> to fire on the release of a long click. This may be NULL to have no up handler. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_raw_click_subscribe">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_raw_click_subscribe</span><span>(</span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> down_handler</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> up_handler</span><span>, </span><span class="docs__item__param">void * context</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Subscribe to raw click events. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Must be called from within the <a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a>. </p>
+<p></p>
+<p>The back button cannot be overridden with a raw click. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The button events to subscribe to. </p></dt>
+  
+  <dt><span style="color: #777"></span> down_handler</dt>
+  <dd><p>The <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> to fire as soon as the button has been pressed. This may be NULL to have no down handler. </p></dt>
+  
+  <dt><span style="color: #777"></span> up_handler</dt>
+  <dd><p>The <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> to fire on the release of the button. This may be NULL to have no up handler. </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>If this context is not NULL, it will override the general context. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="window_set_click_context">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">window_set_click_context</span><span>(</span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span>, </span><span class="docs__item__param">void * context</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Set the context that will be passed to handlers for the given button's events. By default the context passed to handlers is equal to the <a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a> context (defaults to the window). </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Must be called from within the <a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a>. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The button to set the context for. </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>Set the context that will be passed to handlers for the given button's events. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="structs">Data Structure<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="WindowHandlers">
+            
+              
+<div class="docs__item docs__item--struct">
+  <div class="docs__item__header">struct <span class="docs__item__name">WindowHandlers</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p><a refid="struct_window_handlers" kindref="compound" href="/docs/c/User_Interface/Window/#WindowHandlers">WindowHandlers</a> These handlers are called by the <a refid="group___window_stack" kindref="compound" href="/docs/c/User_Interface/Window_Stack/">Window Stack</a> as windows get pushed on / popped. All these handlers use <a refid="group___window_1gafaf0ee4d0dfa0475ecbb37b387eb87e8" kindref="member" href="/docs/c/User_Interface/Window/#WindowHandler">WindowHandler</a> as their function signature. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    <h4>Data Fields</h4>
+    <dl>
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___window_1gafaf0ee4d0dfa0475ecbb37b387eb87e8" kindref="member" href="/docs/c/User_Interface/Window/#WindowHandler">WindowHandler</a></type></span> load</dt>
+      <dd><p>Called when the window is pushed to the screen when it's not loaded. This is a good moment to do the layout of the window. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___window_1gafaf0ee4d0dfa0475ecbb37b387eb87e8" kindref="member" href="/docs/c/User_Interface/Window/#WindowHandler">WindowHandler</a></type></span> appear</dt>
+      <dd><p>Called when the window comes on the screen (again). E.g. when second-top-most window gets revealed (again) after popping the top-most window, but also when the window is pushed for the first time. This is a good moment to start timers related to the window, or reset the UI, etc. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___window_1gafaf0ee4d0dfa0475ecbb37b387eb87e8" kindref="member" href="/docs/c/User_Interface/Window/#WindowHandler">WindowHandler</a></type></span> disappear</dt>
+      <dd><p>Called when the window leaves the screen, e.g. when another window is pushed, or this window is popped. Good moment to stop timers related to the window. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___window_1gafaf0ee4d0dfa0475ecbb37b387eb87e8" kindref="member" href="/docs/c/User_Interface/Window/#WindowHandler">WindowHandler</a></type></span> unload</dt>
+      <dd><p>Called when the window is deinited, but could be used in the future to free resources bound to windows that are not on screen. </p>
+      </dt>
+      
+
+      
+      
+    </dl>
+    
+  <h4>See Also</h4>
+  <a refid="group___window_1gac59cf99a62ff53b5b4a25c6432438360" kindref="member" href="/docs/c/User_Interface/Window/#window_set_window_handlers">window_set_window_handlers()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="Window">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct Window <span class="docs__item__name">Window</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="WindowHandler">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">WindowHandler</span>)(struct Window *window)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature for a handler that deals with transition events of a window. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="struct_window_handlers" kindref="compound" href="/docs/c/User_Interface/Window/#WindowHandlers">WindowHandlers</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+<h3><a href="#modules">Modules</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/ActionMenu/">ActionMenu</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/NumberWindow/">NumberWindow</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_create">window_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_destroy">window_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_set_click_config_provider">window_set_click_config_provider</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_set_click_config_provider_with_context">window_set_click_config_provider_with_context</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_get_click_config_provider">window_get_click_config_provider</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_get_click_config_context">window_get_click_config_context</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_set_window_handlers">window_set_window_handlers</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_get_root_layer">window_get_root_layer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_set_background_color">window_set_background_color</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_is_loaded">window_is_loaded</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_set_user_data">window_set_user_data</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_get_user_data">window_get_user_data</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_single_click_subscribe">window_single_click_subscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_single_repeating_click_subscribe">window_single_repeating_click_subscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_multi_click_subscribe">window_multi_click_subscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_long_click_subscribe">window_long_click_subscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_raw_click_subscribe">window_raw_click_subscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#window_set_click_context">window_set_click_context</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#structs">Data Structures</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#WindowHandlers">WindowHandlers</a></li>
+  
+</ul>
+
+
+      
+
+      
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#Window">Window</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Window/#WindowHandler">WindowHandler</a></li>
+  
+</ul>
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

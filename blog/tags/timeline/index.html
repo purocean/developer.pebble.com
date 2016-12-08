@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble Developer Blog: Timeline // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/tags/timeline/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle pagetitle--skinny">
+  <a href="/blog/">Pebble Developer Blog</a>
+</h1>
+<h2 class="pagesubtitle">Timeline</h2>
+<div class="blog-index">
+  
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://assets.getpebble.com/api/file/BxDVwzJ9RXiRZTL3gMnA/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
+    
+    <p>Jul 24, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/07/24/timeline-challenge-week-twelve/">Pebble Timeline Challenge Week 12 Winner - TV Shows!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>Since we announced the Pebble timeline, getting timeline pins about your favorite 
+TV shows has been a much requested use case. Now, with the 12th and final winner 
+of the timeline challenge, you can! With 
+<a href="https://apps.getpebble.com/en_US/application/55a461f5c12bc1287100007c" title="" class="">TV Shows</a>, 
+get timeline pins and notifications from up to 25 shows.</p></div>
+    <div class="text-right"><a href="/blog/2015/07/24/timeline-challenge-week-twelve/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="/assets/images/blog/watchpop-icon.png" width="80" height="80"/>
+    
+    <p>Jul 17, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/07/17/timeline-challenge-week-eleven/">Pebble Timeline Challenge Week 11 Winner - WatchPop!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>At its core, Pebble is personal and customizable: with thousands of apps
+and watchfaces to choose from, it&#39;s likely that no two Pebblers have the same 
+experience. Now, with the 11th winner of the Pebble Timeline Challenge, you have
+the opportunity to personalize your Pebble even further: add your beloved 
+pictures, and show off your customized, beautiful watchfaces!</p></div>
+    <div class="text-right"><a href="/blog/2015/07/17/timeline-challenge-week-eleven/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="/assets/images/blog/water-glass.png" width="80" height="80"/>
+    
+    <p>Jul 09, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/07/09/timeline-challenge-week-ten/">Pebble Timeline Challenge Week 10 Winner - 8-A-Day!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>Doctors have been telling us this for years: drink 8 glasses of water a day,
+preferably more. Now, with the 10th winner of the Pebble Timeline Challenge, 
+<a href="https://apps.getpebble.com/en_US/application/5544c004946ce2b650000037" title="" class="">8-A-Day</a>,
+you can have your Pebble remind you instead! Get pinged hourly, and use your 
+timeline to stay healthy and hydrated. </p></div>
+    <div class="text-right"><a href="/blog/2015/07/09/timeline-challenge-week-ten/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://assets.getpebble.com/api/file/F4DF5LhgSr6JkhEjPslZ/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
+    
+    <p>Jul 02, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/07/02/timeline-challenge-week-nine/">Pebble Timeline Challenge Week 9 Winner - Tideline!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>With summer in full swing, we&#39;re all itching to get to the beach. Use the 9th 
+winner of the Pebble Timeline Challenge to find the best waves to sail, surf, or 
+ride! Keep track of the local tides with 
+<a href="http://apps.getpebble.com/en_US/application/552e04460835235bf50000b7" title="" class="">Tideline</a> 
+and make sure your sandcastles are never swept away again.</p></div>
+    <div class="text-right"><a href="/blog/2015/07/02/timeline-challenge-week-nine/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://assets.getpebble.com/api/file/cLf8UecrTUWnBLYQ1jDs/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
+    
+    <p>Jun 25, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/06/25/timeline-challenge-week-eight/">Pebble Timeline Challenge Week 8 Winner - Pokedex Challenge!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>Pokemon fans are going to love the 8th winner of the Pebble Timeline Challenge, 
+<a href="https://apps.getpebble.com/en_US/application/5570838dddc5cc8060000012" title="" class="">Pokedex Challenge</a>!
+Have a blast catching the wild Pokemon as they appear in your timeline, and 
+become a champion by completing the Pokedex. </p></div>
+    <div class="text-right"><a href="/blog/2015/06/25/timeline-challenge-week-eight/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://assets.getpebble.com/api/file/sEYe7jsPRTqycshR84XZ/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
+    
+    <p>Jun 18, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/06/18/timeline-challenge-week-seven/">Pebble Timeline Challenge Week 7 Winner - Greeney's Run!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>As the summer begins, we&#39;re all feeling the urge to relax a bit. With the 7th 
+winner of the Pebble Timeline Challenge, 
+<a href="https://apps.getpebble.com/en_US/application/554f9adb4e604b9ed3000071" title="" class="">Greeney&#39;s Run</a>, 
+you can take a break by playing this colorful, exciting game! Rack up points
+while traveling through meadows, beaches, and more.</p></div>
+    <div class="text-right"><a href="/blog/2015/06/18/timeline-challenge-week-seven/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://assets.getpebble.com/api/file/0hhl54GbT8OIbcVxf6m1/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
+    
+    <p>Jun 12, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/06/12/timeline-challenge-week-six/">Pebble Timeline Challenge Week 6 Winner - Meetup!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>We&#39;ve recently formed our 21st <a href="http://pebble.meetup.com/" title="" class="">Meetup group</a>, 
+and are so excited that Pebblers around the world are meeting, sharing ideas,
+and making awesome happen! Now, with the 6th winner of the Pebble Timeline
+Challenge, you can keep track of the Pebble Meetup group as well as other local 
+groups. View nearby Meetups and get event specific information such as 
+the location and time: all in one informative timeline pin!</p></div>
+    <div class="text-right"><a href="/blog/2015/06/12/timeline-challenge-week-six/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://assets.getpebble.com/api/file/8c8LYNH7Qve4QdATgPgn/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
+    
+    <p>Jun 05, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/06/05/timeline-challenge-week-five/">Pebble Timeline Challenge Week 5 Winner - Flights</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>We&#39;ve all been there at some point: you&#39;ve just sprinted through the airport, 
+rushed through security, and ended up breathless at your gate just to find out 
+that your flight has been delayed for two hours. Well, with 
+<a href="https://apps.getpebble.com/en_US/application/555a8efcae067d58f800004d" title="" class="">Flights</a>
+on your wrist, you&#39;ll never miss another flight notification again! </p></div>
+    <div class="text-right"><a href="/blog/2015/06/05/timeline-challenge-week-five/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="/assets/images/blog/ifttt.png" width="80" height="80"/>
+    
+    <p>May 29, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/05/29/timeline-challenge-week-four/">Pebble Timeline Challenge Week 4 Winner - Pushbutton</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>The core goal of <a href="https://ifttt.com/" title="" class="">IFTTT</a> (If This, Then That) is to use the 
+Internet to simplify your life, and there is no better device to help with that 
+goal than your Pebble! 
+<a href="https://apps.getpebble.com/en_US/application/556111e92ff3b5887c000122" title="" class="">Pushbutton</a>, 
+the 4th winner of the Pebble Timeline Challenge, works with any IFTTT Do Button 
+action to help you create shortcuts for your daily life.</p></div>
+    <div class="text-right"><a href="/blog/2015/05/29/timeline-challenge-week-four/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://assets.getpebble.com/api/file/egpXpvfS3KyYHmEDJxbr/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
+    
+    <p>May 22, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/05/22/timeline-challenge-week-three/">Pebble Timeline Challenge Week 3 Winner - Leaf</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>With the rise of the Internet of Things (IoT), the number IoT products has 
+increased almost exponentially. Slowly, connections between these devices are 
+also being forged. 
+<a href="https://apps.getpebble.com/en_US/application/52ccd42551a80d792600002c" title="" class="">Leaf</a>, 
+the 3rd winner of the Pebble Timeline Challenge, falls into this latter 
+category: the application allows your Pebble to act as a remote control for your 
+<a href="https://nest.com/thermostat/life-with-nest-thermostat/" title="" class="">Nest</a> thermostat from 
+anywhere in the world!</p></div>
+    <div class="text-right"><a href="/blog/2015/05/22/timeline-challenge-week-three/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://assets.getpebble.com/api/file/3X6ZSHBASbn6QBn4U0Ys/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
+    
+    <p>May 17, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/05/17/timeline-challenge-week-two/">Pebble Timeline Challenge Week 2 Winner - FitCat</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>Has anyone been missing their Tamagotchi pet lately? If so, your prayers have 
+been answered! Meet 
+<a href="https://apps.getpebble.com/applications/552f63b406bedce1700000bb" title="" class="">FitCat</a>: the 
+“funniest way to live an active life.”</p></div>
+    <div class="text-right"><a href="/blog/2015/05/17/timeline-challenge-week-two/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://assets.getpebble.com/api/file/0Z1f9lINTNyGVTuDbT3x/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
+    
+    <p>May 08, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/05/08/timeline-challenge-week-1/">Pebble Timeline Challenge Week 1 Winner - Battery+</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>On Monday, we announced the first winner of the Timeline Challenge: <a href="https://apps.getpebble.com/applications/55197642d6fa6f2633000092" title="" class="">Battery+</a>.
+Battery+ was created by <a href="https://twitter.com/ericphillips0" title="" class="">Eric Phillips</a>, a
+Pebble developer who many may know for his watch timer, Timer+. Twitter has been
+abuzz with compliments for Eric, and needless to say, we agree! Battery+ is a
+useful, beautifully designed app that gathers data to generate intelligent
+battery life predictions.</p></div>
+    <div class="text-right"><a href="/blog/2015/05/08/timeline-challenge-week-1/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="/assets/images/blog/authors/niharika.png" width=80 height=80>
+    
+    <p>May 07, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/05/07/timeline-challenge-faq/">Timeline Challenge - FAQ</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>We hope everyone is as excited about the
+<a href="/blog/2015/04/14/the-timeline-challenge-is-live/" title="" class="">Timeline Challenge</a>
+ as we are! Look out for details on our first winner,
+<a href="https://apps.getpebble.com/applications/55197642d6fa6f2633000092" title="" class="">Battery+</a>,
+in this week’s <a href="http://pbl.io/devnewsletter" title="" class="">developer newsletter</a>.</p><p>Below, we’ve answered some of the questions that have been popping up
+about the challenge. If we’ve missed anything, fill out our
+<a href="/contact/" title="" class="">contact form</a> or tweet at <a href="https://twitter.com/PebbleDev" title="" class="">@PebbleDev</a>
+ to get in touch with us!</p></div>
+    <div class="text-right"><a href="/blog/2015/05/07/timeline-challenge-faq/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="/assets/images/blog/authors/niharika.png" width=80 height=80>
+    
+    <p>Apr 17, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/04/17/timeline-feature-hackawatch/">Timeline Spotlight - Hackawatch</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>Hackathons are packed with tutorials, tech talks, and demos, and it’s simple for
+important activities to sometimes slip through the cracks. However, thanks to
+<a href="http://challengepost.com/software/hackawatch" title="" class="">Hackawatch</a>, Pebblers will never
+ miss an event at a hackathon again! Hackawatch is a Pebble application created
+at LA Hacks that allows hackathon organizers to push pins to hackers’ timelines
+to notify them about important events.</p></div>
+    <div class="text-right"><a href="/blog/2015/04/17/timeline-feature-hackawatch/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/1156201?v=3&s=100" width=80 height=80>
+    
+    <p>Apr 16, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/04/16/Deploying-A-Server-For-Your-Timeline-Enabled-App-With-Heroku/">Deploying A Server For Your Timeline Enabled App With Heroku</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/kirby/">Kirby Kohlmorgen</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>Pins are a new and intuitive way for your users to interact with your app via
+the Pebble timeline. In a previous <a href="/blog/2015/03/20/Getting-Started-With-Timeline/" title="" class="">blog post</a>
+I went through a complete walkthrough on how to get started with timeline. This
+post will focus on one single part of that process; how to deploy a server with
+<a href="https://www.heroku.com/" title="" class="">Heroku</a>, run jobs with <a href="https://addons.heroku.com/scheduler" title="" class="">Scheduler</a>,
+and how to build APIs that push pins with the <a href="https://www.npmjs.com/package/express" title="" class="">Express</a>
+and <a href="https://www.npmjs.com/package/pebble-api" title="" class="">pebble-api</a> node modules.</p></div>
+    <div class="text-right"><a href="/blog/2015/04/16/Deploying-A-Server-For-Your-Timeline-Enabled-App-With-Heroku/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Apr 14, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/04/14/the-timeline-challenge-is-live/">The Timeline Challenge is Live!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/pebble/">Team Pebble</a> &middot;
+      
+      <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>, 
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>In last week’s
+<a href="/blog/2015/04/10/it-is-time-to-put-your-ideas-on-our-timeline/" title="" class="">timeline blog post</a>, 
+we teased a new competition we’re running. This will be a challenge to see who
+can create the coolest Pebble applications that are optimized for the Pebble
+Time: we’re interested in seeing apps that use the timeline interface as well as
+other awesome watchfaces and Pebble apps in color. Winners can look forward to a
+Pebble Time, swag, and publicity in the Pebble developer community.</p><p>The Timeline Challenge will feature 12 winners, one per week for 12 weeks.
+We’ll start announcing winners on May 4th, so you have plenty of time to develop
+and submit your apps before the first deadline! Don’t worry though, you can
+continue to work on your apps throughout the challenge and submit them after
+the first round of the challenge, but the early bird gets the first Pebble
+Times!</p></div>
+    <div class="text-right"><a href="/blog/2015/04/14/the-timeline-challenge-is-live/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
+    
+    <p>Apr 10, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/04/10/it-is-time-to-put-your-ideas-on-our-timeline/">It's Time to Put Your Ideas On Our Timeline!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/pebble/">Team Pebble</a> &middot;
+      
+      <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>, 
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>For the past few weeks, we’ve been releasing updated elements of our new SDK.
+As many of you know, one of the most important facets of the Pebble Time is the
+<strong>Pebble timeline</strong>.</p><p>The timeline is a core feature of the Pebble Time that allows users to see
+important events in their past, present, and future. The timeline creates a
+unique opportunity for both Pebblers and developers. Not only can users simplify
+their lives by tracking the important events in their days, but developers can
+also create applications that push pins directly to their users’ Pebbles. </p></div>
+    <div class="text-right"><a href="/blog/2015/04/10/it-is-time-to-put-your-ideas-on-our-timeline/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/1156201?v=3&s=100" width=80 height=80>
+    
+    <p>Mar 20, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/03/20/Getting-Started-With-Timeline/">Getting Started With Timeline</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/kirby/">Kirby Kohlmorgen</a> &middot;
+      
+      <a href="/blog/tags/timeline/">Timeline</a>
+      
+    </p>
+    <div><p>The new timeline interface is a completely new way to have users interact with
+your app. The Pebble SDK along with timeline web APIs allows you to push pins to 
+your users&#39; Pebbles. Adding pins to timeline is a straightforward process. This 
+guide will walk you through the steps from start to finish.</p></div>
+    <div class="text-right"><a href="/blog/2015/03/20/Getting-Started-With-Timeline/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                <strong>Timeline</strong>
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

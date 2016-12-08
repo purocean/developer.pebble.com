@@ -1,0 +1,4755 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Color Definitions // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/Graphics/Graphics_Types/Color_Definitions/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem active"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+<option value="#defines">MACRO DEFINTIONS</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlackARGB8">GColorBlackARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorOxfordBlueARGB8">GColorOxfordBlueARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDukeBlueARGB8">GColorDukeBlueARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlueARGB8">GColorBlueARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkGreenARGB8">GColorDarkGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMidnightGreenARGB8">GColorMidnightGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCobaltBlueARGB8">GColorCobaltBlueARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlueMoonARGB8">GColorBlueMoonARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIslamicGreenARGB8">GColorIslamicGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorJaegerGreenARGB8">GColorJaegerGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorTiffanyBlueARGB8">GColorTiffanyBlueARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVividCeruleanARGB8">GColorVividCeruleanARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorGreenARGB8">GColorGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMalachiteARGB8">GColorMalachiteARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMediumSpringGreenARGB8">GColorMediumSpringGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCyanARGB8">GColorCyanARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBulgarianRoseARGB8">GColorBulgarianRoseARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorImperialPurpleARGB8">GColorImperialPurpleARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIndigoARGB8">GColorIndigoARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorElectricUltramarineARGB8">GColorElectricUltramarineARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorArmyGreenARGB8">GColorArmyGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkGrayARGB8">GColorDarkGrayARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLibertyARGB8">GColorLibertyARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVeryLightBlueARGB8">GColorVeryLightBlueARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorKellyGreenARGB8">GColorKellyGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMayGreenARGB8">GColorMayGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCadetBlueARGB8">GColorCadetBlueARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPictonBlueARGB8">GColorPictonBlueARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrightGreenARGB8">GColorBrightGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorScreaminGreenARGB8">GColorScreaminGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMediumAquamarineARGB8">GColorMediumAquamarineARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorElectricBlueARGB8">GColorElectricBlueARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkCandyAppleRedARGB8">GColorDarkCandyAppleRedARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorJazzberryJamARGB8">GColorJazzberryJamARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPurpleARGB8">GColorPurpleARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVividVioletARGB8">GColorVividVioletARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorWindsorTanARGB8">GColorWindsorTanARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRoseValeARGB8">GColorRoseValeARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPurpureusARGB8">GColorPurpureusARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLavenderIndigoARGB8">GColorLavenderIndigoARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLimerickARGB8">GColorLimerickARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrassARGB8">GColorBrassARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLightGrayARGB8">GColorLightGrayARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBabyBlueEyesARGB8">GColorBabyBlueEyesARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorSpringBudARGB8">GColorSpringBudARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorInchwormARGB8">GColorInchwormARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMintGreenARGB8">GColorMintGreenARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCelesteARGB8">GColorCelesteARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRedARGB8">GColorRedARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorFollyARGB8">GColorFollyARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorFashionMagentaARGB8">GColorFashionMagentaARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMagentaARGB8">GColorMagentaARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorOrangeARGB8">GColorOrangeARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorSunsetOrangeARGB8">GColorSunsetOrangeARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrilliantRoseARGB8">GColorBrilliantRoseARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorShockingPinkARGB8">GColorShockingPinkARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorChromeYellowARGB8">GColorChromeYellowARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRajahARGB8">GColorRajahARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMelonARGB8">GColorMelonARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRichBrilliantLavenderARGB8">GColorRichBrilliantLavenderARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorYellowARGB8">GColorYellowARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIcterineARGB8">GColorIcterineARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPastelYellowARGB8">GColorPastelYellowARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorWhiteARGB8">GColorWhiteARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlack">GColorBlack</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorOxfordBlue">GColorOxfordBlue</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDukeBlue">GColorDukeBlue</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlue">GColorBlue</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkGreen">GColorDarkGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMidnightGreen">GColorMidnightGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCobaltBlue">GColorCobaltBlue</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlueMoon">GColorBlueMoon</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIslamicGreen">GColorIslamicGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorJaegerGreen">GColorJaegerGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorTiffanyBlue">GColorTiffanyBlue</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVividCerulean">GColorVividCerulean</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorGreen">GColorGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMalachite">GColorMalachite</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMediumSpringGreen">GColorMediumSpringGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCyan">GColorCyan</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBulgarianRose">GColorBulgarianRose</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorImperialPurple">GColorImperialPurple</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIndigo">GColorIndigo</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorElectricUltramarine">GColorElectricUltramarine</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorArmyGreen">GColorArmyGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkGray">GColorDarkGray</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLiberty">GColorLiberty</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVeryLightBlue">GColorVeryLightBlue</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorKellyGreen">GColorKellyGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMayGreen">GColorMayGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCadetBlue">GColorCadetBlue</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPictonBlue">GColorPictonBlue</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrightGreen">GColorBrightGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorScreaminGreen">GColorScreaminGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMediumAquamarine">GColorMediumAquamarine</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorElectricBlue">GColorElectricBlue</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkCandyAppleRed">GColorDarkCandyAppleRed</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorJazzberryJam">GColorJazzberryJam</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPurple">GColorPurple</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVividViolet">GColorVividViolet</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorWindsorTan">GColorWindsorTan</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRoseVale">GColorRoseVale</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPurpureus">GColorPurpureus</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLavenderIndigo">GColorLavenderIndigo</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLimerick">GColorLimerick</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrass">GColorBrass</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLightGray">GColorLightGray</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBabyBlueEyes">GColorBabyBlueEyes</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorSpringBud">GColorSpringBud</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorInchworm">GColorInchworm</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMintGreen">GColorMintGreen</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCeleste">GColorCeleste</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRed">GColorRed</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorFolly">GColorFolly</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorFashionMagenta">GColorFashionMagenta</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMagenta">GColorMagenta</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorOrange">GColorOrange</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorSunsetOrange">GColorSunsetOrange</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrilliantRose">GColorBrilliantRose</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorShockingPink">GColorShockingPink</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorChromeYellow">GColorChromeYellow</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRajah">GColorRajah</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMelon">GColorMelon</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRichBrilliantLavender">GColorRichBrilliantLavender</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorYellow">GColorYellow</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIcterine">GColorIcterine</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPastelYellow">GColorPastelYellow</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorWhite">GColorWhite</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorClearARGB8">GColorClearARGB8</option>
+
+  <option value="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorClear">GColorClear</option>
+
+
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">Color Definitions</h1>
+
+      <p>A list of all of the named colors available with links to the color map on the Pebble Developer website. </p>
+      
+
+      
+
+      
+
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <h2 class="anchor" id="defines">Macro Definition<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="GColorBlackARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBlackARGB8 </span> ((uint8_t)0b11000000)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorOxfordBlueARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorOxfordBlueARGB8 </span> ((uint8_t)0b11000001)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorDukeBlueARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorDukeBlueARGB8 </span> ((uint8_t)0b11000010)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBlueARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBlueARGB8 </span> ((uint8_t)0b11000011)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorDarkGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorDarkGreenARGB8 </span> ((uint8_t)0b11000100)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMidnightGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMidnightGreenARGB8 </span> ((uint8_t)0b11000101)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorCobaltBlueARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorCobaltBlueARGB8 </span> ((uint8_t)0b11000110)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBlueMoonARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBlueMoonARGB8 </span> ((uint8_t)0b11000111)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorIslamicGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorIslamicGreenARGB8 </span> ((uint8_t)0b11001000)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorJaegerGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorJaegerGreenARGB8 </span> ((uint8_t)0b11001001)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorTiffanyBlueARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorTiffanyBlueARGB8 </span> ((uint8_t)0b11001010)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorVividCeruleanARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorVividCeruleanARGB8 </span> ((uint8_t)0b11001011)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorGreenARGB8 </span> ((uint8_t)0b11001100)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMalachiteARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMalachiteARGB8 </span> ((uint8_t)0b11001101)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMediumSpringGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMediumSpringGreenARGB8 </span> ((uint8_t)0b11001110)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorCyanARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorCyanARGB8 </span> ((uint8_t)0b11001111)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBulgarianRoseARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBulgarianRoseARGB8 </span> ((uint8_t)0b11010000)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorImperialPurpleARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorImperialPurpleARGB8 </span> ((uint8_t)0b11010001)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorIndigoARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorIndigoARGB8 </span> ((uint8_t)0b11010010)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorElectricUltramarineARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorElectricUltramarineARGB8 </span> ((uint8_t)0b11010011)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorArmyGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorArmyGreenARGB8 </span> ((uint8_t)0b11010100)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorDarkGrayARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorDarkGrayARGB8 </span> ((uint8_t)0b11010101)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorLibertyARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorLibertyARGB8 </span> ((uint8_t)0b11010110)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorVeryLightBlueARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorVeryLightBlueARGB8 </span> ((uint8_t)0b11010111)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorKellyGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorKellyGreenARGB8 </span> ((uint8_t)0b11011000)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMayGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMayGreenARGB8 </span> ((uint8_t)0b11011001)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorCadetBlueARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorCadetBlueARGB8 </span> ((uint8_t)0b11011010)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorPictonBlueARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorPictonBlueARGB8 </span> ((uint8_t)0b11011011)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBrightGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBrightGreenARGB8 </span> ((uint8_t)0b11011100)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorScreaminGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorScreaminGreenARGB8 </span> ((uint8_t)0b11011101)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMediumAquamarineARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMediumAquamarineARGB8 </span> ((uint8_t)0b11011110)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorElectricBlueARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorElectricBlueARGB8 </span> ((uint8_t)0b11011111)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorDarkCandyAppleRedARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorDarkCandyAppleRedARGB8 </span> ((uint8_t)0b11100000)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorJazzberryJamARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorJazzberryJamARGB8 </span> ((uint8_t)0b11100001)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorPurpleARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorPurpleARGB8 </span> ((uint8_t)0b11100010)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorVividVioletARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorVividVioletARGB8 </span> ((uint8_t)0b11100011)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorWindsorTanARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorWindsorTanARGB8 </span> ((uint8_t)0b11100100)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorRoseValeARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorRoseValeARGB8 </span> ((uint8_t)0b11100101)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorPurpureusARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorPurpureusARGB8 </span> ((uint8_t)0b11100110)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorLavenderIndigoARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorLavenderIndigoARGB8 </span> ((uint8_t)0b11100111)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorLimerickARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorLimerickARGB8 </span> ((uint8_t)0b11101000)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBrassARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBrassARGB8 </span> ((uint8_t)0b11101001)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorLightGrayARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorLightGrayARGB8 </span> ((uint8_t)0b11101010)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBabyBlueEyesARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBabyBlueEyesARGB8 </span> ((uint8_t)0b11101011)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorSpringBudARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorSpringBudARGB8 </span> ((uint8_t)0b11101100)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorInchwormARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorInchwormARGB8 </span> ((uint8_t)0b11101101)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMintGreenARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMintGreenARGB8 </span> ((uint8_t)0b11101110)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorCelesteARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorCelesteARGB8 </span> ((uint8_t)0b11101111)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorRedARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorRedARGB8 </span> ((uint8_t)0b11110000)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorFollyARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorFollyARGB8 </span> ((uint8_t)0b11110001)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorFashionMagentaARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorFashionMagentaARGB8 </span> ((uint8_t)0b11110010)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMagentaARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMagentaARGB8 </span> ((uint8_t)0b11110011)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorOrangeARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorOrangeARGB8 </span> ((uint8_t)0b11110100)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorSunsetOrangeARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorSunsetOrangeARGB8 </span> ((uint8_t)0b11110101)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBrilliantRoseARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBrilliantRoseARGB8 </span> ((uint8_t)0b11110110)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorShockingPinkARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorShockingPinkARGB8 </span> ((uint8_t)0b11110111)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorChromeYellowARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorChromeYellowARGB8 </span> ((uint8_t)0b11111000)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorRajahARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorRajahARGB8 </span> ((uint8_t)0b11111001)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMelonARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMelonARGB8 </span> ((uint8_t)0b11111010)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorRichBrilliantLavenderARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorRichBrilliantLavenderARGB8 </span> ((uint8_t)0b11111011)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorYellowARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorYellowARGB8 </span> ((uint8_t)0b11111100)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorIcterineARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorIcterineARGB8 </span> ((uint8_t)0b11111101)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorPastelYellowARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorPastelYellowARGB8 </span> ((uint8_t)0b11111110)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorWhiteARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorWhiteARGB8 </span> ((uint8_t)0b11111111)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBlack">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBlack </span> (GColor8){.argb=GColorBlackARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#000000">GColorBlack</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorOxfordBlue">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorOxfordBlue </span> (GColor8){.argb=GColorOxfordBlueARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#000055">GColorOxfordBlue</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorDukeBlue">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorDukeBlue </span> (GColor8){.argb=GColorDukeBlueARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#0000AA">GColorDukeBlue</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBlue">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBlue </span> (GColor8){.argb=GColorBlueARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#0000FF">GColorBlue</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorDarkGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorDarkGreen </span> (GColor8){.argb=GColorDarkGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#005500">GColorDarkGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMidnightGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMidnightGreen </span> (GColor8){.argb=GColorMidnightGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#005555">GColorMidnightGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorCobaltBlue">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorCobaltBlue </span> (GColor8){.argb=GColorCobaltBlueARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#0055AA">GColorCobaltBlue</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBlueMoon">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBlueMoon </span> (GColor8){.argb=GColorBlueMoonARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#0055FF">GColorBlueMoon</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorIslamicGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorIslamicGreen </span> (GColor8){.argb=GColorIslamicGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#00AA00">GColorIslamicGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorJaegerGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorJaegerGreen </span> (GColor8){.argb=GColorJaegerGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#00AA55">GColorJaegerGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorTiffanyBlue">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorTiffanyBlue </span> (GColor8){.argb=GColorTiffanyBlueARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#00AAAA">GColorTiffanyBlue</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorVividCerulean">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorVividCerulean </span> (GColor8){.argb=GColorVividCeruleanARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#00AAFF">GColorVividCerulean</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorGreen </span> (GColor8){.argb=GColorGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#00FF00">GColorGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMalachite">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMalachite </span> (GColor8){.argb=GColorMalachiteARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#00FF55">GColorMalachite</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMediumSpringGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMediumSpringGreen </span> (GColor8){.argb=GColorMediumSpringGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#00FFAA">GColorMediumSpringGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorCyan">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorCyan </span> (GColor8){.argb=GColorCyanARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#00FFFF">GColorCyan</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBulgarianRose">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBulgarianRose </span> (GColor8){.argb=GColorBulgarianRoseARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#550000">GColorBulgarianRose</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorImperialPurple">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorImperialPurple </span> (GColor8){.argb=GColorImperialPurpleARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#550055">GColorImperialPurple</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorIndigo">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorIndigo </span> (GColor8){.argb=GColorIndigoARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#5500AA">GColorIndigo</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorElectricUltramarine">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorElectricUltramarine </span> (GColor8){.argb=GColorElectricUltramarineARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#5500FF">GColorElectricUltramarine</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorArmyGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorArmyGreen </span> (GColor8){.argb=GColorArmyGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#555500">GColorArmyGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorDarkGray">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorDarkGray </span> (GColor8){.argb=GColorDarkGrayARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#555555">GColorDarkGray</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorLiberty">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorLiberty </span> (GColor8){.argb=GColorLibertyARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#5555AA">GColorLiberty</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorVeryLightBlue">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorVeryLightBlue </span> (GColor8){.argb=GColorVeryLightBlueARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#5555FF">GColorVeryLightBlue</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorKellyGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorKellyGreen </span> (GColor8){.argb=GColorKellyGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#55AA00">GColorKellyGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMayGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMayGreen </span> (GColor8){.argb=GColorMayGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#55AA55">GColorMayGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorCadetBlue">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorCadetBlue </span> (GColor8){.argb=GColorCadetBlueARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#55AAAA">GColorCadetBlue</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorPictonBlue">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorPictonBlue </span> (GColor8){.argb=GColorPictonBlueARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#55AAFF">GColorPictonBlue</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBrightGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBrightGreen </span> (GColor8){.argb=GColorBrightGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#55FF00">GColorBrightGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorScreaminGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorScreaminGreen </span> (GColor8){.argb=GColorScreaminGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#55FF55">GColorScreaminGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMediumAquamarine">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMediumAquamarine </span> (GColor8){.argb=GColorMediumAquamarineARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#55FFAA">GColorMediumAquamarine</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorElectricBlue">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorElectricBlue </span> (GColor8){.argb=GColorElectricBlueARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#55FFFF">GColorElectricBlue</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorDarkCandyAppleRed">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorDarkCandyAppleRed </span> (GColor8){.argb=GColorDarkCandyAppleRedARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AA0000">GColorDarkCandyAppleRed</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorJazzberryJam">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorJazzberryJam </span> (GColor8){.argb=GColorJazzberryJamARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AA0055">GColorJazzberryJam</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorPurple">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorPurple </span> (GColor8){.argb=GColorPurpleARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AA00AA">GColorPurple</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorVividViolet">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorVividViolet </span> (GColor8){.argb=GColorVividVioletARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AA00FF">GColorVividViolet</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorWindsorTan">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorWindsorTan </span> (GColor8){.argb=GColorWindsorTanARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AA5500">GColorWindsorTan</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorRoseVale">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorRoseVale </span> (GColor8){.argb=GColorRoseValeARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AA5555">GColorRoseVale</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorPurpureus">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorPurpureus </span> (GColor8){.argb=GColorPurpureusARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AA55AA">GColorPurpureus</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorLavenderIndigo">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorLavenderIndigo </span> (GColor8){.argb=GColorLavenderIndigoARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AA55FF">GColorLavenderIndigo</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorLimerick">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorLimerick </span> (GColor8){.argb=GColorLimerickARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AAAA00">GColorLimerick</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBrass">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBrass </span> (GColor8){.argb=GColorBrassARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AAAA55">GColorBrass</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorLightGray">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorLightGray </span> (GColor8){.argb=GColorLightGrayARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AAAAAA">GColorLightGray</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBabyBlueEyes">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBabyBlueEyes </span> (GColor8){.argb=GColorBabyBlueEyesARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AAAAFF">GColorBabyBlueEyes</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorSpringBud">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorSpringBud </span> (GColor8){.argb=GColorSpringBudARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AAFF00">GColorSpringBud</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorInchworm">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorInchworm </span> (GColor8){.argb=GColorInchwormARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AAFF55">GColorInchworm</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMintGreen">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMintGreen </span> (GColor8){.argb=GColorMintGreenARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AAFFAA">GColorMintGreen</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorCeleste">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorCeleste </span> (GColor8){.argb=GColorCelesteARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#AAFFFF">GColorCeleste</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorRed">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorRed </span> (GColor8){.argb=GColorRedARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FF0000">GColorRed</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorFolly">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorFolly </span> (GColor8){.argb=GColorFollyARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FF0055">GColorFolly</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorFashionMagenta">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorFashionMagenta </span> (GColor8){.argb=GColorFashionMagentaARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FF00AA">GColorFashionMagenta</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMagenta">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMagenta </span> (GColor8){.argb=GColorMagentaARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FF00FF">GColorMagenta</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorOrange">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorOrange </span> (GColor8){.argb=GColorOrangeARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FF5500">GColorOrange</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorSunsetOrange">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorSunsetOrange </span> (GColor8){.argb=GColorSunsetOrangeARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FF5555">GColorSunsetOrange</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorBrilliantRose">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorBrilliantRose </span> (GColor8){.argb=GColorBrilliantRoseARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FF55AA">GColorBrilliantRose</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorShockingPink">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorShockingPink </span> (GColor8){.argb=GColorShockingPinkARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FF55FF">GColorShockingPink</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorChromeYellow">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorChromeYellow </span> (GColor8){.argb=GColorChromeYellowARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FFAA00">GColorChromeYellow</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorRajah">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorRajah </span> (GColor8){.argb=GColorRajahARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FFAA55">GColorRajah</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorMelon">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorMelon </span> (GColor8){.argb=GColorMelonARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FFAAAA">GColorMelon</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorRichBrilliantLavender">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorRichBrilliantLavender </span> (GColor8){.argb=GColorRichBrilliantLavenderARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FFAAFF">GColorRichBrilliantLavender</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorYellow">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorYellow </span> (GColor8){.argb=GColorYellowARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FFFF00">GColorYellow</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorIcterine">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorIcterine </span> (GColor8){.argb=GColorIcterineARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FFFF55">GColorIcterine</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorPastelYellow">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorPastelYellow </span> (GColor8){.argb=GColorPastelYellowARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FFFFAA">GColorPastelYellow</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorWhite">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorWhite </span> (GColor8){.argb=GColorWhiteARGB8}</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p> <a href="https://developer.getpebble.com/tools/color-picker/#FFFFFF">GColorWhite</a> </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorClearARGB8">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorClearARGB8 </span> ((uint8_t)0b00000000)</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColorClear">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">GColorClear </span> ((GColor8){.argb=GColorClearARGB8})</div>
+  
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+<h3><a href="#defines">Macro Defintions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlackARGB8">GColorBlackARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorOxfordBlueARGB8">GColorOxfordBlueARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDukeBlueARGB8">GColorDukeBlueARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlueARGB8">GColorBlueARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkGreenARGB8">GColorDarkGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMidnightGreenARGB8">GColorMidnightGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCobaltBlueARGB8">GColorCobaltBlueARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlueMoonARGB8">GColorBlueMoonARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIslamicGreenARGB8">GColorIslamicGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorJaegerGreenARGB8">GColorJaegerGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorTiffanyBlueARGB8">GColorTiffanyBlueARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVividCeruleanARGB8">GColorVividCeruleanARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorGreenARGB8">GColorGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMalachiteARGB8">GColorMalachiteARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMediumSpringGreenARGB8">GColorMediumSpringGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCyanARGB8">GColorCyanARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBulgarianRoseARGB8">GColorBulgarianRoseARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorImperialPurpleARGB8">GColorImperialPurpleARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIndigoARGB8">GColorIndigoARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorElectricUltramarineARGB8">GColorElectricUltramarineARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorArmyGreenARGB8">GColorArmyGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkGrayARGB8">GColorDarkGrayARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLibertyARGB8">GColorLibertyARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVeryLightBlueARGB8">GColorVeryLightBlueARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorKellyGreenARGB8">GColorKellyGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMayGreenARGB8">GColorMayGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCadetBlueARGB8">GColorCadetBlueARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPictonBlueARGB8">GColorPictonBlueARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrightGreenARGB8">GColorBrightGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorScreaminGreenARGB8">GColorScreaminGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMediumAquamarineARGB8">GColorMediumAquamarineARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorElectricBlueARGB8">GColorElectricBlueARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkCandyAppleRedARGB8">GColorDarkCandyAppleRedARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorJazzberryJamARGB8">GColorJazzberryJamARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPurpleARGB8">GColorPurpleARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVividVioletARGB8">GColorVividVioletARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorWindsorTanARGB8">GColorWindsorTanARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRoseValeARGB8">GColorRoseValeARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPurpureusARGB8">GColorPurpureusARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLavenderIndigoARGB8">GColorLavenderIndigoARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLimerickARGB8">GColorLimerickARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrassARGB8">GColorBrassARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLightGrayARGB8">GColorLightGrayARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBabyBlueEyesARGB8">GColorBabyBlueEyesARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorSpringBudARGB8">GColorSpringBudARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorInchwormARGB8">GColorInchwormARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMintGreenARGB8">GColorMintGreenARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCelesteARGB8">GColorCelesteARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRedARGB8">GColorRedARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorFollyARGB8">GColorFollyARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorFashionMagentaARGB8">GColorFashionMagentaARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMagentaARGB8">GColorMagentaARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorOrangeARGB8">GColorOrangeARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorSunsetOrangeARGB8">GColorSunsetOrangeARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrilliantRoseARGB8">GColorBrilliantRoseARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorShockingPinkARGB8">GColorShockingPinkARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorChromeYellowARGB8">GColorChromeYellowARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRajahARGB8">GColorRajahARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMelonARGB8">GColorMelonARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRichBrilliantLavenderARGB8">GColorRichBrilliantLavenderARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorYellowARGB8">GColorYellowARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIcterineARGB8">GColorIcterineARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPastelYellowARGB8">GColorPastelYellowARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorWhiteARGB8">GColorWhiteARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlack">GColorBlack</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorOxfordBlue">GColorOxfordBlue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDukeBlue">GColorDukeBlue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlue">GColorBlue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkGreen">GColorDarkGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMidnightGreen">GColorMidnightGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCobaltBlue">GColorCobaltBlue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlueMoon">GColorBlueMoon</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIslamicGreen">GColorIslamicGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorJaegerGreen">GColorJaegerGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorTiffanyBlue">GColorTiffanyBlue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVividCerulean">GColorVividCerulean</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorGreen">GColorGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMalachite">GColorMalachite</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMediumSpringGreen">GColorMediumSpringGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCyan">GColorCyan</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBulgarianRose">GColorBulgarianRose</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorImperialPurple">GColorImperialPurple</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIndigo">GColorIndigo</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorElectricUltramarine">GColorElectricUltramarine</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorArmyGreen">GColorArmyGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkGray">GColorDarkGray</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLiberty">GColorLiberty</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVeryLightBlue">GColorVeryLightBlue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorKellyGreen">GColorKellyGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMayGreen">GColorMayGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCadetBlue">GColorCadetBlue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPictonBlue">GColorPictonBlue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrightGreen">GColorBrightGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorScreaminGreen">GColorScreaminGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMediumAquamarine">GColorMediumAquamarine</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorElectricBlue">GColorElectricBlue</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorDarkCandyAppleRed">GColorDarkCandyAppleRed</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorJazzberryJam">GColorJazzberryJam</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPurple">GColorPurple</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorVividViolet">GColorVividViolet</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorWindsorTan">GColorWindsorTan</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRoseVale">GColorRoseVale</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPurpureus">GColorPurpureus</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLavenderIndigo">GColorLavenderIndigo</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLimerick">GColorLimerick</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrass">GColorBrass</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorLightGray">GColorLightGray</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBabyBlueEyes">GColorBabyBlueEyes</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorSpringBud">GColorSpringBud</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorInchworm">GColorInchworm</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMintGreen">GColorMintGreen</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorCeleste">GColorCeleste</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRed">GColorRed</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorFolly">GColorFolly</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorFashionMagenta">GColorFashionMagenta</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMagenta">GColorMagenta</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorOrange">GColorOrange</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorSunsetOrange">GColorSunsetOrange</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBrilliantRose">GColorBrilliantRose</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorShockingPink">GColorShockingPink</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorChromeYellow">GColorChromeYellow</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRajah">GColorRajah</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorMelon">GColorMelon</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorRichBrilliantLavender">GColorRichBrilliantLavender</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorYellow">GColorYellow</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorIcterine">GColorIcterine</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorPastelYellow">GColorPastelYellow</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorWhite">GColorWhite</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorClearARGB8">GColorClearARGB8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorClear">GColorClear</a></li>
+  
+</ul>
+
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

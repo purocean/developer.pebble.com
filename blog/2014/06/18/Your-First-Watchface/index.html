@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble SDK Tutorial (Part 2) // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2014/06/18/Your-First-Watchface/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="your-first-watchface">Your First Watchface</option>
+          
+            <option value="previous-tutorial-parts">- Previous Tutorial Parts</option>
+          
+            <option value="introduction">- Introduction</option>
+          
+            <option value="getting-started">- Getting Started</option>
+          
+            <option value="telling-the-time">- Telling the Time</option>
+          
+            <option value="adding-bitmaps">- Adding Bitmaps</option>
+          
+            <option value="conclusion">- Conclusion</option>
+          
+            <option value="source-code">- Source Code</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Pebble SDK Tutorial (Part 2)</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>18 June 2014</li>
+    <li>Chris Lewis</li>
+    
+  </ul>
+</div>
+
+<h2 id="your-first-watchface" class="anchor">Your First Watchface</h2><h3 id="previous-tutorial-parts" class="anchor">Previous Tutorial Parts</h3><p><a href="/blog/2014/06/10/Pebble-SDK-Tutorial-1/" title="" class="">Pebble SDK Tutorial (Part 1): Your First Watchapp</a></p><h3 id="introduction" class="anchor">Introduction</h3><p>This is the second in a series of articles aimed at helping developers new and
+experienced begin creating their own watchapps. In this section we will be using
+the <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a> to display the current time, which is the basis of all
+great watchfaces. After this, we will use <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a>s and <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>s to
+improve the aesthetics of our watchface. By the end of this section, our app
+will look like this:</p><p><img src="/assets/images/blog/tut_2_frame_added.png" title="final" alt="final" /></p><h3 id="getting-started" class="anchor">Getting Started</h3><p>To begin creating this watchface, we will be using the 
+<a href="https://gist.github.com/C-D-Lewis/a911f0b053260f209390" title="" class="">source code</a> from the 
+last post as a starting point, which you can import into 
+<a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> as a new project 
+<a href="https://cloudpebble.net/ide/gist/a911f0b053260f209390" title="" class="">here</a>. </p><p>As you may have noticed, the current watchapp is started from the Pebble main
+menu, and not on the watchface carousel like other watchfaces. To change this,
+go to &#39;Settings&#39; in your CloudPebble project and change the &#39;App Kind&#39; to
+&#39;Watchface&#39;. This will cause the app to behave in the same way as any other
+watchface. If you were using the native SDK, this change would be done in the
+<code>appinfo.json</code> file.</p><p>Once this is done, we will modify the main C file to prepare it for showing the
+time. Remove the call to <a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_set_text" title="text_layer_set_text" class="link--docs"><code>text_layer_set_text()</code></a> to prevent the watchface
+showing anything irrelevant before the time is shown. For reference,
+<code>window_load()</code> should now look like this:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//We will add the creation of the Window's elements here soon!</span>
+  <span class="n">g_text_layer</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">168</span><span class="p">));</span>
+  <span class="n">text_layer_set_background_color</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="n">GColorClear</span><span class="p">);</span>
+  <span class="n">text_layer_set_text_color</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">);</span>
+
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div><h3 id="telling-the-time" class="anchor">Telling the Time</h3><p>Now we can use the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> we created earlier to display the current time,
+which is provided to us once we register a <a href="/docs/c/Foundation/Event_Service/TickTimerService/#TickHandler" title="TickHandler" class="link--docs"><code>TickHandler</code></a> with the system. The
+first step to do this is to create an empty function in the format dictated by
+the <a href="/docs/c/Foundation/Event_Service/TickTimerService/#TickHandler" title="TickHandler" class="link--docs"><code>TickHandler</code></a> documentation page. This is best placed before it will be
+used, which is above <code>init()</code>:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">tick_handler</span><span class="p">(</span><span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">tick_time</span><span class="p">,</span> <span class="n">TimeUnits</span> <span class="n">units_changed</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div><p>This function is called by the system at a fixed tick rate depending on the
+<a href="/docs/c/Foundation/Event_Service/TickTimerService/#TimeUnits" title="TimeUnits" class="link--docs"><code>TimeUnits</code></a> value supplied when we register the handler. Let&#39;s do this now in
+<code>init()</code> before <a href="/docs/c/User_Interface/Window_Stack/#window_stack_push" title="window_stack_push" class="link--docs"><code>window_stack_push()</code></a>, using the <a href="/docs/c/Foundation/Event_Service/TickTimerService/#MINUTE_UNIT" title="MINUTE_UNIT" class="link--docs"><code>MINUTE_UNIT</code></a> value to get
+an update every minute change:</p><div class="highlight"><pre><span class="n">tick_timer_service_subscribe</span><span class="p">(</span><span class="n">MINUTE_UNIT</span><span class="p">,</span> <span class="p">(</span><span class="n">TickHandler</span><span class="p">)</span><span class="n">tick_handler</span><span class="p">);</span>
+</pre></div><p>Now that we have subscribed to the <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a>, we can add code to the 
+<code>tick_handler()</code> function to use the time information provided in the 
+<code>tick_time</code> parameter to update the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. The data stored within this 
+structure follows the 
+<a href="http://www.cplusplus.com/reference/ctime/tm/" title="" class="">ctime struct tm format</a>. This 
+means that we can access the current hour by using <code>tick_time-&gt;tm_hour</code> and the
+current minute by using <code>tick_time-&gt;tm_min</code>, for example. Instead, we will use a
+function called <code>strftime()</code> that uses the <code>tick_time</code> parameter to write a
+time-formatted string into a buffer we provide, called <code>buffer</code>. Therefore the
+new tick handler will look like this:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">tick_handler</span><span class="p">(</span><span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">tick_time</span><span class="p">,</span> <span class="n">TimeUnits</span> <span class="n">units_changed</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//Allocate long-lived storage (required by TextLayer)</span>
+  <span class="k">static</span> <span class="kt">char</span> <span class="n">buffer</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"00:00"</span><span class="p">;</span>
+
+  <span class="c1">//Write the time to the buffer in a safe manner</span>
+  <span class="n">strftime</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="s">"00:00"</span><span class="p">),</span> <span class="s">"%H:%M"</span><span class="p">,</span> <span class="n">tick_time</span><span class="p">);</span>
+
+  <span class="c1">//Set the TextLayer to display the buffer</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Now every time a minute passes <code>tick_handler()</code> will create a new string in the
+buffer and display it in the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. This is the basis of every
+watchface. However, the text contained in the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> is difficult to read
+because the default system font is very samll, so we will change some of the
+layout properties to better suit its purpose. Modify <code>window_load()</code> to add the
+relevant <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> functions like so:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//Create the TextLayer</span>
+  <span class="n">g_text_layer</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">50</span><span class="p">));</span>
+  <span class="n">text_layer_set_background_color</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="n">GColorClear</span><span class="p">);</span>
+  <span class="n">text_layer_set_text_color</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">);</span>
+
+  <span class="c1">//Improve the layout to be more like a watchface</span>
+  <span class="n">text_layer_set_font</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="n">fonts_get_system_font</span><span class="p">(</span><span class="n">FONT_KEY_BITHAM_42_BOLD</span><span class="p">));</span>
+  <span class="n">text_layer_set_text_alignment</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">,</span> <span class="n">GTextAlignmentCenter</span><span class="p">);</span>
+
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div><p>Now the watchface should look more like a classic watchface with a larger font
+and centered text:</p><p><img src="/assets/images/blog/tut_2_largetext.png" title="large text" alt="largetext" /></p><h3 id="adding-bitmaps" class="anchor">Adding Bitmaps</h3><p>The next logical way to improve the watchface is to add some complementary
+images. These take the form of <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a>s, and are referenced by a
+<code>RESOURCE_ID</code> specified in CloudPebble Settings or <code>appinfo.json</code> when working
+with the native SDK. The first bitmap we wil add will be a smart border for the
+<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>, shown for you to use below:</p><p><img src="/assets/images/blog/tut_2_frame.png" title="frame" alt="frame" /></p><p>To add this image to our project in CloudPebble, click &quot;Add New&quot; next to
+Resources, navigate to your stored copy of the image above and give it an ID
+such as &quot;FRAME&quot;, then click Save.</p><p>Once this is done, we can add it to the watchface. The first step is to declare
+two new global items: A <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> to hold the loaded image and a
+<a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> to show it. Add these to the top of the file, alongside the
+existing global variables:</p><div class="highlight"><pre><span class="n">GBitmap</span> <span class="o">*</span><span class="n">g_frame_bitmap</span><span class="p">;</span>
+<span class="n">BitmapLayer</span> <span class="o">*</span><span class="n">g_frame_layer</span><span class="p">;</span>
+</pre></div><p>The next step is to allocate the <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a>, show it using the <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>
+and add it as a child of the main <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>. <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>s are drawn in the order
+they are added to their parent, so be sure to add the <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> <strong>before</strong>
+the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. This will ensure that the time is drawn on top of the image,
+and not the other way around:</p><div class="highlight"><pre><span class="c1">//Create and add the image</span>
+<span class="n">g_frame_bitmap</span> <span class="o">=</span> <span class="n">gbitmap_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_FRAME</span><span class="p">);</span>
+<span class="n">g_frame_layer</span> <span class="o">=</span> <span class="n">bitmap_layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">129</span><span class="p">,</span> <span class="mi">60</span><span class="p">));</span>
+<span class="n">bitmap_layer_set_bitmap</span><span class="p">(</span><span class="n">g_frame_layer</span><span class="p">,</span> <span class="n">g_frame_bitmap</span><span class="p">);</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="n">bitmap_layer_get_layer</span><span class="p">(</span><span class="n">g_frame_layer</span><span class="p">));</span>
+</pre></div><p>Once again, remember to add calls to <code>_destroy()</code> for each element to free
+memory in <code>window_unload()</code>:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">window_unload</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//We will safely destroy the Window's elements here!</span>
+  <span class="n">text_layer_destroy</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">);</span>
+
+  <span class="n">gbitmap_destroy</span><span class="p">(</span><span class="n">g_frame_bitmap</span><span class="p">);</span>
+  <span class="n">bitmap_layer_destroy</span><span class="p">(</span><span class="n">g_frame_layer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>With these steps completed, a re-compile of your project should yield something
+similar to that shown below:</p><p><img src="/assets/images/blog/tut_2_frame_added.png" title="frame added" alt="frameadded" /></p><p>The <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> is now surrounded by a crisp frame border. It&#39;s not amazing,
+but it&#39;s the start on a journey to a great watchface!</p><h3 id="conclusion" class="anchor">Conclusion</h3><p>There you have it: turning your simple watchapp into a basic watchface. In
+summary:</p>
+<ol>
+<li>Modify the App Kind to be a watchface instead of a watchapp.</li>
+<li>Add a subscription to the <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a> to get the current time.</li>
+<li>Modify the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> layout to better suit the task of telling the time.</li>
+<li>Add an image resource to the project</li>
+<li>Display that image using a combination of <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> and <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>.</li>
+</ol>
+<p>From there you can add more images, change the text font and size and more to
+further improve the look of the watchface. In future posts you will learn how to
+use <a href="/docs/c/Foundation/Timer/" title="Timer" class="link--docs"><code>Timer</code></a>s and <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>s to make it even better!</p><h3 id="source-code" class="anchor">Source Code</h3><p>Just like last time, the full source code file can be found 
+<a href="https://gist.github.com/C-D-Lewis/17eb11ab355950595ca2" title="" class="">here</a> and directly 
+imported into CloudPebble 
+<a href="https://cloudpebble.net/ide/gist/17eb11ab355950595ca2" title="" class="">as a new project</a>. If 
+your code doesn&#39;t compile, have a look at this and see where you may have gone 
+wrong. </p><p>Send any feedback or questions to <a href="http://twitter.com/PebbleDev" title="" class="">@PebbleDev</a> or 
+<a href="http://twitter.com/Chris_DL" title="" class="">@Chris_DL</a>.</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2014/06/18/Your-First-Watchface/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#your-first-watchface">Your First Watchface</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#previous-tutorial-parts">Previous Tutorial Parts</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#introduction">Introduction</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#getting-started">Getting Started</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#telling-the-time">Telling the Time</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#adding-bitmaps">Adding Bitmaps</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#conclusion">Conclusion</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#source-code">Source Code</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>BitmapLayer // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/User_Interface/Layers/BitmapLayer/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem active"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_create">bitmap_layer_create</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_destroy">bitmap_layer_destroy</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_get_layer">bitmap_layer_get_layer</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_get_bitmap">bitmap_layer_get_bitmap</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_set_bitmap">bitmap_layer_set_bitmap</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_set_alignment">bitmap_layer_set_alignment</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_set_background_color">bitmap_layer_set_background_color</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_set_compositing_mode">bitmap_layer_set_compositing_mode</option>
+
+
+
+          
+
+          
+
+          
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/User_Interface/Layers/BitmapLayer/#BitmapLayer">BitmapLayer</option>
+
+
+
+          
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">BitmapLayer</h1>
+
+      <p>Layer that displays a bitmap image. </p>
+      <p><img type="html" name="bitmap_layer.png" src="/assets/images/docs/c/aplite/bitmap_layer.png">
+ BitmapLayer is a Layer subtype that draws a GBitmap within its frame. It uses an alignment property to specify how to position the bitmap image within its frame. Optionally, when the background color is not GColorClear, it draws a solid background color behind the bitmap image, filling areas of the frame that are not covered by the bitmap image. Lastly, using the compositing mode property of the BitmapLayer, determines the way the bitmap image is drawn on top of what is underneath it (either the background color, or the layers beneath it).</p>
+<p><h3 level="3">Inside the Implementation</h3>
+</p>
+<p>The implementation of BitmapLayer is fairly straightforward and relies heavily on the functionality as exposed by the core drawing functions (see <a refid="group___drawing" kindref="compound" href="/docs/c/Graphics/Drawing_Primitives/">Drawing Primitives</a>). <a refid="group___bitmap_layer" kindref="compound" href="/docs/c/User_Interface/Layers/BitmapLayer/">BitmapLayer</a>'s drawing callback uses <a refid="group___drawing_1ga2df0bc47f542ea60500d3070670725f9" kindref="member" href="/docs/c/Graphics/Drawing_Primitives/#graphics_draw_bitmap_in_rect">graphics_draw_bitmap_in_rect()</a> to perform the actual drawing of the GBitmap. It uses <a refid="group___graphics_types_1gad714d5d1dd0509196d8aadbdba2ac510" kindref="member" href="/docs/c/Graphics/Graphics_Types/#grect_align">grect_align()</a> to perform the layout of the image and it uses <a refid="group___drawing_1ga8c9b95e1c9fc0ce82107b95b8b804822" kindref="member" href="/docs/c/Graphics/Drawing_Primitives/#graphics_fill_rect">graphics_fill_rect()</a> to draw the background plane. </p>
+
+      
+
+      
+
+
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="bitmap_layer_create">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>BitmapLayer * </span><span class="docs__item__name">bitmap_layer_create</span><span>(</span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> frame</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates a new bitmap layer on the heap and initalizes it the default values. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><ul>
+<li><p>Bitmap: <code>NULL</code> (none)</p></li>
+<li><p>Background color: GColorClear</p></li>
+<li><p>Compositing mode: <a refid="group___graphics_types_1gga0d021422bd90a2a49e6c8d848e6d556fa3d668fac5e660241746c082d7155e059" kindref="member">GCompOpAssign</a></p></li>
+<li><p>Clips: <code>true</code> 
+</p></li>
+</ul>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the BitmapLayer. <code>NULL</code> if the BitmapLayer could not be created </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="bitmap_layer_destroy">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">bitmap_layer_destroy</span><span>(</span><span class="docs__item__param">BitmapLayer * bitmap_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroys a window previously created by bitmap_layer_create. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="bitmap_layer_get_layer">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>Layer * </span><span class="docs__item__name">bitmap_layer_get_layer</span><span>(</span><span class="docs__item__param">const BitmapLayer * bitmap_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the "root" Layer of the bitmap layer, which is the parent for the sub- layers used for its implementation. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap_layer</dt>
+  <dd><p>Pointer to the BitmapLayer for which to get the "root" Layer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The "root" Layer of the bitmap layer. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="bitmap_layer_get_bitmap">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>const GBitmap * </span><span class="docs__item__name">bitmap_layer_get_bitmap</span><span>(</span><span class="docs__item__param">BitmapLayer * bitmap_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the pointer to the bitmap image that the BitmapLayer is using. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap_layer</dt>
+  <dd><p>The BitmapLayer for which to get the bitmap image </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the bitmap image that the BitmapLayer is using </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="bitmap_layer_set_bitmap">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">bitmap_layer_set_bitmap</span><span>(</span><span class="docs__item__param">BitmapLayer * bitmap_layer</span><span>, </span><span class="docs__item__param">const GBitmap * bitmap</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the bitmap onto the BitmapLayer. The bitmap is set by reference (no deep copy), thus the caller of this function has to make sure the bitmap is kept in memory. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>The bitmap layer is automatically marked dirty after this operation. 
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap_layer</dt>
+  <dd><p>The BitmapLayer for which to set the bitmap image </p></dt>
+  
+  <dt><span style="color: #777"></span> bitmap</dt>
+  <dd><p>The new GBitmap to set onto the BitmapLayer </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="bitmap_layer_set_alignment">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">bitmap_layer_set_alignment</span><span>(</span><span class="docs__item__param">BitmapLayer * bitmap_layer</span><span>, </span><span class="docs__item__param"><a refid="group___graphics_types_1gac8aa0eb3d3065fde8d2d6f282fa47f6a" kindref="member" href="/docs/c/Graphics/Graphics_Types/#GAlign">GAlign</a> alignment</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the alignment of the image to draw with in frame of the BitmapLayer. The aligment parameter specifies which edges of the bitmap should overlap with the frame of the BitmapLayer. If the bitmap is smaller than the frame of the BitmapLayer, the background is filled with the background color. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>The bitmap layer is automatically marked dirty after this operation. 
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap_layer</dt>
+  <dd><p>The BitmapLayer for which to set the aligment </p></dt>
+  
+  <dt><span style="color: #777"></span> alignment</dt>
+  <dd><p>The new alignment for the image inside the BitmapLayer </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="bitmap_layer_set_background_color">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">bitmap_layer_set_background_color</span><span>(</span><span class="docs__item__param">BitmapLayer * bitmap_layer</span><span>, </span><span class="docs__item__param">GColor color</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the background color of bounding box that will be drawn behind the image of the BitmapLayer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>The bitmap layer is automatically marked dirty after this operation. 
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap_layer</dt>
+  <dd><p>The BitmapLayer for which to set the background color </p></dt>
+  
+  <dt><span style="color: #777"></span> color</dt>
+  <dd><p>The new GColor to set the background to </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="bitmap_layer_set_compositing_mode">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">bitmap_layer_set_compositing_mode</span><span>(</span><span class="docs__item__param">BitmapLayer * bitmap_layer</span><span>, </span><span class="docs__item__param"><a refid="group___graphics_types_1ga0d021422bd90a2a49e6c8d848e6d556f" kindref="member" href="/docs/c/Graphics/Graphics_Types/#GCompOp">GCompOp</a> mode</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the compositing mode of how the bitmap image is composited onto the BitmapLayer's background plane, or how it is composited onto what has been drawn beneath the BitmapLayer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>The compositing mode only affects the drawing of the bitmap and not the drawing of the background color.</p>
+<p>For Aplite, there is no notion of "transparency" in the graphics system. However, the effect of transparency can be created by masking and using compositing modes.</p>
+<p>For Basalt, when drawing GBitmap images, <a refid="group___graphics_types_1gga0d021422bd90a2a49e6c8d848e6d556fa3ca84b5c70798643a3bd07b263c47fe6" kindref="member">GCompOpSet</a> will be required to apply any transparency.</p>
+<p>The bitmap layer is automatically marked dirty after this operation. 
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> bitmap_layer</dt>
+  <dd><p>The BitmapLayer for which to set the compositing mode </p></dt>
+  
+  <dt><span style="color: #777"></span> mode</dt>
+  <dd><p>The compositing mode to set </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___graphics_types_1ga0d021422bd90a2a49e6c8d848e6d556f" kindref="member" href="/docs/c/Graphics/Graphics_Types/#GCompOp">GCompOp</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+      
+
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="BitmapLayer">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct BitmapLayer <span class="docs__item__name">BitmapLayer</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_create">bitmap_layer_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_destroy">bitmap_layer_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_get_layer">bitmap_layer_get_layer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_get_bitmap">bitmap_layer_get_bitmap</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_set_bitmap">bitmap_layer_set_bitmap</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_set_alignment">bitmap_layer_set_alignment</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_set_background_color">bitmap_layer_set_background_color</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_set_compositing_mode">bitmap_layer_set_compositing_mode</a></li>
+  
+</ul>
+
+
+      
+
+      
+
+      
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/BitmapLayer/#BitmapLayer">BitmapLayer</a></li>
+  
+</ul>
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Guest Post - Beating Traffic with Clouds and Pebbles // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2016/01/26/Guest-Dries-Oeyen-Commute/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="build-it">Build it...</option>
+          
+            <option value="and-they-will-come">... And they will come</option>
+          
+            <option value="integrating-with-pebble-timeline">Integrating with Pebble Timeline</option>
+          
+            <option value="testing-and-scaling-timeline-pins">Testing and scaling timeline pins</option>
+          
+            <option value="what-39-s-next">What&#39;s next</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Guest Post - Beating Traffic with Clouds and Pebbles</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>26 January 2016</li>
+    <li><a href="/blog/authors/katherine/">Katherine McAuliffe</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/at-the-pub/">At the Pub</a>
+      
+    </li>
+    <li><a href="/blog/2016/01/26/Guest-Dries-Oeyen-Commute/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p><em>This is a guest post by Dries Oeyen, developer of the Pebble app <a href="https://apps.getpebble.com/applications/564f706e86b141be60000081" title="" class="">Commute</a> and Rockstar of Belgium&#39;s Pebble Developer Meetup, <a href="http://www.meetup.com/PebbleBelgium/" title="" class="">PebbleBelgium</a>.</em></p><p>Hello everyone. I&#39;m <a href="http://nexworx.com" title="" class="">Dries Oeyen</a> and I live in Belgium, a tiny country in Europe. In case you&#39;re wondering what Belgium is like: in the morning on weekdays, it looks roughly like this:</p><p><img src="/assets/images/blog/guestblogdries_belgium.jpg" alt="Traffic jam in Brussels" /></p><p>Joking aside, traffic really is terrible here. Depending on a multitude of factors, my trip to work can take anywhere between 35 minutes and an hour. Firing up the Google Maps app every morning to check traffic conditions quickly became routine, but Maps is a big and kinda clunky app for this use-case. I only wanted to know when to hop in the car in order to arrive at work on time, and whether to take the highway or the backroad. More importantly: I wanted this information in a glanceable format, right at my fingertips. One day, as I was stuck in traffic once again, I looked at the Pebble on my wrist to check the time. And then it struck me.</p><h2 id="build-it" class="anchor">Build it...</h2><p>That night when I came home, I opened my code editor and I got to work. At that point, I had some limited experience with the Pebble SDK: I had written a basic Pebble.js app in 2014, which I then ported to the C SDK after taking a conveniently timed C class at school. However, this time I wanted to spice things up with a completely custom interface. Thankfully, Pebble&#39;s documentation is truly fantastic and somehow makes writing C a breeze (really!). I quickly got the hang of how to use Pebble&#39;s UI APIs, and before too long I shipped the first version of my new app. <a href="https://apps.getpebble.com/applications/564f706e86b141be60000081" title="" class="">Commute</a> was born.</p>
+<blockquote class="twitter-tweet" lang="nl"><p lang="en" dir="ltr">Strong start for Commute! Well over 100 users in just 12 hours. Happy with the adoption! :) <a href="https://t.co/dYOvptAYDa">https://t.co/dYOvptAYDa</a> <a href="https://t.co/jMkbLiz09r">pic.twitter.com/jMkbLiz09r</a></p>&mdash; Dries Oeyen (@DriesOeyen) <a href="https://twitter.com/DriesOeyen/status/669118468587933700">24 november 2015</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h2 id="and-they-will-come" class="anchor">... And they will come</h2><p>At this point, the app achieved my initial goal of providing instant, glanceable insight into traffic conditions. I posted a thread on Pebble&#39;s subreddit, <a href="https://reddit.com/r/pebble" title="" class="">/r/pebble</a>, that helped Commute attract a healthy 100 users within the first 12 hours of going live.</p><p>I was obviously thrilled to see the app gain traction, but not just for the typical reasons one might expect. I had a second, more exciting goal for Commute: telling users when to leave for work in order to arrive right on time, by sending predictive timeline pins to their watches. Having a sizable group of early adopters from all over the world was a great opportunity for setting up a test group that would help me discover edge-cases as I developed the timeline algorithm. In fact, thanks to some planning ahead I already had the app collecting users&#39; timeline tokens, so I could start deploying the feature to a test group transparently – no app update required.</p><h2 id="integrating-with-pebble-timeline" class="anchor">Integrating with Pebble Timeline</h2><p>I knew integrating Commute with Pebble Timeline represented a major challenge. Both Google App Engine and the Google Maps API come with free quota, but in the end they&#39;re very much finite resources. Keeping in mind the growing number of users, it became clear that I&#39;d need to think about scaling.</p><p>It was time to set up some constraints. My biggest priority was aggressively limiting the number of API calls to Google Maps, since you only get 2500 daily requests within the free tier. Doing the math, I quickly realized that the only way to pull this off was to use just a single Maps API request per user per trip. This represented a conundrum in terms of when exactly to perform said request: the later you fetch, the &quot;fresher&quot; the data, but you need to leave enough time to account for longer-than-usual traffic delays and the variable latency between a pin being sent and it appearing on the user&#39;s timeline. Using multiple requests, it would be possible to &quot;hone in&quot; on the ideal time to send a pin or to update it as fresher information becomes available, but using a single request per user per trip meant the algorithm had to be intelligent about when to perform said request.</p><p>The solution I came up with is keeping track of the average home-to-work and work-to-home travel times for each user. Every time a pin is sent to a user, these statistics are updated, thus improving the timing of the next pin. This ensures increasingly well-timed pins with sufficiently fresh data, all while putting minimal strain on my App Engine resources. I also limited the load on my datastore while periodically checking who needs to receive a pin: instead of cycling through every user every time the cron job runs, I wrote a heavily optimized 68-line filtering query that only selects likely candidates. Yeah, I know. Cloud development is weird sometimes. Luckily, seeing the result in action proved that it was worth it.</p><p><img src="/assets/images/blog/guestblogdries_pins.jpg" alt="Commute timeline pin and reminder" /></p><h2 id="testing-and-scaling-timeline-pins" class="anchor">Testing and scaling timeline pins</h2><p>With all of the hard work done (or so I thought), I turned to my test group to see if everything worked as expected. As it turns out, that was a good call. What followed was a streak of about 30 bug fixing commits. Timezones are hard! I&#39;ll let these commit messages speak for themselves:</p>
+<ul>
+<li>Fix scenario where pins could have the wrong date</li>
+<li>Fix exception if arrival/departure is next day</li>
+<li>Prevent division by zero while parsing directions</li>
+<li>And my personal favorite: Don&#39;t send timeline pins during weekends</li>
+</ul>
+<p>Right before Christmas, Commute hit a big milestone: 1000 users. Meanwhile, I had been scaling up the test group as I squashed bugs. Since I was now sufficiently confident that the system worked as intended. I decided to celebrate by flipping the switch.</p>
+<blockquote class="twitter-tweet" lang="nl"><p lang="en" dir="ltr">Commute for <a href="https://twitter.com/Pebble">@Pebble</a> now has over 1000 users! To celebrate: timeline integration for all! 🎉 <a href="https://t.co/I7xhXq0bzv">https://t.co/I7xhXq0bzv</a> <a href="https://t.co/yUhJSBkRRz">pic.twitter.com/yUhJSBkRRz</a></p>&mdash; Dries Oeyen (@DriesOeyen) <a href="https://twitter.com/DriesOeyen/status/679229126352486400">22 december 2015</a></blockquote>
+<h2 id="what-39-s-next" class="anchor">What&#39;s next</h2><p>Commute has been growing at a steady clip since the end of 2015: there are now over 1500 people using the app. Even though all my optimizations went a long way, the service is on track to outgrow its free quota on several points. Therefore, my goal for 2016 is to launch some great premium features so Commute can become self-supporting. Either way, I&#39;m incredibly grateful to be in a situation where I have such a luxury problem in the first place! Commute is a place where I can experiment and have fun, all while (hopefully) helping people steer clear of heavy traffic.</p><p>Having had such a great experience developing for Pebble, I decided to get involved in something else as well. I had always been jealous of the various Meetup groups abroad, since it seemed like a ton of fun to meet up and share ideas and experiences with fellow Pebble developers. Interestingly, a fellow Belgian Pebble enthusiast apparently had the same idea, so we teamed up to become organizers of the Pebble Belgium Meetup group.</p><p><a href="http://www.meetup.com/PebbleBelgium/" title="" class=""><img src="/assets/images/blog/guestblogdries_meetup.jpg" alt="Pebble Belgium Meetup" /></a></p><p>Are you interested in Pebble development and do you happen to live in Belgium? We&#39;d love to meet you! Our first event is planned for February 17 in Brussels and will involve talks, drinks and bites, socializing and some neat Pebble swag, all in a relaxed atmosphere. Both experienced Pebble developers and interested newcomers are welcome, we&#39;ll have something to offer regardless of your existing Pebble development experience. RSVP here: <a href="http://www.meetup.com/PebbleBelgium/events/228117357/" title="" class="">http://www.meetup.com/PebbleBelgium/events/228117357/</a>.</p><p>Hope to see you there!</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2016/01/26/Guest-Dries-Oeyen-Commute/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#build-it">Build it...</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#and-they-will-come">... And they will come</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#integrating-with-pebble-timeline">Integrating with Pebble Timeline</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#testing-and-scaling-timeline-pins">Testing and scaling timeline pins</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s next</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                <strong>At the Pub</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                <strong>Katherine McAuliffe</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

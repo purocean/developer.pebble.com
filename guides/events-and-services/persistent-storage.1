@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Persistent Storage // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Using persistent storage to improve your app's UX.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/events-and-services/persistent-storage/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/accelerometer/"><span>Accelerometer</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/background-worker/"><span>Background Worker</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/buttons/"><span>Buttons</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/compass/"><span>Compass</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/dictation/"><span>Dictation</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/events/"><span>Event Services</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/hrm/"><span>Heart Rate Monitor</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/health/"><span>Pebble Health</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/events-and-services/persistent-storage/"><span>Persistent Storage</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/wakeups/"><span>Wakeups</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="persistent-storage-model">Persistent Storage Model</option>
+          
+            <option value="types-of-data">Types of Data</option>
+          
+            <option value="booleans">- Booleans</option>
+          
+            <option value="integers">- Integers</option>
+          
+            <option value="strings">- Strings</option>
+          
+            <option value="data-structures">- Data Structures</option>
+          
+            <option value="versioning-persisted-data">Versioning Persisted Data</option>
+          
+            <option value="alternative-method">Alternative Method</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Persistent Storage</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>Developers can use the <a href="/docs/c/Foundation/Storage/" title="Storage" class="link--docs"><code>Storage</code></a> API to persist multiple types of data between
+app launches, enabling apps to remember information previously entered by the
+user. A common use-case of this API is to enable the app to remember
+configuration data chosen in an app&#39;s configuration page, removing the
+tedious need to enter the information on the phone every time the watchapp is
+launched. Other use cases include to-to lists, stat trackers, game highscores
+etc.</p><p>Read <a href="/guides/user-interfaces/app-configuration/"><em>App Configuration</em></a> for more information on
+implementing an app configuration page.</p><h2 id="persistent-storage-model" class="anchor">Persistent Storage Model</h2><p>Every app is allocated 4 kB of persistent storage space and can write values to
+storage using a key, similar to <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> dictionaries or the web
+<code>localStorage</code> API. To recall values, the app simply queries the API using the
+associated key . Keys are specified in the <code>uint32_t</code> type, and each value can
+have a size up to <a href="/docs/c/Foundation/Storage/#PERSIST_DATA_MAX_LENGTH" title="PERSIST_DATA_MAX_LENGTH" class="link--docs"><code>PERSIST_DATA_MAX_LENGTH</code></a> (currently 256 bytes).</p><p>When an app is updated the values saved using the <a href="/docs/c/Foundation/Storage/" title="Storage" class="link--docs"><code>Storage</code></a> API will be
+persisted, but if it is uninstalled they will be removed.</p><p>Apps that make large use of the <a href="/docs/c/Foundation/Storage/" title="Storage" class="link--docs"><code>Storage</code></a> API may experience small pauses due
+to underlying housekeeping operations. Therefore it is recommended to read and
+write values when an app is launching or exiting, or during a time the user is
+waiting for some other action to complete.</p><h2 id="types-of-data" class="anchor">Types of Data</h2><p>Values can be stored as boolean, integer, string, or arbitrary data structure
+types. Before retrieving a value, the app should check that it has been
+previously persisted. If it has not, a default value should be chosen as
+appropriate.</p><div class="highlight"><pre><span class="kt">uint32_t</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">num_items</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">persist_exists</span><span class="p">(</span><span class="n">key</span><span class="p">))</span> <span class="p">{</span>
+  <span class="c1">// Read persisted value</span>
+  <span class="n">num_items</span> <span class="o">=</span> <span class="n">persist_read_int</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// Choose a default value</span>
+  <span class="n">num_items</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+  <span class="c1">// Remember the default value until the user chooses their own value</span>
+  <span class="n">persist_write_int</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">num_items</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>The API provides a &#39;read&#39; and &#39;write&#39; function for each of these types,
+with builtin data types retrieved through assignment, and complex ones into a
+buffer provided by the app. Examples of each are shown below.</p><h3 id="booleans" class="anchor">Booleans</h3><div class="highlight"><pre><span class="kt">uint32_t</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">large_font_size</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Write a boolean value</span>
+<span class="n">persist_write_bool</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">large_font_size</span><span class="p">);</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Read the boolean value</span>
+<span class="kt">bool</span> <span class="n">large_font_size</span> <span class="o">=</span> <span class="n">persist_read_bool</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</pre></div><h3 id="integers" class="anchor">Integers</h3><div class="highlight"><pre><span class="kt">uint32_t</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">highscore</span> <span class="o">=</span> <span class="mi">432</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Write an integer</span>
+<span class="n">persist_write_int</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">highscore</span><span class="p">);</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Read the integer value</span>
+<span class="kt">int</span> <span class="n">highscore</span> <span class="o">=</span> <span class="n">persist_read_int</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</pre></div><h3 id="strings" class="anchor">Strings</h3><div class="highlight"><pre><span class="kt">uint32_t</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="s">"Remember this!"</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Write the string</span>
+<span class="n">persist_write_string</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">string</span><span class="p">);</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Read the string</span>
+<span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<span class="n">persist_read_string</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">));</span>
+</pre></div><h3 id="data-structures" class="anchor">Data Structures</h3><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Data</span><span class="p">;</span>
+
+<span class="kt">uint32_t</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">Data</span> <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">Data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+  <span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="p">};</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Write the data structure</span>
+<span class="n">persist_write_data</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Data</span><span class="p">));</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Read the data structure</span>
+<span class="n">persist_read_data</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Data</span><span class="p">));</span>
+</pre></div>
+<blockquote>
+<p>Note: If a persisted data structure&#39;s field layout changes between app
+versions, the data read may no longer be compatible (see below).</p></blockquote>
+<h2 id="versioning-persisted-data" class="anchor">Versioning Persisted Data</h2><p>As already mentioned, automatic app updates will persist data between app
+versions. However, if the format of persisted data changes in a new app version
+(or keys change), developers should version their storage scheme and correctly
+handle version changes appropriately.</p><p>One way to do this is to use an extra persisted integer as the storage scheme&#39;s
+version number. If the scheme changes, simply update the version number and
+migrate existing data as required. If old data cannot be migrated it should be
+deleted and replaced with fresh data in the correct scheme from the user. An
+example is shown below:</p><div class="highlight"><pre><span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">storage_version_key</span> <span class="o">=</span> <span class="mi">786</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">current_storage_version</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Store the current storage scheme version number</span>
+<span class="n">persist_write_int</span><span class="p">(</span><span class="n">storage_version_key</span><span class="p">,</span> <span class="n">current_storage_version</span><span class="p">);</span>
+</pre></div><p>In this example, data stored in a key of <code>12</code> is now stored in a key of <code>13</code> due
+to a new key being inserted higher up the list of key values.</p><div class="highlight"><pre><span class="c1">// The scheme has changed, increment the version number</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">current_storage_version</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">migrate_storage_data</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Check the last storage scheme version the app used</span>
+  <span class="kt">int</span> <span class="n">last_storage_version</span> <span class="o">=</span> <span class="n">persist_read_int</span><span class="p">(</span><span class="n">storage_version_key</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">last_storage_version</span> <span class="o">==</span> <span class="n">current_storage_version</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// No migration necessary</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Migrate data</span>
+  <span class="k">switch</span><span class="p">(</span><span class="n">last_storage_version</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+      <span class="c1">// ...</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+      <span class="c1">// ...</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="p">{</span>
+      <span class="kt">uint32_t</span> <span class="n">old_highscore_key</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+      <span class="kt">uint32_t</span> <span class="n">new_highscore_key</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+
+      <span class="c1">// Migrate to scheme version 3</span>
+      <span class="kt">int</span> <span class="n">highscore</span> <span class="o">=</span> <span class="n">persist_read_int</span><span class="p">(</span><span class="n">old_highscore_key</span><span class="p">);</span>
+      <span class="n">persist_write_int</span><span class="p">(</span><span class="n">new_highscore_key</span><span class="p">,</span> <span class="n">highscore</span><span class="p">);</span>
+
+      <span class="c1">// Delete old data</span>
+      <span class="n">persist_delete</span><span class="p">(</span><span class="n">old_highscore_key</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Migration is complete, store the current storage scheme version number</span>
+  <span class="n">persist_write_int</span><span class="p">(</span><span class="n">storage_version_key</span><span class="p">,</span> <span class="n">current_storage_version</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="alternative-method" class="anchor">Alternative Method</h2><p>In addition to the <a href="/docs/c/Foundation/Storage/" title="Storage" class="link--docs"><code>Storage</code></a> API, data can also be persisted using the
+<code>localStorage</code> API in PebbleKit JS, and communicated with the watch over
+<a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> when the app is lanched. However, this method uses more power and
+fails if the watch is not connected to the phone.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/events-and-services/persistent-storage/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#persistent-storage-model">Persistent Storage Model</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#types-of-data">Types of Data</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#booleans">Booleans</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#integers">Integers</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#strings">Strings</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#data-structures">Data Structures</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#versioning-persisted-data">Versioning Persisted Data</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#alternative-method">Alternative Method</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Foundation/Storage/">Storage</a></li>
+            
+          </ul>
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

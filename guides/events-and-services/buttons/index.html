@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Buttons // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to react to button presses in your app.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/events-and-services/buttons/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/accelerometer/"><span>Accelerometer</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/background-worker/"><span>Background Worker</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/events-and-services/buttons/"><span>Buttons</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/compass/"><span>Compass</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/dictation/"><span>Dictation</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/events/"><span>Event Services</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/hrm/"><span>Heart Rate Monitor</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/health/"><span>Pebble Health</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/persistent-storage/"><span>Persistent Storage</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/wakeups/"><span>Wakeups</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="listening-for-button-clicks">Listening for Button Clicks</option>
+          
+            <option value="types-of-click-events">Types of Click Events</option>
+          
+            <option value="single-clicks">- Single Clicks</option>
+          
+            <option value="single-repeating-clicks">- Single Repeating Clicks</option>
+          
+            <option value="multiple-clicks">- Multiple Clicks</option>
+          
+            <option value="long-clicks">- Long Clicks</option>
+          
+            <option value="raw-clicks">- Raw Clicks</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Buttons</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>Button <a href="/docs/c/User_Interface/Clicks/" title="Clicks" class="link--docs"><code>Clicks</code></a> are the primary input method on Pebble. All Pebble
+watches come with the same buttons available, shown in the diagram below for
+Pebble Time:</p><p><img src="/assets/images/guides/sensors-and-input/button-layout.png" alt="button-layout" /></p><p>These buttons are used in a logical fashion throughout the system:</p>
+<ul>
+<li><p>Back - Navigates back one <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> until the watchface is reached.</p></li>
+<li><p>Up - Navigates to the previous item in a list, or opens the past timeline when
+pressed from the watchface.</p></li>
+<li><p>Select - Opens the app launcher from the watchface, accepts a selected option
+or list item, or launches the next <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>.</p></li>
+<li><p>Down - Navigates to the next item in a list, or opens the future timeline when
+pressed from the watchface.</p></li>
+</ul>
+<p>Developers are highly encouraged to follow these patterns when using button
+clicks in their watchapps, since users will already have an idea of what each
+button will do to a reasonable degree, thus avoiding the need for lengthy usage
+instructions for each app. Watchapps that wish to use each button for a specific
+action should use the <a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a> or <a href="/docs/c/User_Interface/Window/ActionMenu/" title="ActionMenu" class="link--docs"><code>ActionMenu</code></a> to give hints about
+what each button will do.</p><h2 id="listening-for-button-clicks" class="anchor">Listening for Button Clicks</h2><p>Button clicks are received via a subscription to one of the types of button
+click events listed below. Each <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> that wishes to receive button click
+events must provide a <a href="/docs/c/User_Interface/Clicks/#ClickConfigProvider" title="ClickConfigProvider" class="link--docs"><code>ClickConfigProvider</code></a> that performs these subscriptions.</p><p>The first step is to create the <a href="/docs/c/User_Interface/Clicks/#ClickConfigProvider" title="ClickConfigProvider" class="link--docs"><code>ClickConfigProvider</code></a> function:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">click_config_provider</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Subcribe to button click events here</span>
+
+<span class="p">}</span>
+</pre></div><p>The second step is to register the <a href="/docs/c/User_Interface/Clicks/#ClickConfigProvider" title="ClickConfigProvider" class="link--docs"><code>ClickConfigProvider</code></a> with the current
+<a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, typically after <a href="/docs/c/User_Interface/Window/#window_create" title="window_create" class="link--docs"><code>window_create()</code></a>:</p><div class="highlight"><pre><span class="c1">// Use this provider to add button click subscriptions</span>
+<span class="n">window_set_click_config_provider</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="n">click_config_provider</span><span class="p">);</span>
+</pre></div><p>The final step is to write a <a href="/docs/c/User_Interface/Clicks/#ClickHandler" title="ClickHandler" class="link--docs"><code>ClickHandler</code></a> function for each different type
+of event subscription required by the watchapp. An example for a single click
+event is shown below:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">select_click_handler</span><span class="p">(</span><span class="n">ClickRecognizerRef</span> <span class="n">recognizer</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// A single click has just occured</span>
+
+<span class="p">}</span>
+</pre></div><h2 id="types-of-click-events" class="anchor">Types of Click Events</h2><p>There are five types of button click events that apps subscribe to, enabling
+virtually any combination of up/down/click events to be utilized in a watchapp.
+The usage of each of these is explained below:</p><h3 id="single-clicks" class="anchor">Single Clicks</h3><p>Most apps will use this type of click event, which occurs whenever the button
+specified is pressed and then immediately released. Use
+<a href="/docs/c/User_Interface/Window/#window_single_click_subscribe" title="window_single_click_subscribe" class="link--docs"><code>window_single_click_subscribe()</code></a> from a <a href="/docs/c/User_Interface/Clicks/#ClickConfigProvider" title="ClickConfigProvider" class="link--docs"><code>ClickConfigProvider</code></a> function,
+supplying the <a href="/docs/c/User_Interface/Clicks/#ButtonId" title="ButtonId" class="link--docs"><code>ButtonId</code></a> value for the chosen button and the name of the
+<a href="/docs/c/User_Interface/Clicks/#ClickHandler" title="ClickHandler" class="link--docs"><code>ClickHandler</code></a> that will receive the events:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">click_config_provider</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ButtonId</span> <span class="n">id</span> <span class="o">=</span> <span class="n">BUTTON_ID_SELECT</span><span class="p">;</span>  <span class="c1">// The Select button</span>
+
+  <span class="n">window_single_click_subscribe</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">select_click_handler</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h3 id="single-repeating-clicks" class="anchor">Single Repeating Clicks</h3><p>Similar to the single click event, the single repeating click event allows
+repeating events to be received at a specific interval if the chosen button
+is held down for a longer period of time. This makes the task of scrolling
+through many list items or incrementing a value significantly easier for the
+user, and uses fewer button clicks.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">click_config_provider</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ButtonId</span> <span class="n">id</span> <span class="o">=</span> <span class="n">BUTTON_ID_DOWN</span><span class="p">;</span>       <span class="c1">// The Down button</span>
+  <span class="kt">uint16_t</span> <span class="n">repeat_interval_ms</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>  <span class="c1">// Fire every 200 ms while held down</span>
+
+  <span class="n">window_single_repeating_click_subscribe</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">repeat_interval_ms</span><span class="p">,</span>
+                                                <span class="n">down_repeating_click_handler</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>After an initial press (but not release) of the button <code>id</code> subscribed to, the
+callback will be called repeatedly with an interval of <code>repeat_interval_ms</code>
+until it is then released.</p><p>Developers can determine if the button is still held down after the first
+callback by using <a href="/docs/c/User_Interface/Clicks/#click_recognizer_is_repeating" title="click_recognizer_is_repeating" class="link--docs"><code>click_recognizer_is_repeating()</code></a>, as well as get the number
+of callbacks counted so far with <a href="/docs/c/User_Interface/Clicks/#click_number_of_clicks_counted" title="click_number_of_clicks_counted" class="link--docs"><code>click_number_of_clicks_counted()</code></a>:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">down_repeating_click_handler</span><span class="p">(</span><span class="n">ClickRecognizerRef</span> <span class="n">recognizer</span><span class="p">,</span>
+                                                              <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Is the button still held down?</span>
+  <span class="kt">bool</span> <span class="n">is_repeating</span> <span class="o">=</span> <span class="n">click_recognizer_is_repeating</span><span class="p">(</span><span class="n">recognizer</span><span class="p">);</span>
+
+  <span class="c1">// How many callbacks have been recorded so far?</span>
+  <span class="kt">uint8_t</span> <span class="n">click_count</span> <span class="o">=</span> <span class="n">click_number_of_clicks_counted</span><span class="p">(</span><span class="n">recognizer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p>Single click and single repeating click subscriptions conflict, and cannot be
+registered for the same button.</p></blockquote>
+<h3 id="multiple-clicks" class="anchor">Multiple Clicks</h3><p>A multi click event will call the <a href="/docs/c/User_Interface/Clicks/#ClickHandler" title="ClickHandler" class="link--docs"><code>ClickHandler</code></a> after a specified number of
+single clicks has been recorded. A good example of usage is to detect a double
+or triple click gesture:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">click_config_provider</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ButtonId</span> <span class="n">id</span> <span class="o">=</span> <span class="n">BUTTON_ID_SELECT</span><span class="p">;</span>  <span class="c1">// The Select button</span>
+  <span class="kt">uint8_t</span> <span class="n">min_clicks</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>          <span class="c1">// Fire after at least two clicks</span>
+  <span class="kt">uint8_t</span> <span class="n">max_clicks</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>          <span class="c1">// Don't fire after three clicks</span>
+  <span class="kt">uint16_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>          <span class="c1">// Wait 300ms before firing</span>
+  <span class="kt">bool</span> <span class="n">last_click_only</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>     <span class="c1">// Fire only after the last click</span>
+
+  <span class="n">window_multi_click_subscribe</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">min_clicks</span><span class="p">,</span> <span class="n">max_clicks</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span>
+                                 <span class="n">last_click_only</span><span class="p">,</span> <span class="n">multi_select_click_handler</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Similar to the single repeating click event, the <a href="/docs/c/User_Interface/Clicks/#ClickRecognizerRef" title="ClickRecognizerRef" class="link--docs"><code>ClickRecognizerRef</code></a> can be
+used to determine how many clicks triggered this multi click event using
+<a href="/docs/c/User_Interface/Clicks/#click_number_of_clicks_counted" title="click_number_of_clicks_counted" class="link--docs"><code>click_number_of_clicks_counted()</code></a>.</p><h3 id="long-clicks" class="anchor">Long Clicks</h3><p>A long click event is fired after a button is held down for the specified amount
+of time. The event also allows two <a href="/docs/c/User_Interface/Clicks/#ClickHandler" title="ClickHandler" class="link--docs"><code>ClickHandler</code></a>s to be registered - one for
+when the button is pressed, and another for when the button is released. Only
+one of these is required.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">click_config_provider</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ButtonId</span> <span class="n">id</span> <span class="o">=</span> <span class="n">BUTTON_ID_SELECT</span><span class="p">;</span>  <span class="c1">// The select button</span>
+  <span class="kt">uint16_t</span> <span class="n">delay_ms</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>         <span class="c1">// Minimum time pressed to fire</span>
+
+  <span class="n">window_long_click_subscribe</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">delay_ms</span><span class="p">,</span> <span class="n">long_down_click_handler</span><span class="p">,</span>
+                                                       <span class="n">long_up_click_handler</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h3 id="raw-clicks" class="anchor">Raw Clicks</h3><p>The last type of button click subcsription is used to track raw button click
+events. Like the long click event, two <a href="/docs/c/User_Interface/Clicks/#ClickHandler" title="ClickHandler" class="link--docs"><code>ClickHandler</code></a>s may be supplied to
+receive each of the pressed and depressed events.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">click_config_provider</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ButtonId</span> <span class="n">id</span> <span class="o">=</span> <span class="n">BUTTON_ID_SELECT</span><span class="p">;</span>  <span class="c1">// The select button</span>
+
+  <span class="n">window_raw_click_subscribe</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">raw_down_click_handler</span><span class="p">,</span> <span class="n">raw_up_click_handler</span><span class="p">,</span>
+                                                                        <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p>The last parameter is an optional pointer to a context object to be passed to
+the callback, and is set to <code>NULL</code> if not used.</p></blockquote>
+
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/events-and-services/buttons/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#listening-for-button-clicks">Listening for Button Clicks</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#types-of-click-events">Types of Click Events</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#single-clicks">Single Clicks</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#single-repeating-clicks">Single Repeating Clicks</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#multiple-clicks">Multiple Clicks</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#long-clicks">Long Clicks</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#raw-clicks">Raw Clicks</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/User_Interface/Clicks/">Clicks</a></li>
+            
+            <li><a href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/app-font-browser/blob/master/src/app_font_browser.c#L168" target="_blank">App Font Browser</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

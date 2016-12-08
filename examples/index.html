@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/examples/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples active"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="col-m-8">
+    <div class="row js-no-examples" style="display: none;">
+      <div class="alert alert--large alert--fg-white alert--bg-orange">
+        <p>There are no examples that match the filters on the right.</p>
+      </div>
+    </div>
+    
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Watchface|Analog"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/simple-analog/master/simple-analog-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Simple Analog</h2>
+          <div class="example__meta">
+            Watchface &middot; Analog
+          </div>
+          <p>Example analog watchface that uses hands instead of numbers.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/simple-analog/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/simple-analog/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Timeline"  data-languages="c|js"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/timeline-push-pin/master/screenshots/screenshot1.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Timeline Push Pin</h2>
+          <div class="example__meta">
+            Timeline
+          </div>
+          <p>This is a Pebble SDK 3.0 example app that demonstrates how an app can use
+PebbleKit JS to push a pin to itself through the public timeline API. It
+includes a segment of JS code (marked &#39;timeline lib&#39;) that can be re-used in
+any Pebble app that needs to push pins to its user.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/timeline-push-pin/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Design|Images"  data-languages="c"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/ui-patterns/master/screenshots/dialog-choice.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>UI Patterns</h2>
+          <div class="example__meta">
+            Design &middot; Images
+          </div>
+          <p>Example project showing implementations of recommended Pebble UI design
+patterns.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/ui-patterns/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/ui-patterns/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Timeline"  data-languages="c|js"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/timeline-tv-tracker/master/pebble/screenshots/screenshot1.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Timeline TV Tracker</h2>
+          <div class="example__meta">
+            Timeline
+          </div>
+          <p>This example demonstrates the usage of topics and shared pins in the Pebble
+timeline API.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/timeline-tv-tracker/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Timeline"  data-languages="c|js"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/hello-timeline/master/screenshots/screenshot.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Hello Timeline</h2>
+          <div class="example__meta">
+            Timeline
+          </div>
+          <p>This example app shows how to use the Pebble timeline API with user tokens.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/hello-timeline/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags=""  data-languages="c|js"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/pebblekit-js-weather/master/weather-screenshot~bw.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>PebbleKit JS Weather</h2>
+          <div class="example__meta">
+            
+          </div>
+          <p>This watchapp uses PebbleKit JS to fetch weather data from the
+openweathermap.org and display it on the watch. It uses the location
+provided by the phone to look up the nearest location, and sends temperature
+data along with that location&#39;s name. A weather icon is also displayed.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/pebblekit-js-weather/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/pebblekit-js-weather/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Color|Graphics|Animation|Game"  data-languages="c"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://github.com/pebble-hacks/pandas-and-bananas/raw/master/screenshots/screenshot.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Pandas and Bananas</h2>
+          <div class="example__meta">
+            Color &middot; Graphics &middot; Animation &middot; Game
+          </div>
+          <p>Color game for Pebble SDK 3.0 that sees the user controlling a panda via
+accelerometer tilting or buttons to catch fruit and avoid bombs.</p>
+          <p>
+            <a href="https://github.com/pebble-hacks/pandas-and-bananas/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-hacks/pandas-and-bananas/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Color|Graphics|Animation|Game"  data-languages="c"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://github.com/pebble-hacks/block-world/raw/master/screenshots/screenshot.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Block World</h2>
+          <div class="example__meta">
+            Color &middot; Graphics &middot; Animation &middot; Game
+          </div>
+          <p>Simple &#39;block-builder&#39; game for Pebble SDK 3.0. Uses modified PGE and
+isometric libraries to show a grid of 16 x 16 x 14 blocks that can be placed
+by the user.</p>
+          <p>
+            <a href="https://github.com/pebble-hacks/block-world/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-hacks/block-world/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Color|Datalogging|PebbleKit"  data-languages="c|java|objective-c"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/tricorder/72e677141285b3ac2bf4659d6e88ba9c61dc500b/screenshot.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Tricorder</h2>
+          <div class="example__meta">
+            Color &middot; Datalogging &middot; PebbleKit
+          </div>
+          <p>Datalogging example app that communicates with PebbleKit Android and iOS
+companion apps. Records many different stats such as connection state,
+battery level, etc.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/tricorder/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Color|Libraries|Watchface|PebbleKit"  data-languages="c|js"  data-hardware-platforms="aplite|basalt|chalk">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-hacks/owm-weather/master/screenshots/basalt.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>owm-weather</h2>
+          <div class="example__meta">
+            Color &middot; Libraries &middot; Watchface &middot; PebbleKit
+          </div>
+          <p>Library for easy fetching of weather data from OpenWeatherMap.org. Includes 
+a simple test app as a proof of concept usage of a weather C API.</p>
+          <p>
+            <a href="https://github.com/pebble-hacks/owm-weather/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Color"  data-languages="c"  data-hardware-platforms="chalk">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/content-indicator-demo/master/screenshot.png" class="pebble-screenshot pebble-screenshot--time-round-silver-20 pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>ContentIndicator Demo</h2>
+          <div class="example__meta">
+            Color
+          </div>
+          <p>Example watchapp showing use of the ContentIndicator UI component.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/content-indicator-demo/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/content-indicator-demo/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Color"  data-languages="c"  data-hardware-platforms="chalk">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/time-dots/master/screenshot.png" class="pebble-screenshot pebble-screenshot--time-round-silver-20 pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Time Dots</h2>
+          <div class="example__meta">
+            Color
+          </div>
+          <p>Example watchface for Pebble Time Round showing the hours and minutes as a
+bar and dots.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/time-dots/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/time-dots/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Graphics|Color|Watchface"  data-languages="c"  data-hardware-platforms="chalk|basalt|aplite">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/concentricity/master/screenshots/concentricity~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-silver-20 pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Concentricity</h2>
+          <div class="example__meta">
+            Graphics &middot; Color &middot; Watchface
+          </div>
+          <p>Example watchface for aplite, basalt and chalk showing the hours, minutes and seconds with
+concentric rings around the center of the display.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/concentricity/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/concentricity/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Graphics|Color"  data-languages="c"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/cards-example/master/screenshots/screenshot1.gif" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Weather Cards Example</h2>
+          <div class="example__meta">
+            Graphics &middot; Color
+          </div>
+          <p>This example shows how to implement a cards based weather app, demonstrating the Pebble Draw Commands API, which allows you to draw and animate vector graphics.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/cards-example/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/cards-example/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Images"  data-languages="c|js"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/pebble-faces/11305757db5fa9ce5e448aa0ba4e7beb8a38b020/screenshots/screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Pebble Faces</h2>
+          <div class="example__meta">
+            Images
+          </div>
+          <p>This Pebble application downloads, de-compresses and displays PNG images 
+from the Internet.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/pebble-faces/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/pebble-faces/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Accelerometer Service|Graphics"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/feature-accel-discs/master/feature-accel-discs-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Accel Discs</h2>
+          <div class="example__meta">
+            Accelerometer Service &middot; Graphics
+          </div>
+          <p>This example shows how to use the accelerometer.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/feature-accel-discs/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/feature-accel-discs/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Background Worker"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/feature-background-counter/master/feature-background-counter-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Background Counter</h2>
+          <div class="example__meta">
+            Background Worker
+          </div>
+          <p>This example shows how to use the Worker API (background worker).</p>
+          <p>
+            <a href="https://github.com/pebble-examples/feature-background-counter/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/feature-background-counter/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Fonts"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/feature-custom-font/master/feature-custom-font-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Custom Font</h2>
+          <div class="example__meta">
+            Fonts
+          </div>
+          <p>This example shows how to use a custom font.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/feature-custom-font/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/feature-custom-font/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Graphics|Frame Buffer"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/feature-frame-buffer/master/feature-frame-buffer-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Frame Buffer</h2>
+          <div class="example__meta">
+            Graphics &middot; Frame Buffer
+          </div>
+          <p>This example shows how to capture and manipulate the frame buffer.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/feature-frame-buffer/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/feature-frame-buffer/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Images"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/feature-image-transparent/master/feature-image-transparent-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Transparent Images</h2>
+          <div class="example__meta">
+            Images
+          </div>
+          <p>This example demonstrates how to display an image with black, white and
+transparent sections.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/feature-image-transparent/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/feature-image-transparent/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="MenuLayer"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/feature-menu-layer/master/feature-menu-layer-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Menu Layer</h2>
+          <div class="example__meta">
+            MenuLayer
+          </div>
+          <p>This example shows how to use the MenuLayer.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/feature-menu-layer/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/feature-menu-layer/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Persistent Storage|ActionBarLayer"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/feature-persist-counter/master/feature-persist-counter-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Persist Counter</h2>
+          <div class="example__meta">
+            Persistent Storage &middot; ActionBarLayer
+          </div>
+          <p>This example shows how to use the Persistent Storage API.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/feature-persist-counter/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/feature-persist-counter/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Watchface|Battery Service|Bluetooth Service"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/classio-battery-connection/master/classio-battery-connection-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Classio Battery Connection</h2>
+          <div class="example__meta">
+            Watchface &middot; Battery Service &middot; Bluetooth Service
+          </div>
+          <p>Example watchface showing the time, including seconds. This version also
+displays the battery level and status of the Bluetooth connection.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/classio-battery-connection/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/classio-battery-connection/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Wakeup"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/feature-app-wakeup/master/feature-app-wakeup-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Tea Timer</h2>
+          <div class="example__meta">
+            Wakeup
+          </div>
+          <p>This example shows how the Wakeup API works.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/feature-app-wakeup/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/feature-app-wakeup/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Fonts"  data-languages="c"  data-hardware-platforms="aplite|basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/app-font-browser/master/app-font-browser-screenshot.png" class="pebble-screenshot pebble-screenshot--steel-stainless pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Font Browser</h2>
+          <div class="example__meta">
+            Fonts
+          </div>
+          <p>This example show how to load and display all the Pebble built-in system
+fonts. It also uses the Clicks API to allow the user to cycle through each
+font in both directions.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/app-font-browser/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/app-font-browser/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Graphics|Images"  data-languages="c"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/pdc-image/master/screenshots/screenshot.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>PDC Image</h2>
+          <div class="example__meta">
+            Graphics &middot; Images
+          </div>
+          <p>A simple example Pebble project demonstrating how to use the Draw Commands
+API to load and display a vector file in the Pebble Drawing Commands format.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/pdc-image/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/pdc-image/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Color|Graphics|Animation|Watchface"  data-languages="c"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://github.com/pebble-hacks/isotime/raw/master/screenshots/screenshot.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>Isotime</h2>
+          <div class="example__meta">
+            Color &middot; Graphics &middot; Animation &middot; Watchface
+          </div>
+          <p>Color watchface for Pebble SDK 3.0. Uses PGE plus PGE Isometric libraries to
+show the time on digits built with individual segments. Staggered animation
+of segments that change each minute. Sleeps completely between animations.</p>
+          <p>
+            <a href="https://github.com/pebble-hacks/isotime/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-hacks/isotime/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Color|Graphics|Animation"  data-languages="c"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://github.com/pebble-hacks/gbitmap-sequence-example/raw/master/screenshots/gbitmap-sequence.gif" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>GBitmapSequence Example</h2>
+          <div class="example__meta">
+            Color &middot; Graphics &middot; Animation
+          </div>
+          <p>Example app showing the usage of the GBItmapSequence API in Pebble SDK 3.0.</p>
+          <p>
+            <a href="https://github.com/pebble-hacks/gbitmap-sequence-example/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-hacks/gbitmap-sequence-example/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+      <div class="row js-example" style="margin-bottom: 1em;" data-tags="Color|Animation"  data-languages="c"  data-hardware-platforms="basalt">
+        <div class="pull-left visible-l" style="margin-right: 2em;">
+          
+          <img src="https://raw.githubusercontent.com/pebble-examples/ks-clock-face/master/screenshots/screenshot-color.png" class="pebble-screenshot pebble-screenshot--time-white pebble-screenshot--smaller">
+          
+        </div>
+        <div>
+          <h2>KS Clock Face</h2>
+          <div class="example__meta">
+            Color &middot; Animation
+          </div>
+          <p>Animated color Pebble watchface from the Pebble Time Kickstarter video.
+Expands from a dot, sweeping the clock arms as it does so.</p>
+          <p>
+            <a href="https://github.com/pebble-examples/ks-clock-face/" class="btn btn--bg-green btn--fg-white" target="_blank">GitHub <i class="fa fa-lg fa-fw fa-github"></i></a>
+            
+              
+            <a href="https://cloudpebble.net/ide/import/github/pebble-examples/ks-clock-face/" class="btn btn--bg-lightblue btn--fg-white" target="_blank">CloudPebble <i class="fa fa-lg fa-fw fa-cloud"></i></a>
+              
+            
+          </p>
+        </div>
+      </div>
+    
+  </div>
+  <div class="col-m-4">
+    <div class="gray-box gray-box--fixed">
+      <div class="examples__filters" data-filter-type="languages">
+        <h3>Language</h3>
+        
+        
+        <a href="#c" class="examples__tag js-examples-tag">c</a>
+        
+        <a href="#js" class="examples__tag js-examples-tag">js</a>
+        
+        <a href="#objective-c" class="examples__tag js-examples-tag">objective-c</a>
+        
+        <a href="#java" class="examples__tag js-examples-tag">java</a>
+        
+      </div>
+      <div class="examples__filters" data-filter-type="hardware-platforms">
+        <h3>Hardware Platform</h3>
+        
+        
+        <a href="#basalt" class="examples__tag js-examples-tag">basalt</a>
+        
+        <a href="#aplite" class="examples__tag js-examples-tag">aplite</a>
+        
+        <a href="#chalk" class="examples__tag js-examples-tag">chalk</a>
+        
+      </div>
+      <div class="examples__filters" data-filter-type="tags">
+        <h3>Tags</h3>
+        
+        
+        <a href="#Color" class="examples__tag js-examples-tag">Color</a>
+        
+        <a href="#Graphics" class="examples__tag js-examples-tag">Graphics</a>
+        
+        <a href="#Watchface" class="examples__tag js-examples-tag">Watchface</a>
+        
+        <a href="#Animation" class="examples__tag js-examples-tag">Animation</a>
+        
+        <a href="#Images" class="examples__tag js-examples-tag">Images</a>
+        
+        <a href="#Timeline" class="examples__tag js-examples-tag">Timeline</a>
+        
+        <a href="#Fonts" class="examples__tag js-examples-tag">Fonts</a>
+        
+        <a href="#Game" class="examples__tag js-examples-tag">Game</a>
+        
+        <a href="#PebbleKit" class="examples__tag js-examples-tag">PebbleKit</a>
+        
+        <a href="#Accelerometer Service" class="examples__tag js-examples-tag">Accelerometer Service</a>
+        
+        <a href="#Background Worker" class="examples__tag js-examples-tag">Background Worker</a>
+        
+        <a href="#Frame Buffer" class="examples__tag js-examples-tag">Frame Buffer</a>
+        
+        <a href="#MenuLayer" class="examples__tag js-examples-tag">MenuLayer</a>
+        
+        <a href="#ActionBarLayer" class="examples__tag js-examples-tag">ActionBarLayer</a>
+        
+        <a href="#Persistent Storage" class="examples__tag js-examples-tag">Persistent Storage</a>
+        
+        <a href="#Bluetooth Service" class="examples__tag js-examples-tag">Bluetooth Service</a>
+        
+        <a href="#Battery Service" class="examples__tag js-examples-tag">Battery Service</a>
+        
+        <a href="#Analog" class="examples__tag js-examples-tag">Analog</a>
+        
+        <a href="#Wakeup" class="examples__tag js-examples-tag">Wakeup</a>
+        
+        <a href="#Design" class="examples__tag js-examples-tag">Design</a>
+        
+        <a href="#Datalogging" class="examples__tag js-examples-tag">Datalogging</a>
+        
+        <a href="#Libraries" class="examples__tag js-examples-tag">Libraries</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/examples.js"></script>
+  
+</body>
+</html>

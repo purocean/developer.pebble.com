@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AppGlance C API // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to programatically update an app's app glance.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/user-interfaces/appglance-c/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/app-configuration/"><span>App Configuration</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/app-exit-reason/"><span>App Exit Reason</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/user-interfaces/appglance-c/"><span>AppGlance C API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/appglance-rest/"><span>AppGlance REST API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/appglance-pebblekit-js/"><span>AppGlance in PebbleKit JS</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/content-size/"><span>Content Size</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/layers/"><span>Layers</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/round-app-ui/"><span>Round App UI</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/unobstructed-area/"><span>Unobstructed Area</span></a>
+                </li>
+              
+            
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="overview">Overview</option>
+          
+            <option value="glances-and-appglanceslices">Glances and AppGlanceSlices</option>
+          
+            <option value="the-app_glance_reload-callback">The app_glance_reload Callback</option>
+          
+            <option value="using-custom-icons">Using Custom Icons</option>
+          
+            <option value="subtitle-template-strings">Subtitle Template Strings</option>
+          
+            <option value="template-structure">- Template Structure</option>
+          
+            <option value="format-parameters">- Format Parameters</option>
+          
+            <option value="predicate">- - Predicate</option>
+          
+            <option value="time-format">- - Time Format</option>
+          
+            <option value="advanced-usage">- - Advanced Usage</option>
+          
+            <option value="adding-multiple-slices">Adding Multiple Slices</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">AppGlance C API</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <h2 id="overview" class="anchor">Overview</h2><p>An app&#39;s &quot;glance&quot; is the visual representation of a watchapp in the launcher and
+provides glanceable information to the user. The <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a> API, added in SDK
+4.0, enables developers to programmatically set the icon and subtitle that
+appears alongside their app in the launcher.</p>
+<blockquote>
+<p>The <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a> API is only applicable to watchapps, it is not supported by
+watchfaces.</p></blockquote>
+<h2 id="glances-and-appglanceslices" class="anchor">Glances and AppGlanceSlices</h2><p>An app&#39;s glance can change over time, and is defined by zero or more
+<a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a> each consisting of a layout (including a subtitle and icon),
+as well as an expiration time. AppGlanceSlices are displayed in the order they
+were added, and will persist until their expiration time, or another call to
+<a href="/docs/c/Foundation/App_Glance/#app_glance_reload" title="app_glance_reload" class="link--docs"><code>app_glance_reload()</code></a>.</p>
+<blockquote>
+<p>To create an <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a> with no expiration time, use
+<a href="/docs/c/Foundation/App_Glance/#APP_GLANCE_SLICE_NO_EXPIRATION" title="APP_GLANCE_SLICE_NO_EXPIRATION" class="link--docs"><code>APP_GLANCE_SLICE_NO_EXPIRATION</code></a></p></blockquote>
+<p>Developers can change their watchapp’s glance by calling the
+<a href="/docs/c/Foundation/App_Glance/#app_glance_reload" title="app_glance_reload" class="link--docs"><code>app_glance_reload()</code></a> method, which first clears any existing app glance
+slices, and then loads zero or more <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a> as specified by the
+developer.</p><p>The <a href="/docs/c/Foundation/App_Glance/#app_glance_reload" title="app_glance_reload" class="link--docs"><code>app_glance_reload()</code></a> method is invoked with two parameters: a pointer to an
+<a href="/docs/c/Foundation/App_Glance/#AppGlanceReloadCallback" title="AppGlanceReloadCallback" class="link--docs"><code>AppGlanceReloadCallback</code></a> that will be invoked after the existing app glance
+slices have been cleared, and a pointer to context data. Developers can add new
+<a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a> to their app&#39;s glance in the <a href="/docs/c/Foundation/App_Glance/#AppGlanceReloadCallback" title="AppGlanceReloadCallback" class="link--docs"><code>AppGlanceReloadCallback</code></a>.</p><div class="highlight"><pre><span class="c1">// ...</span>
+<span class="c1">// app_glance_reload callback</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_update_app_glance</span><span class="p">(</span><span class="n">AppGlanceReloadSession</span> <span class="o">*</span><span class="n">session</span><span class="p">,</span>
+                                       <span class="kt">size_t</span> <span class="n">limit</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Create and add app glance slices...</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_deinit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// deinit code</span>
+  <span class="c1">// ...</span>
+
+  <span class="c1">// Reload the watchapp's app glance</span>
+  <span class="n">app_glance_reload</span><span class="p">(</span><span class="n">prv_update_app_glance</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="the-app_glance_reload-callback" class="anchor">The app_glance_reload Callback</h2><p>The <a href="/docs/c/Foundation/App_Glance/#app_glance_reload" title="app_glance_reload" class="link--docs"><code>app_glance_reload()</code></a> is invoked with 3 parameters, a pointer to an
+<a href="/docs/c/Foundation/App_Glance/#AppGlanceReloadSession" title="AppGlanceReloadSession" class="link--docs"><code>AppGlanceReloadSession</code></a> (which is used when invoking
+<a href="/docs/c/Foundation/App_Glance/#app_glance_add_slice" title="app_glance_add_slice" class="link--docs"><code>app_glance_add_slice()</code></a>) , the maximum number of slices you are able to add
+(as determined by the system at run time), and a pointer to the context data
+that was passed into <a href="/docs/c/Foundation/App_Glance/#app_glance_reload" title="app_glance_reload" class="link--docs"><code>app_glance_reload()</code></a>. The context data should contain
+all the information required to build the <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a>, and is typically
+cast to a specific type before being used.</p>
+<blockquote>
+<p>The <code>limit</code> is currently set to 8 app glance slices per watchapp, though there
+is no guarantee that this value will remain static, and developers should
+always ensure they are not adding more slices than the limit.</p></blockquote>
+<p><img src="/assets/images/guides/appglance-c/hello-world-app-glance.png" alt="Hello World" class="pebble-screenshot pebble-screenshot--time-black" /></p><p>In this example, we’re passing the string we would like to set as the subtitle,
+by using the context parameter. The full code for this example can be found in
+the <a href="https://github.com/pebble-examples/app-glance-hello-world" title="" class="">AppGlance-Hello-World</a>
+repository.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_update_app_glance</span><span class="p">(</span><span class="n">AppGlanceReloadSession</span> <span class="o">*</span><span class="n">session</span><span class="p">,</span>
+                                       <span class="kt">size_t</span> <span class="n">limit</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// This should never happen, but developers should always ensure they are</span>
+  <span class="c1">// not adding more slices than are available</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">limit</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+  <span class="c1">// Cast the context object to a string</span>
+  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">message</span> <span class="o">=</span> <span class="n">context</span><span class="p">;</span>
+
+  <span class="c1">// Create the AppGlanceSlice</span>
+  <span class="c1">// NOTE: When .icon is not set, the app's default icon is used</span>
+  <span class="k">const</span> <span class="n">AppGlanceSlice</span> <span class="n">entry</span> <span class="o">=</span> <span class="p">(</span><span class="n">AppGlanceSlice</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">layout</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">.</span><span class="n">icon</span> <span class="o">=</span> <span class="n">APP_GLANCE_SLICE_DEFAULT_ICON</span><span class="p">,</span>
+      <span class="p">.</span><span class="n">subtitle_template_string</span> <span class="o">=</span> <span class="n">message</span>
+    <span class="p">},</span>
+    <span class="p">.</span><span class="n">expiration_time</span> <span class="o">=</span> <span class="n">APP_GLANCE_SLICE_NO_EXPIRATION</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Add the slice, and check the result</span>
+  <span class="k">const</span> <span class="n">AppGlanceResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">app_glance_add_slice</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">entry</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">APP_GLANCE_RESULT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"AppGlance Error: %d"</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p><strong>NOTE:</strong> When an <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a> is loaded with the
+<a href="/docs/c/Foundation/App_Glance/#app_glance_add_slice" title="app_glance_add_slice" class="link--docs"><code>app_glance_add_slice()</code></a> method, the slice&#39;s
+<code>layout.subtitle_template_string</code> is copied to the app&#39;s glance, meaning the
+string does not need to persist after the call to <a href="/docs/c/Foundation/App_Glance/#app_glance_add_slice" title="app_glance_add_slice" class="link--docs"><code>app_glance_add_slice()</code></a>
+is made.</p></blockquote>
+<h2 id="using-custom-icons" class="anchor">Using Custom Icons</h2><p>In order to use custom icons within an <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a>, you need to use the
+new <code>publishedMedia</code> entry in the <code>package.json</code> file.</p>
+<ul>
+<li>Create your images as 25px x 25px PNG files.</li>
+<li>Add your images as media resources in the <code>package.json</code>.</li>
+<li>Then add the <code>publishedMedia</code> declaration.</li>
+</ul>
+<p>You should end up with something like this:</p><div class="highlight"><pre><span class="s2">"resources"</span><span class="o">:</span> <span class="p">{</span>
+  <span class="s2">"media"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"WEATHER_HOT_ICON_TINY"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"bitmap"</span><span class="p">,</span>
+      <span class="s2">"file"</span><span class="o">:</span> <span class="s2">"hot_tiny.png"</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">"publishedMedia"</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"WEATHER_HOT"</span><span class="p">,</span>
+      <span class="s2">"id"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"glance"</span><span class="o">:</span> <span class="s2">"WEATHER_HOT_ICON_TINY"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div><p>Then you can reference the <code>icon</code> by <code>name</code> in your <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a>. You must
+use the prefix <code>PUBLISHED_ID_</code>. E.g. <code>PUBLISHED_ID_WEATHER_HOT</code>.</p><h2 id="subtitle-template-strings" class="anchor">Subtitle Template Strings</h2><p>The <code>subtitle_template_string</code> field provides developers with a string
+formatting language for app glance subtitles. Developers can create a single
+app glance slice which updates automatically based upon a timestamp.</p><p>For example, the template can be used to create a countdown until a timestamp
+(<code>time_until</code>), or the duration since a timestamp (<code>time_since</code>). The result
+from the timestamp evaluation can be output in various different time-format&#39;s,
+such as:</p>
+<ul>
+<li>It&#39;s 50 days until New Year</li>
+<li>Your Uber will arrive in 5 minutes</li>
+<li>You are 15515 days old</li>
+</ul>
+<h3 id="template-structure" class="anchor">Template Structure</h3><p>The template string has the following structure:</p><p><code>{<strong><em>evaluation</em></strong>(<strong><em>timestamp</em></strong>)|format(<strong><em>parameters</em></strong>)}</code></p><p>Let&#39;s take a look at a simple countdown example:</p><p><code>Your Uber will arrive in 1 hr 10 min 4 sec</code></p><p>In this example, we need to know the time until our timestamp:
+<code>time_until(1467834606)</code>, then output the duration using an abbreviated
+time-format: <code>%aT</code>.</p><p><code>Your Uber will arrive in {time_until(1467834606)|format(&#39;%aT&#39;)}</code></p><h3 id="format-parameters" class="anchor">Format Parameters</h3><p>Each format parameter is comprised of an optional predicate, and a time-format,
+separated by a colon. The time-format parameter is only output if the predicate
+evaluates to true. If a predicate is not supplied, the time-format is output by
+default.</p><p><code>format(<strong><em>predicate</em></strong>:&#39;<strong><em>time-format</em></strong>&#39;)</code></p><h4 id="predicate" class="anchor">Predicate</h4><p>The predicates are composed of a comparator and time value. For example, the
+difference between <code>now</code> and the timestamp evaluation is:</p>
+<ul>
+<li><code>&gt;1d</code> Greater than 1 day</li>
+<li><code>&lt;12m</code> Less than 12 months</li>
+<li><code>&gt;=6m</code> Greater than or equal to 6 months</li>
+<li><code>&lt;=1d12h</code> Less than or equal to 1 day, 12 hours.</li>
+</ul>
+<p>The supported time units are:</p>
+<ul>
+<li><code>d</code> (Day)</li>
+<li><code>H</code> (Hour)</li>
+<li><code>M</code> (Minute)</li>
+<li><code>S</code> (Second)</li>
+</ul>
+<h4 id="time-format" class="anchor">Time Format</h4><p>The time-format is a single quoted string, comprised of a percent sign and an
+optional format flag, followed by a time unit. For example:</p><p><code>&#39;%aT&#39;</code> Abbreviated time. e.g. 1 hr 10 min 4 sec</p><p>The optional format flags are:</p>
+<ul>
+<li><code>a</code> Adds abbreviated units (translated and with proper pluralization) (overrides &#39;u&#39; flag)</li>
+<li><code>u</code> Adds units (translated and with proper pluralization) (overrides &#39;a&#39; flag)</li>
+<li><code>-</code> Negates the input for this format specifier</li>
+<li><code>0</code> Pad value to the &quot;expected&quot; number of digits with zeros</li>
+<li><code>f</code> Do not modulus the value</li>
+</ul>
+<p>The following table demonstrates sample output for each time unit, and the
+effects of the format flags.</p>
+<table><thead>
+<tr>
+<th><small>Time Unit</small></th>
+<th><small>No flag</small></th>
+<th><small>&#39;u&#39; flag</small></th>
+<th><small>&#39;a&#39; flag</small></th>
+<th><small>&#39;0&#39; flag</small></th>
+<th><small>&#39;f&#39; flag</small></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><small><strong>y</strong></small></td>
+<td><small>&lt;year&gt;</small></td>
+<td><small>&lt;year&gt; year(s)</small></td>
+<td><small>&lt;year&gt; yr(s)</small></td>
+<td><small>&lt;year, pad to 2&gt;</small></td>
+<td><small>&lt;year, no modulus&gt;</small></td>
+</tr>
+<tr>
+<td><small>output:</small></td>
+<td><small>4</small></td>
+<td><small>4 years</small></td>
+<td><small>4 yr</small></td>
+<td><small>04</small></td>
+<td><small>4</small></td>
+</tr>
+<tr>
+<td><small><strong>m</strong></small></td>
+<td><small>&lt;month&gt;</small></td>
+<td><small>&lt;month&gt; month(s)</small></td>
+<td><small>&lt;month&gt; mo(s)</small></td>
+<td><small>&lt;month, pad to 2&gt;</small></td>
+<td><small>&lt;month, no modulus&gt;</small></td>
+</tr>
+<tr>
+<td><small>output:</small></td>
+<td><small>8</small></td>
+<td><small>8 months</small></td>
+<td><small>8 mo</small></td>
+<td><small>08</small></td>
+<td><small>16</small></td>
+</tr>
+<tr>
+<td><small><strong>d</strong></small></td>
+<td><small>&lt;day&gt;</small></td>
+<td><small>&lt;day&gt; days</small></td>
+<td><small>&lt;day&gt; d</small></td>
+<td><small>&lt;day, pad to 2&gt;</small></td>
+<td><small>&lt;day, no modulus&gt;</small></td>
+</tr>
+<tr>
+<td><small>output:</small></td>
+<td><small>7</small></td>
+<td><small>7 days</small></td>
+<td><small>7 d</small></td>
+<td><small>07</small></td>
+<td><small>38</small></td>
+</tr>
+<tr>
+<td><small><strong>H</strong></small></td>
+<td><small>&lt;hour&gt;</small></td>
+<td><small>&lt;hour&gt; hour(s)</small></td>
+<td><small>&lt;hour&gt; hr</small></td>
+<td><small>&lt;hour, pad to 2&gt;</small></td>
+<td><small>&lt;hour, no modulus&gt;</small></td>
+</tr>
+<tr>
+<td><small>output:</small></td>
+<td><small>1</small></td>
+<td><small>1 hour</small></td>
+<td><small>1 hr</small></td>
+<td><small>01</small></td>
+<td><small>25</small></td>
+</tr>
+<tr>
+<td><small><strong>M</strong></small></td>
+<td><small>&lt;minute&gt;</small></td>
+<td><small>&lt;minute&gt; minute(s)</small></td>
+<td><small>&lt;minute&gt; min</small></td>
+<td><small>&lt;minute, pad to 2&gt;</small></td>
+<td><small>&lt;minute, no modulus&gt;</small></td>
+</tr>
+<tr>
+<td><small>output:</small></td>
+<td><small>22</small></td>
+<td><small>22 minutes</small></td>
+<td><small>22 min</small></td>
+<td><small>22</small></td>
+<td><small>82</small></td>
+</tr>
+<tr>
+<td><small><strong>S</strong></small></td>
+<td><small>&lt;second&gt;</small></td>
+<td><small>&lt;second&gt; second(s)</small></td>
+<td><small>&lt;second&gt; sec</small></td>
+<td><small>&lt;second, pad to 2&gt;</small></td>
+<td><small>&lt;second, no modulus&gt;</small></td>
+</tr>
+<tr>
+<td><small>output:</small></td>
+<td><small>5</small></td>
+<td><small>5 seconds</small></td>
+<td><small>5 sec</small></td>
+<td><small>05</small></td>
+<td><small>65</small></td>
+</tr>
+<tr>
+<td><small><strong>T</strong></small></td>
+<td><small>%H:%0M:%0S (if &gt;= 1hr)<hr />%M:%0S (if &gt;= 1m)<hr />%S (otherwise)</small></td>
+<td><small>%uH, %uM, and %uS<hr />%uM, and %uS<hr />%uS</small></td>
+<td><small>%aH %aM %aS<hr />%aM %aS<hr />%aS</small></td>
+<td><small>%0H:%0M:%0S (always)</small></td>
+<td><small>%fH:%0M:%0S<hr />%M:%0S<hr />%S</small></td>
+</tr>
+<tr>
+<td><small>output:</small></td>
+<td><small>1:53:20<hr />53:20<hr />20</small></td>
+<td><small>1 hour, 53 minutes, and 20 seconds<hr />53 minutes, and 20 seconds<hr />20 seconds</small></td>
+<td><small>1 hr 53 min 20 sec<hr />53 min 20 sec<hr />20 sec</small></td>
+<td><small>01:53:20<hr />00:53:20<hr />00:00:20</small></td>
+<td><small>25:53:20<hr />53:20<hr />20</small></td>
+</tr>
+<tr>
+<td><small><strong>R</strong></small></td>
+<td><small>%H:%0M (if &gt;= 1hr)<hr />%M (otherwise)</small></td>
+<td><small>%uH, and %uM<hr />%uM</small></td>
+<td><small>%aH %aM<hr />%aM</small></td>
+<td><small>%0H:%0M (always)</small></td>
+<td><small>%fH:%0M<hr />%M</small></td>
+</tr>
+<tr>
+<td><small>output:</small></td>
+<td><small>23:04<hr />15</small></td>
+<td><small>23 hours, and 4 minutes<hr />15 minutes</small></td>
+<td><small>23 hr 4 min<hr />15 min</small></td>
+<td><small>23:04<hr />00:15</small></td>
+<td><small>47:04<hr />15</small></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Note: The time units listed above are not all available for use as predicates,
+but can be used with format flags.</p></blockquote>
+<h4 id="advanced-usage" class="anchor">Advanced Usage</h4><p>We&#39;ve seen how to use a single parameter to generate our output, but for more
+advanced cases, we can chain multiple parameters together. This allows for a
+single app glance slice to produce different output as each parameter evaluates
+successfully, from left to right.</p><p><code>format(<strong><em>predicate</em></strong>:&#39;<strong><em>time-format</em></strong>&#39;, <strong><em>predicate</em></strong>:&#39;<strong><em>time-format</em></strong>&#39;, <strong><em>predicate</em></strong>:&#39;<strong><em>time-format</em></strong>&#39;)</code></p><p>For example, we can generate a countdown which displays different output before,
+during and after the event:</p>
+<ul>
+<li>100 days left</li>
+<li>10 hr 5 min 20 sec left</li>
+<li>It&#39;s New Year!</li>
+<li>10 days since New Year</li>
+</ul>
+<p>To produce this output we could use the following template:</p><p><code>{time_until(1483228800)|format(&gt;=1d:&#39;%ud left&#39;,&gt;0S:&#39;%aT left&#39;,&gt;-1d:\&quot;It&#39;s New Year!\&quot;, &#39;%-ud since New Year&#39;)}</code></p><h2 id="adding-multiple-slices" class="anchor">Adding Multiple Slices</h2><p>An app&#39;s glance can change over time, with the slices being displayed in the
+order they were added, and removed after the <code>expiration_time</code>. In order to add
+multiple app glance slices, we simply need to create and add multiple
+<a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a> instances, with increasing expiration times.</p><p><img src="/assets/images/guides/appglance-c/virtual-pet-app-glance.png" alt="Virtual Pet" class="pebble-screenshot pebble-screenshot--time-black" /></p><p>In the following example, we create a basic virtual pet that needs to be fed (by
+opening the app) every 12 hours, or else it runs away. When the app closes, we
+update the app glance to display a new message and icon every 3 hours until the
+virtual pet runs away. The full code for this example can be found in the
+<a href="https://github.com/pebble-examples/app-glance-virtual-pet" title="" class="">AppGlance-Virtual-Pet</a>
+repository.</p><div class="highlight"><pre><span class="c1">// How often pet needs to be fed (12 hrs)</span>
+<span class="cp">#define PET_FEEDING_FREQUENCY 3600*12</span>
+<span class="c1">// Number of states to show in the launcher</span>
+<span class="cp">#define NUM_STATES 4</span>
+
+<span class="c1">// Icons associated with each state</span>
+<span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">icons</span><span class="p">[</span><span class="n">NUM_STATES</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">PUBLISHED_ID_ICON_FROG_HAPPY</span><span class="p">,</span>
+  <span class="n">PUBLISHED_ID_ICON_FROG_HUNGRY</span><span class="p">,</span>
+  <span class="n">PUBLISHED_ID_ICON_FROG_VERY_HUNGRY</span><span class="p">,</span>
+  <span class="n">PUBLISHED_ID_ICON_FROG_MISSING</span>
+<span class="p">};</span>
+
+<span class="c1">// Message associated with each state</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">messages</span><span class="p">[</span><span class="n">NUM_STATES</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"Mmm, that was delicious!!"</span><span class="p">,</span>
+  <span class="s">"I'm getting hungry.."</span><span class="p">,</span>
+  <span class="s">"I'm so hungry!! Please feed me soon.."</span><span class="p">,</span>
+  <span class="s">"Your pet ran away :("</span>
+<span class="p">};</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_update_app_glance</span><span class="p">(</span><span class="n">AppGlanceReloadSession</span> <span class="o">*</span><span class="n">session</span><span class="p">,</span>
+                                       <span class="kt">size_t</span> <span class="n">limit</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="c1">// Ensure we have sufficient slices</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">limit</span> <span class="o">&lt;</span> <span class="n">NUM_STATES</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_DEBUG</span><span class="p">,</span> <span class="s">"Error: app needs %d slices (%zu available)"</span><span class="p">,</span>
+                                                            <span class="n">NUM_STATES</span><span class="p">,</span> <span class="n">limit</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kt">time_t</span> <span class="n">expiration_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+
+  <span class="c1">// Build and add NUM_STATES slices</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_STATES</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Increment the expiration_time of the slice on each pass</span>
+    <span class="n">expiration_time</span> <span class="o">+=</span> <span class="n">PET_FEEDING_FREQUENCY</span> <span class="o">/</span> <span class="n">NUM_STATES</span><span class="p">;</span>
+
+    <span class="c1">// Set it so the last slice never expires</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="p">(</span><span class="n">NUM_STATES</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="n">expiration_time</span> <span class="o">=</span> <span class="n">APP_GLANCE_SLICE_NO_EXPIRATION</span><span class="p">;</span>
+
+    <span class="c1">// Create the slice</span>
+    <span class="k">const</span> <span class="n">AppGlanceSlice</span> <span class="n">slice</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">.</span><span class="n">layout</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">.</span><span class="n">icon</span> <span class="o">=</span> <span class="n">icons</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="p">.</span><span class="n">subtitle_template_string</span> <span class="o">=</span> <span class="n">messages</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+      <span class="p">},</span>
+      <span class="p">.</span><span class="n">expiration_time</span> <span class="o">=</span> <span class="n">expiration_time</span>
+    <span class="p">};</span>
+
+    <span class="c1">// add the slice, and check the result</span>
+    <span class="n">AppGlanceResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">app_glance_add_slice</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">slice</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">APP_GLANCE_RESULT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Error adding AppGlanceSlice: %d"</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_deinit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">app_glance_reload</span><span class="p">(</span><span class="n">prv_update_app_glance</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">app_event_loop</span><span class="p">();</span>
+  <span class="n">prv_deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/user-interfaces/appglance-c/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#overview">Overview</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#glances-and-appglanceslices">Glances and AppGlanceSlices</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#the-app_glance_reload-callback">The app_glance_reload Callback</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#using-custom-icons">Using Custom Icons</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#subtitle-template-strings">Subtitle Template Strings</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#template-structure">Template Structure</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#format-parameters">Format Parameters</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#predicate">Predicate</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#time-format">Time Format</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#advanced-usage">Advanced Usage</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#adding-multiple-slices">Adding Multiple Slices</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice">AppGlanceSlice</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/app-glance-hello-world" target="_blank">Hello World</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/app-glance-virtual-pet" target="_blank">Virtual Pet</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

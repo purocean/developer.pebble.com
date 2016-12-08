@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>PebbleKit iOS 3.0 Migration Guide // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to migrate apps that use PebbleKit iOS to the 3.0 version.">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/migration/pebblekit-ios-3/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/migration/pebblekit-ios-3/"><span>PebbleKit iOS 3.0 Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/migration-guide/"><span>SDK 2.x Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/migration-guide-3/"><span>SDK 3.x Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/3x-aplite-migration/"><span>SDK 3.x on Aplite Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/migration-guide-4/"><span>SDK 4.x Migration Guide</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="what-39-s-new">What&#39;s New</option>
+          
+            <option value="sharing-no-more-dedicated-channels-per-app">- Sharing No More: Dedicated Channels per App</option>
+          
+            <option value="starting-an-app-from-pebble">- Starting an App from Pebble</option>
+          
+            <option value="how-to-upgrade">How to Upgrade</option>
+          
+            <option value="breaking-api-changes">Breaking API Changes</option>
+          
+            <option value="app-uuids-are-now-nsuuids">- App UUIDs Are Now NSUUIDs</option>
+          
+            <option value="cold-pbpebblecentral">- Cold PBPebbleCentral</option>
+          
+            <option value="new-features">New Features</option>
+          
+            <option value="8k-appmessage-buffers">- 8K AppMessage Buffers</option>
+          
+            <option value="swift-support">- Swift Support</option>
+          
+            <option value="minor-changes-and-deprecations">Minor Changes and Deprecations</option>
+          
+            <option value="other-recommendations">Other Recommendations</option>
+          
+            <option value="faster-connection">- Faster Connection</option>
+          
+            <option value="background-apps">- Background Apps</option>
+          
+            <option value="compatibility-with-older-pebbles">- Compatibility with Older Pebbles</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">PebbleKit iOS 3.0 Migration Guide</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>With previous Pebble firmware versions, iOS users had to manage two different
+Bluetooth pairings to Pebble. A future goal is removing the Bluetooth <em>Classic</em>
+pairing and keeping only the <em>LE</em> (Low Energy) one. This has a couple of
+advantages. By using only one Bluetooth connection Pebble saves energy,
+improving the battery life of both Pebble and the phone. It also has the
+potential to simplify the onboarding experience. In general, fewer moving parts
+means less opportunity for failures and bugs.</p><p>The plan is to remove the Bluetooth <em>Classic</em> connection and switch to <em>LE</em> in
+gradual steps. The first step is to make the Pebble app communicate over <em>LE</em> if
+it is available. The Bluetooth <em>Classic</em> pairing and connection will be kept
+since as of today most iOS companion apps rely on the <em>Classic</em> connection in
+order to work properly.</p><p>Building a companion app against PebbleKit iOS 3.0 will make it compatible with
+the new <em>LE</em> connection, while still remaining compatible with older Pebble
+watches which don&#39;t support the <em>LE</em> connection. Once it is decided to cut the
+Bluetooth <em>Classic</em> cord developers won&#39;t have to do anything, existing apps
+will continue to work.</p>
+<blockquote>
+<p>Note: Pebble Time Round (the chalk platform) uses only Bluetooth LE, and so
+companion apps <strong>must</strong> use PebbleKit iOS 3.0 to connect with it.</p></blockquote>
+<h2 id="what-39-s-new" class="anchor">What&#39;s New</h2><h3 id="sharing-no-more-dedicated-channels-per-app" class="anchor">Sharing No More: Dedicated Channels per App</h3><p>A big problem with the Bluetooth <em>Classic</em> connection is that all iOS companion
+apps have to share a single communication channel which gets assigned on a &quot;last
+one wins&quot; basis. Another problem is that a &quot;session&quot; on this channel has to be
+opened and closed by the companion app.</p><p>PebbleKit iOS 3.0 solved both these problems with <em>LE</em> based connections. When
+connected over <em>LE</em> each companion app has a dedicated and persistent
+communication channel to Pebble.</p><p>This means that an app can stay connected as long as there is a physical
+Bluetooth LE connection, and it does not have to be closed before that other
+apps can use it!</p><h3 id="starting-an-app-from-pebble" class="anchor">Starting an App from Pebble</h3><p>Since each companion app using the <em>LE</em> connection will have a dedicated and
+persistent channel, the user can now start using an app from the watch without
+having to pull out the phone to open the companion app. The companion app will
+already be connected and listening. However there are a few caveats to this:</p>
+<ul>
+<li><p>The user must have launched the companion app at least once after rebooting
+the iOS device.</p></li>
+<li><p>If the user force-quits the companion app (by swiping it out of the app
+manager) the channel to the companion app will be disconnected.</p></li>
+</ul>
+<p>Otherwise the channel is pretty robust. iOS will revive the companion app in the
+background when the watchapp sends a message if the companion app is suspended,
+has crashed, or was stopped/killed by iOS because it used too much memory.</p><h2 id="how-to-upgrade" class="anchor">How to Upgrade</h2>
+<ol>
+<li><p>Download the new <code>PebbleKit.framework</code> from the
+<a href="https://github.com/pebble/pebble-ios-sdk/" title="" class=""><code>pebble-ios-sdk</code></a> repository.</p></li>
+<li><p>Replace the existing <code>PebbleKit.framework</code> directory in the iOS project.</p></li>
+<li><p>The <code>PebbleVendor.framework</code> isn&#39;t needed anymore. If it is not used, remove
+it from the project to reduce its size.</p></li>
+<li><p>See the <a href="#breaking-api-changes" title="" class="">Breaking API Changes</a> section below.</p></li>
+<li><p>When submitting the iOS companion to the
+<a href="https://dev-portal.getpebble.com/" title="" class="">Pebble appstore</a>, make sure to check the
+checkbox shown below.</p></li>
+</ol>
+<p><img src="/assets/images/guides/migration/companion-checkbox.png" /></p>
+<blockquote>
+<p><strong>Important</strong>: Make sure to invoke <code>[[PBPebbleCentral defaultCentral] run]</code>
+after the iOS app is launched, or watches won&#39;t connect!</p></blockquote>
+<h2 id="breaking-api-changes" class="anchor">Breaking API Changes</h2><h3 id="app-uuids-are-now-nsuuids" class="anchor">App UUIDs Are Now NSUUIDs</h3><p>Older example code showed how to use the <code>appUUID</code> property of the
+<code>PBPebbleCentral</code> object, which was passed as an <code>NSData</code> object. Now it is
+possible to directly use an <code>NSUUID</code> object. This also applies to the <code>PBWatch</code>
+APIs requiring <code>appUUID:</code> parameters. An example of each case is shown below.</p><p><strong>Previous Versions of PebbleKit iOS</strong></p><div class="highlight"><pre><span class="kt">uuid_t</span> <span class="n">myAppUUIDbytes</span><span class="p">;</span>
+<span class="bp">NSUUID</span> <span class="o">*</span><span class="n">myAppUUID</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSUUID</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithUUIDString</span><span class="p">:</span><span class="s">@"226834ae-786e-4302-a52f-6e7efc9f990b"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">myAppUUID</span> <span class="nl">getUUIDBytes</span><span class="p">:</span><span class="n">myAppUUIDbytes</span><span class="p">];</span>
+<span class="p">[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">].</span><span class="n">appUUID</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSData</span> <span class="nl">dataWithBytes</span><span class="p">:</span><span class="n">myAppUUIDbytes</span> <span class="nl">length</span><span class="p">:</span><span class="mi">16</span><span class="p">];</span>
+</pre></div><p><strong>With PebbleKit iOS 3.0</strong></p><div class="highlight"><pre><span class="bp">NSUUID</span> <span class="o">*</span><span class="n">myAppUUID</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSUUID</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithUUIDString</span><span class="p">:</span><span class="s">@"226834ae-786e-4302-a52f-6e7efc9f990b"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">].</span><span class="n">appUUID</span> <span class="o">=</span> <span class="n">myAppUUID</span><span class="p">;</span>
+</pre></div><h3 id="cold-pbpebblecentral" class="anchor">Cold PBPebbleCentral</h3><p>As soon as PebbleKit uses a <code>CoreBluetooth</code> API a pop-up asking for Bluetooth
+permissions will appear. Since it is undesirable for this pop-up to jump right
+into users&#39; faces when they launch the iOS app, <code>PBPebbleCentral</code> will start in
+a &quot;cold&quot; state.</p><p>This gives developers the option to explain to app users that this pop-up will
+appear, in order to provide a smoother onboarding experience. As soon as a 
+pop-up would be appropriate to show (e.g.: during the app&#39;s onboarding flow),
+ call <code>[central run]</code>, and the pop-up will be shown to the user.</p><p>To help personalize the experience, add some custom text to the pop-up by adding
+a <code>NSBluetoothPeripheralUsageDescription</code> (&quot;Privacy - Bluetooth Peripheral Usage
+Description&quot;) value to the project&#39;s <code>Info.plist</code> file.</p><div class="highlight"><pre><span class="c1">// MyAppDelegate.m - Set up PBPebbleCentral and run if the user has already</span>
+<span class="c1">// performed onboarding</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="bp">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+  <span class="p">[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">].</span><span class="n">delegate</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+  <span class="p">[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">].</span><span class="n">appUUID</span> <span class="o">=</span> <span class="n">myAppUUID</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">([</span><span class="n">MySettings</span> <span class="n">sharedSettings</span><span class="p">].</span><span class="n">userDidPerformOnboarding</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">]</span> <span class="n">run</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><div class="highlight"><pre><span class="c1">// MyOnboarding.m - Once the pop-up has been accepted, begin PBPebbleCentral</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">didTapGrantBluetoothPermissionButton:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
+  <span class="p">[</span><span class="n">MySettings</span> <span class="n">sharedSettings</span><span class="p">].</span><span class="n">userDidPerformOnboarding</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+  <span class="p">[[</span><span class="n">PBPebbleCentral</span> <span class="n">defaultCentral</span><span class="p">]</span> <span class="n">run</span><span class="p">];</span> <span class="c1">// will trigger pop-up</span>
+<span class="p">}</span>
+</pre></div><p>It is very unlikely that the Pebble watch represented by the <code>PBWatch</code> object
+returned by <code>lastConnectedWatch</code> is connected instantly after invoking <code>[central
+run]</code>. Instead, it is guaranteed that the delegate will receive
+<code>pebbleCentral:watchDidConnect:</code> as soon as the watch connects (which might take
+a few seconds). Once this has occurred, the app may then perform operations on
+the <code>PBWatch</code> object.</p><h2 id="new-features" class="anchor">New Features</h2><h3 id="8k-appmessage-buffers" class="anchor">8K AppMessage Buffers</h3><p>In previous versions of PebbleKit iOS, if an app wanted to transmit large
+amounts of data it had to split it up into packets of 126 bytes. As of firmware
+version 3.5, this is no longer the case - the maximum message size is now such
+that a dictionary with one byte array (<code>NSData</code>) of 8192 bytes fits in a single
+app message. The maximum available buffer sizes are increased for messages in
+both directions (i.e.: inbox and outbox buffer sizes). Note that the watchapp
+should be compiled with SDK 3.5 or later in order to use this capability.</p><p>To check whether the connected watch supports the increased buffer sizes, use
+<code>getVersionInfo:</code> as shown below.</p><div class="highlight"><pre><span class="p">[</span><span class="n">watch</span> <span class="nl">getVersionInfo</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">PBWatch</span> <span class="o">*</span><span class="n">watch</span><span class="p">,</span> <span class="n">PBVersionInfo</span> <span class="o">*</span><span class="n">versionInfo</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// If 8k buffers are supported...</span>
+  <span class="k">if</span> <span class="p">((</span><span class="n">versionInfo</span><span class="p">.</span><span class="n">remoteProtocolCapabilitiesFlags</span> <span class="o">&amp;</span> <span class="n">PBRemoteProtocolCapabilitiesFlagsAppMessage8kSupported</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Send a larger message!</span>
+    <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">update</span> <span class="o">=</span> <span class="l">@{</span> <span class="l">@(</span><span class="mi">0</span><span class="l">)</span><span class="o">:</span> <span class="n">someHugePayload</span> <span class="l">}</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">watch</span> <span class="nl">appMessagesPushUpdate</span><span class="p">:</span><span class="n">update</span> <span class="nl">onSent</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">PBWatch</span> <span class="o">*</span><span class="n">watch</span><span class="p">,</span> <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">update</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// ...</span>
+    <span class="p">}];</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Fall back to sending smaller 126 byte messages...</span>
+  <span class="p">}</span>
+<span class="p">}];</span>
+</pre></div><h3 id="swift-support" class="anchor">Swift Support</h3><p>The library now exports a module which makes using PebbleKit iOS in
+<a href="https://developer.apple.com/swift/" title="" class="">Swift</a> projects much easier. PebbleKit iOS
+3.0 also adds nullability and generic annotations so that developers get the
+best Swift experience possible.</p><div class="highlight"><pre><span class="n">func</span> <span class="n">application</span><span class="p">(</span><span class="nl">application</span><span class="p">:</span> <span class="bp">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nl">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSObject</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">]</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+  <span class="n">let</span> <span class="n">pebbleCentral</span> <span class="o">=</span> <span class="n">PBPebbleCentral</span><span class="p">.</span><span class="n">defaultCentral</span><span class="p">()</span>
+  <span class="n">pebbleCentral</span><span class="p">.</span><span class="n">appUUID</span> <span class="o">=</span> <span class="n">PBGolfUUID</span>
+  <span class="n">pebbleCentral</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="nb">self</span>
+  <span class="n">pebbleCentral</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+
+  <span class="k">return</span> <span class="nb">true</span>
+<span class="p">}</span>
+</pre></div><h2 id="minor-changes-and-deprecations" class="anchor">Minor Changes and Deprecations</h2>
+<ul>
+<li><p>Removed the PebbleVendor framework.</p>
+<ul>
+<li>Also removed CocoaLumberjack from the framework. This should
+reduce conflicts if the app is using CocoaLumberjack itself.</li>
+<li>If the project need these classes, it can keep the PebbleVendor dependency,
+therwise just remove it.</li>
+</ul></li>
+<li><p>Added <code>[watch releaseSharedSession]</code> which will close <em>Classic</em> sessions that
+are shared between iOS apps (but not <em>LE</em> sessions as they are not shared).</p>
+<ul>
+<li>If the app doesn&#39;t need to talk to Pebble in the background, it doesn&#39;t have
+to use it.</li>
+<li>If the app does talk to Pebble while in the background, call this method as
+soon as it is done talking.</li>
+</ul></li>
+<li><p>Deprecated <code>[watch closeSession:]</code> - please use <code>[watch releaseSharedSession]</code>
+if required (see note above). The app can&#39;t close <em>LE</em> sessions actively.</p></li>
+<li><p>Deprecated <code>[defaultCentral hasValidAppUUID]</code> - please use <code>[defaultCentral
+appUUID]</code> and check that it is not <code>nil</code>.</p></li>
+<li><p>Added <code>[defaultCentral addAppUUID:]</code> if the app talks to multiple app UUIDs from
+the iOS application, allowing <code>PebbleCentral</code> to eagerly create <em>LE</em>
+sessions.</p></li>
+<li><p>Added logging - PebbleKit iOS 3.0 now logs internal warnings and errors via
+<code>NSLog</code>. To change the verbosity, use <code>[PBPebbleCentral setLogLevel:]</code> or even
+override the <code>PBLog</code> function (to forward it to CocoaLumberjack for example).</p></li>
+<li><p>Changed <code>[watch appMessagesAddReceiveUpdateHandler:]</code> - the handler must not
+be <code>nil</code>.</p></li>
+</ul>
+<h2 id="other-recommendations" class="anchor">Other Recommendations</h2><h3 id="faster-connection" class="anchor">Faster Connection</h3><p>Set <code>central.appUUID</code> before calling <code>[central run]</code>. If using multiple app
+UUIDs please use the new <code>addAppUUID:</code> API before calling <code>[central run]</code> for
+every app UUID that the app will talk to.</p><h3 id="background-apps" class="anchor">Background Apps</h3><p>If the app wants to run in the background (please remember that Apple might
+reject it unless it provides reasonable cause) add the following entries to the
+<code>UIBackgroundModes</code> item in the project&#39;s <code>Info.plist</code> file:</p>
+<ul>
+<li><p><code>bluetooth-peripheral</code> (&quot;App shares data using CoreBluetooth&quot;) which is used
+for communication.</p></li>
+<li><p><code>bluetooth-central</code> (&quot;App communicates using CoreBluetooth&quot;) which is used for
+discovering and reconnecting Pebbles.</p></li>
+</ul>
+<h3 id="compatibility-with-older-pebbles" class="anchor">Compatibility with Older Pebbles</h3><p>Most of the Pebble users today will be using a firmware that is not capable of
+connecting to an iOS application using <em>LE</em>. <em>LE</em> support will gradually roll
+out to all Pebble watches. However, this will not happen overnight. Therefore,
+both <em>LE</em> and <em>Classic</em> PebbleKit connections have to be supported for some
+period of time. This has several implications for apps:</p>
+<ul>
+<li><p>Apps still need to be whitelisted. Read 
+<a href="/guides/appstore-publishing/whitelisting/"><em>iOS App Whitelisting</em></a> for more information and to
+whitelist a new app.</p></li>
+<li><p>Because the <em>Classic</em> communication channel is shared on older Pebble firmware
+versions, iOS apps still need to provide a UI to let the user connect to/disconnect
+from the Pebble app. For example, a &quot;Disconnect&quot; button would cause <code>[watch
+releaseSharedSession]</code> to be called.</p></li>
+<li><p>In the project&#39;s <code>Info.plist</code> file:</p>
+<ul>
+<li>The <code>UISupportedExternalAccessoryProtocols</code> key still needs to be added with
+the value <code>com.getpebble.public</code>.</li>
+<li>The <code>external-accessory</code> value needs to be added to the <code>UIBackgroundModes</code>
+array, if you want to support using the app while backgrounded.</li>
+</ul></li>
+</ul>
+
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/migration/pebblekit-ios-3/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-new">What&#39;s New</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#sharing-no-more-dedicated-channels-per-app">Sharing No More: Dedicated Channels per App</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#starting-an-app-from-pebble">Starting an App from Pebble</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#how-to-upgrade">How to Upgrade</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#breaking-api-changes">Breaking API Changes</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#app-uuids-are-now-nsuuids">App UUIDs Are Now NSUUIDs</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#cold-pbpebblecentral">Cold PBPebbleCentral</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#new-features">New Features</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#8k-appmessage-buffers">8K AppMessage Buffers</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#swift-support">Swift Support</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#minor-changes-and-deprecations">Minor Changes and Deprecations</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#other-recommendations">Other Recommendations</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#faster-connection">Faster Connection</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#background-apps">Background Apps</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#compatibility-with-older-pebbles">Compatibility with Older Pebbles</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

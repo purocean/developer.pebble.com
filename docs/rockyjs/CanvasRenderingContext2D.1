@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CanvasRenderingContext2D // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/rockyjs/CanvasRenderingContext2D/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/rockyjs/">Pebble JavaScript API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/rockyjs/CanvasRenderingContext2D/">CanvasRenderingContext2D</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#TextMetrics"><span>TextMetrics</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#fillStyle"><span>fillStyle</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#Canvas"><span>Canvas</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#strokeStyle"><span>strokeStyle</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#canvas"><span>canvas</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#lineWidth"><span>lineWidth</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#font"><span>font</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#textAlign"><span>textAlign</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#clearRect"><span>clearRect</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#fillRect"><span>fillRect</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#strokeRect"><span>strokeRect</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#fillText"><span>fillText</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#measureText"><span>measureText</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#beginPath"><span>beginPath</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#closePath"><span>closePath</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#moveTo"><span>moveTo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#lineTo"><span>lineTo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#arc"><span>arc</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#rect"><span>rect</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#fill"><span>fill</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#stroke"><span>stroke</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#save"><span>save</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#restore"><span>restore</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/CanvasRenderingContext2D/#rockyFillRadial"><span>rockyFillRadial</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/rockyjs/console/">console</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/console/#log"><span>log</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/console/#warn"><span>warn</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/console/#error"><span>error</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/rockyjs/Date/">Date</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/Date/#toLocaleString"><span>toLocaleString</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/Date/#toLocaleTimeString"><span>toLocaleTimeString</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/Date/#toLocaleDateString"><span>toLocaleDateString</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/rockyjs/rocky/">rocky</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#RockyPostMessageErrorCallback"><span>RockyPostMessageErrorCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#RockyPostMessageConnectedCallback"><span>RockyPostMessageConnectedCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#WatchInfo"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#watchInfo"><span>watchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#RockyMemoryPressureCallback"><span>RockyMemoryPressureCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#RockyPostMessageDisconnectedCallback"><span>RockyPostMessageDisconnectedCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#UserPreferences"><span>UserPreferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#RockyDrawCallback"><span>RockyDrawCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#RockyMessageCallback"><span>RockyMessageCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#RockyTickCallback"><span>RockyTickCallback</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#userPreferences"><span>userPreferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open">
+        <a href="/docs/rockyjs/rocky/#on"><span>on</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#addEventListener"><span>addEventListener</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#removeEventListener"><span>removeEventListener</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#off"><span>off</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#postMessage"><span>postMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/rockyjs/rocky/#requestDraw"><span>requestDraw</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+<option value="#methods">METHODS</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#clearRect">clearRect</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#fillRect">fillRect</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#strokeRect">strokeRect</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#fillText">fillText</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#measureText">measureText</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#beginPath">beginPath</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#closePath">closePath</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#moveTo">moveTo</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#lineTo">lineTo</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#arc">arc</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#rect">rect</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#fill">fill</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#stroke">stroke</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#save">save</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#restore">restore</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#rockyFillRadial">rockyFillRadial</option>
+
+
+
+          
+<option value="#members">MEMBERS</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#fillStyle">fillStyle</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#strokeStyle">strokeStyle</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#canvas">canvas</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#lineWidth">lineWidth</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#font">font</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#textAlign">textAlign</option>
+
+
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#TextMetrics">TextMetrics</option>
+
+  <option value="/docs/rockyjs/CanvasRenderingContext2D/#Canvas">Canvas</option>
+
+
+
+
+          <h3><a href="#">Examples</a></h3>
+<ul class="toc">
+  <li class="toc__item"><a href="/tutorials/js-watchface-tutorial/part1/">Watchface Tutorial</a></li>
+  <li class="toc__item"><a href="https://github.com/pebble-examples/rocky-memorypressure">Memory Pressure</a></li>
+</ul>
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__js">
+
+      <!--
+<div class="alert alert--large alert--fg-white alert--bg-dark-red">
+    <p>
+        This documentation includes information about APIs and functionality
+        which is only available in Pebble SDK 4.2-BETA.
+    </p>
+</div>
+-->
+
+
+      <h1 class="pagetitle">CanvasRenderingContext2D</h1>
+
+      
+
+
+
+<p>The CanvasRenderingContext2D interface is used for drawing rectangles, text, images and other objects onto the canvas element. It provides the 2D rendering context for the drawing on the device's display.</p>
+
+
+
+
+
+<p>The canvas uses a standard x and y  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes">coordinate system</a>. </p>
+
+
+
+
+
+<p>The <code>CanvasRenderingContext2D</code> object is obtained as a parameter in the <a href="/docs/rockyjs/rocky#on">rocky.on('draw', ...)</a> event.</p>
+
+
+
+
+
+<p><code>rocky.on('draw', function(drawEvent) {<br>&nbsp;&nbsp;var ctx = drawEvent.context;<br>});</code></p>
+
+
+
+
+
+<p>The state of pixels is maintained between each draw, so developers are  responsible for clearing an area, before drawing again. </p>
+
+
+
+
+
+<p>Please note that this API is still in development and there may be some  limitations, which are documented below. We will also be adding support  for more common APIs in future releases.</p>
+
+
+
+
+
+
+      
+        <h3 class="anchor" id="methods">Methods</h3>
+        
+          <div class="docs__item__anchor" id="clearRect">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">clearRect</span>(<span class="docs__item__param">x</span>, <span class="docs__item__param">y</span>, <span class="docs__item__param">width</span>, <span class="docs__item__param">height</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Sets all pixels in the rectangle at (<code>x</code>,<code>y</code>) with size (<code>width</code>, <code>height</code>) to black, erasing any previously drawn content.</p>
+
+
+
+
+
+<p><code>ctx.clearRect(0, 0, 144, 168);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Number</span> x</dt>
+        <dd>
+
+
+
+<p>The x-axis coordinate of the rectangle's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> y</dt>
+        <dd>
+
+
+
+<p>The y-axis coordinate of the rectangle's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> width</dt>
+        <dd>
+
+
+
+<p>The rectangle's width</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> height</dt>
+        <dd>
+
+
+
+<p>The rectangle's height</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="fillRect">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">fillRect</span>(<span class="docs__item__param">x</span>, <span class="docs__item__param">y</span>, <span class="docs__item__param">width</span>, <span class="docs__item__param">height</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Draws a filled rectangle at (<code>x</code>,<code>y</code>) with size (<code>width</code>, <code>height</code>),  using the current fill style.</p>
+
+
+
+
+
+<p><code>ctx.fillRect(0, 30, 144, 30);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Number</span> x</dt>
+        <dd>
+
+
+
+<p>The x-axis coordinate of the rectangle's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> y</dt>
+        <dd>
+
+
+
+<p>The y-axis coordinate of the rectangle's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> width</dt>
+        <dd>
+
+
+
+<p>The rectangle's width</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> height</dt>
+        <dd>
+
+
+
+<p>The rectangle's height</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="strokeRect">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">strokeRect</span>(<span class="docs__item__param">x</span>, <span class="docs__item__param">y</span>, <span class="docs__item__param">width</span>, <span class="docs__item__param">height</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Paints a rectangle at (<code>x</code>,<code>y</code>) with size (<code>width</code>, <code>height</code>), using the current stroke style.</p>
+
+
+
+
+
+<p><code>ctx.strokeRect(0, 30, 144, 30);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Number</span> x</dt>
+        <dd>
+
+
+
+<p>The x-axis coordinate of the rectangle's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> y</dt>
+        <dd>
+
+
+
+<p>The y-axis coordinate of the rectangle's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> width</dt>
+        <dd>
+
+
+
+<p>The rectangle's width</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> height</dt>
+        <dd>
+
+
+
+<p>The rectangle's height</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="fillText">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">fillText</span>(<span class="docs__item__param">text</span>, <span class="docs__item__param">x</span>, <span class="docs__item__param">y</span>, <span class="docs__item__param">maxWidth</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Draws (fills) <code>text</code> at the given (<code>x</code>,<code>y</code>) position.</p>
+
+
+
+
+
+<p><code>ctx.fillText('Hello World', 0, 30, 144);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> text</dt>
+        <dd>
+
+
+
+<p>The text to draw</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> x</dt>
+        <dd>
+
+
+
+<p>The x-axis coordinate of the text's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> y</dt>
+        <dd>
+
+
+
+<p>The y-axis coordinate of the text's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> maxWidth</dt>
+        <dd>
+
+
+
+<p>(Optional) Maximum width to draw. If specified,    and the string is wider than the width, the font is adjusted to use a    smaller font.</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="measureText">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">measureText</span>(<span class="docs__item__param">text</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Returns a <a href="#TextMetrics">TextMetrics</a> object containing    information about <code>text</code>.</p>
+
+
+
+
+
+<p><code>var dimensions = ctx.measureText('Hello World');</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">String</span> text</dt>
+        <dd>
+
+
+
+<p>The text to measure</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+    <h4>Returns</h4>
+    
+      
+
+
+
+<p>A <code>TextMetrics</code> object with information about the measured text</p>
+
+
+
+
+
+    
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="beginPath">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">beginPath</span>()
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Starts a new path by emptying the list of sub-paths. Call this method when you want to create a new path.</p>
+
+
+
+
+
+<p><code>ctx.beginPath();</code></p>
+
+
+
+
+
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="closePath">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">closePath</span>()
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Causes the point of the pen to move back to the start of the    current sub-path. It tries to add a straight line (but does not    actually draw it) from the current point to the start. If the shape has    already been closed or has only one point, this function does nothing.</p>
+
+
+
+
+
+<p><code>ctx.closePath();</code></p>
+
+
+
+
+
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="moveTo">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">moveTo</span>(<span class="docs__item__param">x</span>, <span class="docs__item__param">y</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Moves the starting point of a new sub-path to the (<code>x</code>,<code>y</code>) coordinates.</p>
+
+
+
+
+
+<p><code>ctx.moveTo(10, 20);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Number</span> x</dt>
+        <dd>
+
+
+
+<p>The destination point on the x-axis</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> y</dt>
+        <dd>
+
+
+
+<p>The destination point on the y-axis</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="lineTo">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">lineTo</span>(<span class="docs__item__param">x</span>, <span class="docs__item__param">y</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Connects the last point of the sub-path to the (<code>x</code>,<code>y</code>) coordinates with a straight line.</p>
+
+
+
+
+
+<p><code>ctx.lineTo(10, 20);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Number</span> x</dt>
+        <dd>
+
+
+
+<p>The destination point on the x-axis</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> y</dt>
+        <dd>
+
+
+
+<p>The destination point on the y-axis</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="arc">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">arc</span>(<span class="docs__item__param">x</span>, <span class="docs__item__param">y</span>, <span class="docs__item__param">r</span>, <span class="docs__item__param">startAngle</span>, <span class="docs__item__param">endAngle</span>, <span class="docs__item__param">anticlockwise</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Adds an arc to the path which is centered at (<code>x</code>,<code>y</code>)    position with radius <code>r</code> starting at <code>startAngle</code> and ending at    <code>endAngle</code> going in the direction determined by the <code>anticlockwise</code>     parameter (defaulting to clockwise).</p>
+
+
+
+
+
+<p>If <code>startAngle</code> > <code>endAngle</code> nothing will be drawn, and if the difference   between <code>startAngle</code> and <code>endAngle</code> exceeds 2π, a full circle will be drawn.</p>
+
+
+
+
+
+<p><code>// Draw a full circle outline<br>ctx.strokeStyle = 'white';<br>ctx.beginPath();<br>ctx.arc(72, 84, 40, 0, 2 * Math.PI, false);<br>ctx.stroke();</code></p>
+
+
+
+
+
+<p>Please note this function does not work with <code>.fill</code>, you must use  <a href="#rockyFillRadial">CanvasRenderingContext2D.rockyFillRadial</a> instead.</p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Number</span> x</dt>
+        <dd>
+
+
+
+<p>The x-axis coordinate of the arc's center</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> y</dt>
+        <dd>
+
+
+
+<p>The y-axis coordinate of the arc's center</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> r</dt>
+        <dd>
+
+
+
+<p>The radius of the arc</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> startAngle</dt>
+        <dd>
+
+
+
+<p>The angle at which the arc starts, measured    clockwise from the positive x axis and expressed in radians.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> endAngle</dt>
+        <dd>
+
+
+
+<p>The angle at which the arc ends, measured    clockwise from the positive x axis and expressed in radians.</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777"></span> anticlockwise</dt>
+        <dd>
+
+
+
+<p>(Optional) <code>Boolean</code> which, if <code>true</code>,    causes the arc to be drawn counter-clockwise between the two angles    (<code>false</code> by default)</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="rect">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">rect</span>(<span class="docs__item__param">x</span>, <span class="docs__item__param">y</span>, <span class="docs__item__param">width</span>, <span class="docs__item__param">height</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Creates a path for a rectangle at position (<code>x</code>,<code>y</code>) with a    size that is determined by <code>width</code> and <code>height</code>. Those four points are    connected by straight lines and the sub-path is marked as closed, so    that you can fill or stroke this rectangle.</p>
+
+
+
+
+
+<p><code>ctx.rect(0, 30, 144, 50);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Number</span> x</dt>
+        <dd>
+
+
+
+<p>The x-axis coordinate of the rectangle's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> y</dt>
+        <dd>
+
+
+
+<p>The y-axis coordinate of the rectangle's starting point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> width</dt>
+        <dd>
+
+
+
+<p>The rectangle's width</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> height</dt>
+        <dd>
+
+
+
+<p>The rectangle's height</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="fill">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">fill</span>()
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Fills the current path with the current <a href="#fillStyle">fillStyle</a>.</p>
+
+
+
+
+
+<p><code>ctx.fill();</code></p>
+
+
+
+
+
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="stroke">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">stroke</span>()
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Strokes the current path with the current <a href="#strokeStyle">strokeStyle</a>.</p>
+
+
+
+
+
+<p><code>ctx.stroke();</code></p>
+
+
+
+
+
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="save">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">save</span>()
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Saves the entire state of the canvas by pushing the current  state onto a stack.</p>
+
+
+
+
+
+<p><code>ctx.save();</code></p>
+
+
+
+
+
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="restore">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">restore</span>()
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Restores the most recently saved canvas state by popping the  top entry in the drawing state stack. If there is no saved state, this  method does nothing.</p>
+
+
+
+
+
+<p><code>ctx.restore();</code></p>
+
+
+
+
+
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="rockyFillRadial">
+            <div class="docs__item docs__item--function">
+              <div class="docs__item__header">
+   CanvasRenderingContext2D.<span class="docs__item__name">rockyFillRadial</span>(<span class="docs__item__param">x</span>, <span class="docs__item__param">y</span>, <span class="docs__item__param">innerRadius</span>, <span class="docs__item__param">outerRadius</span>, <span class="docs__item__param">startAngle</span>, <span class="docs__item__param">endAngle</span>)
+  <div class="clearfix"></div>
+</div>
+
+<div class="docs__item__body">
+  
+
+
+
+<p>Fills a circle clockwise between startAngle and endAngle where   0 is the start of the circle beginning at the 3 o'clock position on a   watchface.</p>
+
+
+
+
+
+<p>  If <code>startAngle</code> > <code>endAngle</code> nothing will be drawn, and if the difference   between <code>startAngle</code> and <code>endAngle</code> exceeds 2π, a full circle will be drawn.</p>
+
+
+
+
+
+<p><code>// Draw a filled circle<br>ctx.fillStyle = 'white';<br>ctx.rockyFillRadial(72, 84, 0, 30, 0, 2 * Math.PI);</code></p>
+
+
+
+
+
+  
+    <h4>Parameters</h4>
+    <dl>
+      
+        <dt><span style="color: #777">Number</span> x</dt>
+        <dd>
+
+
+
+<p>The x-axis coordinate of the radial's center point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> y</dt>
+        <dd>
+
+
+
+<p>The y-axis coordinate of the radial's center point</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> innerRadius</dt>
+        <dd>
+
+
+
+<p>The inner radius of the circle. Use 0 for a full circle</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> outerRadius</dt>
+        <dd>
+
+
+
+<p>The outer radius of the circle</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> startAngle</dt>
+        <dd>
+
+
+
+<p>Radial starting angle</p>
+
+
+
+
+</dt>
+      
+        <dt><span style="color: #777">Number</span> endAngle</dt>
+        <dd>
+
+
+
+<p>Radial finishing angle. If smaller than <code>startAngle</code> nothing is drawn</p>
+
+
+
+
+</dt>
+      
+    </dl>
+  
+
+  
+
+</div>
+
+            </div>
+          </div>
+        
+      
+
+      
+        <h3 class="anchor" id="members">Members</h3>
+        
+          <div class="docs__item__anchor" id="fillStyle">
+            <div class="docs__item docs__item--member">
+              <div class="docs__item__header">
+                CanvasRenderingContext2D.<span class="docs__item__name">fillStyle</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="docs__item__body">
+                
+
+
+
+<p>Specifies the color to use inside shapes. The default is <code>#000</code> (black).</p>
+
+
+
+
+
+<h4><p>Options</p></h4>
+
+
+
+
+
+<p>  Possible values:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p>Most (but not all) CSS color names. e.g. <code>blanchedalmond</code></p></li><li><p>Pebble color names. e.g. <code>shockingpink</code></p></li><li><p>Hex color codes, short and long. e.g. <code>#FFFFFF</code> or <code>#FFF</code></p></li>
+</ul>
+
+
+
+
+
+<p>Please note that we currently only support solid colors. You may specifiy <code>transparent</code> or <code>clear</code> for transparency, but we do do not support  partial transparency or the <code>#RRGGBBAA</code> notation yet.</p>
+
+
+
+
+
+<p><code>ctx.fillStyle = 'white';</code></p>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="strokeStyle">
+            <div class="docs__item docs__item--member">
+              <div class="docs__item__header">
+                CanvasRenderingContext2D.<span class="docs__item__name">strokeStyle</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="docs__item__body">
+                
+
+
+
+<p>Specifies the color to use for lines around shapes. The default is <code>#000</code> (black).</p>
+
+
+
+
+
+<h4><p>Options</p></h4>
+
+
+
+
+
+<p>  Possible values:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p>Most (but not all) CSS color names. e.g. <code>blanchedalmond</code></p></li><li><p>Pebble color names. e.g. <code>shockingpink</code></p></li><li><p>Hex color codes, short and long. e.g. <code>#FFFFFF</code> or <code>#FFF</code></p></li>
+</ul>
+
+
+
+
+
+<p>Please note that we currently only support solid colors. You may specifiy <code>transparent</code> or <code>clear</code> for transparency, but we do do not support  partial transparency or the <code>#RRGGBBAA</code> notation yet.</p>
+
+
+
+
+
+<p><code>ctx.strokeStyle = 'red';</code></p>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="canvas">
+            <div class="docs__item docs__item--member">
+              <div class="docs__item__header">
+                CanvasRenderingContext2D.<span class="docs__item__name">canvas</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="docs__item__body">
+                
+
+
+
+<p>A <a href="#Canvas">Canvas</a> object containing information about  the system's canvas (display).</p>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="lineWidth">
+            <div class="docs__item docs__item--member">
+              <div class="docs__item__header">
+                CanvasRenderingContext2D.<span class="docs__item__name">lineWidth</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="docs__item__body">
+                
+
+
+
+<p>The width of lines drawn (to the nearest integer) with the context (<code>1.0</code> by default).</p>
+
+
+
+
+
+<p><code>ctx.lineWidth = 8;</code></p>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="font">
+            <div class="docs__item docs__item--member">
+              <div class="docs__item__header">
+                CanvasRenderingContext2D.<span class="docs__item__name">font</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="docs__item__body">
+                
+
+
+
+<p>Specifies the current text style being used when drawing text.  Although this string uses the same syntax as a CSS font specifier, you  cannot specifiy arbitrary values and you must only use one of the values below.</p>
+
+
+
+
+
+<p> The default font is <code>14px bold Gothic</code>.</p>
+
+
+
+
+
+<p><code>ctx.font = '28px bold Droid-serif';</code></p>
+
+
+
+
+
+<h4><p>Options</p></h4>
+
+
+
+
+
+<p>  Possible values:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>18px bold Gothic</code></p></li><li><p><code>14px Gothic</code></p></li><li><p><code>14px bold Gothic</code></p></li><li><p><code>18px Gothic</code></p></li><li><p><code>24px Gothic</code></p></li><li><p><code>24px bold Gothic</code></p></li><li><p><code>28px Gothic</code></p></li><li><p><code>28px bold Gothic</code></p></li><li><p><code>30px bolder Bitham</code></p></li><li><p><code>42px bold Bitham</code></p></li><li><p><code>42px light Bitham</code></p></li><li><p><code>42px Bitham-numeric</code></p></li><li><p><code>34px Bitham-numeric</code></p></li><li><p><code>21px Roboto</code></p></li><li><p><code>49px Roboto-subset</code></p></li><li><p><code>28px bold Droid-serif</code></p></li><li><p><code>20px bold Leco-numbers</code></p></li><li><p><code>26px bold Leco-numbers-am-pm</code></p></li><li><p><code>32px bold numbers Leco-numbers</code></p></li><li><p><code>36px bold numbers Leco-numbers</code></p></li><li><p><code>38px bold numbers Leco-numbers</code></p></li><li><p><code>42px bold numbers Leco-numbers</code></p></li><li><p><code>28px light numbers Leco-numbers</code></p></li>
+</ul>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="textAlign">
+            <div class="docs__item docs__item--member">
+              <div class="docs__item__header">
+                CanvasRenderingContext2D.<span class="docs__item__name">textAlign</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="docs__item__body">
+                
+
+
+
+<p>Specifies the current text alignment being used when drawing  text. Beware that the alignment is based on the x-axis coordinate value of   the <a href="#fillText">CanvasRenderingContext2D.fillText</a> method.</p>
+
+
+
+
+
+<p><code>ctx.textAlign = 'center';</code></p>
+
+
+
+
+
+<h4><p>Options</p></h4>
+
+
+
+
+
+<p>  Possible values:</p>
+
+
+
+
+
+<ul class="desc-list">
+<li><p><code>left</code> - The text is left-aligned</p></li><li><p><code>right</code> - The text is right-aligned</p></li><li><p><code>center</code> - The text is center-aligned</p></li><li><p><code>start</code> (default) - The text is aligned left, unless using a   right-to-left language. Currently only left-to-right is supported.</p></li><li><p><code>end</code> - The text is aligned right, unless using a right-to-left  language. Currently only left-to-right is supported.</p></li>
+</ul>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        
+      
+
+      
+        <h3 class="anchor" id="typedefs">Typedefs</h3>
+        
+          <div class="docs__item__anchor" id="TextMetrics">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+                  <span class="docs__item__name">TextMetrics</span>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="docs__item__body">
+                  
+
+
+
+<p>The TextMetrics interface represents the dimensions of a text    in the canvas (display), as created by <a href="#measureText">measureText</a>.</p>
+
+
+
+
+
+                  
+                  <h4>Properties</h4>
+                  <dl>
+                    
+                    <dt><span style="color: #777"></span> width</dt>
+                    
+
+
+
+<p>Calculated width of text in pixels.</p>
+
+
+
+
+
+                    
+                    <dt><span style="color: #777"></span> height</dt>
+                    
+
+
+
+<p>Calculated height of text in pixels.</p>
+
+
+
+
+
+                    
+                  </dl>
+                  
+                </div>
+              
+            </div>
+          </div>
+        
+          <div class="docs__item__anchor" id="Canvas">
+            <div class="docs__item docs__item--typedef">
+              
+                <div class="docs__item__header">
+                  <span class="docs__item__name">Canvas</span>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="docs__item__body">
+                  
+
+
+
+<p>Provides information about the device's canvas (display). This is not actually a DOM element, it is provided for standards compliance only. </p>
+
+
+
+
+
+<p><code>rocky.on('draw', function(drawEvent) {<br>&nbsp;&nbsp;var ctx = drawEvent.context;<br>&nbsp;&nbsp;var h = ctx.canvas.unobstructedHeight;<br>});</code></p>
+
+
+
+
+
+                  
+                  <h4>Properties</h4>
+                  <dl>
+                    
+                    <dt><span style="color: #777"></span> clientWidth</dt>
+                    
+
+
+
+<p>The full width of the canvas.</p>
+
+
+
+
+
+                    
+                    <dt><span style="color: #777"></span> clientHeight</dt>
+                    
+
+
+
+<p>The full height of the canvas.</p>
+
+
+
+
+
+                    
+                    <dt><span style="color: #777"></span> unobstructedWidth</dt>
+                    
+
+
+
+<p>The width of the canvas that is not    obstructed by system overlays (Timeline Quick View).</p>
+
+
+
+
+
+                    
+                    <dt><span style="color: #777"></span> unobstructedHeight</dt>
+                    
+
+
+
+<p>The height of the canvas that is    not obstructed by system overlays (Timeline Quick View).</p>
+
+
+
+
+
+                    
+                  </dl>
+                  
+                </div>
+              
+            </div>
+          </div>
+        
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+<h3><a href="#methods">Methods</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#clearRect">clearRect</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#fillRect">fillRect</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#strokeRect">strokeRect</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#fillText">fillText</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#measureText">measureText</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#beginPath">beginPath</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#closePath">closePath</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#moveTo">moveTo</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#lineTo">lineTo</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#arc">arc</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#rect">rect</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#fill">fill</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#stroke">stroke</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#save">save</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#restore">restore</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#rockyFillRadial">rockyFillRadial</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#members">Members</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#fillStyle">fillStyle</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#strokeStyle">strokeStyle</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#canvas">canvas</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#lineWidth">lineWidth</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#font">font</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#textAlign">textAlign</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#TextMetrics">TextMetrics</a></li>
+  
+    <li class="toc__item"><a href="/docs/rockyjs/CanvasRenderingContext2D/#Canvas">Canvas</a></li>
+  
+</ul>
+
+
+
+      <h3><a href="#">Examples</a></h3>
+<ul class="toc">
+  <li class="toc__item"><a href="/tutorials/js-watchface-tutorial/part1/">Watchface Tutorial</a></li>
+  <li class="toc__item"><a href="https://github.com/pebble-examples/rocky-memorypressure">Memory Pressure</a></li>
+</ul>
+
+      <hr />
+<p>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API" 
+  target="_blank">Web API</a> by Mozilla Contributors is licensed under 
+  <a href="http://creativecommons.org/licenses/by-sa/2.5/" 
+  target="_blank">CC-BY-SA 2.5</a>.
+</p>
+
+    </div>
+  </div>
+</div>
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you need some help understanding the something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

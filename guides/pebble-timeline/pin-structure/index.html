@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Creating Pins // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to create timeline pins with reminders, actions, and layouts.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/pebble-timeline/pin-structure/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/pebble-timeline/pin-structure/"><span>Creating Pins</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-libraries/"><span>Libraries for Pushing Pins</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-js/"><span>Managing Subscriptions</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-public/"><span>Public Web API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-architecture/"><span>Service Architecture</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="pin-overview">Pin Overview</option>
+          
+            <option value="notification-object">- Notification Object</option>
+          
+            <option value="layout-object">- Layout Object</option>
+          
+            <option value="reminder-object">- Reminder Object</option>
+          
+            <option value="action-object">- Action Object</option>
+          
+            <option value="minimal-pin-example">Minimal Pin Example</option>
+          
+            <option value="complete-pin-example">Complete Pin Example</option>
+          
+            <option value="view-modes">View Modes</option>
+          
+            <option value="pin-icons">Pin Icons</option>
+          
+            <option value="notifications">- Notifications</option>
+          
+            <option value="generic">- Generic</option>
+          
+            <option value="weather">- Weather</option>
+          
+            <option value="timeline">- Timeline</option>
+          
+            <option value="sports">- Sports</option>
+          
+            <option value="action-results">- Action Results</option>
+          
+            <option value="events">- Events</option>
+          
+            <option value="miscellaneous">- Miscellaneous</option>
+          
+            <option value="custom-icons">- Custom Icons</option>
+          
+            <option value="pin-layouts">Pin Layouts</option>
+          
+            <option value="generic-layout">- Generic Layout</option>
+          
+            <option value="calendar-layout">- Calendar Layout</option>
+          
+            <option value="sports-layout">- Sports Layout</option>
+          
+            <option value="weather-layout">- Weather Layout</option>
+          
+            <option value="generic-reminder">- Generic Reminder</option>
+          
+            <option value="generic-notification">- Generic Notification</option>
+          
+            <option value="pin-actions">Pin Actions</option>
+          
+            <option value="using-a-launch-code">- Using a Launch Code</option>
+          
+            <option value="reading-the-launch-code">- Reading the Launch Code</option>
+          
+            <option value="http-actions">- HTTP Actions</option>
+          
+            <option value="included-headers">- Included Headers</option>
+          
+            <option value="testing-pins">Testing Pins</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Creating Pins</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>A timeline pin contains all the information required to be displayed on the
+watch, and is written in the JSON object format. It can contain basic
+information such as title and times, or more advanced data such as
+notifications, reminders, or actions that can be used out from the pin view.</p><h2 id="pin-overview" class="anchor">Pin Overview</h2><p>The table below details the pin object fields and their function within the
+object. Those marked in <strong>bold</strong> are required.</p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong><code>id</code></strong></td>
+<td>String (max. 64 chars)</td>
+<td>Developer-implemented identifier for this pin event, which cannot be re-used. This means that any pin that was previously deleted cannot then be re-created with the same <code>id</code>.</td>
+</tr>
+<tr>
+<td><strong><code>time</code></strong></td>
+<td>String (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString" title="" class="">ISO date-time</a>)</td>
+<td>The start time of the event the pin represents, such as the beginning of a meeting. See <a href="/guides/pebble-timeline/timeline-public/#pin-time-limitations"><em>Pin Time Limitations</em></a> for information on the acceptable time range.</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>Integer number</td>
+<td>The duration of the event the pin represents, in minutes.</td>
+</tr>
+<tr>
+<td><code>createNotification</code></td>
+<td><a href="#notification-object" title="" class="">Notification object</a></td>
+<td>The notification shown when the event is first created.</td>
+</tr>
+<tr>
+<td><code>updateNotification</code></td>
+<td><a href="#notification-object" title="" class="">Notification object</a></td>
+<td>The notification shown when the event is updated but already exists.</td>
+</tr>
+<tr>
+<td><strong><code>layout</code></strong></td>
+<td><a href="#layout-object" title="" class="">Layout object</a></td>
+<td>Description of the values to populate the layout when the user views the pin.</td>
+</tr>
+<tr>
+<td><code>reminders</code></td>
+<td><a href="#reminder-object" title="" class="">Reminder object</a> array (Max. 3)</td>
+<td>Collection of event reminders to display before an event starts.</td>
+</tr>
+<tr>
+<td><code>actions</code></td>
+<td><a href="#action-object" title="" class="">Action object</a> array</td>
+<td>Collection of event actions that can be executed by the user.</td>
+</tr>
+</tbody></table>
+<h3 id="notification-object" class="anchor">Notification Object</h3><p>The notification objects used for <code>createNotification</code> and <code>updateNotification</code>
+contain only one common field: a Layout object describing the visual properties
+of the notification.</p><p>The other field (<code>time</code>) is used only in an <code>updateNotification</code> object. The
+<code>createNotification</code> type does <strong>not</strong> require a <code>time</code> attribute.</p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>layout</code></td>
+<td><a href="#layout-object" title="" class="">Layout object</a></td>
+<td>The layout that will be used to display this notification.</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>String (ISO date-time)</td>
+<td>The new time of the pin update.</td>
+</tr>
+</tbody></table>
+<p>The <code>createNotification</code> is shown when the pin is first delivered to the watch.</p><p>The <code>updateNotification</code> is shown when the pin already existed and is being
+updated on the watch. It will only be shown if the <code>updateNotification.time</code> is
+newer than the last <code>updateNotification.time</code> received by the watch.</p><p>Using these fields, developers can build a great experience for their users when
+live updating pins. For example, when sending updates about a sports game the
+app could use the <code>createNotification</code> to tell the user that &quot;The game has just
+been added to your timeline&quot; and the <code>updateNotification</code> to tell them that &quot;The
+game starting time has just been updated in your timeline.&quot;.</p><h3 id="layout-object" class="anchor">Layout Object</h3><p>The Layout object is used to describe any message shown in a customizable
+layout. This includes a pin in the timeline, a notification, and also reminders.
+Developers can choose between different layout types and customize them with
+attributes.</p><p>Required fields are shown in <strong>bold</strong>. Some layout types have additional
+required fields not shown below, but listed in their dedicated sections. Values
+for icon URIs can be found below under <a href="#pin-icons" title="" class="">Pin Icons</a>, although not all
+icons are available at all sizes.</p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong><code>type</code></strong></td>
+<td>String</td>
+<td>The type of layout the pin will use. See <a href="#pin-layouts" title="" class=""><em>Pin Layouts</em></a> for a list of available types.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The title of the pin when viewed.</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>String</td>
+<td>Shorter subtitle for details.</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td>String</td>
+<td>The body text of the pin. Maximum of 512 characters.</td>
+</tr>
+<tr>
+<td><code>tinyIcon</code></td>
+<td>String</td>
+<td>URI of the pin&#39;s tiny icon.</td>
+</tr>
+<tr>
+<td><code>smallIcon</code></td>
+<td>String</td>
+<td>URI of the pin&#39;s small icon.</td>
+</tr>
+<tr>
+<td><code>largeIcon</code></td>
+<td>String</td>
+<td>URI of the pin&#39;s large icon.</td>
+</tr>
+</tbody></table>
+<p>The following attributes are also available for all pin layout types
+<strong>(excluding notifications and reminders)</strong>.</p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>primaryColor</code></td>
+<td>String</td>
+<td>Six-digit color hexadecimal string or case-insensitive SDK constant (e.g.: &quot;665566&quot; or &quot;mintgreen&quot;), describing the primary text color.</td>
+</tr>
+<tr>
+<td><code>secondaryColor</code></td>
+<td>String</td>
+<td>Similar to <code>primaryColor</code>, except applies to the layout&#39;s secondary-colored elements.</td>
+</tr>
+<tr>
+<td><code>backgroundColor</code></td>
+<td>String</td>
+<td>Similar to <code>primaryColor</code>, except applies to the layout&#39;s background color.</td>
+</tr>
+<tr>
+<td><code>headings</code></td>
+<td>Array of Strings</td>
+<td>List of section headings in this layout. The list must be less than 128 characters in length, including the underlying delimiters (one byte) between each item. Longer items will be truncated with an ellipsis (&#39;...&#39;).</td>
+</tr>
+<tr>
+<td><code>paragraphs</code></td>
+<td>Array of Strings</td>
+<td>List of paragraphs in this layout. <strong>Must equal the number of <code>headings</code></strong>. The list must be less than 1024 characters in length, including the underlying delimiters (one byte) between each item. Longer items will be truncated with an ellipsis (&#39;...&#39;).</td>
+</tr>
+<tr>
+<td><code>lastUpdated</code></td>
+<td>ISO date-time</td>
+<td>Timestamp of when the pin’s data (e.g: weather forecast or sports score) was last updated.</td>
+</tr>
+</tbody></table>
+<h3 id="reminder-object" class="anchor">Reminder Object</h3><p>Reminders are synchronized to the watch and will be shown at the precise time
+set in the reminder. They work even when Pebble is disconnected from the
+user&#39;s mobile phone.</p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>time</code></td>
+<td>String (ISO date-time)</td>
+<td>The time the reminder is scheduled to be shown.</td>
+</tr>
+<tr>
+<td><code>layout</code></td>
+<td><a href="#layout-object" title="" class="">Layout object</a></td>
+<td>The layout of the reminder.</td>
+</tr>
+</tbody></table>
+<h3 id="action-object" class="anchor">Action Object</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>The name of the action that appears on the watch.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>String</td>
+<td>The type of action this will execute. See <a href="#pin-actions" title="" class=""><em>Pin Actions</em></a> for a list of available actions.</td>
+</tr>
+</tbody></table>
+<h2 id="minimal-pin-example" class="anchor">Minimal Pin Example</h2><p>The example pin object shown below includes only the required fields for a
+generic pin.</p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example-pin-generic-1"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-19T18:00:00Z"</span><span class="p">,</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericPin"</span><span class="p">,</span>
+    <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"News at 6 o'clock"</span><span class="p">,</span>
+    <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/NOTIFICATION_FLAG"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h2 id="complete-pin-example" class="anchor">Complete Pin Example</h2><p>Below is a more advanced example pin object:</p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"meeting-453923"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-19T15:00:00Z"</span><span class="p">,</span>
+  <span class="nt">"duration"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+  <span class="nt">"createNotification"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericNotification"</span><span class="p">,</span>
+      <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"New Item"</span><span class="p">,</span>
+      <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/NOTIFICATION_FLAG"</span><span class="p">,</span>
+      <span class="nt">"body"</span><span class="p">:</span> <span class="s2">"A new appointment has been added to your calendar at 4pm."</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">"updateNotification"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-19T16:00:00Z"</span><span class="p">,</span>
+    <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericNotification"</span><span class="p">,</span>
+      <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/NOTIFICATION_FLAG"</span><span class="p">,</span>
+      <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Reminder"</span><span class="p">,</span>
+      <span class="nt">"body"</span><span class="p">:</span> <span class="s2">"The meeting has been rescheduled to 4pm."</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Client Meeting"</span><span class="p">,</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericPin"</span><span class="p">,</span>
+    <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/TIMELINE_CALENDAR"</span><span class="p">,</span>
+    <span class="nt">"body"</span><span class="p">:</span> <span class="s2">"Meeting in Kepler at 4:00pm. Topic: discuss pizza toppings for party."</span>
+  <span class="p">},</span>
+  <span class="nt">"reminders"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-19T14:45:00Z"</span><span class="p">,</span>
+      <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericReminder"</span><span class="p">,</span>
+        <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/TIMELINE_CALENDAR"</span><span class="p">,</span>
+        <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Meeting in 15 minutes"</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-19T14:55:00Z"</span><span class="p">,</span>
+      <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericReminder"</span><span class="p">,</span>
+        <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/TIMELINE_CALENDAR"</span><span class="p">,</span>
+        <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Meeting in 5 minutes"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">"actions"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"View Schedule"</span><span class="p">,</span>
+      <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"openWatchApp"</span><span class="p">,</span>
+      <span class="nt">"launchCode"</span><span class="p">:</span> <span class="mi">15</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Show Directions"</span><span class="p">,</span>
+      <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"openWatchApp"</span><span class="p">,</span>
+      <span class="nt">"launchCode"</span><span class="p">:</span> <span class="mi">22</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div><h2 id="view-modes" class="anchor">View Modes</h2><p>When viewing pins in the timeline, they can be displayed in two different ways.</p>
+<table><thead>
+<tr>
+<th>State</th>
+<th>Preview</th>
+<th>Details</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Selected</td>
+<td><img src="/assets/images/guides/timeline/timeline-selected.png" /></td>
+<td>Three lines of text shown from the title, location and sender.</td>
+</tr>
+<tr>
+<td>Not selected</td>
+<td><img src="/assets/images/guides/timeline/timeline-one-line.png" /></td>
+<td>Time, short title, and icon are shown.</td>
+</tr>
+</tbody></table>
+<h2 id="pin-icons" class="anchor">Pin Icons</h2><p>The tables below detail the available icons provided by the system. Each icon
+can be used when pushing a pin in the following manner:</p><div class="highlight"><pre><span class="s2">"layout"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"genericNotification"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"title"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Example Pin"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"tinyIcon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"system://images/NOTIFICATION_FLAG"</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p>For general use in watchapps, PDC files are available for these icons in 
+<a href="/guides/app-resources/app-assets/#pebble-timeline-pin-icons"><em>App Assets</em></a>.</p></blockquote>
+<h3 id="notifications" class="anchor">Notifications</h3>
+<table><thead>
+<tr>
+<th>Preview</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/assets/images/guides/timeline/NOTIFICATION_GENERIC.svg" width="25" /></td>
+<td><code>NOTIFICATION_GENERIC</code></td>
+<td>Generic notification</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/NOTIFICATION_REMINDER.svg" width="25" /></td>
+<td><code>NOTIFICATION_REMINDER</code></td>
+<td>Reminder notification</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/NOTIFICATION_FLAG.svg" width="25" /></td>
+<td><code>NOTIFICATION_FLAG</code></td>
+<td>Generic notification flag</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/NOTIFICATION_LIGHTHOUSE.svg" width="25" /></td>
+<td><code>NOTIFICATION_LIGHTHOUSE</code></td>
+<td>Generic lighthouse</td>
+</tr>
+</tbody></table>
+<h3 id="generic" class="anchor">Generic</h3>
+<table><thead>
+<tr>
+<th>Preview</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/assets/images/guides/timeline/GENERIC_EMAIL.svg" width="25" /></td>
+<td><code>GENERIC_EMAIL</code></td>
+<td>Generic email</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/GENERIC_SMS.svg" width="25" /></td>
+<td><code>GENERIC_SMS</code></td>
+<td>Generic SMS icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/GENERIC_WARNING.svg" width="25" /></td>
+<td><code>GENERIC_WARNING</code></td>
+<td>Generic warning icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/GENERIC_CONFIRMATION.svg" width="25" /></td>
+<td><code>GENERIC_CONFIRMATION</code></td>
+<td>Generic confirmation icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/GENERIC_QUESTION.svg" width="25" /></td>
+<td><code>GENERIC_QUESTION</code></td>
+<td>Generic question icon</td>
+</tr>
+</tbody></table>
+<h3 id="weather" class="anchor">Weather</h3>
+<table><thead>
+<tr>
+<th>Preview</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/assets/images/guides/timeline/PARTLY_CLOUDY.svg" width="25" /></td>
+<td><code>PARTLY_CLOUDY</code></td>
+<td>Partly cloudy weather</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/CLOUDY_DAY.svg" width="25" /></td>
+<td><code>CLOUDY_DAY</code></td>
+<td>Cloudy weather</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/LIGHT_SNOW.svg" width="25" /></td>
+<td><code>LIGHT_SNOW</code></td>
+<td>Light snow weather</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/LIGHT_RAIN.svg" width="25" /></td>
+<td><code>LIGHT_RAIN</code></td>
+<td>Light rain weather</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/HEAVY_RAIN.svg" width="25" /></td>
+<td><code>HEAVY_RAIN</code></td>
+<td>Heavy rain weather icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/HEAVY_SNOW.svg" width="25" /></td>
+<td><code>HEAVY_SNOW</code></td>
+<td>Heavy snow weather icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/TIMELINE_WEATHER.svg" width="25" /></td>
+<td><code>TIMELINE_WEATHER</code></td>
+<td>Generic weather icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/TIMELINE_SUN.svg" width="25" /></td>
+<td><code>TIMELINE_SUN</code></td>
+<td>Sunny weather icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/RAINING_AND_SNOWING.svg" width="25" /></td>
+<td><code>RAINING_AND_SNOWING</code></td>
+<td>Raining and snowing weather icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/SUNRISE.svg" width="25" /></td>
+<td><code>SUNRISE</code></td>
+<td>Sunrise weather icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/SUNSET.svg" width="25" /></td>
+<td><code>SUNSET</code></td>
+<td>Sunset weather icon</td>
+</tr>
+</tbody></table>
+<h3 id="timeline" class="anchor">Timeline</h3>
+<table><thead>
+<tr>
+<th>Preview</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/assets/images/guides/timeline/TIMELINE_MISSED_CALL.svg" width="25" /></td>
+<td><code>TIMELINE_MISSED_CALL</code></td>
+<td>Generic missed call icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/TIMELINE_CALENDAR.svg" width="25" /></td>
+<td><code>TIMELINE_CALENDAR</code></td>
+<td>Generic calendar event icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/TIMELINE_SPORTS.svg" width="25" /></td>
+<td><code>TIMELINE_SPORTS</code></td>
+<td>Generic sports icon</td>
+</tr>
+</tbody></table>
+<h3 id="sports" class="anchor">Sports</h3>
+<table><thead>
+<tr>
+<th>Preview</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/assets/images/guides/timeline/TIMELINE_BASEBALL.svg" width="25" /></td>
+<td><code>TIMELINE_BASEBALL</code></td>
+<td>Baseball sports icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/AMERICAN_FOOTBALL.svg" width="25" /></td>
+<td><code>AMERICAN_FOOTBALL</code></td>
+<td>American football sports icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/BASKETBALL.svg" width="25" /></td>
+<td><code>BASKETBALL</code></td>
+<td>Basketball sports icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/CRICKET_GAME.svg" width="25" /></td>
+<td><code>CRICKET_GAME</code></td>
+<td>Cricket sports icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/SOCCER_GAME.svg" width="25" /></td>
+<td><code>SOCCER_GAME</code></td>
+<td>Soccer sports icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/HOCKEY_GAME.svg" width="25" /></td>
+<td><code>HOCKEY_GAME</code></td>
+<td>Hockey sports icon</td>
+</tr>
+</tbody></table>
+<h3 id="action-results" class="anchor">Action Results</h3>
+<table><thead>
+<tr>
+<th>Preview</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/assets/images/guides/timeline/RESULT_DISMISSED.svg" width="25" /></td>
+<td><code>RESULT_DISMISSED</code></td>
+<td>Dismissed event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/RESULT_DELETED.svg" width="25" /></td>
+<td><code>RESULT_DELETED</code></td>
+<td>Deleted event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/RESULT_MUTE.svg" width="25" /></td>
+<td><code>RESULT_MUTE</code></td>
+<td>Mute event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/RESULT_SENT.svg" width="25" /></td>
+<td><code>RESULT_SENT</code></td>
+<td>Generic message sent event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/RESULT_FAILED.svg" width="25" /></td>
+<td><code>RESULT_FAILED</code></td>
+<td>Generic failure event</td>
+</tr>
+</tbody></table>
+<h3 id="events" class="anchor">Events</h3>
+<table><thead>
+<tr>
+<th>Preview</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/assets/images/guides/timeline/STOCKS_EVENT.svg" width="25" /></td>
+<td><code>STOCKS_EVENT</code></td>
+<td>Stocks icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/MUSIC_EVENT.svg" width="25" /></td>
+<td><code>MUSIC_EVENT</code></td>
+<td>Music event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/BIRTHDAY_EVENT.svg" width="25" /></td>
+<td><code>BIRTHDAY_EVENT</code></td>
+<td>Birthday event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/NEWS_EVENT.svg" width="25" /></td>
+<td><code>NEWS_EVENT</code></td>
+<td>Generic news story event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/SCHEDULED_EVENT.svg" width="25" /></td>
+<td><code>SCHEDULED_EVENT</code></td>
+<td>Generic scheduled event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/MOVIE_EVENT.svg" width="25" /></td>
+<td><code>MOVIE_EVENT</code></td>
+<td>Generic movie icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/NO_EVENTS.svg" width="25" /></td>
+<td><code>NO_EVENTS</code></td>
+<td>No events icon</td>
+</tr>
+</tbody></table>
+<h3 id="miscellaneous" class="anchor">Miscellaneous</h3>
+<table><thead>
+<tr>
+<th>Preview</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><img src="/assets/images/guides/timeline/PAY_BILL.svg" width="25" /></td>
+<td><code>PAY_BILL</code></td>
+<td>Pay bill event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/HOTEL_RESERVATION.svg" width="25" /></td>
+<td><code>HOTEL_RESERVATION</code></td>
+<td>Hotel event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/TIDE_IS_HIGH.svg" width="25" /></td>
+<td><code>TIDE_IS_HIGH</code></td>
+<td>High tide event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/INCOMING_PHONE_CALL.svg" width="25" /></td>
+<td><code>INCOMING_PHONE_CALL</code></td>
+<td>Incoming phone call event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/DURING_PHONE_CALL.svg" width="25" /></td>
+<td><code>DURING_PHONE_CALL</code></td>
+<td>Phone call event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/DURING_PHONE_CALL_CENTERED.svg" width="25" /></td>
+<td><code>DURING_PHONE_CALL_CENTERED</code></td>
+<td>Phone call event centered</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/DISMISSED_PHONE_CALL.svg" width="25" /></td>
+<td><code>DISMISSED_PHONE_CALL</code></td>
+<td>Phone call dismissed event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/CHECK_INTERNET_CONNECTION.svg" width="25" /></td>
+<td><code>CHECK_INTERNET_CONNECTION</code></td>
+<td>Check Internet connection event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/GLUCOSE_MONITOR.svg" width="25" /></td>
+<td><code>GLUCOSE_MONITOR</code></td>
+<td>Sensor monitor event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/ALARM_CLOCK.svg" width="25" /></td>
+<td><code>ALARM_CLOCK</code></td>
+<td>Alarm clock event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/CAR_RENTAL.svg" width="25" /></td>
+<td><code>CAR_RENTAL</code></td>
+<td>Generic car rental event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/DINNER_RESERVATION.svg" width="25" /></td>
+<td><code>DINNER_RESERVATION</code></td>
+<td>Dinner reservation event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/RADIO_SHOW.svg" width="25" /></td>
+<td><code>RADIO_SHOW</code></td>
+<td>Radio show event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/AUDIO_CASSETTE.svg" width="25" /></td>
+<td><code>AUDIO_CASSETTE</code></td>
+<td>Audio cassette icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/SCHEDULED_FLIGHT.svg" width="25" /></td>
+<td><code>SCHEDULED_FLIGHT</code></td>
+<td>Scheduled flight event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/REACHED_FITNESS_GOAL.svg" width="25" /></td>
+<td><code>REACHED_FITNESS_GOAL</code></td>
+<td>Reached fitness goal event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/DAY_SEPARATOR.svg" width="25" /></td>
+<td><code>DAY_SEPARATOR</code></td>
+<td>Day separator icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/WATCH_DISCONNECTED.svg" width="25" /></td>
+<td><code>WATCH_DISCONNECTED</code></td>
+<td>Watch disconnected event</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/TV_SHOW.svg" width="25" /></td>
+<td><code>TV_SHOW</code></td>
+<td>Generic TV show icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/LOCATION.svg" width="25" /></td>
+<td><code>LOCATION</code></td>
+<td>Generic location icon</td>
+</tr>
+<tr>
+<td><img src="/assets/images/guides/timeline/SETTINGS.svg" width="25" /></td>
+<td><code>SETTINGS</code></td>
+<td>Generic settings icon</td>
+</tr>
+</tbody></table>
+<h3 id="custom-icons" class="anchor">Custom Icons</h3><p>Custom icons were introduced in SDK 4.0. They allow you to use custom images for
+timeline pins, by utilizing the
+<a href="/guides/tools-and-resources/app-metadata/#published-media"><em>Published Media</em></a>
+<code>name</code>. E.g. <code>app://images/*name*</code></p><h2 id="pin-layouts" class="anchor">Pin Layouts</h2><p>Developers can customize how pins, reminders and notifications are shown to the
+user using different layouts. The Pebble SDK includes layouts appropriate for a
+broad set of apps. Each layout has different customization options, called the
+layout attributes. Most layouts also offer the option of showing an icon, which
+must be one of the standard system provided icons, listed under
+<a href="#pin-icons" title="" class=""><em>Pin Icons</em></a> above.</p><p>The sub-sections below detail the available layouts and the fields they will
+display. Required attributes are shown in <strong>bold</strong>.</p><h3 id="generic-layout" class="anchor">Generic Layout</h3><p>Generic layout for generic pins of no particular type.</p><p><strong>Timeline view</strong></p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/generic-pin~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/generic-pin~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/generic-pin~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Detail view</strong></p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/generic-layout~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/generic-layout~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/generic-layout~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Standard Attributes</strong></p><p><strong><code>title</code></strong>, <strong><code>tinyIcon</code></strong>, <code>subtitle</code>, <code>body</code>.</p><p><strong>Color Elements</strong></p>
+<table><thead>
+<tr>
+<th>Layout Property</th>
+<th>Applies To</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>primaryColor</code></td>
+<td>Time, body</td>
+</tr>
+<tr>
+<td><code>secondaryColor</code></td>
+<td>Title</td>
+</tr>
+<tr>
+<td><code>backgroundColor</code></td>
+<td>Background</td>
+</tr>
+</tbody></table>
+<p><strong>Example JSON</strong></p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"pin-generic-1"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-09-22T16:30:00Z"</span><span class="p">,</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericPin"</span><span class="p">,</span>
+    <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"This is a genericPin!"</span><span class="p">,</span>
+    <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/NOTIFICATION_FLAG"</span><span class="p">,</span>
+    <span class="nt">"primaryColor"</span><span class="p">:</span> <span class="s2">"#FFFFFF"</span><span class="p">,</span>
+    <span class="nt">"secondaryColor"</span><span class="p">:</span> <span class="s2">"#666666"</span><span class="p">,</span>
+    <span class="nt">"backgroundColor"</span><span class="p">:</span> <span class="s2">"#5556FF"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="calendar-layout" class="anchor">Calendar Layout</h3><p>Standard layout for pins displaying calendar events.</p><p><strong>Timeline view</strong></p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/calendar-pin~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/calendar-pin~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/calendar-pin~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Detail view</strong></p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/calendar-layout~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/calendar-layout~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/calendar-layout~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Standard Attributes</strong></p><p><strong><code>title</code></strong>, <code>body</code>.</p><p><strong>Special Attributes</strong></p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>locationName</code></td>
+<td>String</td>
+<td>Name of the location of this pin event. Used if <code>shortSubtitle</code> is not present on the list view, and always in the detail view.</td>
+</tr>
+</tbody></table>
+<p><strong>Color Elements</strong></p>
+<table><thead>
+<tr>
+<th>Layout Property</th>
+<th>Applies To</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>primaryColor</code></td>
+<td>Times, body</td>
+</tr>
+<tr>
+<td><code>secondaryColor</code></td>
+<td>Title</td>
+</tr>
+<tr>
+<td><code>backgroundColor</code></td>
+<td>Background</td>
+</tr>
+</tbody></table>
+<p><strong>Example JSON</strong></p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"pin-calendar-1"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-18T15:45:00Z"</span><span class="p">,</span>
+  <span class="nt">"duration"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"calendarPin"</span><span class="p">,</span>
+    <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Pin Layout Meeting"</span><span class="p">,</span>
+    <span class="nt">"locationName"</span><span class="p">:</span> <span class="s2">"Conf Room 1"</span><span class="p">,</span>
+    <span class="nt">"body"</span><span class="p">:</span> <span class="s2">"Discuss layout types with Design Team."</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="sports-layout" class="anchor">Sports Layout</h3><p>Generic layout for displaying sports game pins including team ranks, scores
+and records.</p><p><strong>Timeline view</strong></p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/sport-pin~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/sport-pin~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/sport-pin~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Detail view</strong></p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/sport-layout~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/sport-layout~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/sport-layout~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Standard Attributes</strong></p><p><strong><code>title</code></strong> (name of the game), <code>subtitle</code> (friendly name of the period), <code>body</code>
+(game description), <strong><code>tinyIcon</code></strong>, <code>largeIcon</code>, <code>lastUpdated</code>.</p><p><strong>Special Attributes</strong></p>
+<blockquote>
+<p>Note: The <code>rankAway</code> and <code>rankHome</code> fields will be shown before the event
+begins, otherwise <code>scoreAway</code> and <code>scoreHome</code> will be shown.</p></blockquote>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>rankAway</code></td>
+<td>String (~2 characters)</td>
+<td>The rank of the away team.</td>
+</tr>
+<tr>
+<td><code>rankHome</code></td>
+<td>String (~2 characters)</td>
+<td>The rank of the home team.</td>
+</tr>
+<tr>
+<td><code>nameAway</code></td>
+<td>String (Max 4 characters)</td>
+<td>Short name of the away team.</td>
+</tr>
+<tr>
+<td><code>nameHome</code></td>
+<td>String (Max 4 characters)</td>
+<td>Short name of the home team.</td>
+</tr>
+<tr>
+<td><code>recordAway</code></td>
+<td>String (~5 characters)</td>
+<td>Record of the away team (wins-losses).</td>
+</tr>
+<tr>
+<td><code>recordHome</code></td>
+<td>String (~5 characters)</td>
+<td>Record of the home team (wins-losses).</td>
+</tr>
+<tr>
+<td><code>scoreAway</code></td>
+<td>String (~2  characters)</td>
+<td>Score of the away team.</td>
+</tr>
+<tr>
+<td><code>scoreHome</code></td>
+<td>String (~2 characters)</td>
+<td>Score of the home team.</td>
+</tr>
+<tr>
+<td><code>sportsGameState</code></td>
+<td>String</td>
+<td><code>in-game</code> for in game or post game, <code>pre-game</code> for pre game.</td>
+</tr>
+</tbody></table>
+<p><strong>Color Elements</strong></p>
+<table><thead>
+<tr>
+<th>Layout Property</th>
+<th>Applies To</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>primaryColor</code></td>
+<td>Text body</td>
+</tr>
+<tr>
+<td><code>secondaryColor</code></td>
+<td>Team names and scores</td>
+</tr>
+<tr>
+<td><code>backgroundColor</code></td>
+<td>Background</td>
+</tr>
+</tbody></table>
+<p><strong>Example JSON</strong></p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"pin-sports-1"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-18T19:00:00Z"</span><span class="p">,</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"sportsPin"</span><span class="p">,</span>
+    <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Bulls at Bears"</span><span class="p">,</span>
+    <span class="nt">"subtitle"</span><span class="p">:</span> <span class="s2">"Halftime"</span><span class="p">,</span>
+    <span class="nt">"body"</span><span class="p">:</span> <span class="s2">"Game of the Century"</span><span class="p">,</span>
+    <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/AMERICAN_FOOTBALL"</span><span class="p">,</span>
+    <span class="nt">"largeIcon"</span><span class="p">:</span> <span class="s2">"system://images/AMERICAN_FOOTBALL"</span><span class="p">,</span>
+    <span class="nt">"lastUpdated"</span><span class="p">:</span> <span class="s2">"2015-03-18T18:45:00Z"</span><span class="p">,</span>
+    <span class="nt">"rankAway"</span><span class="p">:</span> <span class="s2">"03"</span><span class="p">,</span>
+    <span class="nt">"rankHome"</span><span class="p">:</span> <span class="s2">"08"</span><span class="p">,</span>
+    <span class="nt">"nameAway"</span><span class="p">:</span> <span class="s2">"POR"</span><span class="p">,</span>
+    <span class="nt">"nameHome"</span><span class="p">:</span> <span class="s2">"LAC"</span><span class="p">,</span>
+    <span class="nt">"recordAway"</span><span class="p">:</span> <span class="s2">"39-19"</span><span class="p">,</span>
+    <span class="nt">"recordHome"</span><span class="p">:</span> <span class="s2">"39-21"</span><span class="p">,</span>
+    <span class="nt">"scoreAway"</span><span class="p">:</span> <span class="s2">"54"</span><span class="p">,</span>
+    <span class="nt">"scoreHome"</span><span class="p">:</span> <span class="s2">"49"</span><span class="p">,</span>
+    <span class="nt">"sportsGameState"</span><span class="p">:</span> <span class="s2">"in-game"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="weather-layout" class="anchor">Weather Layout</h3><p>Standard layout for pins displaying the weather.</p><p><strong>Timeline view</strong></p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/weather-pin~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/weather-pin~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/weather-pin~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Detail view</strong></p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/weather-layout~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/weather-layout~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/weather-layout~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Standard Attributes</strong></p><p><strong><code>title</code></strong> (part of the day), <strong><code>tinyIcon</code></strong>, <code>largeIcon</code>, <code>body</code>
+(shortcast), <code>lastUpdated</code>.</p><p><strong>Special Attributes</strong></p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>shortTitle</code></td>
+<td>String</td>
+<td>Used instead of <code>title</code> in the main timeline view unless it is not specified.</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>String</td>
+<td>Show high/low temperatures. Note: currently only numbers and the degree symbol (°) are supported.</td>
+</tr>
+<tr>
+<td><code>shortSubtitle</code></td>
+<td>String</td>
+<td>Used instead of <code>subtitle</code> in the main timeline view unless it is not specified.</td>
+</tr>
+<tr>
+<td><strong><code>locationName</code></strong></td>
+<td>String</td>
+<td>Name of the location of this pin event.</td>
+</tr>
+<tr>
+<td><code>displayTime</code></td>
+<td>String</td>
+<td>Use a value of &#39;pin&#39; to display the pin&#39;s time in title of the detail view and description, or &#39;none&#39; to not show the time. Defaults to &#39;pin&#39; if not specified.</td>
+</tr>
+</tbody></table>
+<p><strong>Color Elements</strong></p>
+<table><thead>
+<tr>
+<th>Layout Property</th>
+<th>Applies To</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>primaryColor</code></td>
+<td>All text</td>
+</tr>
+<tr>
+<td><code>backgroundColor</code></td>
+<td>Background</td>
+</tr>
+</tbody></table>
+<p><strong>Example JSON</strong></p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"pin-weather-1"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-18T19:00:00Z"</span><span class="p">,</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"weatherPin"</span><span class="p">,</span>
+    <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Nice day"</span><span class="p">,</span>
+    <span class="nt">"subtitle"</span><span class="p">:</span> <span class="s2">"40/65"</span><span class="p">,</span>
+    <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/TIMELINE_SUN"</span><span class="p">,</span>
+    <span class="nt">"largeIcon"</span><span class="p">:</span> <span class="s2">"system://images/TIMELINE_SUN"</span><span class="p">,</span>
+    <span class="nt">"locationName"</span><span class="p">:</span> <span class="s2">"Palo Alto"</span><span class="p">,</span>
+    <span class="nt">"body"</span><span class="p">:</span> <span class="s2">"Sunny with a chance of rain."</span><span class="p">,</span>
+    <span class="nt">"lastUpdated"</span><span class="p">:</span> <span class="s2">"2015-03-18T18:00:00Z"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="generic-reminder" class="anchor">Generic Reminder</h3><p>Generic layout for pin reminders, which can be set at various times before an
+event is due to occur to remind the user ahead of time.</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/generic-reminder~aplite.png" class="pebble-screenshot pebble-screenshot--black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/generic-reminder~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/generic-reminder~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Standard Attributes</strong></p><p><strong><code>title</code></strong>, <strong><code>tinyIcon</code></strong>.</p><p><strong>Special Attributes</strong></p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>locationName</code></td>
+<td>String</td>
+<td>Name of the location of this pin event.</td>
+</tr>
+</tbody></table>
+<p><strong>Example JSON</strong></p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"pin-generic-reminder-1"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-18T23:00:00Z"</span><span class="p">,</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericPin"</span><span class="p">,</span>
+    <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"This is a genericPin!"</span><span class="p">,</span>
+    <span class="nt">"subtitle"</span><span class="p">:</span> <span class="s2">"With a reminder!."</span><span class="p">,</span>
+    <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/NOTIFICATION_FLAG"</span>
+  <span class="p">},</span>
+  <span class="nt">"reminders"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-18T22:55:00Z"</span><span class="p">,</span>
+      <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericReminder"</span><span class="p">,</span>
+        <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Reminder!"</span><span class="p">,</span>
+        <span class="nt">"locationName"</span><span class="p">:</span> <span class="s2">"Conf Rm 1"</span><span class="p">,</span>
+        <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/ALARM_CLOCK"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div><h3 id="generic-notification" class="anchor">Generic Notification</h3><p>Generic notification layout which can be used with <code>createNotification</code> and
+<code>updateNotification</code> to alert the user to a new pin being created on their
+timeline.</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/timeline/generic-notification-layout~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/timeline/generic-notification-layout~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/timeline/generic-notification-layout~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p><strong>Standard Attributes</strong></p><p><strong><code>title</code></strong>, <strong><code>tinyIcon</code></strong>, <code>body</code>.</p><p><strong>Color Elements</strong></p>
+<table><thead>
+<tr>
+<th>Layout Property</th>
+<th>Applies To</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>primaryColor</code></td>
+<td>Title</td>
+</tr>
+<tr>
+<td><code>backgroundColor</code></td>
+<td>Banner background</td>
+</tr>
+</tbody></table>
+<p><strong>Example JSON</strong></p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"pin-generic-createmessage-1"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-04-30T23:45:00Z"</span><span class="p">,</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericPin"</span><span class="p">,</span>
+    <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"This is a genericPin!"</span><span class="p">,</span>
+    <span class="nt">"subtitle"</span><span class="p">:</span> <span class="s2">"With a notification"</span><span class="p">,</span>
+    <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/NOTIFICATION_FLAG"</span>
+  <span class="p">},</span>
+  <span class="nt">"createNotification"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericNotification"</span><span class="p">,</span>
+      <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Notification!"</span><span class="p">,</span>
+      <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/NOTIFICATION_FLAG"</span><span class="p">,</span>
+      <span class="nt">"body"</span><span class="p">:</span> <span class="s2">"A new genericPin has appeared!"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h2 id="pin-actions" class="anchor">Pin Actions</h2><p>Pins can be further customized by adding actions to them. This allows bi-
+directional interactivity for pin-based apps. These apps can have multiple
+actions associated with them, allowing different launch behavior depending on
+how the user interacts with the pin.</p><p>The table below shows the available actions that can be added to a pin. Required
+attributes are shown in <strong>bold</strong>.</p>
+<table><thead>
+<tr>
+<th>Action <code>type</code></th>
+<th>Description</th>
+<th>Attributes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>openWatchApp</code></td>
+<td>Launch the watchapp associated with this pin. The <code>launchCode</code> field of this action object will be passed to the watchapp and can be obtained with <a href="/docs/c/Foundation/Launch_Reason/#launch_get_args" title="launch_get_args" class="link--docs"><code>launch_get_args()</code></a>.</td>
+<td><strong><code>title</code></strong>, <strong><code>launchCode</code></strong>.</td>
+</tr>
+<tr>
+<td><code>http</code></td>
+<td>Execute an HTTP request that invokes this action on the remote service.</td>
+<td>See <a href="#http-actions" title="" class=""><em>HTTP Actions</em></a> for full attribute details.</td>
+</tr>
+</tbody></table>
+<h3 id="using-a-launch-code" class="anchor">Using a Launch Code</h3><p>Launch codes can be used to pass a single integer value from a specific timeline
+pin to the app associated with it when it is lauched from that pin. This
+mechanism allows the context to be given to the app to allow it to change
+behavior based on the action chosen.</p><p>For example, a pin could have two actions associated with an app for making
+restaurant table reservations that allowed the user to cancel the reservation or
+review the restaurant. To set up these actions, add them to the pin when it is
+pushed to the timeline API.</p><div class="highlight"><pre><span class="s2">"actions"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"title"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Cancel Table"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"openWatchApp"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"launchCode"</span><span class="o">:</span><span class="w"> </span><span class="il">15</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"title"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Leave Rating"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"openWatchApp"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"launchCode"</span><span class="o">:</span><span class="w"> </span><span class="il">22</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div><h3 id="reading-the-launch-code" class="anchor">Reading the Launch Code</h3><p>When the user sees the pin and opens the action menu, they can select one of
+these actions which will launch the watchapp (as dictated by the <code>openWatchApp</code>
+pin action <code>type</code>). When the app launches, use <a href="/docs/c/Foundation/Launch_Reason/#launch_get_args" title="launch_get_args" class="link--docs"><code>launch_get_args()</code></a> to read the
+value of the <code>launchCode</code> associated with the chosen action, and react
+accordingly. An example is shown below;</p><div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">launch_reason</span><span class="p">()</span> <span class="o">==</span> <span class="n">APP_LAUNCH_TIMELINE_ACTION</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">uint32_t</span> <span class="n">arg</span> <span class="o">=</span> <span class="n">launch_get_args</span><span class="p">();</span>
+
+  <span class="k">switch</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="nl">LAUNCH_ARG_CANCEL</span><span class="p">:</span>
+    <span class="c1">// Cancel table UI...</span>
+
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="nl">LAUNCH_ARG_REVIEW</span><span class="p">:</span>
+    <span class="c1">// Leave a review UI...</span>
+
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="http-actions" class="anchor">HTTP Actions</h3><p>With the <code>http</code> pin action <code>type</code>, pins can include actions that carry out an
+arbitrary HTTP request. This makes it possible for a web service to be used
+purely by pushed pins with actions that respond to those events.</p><p>The table below details the attributes of this type of pin action object. Items
+shown in <strong>bold</strong> are required.</p>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong><code>title</code></strong></td>
+<td>String</td>
+<td><em>mandatory</em></td>
+<td>The title of the action.</td>
+</tr>
+<tr>
+<td><strong><code>url</code></strong></td>
+<td>String</td>
+<td><em>mandatory</em></td>
+<td>The URL of the remote service to send the request to.</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>String</td>
+<td><code>POST</code></td>
+<td>The request method, such as <code>GET</code>, <code>POST</code>, <code>PUT</code> or <code>DELETE</code>.</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td>Object</td>
+<td><code>{}</code></td>
+<td>Dictionary of key-value pairs of headers (<code>Content-Type</code> is implied by using <code>bodyJSON</code>) as required by the remote service.</td>
+</tr>
+<tr>
+<td><code>bodyText</code></td>
+<td>String</td>
+<td><code>&#39;&#39;</code></td>
+<td>The data body of the request in String format.</td>
+</tr>
+<tr>
+<td><code>bodyJSON</code></td>
+<td>Object</td>
+<td><em>unspecified</em></td>
+<td>The data body of the request in JSON object format.</td>
+</tr>
+<tr>
+<td><code>successText</code></td>
+<td>String</td>
+<td>&quot;Done!&quot;</td>
+<td>The string to display if the action is successful.</td>
+</tr>
+<tr>
+<td><code>successIcon</code></td>
+<td>Pin Icon URL</td>
+<td><code>system://images/GENERIC_CONFIRMATION</code></td>
+<td>The icon to display if the action is successful.</td>
+</tr>
+<tr>
+<td><code>failureText</code></td>
+<td>String</td>
+<td>&quot;Failed!&quot;</td>
+<td>The string to display if the action is unsuccessful.</td>
+</tr>
+<tr>
+<td><code>failureIcon</code></td>
+<td>Pin Icon URL</td>
+<td><code>system://images/RESULT_FAILED</code></td>
+<td>The icon to display if the action is unsuccessful.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Note: <code>bodyText</code> and <code>bodyJSON</code> are mutually exclusive fields (they cannot be
+used together in the same request). You should choose that which is most
+convenient for your implementation.</p><p>Note: Do not include a body with HTTP methods that do not support one. This
+means that <code>bodyText</code> and <code>bodyJSON</code> cannot be used with <code>GET</code> or <code>DELETE</code>
+requests.</p></blockquote>
+<p>The following is an example action, using the <code>http</code> action <code>type</code> to confirm
+attendance at a meeting managed by a fictitious meeting scheduling service.</p><div class="highlight"><pre><span class="s2">"actions"</span><span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"http"</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="o">:</span> <span class="s2">"Confirm Meeting"</span><span class="p">,</span>
+    <span class="s2">"url"</span><span class="o">:</span> <span class="s2">"http://some-meeting-service.com/api/v1/meetings/46146717"</span><span class="p">,</span>
+    <span class="s2">"method"</span><span class="o">:</span> <span class="s2">"PUT"</span><span class="p">,</span>
+    <span class="s2">"headers"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"X-Request-Source"</span><span class="o">:</span> <span class="s2">"pebble-timeline"</span><span class="p">,</span>
+      <span class="s2">"Content-Type"</span><span class="o">:</span> <span class="s2">"application/x-www-form-urlencoded"</span>
+    <span class="p">},</span>
+    <span class="s2">"bodyText"</span><span class="o">:</span> <span class="s2">"type=confirm&amp;value=1"</span><span class="p">,</span>
+    <span class="s2">"successIcon"</span><span class="o">:</span> <span class="s2">"system://images/GENERIC_CONFIRMATION"</span><span class="p">,</span>
+    <span class="s2">"successText"</span><span class="o">:</span> <span class="s2">"Confirmed!"</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div><p>Alternatively, pins can use the <code>bodyJSON</code> field to encode a JSON object.
+Include this data using the <code>bodyJSON</code> field.</p><div class="highlight"><pre><span class="s2">"actions"</span><span class="o">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"http"</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="o">:</span> <span class="s2">"Confirm Meeting"</span><span class="p">,</span>
+    <span class="s2">"url"</span><span class="o">:</span> <span class="s2">"http://some-meeting-service.com/api/v1/meetings/46146717"</span><span class="p">,</span>
+    <span class="s2">"method"</span><span class="o">:</span> <span class="s2">"PUT"</span><span class="p">,</span>
+    <span class="s2">"headers"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"X-Request-Source"</span><span class="o">:</span> <span class="s2">"pebble-timeline"</span>
+    <span class="p">},</span>
+    <span class="s2">"bodyJSON"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"confirm"</span><span class="p">,</span>
+      <span class="s2">"value"</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">"successIcon"</span><span class="o">:</span> <span class="s2">"system://images/GENERIC_CONFIRMATION"</span><span class="p">,</span>
+    <span class="s2">"successText"</span><span class="o">:</span> <span class="s2">"Confirmed!"</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div><h3 id="included-headers" class="anchor">Included Headers</h3><p>When using the <code>http</code> action, the request will also include the following
+additional headers. Developers can use these to personalize the timeline
+experience to each individual user.</p>
+<table><thead>
+<tr>
+<th>Header Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>X-Pebble-Account-Token</code></td>
+<td>Same as <a href="/guides/communication/using-pebblekit-js" title="" class=""><code>Pebble.getAccountToken()</code></a></td>
+</tr>
+<tr>
+<td><code>X-Pebble-Watch-Token</code></td>
+<td>Same as <a href="/guides/communication/using-pebblekit-js" title="" class=""><code>Pebble.getWatchToken()</code></a></td>
+</tr>
+</tbody></table>
+<h2 id="testing-pins" class="anchor">Testing Pins</h2><p><strong>Using CloudPebble</strong></p><p>When editing a CloudPebble project, developers can test inserting and deleting
+any pin using the &#39;Timeline&#39; tab at the top left of the screen. Use the text
+field to construct the pin, then one of the two buttons to test it out.</p>
+<blockquote>
+<p>Note: Once a pin with a specific <code>id</code> has been deleted, that <code>id</code> cannot be
+reused.</p></blockquote>
+<p><img src="/assets/images/guides/timeline/cloudpebble-ui.png" /></p><p><strong>Push Pins with the Pebble Tool</strong></p><p>It is also possible to push new timeline pins using the <code>pebble</code>
+<a href="/guides/tools-and-resources/pebble-tool/"><em>Command Line Tool</em></a>. Prepare your pin in a JSON
+file, such as <code>example-pin.json</code> shown below:</p><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"pin-generic-1"</span><span class="p">,</span>
+  <span class="nt">"time"</span><span class="p">:</span> <span class="s2">"2015-03-18T15:45:00Z"</span><span class="p">,</span>
+  <span class="nt">"layout"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"genericPin"</span><span class="p">,</span>
+    <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"This is a genericPin!"</span><span class="p">,</span>
+    <span class="nt">"tinyIcon"</span><span class="p">:</span> <span class="s2">"system://images/NOTIFICATION_FLAG"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>Push this pin to your emulator to preview how it will appear for users.</p><div class="highlight no-copy"><pre><span class="nv">$ </span>pebble insert-pin example-pin.json
+</pre></div><p>The pin will appear as shown below:</p><p><img src="/assets/images/guides/timeline/generic-pin~basalt.png" alt="pin-preview" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>It is possible to delete the pin in a similar manner, making sure the <code>id</code> is
+the same as the pin to be removed:</p><div class="highlight no-copy"><pre><span class="nv">$ </span>pebble delete-pin --id pin-generic-1
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/pebble-timeline/pin-structure/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#pin-overview">Pin Overview</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#notification-object">Notification Object</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#layout-object">Layout Object</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#reminder-object">Reminder Object</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#action-object">Action Object</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#minimal-pin-example">Minimal Pin Example</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#complete-pin-example">Complete Pin Example</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#view-modes">View Modes</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pin-icons">Pin Icons</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#notifications">Notifications</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#generic">Generic</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#weather">Weather</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#timeline">Timeline</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#sports">Sports</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#action-results">Action Results</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#events">Events</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#miscellaneous">Miscellaneous</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#custom-icons">Custom Icons</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pin-layouts">Pin Layouts</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#generic-layout">Generic Layout</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#calendar-layout">Calendar Layout</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#sports-layout">Sports Layout</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#weather-layout">Weather Layout</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#generic-reminder">Generic Reminder</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#generic-notification">Generic Notification</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pin-actions">Pin Actions</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#using-a-launch-code">Using a Launch Code</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#reading-the-launch-code">Reading the Launch Code</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#http-actions">HTTP Actions</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#included-headers">Included Headers</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#testing-pins">Testing Pins</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

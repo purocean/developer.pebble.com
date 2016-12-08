@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Creating Native Companion Apps with JS and Cordova // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2016/07/01/creating-native-companion-apps-with-js-and-cordova/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="setup">Setup</option>
+          
+            <option value="querying-events">Querying Events</option>
+          
+            <option value="sending-an-appmessage">Sending An AppMessage</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Creating Native Companion Apps with JS and Cordova</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>01 July 2016</li>
+    <li><a href="/blog/authors/rperryng/">Ryan Perry-Nguyen</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </li>
+    <li><a href="/blog/2016/07/01/creating-native-companion-apps-with-js-and-cordova/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p>Creating companion apps using 
+<a href="/guides/communication/using-pebblekit-android/" title="" class="">PebbleKit Android</a> and 
+<a href="/guides/communication/using-pebblekit-ios/" title="" class="">PebbleKit iOS</a> is a great way to 
+extend the functionality of your Pebble watchfaces and apps, but what if Java 
+or Objective C just isn&#39;t your thing?  What if you love JavaScript? What if 
+you just don&#39;t want to write the same companion app twice?</p><p>Now you don&#39;t have to! Enter <a href="http://cordova.apache.org/" title="" class="">Cordova</a> - an open
+source framework for building cross-platform mobile apps using web technologies
+such as HTML5 and JavaScript.  What does this mean for you?  One framework, and
+one codebase for building Pebble companion apps for iOS and Android!</p><p>Cordova allows developers to create plugins that wrap native functionality such
+as accessing the phone&#39;s contacts, calendar, camera, and other phone APIs. 
+Plugins allow you to interface with these APIs through JavaScript, and use them
+in your Cordova projects.  Needless to say, PebbleKit Android and PebbleKit iOS 
+are now available as a singular 
+<a href="https://www.npmjs.com/package/cordova-plugin-pebblekit" title="" class="">Cordova plugin</a>.</p><p>In this blog post, we&#39;ll look at how to use Cordova to create a companion
+app that allows you to retrieve the next upcoming calendar event for the
+current day.</p><h2 id="setup" class="anchor">Setup</h2><p>The first step will be installing Cordova and creating a new project.
+Cordova provides these steps generically
+<a href="http://cordova.apache.org/plugins/?platforms=cordova-android%2Ccordova-ios&sortBy=Downloads" title="" class="">here</a>,
+but if you want to follow along down to the T, here are the steps listed below.</p><div class="highlight"><pre><span class="nv">$ </span>npm install -g cordova
+<span class="nv">$ </span>cordova create calendar-example com.pebble.calendarexample <span class="s2">"Calendar Example"</span>
+<span class="nv">$ </span><span class="nb">cd </span>calendar-example
+<span class="nv">$ </span>cordova platform add android
+<span class="nv">$ </span>cordova platform add ios
+<span class="nv">$ </span>cordova plugin add cordova-plugin-calendar
+<span class="nv">$ </span>cordova plugin add cordova-plugin-pebblekit
+</pre></div>
+<blockquote>
+<p>Note, this assumes you have node/npm already installed and avaiable on your
+machine. If not, head on over to <a href="https://nodejs.org/en/" title="" class="">nodejs.org</a> to
+install node.</p></blockquote>
+<p>Doesn&#39;t seem too bad! If the <code>cordova create</code> command seems a little scary to
+you, don&#39;t be afraid to ask for help with <code>cordova create --help</code>.</p><h2 id="querying-events" class="anchor">Querying Events</h2><p>The next step is to use the calendar plugin we added earlier in order to fetch
+the next event for the day.  Before we do that though, we&#39;ll need to to setup
+the Cordova PebbleKit plugin, as shown below.  Fire up your favourite text
+editor and open <code>www/js/index.js</code> file.  This is the JavaScript file that runs
+when your app starts up, your application&#39;s control logic will go here.</p><p>Upon opening the file, you&#39;ll notice there&#39;s already a fair bit of code
+generated by Cordova.  What&#39;s important here is the <code>onDeviceReady</code> function,
+this is a callback you can use to be notified once the plugins for your Cordova
+project have been loaded and are ready to be called.  Let&#39;s create our own
+function called <code>fetchCalendarEvent</code> to be called once the PebbleKit plugin has
+been setup.  We&#39;ll also declare a variable uuid with our Pebble app&#39;s UUID,
+which is required when communicating with our watchapp via AppMessage.</p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">uuid</span> <span class="o">=</span> <span class="s2">"ebc92429-483e-4b91-b5f2-ead22e7e002d"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="p">{</span>
+
+  <span class="cm">/* ... */</span>
+
+  <span class="nx">onDeviceReady</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">receivedEvent</span><span class="p">(</span><span class="s1">'deviceready'</span><span class="p">);</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">pebblekit</span><span class="p">.</span><span class="nx">setup</span><span class="p">(</span><span class="nx">uuid</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">app</span><span class="p">.</span><span class="nx">fetchCalendarEvent</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">},</span>
+
+  <span class="nx">fetchCalendarEvent</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">startDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span> <span class="c1">// Now</span>
+    <span class="kd">var</span> <span class="nx">endDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+    <span class="nx">endDate</span><span class="p">.</span><span class="nx">setHours</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// Nearest midnight in the future</span>
+
+    <span class="nb">window</span><span class="p">.</span><span class="nx">plugins</span><span class="p">.</span><span class="nx">calendar</span><span class="p">.</span><span class="nx">findEvent</span><span class="p">(</span>
+      <span class="kc">undefined</span><span class="p">,</span> <span class="c1">// title</span>
+      <span class="kc">undefined</span><span class="p">,</span> <span class="c1">// eventLocation</span>
+      <span class="kc">undefined</span><span class="p">,</span> <span class="c1">// notes</span>
+      <span class="nx">startDate</span><span class="p">,</span>
+      <span class="nx">endDate</span><span class="p">,</span>
+      <span class="nx">app</span><span class="p">.</span><span class="nx">calendarSuccessCallback</span><span class="p">,</span>
+      <span class="nx">app</span><span class="p">.</span><span class="nx">calendarFailureCallback</span>
+    <span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="nx">calendarSuccessCallback</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">events</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// TODO</span>
+  <span class="p">},</span>
+
+  <span class="nx">calendarFailureCallback</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Failed to fatch calendar events'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="cm">/* ... */</span>
+
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p>Note, the calendar plugin recommends <a href="https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin#android-6-m-permissions" title="" class="">checking that you have sufficient
+permissions</a>
+before using its APIs.  For the sake of brevity, the permission workflow has
+been omitted in this post.</p></blockquote>
+<p>The first 3 parameters we passed to the <code>calendar.findEvent</code> function are
+undefined, since we don&#39;t want to filter out events with specific titles,
+locations, or notes.  The last two parameters are callback functions that will
+be executed when the app has succeeded or failed to fetch calendar data.  Our
+calendarFailureCallback will log a simple message, and our 
+calendarSuccessCallback will sort through the events and find the earliest 
+event in the list.</p><div class="highlight"><pre><span class="nx">calendarSuccessCallback</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">events</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">events</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// TODO</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Find the earliest returned event</span>
+  <span class="kd">var</span> <span class="nx">earliestEvent</span> <span class="o">=</span> <span class="nx">events</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">events</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">tempDate</span> <span class="o">=</span> <span class="nx">events</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">date1</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">earliestEvent</span><span class="p">.</span><span class="nx">startDate</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">date2</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">tempDate</span><span class="p">.</span><span class="nx">startDate</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">date2</span> <span class="o">&lt;</span> <span class="nx">date1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">earliestEvent</span> <span class="o">=</span> <span class="nx">tempDate</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+</pre></div><h2 id="sending-an-appmessage" class="anchor">Sending An AppMessage</h2><p>All we have to do now is send the relevent bits of information down to our
+Pebble app.  This is where the Pebble plugin is going to come in handy.  At the
+end of the function, we&#39;ll call <code>sendAppMessage</code> which works in a similar
+manner to <a href="/pebblekit-js/Pebble/#sendAppMessage" title="" class="">PebbleKit JS&#39;
+sendAppMessage</a>
+function.</p><p>The title is easy to snag - it&#39;s a property on the event object, available via
+<code>event.title</code>.  The hours and minutes will take a bit of work since they only
+exist within a string property on the object (<code>event.startDate</code>).  Luckily the
+format for the date is fixed, so we know where in the string it will be.</p><p>With this in mind, we can use the
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring" title="" class="">String.prototype.substring</a>
+method to extract the numbers we want.  The method takes two parameters, the
+first is the starting index (inclusive) of the substring, and the second is the
+the end index (exclusive).  So if we want the hour, we&#39;d pass 11 as the
+starting index, and 13 as the end index.  This will create a substring
+containing the 11th and 12th characters of the string.</p><p>Also in this example, the <code>data</code> object represents our AppMessage, where <code>10</code>,
+<code>11</code>, and <code>12</code> are the AppMessage keys.</p><div class="highlight"><pre><span class="c1">// Format is in YYYY-MM-DD HH:mm:ss</span>
+<span class="kd">var</span> <span class="nx">hourString</span> <span class="o">=</span> <span class="nx">earliestEvent</span><span class="p">.</span><span class="nx">startDate</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">hour</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">hourString</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">minuteString</span> <span class="o">=</span> <span class="nx">earliestEvent</span><span class="p">.</span><span class="nx">startDate</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">minute</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">minuteString</span><span class="p">);</span>
+
+<span class="c1">// AppMessage keys</span>
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'10'</span><span class="o">:</span> <span class="nx">earliestEvent</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+  <span class="s1">'11'</span><span class="o">:</span> <span class="nx">hour</span><span class="p">,</span>
+  <span class="s1">'12'</span><span class="o">:</span> <span class="nx">minute</span>
+<span class="p">};</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">pebblekit</span><span class="p">.</span><span class="nx">sendAppMessage</span><span class="p">(</span><span class="nx">uuid</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'sent AppMessage'</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">'Couldn\'t send AppMessage'</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div><p>The only thing left is to read the AppMessage on the C side.  To quote every
+university professor I&#39;ve ever had: &quot;We leave this as an exercise to the
+reader&quot;.  (Just kidding, you can see the watchface&#39;s full C
+code <a href="https://github.com/pebble-hacks/cordova-plugin-pebblekit/blob/master/example/pebble/src/pebble.c" title="" class="">here</a>,
+or consult the
+<a href="/guides/communication/sending-and-receiving-data" title="" class="">documentation</a>).</p><p>While we only used two of the APIs of the PebbleKit Cordova plugin here, there
+is much more available to you, all with <a href="https://github.com/pebble-hacks/cordova-plugin-pebblekit" title="" class="">new and shiny
+documentation</a></p><p>For folks that are interested, our Cordova plugin is completely open source,
+and hosted on
+<a href="https://github.com/pebble-hacks/cordova-plugin-pebblekit" title="" class="">Github</a>. We welcome
+bug reports, feature requests, and contributions with open arms :).</p><p>And that&#39;s all there is to it!  If you&#39;ve been holding back on writing a
+companion app for your amazing app, now&#39;s the time to try it!</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2016/07/01/creating-native-companion-apps-with-js-and-cordova/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#setup">Setup</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#querying-events">Querying Events</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#sending-an-appmessage">Sending An AppMessage</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                <strong>Freshly Baked</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                <strong>Ryan Perry-Nguyen</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

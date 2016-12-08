@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Common Syntax Errors // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Details of common problems encountered when writing C apps for Pebble, and how 
+to resolve them.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/debugging/common-syntax-errors/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/debugging/common-runtime-errors/"><span>Common Runtime Errors</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/debugging/common-syntax-errors/"><span>Common Syntax Errors</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/debugging/debugging-with-app-logs/"><span>Debugging with App Logs</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/debugging/debugging-with-gdb/"><span>Debugging with GDB</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="undeclared-variables">Undeclared Variables</option>
+          
+            <option value="undeclared-functions">Undeclared Functions</option>
+          
+            <option value="too-few-arguments">Too Few Arguments</option>
+          
+            <option value="incorrect-callback-implementations">Incorrect Callback Implementations</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Common Syntax Errors</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>If a developer is relatively new to writing Pebble apps (or new to the C
+language in general), there may be times when problems with an app&#39;s code will
+cause compilation errors. Some types of errors with the code itself can be
+detected by the compiler and this helps reduce the number that cause problems
+when the code is run on Pebble.</p><p>These are problems with how app code is written, as opposed to runtime errors
+(discussed in <a href="/guides/debugging/common-runtime-errors/"><em>Common Runtime Errors</em></a>), which may
+include breaking the rules of the C language or bad practices that the compiler
+is able to detect and show as an error. The following are some examples.</p><h3 id="undeclared-variables" class="anchor">Undeclared Variables</h3><p>This error means that a variable that has been referenced is not available in
+the current scope.</p><div class="highlight no-copy"><pre>../src/main.c: In function 'toggle_logging':
+../src/main.c:33:6: error: 'is_now_logging' undeclared (first use in this function)
+   if(is_now_logging == true) {
+      ^
+</pre></div><p>In the above example, the symbol <code>is_now_logging</code> has been used in the
+<code>toggle_logging</code> function, but it was not first declared there. This could be
+because the declaring line has been deleted, or it was expected to be available
+globally, but isn&#39;t. </p><p>To fix this, consider where else the symbol is required. If it is needed in
+other functions, move the declaration to a global scope (outside any function).
+If it is needed only for this function, declare it before the offending line
+(here line <code>33</code>).</p><h3 id="undeclared-functions" class="anchor">Undeclared Functions</h3><p>Another variant of the above problem can occur when declaring new functions in a
+code file. Due to the nature of C compilation, any function a
+developer attempts to call must have been previously encountered by the compiler
+in order to be visible. This can be done through 
+<a href="http://en.wikipedia.org/wiki/Forward_declaration" title="" class="">forward declaration</a>.</p><p>For example, the code segment below will not compile:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">my_function</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">my_function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Some code here</span>
+
+<span class="p">}</span>
+</pre></div><p>The compiler will report this with an &#39;implicit declaration&#39; error, as the app
+has implied the function&#39;s existence by calling it, even though the compiler has
+not seen it previously:</p><div class="highlight no-copy"><pre>../src/function-visibility.c: In function 'window_load':
+../src/function-visibility.c:6:3: error: implicit declaration of function 'my_function' [-Werror=implicit-function-declaration]
+   my_function();
+   ^
+</pre></div><p>This is because the <em>declaration</em> of <code>my_function()</code> occurs after it is called
+in <code>window_load()</code>. There are two options to fix this.</p>
+<ul>
+<li>Move the function declaration above any calls to it, so it has been
+encountered by the compiler:</li>
+</ul>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">my_function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Some code here</span>
+
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">my_function</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+<ul>
+<li>Declare the function by prototype before it is called, and provide the
+implementation later:</li>
+</ul>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">my_function</span><span class="p">();</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">my_function</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">my_function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Some code here</span>
+
+<span class="p">}</span>
+</pre></div><h3 id="too-few-arguments" class="anchor">Too Few Arguments</h3><p>When creating functions with argument lists, sometimes the requirements of the
+function change and the developer forgets to update the places where it is
+called.</p><div class="highlight no-copy"><pre>../src/main.c: In function 'select_click_handler':
+../src/main.c:57:3: error: too few arguments to function 'toggle_logging'
+   toggle_logging();
+   ^
+../src/main.c:32:13: note: declared here
+ static void toggle_logging(bool will_log) {
+             ^
+</pre></div><p>The example above reports that the app tried to call the <code>toggle_logging()</code>
+function in <code>select_click_handler()</code> on line 57, but did not supply enough
+arguments. The argument list expected in the function definition is shown in the
+second part of the output message, which here exists on line 32 and expects an
+extra value of type <code>bool</code>.</p><p>To fix this, establish which version of the function is required, and update
+either the calls or the declaration to match.</p><h3 id="incorrect-callback-implementations" class="anchor">Incorrect Callback Implementations</h3><p>In the Pebble SDK there are many instances where the developer must implement a
+function signature required for callbacks, such as for a <a href="/docs/c/User_Interface/Window/#WindowHandlers" title="WindowHandlers" class="link--docs"><code>WindowHandlers</code></a>
+object. This means that when implementing the handler the developer-defined
+callback must match the return type and argument list specified in the API
+documentation.</p><p>For example, the <a href="/docs/c/User_Interface/Window/#WindowHandler" title="WindowHandler" class="link--docs"><code>WindowHandler</code></a> callback (used for the <code>load</code> and <code>unload</code>
+events in a <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>&#39;s lifecycle) has the following signature:</p><div class="highlight"><pre><span class="k">typedef</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span> <span class="n">WindowHandler</span><span class="p">)(</span><span class="k">struct</span> <span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span>
+</pre></div><p>This specifies a return type of <code>void</code> and a single argument: a pointer of type
+<a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>. Therefore the implemented callback should look like this:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div><p>If the developer does not specify the correct return type and argument list in
+their callback implementation, the compiler will let them know with an error
+like the following, stating that the type of function passed by the developer
+does not match that which is expected:</p><div class="highlight no-copy"><pre>../src/main.c: In function 'init':
+../src/main.c:82:5: error: initialization from incompatible pointer type [-Werror]
+     .load = main_window_load,
+     ^
+../src/main.c:82:5: error: (near initialization for '(anonymous).load') [-Werror]
+</pre></div><p>To fix this, double check that the implementation provided has the same return
+type and argument list as specified in the API documentation.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/debugging/common-syntax-errors/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#undeclared-variables">Undeclared Variables</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#undeclared-functions">Undeclared Functions</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#too-few-arguments">Too Few Arguments</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#incorrect-callback-implementations">Incorrect Callback Implementations</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

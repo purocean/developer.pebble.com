@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Drawing Text // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/Graphics/Drawing_Text/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open active">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_create">graphics_text_attributes_create</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_destroy">graphics_text_attributes_destroy</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_restore_default_text_flow">graphics_text_attributes_restore_default_text_flow</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_enable_screen_text_flow">graphics_text_attributes_enable_screen_text_flow</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_restore_default_paging">graphics_text_attributes_restore_default_paging</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_enable_paging">graphics_text_attributes_enable_paging</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#graphics_draw_text">graphics_draw_text</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#graphics_text_layout_get_content_size">graphics_text_layout_get_content_size</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#graphics_text_layout_get_content_size_with_attributes">graphics_text_layout_get_content_size_with_attributes</option>
+
+
+
+          
+
+          
+
+          
+<option value="#enums">ENUMS</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#GTextOverflowMode">GTextOverflowMode</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#GTextAlignment">GTextAlignment</option>
+
+
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/Graphics/Drawing_Text/#GTextAttributes">GTextAttributes</option>
+
+
+
+          
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">Drawing Text</h1>
+
+      <p>Functions to draw text into a graphics context. </p>
+      <p>See <a refid="group___graphics_context" kindref="compound" href="/docs/c/Graphics/Graphics_Context/">Graphics Context</a> for more information about the graphics context.</p>
+<p>Other drawing functions and related documentation:<ul>
+<li><p><a refid="group___drawing" kindref="compound" href="/docs/c/Graphics/Drawing_Primitives/">Drawing Primitives</a></p></li>
+<li><p><a refid="group___path_drawing" kindref="compound" href="/docs/c/Graphics/Drawing_Paths/">Drawing Paths</a></p></li>
+<li><p><a refid="group___graphics_types" kindref="compound" href="/docs/c/Graphics/Graphics_Types/">Graphics Types</a> </p></li>
+</ul>
+</p>
+
+      
+
+      
+
+
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="graphics_text_attributes_create">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>GTextAttributes * </span><span class="docs__item__name">graphics_text_attributes_create</span><span>(</span><span class="docs__item__param">void</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates an instance of GTextAttributes for advanced control when rendering text. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p>New instance of GTextAttributes </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="group___text_drawing_1gad02d08f03f2e33a5abc660f0dd23c85b" kindref="member" href="/docs/c/Graphics/Drawing_Text/#graphics_draw_text">graphics_draw_text</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="graphics_text_attributes_destroy">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">graphics_text_attributes_destroy</span><span>(</span><span class="docs__item__param">GTextAttributes * text_attributes</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroys a previously created instance of GTextAttributes. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="graphics_text_attributes_restore_default_text_flow">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">graphics_text_attributes_restore_default_text_flow</span><span>(</span><span class="docs__item__param">GTextAttributes * text_attributes</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Restores text flow to the rectangular default. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> text_attributes</dt>
+  <dd><p>The attributes for which to disable text flow </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___text_drawing_1ga84e08b94b1509fd06f00735c1f67f2c3" kindref="member" href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_enable_screen_text_flow">graphics_text_attributes_enable_screen_text_flow</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="graphics_text_attributes_enable_screen_text_flow">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">graphics_text_attributes_enable_screen_text_flow</span><span>(</span><span class="docs__item__param">GTextAttributes * text_attributes</span><span>, </span><span class="docs__item__param">uint8_t inset</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Enables text flow that follows the boundaries of the screen. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> text_attributes</dt>
+  <dd><p>The attributes for which text flow should be enabled </p></dt>
+  
+  <dt><span style="color: #777"></span> inset</dt>
+  <dd><p>Additional amount of pixels to inset to the inside of the screen for text flow calculation. Can be zero. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___text_drawing_1ga0382b73150e1314d378b98d0547f925e" kindref="member" href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_restore_default_text_flow">graphics_text_attributes_restore_default_text_flow</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="graphics_text_attributes_restore_default_paging">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">graphics_text_attributes_restore_default_paging</span><span>(</span><span class="docs__item__param">GTextAttributes * text_attributes</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Restores paging and locked content origin to the defaults. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> text_attributes</dt>
+  <dd><p>The attributes for which to restore paging and locked content origin </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___text_drawing_1gaf447fb3ce85161d8d1ccb97ef78fed13" kindref="member" href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_enable_paging">graphics_text_attributes_enable_paging</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="graphics_text_attributes_enable_paging">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">graphics_text_attributes_enable_paging</span><span>(</span><span class="docs__item__param">GTextAttributes * text_attributes</span><span>, </span><span class="docs__item__param"><a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> content_origin_on_screen</span><span>, </span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> paging_on_screen</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Enables paging and locks the text flow calculation to a fixed point on the screen. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> text_attributes</dt>
+  <dd><p>Attributes for which to enable paging and locked content origin </p></dt>
+  
+  <dt><span style="color: #777"></span> content_origin_on_screen</dt>
+  <dd><p>Absolute coordinate on the screen where the text content starts before an animation or scrolling takes place. Usually the frame's origin of a layer in screen coordinates. </p></dt>
+  
+  <dt><span style="color: #777"></span> paging_on_screen</dt>
+  <dd><p>Rectangle in absolute coordinates on the screen that describes where text content pages. Usually the container's absolute frame in screen coordinates. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___text_drawing_1ga44f1cfbfa0b36d7fdc16174eed382adc" kindref="member" href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_restore_default_paging">graphics_text_attributes_restore_default_paging</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="graphics_draw_text">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">graphics_draw_text</span><span>(</span><span class="docs__item__param">GContext * ctx</span><span>, </span><span class="docs__item__param">const char * text</span><span>, </span><span class="docs__item__param"><a refid="group___fonts_1gacc1ebd584f1ee580b863b24744c8aecb" kindref="member" href="/docs/c/Graphics/Fonts/#GFont">GFont</a> const font</span><span>, </span><span class="docs__item__param">const <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> box</span><span>, </span><span class="docs__item__param">const <a refid="group___text_drawing_1gadad5abc1b1cfbddd48bd79f70c05b8fa" kindref="member" href="/docs/c/Graphics/Drawing_Text/#GTextOverflowMode">GTextOverflowMode</a> overflow_mode</span><span>, </span><span class="docs__item__param">const <a refid="group___text_drawing_1ga12cbd02b0d5668d7c9bd582077bf7f1d" kindref="member" href="/docs/c/Graphics/Drawing_Text/#GTextAlignment">GTextAlignment</a> alignment</span><span>, </span><span class="docs__item__param">GTextAttributes * text_attributes</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Draw text into the current graphics context, using the context's current text color. The text will be drawn inside a box with the specified dimensions and configuration, with clipping occuring automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> ctx</dt>
+  <dd><p>The destination graphics context in which to draw </p></dt>
+  
+  <dt><span style="color: #777"></span> text</dt>
+  <dd><p>The zero terminated UTF-8 string to draw </p></dt>
+  
+  <dt><span style="color: #777"></span> font</dt>
+  <dd><p>The font in which the text should be set </p></dt>
+  
+  <dt><span style="color: #777"></span> box</dt>
+  <dd><p>The bounding box in which to draw the text. The first line of text will be drawn against the top of the box. </p></dt>
+  
+  <dt><span style="color: #777"></span> overflow_mode</dt>
+  <dd><p>The overflow behavior, in case the text is larger than what fits inside the box. </p></dt>
+  
+  <dt><span style="color: #777"></span> alignment</dt>
+  <dd><p>The horizontal alignment of the text </p></dt>
+  
+  <dt><span style="color: #777"></span> text_attributes</dt>
+  <dd><p>Optional text attributes to describe the characteristics of the text </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="graphics_text_layout_get_content_size">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="struct_g_size" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GSize">GSize</a> </span><span class="docs__item__name">graphics_text_layout_get_content_size</span><span>(</span><span class="docs__item__param">const char * text</span><span>, </span><span class="docs__item__param"><a refid="group___fonts_1gacc1ebd584f1ee580b863b24744c8aecb" kindref="member" href="/docs/c/Graphics/Fonts/#GFont">GFont</a> const font</span><span>, </span><span class="docs__item__param">const <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> box</span><span>, </span><span class="docs__item__param">const <a refid="group___text_drawing_1gadad5abc1b1cfbddd48bd79f70c05b8fa" kindref="member" href="/docs/c/Graphics/Drawing_Text/#GTextOverflowMode">GTextOverflowMode</a> overflow_mode</span><span>, </span><span class="docs__item__param">const <a refid="group___text_drawing_1ga12cbd02b0d5668d7c9bd582077bf7f1d" kindref="member" href="/docs/c/Graphics/Drawing_Text/#GTextAlignment">GTextAlignment</a> alignment</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Obtain the maximum size that a text with given font, overflow mode and alignment occupies within a given rectangular constraint. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> text</dt>
+  <dd><p>The zero terminated UTF-8 string for which to calculate the size </p></dt>
+  
+  <dt><span style="color: #777"></span> font</dt>
+  <dd><p>The font in which the text should be set while calculating the size </p></dt>
+  
+  <dt><span style="color: #777"></span> box</dt>
+  <dd><p>The bounding box in which the text should be constrained </p></dt>
+  
+  <dt><span style="color: #777"></span> overflow_mode</dt>
+  <dd><p>The overflow behavior, in case the text is larger than what fits inside the box. </p></dt>
+  
+  <dt><span style="color: #777"></span> alignment</dt>
+  <dd><p>The horizontal alignment of the text </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The maximum size occupied by the text </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <p>app_graphics_text_layout_get_content_size_with_attributes </p>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="graphics_text_layout_get_content_size_with_attributes">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="struct_g_size" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GSize">GSize</a> </span><span class="docs__item__name">graphics_text_layout_get_content_size_with_attributes</span><span>(</span><span class="docs__item__param">const char * text</span><span>, </span><span class="docs__item__param"><a refid="group___fonts_1gacc1ebd584f1ee580b863b24744c8aecb" kindref="member" href="/docs/c/Graphics/Fonts/#GFont">GFont</a> const font</span><span>, </span><span class="docs__item__param">const <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> box</span><span>, </span><span class="docs__item__param">const <a refid="group___text_drawing_1gadad5abc1b1cfbddd48bd79f70c05b8fa" kindref="member" href="/docs/c/Graphics/Drawing_Text/#GTextOverflowMode">GTextOverflowMode</a> overflow_mode</span><span>, </span><span class="docs__item__param">const <a refid="group___text_drawing_1ga12cbd02b0d5668d7c9bd582077bf7f1d" kindref="member" href="/docs/c/Graphics/Drawing_Text/#GTextAlignment">GTextAlignment</a> alignment</span><span>, </span><span class="docs__item__param">GTextAttributes * text_attributes</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Obtain the maximum size that a text with given font, overflow mode and alignment occupies within a given rectangular constraint. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> text</dt>
+  <dd><p>The zero terminated UTF-8 string for which to calculate the size </p></dt>
+  
+  <dt><span style="color: #777"></span> font</dt>
+  <dd><p>The font in which the text should be set while calculating the size </p></dt>
+  
+  <dt><span style="color: #777"></span> box</dt>
+  <dd><p>The bounding box in which the text should be constrained </p></dt>
+  
+  <dt><span style="color: #777"></span> overflow_mode</dt>
+  <dd><p>The overflow behavior, in case the text is larger than what fits inside the box. </p></dt>
+  
+  <dt><span style="color: #777"></span> alignment</dt>
+  <dd><p>The horizontal alignment of the text </p></dt>
+  
+  <dt><span style="color: #777"></span> text_attributes</dt>
+  <dd><p>Optional text attributes to describe the characteristics of the text </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The maximum size occupied by the text </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <p>app_graphics_text_layout_get_content_size </p>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+      
+
+      
+        <h2 class="anchor" id="enums">Enum<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="GTextOverflowMode">
+            
+            
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">GTextOverflowMode</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Text overflow mode controls the way text overflows when the string that is drawn does not fit inside the area constraint. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><simplesect kind="see"><para><ref refid="group___text_drawing_1gad02d08f03f2e33a5abc660f0dd23c85b" kindref="member">graphics_draw_text</ref> </para><simplesectsep></simplesectsep><para><ref refid="group___text_layer_1ga654f359a8f5736aa5ca82735d8b03b16" kindref="member">text_layer_set_overflow_mode</ref> </para></simplesect>
+</p>
+</div>
+
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="GTextOverflowModeWordWrap" class="docs__item__anchor"></span>
+      
+        <dt>GTextOverflowModeWordWrap</dt>
+        <dd>
+          
+          <p>On overflow, wrap words to a new line below the current one. Once vertical space is consumed, the last line may be clipped. </p>
+        </dd>
+      
+      
+      <span id="GTextOverflowModeTrailingEllipsis" class="docs__item__anchor"></span>
+      
+        <dt>GTextOverflowModeTrailingEllipsis</dt>
+        <dd>
+          
+          <p>On overflow, wrap words to a new line below the current one. Once vertical space is consumed, truncate as needed to fit a trailing ellipsis (...). Clipping may occur if the vertical space cannot accomodate the first line of text. </p>
+        </dd>
+      
+      
+      <span id="GTextOverflowModeFill" class="docs__item__anchor"></span>
+      
+        <dt>GTextOverflowModeFill</dt>
+        <dd>
+          
+          <p>Acts like <a refid="group___text_drawing_1ggadad5abc1b1cfbddd48bd79f70c05b8faa346a4ac943012d3e193452bfba04f6c5" kindref="member">GTextOverflowModeTrailingEllipsis</a>, plus trims leading and trailing newlines, while treating all other newlines as spaces. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GTextAlignment">
+            
+            
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">GTextAlignment</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Text aligment controls the way the text is aligned inside the box the text is drawn into. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><simplesect kind="see"><para><ref refid="group___text_drawing_1gad02d08f03f2e33a5abc660f0dd23c85b" kindref="member">graphics_draw_text</ref> </para><simplesectsep></simplesectsep><para><ref refid="group___text_layer_1gaf44cc52cecaa94867d927130da4d4aca" kindref="member">text_layer_set_text_alignment</ref> </para></simplesect>
+</p>
+</div>
+
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="GTextAlignmentLeft" class="docs__item__anchor"></span>
+      
+        <dt>GTextAlignmentLeft</dt>
+        <dd>
+          
+          <p>Aligns the text to the left of the drawing box. </p>
+        </dd>
+      
+      
+      <span id="GTextAlignmentCenter" class="docs__item__anchor"></span>
+      
+        <dt>GTextAlignmentCenter</dt>
+        <dd>
+          
+          <p>Aligns the text centered inside the drawing box. </p>
+        </dd>
+      
+      
+      <span id="GTextAlignmentRight" class="docs__item__anchor"></span>
+      
+        <dt>GTextAlignmentRight</dt>
+        <dd>
+          
+          <p>Aligns the text to the right of the drawing box. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="GTextAttributes">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct GTextAttributes <span class="docs__item__name">GTextAttributes</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_create">graphics_text_attributes_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_destroy">graphics_text_attributes_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_restore_default_text_flow">graphics_text_attributes_restore_default_text_flow</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_enable_screen_text_flow">graphics_text_attributes_enable_screen_text_flow</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_restore_default_paging">graphics_text_attributes_restore_default_paging</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#graphics_text_attributes_enable_paging">graphics_text_attributes_enable_paging</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#graphics_draw_text">graphics_draw_text</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#graphics_text_layout_get_content_size">graphics_text_layout_get_content_size</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#graphics_text_layout_get_content_size_with_attributes">graphics_text_layout_get_content_size_with_attributes</a></li>
+  
+</ul>
+
+
+      
+
+      
+
+      
+<h3><a href="#enums">Enums</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#GTextOverflowMode">GTextOverflowMode</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#GTextAlignment">GTextAlignment</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Graphics/Drawing_Text/#GTextAttributes">GTextAttributes</a></li>
+  
+</ul>
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

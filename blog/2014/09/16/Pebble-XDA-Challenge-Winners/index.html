@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>XDA - Pebble Developer Challenge Winners! // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2014/09/16/Pebble-XDA-Challenge-Winners/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="without-further-ado-here-are-the-winners-of-the-xda-pebble-developer-challenge-in-no-particular-order">Without further ado, here are the winners of the XDA - Pebble Developer Challenge (in no particular order)</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">XDA - Pebble Developer Challenge Winners!</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>16 September 2014</li>
+    <li><a href="/blog/authors/katherine/">Katherine McAuliffe</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </li>
+    <li><a href="/blog/2014/09/16/Pebble-XDA-Challenge-Winners/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p>Almost two months ago the XDA Forums and Pebble set out on a mission to find
+three amazing apps/watchfaces and their developers. We called it the XDA -
+Pebble Developer Challenge and last Friday it all came to a close! These three
+developers have taken the Pebble and truly stretched its limits to create some
+amazing products and we want to show them to you!</p><p>The XDA - Pebble Developer Challenge was a 3-week competition - your opportunity
+to pitch your proposal for the best Pebble app and bring it to life with a
+Pebble of your own. Of the 20 proposals that we selected for the second phase,
+the developers of the best three Pebble apps have been invited to attend the 2014
+Pebble Developer Retreat in October. We also gave each of them a Pebble Steel to flaunt!</p><p>There were a lot of really great entries to the second phase of the competition
+and all of them deserve a quick download! Check out the complete list of apps
+and watchfaces that were made during the competition on the
+<a href="http://www.xda-developers.com/android/the-xda-pebble-developer-challenge-voting-has-begun/" title="" class="">XDA forums</a>.</p><p><img src="/assets/images/blog/xda-challenge.png" /></p><h5 id="without-further-ado-here-are-the-winners-of-the-xda-pebble-developer-challenge-in-no-particular-order" class="anchor">Without further ado, here are the winners of the XDA - Pebble Developer Challenge (in no particular order)</h5>
+<table>
+  <tr>
+    <td>
+      <img src="/assets/images/blog/JanGrunclPhoto.png">
+    </td>
+    <td>
+      <h2>Drag Racing</h2>
+      <h4>Author: Jan Gruncl</h4>
+      <h5>Location: Czech Republic</h5>
+    </td>
+    <td>
+      <img src="/assets/images/blog/DragRacing.png">
+    </td>
+  </tr>
+</table>
+<p>In just 4 years, Jan Gruncl has made dozens of Android apps in all categories -
+indie, contract jobs and corporate (ew!) - mostly for Czech audiences. He started
+with Pebble by porting the Silly Walk watchface the second day he got his
+smartwatch, followed by his reported personal favorite app - Notiwatch. Jan has
+recently switched to videogame development so his challenge entry, Drag Racing,
+was a great idea to bring those two together.</p><p>Drag Racing is a genre that one might not expect to be as entertaining as this game
+is for Pebble! Three buttons are just about right for this kind of game and it&#39;s
+almost as addicting as Cookie Clicker! There&#39;s no waiting for gas, no double currency,
+just a fair game designed to be fun and turbo to boot!</p><p>Drag Racing can be found on the <a href="https://apps.getpebble.com/applications/54033c6886b01c8c15000138" title="" class="">Pebble appstore</a>.
+Check out Drag Racing&#39;s <a href="http://forum.xda-developers.com/pebble/pebble-development/competition-drag-racing-t2849592" title="" class="">development thread</a>
+and <a href="https://github.com/JohnyGQD/drag-racing-pebble" title="" class="">Pebble app on Github</a> for the evolution of this awesome game!</p>
+<table>
+  <tr>
+    <td>
+      <img src="/assets/images/blog/RichardGilbertPhoto.png">
+    </td>
+    <td>
+      <h2>PebbleWear</h2>
+      <h4>Author: Richard Gilbert</h4>
+      <h5>Location: Australia</h5>
+    </td>
+    <td>
+      <img src="/assets/images/blog/PebbleWear.png">
+    </td>
+  </tr>
+</table>
+<p>Richard Gilbert is an IT student from Griffith University in Australia. He first
+took an interest in Pebble during its Kickstarter campaign where he created the
+&quot;Pebble Concepts&quot; website, which allowed people to share their watchface ideas.
+Since then, he&#39;s been active in the Pebble community sharing new ideas,
+concepts, and developing small apps. PebbleWear was his most ambitious Pebble
+project yet and we&#39;re excited for the possibilities it will bring!</p><p>Heard of Android Wear? With PebbleWear your notifications are always accessible
+right below the watch face in this very well done Android Wear clone. Notifications
+are mirrored exactly as they appear on your phone and are shown as a list of cards
+packed with glanceable information. The functionality doesn&#39;t end there: by pressing
+the back button you can dismiss a notification (also dismissing it from your phone)
+and by pressing the select button you can view additional pages and even trigger
+actions on the notification!</p><p>PebbleWear can be found on the <a href="https://apps.getpebble.com/applications/540a0aeb7c799eb18d000127" title="" class="">Pebble appstore</a> and <a href="https://play.google.com/store/apps/details?id=com.richardgg.androidpls" title="" class="">Google Play store</a>. Check out PebbleWear&#39;s <a href="http://forum.xda-developers.com/pebble/pebble-development/competition-pebble-wear-homescreen-t2848326" title="" class="">development
+thread</a>,
+<a href="https://github.com/RichardGG/PebbleWearAndroid" title="" class="">Android app on Github</a>, and <a href="https://github.com/RichardGG/PebbleWearPebble" title="" class="">Pebble app on Github</a> for the evolution of this really cool application.</p>
+<table>
+  <tr>
+    <td>
+      <img src="/assets/images/blog/AlexisRicoPhoto.png">
+    </td>
+    <td>
+      <h3>Geek The Time</h2>
+      <h4>Author: Alexis Rico</h4>
+      <h5>Location: Spain</h5>
+    </td>
+    <td>
+      <img src="/assets/images/blog/GeekTheTime.png">
+    </td>
+  </tr>
+</table>
+<p>Alexis Rico, also known as SferaDev, is a tech student who works on the
+Paranoid Android team. He is a big fan of science fiction and the Star Wars
+expanded universe. The open source world is his native environment and he really
+likes improving on a daily basis. He has been working on several projects but
+really likes the Android experience which is shown in his masterful use of
+Android and Pebble for Geek The Time!</p><p>Geek The Time is the ultimate geek watchface for your Pebble! What started as a
+simple watchface that showed some movies and geek quotes now allows you to read
+news, check the weather and even receive the current bitcoin value in different
+currencies. You can read headlines from XDA, TechCrunch, Android Police or even keep
+updated on your carrier or current IP! This IS an Android only app though,
+so tough luck iOS users!</p><p>Geek The Time can be found on the <a href="https://apps.getpebble.com/applications/53ff4974c20483149c000152" title="" class="">Pebble appstore</a> and
+<a href="https://play.google.com/store/apps/details?id=com.sferadev.geekthetime.companion" title="" class="">Google Play store</a>.
+Check out PebbleWear&#39;s <a href="http://forum.xda-developers.com/pebble/pebble-development/xda-challenge-geek-time-t2846738" title="" class="">development thread</a>,
+<a href="https://github.com/SferaDev/GeekDaTimeCompanion" title="" class="">Android app on Github</a>,
+and <a href="https://github.com/SferaDev/GeekDaTime" title="" class="">Pebble app on Github</a> for the evolution of this intricate watchface.</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2014/09/16/Pebble-XDA-Challenge-Winners/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#without-further-ado-here-are-the-winners-of-the-xda-pebble-developer-challenge-in-no-particular-order">Without further ado, here are the winners of the XDA - Pebble Developer Challenge (in no particular order)</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                <strong>Freshly Baked</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                <strong>Katherine McAuliffe</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

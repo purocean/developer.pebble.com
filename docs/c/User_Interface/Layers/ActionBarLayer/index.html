@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ActionBarLayer // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/User_Interface/Layers/ActionBarLayer/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem active"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_create">action_bar_layer_create</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_destroy">action_bar_layer_destroy</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_get_layer">action_bar_layer_get_layer</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_context">action_bar_layer_set_context</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_click_config_provider">action_bar_layer_set_click_config_provider</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon">action_bar_layer_set_icon</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_clear_icon">action_bar_layer_clear_icon</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_add_to_window">action_bar_layer_add_to_window</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_remove_from_window">action_bar_layer_remove_from_window</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_background_color">action_bar_layer_set_background_color</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon_animated">action_bar_layer_set_icon_animated</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon_press_animation">action_bar_layer_set_icon_press_animation</option>
+
+
+
+          
+
+          
+
+          
+<option value="#enums">ENUMS</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#ActionBarLayerIconPressAnimation">ActionBarLayerIconPressAnimation</option>
+
+
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#ActionBarLayer">ActionBarLayer</option>
+
+
+
+          
+<option value="#defines">MACRO DEFINTIONS</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#ACTION_BAR_WIDTH">ACTION_BAR_WIDTH</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#NUM_ACTION_BAR_ITEMS">NUM_ACTION_BAR_ITEMS</option>
+
+  <option value="/docs/c/User_Interface/Layers/ActionBarLayer/#_ACTION_BAR_WIDTH">_ACTION_BAR_WIDTH</option>
+
+
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">ActionBarLayer</h1>
+
+      <p>Vertical, bar-shaped control widget on the right edge of the window. </p>
+      <p><img type="html" name="action_bar_layer.png" src="/assets/images/docs/c/aplite/action_bar_layer.png">
+ ActionBarLayer is a Layer that displays a bar on the right edge of the window. The bar can contain up to 3 icons, each corresponding with one of the buttons on the right side of the watch. The purpose of each icon is to provide a hint (feed-forward) to what action a click on the respective button will cause.</p>
+<p>The action bar is useful when there are a few (up to 3) main actions that are desirable to be able to take quickly, literally with one press of a button.</p>
+<p><h3 level="3">More actions</h3>
+</p>
+<p>If there are more than 3 actions the user might want to take:<ul>
+<li><p>Try assigning the top and bottom icons of the action bar to the two most immediate actions and use the middle icon to push a Window with a MenuLayer with less immediate actions.</p></li>
+<li><p>Secondary actions that are not vital, can be "hidden" under a long click. Try to group similar actions to one button. For example, in a Music app, a single click on the top button is tied to the action to jump to the previous track. Holding that same button means seek backwards.</p></li>
+</ul>
+</p>
+<p><h3 level="3">Directionality mapping</h3>
+</p>
+<p>When the top and bottom buttons are used to control navigating through a (potentially virtual, non-visible) list of items, follow this guideline:<ul>
+<li><p>Tie the top button to the action that goes to the <em>previous</em> item in the list, for example "jump to previous track" in a Music app.</p></li>
+<li><p>Tie the bottom button to the action that goes to the <em>next</em> item in the list, for example "jump to next track" in a Music app.</p></li>
+</ul>
+</p>
+<p><h3 level="3">Geometry</h3>
+</p>
+<p><ul>
+<li><p>The action bar is 30 pixels wide. Use the <a refid="group___action_bar_layer_1gab5803f738d5e179c285d748003517435" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#ACTION_BAR_WIDTH">ACTION_BAR_WIDTH</a> define.</p></li>
+<li><p>Icons should not be wider than 28 pixels, or taller than 18 pixels. It is recommended to use a size of around 15 x 15 pixels for the "visual core" of the icon, and extending or contracting where needed. <h3 level="3">Example Code</h3>
+</p></li>
+</ul>
+</p>
+<p>The code example below shows how to do the initial setup of the action bar in a window's <code>.load</code> handler. Configuring the button actions is similar to the process when using <a refid="group___window_1gaeefbe33bc69ffee444337b056912440c" kindref="member" href="/docs/c/User_Interface/Window/#window_set_click_config_provider">window_set_click_config_provider()</a>. See <a refid="group___clicks" kindref="compound" href="/docs/c/User_Interface/Clicks/">Clicks</a> for more information.</p>
+<p><div class="highlight"><pre><span class="n">ActionBarLayer</span> <span class="o">*</span><span class="n">action_bar</span><span class="p">;</span>
+
+<span class="c1">// The implementation of my_next_click_handler and my_previous_click_handler</span>
+<span class="c1">// is omitted for the sake of brevity. See the Clicks reference docs.</span>
+
+<span class="kt">void</span> <span class="nf">click_config_provider</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">window_single_click_subscribe</span><span class="p">(</span><span class="n">BUTTON_ID_DOWN</span><span class="p">,</span> <span class="p">(</span><span class="n">ClickHandler</span><span class="p">)</span> <span class="n">my_next_click_handler</span><span class="p">);</span>
+  <span class="n">window_single_click_subscribe</span><span class="p">(</span><span class="n">BUTTON_ID_UP</span><span class="p">,</span> <span class="p">(</span><span class="n">ClickHandler</span><span class="p">)</span> <span class="n">my_previous_click_handler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+  <span class="c1">// Initialize the action bar:</span>
+  <span class="n">action_bar</span> <span class="o">=</span> <span class="n">action_bar_layer_create</span><span class="p">();</span>
+  <span class="c1">// Associate the action bar with the window:</span>
+  <span class="n">action_bar_layer_add_to_window</span><span class="p">(</span><span class="n">action_bar</span><span class="p">,</span> <span class="n">window</span><span class="p">);</span>
+  <span class="c1">// Set the click config provider:</span>
+  <span class="n">action_bar_layer_set_click_config_provider</span><span class="p">(</span><span class="n">action_bar</span><span class="p">,</span>
+                                             <span class="n">click_config_provider</span><span class="p">);</span>
+
+  <span class="c1">// Set the icons:</span>
+  <span class="c1">// The loading of the icons is omitted for brevity... See gbitmap_create_with_resource()</span>
+  <span class="n">action_bar_layer_set_icon_animated</span><span class="p">(</span><span class="n">action_bar</span><span class="p">,</span> <span class="n">BUTTON_ID_UP</span><span class="p">,</span> <span class="n">my_icon_previous</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+  <span class="n">action_bar_layer_set_icon_animated</span><span class="p">(</span><span class="n">action_bar</span><span class="p">,</span> <span class="n">BUTTON_ID_DOWN</span><span class="p">,</span> <span class="n">my_icon_next</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div> </p>
+
+      
+
+      
+
+
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_create">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>ActionBarLayer * </span><span class="docs__item__name">action_bar_layer_create</span><span>(</span><span class="docs__item__param">void</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates a new ActionBarLayer on the heap and initalizes it with the default values. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><ul>
+<li><p>Background color: <a refid="group___color_definitions_1ga03d3c53a6a31fe2d80def95b8c035e26" kindref="member" href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlack">GColorBlack</a></p></li>
+<li><p>No click configuration provider (<code>NULL</code>)</p></li>
+<li><p>No icons</p></li>
+<li><p>Not added to / associated with any window, thus not catching any button input yet. 
+</p></li>
+</ul>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the ActionBarLayer. <code>NULL</code> if the ActionBarLayer could not be created </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_destroy">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_destroy</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroys a ActionBarLayer previously created by action_bar_layer_create. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_get_layer">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>Layer * </span><span class="docs__item__name">action_bar_layer_get_layer</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the "root" Layer of the action bar layer, which is the parent for the sub- layers used for its implementation. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar_layer</dt>
+  <dd><p>Pointer to the ActionBarLayer for which to get the "root" Layer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The "root" Layer of the action bar layer. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_set_context">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_set_context</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar</span><span>, </span><span class="docs__item__param">void * context</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the context parameter, which will be passed in to <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> callbacks and the <a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a> callback of the action bar. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>By default, a pointer to the action bar itself is passed in, if the context has not been set or if it has been set to <code>NULL</code>. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar</dt>
+  <dd><p>The action bar for which to assign the new context </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>The new context </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___action_bar_layer_1ga0abe5d50cc4845dc219bf69ca24b4466" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_click_config_provider">action_bar_layer_set_click_config_provider()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_set_click_config_provider">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_set_click_config_provider</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a> click_config_provider</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the click configuration provider callback of the action bar. In this callback your application can associate handlers to the different types of click events for each of the buttons, see <a refid="group___clicks" kindref="compound" href="/docs/c/User_Interface/Clicks/">Clicks</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>If the action bar had already been added to a window and the window is currently on-screen, the click configuration provider will be called before this function returns. Otherwise, it will be called by the system when the window becomes on-screen. </p>
+<p></p>
+<p>The <code>.raw</code> handlers cannot be used without breaking the automatic highlighting of the segment of the action bar that for which a button is </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar</dt>
+  <dd><p>The action bar for which to assign a new click configuration provider </p></dt>
+  
+  <dt><span style="color: #777"></span> click_config_provider</dt>
+  <dd><p>The new click configuration provider </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___action_bar_layer_1ga03f3cf8b2817e31ff6c9b670f934dfe6" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon">action_bar_layer_set_icon()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_set_icon">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_set_icon</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span>, </span><span class="docs__item__param">const GBitmap * icon</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets an action bar icon onto one of the 3 slots as identified by <code>button_id</code>. Only <a refid="group___clicks_1ggaa60e15d86cfe7033f28c7d066c85266eafb03cb7921a8bb7893cd8093a1a5e9cb" kindref="member">BUTTON_ID_UP</a>, <a refid="group___clicks_1ggaa60e15d86cfe7033f28c7d066c85266ea98093cd31c917223780131cfafe91dec" kindref="member">BUTTON_ID_SELECT</a> and <a refid="group___clicks_1ggaa60e15d86cfe7033f28c7d066c85266ea65a919b8a0f4539acfb865eb2a2dd9d0" kindref="member">BUTTON_ID_DOWN</a> can be used. The transition will not be animated. Whenever an icon is set, the click configuration provider will be called, to give the application the opportunity to reconfigure the button interaction. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar</dt>
+  <dd><p>The action bar for which to set the new icon </p></dt>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The identifier of the button for which to set the icon </p></dt>
+  
+  <dt><span style="color: #777"></span> icon</dt>
+  <dd><p>Pointer to the GBitmap icon </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___action_bar_layer_1gafb562eb59d855d5e3a394b6b28195727" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon_animated">action_bar_layer_set_icon_animated()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_clear_icon">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_clear_icon</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to clear out an existing icon. All it does is call <code>action_bar_layer_set_icon(action_bar, button_id, NULL)</code> </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar</dt>
+  <dd><p>The action bar for which to clear an icon </p></dt>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The identifier of the button for which to clear the icon </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___action_bar_layer_1ga03f3cf8b2817e31ff6c9b670f934dfe6" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon">action_bar_layer_set_icon()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_add_to_window">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_add_to_window</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar</span><span>, </span><span class="docs__item__param">struct Window * window</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Adds the action bar's layer on top of the window's root layer. It also adjusts the layout of the action bar to match the geometry of the window it gets added to. Lastly, it calls <a refid="group___window_1gadfbe85cbdb8a0b96d970672639c5421e" kindref="member" href="/docs/c/User_Interface/Window/#window_set_click_config_provider_with_context">window_set_click_config_provider_with_context()</a> on the window to set it up to work with the internal callback and raw click handlers of the action bar, to enable the highlighting of the section of the action bar when the user presses a button. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>After this call, do not use <a refid="group___window_1gadfbe85cbdb8a0b96d970672639c5421e" kindref="member" href="/docs/c/User_Interface/Window/#window_set_click_config_provider_with_context">window_set_click_config_provider_with_context()</a> with the window that the action bar has been added to (this would de-associate the action bar's click config provider and context). Instead use <a refid="group___action_bar_layer_1ga0abe5d50cc4845dc219bf69ca24b4466" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_click_config_provider">action_bar_layer_set_click_config_provider()</a> and <a refid="group___action_bar_layer_1ga4f5d63fd993859e5a6602e509aa20103" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_context">action_bar_layer_set_context()</a> to register the click configuration provider to configure the buttons actions. </p>
+<p></p>
+<p>It is advised to call this is in the window's <code>.load</code> or <code>.appear</code> handler. Make sure to call <a refid="group___action_bar_layer_1gaeaddd4bbb4443a5ae4d20be9b560e56a" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_remove_from_window">action_bar_layer_remove_from_window()</a> in the window's <code>.unload</code> or <code>.disappear</code> handler. </p>
+<p></p>
+<p>Adding additional layers to the window's root layer after this calll can occlude the action bar. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar</dt>
+  <dd><p>The action bar to associate with the window </p></dt>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window with which the action bar is to be associated </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_remove_from_window">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_remove_from_window</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Removes the action bar from the window and unconfigures the window's click configuration provider. <code>NULL</code> is set as the window's new click config provider and also as its callback context. If it has not been added to a window before, this function is a no-op. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar</dt>
+  <dd><p>The action bar to de-associate from its current window </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_set_background_color">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_set_background_color</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar</span><span>, </span><span class="docs__item__param">GColor background_color</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the background color of the action bar. Defaults to <a refid="group___color_definitions_1ga03d3c53a6a31fe2d80def95b8c035e26" kindref="member" href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlack">GColorBlack</a>. The action bar's layer is automatically marked dirty. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar</dt>
+  <dd><p>The action bar of which to set the background color </p></dt>
+  
+  <dt><span style="color: #777"></span> background_color</dt>
+  <dd><p>The new background color </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_set_icon_animated">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_set_icon_animated</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span>, </span><span class="docs__item__param">const GBitmap * icon</span><span>, </span><span class="docs__item__param">bool animated</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets an action bar icon onto one of the 3 slots as identified by <code>button_id</code>. Only <a refid="group___clicks_1ggaa60e15d86cfe7033f28c7d066c85266eafb03cb7921a8bb7893cd8093a1a5e9cb" kindref="member">BUTTON_ID_UP</a>, <a refid="group___clicks_1ggaa60e15d86cfe7033f28c7d066c85266ea98093cd31c917223780131cfafe91dec" kindref="member">BUTTON_ID_SELECT</a> and <a refid="group___clicks_1ggaa60e15d86cfe7033f28c7d066c85266ea65a919b8a0f4539acfb865eb2a2dd9d0" kindref="member">BUTTON_ID_DOWN</a> can be used. Optionally, if <code>animated</code> is <code>true</code>, the transition will be animated. Whenever an icon is set, the click configuration provider will be called, to give the application the opportunity to reconfigure the button interaction. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar</dt>
+  <dd><p>The action bar for which to set the new icon </p></dt>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The identifier of the button for which to set the icon </p></dt>
+  
+  <dt><span style="color: #777"></span> icon</dt>
+  <dd><p>Pointer to the GBitmap icon </p></dt>
+  
+  <dt><span style="color: #777"></span> animated</dt>
+  <dd><p>True = animate the transition, False = do not animate the transition </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___action_bar_layer_1ga03f3cf8b2817e31ff6c9b670f934dfe6" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon">action_bar_layer_set_icon()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="action_bar_layer_set_icon_press_animation">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">action_bar_layer_set_icon_press_animation</span><span>(</span><span class="docs__item__param">ActionBarLayer * action_bar</span><span>, </span><span class="docs__item__param"><a refid="group___clicks_1gaa60e15d86cfe7033f28c7d066c85266e" kindref="member" href="/docs/c/User_Interface/Clicks/#ButtonId">ButtonId</a> button_id</span><span>, </span><span class="docs__item__param">ActionBarLayerIconPressAnimation animation</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the animation to use while a button is pressed on an ActionBarLayer. By default we use ActionBarLayerIconPressAnimationMoveLeft. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> action_bar</dt>
+  <dd><p>The action bar for which to set the press animation </p></dt>
+  
+  <dt><span style="color: #777"></span> button_id</dt>
+  <dd><p>The button for which to set the press animation </p></dt>
+  
+  <dt><span style="color: #777"></span> animation</dt>
+  <dd><p>The animation to use. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___action_bar_layer_1gafb562eb59d855d5e3a394b6b28195727" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon_animated">action_bar_layer_set_icon_animated()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+      
+
+      
+        <h2 class="anchor" id="enums">Enum<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="ActionBarLayerIconPressAnimation">
+            
+            
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">ActionBarLayerIconPressAnimation</span></div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="ActionBarLayerIconPressAnimationNone" class="docs__item__anchor"></span>
+      
+        <dt>ActionBarLayerIconPressAnimationNone</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+      <span id="ActionBarLayerIconPressAnimationMoveLeft" class="docs__item__anchor"></span>
+      
+        <dt>ActionBarLayerIconPressAnimationMoveLeft</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+      <span id="ActionBarLayerIconPressAnimationMoveUp" class="docs__item__anchor"></span>
+      
+        <dt>ActionBarLayerIconPressAnimationMoveUp</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+      <span id="ActionBarLayerIconPressAnimationMoveRight" class="docs__item__anchor"></span>
+      
+        <dt>ActionBarLayerIconPressAnimationMoveRight</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+      <span id="ActionBarLayerIconPressAnimationMoveDown" class="docs__item__anchor"></span>
+      
+        <dt>ActionBarLayerIconPressAnimationMoveDown</dt>
+        <dd>
+          
+          
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="ActionBarLayer">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct ActionBarLayer <span class="docs__item__name">ActionBarLayer</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="defines">Macro Definition<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="ACTION_BAR_WIDTH">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                <section data-platform="aplite">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">ACTION_BAR_WIDTH </span> <a refid="group___graphics_types_1ga93dc1082b2412cc4931cc1f0e870e250" kindref="member" href="/docs/c/Graphics/Graphics_Types/#PBL_IF_RECT_ELSE">PBL_IF_RECT_ELSE</a>(30, 40)</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The width of the action bar in pixels. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">ACTION_BAR_WIDTH </span> <a refid="group___action_bar_layer_1gaff50ec1b958fedccf064d112c4b6b8ab" kindref="member" href="/docs/c/User_Interface/Layers/ActionBarLayer/#_ACTION_BAR_WIDTH">_ACTION_BAR_WIDTH</a>(PBL_PLATFORM_TYPE_CURRENT)</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The width of the action bar in pixels. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="NUM_ACTION_BAR_ITEMS">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">NUM_ACTION_BAR_ITEMS </span> 3</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The maximum number of action bar items. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="_ACTION_BAR_WIDTH">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The define <strong>_ACTION_BAR_WIDTH</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">_ACTION_BAR_WIDTH </span><span>(</span><span class="docs__item__param"> plat</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The width of the action bar in pixels, for all platforms. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_create">action_bar_layer_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_destroy">action_bar_layer_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_get_layer">action_bar_layer_get_layer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_context">action_bar_layer_set_context</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_click_config_provider">action_bar_layer_set_click_config_provider</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon">action_bar_layer_set_icon</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_clear_icon">action_bar_layer_clear_icon</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_add_to_window">action_bar_layer_add_to_window</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_remove_from_window">action_bar_layer_remove_from_window</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_background_color">action_bar_layer_set_background_color</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon_animated">action_bar_layer_set_icon_animated</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#action_bar_layer_set_icon_press_animation">action_bar_layer_set_icon_press_animation</a></li>
+  
+</ul>
+
+
+      
+
+      
+
+      
+<h3><a href="#enums">Enums</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#ActionBarLayerIconPressAnimation">ActionBarLayerIconPressAnimation</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#ActionBarLayer">ActionBarLayer</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#defines">Macro Defintions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#ACTION_BAR_WIDTH">ACTION_BAR_WIDTH</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#NUM_ACTION_BAR_ITEMS">NUM_ACTION_BAR_ITEMS</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/#_ACTION_BAR_WIDTH">_ACTION_BAR_WIDTH</a></li>
+  
+</ul>
+
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

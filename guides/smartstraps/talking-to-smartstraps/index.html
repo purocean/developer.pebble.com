@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Talking To Smartstraps // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Information on how to use the Pebble C API to talk to a connected smartstrap.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/smartstraps/talking-to-smartstraps/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/smartstraps/smartstrap-hardware/"><span>Hardware Specification</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/smartstraps/smartstrap-protocol/"><span>Protocol Specification</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/smartstraps/talking-to-pebble/"><span>Talking To Pebble</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/smartstraps/talking-to-smartstraps/"><span>Talking To Smartstraps</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="services-and-attributes">Services and Attributes</option>
+          
+            <option value="generic-service-profile">- Generic Service Profile</option>
+          
+            <option value="raw-data-service">- Raw Data Service</option>
+          
+            <option value="manipulating-attributes">Manipulating Attributes</option>
+          
+            <option value="connecting-to-a-smartstrap">Connecting to a Smartstrap</option>
+          
+            <option value="writing-data">Writing Data</option>
+          
+            <option value="reading-data">Reading Data</option>
+          
+            <option value="receiving-notifications">Receiving Notifications</option>
+          
+            <option value="callbacks-for-each-type-of-request">Callbacks For Each Type of Request</option>
+          
+            <option value="timeouts">Timeouts</option>
+          
+            <option value="smartstrap-results">Smartstrap Results</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Talking To Smartstraps</h1>
+    
+    <div class="alert alert--fg-white alert--bg-purple alert--medium">
+      <p>
+        <strong>PLATFORM NOTICE</strong><br>
+        This guide does not apply to apps built to run on the Aplite platform
+        (Pebble Classic, Pebble Steel).
+      </p>
+    </div>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>To talk to a connected smartstrap, the <a href="/docs/c/Smartstrap/" title="Smartstrap" class="link--docs"><code>Smartstrap</code></a> API is used to establish a
+connection and exchange arbitrary data. The exchange protocol is specified in
+<a href="/guides/smartstraps/smartstrap-protocol/"><em>Protocol Specification</em></a> and most of
+it is abstracted by the SDK. This also includes handling of the
+<a href="/guides/smartstraps/smartstrap-protocol/#link-control-profile"><em>Link Control Profile</em></a>.</p><p>Read <a href="/guides/smartstraps/talking-to-pebble/"><em>Talking To Pebble</em></a> to learn how to use an
+example library for popular Arduino microcontrollers to implement the smartstrap
+side of the protocol.</p>
+<blockquote>
+<p>Note: Apps running on multiple hardware platforms that may or may not include
+a smartstrap connector should use the <code>PBL_SMARTSTRAP</code> compile-time define (as
+well as checking API return values) to gracefully handle when it is not
+available.</p></blockquote>
+<h2 id="services-and-attributes" class="anchor">Services and Attributes</h2><h3 id="generic-service-profile" class="anchor">Generic Service Profile</h3><p>The Pebble smartstrap protocol uses the concept of &#39;services&#39; and &#39;attributes&#39;
+to organize the exchange of data between the watch and the smartstrap. Services
+are identified by a 16-bit number. Some of these service identifiers have a
+specific meaning; developers should read 
+<a href="/guides/smartstraps/smartstrap-protocol/#supported-services-and-attributes"><em>Supported Services and Attributes</em></a>
+for a complete list of reserved service IDs and ranges of service IDs that can
+be used for experimentation.</p><p>Attributes are also identified by a 16-bit number. The meaning of attribute
+values is specific to the service of that attribute. The smartstrap protocol
+defines the list of attributes for some services, but developers are free to
+define their own list of attributes in their own services.</p><p>This abstraction supports read and write operations on any attribute as well as
+sending notifications from the strap when an attribute value changes. This is
+called the Generic Service Profile and is the recommended way to exchange data
+with smartstraps.</p><h3 id="raw-data-service" class="anchor">Raw Data Service</h3><p>Developers can also choose to use the Raw Data Service to minimize the overhead
+associated with transmitting data. To use this profile a Pebble developer will
+use the same APIs described in this guide with the service ID and attribute ID
+set to <a href="/docs/c/Smartstrap/#SMARTSTRAP_RAW_DATA_SERVICE_ID" title="SMARTSTRAP_RAW_DATA_SERVICE_ID" class="link--docs"><code>SMARTSTRAP_RAW_DATA_SERVICE_ID</code></a> and
+<a href="/docs/c/Smartstrap/#SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID" title="SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID" class="link--docs"><code>SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID</code></a> SDK constants respectively.</p><h2 id="manipulating-attributes" class="anchor">Manipulating Attributes</h2><p>The <a href="/docs/c/Smartstrap/" title="Smartstrap" class="link--docs"><code>Smartstrap</code></a> API uses the <a href="/docs/c/Smartstrap/#SmartstrapAttribute" title="SmartstrapAttribute" class="link--docs"><code>SmartstrapAttribute</code></a> type as a proxy for an
+attribute on the smartstrap. It includes the service ID of the attribute, the ID
+of the attribute itself, as well as a data buffer that is used to store the
+latest read or written value of the attribute.</p><p>Before you can read or write an attribute, you need to initialize a
+<code>SmartstrapAttribute</code> that will be used as a proxy for the attribute on the
+smartstrap. The first step developers should take is to decide upon and define
+their services and attributes:</p><div class="highlight"><pre><span class="c1">// Define constants for your service ID, attribute ID </span>
+<span class="c1">// and buffer size of your attribute.</span>
+<span class="k">static</span> <span class="k">const</span> <span class="n">SmartstrapServiceId</span> <span class="n">s_service_id</span> <span class="o">=</span> <span class="mh">0x1001</span><span class="p">;</span>
+<span class="k">static</span> <span class="k">const</span> <span class="n">SmartstrapAttributeId</span> <span class="n">s_attribute_id</span> <span class="o">=</span> <span class="mh">0x0001</span><span class="p">;</span>
+<span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">s_buffer_length</span> <span class="o">=</span> <span class="mi">64</span><span class="p">;</span>
+</pre></div><p>Then, define the attribute globally:</p><div class="highlight"><pre><span class="c1">// Declare an attribute pointer</span>
+<span class="k">static</span> <span class="n">SmartstrapAttribute</span> <span class="o">*</span><span class="n">s_attribute</span><span class="p">;</span>
+</pre></div><p>Lastly create the attribute during app initialization, allocating its buffer:</p><div class="highlight"><pre><span class="c1">// Create the attribute, and allocate a buffer for its data</span>
+<span class="n">s_attribute</span> <span class="o">=</span> <span class="n">smartstrap_attribute_create</span><span class="p">(</span><span class="n">s_service_id</span><span class="p">,</span> <span class="n">s_attribute_id</span><span class="p">,</span> 
+                                                            <span class="n">s_buffer_length</span><span class="p">);</span>
+</pre></div><p>Later on, APIs such as <a href="/docs/c/Smartstrap/#smartstrap_attribute_get_service_id" title="smartstrap_attribute_get_service_id" class="link--docs"><code>smartstrap_attribute_get_service_id()</code></a> and
+<a href="/docs/c/Smartstrap/#smartstrap_attribute_get_attribute_id" title="smartstrap_attribute_get_attribute_id" class="link--docs"><code>smartstrap_attribute_get_attribute_id()</code></a> can be used to confirm these values
+for any <a href="/docs/c/Smartstrap/#SmartstrapAttribute" title="SmartstrapAttribute" class="link--docs"><code>SmartstrapAttribute</code></a> created previously. This is useful if an app
+deals with more than one service or attribute.</p><p>Attributes can also be destroyed when an app is exiting or no longer requires
+them by using <a href="/docs/c/Smartstrap/#smartstrap_attribute_destroy" title="smartstrap_attribute_destroy" class="link--docs"><code>smartstrap_attribute_destroy()</code></a>:</p><div class="highlight"><pre><span class="c1">// Destroy this attribute</span>
+<span class="n">smartstrap_attribute_destroy</span><span class="p">(</span><span class="n">s_attribute</span><span class="p">);</span>
+</pre></div><h2 id="connecting-to-a-smartstrap" class="anchor">Connecting to a Smartstrap</h2><p>The first thing a smartstrap-enabled app should do is call
+<a href="/docs/c/Smartstrap/#smartstrap_subscribe" title="smartstrap_subscribe" class="link--docs"><code>smartstrap_subscribe()</code></a> to register the handler functions (described below)
+that will be called when smartstrap-related events occur. Such events can be one
+of four types.</p><p>The <a href="/docs/c/Smartstrap/#SmartstrapServiceAvailabilityHandler" title="SmartstrapServiceAvailabilityHandler" class="link--docs"><code>SmartstrapServiceAvailabilityHandler</code></a> handler, used when a smartstrap
+reports that a service is available, or has become unavailable.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">strap_availability_handler</span><span class="p">(</span><span class="n">SmartstrapServiceId</span> <span class="n">service_id</span><span class="p">,</span>
+                                       <span class="kt">bool</span> <span class="n">is_available</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// A service's availability has changed</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Service %d is %s available"</span><span class="p">,</span>
+                                <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">service_id</span><span class="p">,</span> <span class="n">is_available</span> <span class="o">?</span> <span class="s">"now"</span> <span class="o">:</span> <span class="s">"NOT"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>See below under <a href="#writing-data" title="" class=""><em>Writing Data</em></a> and 
+<a href="#reading-data" title="" class=""><em>Reading Data</em></a> for explanations of the other callback types.</p><p>With all four of these handlers in place, the subscription to the associated
+events can be registered.</p><div class="highlight"><pre><span class="c1">// Subscribe to the smartstrap events</span>
+<span class="n">smartstrap_subscribe</span><span class="p">((</span><span class="n">SmartstrapHandlers</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">.</span><span class="n">availability_did_change</span> <span class="o">=</span> <span class="n">strap_availability_handler</span><span class="p">,</span>
+  <span class="p">.</span><span class="n">did_read</span> <span class="o">=</span> <span class="n">strap_read_handler</span><span class="p">,</span>
+  <span class="p">.</span><span class="n">did_write</span> <span class="o">=</span> <span class="n">strap_write_handler</span><span class="p">,</span>
+  <span class="p">.</span><span class="n">notified</span> <span class="o">=</span> <span class="n">strap_notify_handler</span>
+<span class="p">});</span>
+</pre></div><p>As with the other <a href="/docs/c/Foundation/Event_Service/" title="Event Service" class="link--docs"><code>Event Services</code></a>, the subscription can be
+removed at any time:</p><div class="highlight"><pre><span class="c1">// Stop getting callbacks</span>
+<span class="n">smartstrap_unsubscribe</span><span class="p">();</span>
+</pre></div><p>The availability of a service can be queried at any time:</p><div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">smartstrap_service_is_available</span><span class="p">(</span><span class="n">s_service_id</span><span class="p">))</span> <span class="p">{</span>
+  <span class="c1">// Our service is available!</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// Our service is not currently available, handle gracefully</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Service %d is not available."</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">s_service_id</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="writing-data" class="anchor">Writing Data</h2><p>The smartstrap communication model (detailed under 
+<a href="/guides/smartstraps/smartstrap-protocol/#communication-model"><em>Communication Model</em></a>)
+uses the master-slave principle. This one-way relationship means that Pebble can
+request data from the smartstrap at any time, but the smartstrap cannot.
+However, the smartstrap may notify the watch that data is waiting to be read so
+that the watch can read that data at the next opportunity.</p><p>To send data to a smartstrap an app must call
+<a href="/docs/c/Smartstrap/#smartstrap_attribute_begin_write" title="smartstrap_attribute_begin_write" class="link--docs"><code>smartstrap_attribute_begin_write()</code></a> which will return a buffer to write into.
+When the app is done preparing the data to be sent in the buffer, it calls
+<a href="/docs/c/Smartstrap/#smartstrap_attribute_end_write" title="smartstrap_attribute_end_write" class="link--docs"><code>smartstrap_attribute_end_write()</code></a> to actually send the data.</p><div class="highlight"><pre><span class="c1">// Pointer to the attribute buffer</span>
+<span class="kt">size_t</span> <span class="n">buff_size</span><span class="p">;</span>
+<span class="kt">uint8_t</span> <span class="o">*</span><span class="n">buffer</span><span class="p">;</span>
+
+<span class="c1">// Begin the write request, getting the buffer and its length</span>
+<span class="n">smartstrap_attribute_begin_write</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buffer</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buff_size</span><span class="p">);</span>
+
+<span class="c1">// Store the data to be written to this attribute</span>
+<span class="n">snprintf</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">,</span> <span class="n">buff_size</span><span class="p">,</span> <span class="s">"Hello, smartstrap!"</span><span class="p">);</span>
+
+<span class="c1">// End the write request, and send the data, not expecting a response</span>
+<span class="n">smartstrap_attribute_end_write</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">buff_size</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+</pre></div>
+<blockquote>
+<p>Another message cannot be sent until the strap responds (a <code>did_write</code>
+callback for Write requests, or <code>did_read</code> for Read/Write+Read requests) or
+the timeout expires. Doing so will cause the API to return
+<a href="/docs/c/Smartstrap/#SmartstrapResultBusy" title="SmartstrapResultBusy" class="link--docs"><code>SmartstrapResultBusy</code></a>. Read 
+<a href="/guides/smartstraps/talking-to-smartstraps/#timeouts"><em>Timeouts</em></a> for
+more information on smartstrap timeouts.</p></blockquote>
+<p>The <a href="/docs/c/Smartstrap/#SmartstrapWriteHandler" title="SmartstrapWriteHandler" class="link--docs"><code>SmartstrapWriteHandler</code></a> will be called when the smartstrap has
+acknowledged the write operation (if using the Raw Data Service, there
+is no acknowledgement and the callback will be called when Pebble is done
+sending the frame to the smartstrap). If a read is requested (with the
+<code>request_read</code> parameter of <a href="/docs/c/Smartstrap/#smartstrap_attribute_end_write" title="smartstrap_attribute_end_write" class="link--docs"><code>smartstrap_attribute_end_write()</code></a>) then the read
+callback will also be called when the smartstrap sends the attribute value.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">strap_write_handler</span><span class="p">(</span><span class="n">SmartstrapAttribute</span> <span class="o">*</span><span class="n">attribute</span><span class="p">,</span>
+                                <span class="n">SmartstrapResult</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// A write operation has been attempted</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">SmartstrapResultOk</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Handle the failure</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Smartstrap error occured: %s"</span><span class="p">,</span>
+                                          <span class="n">smartstrap_result_to_string</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>If a timeout occurs on a non-raw-data write request (with the <code>request_read</code>
+parameter set to <code>false</code>), <a href="/docs/c/Smartstrap/#SmartstrapResultTimeOut" title="SmartstrapResultTimeOut" class="link--docs"><code>SmartstrapResultTimeOut</code></a> will be passed to the
+<code>did_write</code> handler on the watch side.</p><h2 id="reading-data" class="anchor">Reading Data</h2><p>The simplest way to trigger a read request is to call
+<a href="/docs/c/Smartstrap/#smartstrap_attribute_read" title="smartstrap_attribute_read" class="link--docs"><code>smartstrap_attribute_read()</code></a>. Another way to trigger a read is to set the
+<code>request_read</code> parameter of <a href="/docs/c/Smartstrap/#smartstrap_attribute_end_write" title="smartstrap_attribute_end_write" class="link--docs"><code>smartstrap_attribute_end_write()</code></a> to <code>true</code>. In
+both cases, the response will be received asynchronously and the
+<a href="/docs/c/Smartstrap/#SmartstrapReadHandler" title="SmartstrapReadHandler" class="link--docs"><code>SmartstrapReadHandler</code></a> will be called when it is received.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">strap_read_handler</span><span class="p">(</span><span class="n">SmartstrapAttribute</span> <span class="o">*</span><span class="n">attribute</span><span class="p">,</span>
+                               <span class="n">SmartstrapResult</span> <span class="n">result</span><span class="p">,</span> <span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span>
+                               <span class="kt">size_t</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">SmartstrapResultOk</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Data has been read into the data buffer provided</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Smartstrap sent: %s"</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Some error has occured</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Error in read handler: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">result</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">read_attribute</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">SmartstrapResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">smartstrap_attribute_read</span><span class="p">(</span><span class="n">attribute</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">SmartstrapResultOk</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Error reading attribute: %s"</span><span class="p">,</span>
+                                        <span class="n">smartstrap_result_to_string</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p>Note: <a href="/docs/c/Smartstrap/#smartstrap_attribute_begin_write" title="smartstrap_attribute_begin_write" class="link--docs"><code>smartstrap_attribute_begin_write()</code></a> may not be called within a
+<code>did_read</code> handler (<a href="/docs/c/Smartstrap/#SmartstrapResultBusy" title="SmartstrapResultBusy" class="link--docs"><code>SmartstrapResultBusy</code></a> will be returned).</p></blockquote>
+<p>Similar to write requests, if a timeout occurs when making a read request the
+<code>did_read</code> handler will be called with <a href="/docs/c/Smartstrap/#SmartstrapResultTimeOut" title="SmartstrapResultTimeOut" class="link--docs"><code>SmartstrapResultTimeOut</code></a> passed in the
+<code>result</code> parameter.</p><h2 id="receiving-notifications" class="anchor">Receiving Notifications</h2><p>To save as much power as possible, the notification mechanism can be used by the
+smartstrap to alert the watch when there is data that requires processing. When
+this happens, the <a href="/docs/c/Smartstrap/#SmartstrapNotifyHandler" title="SmartstrapNotifyHandler" class="link--docs"><code>SmartstrapNotifyHandler</code></a> handler is called with the
+appropriate attribute provided. Developers can use this mechanism to allow the
+watch to sleep until it is time to read data from the smartstrap, or simply as a
+messsaging mechanism.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">strap_notify_handler</span><span class="p">(</span><span class="n">SmartstrapAttribute</span> <span class="o">*</span><span class="n">attribute</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// The smartstrap has emitted a notification for this attribute</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Attribute with ID %d sent notification"</span><span class="p">,</span>
+                        <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">smartstrap_attribute_get_attribute_id</span><span class="p">(</span><span class="n">attribute</span><span class="p">));</span>
+
+  <span class="c1">// Some data is ready, let's read it</span>
+  <span class="n">smartstrap_attribute_read</span><span class="p">(</span><span class="n">attribute</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="callbacks-for-each-type-of-request" class="anchor">Callbacks For Each Type of Request</h2><p>There are a few different scenarios that involve the <a href="/docs/c/Smartstrap/#SmartstrapReadHandler" title="SmartstrapReadHandler" class="link--docs"><code>SmartstrapReadHandler</code></a>
+and <a href="/docs/c/Smartstrap/#SmartstrapWriteHandler" title="SmartstrapWriteHandler" class="link--docs"><code>SmartstrapWriteHandler</code></a>, where the callbacks to these
+<a href="/docs/c/Smartstrap/#SmartstrapHandlers" title="SmartstrapHandlers" class="link--docs"><code>SmartstrapHandlers</code></a> will change depending on the type of request made by the
+watch.</p>
+<table><thead>
+<tr>
+<th>Request Type</th>
+<th>Callback Sequence</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Read only</td>
+<td><code>did_write</code> when the request is sent. <code>did_read</code> when the response arrives or an error (e.g.: a timeout) occurs.</td>
+</tr>
+<tr>
+<td>Write+Read request</td>
+<td><code>did_write</code> when the request is sent. <code>did_read</code> when the response arrives or an error (e.g.: a timeout) occurs.</td>
+</tr>
+<tr>
+<td>Write (Raw Data Service)</td>
+<td><code>did_write</code> when the request is sent.</td>
+</tr>
+<tr>
+<td>Write (any other service)</td>
+<td><code>did_write</code> when the write request is acknowledged by the smartstrap.</td>
+</tr>
+</tbody></table>
+<p>For Write requests only, <code>did_write</code> will be called when the attribute is ready
+for another request, and for Reads/Write+Read requests <code>did_read</code> will be called
+when the attribute is ready for another request.</p><h2 id="timeouts" class="anchor">Timeouts</h2><p>Read requests and write requests to an attribute expect a response from the
+smartstrap and will generate a timeout error if the strap does not respond
+before the expiry of the timeout.</p><p>The maximum timeout value supported is 1000ms, with the default value
+<a href="/docs/c/Smartstrap/#SMARTSTRAP_TIMEOUT_DEFAULT" title="SMARTSTRAP_TIMEOUT_DEFAULT" class="link--docs"><code>SMARTSTRAP_TIMEOUT_DEFAULT</code></a> of 250ms. A smaller or larger value can be
+specified by the developer:</p><div class="highlight"><pre><span class="c1">// Set a timeout of 500ms</span>
+<span class="n">smartstrap_set_timeout</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</pre></div><h2 id="smartstrap-results" class="anchor">Smartstrap Results</h2><p>When data is sent to the smartstrap, one of several results is possible. These
+are returned by various API functions (such as <a href="/docs/c/Smartstrap/#smartstrap_attribute_read" title="smartstrap_attribute_read" class="link--docs"><code>smartstrap_attribute_read()</code></a>),
+and are enumerated as follows:</p>
+<table><thead>
+<tr>
+<th>Result</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>SmartstrapResultOk</code></td>
+<td><code>0</code></td>
+<td>No error occured.</td>
+</tr>
+<tr>
+<td><code>SmartstrapResultInvalidArgs</code></td>
+<td><code>1</code></td>
+<td>The arguments provided were invalid.</td>
+</tr>
+<tr>
+<td><code>SmartstrapResultNotPresent</code></td>
+<td><code>2</code></td>
+<td>The Smartstrap port is not present on this watch.</td>
+</tr>
+<tr>
+<td><code>SmartstrapResultBusy</code></td>
+<td><code>3</code></td>
+<td>The connection is currently busy. For example, this can happen if the watch is waiting for a response from the smartstrap.</td>
+</tr>
+<tr>
+<td><code>SmartstrapResultServiceUnavailable</code></td>
+<td><code>4</code></td>
+<td>Either a smartstrap is not connected or the connected smartstrap does not support the specified service.</td>
+</tr>
+<tr>
+<td><code>SmartstrapResultAttributeUnsupported</code></td>
+<td><code>5</code></td>
+<td>The smartstrap reported that it does not support the requested attribute.</td>
+</tr>
+<tr>
+<td><code>SmartstrapResultTimeOut</code></td>
+<td><code>6</code></td>
+<td>A timeout occured during the request.</td>
+</tr>
+</tbody></table>
+<p>The function shown below returns a human-readable string for each value, useful
+for debugging.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">smartstrap_result_to_string</span><span class="p">(</span><span class="n">SmartstrapResult</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nl">SmartstrapResultOk</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">"SmartstrapResultOk"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">SmartstrapResultInvalidArgs</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">"SmartstrapResultInvalidArgs"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">SmartstrapResultNotPresent</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">"SmartstrapResultNotPresent"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">SmartstrapResultBusy</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">"SmartstrapResultBusy"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">SmartstrapResultServiceUnavailable</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">"SmartstrapResultServiceUnavailable"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">SmartstrapResultAttributeUnsupported</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">"SmartstrapResultAttributeUnsupported"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">SmartstrapResultTimeOut</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">"SmartstrapResultTimeOut"</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+      <span class="k">return</span> <span class="s">"Not a SmartstrapResult value!"</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/smartstraps/talking-to-smartstraps/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#services-and-attributes">Services and Attributes</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#generic-service-profile">Generic Service Profile</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#raw-data-service">Raw Data Service</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#manipulating-attributes">Manipulating Attributes</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#connecting-to-a-smartstrap">Connecting to a Smartstrap</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#writing-data">Writing Data</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#reading-data">Reading Data</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#receiving-notifications">Receiving Notifications</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#callbacks-for-each-type-of-request">Callbacks For Each Type of Request</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#timeouts">Timeouts</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#smartstrap-results">Smartstrap Results</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Smartstrap/">Smartstrap</a></li>
+            
+          </ul>
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

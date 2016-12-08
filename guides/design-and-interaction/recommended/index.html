@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Recommended Guidelines and Patterns // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Pebble's recommended guidelines for creating awesome app experiences.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/design-and-interaction/recommended/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/benefits/"><span>Benefits of Design Guidelines</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/core-experience/"><span>Core Experience Design</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/one-click-actions/"><span>One Click Actions</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/design-and-interaction/recommended/"><span>Recommended Guidelines and Patterns</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/in-the-round/"><span>Round App Design</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/implementation/"><span>Example Implementations</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="tips-for-ui-design">Tips for UI Design</option>
+          
+            <option value="tips-for-ui-interaction">Tips for UI Interaction</option>
+          
+            <option value="common-design-styles">Common Design Styles</option>
+          
+            <option value="display-data-sets-using-cards">- Display Data Sets Using Cards</option>
+          
+            <option value="list-options-with-a-menu">- List Options with a Menu</option>
+          
+            <option value="execute-actions-with-an-actionbarlayer">- Execute Actions with an ActionBarLayer</option>
+          
+            <option value="allow-extended-options-with-an-action-menu">- Allow Extended Options with an Action Menu</option>
+          
+            <option value="get-user-input-with-a-form">- Get User Input with a Form</option>
+          
+            <option value="prompting-user-action-on-the-phone">- Prompting User Action on the Phone</option>
+          
+            <option value="show-time-and-other-data-with-the-status-bar">- Show Time and Other Data with the Status Bar</option>
+          
+            <option value="show-alerts-and-get-decisions-with-modal-windows">- Show Alerts and Get Decisions with Modal Windows</option>
+          
+            <option value="using-vibrations-and-haptic-feedback">- Using Vibrations and Haptic Feedback</option>
+          
+            <option value="handling-connection-problems">- Handling Connection Problems</option>
+          
+            <option value="hiding-timeline-only-apps">- Hiding Timeline-only Apps</option>
+          
+            <option value="consistent-app-configuration">Consistent App Configuration</option>
+          
+            <option value="what-39-s-next">What&#39;s Next?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Recommended Guidelines and Patterns</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>This page contains recommendations for things to consider when designing an
+app&#39;s visual styles and interaction patterns. The aim here is to encourage
+efficiency through optional conformity to common ideas and concepts, and to
+breed a consistent experience for users across apps. Developers can also find
+suggested interface styles to use when building the navigation of apps to best
+display the information contained within.</p><h2 id="tips-for-ui-design" class="anchor">Tips for UI Design</h2><p>To achieve an effective, clear, and intuitive design developers should:</p>
+<ul>
+<li><p>Keep layouts <strong>simple</strong>, with only as much information displayed as is
+<strong>immediately required</strong>. This encourages quick usage of the app, distracting
+the user for the minimal amount of time necessary for the app to achieve its
+goals.</p></li>
+<li><p>Give priority to the <strong>most commonly used/main purpose</strong> functionality of the
+app in the UI. Make it easy to use the biggest features, but still easy to
+find additional functionality that would otherwise be hidden.</p></li>
+<li><p>Use <strong>larger fonts</strong> to highlight the <strong>most important data</strong> to be read at a
+glance. Consider font size 28 for larger items, and a minimum of 18 for
+smaller ones.</p></li>
+<li><p>Take advantage of colors to convey additional <strong>information without any text</strong>
+if they are already associated as such, such as green for a task complete.</p></li>
+<li><p>Try to avoid any colors used in places they may have a <strong>pre-conceived
+meaning</strong> which does not apply, such as red text when there are no errors.</p></li>
+<li><p>Use animations to embody the layout with <strong>character</strong> and flourish, as well
+as to <strong>draw the eye</strong> to updated or changing information.</p></li>
+<li><p>Ensure the UI gives <strong>direct feedback</strong> to the user&#39;s input, or else they may
+think their button presses are having no effect.</p></li>
+</ul>
+<h2 id="tips-for-ui-interaction" class="anchor">Tips for UI Interaction</h2>
+<ul>
+<li><p>Avoid using the Pebble buttons for actions <strong>not</strong> already associated with
+them, unless clearly marked in the UI using an <a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a> or similar
+method. When using the Up and Down buttons for &#39;previous item&#39; and &#39;next item&#39;
+respectively, there may be no need for a visual cue.</p></li>
+<li><p>Use iconography with <strong>pre-existing visual associations</strong> (such as a &#39;stop&#39;
+icon) to take advantage of the inherent behavior the user will have when
+seeing it. This can avoid the need for explicit instructions to train the user
+for an app&#39;s special case.</p></li>
+<li><p>Ensure the navigation between app <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>s is <strong>logical</strong> with the input
+given and the information displayed. For example, an app showing bus
+timetables should use higher level screens for quickly navigating to a
+particular area/station, with lower level views reserved for scrolling through
+the actual timetable data.</p></li>
+<li><p>If possible, <strong>preserve the state of the app</strong> and/or previous navigation if
+the app is commonly used for a repetitive task. In the bus timetable example,
+the user may only look up two stations for a to-from work journey. Learn this
+behavior and store it with the <a href="/docs/c/Foundation/Storage/" title="Storage" class="link--docs">Persistent Storage API</a> to
+intelligently adapt the UI on subsequent launches to show the relevant
+information. This helps the user avoid navigating through multiple menus every
+time they launch the app.</p></li>
+</ul>
+<h2 id="common-design-styles" class="anchor">Common Design Styles</h2><p>The following are common design styles that have been successfully used in
+system and 3rd party apps, and are recommended for use in the correct manner.</p><h3 id="display-data-sets-using-cards" class="anchor">Display Data Sets Using Cards</h3><p><img src="/assets/images/guides/design-and-interaction/card.gif" alt="card" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>The &#39;card&#39; style aims to reduce the number of menu levels needed to access as
+much relevant information as possible. Instead of a menu to select a data set
+leading to a menu to explore each item in that set, a single <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> is
+designed that displays an entire data set. This view then uses the Pebble Up and
+Down buttons to scroll through complete data sets in an array of many sets.</p><p>An example of this is the
+<a href="/guides/design-and-interaction/implementation/#cards-example-weather"><em>cards-example</em></a> 
+example app, which displays all weather data in a single view and pages through
+sets of data for separate locations with the Up and Down buttons. This style of
+UI design allows access to lots of information without navigating through
+several menus to view it.</p><h3 id="list-options-with-a-menu" class="anchor">List Options with a Menu</h3>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/design-and-interaction/list~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/design-and-interaction/list~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/design-and-interaction/list~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>The style is one of the most basic, tried and true styles. Using the
+<a href="/docs/c/User_Interface/Layers/MenuLayer/" title="MenuLayer" class="link--docs"><code>MenuLayer</code></a> UI component, the user may choose between multiple app functions
+by scrolling with the Up and Down buttons, an interaction pattern afforded to
+the developer by the core system experience. Using a menu, a user can navigate
+straight to the part of the app or specific action they want.</p><h3 id="execute-actions-with-an-actionbarlayer" class="anchor">Execute Actions with an ActionBarLayer</h3>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/design-and-interaction/actionbar~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/design-and-interaction/actionbar~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/design-and-interaction/actionbar~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>The <a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a> allows easy association of app functionality with the
+Pebble buttons. By setting icons to each of the three positions, a user can see
+which actions they can perform at a glance and execture them with a single
+button press. When pressed, the icon is animated to provide immediate visual
+feedback.</p><p>An example of this is the system Music app, that uses the <a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a> to
+inform the user that the Up and Down buttons skip tracks. In this case, the
+Select button is displayed with elipses, indicating further actions are
+available. A press of this button changes the set of actions on the Up and Down
+buttons, enabling them to modify the playback volume instead.</p><p>A collection of icons for common actions is available for use by developers, and
+can be found in the <a href="/guides/app-resources/app-assets/"><em>App Assets</em></a> guide.</p><h3 id="allow-extended-options-with-an-action-menu" class="anchor">Allow Extended Options with an Action Menu</h3><p><img src="/assets/images/guides/design-and-interaction/actionmenu.png" alt="actionmenu" /></p><p>If an app screen demands a larger range of available actions than the
+<a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a> will allow, present these as a list that slides into
+view with a press of the Select button using an action menu. This menu contains
+all the available options, and can contain multiple sub-menus, providing levels.
+The user can keep track of which level they are currently looking at using the
+breadcrumb dots on the left-hand side of the screen when the action menu is
+displayed.</p><p>Once an action has been chosen, the user should be informed of the success or
+failure of their choice using a new alert dialog window. In the system action
+menus, these screens use an eye-catching animation and bold label to convey the
+result of the action. This feedback is important to prevent the user from
+getting frustrated if they perceive their input has no result, as well as to
+reassure them that their action has succeeded without a problem.</p><h3 id="get-user-input-with-a-form" class="anchor">Get User Input with a Form</h3><p><img src="/assets/images/guides/design-and-interaction/alarm-list-config.png" alt="list" /></p><p>Apps such as the system Alarm app make use of a list of configurable items, with
+each active alarm treated as a menu item with properties. The status of each
+item is displayed in a menu, with the Select button initiating configuration of
+that item.</p><p>When an item is being configured, the data requried to create the item should be
+obtained from the user through the use of a form, with manipulable elements. In
+the Alarms example, each integer required to schedule an alarm is obtained with
+a number field that can have its value incrememted or decremented using the
+intuitive Up and Down buttons. The current form element is highlighted with
+color, and advancing to the next element is done with the Select button,
+doubling as a &#39;Confirm&#39; action when the end of the form is reached.</p><h3 id="prompting-user-action-on-the-phone" class="anchor">Prompting User Action on the Phone</h3><p>In some applications, user input is required in the app&#39;s configuration page (as
+detailed in <a href="/guides/user-interfaces/app-configuration/"><em>App Configuration</em></a>) before the app
+can perform its task. An example of this is a feed reader app, that will need
+the user to input the URL of their preferred news feed before it can fetch the
+feed content. In this case, the watchapp should display a prominent (full-
+screen if possible) dialog telling the user that input to the phone app for
+configuration is required.</p><p><img src="/assets/images/guides/design-and-interaction/action-required.png" alt="action-required" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Once the user has performed the required action on the phone, the
+<a href="/guides/communication/using-pebblekit-js/" title="" class=""><code>webviewclosed</code></a>
+event should signify that the app can proceed, and that the required data is now
+available.</p><p>It should not be the case that this action is required every time the app is
+started. In most cases, the input data from the user can be stored with
+<a href="/docs/c/Foundation/Storage/" title="Storage" class="link--docs">Peristent Storage</a> on the watch, or
+<a href="/guides/communication/using-pebblekit-js/" title="" class=""><code>localStorage</code></a>
+on the phone. If the app must get input on every launch (such as a mode
+selection), this should be done through a form or menu on the watch, so as to
+avoid needing to use the phone.</p><h3 id="show-time-and-other-data-with-the-status-bar" class="anchor">Show Time and Other Data with the Status Bar</h3>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/design-and-interaction/alarm-list~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/design-and-interaction/alarm-list~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/design-and-interaction/alarm-list~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>Under SDK 2.x, the status bar was displayed to users in all menus and watchapps
+except watchfaces, or where the developer had explicitly disabled it. This was
+useful for showing the time and battery level, but arguably not essential all
+the time.</p><p>In SDK 3.x, only apps that are designed to be running for extended periods of
+time (such as Music and the Sports API app) show the time, using the
+<a href="/docs/c/User_Interface/Layers/StatusBarLayer/" title="StatusBarLayer" class="link--docs"><code>StatusBarLayer</code></a> UI component. The battery level can easily be seen from the
+Settings appface, and so it not necessary to be always visible. Another instance
+where the status bar is neccessary is in the Alarms app (shown above), where the
+user may need to compare with the current time when setting an alarm.</p><p>If a constant, minimalistic display of app data is required, the
+<a href="/docs/c/User_Interface/Layers/StatusBarLayer/" title="StatusBarLayer" class="link--docs"><code>StatusBarLayer</code></a> can be used to perform this task. It provides a choice of
+separator mode and foreground/background colors, and can also be made
+transparent. Since is it just another <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>, it can be easily extended with
+additional text, icons, or other data.</p><p>For example, the
+<a href="https://github.com/pebble-examples/cards-example" title="" class=""><code>cards-example</code></a> app uses an
+extention of the status bar to display the currently selected &#39;card&#39; (a set of
+displayed data). Another example is the progress bar component example from the
+<a href="https://github.com/pebble-examples/ui-patterns" title="" class=""><code>ui-patterns</code></a> app, which
+builds upon the dotted separator mode to become a thin progress bar.</p><p>When used in conjunction with the <a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a> (for example, in the Music
+system app), the width of the underlying layer should be adjusted such that the
+time displayed is shown in the new center of the app area (excluding that taken
+up by the action bar itself).</p><h3 id="show-alerts-and-get-decisions-with-modal-windows" class="anchor">Show Alerts and Get Decisions with Modal Windows</h3><p><img src="/assets/images/guides/design-and-interaction/dialog-message.gif" alt="dialog-message" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>When a significant event occurs while using an app, it should be made visible to
+the user through the use of a full-screen model dialog. In a similar way that
+notifications and reminders alert the user to events, these layouts consist of
+only the important information and an associated icon telling the user the
+source of the alert, or the reason for its occurrence. This pattern should also
+be used to quickly and efficently tell the user that an app-related error has
+occured, including steps on how to fix any potential problems.</p><p>These alerts can also take the form of requests for important decisions to be
+made by the user, such as to remember a choice as the default preference:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/design-and-interaction/dialog-choice-window~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/design-and-interaction/dialog-choice-window~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/design-and-interaction/dialog-choice-window~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>In this way the decision can be passed to the user with an immediately obvious
+and actionable set of choices. One the choice has been made, the modal window is
+dismissed, and a confirmation of the choice displayed. The user should then be
+returned to the previous window to resume their use of the app where they left
+off.</p><h3 id="using-vibrations-and-haptic-feedback" class="anchor">Using Vibrations and Haptic Feedback</h3><p>The Pebble SDK allows the use of the vibration motor to deliver haptic feedback
+to the user. This can take the form of short, long, double pulses or more
+detailed vibration sequences, allowing a lot of customization as well as
+variation between apps.</p><p>To encourage a consistent experience for users, the <a href="/docs/c/User_Interface/Vibes/" title="Vibes" class="link--docs"><code>Vibes</code></a> API should be used
+with the following points in mind:</p>
+<ul>
+<li><p>A short pulse should be used to alert the user to the end of a long-running
+in-app event, such as a download completing, preferably when they are not
+looking at the watch.</p></li>
+<li><p>A long pulse should be used to alert the user to a failure or error that
+requires attention and some interaction.</p></li>
+<li><p>Custom vibration patterns should be used to allow the user to customize haptic
+feedback for different events inside the app.</p></li>
+</ul>
+<p>When the app is open and being actively interacted with no vibration or haptic
+feedback should be neccessary on top of the existing visual feedback. However,
+some exceptions may occur, such as for visually-impaired users. In these cases
+haptic feedback may be very useful in boosting app accessibility.</p><h3 id="handling-connection-problems" class="anchor">Handling Connection Problems</h3><p>When a watchapp is running, there is no guarantee that the phone connection will
+be available at any one time. Most apps will function without this connection,
+but if PebbleKit JS, Android, or iOS is required, the user must be informed of
+the reason for failure so that they can correct the problem. This check can be
+performed at any time using <a href="/docs/c/Foundation/Event_Service/ConnectionService/#connection_service_peek_pebble_app_connection" title="connection_service_peek_pebble_app_connection" class="link--docs"><code>connection_service_peek_pebble_app_connection()</code></a>.</p><p>An example alert layout is shown below.</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/design-and-interaction/no-bt-connection~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/design-and-interaction/no-bt-connection~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/design-and-interaction/no-bt-connection~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>A similar situation arises if an app that requires information or responses from
+a remote web service attempts to do so, but the phone has no Internet
+connection. This may be because the user has opted to disable their data
+connections, or they may be out of range.</p><p>Another example alert layout is shown below for this situation.</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/design-and-interaction/no-inet-connection~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/design-and-interaction/no-inet-connection~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/design-and-interaction/no-inet-connection~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>If these kinds of situations can cause problems for the operation of the app,
+consider using the <a href="/docs/c/Foundation/Storage/" title="Storage" class="link--docs"><code>Persistent Storage</code></a> API to cache the most
+recently loaded data (such as weather, sports scores or news items) from the
+last successful launch, and display this to the user (while making them aware of
+the data&#39;s age) until new data can be obtained.</p><h3 id="hiding-timeline-only-apps" class="anchor">Hiding Timeline-only Apps</h3><p>Watchapps that consist only of a <a href="/guides/pebble-timeline"><em>Pebble timeline</em></a> 
+experience will only need to be launched when configured by the user to select
+topic subscriptions. In these cases, developers should hide their app from the
+launcher menu to prevent the user needlessly launching it.</p><p>To find out how to do this using the <code>hiddenApp</code> property, see 
+<a href="/guides/tools-and-resources/app-metadata/"><em>App Metadata</em></a>.</p><h2 id="consistent-app-configuration" class="anchor">Consistent App Configuration</h2><p>Watchapps and watchfaces that include user configuration normally include a web
+page hosted by the app developer, allowing the user to choose from a set of
+options and apply them to the app. Such options include aesthetic options such
+as color schemes, larger font sizes, replacement images, data source choices,
+and others. Traditionally the design of these pages has been left entirely to
+the developer on a per-app basis, and this is reflected in the resulting design
+consistency.</p><p>Read <a href="/guides/user-interfaces/app-configuration/"><em>App Configuration</em></a> to learn more about
+configuration page design and implementation.</p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>Read <a href="/guides/design-and-interaction/in-the-round/"><em>Round App Design</em></a> to read tips and
+guidance on designing apps that work well on a round display.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/design-and-interaction/recommended/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#tips-for-ui-design">Tips for UI Design</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#tips-for-ui-interaction">Tips for UI Interaction</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#common-design-styles">Common Design Styles</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#display-data-sets-using-cards">Display Data Sets Using Cards</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#list-options-with-a-menu">List Options with a Menu</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#execute-actions-with-an-actionbarlayer">Execute Actions with an ActionBarLayer</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#allow-extended-options-with-an-action-menu">Allow Extended Options with an Action Menu</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#get-user-input-with-a-form">Get User Input with a Form</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#prompting-user-action-on-the-phone">Prompting User Action on the Phone</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#show-time-and-other-data-with-the-status-bar">Show Time and Other Data with the Status Bar</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#show-alerts-and-get-decisions-with-modal-windows">Show Alerts and Get Decisions with Modal Windows</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#using-vibrations-and-haptic-feedback">Using Vibrations and Haptic Feedback</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#handling-connection-problems">Handling Connection Problems</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#hiding-timeline-only-apps">Hiding Timeline-only Apps</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#consistent-app-configuration">Consistent App Configuration</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

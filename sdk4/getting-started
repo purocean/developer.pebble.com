@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Getting Started with SDK 4 // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Details on all the new features and APIs available for use in SDK 4
+">
+  <link rel="canonical" href="http://developer.getpebble.com/sdk4/getting-started/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk active"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--sdk section-menu--dark">
+    <div class="section-menu__header">
+      <h3><a href="/sdk/">SDK</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item"><a href="/sdk/download/">Download</a></li>
+      <li class="section-menu__item">
+        <a href="/sdk/install/">Installation</a>
+        <ul>
+          <li class="section-menu__subitem"><a href="/sdk/install/mac/"><span>Mac OS X</span></a></li>
+          <li class="section-menu__subitem"><a href="/sdk/install/linux/"><span>Linux</span></a></li>
+          <li class="section-menu__subitem"><a href="/sdk/install/windows/"><span>Windows</span></a></li>
+        </ul>
+      </li>
+      <li class="section-menu__item">
+        <a href="/sdk/changelogs/4.3/">Changelog</a>
+        <ul>
+          
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.3/"><span>4.3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2.2/"><span>4.2.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2.1/"><span>4.2.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2/"><span>4.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2-beta5/"><span>4.2-beta5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.2-beta4/"><span>4.2-beta4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.1.4/"><span>4.1.4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.1.2/"><span>4.1.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.1.1/"><span>4.1.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.1/"><span>4.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0.1/"><span>4.0.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0/"><span>4.0</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-rc20/"><span>4.0-rc20</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-beta17/"><span>4.0-beta17</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-dp3/"><span>4.0-dp3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.14/"><span>3.14</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-dp2/"><span>4.0-dp2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/4.0-dp1/"><span>4.0-dp1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.13.1/"><span>3.13.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.13/"><span>3.13</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.12/"><span>3.12</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.11.1/"><span>3.11.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.11/"><span>3.11</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10.1/"><span>3.10.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10/"><span>3.10</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10-beta6/"><span>3.10-beta6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10-beta2/"><span>3.10-beta2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.10-beta1/"><span>3.10-beta1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9.2/"><span>3.9.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9.1/"><span>3.9.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9/"><span>3.9</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9-beta8/"><span>3.9-beta8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9-beta7/"><span>3.9-beta7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.9-beta5/"><span>3.9-beta5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8.2/"><span>3.8.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8.1/"><span>3.8.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8/"><span>3.8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8-beta12/"><span>3.8-beta12</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8-beta10/"><span>3.8-beta10</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.8-beta8/"><span>3.8-beta8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.7/"><span>3.7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6.2/"><span>3.6.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6/"><span>3.6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp8/"><span>3.6-dp8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp7/"><span>3.6-dp7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp6/"><span>3.6-dp6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp5/"><span>3.6-dp5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.6-dp2/"><span>3.6-dp2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.4/"><span>3.4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.3/"><span>3.3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.2.1/"><span>3.2.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.2/"><span>3.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.1/"><span>3.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0/"><span>3.0</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-beta12/"><span>3.0-beta12</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-beta11/"><span>3.0-beta11</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-beta10/"><span>3.0-beta10</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp9/"><span>3.0-dp9</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp8/"><span>3.0-dp8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp7/"><span>3.0-dp7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp6/"><span>3.0-dp6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp5/"><span>3.0-dp5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp4/"><span>3.0-dp4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp3/"><span>3.0-dp3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp2/"><span>3.0-dp2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/3.0-dp1/"><span>3.0-dp1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.9/"><span>2.9</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.8.1/"><span>2.8.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.8/"><span>2.8</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.7/"><span>2.7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.6.1/"><span>2.6.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.6/"><span>2.6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.5/"><span>2.5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.4.1/"><span>2.4.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.4/"><span>2.4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.3/"><span>2.3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.2/"><span>2.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.1.1/"><span>2.1.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.1/"><span>2.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0.2/"><span>2.0.2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0.1/"><span>2.0.1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0.0/"><span>2.0.0</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA7/"><span>2.0-BETA7</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA6/"><span>2.0-BETA6</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA5/"><span>2.0-BETA5</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA4/"><span>2.0-BETA4</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA3/"><span>2.0-BETA3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA2/"><span>2.0-BETA2</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA1/"><span>2.0-BETA1</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-BETA0/"><span>2.0-BETA0</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-DP3/"><span>2.0-DP3</span></a></li>
+          
+            <li class="section-menu__subitem"><a href="/sdk/changelogs/2.0-DP2/"><span>2.0-DP2</span></a></li>
+          
+        </ul>
+      </li>
+      <li class="section-menu__item"><a href="/sdk/round-getting-started/">Getting Started with Pebble Time Round</a></li>
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  
+
+<div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      <h1 class="pagetitle">Getting Started with SDK 4</h1>
+      <div class="markdown markdown--staff">
+	      
+	      <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+	      
+        <p>Pebble SDK 4 is now available for developers who are interested in using the
+new APIs and features. We encourage developers to read
+the <a href="/sdk/changelogs/" title="" class="">Release Notes</a>, the <a href="/docs/c/" title="" class="">SDK 4 Docs</a>, and the new
+guides listed below to help familiarize themselves with the new functionality.</p><h2 id="getting-started" class="anchor">Getting Started</h2>
+<div class="platform-specific" data-sdk-platform="local"><h4 id="mac-os-x-homebrew" class="anchor">Mac OS X (Homebrew)</h4><div class="highlight"><pre><span class="nv">$ </span>brew update <span class="o">&amp;&amp;</span> brew upgrade pebble-sdk <span class="o">&amp;&amp;</span> pebble sdk install latest
+</pre></div><h4 id="mac-os-x-manual" class="anchor">Mac OS X (Manual)</h4>
+<ol>
+<li><p>Download the
+<a href="https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-4.5-mac.tar.bz2" title="" class="">SDK package</a>.</p></li>
+<li><p>Follow the <a href="/sdk/install/mac/" title="" class="">Mac manual installation instructions</a>.</p></li>
+</ol>
+<h4 id="linux" class="anchor">Linux</h4><p>Linux users should install the SDK manually using the instructions below:</p>
+<ol>
+<li><p>Download the relevant package:
+<a href="https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-4.5-linux32.tar.bz2" title="" class="">Linux (32-bit)</a> |
+<a href="https://s3.amazonaws.com/assets.getpebble.com/pebble-tool/pebble-sdk-4.5-linux64.tar.bz2" title="" class="">Linux (64-bit)</a>.</p></li>
+<li><p>Install the SDK by following the
+<a href="/sdk/install/linux/" title="" class="">manual installation instructions</a>.</p></li>
+</ol>
+</div>
+
+<div class="platform-specific" data-sdk-platform="cloudpebble"><p><a href="https://cloudpebble.net/" class="btn btn--fg-white btn--bg-lightblue">Launch CloudPebble</a></p></div>
+<h2 id="blog-posts" class="anchor">Blog Posts</h2><p>We&#39;ve published several useful blog posts regarding SDK 4:</p>
+<ul>
+<li><a href="/blog/2016/08/15/introducing-rockyjs-watchfaces/" title="" class="">Introducing Rocky.js Watchfaces!</a></li>
+<li><a href="/blog/2016/08/19/prime-time-is-approaching-for-os-4.0/" title="" class="">Prime Time is Approaching for OS 4.0</a></li>
+<li><a href="/blog/2016/08/30/announcing-pebble-sdk4/" title="" class="">Announcing Pebble SDK 4.0</a></li>
+</ul>
+<h2 id="new-resources" class="anchor">New Resources</h2><p>To get you started, we have updated the following sections of the Pebble
+Developer site with new content and information on designing and developing
+for the new Pebble hardware platform:</p>
+<ul>
+<li><p>A 2-part <a href="/tutorials/js-watchface-tutorial/part1/" title="" class=""><em>Rocky.js tutorial</em></a> - Learn
+how to create watchfaces in JavaScript using Rocky.js.</p></li>
+<li><p>An updated
+<a href="/guides/tools-and-resources/hardware-information" title="" class=""><em>Hardware Comparison</em></a>
+chart - See the hardware differences between all Pebble platforms.</p></li>
+<li><p><a href="/guides/user-interfaces/app-exit-reason/" title="" class=""><em>AppExitReason API Guide</em></a> - A new
+guide with information on how to use the <code>AppExitReason</code> API.</p></li>
+<li><p><a href="/guides/user-interfaces/appglance-c/" title="" class=""><em>AppGlance C API Guide</em></a> - A new
+guide describing how to use the AppGlance API to display information in the
+system&#39;s launcher.</p></li>
+<li><p><a href="/guides/user-interfaces/appglance-pebblekit-js/" title="" class=""><em>AppGlance PebbleKit JS API Guide</em></a> -
+A new guide describing how to use the AppGlance API to display information
+in the system&#39;s launcher.</p></li>
+<li><p><a href="/guides/design-and-interaction/one-click-actions/" title="" class=""><em>One Click Action Guide</em></a> -
+A new guide with information on how to use one-click actions in watchapps.</p></li>
+<li><p><a href="/guides/user-interfaces/unobstructed-area" title="" class=""><em>UnobstuctedArea API Guide</em></a> - A
+new guide that will demonstrate the basics of the <code>UnobstructedArea</code> API, and
+how to use it to create watchfaces that respond to Timeline Quick View events.</p></li>
+</ul>
+
+      </div>
+    </div>
+    <div class="col-l-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

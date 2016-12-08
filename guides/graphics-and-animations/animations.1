@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Animations // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to use Animations and Timers to add life to your app.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/graphics-and-animations/animations/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/graphics-and-animations/animations/"><span>Animations</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/graphics-and-animations/drawing-primitives-images-and-text/"><span>Drawing Primitives, Images and Text</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/graphics-and-animations/framebuffer-graphics/"><span>Framebuffer Graphics</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/graphics-and-animations/vector-graphics/"><span>Vector Graphics</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="using-propertyanimations">Using PropertyAnimations</option>
+          
+            <option value="other-types-of-propertyanimation">- Other Types of PropertyAnimation</option>
+          
+            <option value="custom-animation-implementations">Custom Animation Implementations</option>
+          
+            <option value="timers">Timers</option>
+          
+            <option value="sequence-and-spawn-animations">Sequence and Spawn Animations</option>
+          
+            <option value="important-considerations">- Important Considerations</option>
+          
+            <option value="creating-a-sequence-animation">- Creating a Sequence Animation</option>
+          
+            <option value="using-a-list">- - Using a List</option>
+          
+            <option value="using-an-array">- - Using an Array</option>
+          
+            <option value="creating-a-spawn-animation">- Creating a Spawn Animation</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Animations</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>The <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> API allows a variety of different types of value to be
+smoothly animated from an initial value to a new value over time. Animations can
+also use built-in easing curves to affect how the transition behaves.</p><h2 id="using-propertyanimations" class="anchor">Using PropertyAnimations</h2><p>The most common use of animations is to move a <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> (or similar) around the
+display. For example, to show or hide some information or animate the time
+changing in a watchface.</p><p>The simplest method of animating a <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> (such as a <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>) is to use
+a <a href="/docs/c/User_Interface/Animation/PropertyAnimation/" title="PropertyAnimation" class="link--docs"><code>PropertyAnimation</code></a>, which animates a property of the target object. In this
+example, the target is the frame property, which is a <a href="/docs/c/Graphics/Graphics_Types/#GRect" title="GRect" class="link--docs"><code>GRect</code></a> To animate the
+this property, <a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create_layer_frame" title="property_animation_create_layer_frame" class="link--docs"><code>property_animation_create_layer_frame()</code></a> is used, which is a
+convenience <a href="/docs/c/User_Interface/Animation/PropertyAnimation/" title="PropertyAnimation" class="link--docs"><code>PropertyAnimation</code></a> implementation provided by the SDK.</p><div class="highlight"><pre><span class="k">static</span> <span class="n">Layer</span> <span class="o">*</span><span class="n">s_layer</span><span class="p">;</span>
+</pre></div><p>Create the Layer during <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> initialization:</p><div class="highlight"><pre><span class="c1">// Create the Layer</span>
+<span class="n">s_layer</span> <span class="o">=</span> <span class="n">layer_create</span><span class="p">(</span><span class="n">some_bounds</span><span class="p">);</span>
+</pre></div><p>Determine the start and end values of the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>&#39;s frame. These are the
+&#39;from&#39; and &#39;to&#39; locations and sizes of the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> before and after the
+animation takes place:</p><div class="highlight"><pre><span class="c1">// The start and end frames - move the Layer 40 pixels to the right</span>
+<span class="n">GRect</span> <span class="n">start</span> <span class="o">=</span> <span class="n">GRect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="n">GRect</span> <span class="n">finish</span> <span class="o">=</span> <span class="n">GRect</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+</pre></div><p>At the appropriate time, create a <a href="/docs/c/User_Interface/Animation/PropertyAnimation/" title="PropertyAnimation" class="link--docs"><code>PropertyAnimation</code></a> to animate the
+<a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>, specifying the <code>start</code> and <code>finish</code> values as parameters:</p><div class="highlight"><pre><span class="c1">// Animate the Layer</span>
+<span class="n">PropertyAnimation</span> <span class="o">*</span><span class="n">prop_anim</span> <span class="o">=</span> <span class="n">property_animation_create_layer_frame</span><span class="p">(</span><span class="n">s_layer</span><span class="p">,</span> 
+                                                               <span class="o">&amp;</span><span class="n">start</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">finish</span><span class="p">);</span>
+</pre></div><p>Configure the attributes of the <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>, such as the delay before
+starting, and total duration (in milliseconds):</p><div class="highlight"><pre><span class="c1">// Get the Animation</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">anim</span> <span class="o">=</span> <span class="n">property_animation_get_animation</span><span class="p">(</span><span class="n">prop_anim</span><span class="p">);</span>
+
+<span class="c1">// Choose parameters</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">delay_ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">duration_ms</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+
+<span class="c1">// Configure the Animation's curve, delay, and duration</span>
+<span class="n">animation_set_curve</span><span class="p">(</span><span class="n">anim</span><span class="p">,</span> <span class="n">AnimationCurveEaseOut</span><span class="p">);</span>
+<span class="n">animation_set_delay</span><span class="p">(</span><span class="n">anim</span><span class="p">,</span> <span class="n">delay_ms</span><span class="p">);</span>
+<span class="n">animation_set_duration</span><span class="p">(</span><span class="n">anim</span><span class="p">,</span> <span class="n">duration_ms</span><span class="p">);</span>
+</pre></div><p>Finally, schedule the <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> to play at the next possible opportunity
+(usually immediately):</p><div class="highlight"><pre><span class="c1">// Play the animation</span>
+<span class="n">animation_schedule</span><span class="p">(</span><span class="n">anim</span><span class="p">);</span>
+</pre></div><p>If the app requires knowledge of the start and end times of an <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>, it
+is possible to register <a href="/docs/c/User_Interface/Animation/#AnimationHandlers" title="AnimationHandlers" class="link--docs"><code>AnimationHandlers</code></a> to be notified of these events.
+The handlers should be created with the signature of these examples shown below:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">anim_started_handler</span><span class="p">(</span><span class="n">Animation</span> <span class="o">*</span><span class="n">animation</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_DEBUG</span><span class="p">,</span> <span class="s">"Animation started!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">anim_stopped_handler</span><span class="p">(</span><span class="n">Animation</span> <span class="o">*</span><span class="n">animation</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">finished</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_DEBUG</span><span class="p">,</span> <span class="s">"Animation stopped!"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Register the handlers with an optional third context parameter <strong>before</strong>
+scheduling the <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>:</p><div class="highlight"><pre><span class="c1">// Set some handlers</span>
+<span class="n">animation_set_handlers</span><span class="p">(</span><span class="n">anim</span><span class="p">,</span> <span class="p">(</span><span class="n">AnimationHandlers</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">.</span><span class="n">started</span> <span class="o">=</span> <span class="n">anim_started_handler</span><span class="p">,</span>
+  <span class="p">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="n">anim_stopped_handler</span>
+<span class="p">},</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div><p>With the handlers registered, the start and end times of the <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> can
+be detected by the app and used as appropriate.</p><h3 id="other-types-of-propertyanimation" class="anchor">Other Types of PropertyAnimation</h3><p>In addition to <a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create_layer_frame" title="property_animation_create_layer_frame" class="link--docs"><code>property_animation_create_layer_frame()</code></a>, it is also possible
+to animate the origin of a <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>&#39;s bounds using
+<a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create_bounds_origin" title="property_animation_create_bounds_origin" class="link--docs"><code>property_animation_create_bounds_origin()</code></a>. Animation of more types of data
+can be achieved using custom implementations and one the following provided
+update implementations and the associated 
+<a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_int16" title="property_animation_update_int16" class="link--docs">getters and setters</a>:</p>
+<ul>
+<li><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_int16" title="property_animation_update_int16" class="link--docs"><code>property_animation_update_int16</code></a> - Animate an <code>int16</code>.</li>
+<li><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_uint32" title="property_animation_update_uint32" class="link--docs"><code>property_animation_update_uint32</code></a> - Animate a <code>uint32</code>.</li>
+<li><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gpoint" title="property_animation_update_gpoint" class="link--docs"><code>property_animation_update_gpoint</code></a> - Animate a <a href="/docs/c/Graphics/Graphics_Types/#GPoint" title="GPoint" class="link--docs"><code>GPoint</code></a>.</li>
+<li><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_grect" title="property_animation_update_grect" class="link--docs"><code>property_animation_update_grect</code></a> - Animate a <a href="/docs/c/Graphics/Graphics_Types/#GRect" title="GRect" class="link--docs"><code>GRect</code></a></li>
+<li><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gcolor8" title="property_animation_update_gcolor8" class="link--docs"><code>property_animation_update_gcolor8</code></a> - Animate a <a href="/docs/c/Graphics/Graphics_Types/#GColor8" title="GColor8" class="link--docs"><code>GColor8</code></a>.</li>
+</ul>
+<h2 id="custom-animation-implementations" class="anchor">Custom Animation Implementations</h2><p>Beyond the convenience functions provided by the SDK, apps can implement their
+own <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> by using custom callbacks for each stage of the animation
+playback process. A <a href="/docs/c/User_Interface/Animation/PropertyAnimation/" title="PropertyAnimation" class="link--docs"><code>PropertyAnimation</code></a> is an example of such an
+implementation.</p><p>The callbacks to implement are the <code>.setup</code>, <code>.update</code>, and <code>.teardown</code> members
+of an <a href="/docs/c/User_Interface/Animation/#AnimationImplementation" title="AnimationImplementation" class="link--docs"><code>AnimationImplementation</code></a> object. Some example implementations are shown
+below. It is in the <code>.update</code> callback where the value of <code>progress</code> can be used
+to modify the custom target of the animation. For example, some percentage of
+completion:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">implementation_setup</span><span class="p">(</span><span class="n">Animation</span> <span class="o">*</span><span class="n">animation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Animation started!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">implementation_update</span><span class="p">(</span><span class="n">Animation</span> <span class="o">*</span><span class="n">animation</span><span class="p">,</span> 
+                                  <span class="k">const</span> <span class="n">AnimationProgress</span> <span class="n">progress</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Animate some completion variable</span>
+  <span class="n">s_animation_percent</span> <span class="o">=</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">progress</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="n">ANIMATION_NORMALIZED_MAX</span><span class="p">;</span>
+
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Animation progress: %d%%"</span><span class="p">,</span> <span class="n">s_animation_percent</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">implementation_teardown</span><span class="p">(</span><span class="n">Animation</span> <span class="o">*</span><span class="n">animation</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Animation finished!"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Once these are in place, create a new <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> , specifying the new custom
+implementation as a <code>const</code> object pointer at the appropriate time:</p><div class="highlight"><pre><span class="c1">// Create a new Animation</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">animation</span> <span class="o">=</span> <span class="n">animation_create</span><span class="p">();</span>
+<span class="n">animation_set_delay</span><span class="p">(</span><span class="n">animation</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="n">animation_set_duration</span><span class="p">(</span><span class="n">animation</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="c1">// Create the AnimationImplementation</span>
+<span class="k">const</span> <span class="n">AnimationImplementation</span> <span class="n">implementation</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">.</span><span class="n">setup</span> <span class="o">=</span> <span class="n">implementation_setup</span><span class="p">,</span>
+  <span class="p">.</span><span class="n">update</span> <span class="o">=</span> <span class="n">implementation_update</span><span class="p">,</span>
+  <span class="p">.</span><span class="n">teardown</span> <span class="o">=</span> <span class="n">implementation_teardown</span>
+<span class="p">};</span>
+<span class="n">animation_set_implementation</span><span class="p">(</span><span class="n">animation</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">implementation</span><span class="p">);</span>
+
+<span class="c1">// Play the Animation</span>
+<span class="n">animation_schedule</span><span class="p">(</span><span class="n">animation</span><span class="p">);</span>
+</pre></div><p>The output of the example above will look like the snippet shown below (edited
+for brevity). Note the effect of the easing <a href="/docs/c/User_Interface/Animation/#AnimationCurve" title="AnimationCurve" class="link--docs"><code>AnimationCurve</code></a> on the progress
+value:</p><div class="highlight no-copy"><pre>[13:42:33] main.c:11> Animation started!
+[13:42:34] main.c:19> Animation progress: 0%
+[13:42:34] main.c:19> Animation progress: 0%
+[13:42:34] main.c:19> Animation progress: 0%
+[13:42:34] main.c:19> Animation progress: 2%
+[13:42:34] main.c:19> Animation progress: 3%
+[13:42:34] main.c:19> Animation progress: 5%
+[13:42:34] main.c:19> Animation progress: 7%
+[13:42:34] main.c:19> Animation progress: 10%
+[13:42:34] main.c:19> Animation progress: 14%
+[13:42:35] main.c:19> Animation progress: 17%
+[13:42:35] main.c:19> Animation progress: 21%
+[13:42:35] main.c:19> Animation progress: 26%
+
+...
+
+[13:42:35] main.c:19> Animation progress: 85%
+[13:42:35] main.c:19> Animation progress: 88%
+[13:42:35] main.c:19> Animation progress: 91%
+[13:42:35] main.c:19> Animation progress: 93%
+[13:42:35] main.c:19> Animation progress: 95%
+[13:42:35] main.c:19> Animation progress: 97%
+[13:42:35] main.c:19> Animation progress: 98%
+[13:42:35] main.c:19> Animation progress: 99%
+[13:42:35] main.c:19> Animation progress: 99%
+[13:42:35] main.c:19> Animation progress: 100%
+[13:42:35] main.c:23> Animation finished!
+</pre></div><h2 id="timers" class="anchor">Timers</h2><p><a href="/docs/c/Foundation/Timer/" title="Timer" class="link--docs"><code>AppTimer</code></a> objects can be used to schedule updates to variables and
+objects at a later time. They can be used to implement frame-by-frame animations
+as an alternative to using the <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> API. They can also be used in a
+more general way to schedule events to occur at some point in the future (such
+as UI updates) while the app is open.</p><p>A thread-blocking alternative for small pauses is <a href="/docs/c/Foundation/Timer/#psleep" title="psleep" class="link--docs"><code>psleep()</code></a>, but this is
+<strong>not</strong> recommended for use in loops updating UI (such as a counter), or for
+scheduling <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> messages, which rely on the event loop to do their
+work.</p>
+<blockquote>
+<p>Note: To create timed events in the future that persist after an app is
+closed, check out the <a href="/docs/c/Foundation/Wakeup/" title="Wakeup" class="link--docs"><code>Wakeup</code></a> API.</p></blockquote>
+<p>When a timer elapses, it will call a developer-defined <a href="/docs/c/Foundation/Timer/#AppTimerCallback" title="AppTimerCallback" class="link--docs"><code>AppTimerCallback</code></a>.
+This is where the code to be executed after the timed interval should be placed.
+The callback will only be called once, so use this opportunity to re-register
+the timer if it should repeat.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">timer_callback</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Timer elapsed!"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Schedule the timer with a specific <code>delay</code> interval, the name of the callback to
+fire, and an optional context pointer:</p><div class="highlight"><pre><span class="k">const</span> <span class="kt">int</span> <span class="n">delay_ms</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span>
+
+<span class="c1">// Schedule the timer</span>
+<span class="n">app_timer_register</span><span class="p">(</span><span class="n">delay_ms</span><span class="p">,</span> <span class="n">timer_callback</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div><p>If the timer may need to be cancelled or rescheduled at a later time, ensure a
+reference to it is kept for later use:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">AppTimer</span> <span class="o">*</span><span class="n">s_timer</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Register the timer, and keep a handle to it</span>
+<span class="n">s_timer</span> <span class="o">=</span> <span class="n">app_timer_register</span><span class="p">(</span><span class="n">delay_ms</span><span class="p">,</span> <span class="n">timer_callback</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div><p>If the timer needs to be cancelled, use the previous reference. If it has
+already elapsed, nothing will occur:</p><div class="highlight"><pre><span class="c1">// Cancel the timer</span>
+<span class="n">app_timer_cancel</span><span class="p">(</span><span class="n">s_timer</span><span class="p">);</span>
+</pre></div><h2 id="sequence-and-spawn-animations" class="anchor">Sequence and Spawn Animations</h2><p>The Pebble SDK also includes the capability to build up composite animations
+built from other <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> objects. There are two types: a
+sequence animation and a spawn animation.</p>
+<ul>
+<li><p>A sequence animation is a set of two or more other animations that are played
+out in <strong>series</strong> (one after another). For example, a pair of timed animations
+to show and hide a <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>.</p></li>
+<li><p>A spawn animation is a set of two or more other animations that are played out
+in <strong>parallel</strong>. A spawn animation acts the same as creating and starting two
+or more animations at the same time, but has the advantage that it can be
+included as part of a sequence animation.</p></li>
+</ul>
+
+<blockquote>
+<p>Note: Composite animations can be composed of other composite animations.</p></blockquote>
+<h3 id="important-considerations" class="anchor">Important Considerations</h3><p>When incorporating an <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> into a sequence or spawn animation, there
+are a couple of points to note:</p>
+<ul>
+<li><p>Any single animation cannot appear more than once in the list of animations
+used to create a more complex animation.</p></li>
+<li><p>A composite animation assumes ownership of its component animations once it
+has been created.</p></li>
+<li><p>Once an animation has been added to a composite animation, it becomes
+immutable. This means it can only be read, and not written to. Attempts to
+modify such an animation after it has been added to a composite animation will
+fail.</p></li>
+<li><p>Once an animation has been added to a composite animation, it cannot then be
+used to build a different composite animation.</p></li>
+</ul>
+<h3 id="creating-a-sequence-animation" class="anchor">Creating a Sequence Animation</h3><p>To create a sequence animation, first create the component <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> objects
+that will be used to build it.</p><div class="highlight"><pre><span class="c1">// Create the first Animation</span>
+<span class="n">PropertyAnimation</span> <span class="o">*</span><span class="n">prop_anim</span> <span class="o">=</span> <span class="n">property_animation_create_layer_frame</span><span class="p">(</span><span class="n">s_layer</span><span class="p">,</span> 
+                                                               <span class="o">&amp;</span><span class="n">start</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">finish</span><span class="p">);</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">animation_a</span> <span class="o">=</span> <span class="n">property_animation_get_animation</span><span class="p">(</span><span class="n">prop_anim</span><span class="p">);</span>
+
+<span class="c1">// Set some properties</span>
+<span class="n">animation_set_delay</span><span class="p">(</span><span class="n">animation_a</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="n">animation_set_duration</span><span class="p">(</span><span class="n">animation_a</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
+
+<span class="c1">// Clone the first, modify the duration and reverse it.</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">animation_b</span> <span class="o">=</span> <span class="n">animation_clone</span><span class="p">(</span><span class="n">animation_a</span><span class="p">);</span>
+<span class="n">animation_set_reverse</span><span class="p">(</span><span class="n">animation_b</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="n">animation_set_duration</span><span class="p">(</span><span class="n">animation_b</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+</pre></div><p>Use these component animations to create the sequence animation. You can either
+specify the components as a list or pass an array. Both approaches are shown
+below.</p><h4 id="using-a-list" class="anchor">Using a List</h4><p>You can specify up to 20 <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> objects as parameters to
+<code>animation_sequence_create()</code>. The list must always be terminated with <code>NULL</code> to
+mark the end.</p><div class="highlight"><pre><span class="c1">// Create the sequence</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">sequence</span> <span class="o">=</span> <span class="n">animation_sequence_create</span><span class="p">(</span><span class="n">animation_a</span><span class="p">,</span> <span class="n">animation_b</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">// Play the sequence</span>
+<span class="n">animation_schedule</span><span class="p">(</span><span class="n">sequence</span><span class="p">);</span>
+</pre></div><h4 id="using-an-array" class="anchor">Using an Array</h4><p>You can also specify the component animations using a dynamically allocated
+array. Give this to <code>animation_sequence_create_from_array()</code> along with the size
+of the array.</p><div class="highlight"><pre><span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">array_length</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">// Create the array</span>
+<span class="n">Animation</span> <span class="o">**</span><span class="n">arr</span> <span class="o">=</span> <span class="p">(</span><span class="n">Animation</span><span class="o">**</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">array_length</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Animation</span><span class="o">*</span><span class="p">));</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">animation_a</span><span class="p">;</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">animation_b</span><span class="p">;</span>
+
+<span class="c1">// Create the sequence, set to loop forever</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">sequence</span> <span class="o">=</span> <span class="n">animation_sequence_create_from_array</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">array_length</span><span class="p">);</span>
+<span class="n">animation_set_play_count</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">ANIMATION_DURATION_INFINITE</span><span class="p">);</span>
+
+<span class="c1">// Play the sequence</span>
+<span class="n">animation_schedule</span><span class="p">(</span><span class="n">sequence</span><span class="p">);</span>
+
+<span class="c1">// Destroy the array</span>
+<span class="n">free</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+</pre></div><h3 id="creating-a-spawn-animation" class="anchor">Creating a Spawn Animation</h3><p>Creating a spawn animation is done in a very similiar way to a sequence
+animation. The animation is built up from component animations which are then
+all started at the same time. This simplifies the task of precisely timing
+animations that are designed to coincide.</p><p>The first step is the same as for sequence animations, which is to create a
+number of component animations to be spawned together.</p><div class="highlight"><pre><span class="c1">// Create the first animation</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">animation_a</span> <span class="o">=</span> <span class="n">animation_create</span><span class="p">();</span>
+<span class="n">animation_set_duration</span><span class="p">(</span><span class="n">animation_a</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="c1">// Clone the first, modify the duration and reverse it.</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">animation_b</span> <span class="o">=</span> <span class="n">animation_clone</span><span class="p">(</span><span class="n">animation_a</span><span class="p">);</span>
+<span class="n">animation_set_reverse</span><span class="p">(</span><span class="n">animation_b</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="n">animation_set_duration</span><span class="p">(</span><span class="n">animation_b</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+</pre></div><p>Next, the spawn animation is created in a similar manner to the sequence
+animation with a <code>NULL</code> terminated list of parameters:</p><div class="highlight"><pre><span class="c1">// Create the spawn animation</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">spawn</span> <span class="o">=</span> <span class="n">animation_spawn_create</span><span class="p">(</span><span class="n">animation_a</span><span class="p">,</span> <span class="n">animation_b</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">// Play the animation</span>
+<span class="n">animation_schedule</span><span class="p">(</span><span class="n">spawn</span><span class="p">);</span>
+</pre></div><p>Alternatively the spawn animation can be created with an array of <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>
+objects.</p><div class="highlight"><pre><span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">array_length</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">// Create the array</span>
+<span class="n">Animation</span> <span class="o">**</span><span class="n">arr</span> <span class="o">=</span> <span class="p">(</span><span class="n">Animation</span><span class="o">**</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">array_length</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Animation</span><span class="o">*</span><span class="p">));</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">animation_a</span><span class="p">;</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">animation_b</span><span class="p">;</span>
+
+<span class="c1">// Create the sequence and set the play count to 3</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">spawn</span> <span class="o">=</span> <span class="n">animation_spawn_create_from_array</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">array_length</span><span class="p">);</span>
+<span class="n">animation_set_play_count</span><span class="p">(</span><span class="n">spawn</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+<span class="c1">// Play the spawn animation</span>
+<span class="n">animation_schedule</span><span class="p">(</span><span class="n">spawn</span><span class="p">);</span>
+
+<span class="c1">// Destroy the array</span>
+<span class="n">free</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/graphics-and-animations/animations/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#using-propertyanimations">Using PropertyAnimations</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#other-types-of-propertyanimation">Other Types of PropertyAnimation</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#custom-animation-implementations">Custom Animation Implementations</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#timers">Timers</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#sequence-and-spawn-animations">Sequence and Spawn Animations</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#important-considerations">Important Considerations</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#creating-a-sequence-animation">Creating a Sequence Animation</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#using-a-list">Using a List</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#using-an-array">Using an Array</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#creating-a-spawn-animation">Creating a Spawn Animation</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/User_Interface/Animation/">Animation</a></li>
+            
+            <li><a href="/docs/c/Foundation/Timer/">Timer</a></li>
+            
+            <li><a href="/docs/c/User_Interface/Animation/#AnimationImplementation">AnimationImplementation</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/composite-animations-example" target="_blank">Composite Animations Example</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/feature-property-animation" target="_blank">Feature Property Animation</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

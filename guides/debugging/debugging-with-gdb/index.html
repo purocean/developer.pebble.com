@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Debugging with GDB // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to use GDB to debug a Pebble app in the emulator.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/debugging/debugging-with-gdb/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/debugging/common-runtime-errors/"><span>Common Runtime Errors</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/debugging/common-syntax-errors/"><span>Common Syntax Errors</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/debugging/debugging-with-app-logs/"><span>Debugging with App Logs</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/debugging/debugging-with-gdb/"><span>Debugging with GDB</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="starting-gdb">Starting GDB</option>
+          
+            <option value="observing-app-state">Observing App State</option>
+          
+            <option value="fixing-a-crash">Fixing a Crash</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Debugging with GDB</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>As of SDK 3.10 (and <a href="/guides/tools-and-resources/pebble-tool" title="" class="">Pebble Tool</a> 4.2),
+developers can use the powerful <a href="https://www.gnu.org/software/gdb/" title="" class="">GDB</a>
+debugging tool to find and fix errors in Pebble apps while they are running in
+an emulator. GDB allows the user to observe the state of the app at any point in
+time, including the value of global and local variables, as well as current
+function parameters and a backtrace. Strategically placing breakpoints and
+observing these values can quickly reveal the source of a bug.</p>
+<div class="alert alert--fg-white alert--bg-purple"><strong>Notice</strong><br/><p>GDB cannot be used to debug an app running on a real watch.</p></div>
+<h2 id="starting-gdb" class="anchor">Starting GDB</h2><p>To begin using GDB, start an emulator and install an app:</p><div class="highlight"><pre>$ pebble install --emulator basalt
+</pre></div><p>Once the app is installed, begin using GDB:</p><div class="highlight"><pre>$ pebble gdb --emulator basalt
+</pre></div><p>Once the <code>(gdb)</code> prompt appears, the app is paused by GDB for observation. To
+resume execution, use the <code>continue</code> (or <code>c</code>) command. Similarly, the app can be
+paused for debugging by pressing <code>control + c</code>.</p><div class="highlight"><pre>(gdb) c
+Continuing.
+</pre></div><p>A short list of useful commands (many more are available) can be also be
+obtained from the <code>pebble</code> tool. Read the 
+<a href="/guides/tools-and-resources/pebble-tool/#gdb" title="" class=""><em>Emulator Interaction</em></a> 
+section of the <a href="/guides/tools-and-resources/pebble-tool/"><em>Command Line Tool</em></a> guide for more
+details on this list.</p><div class="highlight"><pre>$ pebble gdb --help
+</pre></div><h2 id="observing-app-state" class="anchor">Observing App State</h2><p>To see the value of variables and parameters at any point, set a breakpoint
+by using the <code>break</code> (or <code>b</code>) command and specifying either a function name, or
+file name with a line number. For example, the snippet below shows a typical
+<a href="/docs/c/Foundation/Event_Service/TickTimerService/#TickHandler" title="TickHandler" class="link--docs"><code>TickHandler</code></a> implementation with line numbers in comments:</p><div class="highlight"><pre><span class="cm">/* 58 */</span>  <span class="k">static</span> <span class="kt">void</span> <span class="nf">tick_handler</span><span class="p">(</span><span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">tick_time</span><span class="p">,</span> <span class="n">TimeUnits</span> <span class="n">changed</span><span class="p">)</span> <span class="p">{</span>
+<span class="cm">/* 59 */</span>    <span class="kt">int</span> <span class="n">hours</span> <span class="o">=</span> <span class="n">tick_time</span><span class="o">-&gt;</span><span class="n">tm_hour</span><span class="p">;</span>
+<span class="cm">/* 60 */</span>    <span class="kt">int</span> <span class="n">mins</span> <span class="o">=</span> <span class="n">tick_time</span><span class="o">-&gt;</span><span class="n">tm_min</span><span class="p">;</span>
+<span class="cm">/* 61 */</span>
+<span class="cm">/* 62 */</span>    <span class="k">if</span><span class="p">(</span><span class="n">hours</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+<span class="cm">/* 63 */</span>      <span class="cm">/* other code */</span>
+<span class="cm">/* 64 */</span>    <span class="p">}</span>
+<span class="cm">/* 65 */</span>  <span class="p">}</span>
+</pre></div><p>To observe the values of <code>hours</code> and <code>mins</code>, a breakpoint is set in this file at
+line 61:</p><div class="highlight"><pre>(gdb) b main.c:61
+Breakpoint 2 at 0x200204d6: file ../src/main.c, line 61.
+</pre></div>
+<blockquote>
+<p>Use <code>info break</code> to see a list of all breakpoints currently registered. Each
+can be deleted with <code>delete n</code>, where <code>n</code> is the breakpoint number.</p></blockquote>
+<p>With this breakpoint set, use the <code>c</code> command to let the app continue until it
+encounters the breakpoint:</p><div class="highlight"><pre>$ c
+Continuing.
+</pre></div><p>When execution arrives at the breakpoint, the next line will be displayed along
+with the state of the function&#39;s parameters:</p><div class="highlight"><pre>Breakpoint 2, tick_handler (tick_time=0x20018770, units_changed=(SECOND_UNIT | MINUTE_UNIT))
+    at ../src/main.c:62
+62    if(hours < 10) {
+</pre></div><p>The value of <code>hours</code> and <code>mins</code> can be found using the <code>info locals</code> command:</p><div class="highlight"><pre>(gdb) info locals
+hours = 13
+mins = 23
+</pre></div><p>GDB can be further used here to view the state of variables using the <code>p</code>
+command, such as other parts of the <code>tm</code> object beyond those being used to
+assign values to <code>hours</code> and <code>mins</code>. For example, the day of the month:</p><div class="highlight"><pre>(gdb) p tick_time->tm_mday
+$2 = 14
+</pre></div><p>A backtrace can be generated that describes the series of function calls that
+got the app to the breakpoint using the <code>bt</code> command:</p><div class="highlight"><pre>(gdb) bt
+#0  segment_logic (this=0x200218a0) at ../src/drawable/segment.c:18
+#1  0x2002033c in digit_logic (this=0x20021858) at ../src/drawable/digit.c:141
+#2  0x200204c4 in pge_logic () at ../src/main.c:29
+#3  0x2002101a in draw_frame_update_proc (layer=<optimized out>, ctx=<optimized out>)
+    at ../src/pge/pge.c:190
+#4  0x0802627c in ?? ()
+#5  0x0805ecaa in ?? ()
+#6  0x0801e1a6 in ?? ()
+#7  0x0801e24c in app_event_loop ()
+#8  0x2002108a in main () at ../src/pge/pge.c:34
+#9  0x080079de in ?? ()
+#10 0x00000000 in ?? ()
+</pre></div>
+<blockquote>
+<p>Lines that include &#39;??&#39; denote a function call in the firmware. Building the
+app with <code>pebble build --debug</code> will disable some optimizations and can
+produce more readable output from GDB. However, this can increase code size
+which may break apps that are pushing the heap space limit.</p></blockquote>
+<h2 id="fixing-a-crash" class="anchor">Fixing a Crash</h2><p>When an app is paused for debugging, the developer can manually advance each
+statement and precisely follow the path taken through the code and observe how
+the state of each variable changes over time. This is very useful for tracking
+down bugs caused by unusual input to functions that do not adequately check
+them. For example, a <code>NULL</code> pointer.</p><p>The app code below demonstrates a common cause of an app crash, caused by a
+misunderstanding of how the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> stack works. The <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> is created
+in the <code>.load</code> handler, but this is not called until the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> is pushed
+onto the stack. The attempt to set the time to the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> by calling
+<code>update_time()</code> before it is displayed will cause the app to crash.</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
+
+<span class="k">static</span> <span class="n">Window</span> <span class="o">*</span><span class="n">s_window</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">TextLayer</span> <span class="o">*</span><span class="n">s_time_layer</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Layer</span> <span class="o">*</span><span class="n">window_layer</span> <span class="o">=</span> <span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+  <span class="n">GRect</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">layer_get_bounds</span><span class="p">(</span><span class="n">window_layer</span><span class="p">);</span>
+
+  <span class="n">s_time_layer</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span><span class="n">bounds</span><span class="p">);</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="s">"00:00"</span><span class="p">);</span>
+  <span class="n">text_layer_set_text_alignment</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="n">GTextAlignmentCenter</span><span class="p">);</span>
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_layer</span><span class="p">,</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">update_time</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">time_t</span> <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+  <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">tick_time</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">);</span>
+
+  <span class="k">static</span> <span class="kt">char</span> <span class="n">s_buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+  <span class="n">strftime</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">),</span> <span class="s">"%H:%M"</span><span class="p">,</span> <span class="n">tick_time</span><span class="p">);</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="n">s_buffer</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">s_window</span> <span class="o">=</span> <span class="n">window_create</span><span class="p">();</span>
+  <span class="n">window_set_window_handlers</span><span class="p">(</span><span class="n">s_window</span><span class="p">,</span> <span class="p">(</span><span class="n">WindowHandlers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">window_load</span>
+  <span class="p">});</span>
+
+  <span class="n">update_time</span><span class="p">();</span>
+
+  <span class="n">window_stack_push</span><span class="p">(</span><span class="n">s_window</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">deinit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">window_destroy</span><span class="p">(</span><span class="n">s_window</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">init</span><span class="p">();</span>
+  <span class="n">app_event_loop</span><span class="p">();</span>
+  <span class="n">deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>Supposing the cause of this crash was not obvious from the order of execution,
+GDB can be used to identify the cause of the crash with ease. It is known that
+the app crashes on launch, so the first breakpoint is placed at the beginning of
+<code>init()</code>. After continuing execution, the app will pause at this location:</p><div class="highlight"><pre>(gdb) b init
+Breakpoint 2 at 0x2002010c: file ../src/main.c, line 26.
+(gdb) c
+Continuing.
+
+Breakpoint 2, main () at ../src/main.c:41
+41    init();
+</pre></div><p>Using the <code>step</code> command (or Enter key), the developer can step through all the
+statements that occur during app initialization until the crash is found (and
+the <code>app_crashed</code> breakpoint is encountered. Alternatively, <code>bt full</code> can be
+used after the crash occurs to inspect the local variables at the time of the
+crash:</p><div class="highlight"><pre>(gdb) c
+Continuing.
+
+Breakpoint 1, 0x0804af6c in app_crashed ()
+(gdb) bt full
+#0  0x0804af6c in app_crashed ()
+No symbol table info available.
+#1  0x0800bfe2 in ?? ()
+No symbol table info available.
+#2  0x0800c078 in ?? ()
+No symbol table info available.
+#3  0x0804c306 in ?? ()
+No symbol table info available.
+#4  0x080104f0 in ?? ()
+No symbol table info available.
+#5  0x0804c5c0 in ?? ()
+No symbol table info available.
+#6  0x0805e6ea in text_layer_set_text ()
+No symbol table info available.
+#7  0x20020168 in update_time () at ../src/main.c:22
+        now = 2076
+        tick_time = <optimized out>
+        s_buffer = "10:38\000\000"
+#8  init () at ../src/main.c:31
+No locals.
+#9  main () at ../src/main.c:41
+No locals.
+#10 0x080079de in ?? ()
+No symbol table info available.
+#11 0x00000000 in ?? ()
+No symbol table info available.
+</pre></div><p>The last statement to be executed before the crash is a call to
+<code>text_layer_set_text()</code>, which implies that one of its input variables was bad.
+It is easy to determine which by printing local variable values with the <code>p</code>
+command:</p><div class="highlight"><pre>Breakpoint 4, update_time () at ../src/main.c:22
+22    text_layer_set_text(s_time_layer, s_buffer);
+(gdb) p s_time_layer
+$1 = (TextLayer *) 0x0 <__pbl_app_info>
+</pre></div><p>In this case, GDB displays <code>0x0</code> (<code>NULL</code>) for the value of <code>s_time_layer</code>, which
+shows it has not yet been allocated, and so will cause <code>text_layer_set_text()</code>
+to crash. And thus, the source of the crash has been methodically identified. A
+simple fix here is to swap <code>update_time()</code> and <a href="/docs/c/User_Interface/Window_Stack/#window_stack_push" title="window_stack_push" class="link--docs"><code>window_stack_push()</code></a> around so
+that <code>init()</code> now becomes:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Create a Window</span>
+  <span class="n">s_window</span> <span class="o">=</span> <span class="n">window_create</span><span class="p">();</span>
+  <span class="n">window_set_window_handlers</span><span class="p">(</span><span class="n">s_window</span><span class="p">,</span> <span class="p">(</span><span class="n">WindowHandlers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">window_load</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Display the Window</span>
+  <span class="n">window_stack_push</span><span class="p">(</span><span class="n">s_window</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+
+  <span class="c1">// Set the time</span>
+  <span class="n">update_time</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>In this new version of the code the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> will be pushed onto the stack,
+calling its <code>.load</code> handler in the process, and the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> will be
+allocated and available for use once execution subsequently reaches
+<code>update_time()</code>.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/debugging/debugging-with-gdb/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#starting-gdb">Starting GDB</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#observing-app-state">Observing App State</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#fixing-a-crash">Fixing a Crash</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

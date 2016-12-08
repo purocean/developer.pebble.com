@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Learning to Program Your Pebble // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2014/04/30/Learn-to-Program-My-Pebble/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="the-essential-pebble-tutorial">The Essential Pebble Tutorial</option>
+          
+            <option value="about-chris-and-his-pebble-apps">About Chris and His Pebble Apps</option>
+          
+            <option value="q-and-a-with-chris">Q and A With Chris</option>
+          
+            <option value="got-a-pebble-programming-story-to-tell">- Got a Pebble Programming Story to Tell?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Learning to Program Your Pebble</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>30 April 2014</li>
+    <li><a href="/blog/authors/tom/">Tom Maremaa</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/at-the-pub/">At the Pub</a>
+      
+    </li>
+    <li><a href="/blog/2014/04/30/Learn-to-Program-My-Pebble/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p>Where can you find a good tutorial on how to program your Pebble? That question 
+pops up frequently among readers on Pebble Developer Forums. Fortunately, a 
+Pebble developer has provided the answer. In the Pebble community, Chris Lewis, 
+a UK-based developer, has produced, beginning with Pebble SDK 1.x and recently 
+with SDK 2.0, that essential tutorial for newbies coming to the platform on his 
+blog: 
+<a href="http://ninedof.wordpress.com/pebble-sdk-tutorial/" title="" class=""> —try { work(); } finally { code(); }</a>
+. You may want to check it out!</p><h2 id="the-essential-pebble-tutorial" class="anchor">The Essential Pebble Tutorial</h2><p>To begin with, Chris divides the Pebble tutorial into two parts, the first of
+which is aimed at beginners who are new to the C programming language. In the
+second part, you learn progressively about the various components of the Pebble
+SDK, from building your first watchapp, telling time, handling fonts and images,
+dealing with animations, timers, buttons, vibrations and menu layers, on a
+learning path all the way up to how to integrate Android apps. By that time,
+you&#39;ll have a good handle on the basics of programming your Pebble.</p><p>The source code for each type of app is freely available, as is the source for
+most of Chris&#39;s Pebble watchfaces and apps on
+<a href="https://github.com/C-D-Lewis" title="" class="">GitHub</a>, which is a valuable resource for
+building your own library of Pebble apps.</p><h2 id="about-chris-and-his-pebble-apps" class="anchor">About Chris and His Pebble Apps</h2><p>Chris Lewis is a UK-based app developer, who started learning to code in C at
+University while studying Electronic Engineering. Since then he has programmed
+in Java for Android in his free time, before coming back to C for Pebble SDK.
+&quot;The combination of the two has resulted in Pebble apps that leverage Android
+features to help streamline everyday life,&quot; he says.</p><p><img src="/assets/images/blog/chris-qna.png" alt="Chris Lewis" /></p><p>Chris has developed and published several cool Pebble apps, notably</p>
+<ul>
+<li><a href="https://play.google.com/store/apps/details?id=com.wordpress.ninedof.watchtrigger" title="" class="">Watch Trigger+</a>
+, which lets you handle remote triggering of video capture, as well as photo 
+capture, on your Pebble.</li>
+</ul>
+<p><img src="/assets/images/blog/watchtrigger.png" alt="Watch Trigger+" /></p>
+<ul>
+<li><a href="https://play.google.com/store/apps/details?id=com.wordpress.ninedof.wristponder" title="" class="">Wristponder</a> 
+enables you to send customized pre-set SMS messages from your Pebble when you
+need to reply, but when you find that it isn&#39;t socially acceptable to use your
+mobile device.</li>
+</ul>
+<p><img src="/assets/images/blog/wristponder.png" alt="Wristponder" /></p>
+<ul>
+<li><a href="https://play.google.com/store/apps/details?id=com.wordpress.ninedof.watchappselector" title="" class="">Watch App Selector</a> 
+lets you pull together all of Chris’s watchapps and watchfaces with one Android 
+app for easy updating.</li>
+</ul>
+<p><img src="/assets/images/blog/app-selector.png" alt="Watch App Selector" /></p><h2 id="q-and-a-with-chris" class="anchor">Q and A With Chris</h2><p>We caught up with Chris recently and engaged in an online discussion about how
+best to learn Pebble programming.</p><p>Q: Do you recommend that non-programmers engage in learning how to program a
+Pebble app, perhaps just using CloudPebble?</p>
+<ul>
+<li><p>A: I do recommend non-programmers engage, as it allows a Pebble user to
+unleash their own ideas and experiment with the platform. This is especially
+true if they like the idea of beginning to program, as once you have a basic
+working knowledge of the structure of C, the Pebble SDK is &#39;plain English&#39;
+enough to be accessible as a first platform.</p></li>
+<li><p>An example of this is &#39;text_layer_set_text()’, which &#39;does what it says on
+the tin&#39; and sets the text a TextLayer will show. Once you are familiar with
+Pebble SDK, you can aim higher to other platforms such as Android, so it&#39;s a
+good starting point.</p></li>
+</ul>
+<p>Q: Should they follow your tutorial on creating Pebble apps, or are they going
+to bite off more than they can chew, as it were?</p>
+<ul>
+<li>A: When I wrote the SDK 2.0 Tutorial I decided to try and give it a more
+progressive element, by starting small and working up to more advanced
+topics. Once a reader has variables, functions, control flow (if, else etc.)
+under their belt they should be able to progress along with it. Of course, I
+wrote it as an experienced user, so I hope I struck the right balance.</li>
+</ul>
+<p>Q: How do you see working with CloudPebble? Is it a kind of IDE that non-
+programmers or even seasoned programmers should use? What are some of the
+limitations? Advantages?</p>
+<ul>
+<li><p>A: As a Windows user, an alternative to setting up a Virtual Machine, tool
+chain and file share has got to be a bonus for non-programmers and seasoned
+programmers alike. Even more compelling an alternative to a VM now that
+&#39;pebble logs&#39; has been added.</p></li>
+<li><p>When I&#39;m out and don&#39;t have access to my laptop but access to another
+computer I can log in to CloudPebble to try out new ideas. A great example is
+when I was alerted by users to a big bug in Watch Trigger that had to be
+fixed fast, and thanks to CloudPebble I could do that as soon as possible
+without having to go home, preventing user frustration.</p></li>
+</ul>
+<p>Q: What parts of the C programming language are essential to know and understand
+when writing a Pebble app? I’m thinking if you’re coming to Pebble from
+Objective-C or Java.</p>
+<ul>
+<li><p>A: I’ve seen users who want to make a start in Pebble SDK recommended
+standard texts on C, which would make them an expert in the language, but
+they&#39;d also know about ten times the amount they would actually need to make
+good use of the SDK, which is overkill.</p></li>
+<li><p>I did quite a bit of Java for Android before re-visiting my limited C for
+Pebble SDK, and I found that the crucial things you need to know are how to
+store and use data (variables, structures, pointers and scope) and how to
+interact with the SDK.</p></li>
+<li><p>This means an understanding of what a function definition is and the process
+of calling a function (arguments and return values, etc.). Once you know how
+to make and call functions, you can use ANY of the SDK functions, which
+immediately broadens your capabilities.</p></li>
+</ul>
+<p>Q: How would you identify the most difficult part of learning to program on
+Pebble? I’m thinking of the steepest learning curve example?</p>
+<ul>
+<li><p>A: After gaining an initial understanding of C syntax, I think the steepest
+learning curve for a beginner would be trying to create a &#39;Grand Design&#39; from
+scratch with too little experience. When I was learning Java, I found that
+starting small and then incorporating those small achievements into larger
+projects helped me improve my understanding of what was possible.</p></li>
+<li><p>For example, I recently helped a fairly novice user create a MenuLayer based
+app that used AppMessage to update an Android phone app, and the main
+difficulty we had was the user&#39;s lack of experience of starting small and
+experimenting with those modules individually beforehand. Think of it as
+&#39;building on your own shoulders&#39;. Best to start small with TextLayers and
+Clicks, for example.</p></li>
+</ul>
+<p>Q: Are the 
+<a href="http://ninedof.wordpress.com/pebble-sdk-tutorial/" title="" class="">nine tutorials</a> in the order 
+that I, as a newbie to the Pebble platform, should follow, as a learning 
+progression? Can I skip any in particular? What’s most critical for me to 
+understand?</p>
+<ul>
+<li><p>A: As I&#39;ve previously mentioned, the basic syntax of storing and using/moving
+around data in C is a must. This enables you to use the Pebble SDK without
+much extra knowledge.</p></li>
+<li><p>I hope that my SDK 2.0 Tutorial series are written as a natural progression
+from starting small to more advanced topics, but to get things off to a
+quicker start and get creating early this basic knowledge is covered in less
+detail than the first part of the 1.X Tutorial series.</p></li>
+<li><p>That said, the Part #1 of the 1.X series is still a good introduction to the
+basic syntax of C, so perhaps I should revisit it as a 2.0 series prequel.</p></li>
+</ul>
+<p>Q: Do you have any specific advice for JavaScript developers coming to the
+Pebble platform?</p>
+<ul>
+<li><p>A: The only practical experience I have with JavaScript was that gained from
+experimenting with PebbleKit JS, I had none before that. However, it is
+similar in most respects to Java in syntax but without explicit types.</p></li>
+<li><p>Wanting to achieve set goals (such as Pebble Tube Status web data fetching)
+is a sure-fire way of motivating yourself to learn how to do new things with
+a language, instead of simply reading a book which provides no drive to
+accomplish things.</p></li>
+<li><p>So with that in mind, my advice to JS developers would be to familiarize
+yourself with the differences in doing the same thing in each language. For
+example, string representations in C are very different than in JS. Being
+able to manipulate strings in both languages makes passing data between the
+watch and the phone a lot easier!</p></li>
+</ul>
+<h3 id="got-a-pebble-programming-story-to-tell" class="anchor">Got a Pebble Programming Story to Tell?</h3><p>Special thanks to Chris for sharing his ideas on learning techniques for Pebble
+programming. If you have a story to tell about your experiences learning to
+program your Pebble, please <a href="/contact" title="" class="">contact us</a> and we&#39;ll add you to
+our Learning to Program Your Pebble feature list.</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2014/04/30/Learn-to-Program-My-Pebble/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#the-essential-pebble-tutorial">The Essential Pebble Tutorial</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#about-chris-and-his-pebble-apps">About Chris and His Pebble Apps</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#q-and-a-with-chris">Q and A With Chris</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#got-a-pebble-programming-story-to-tell">Got a Pebble Programming Story to Tell?</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                <strong>At the Pub</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                <strong>Tom Maremaa</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

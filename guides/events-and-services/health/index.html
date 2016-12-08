@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble Health // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Information on using the HealthService API to incorporate multiple types of
+health data into your apps.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/events-and-services/health/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/accelerometer/"><span>Accelerometer</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/background-worker/"><span>Background Worker</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/buttons/"><span>Buttons</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/compass/"><span>Compass</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/dictation/"><span>Dictation</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/events/"><span>Event Services</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/hrm/"><span>Heart Rate Monitor</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/events-and-services/health/"><span>Pebble Health</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/persistent-storage/"><span>Persistent Storage</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/wakeups/"><span>Wakeups</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="api-availability">API Availability</option>
+          
+            <option value="available-metrics">Available Metrics</option>
+          
+            <option value="subscribing-to-healthservice-events">Subscribing to HealthService Events</option>
+          
+            <option value="reading-health-data">Reading Health Data</option>
+          
+            <option value="representing-health-data">Representing Health Data</option>
+          
+            <option value="obtaining-averaged-data">Obtaining Averaged Data</option>
+          
+            <option value="detecting-activities">Detecting Activities</option>
+          
+            <option value="read-per-minute-history">Read Per-Minute History</option>
+          
+            <option value="notes-on-minute-level-data">- Notes on Minute-level Data</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Pebble Health</h1>
+    
+    <div class="alert alert--fg-white alert--bg-purple alert--medium">
+      <p>
+        <strong>PLATFORM NOTICE</strong><br>
+        This guide does not apply to apps built to run on the Aplite platform
+        (Pebble Classic, Pebble Steel).
+      </p>
+    </div>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p><a href="https://blog.getpebble.com/2015/12/15/health/" title="" class="">Pebble Health</a> provides builtin
+health data tracking to allow users to improve their activity and sleep habits.
+With SDK 3.9, the <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a> API opens this data up to developers to
+include and use within their apps. For example, a watchface could display a
+brief summary of the user&#39;s activity for the day.</p><h2 id="api-availability" class="anchor">API Availability</h2><p>In order to use the <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a> (and indeed Pebble Health), the user must
+enable the &#39;Pebble Health&#39; app in the &#39;Apps/Timeline&#39; view of the official
+Pebble mobile app. If this is not enabled health data will not be available to
+apps, and API calls will return values to reflect this.</p><p>In addition, any app using the <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a> API must declare the &#39;health&#39;
+capability in order to be accepted by the 
+<a href="https://dev-portal.getpebble.com/" title="" class="">developer portal</a>. This can be done in
+CloudPebble &#39;Settings&#39;, or in <code>package.json</code> in the local SDK:</p><div class="highlight"><pre><span class="s2">"capabilities"</span><span class="o">:</span> <span class="p">[</span> <span class="s2">"health"</span> <span class="p">]</span>
+</pre></div><p>Since Pebble Health is not available on the Aplite platform, developers should
+check the API return values and hence the lack of <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a> on that
+platform gracefully. In addition, the <code>PBL_HEALTH</code> define and
+<code>PBL_IF_HEALTH_ELSE()</code> macro can be used to selectively omit affected code.</p><h2 id="available-metrics" class="anchor">Available Metrics</h2><p>The <a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric" title="HealthMetric" class="link--docs"><code>HealthMetric</code></a> <code>enum</code> lists the types of data (or &#39;metrics&#39;) that can be
+read using the API. These are described below:</p>
+<table><thead>
+<tr>
+<th>Metric</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>HealthMetricStepCount</code></td>
+<td>The user&#39;s step count.</td>
+</tr>
+<tr>
+<td><code>HealthMetricActiveSeconds</code></td>
+<td>Duration of time the user was considered &#39;active&#39;.</td>
+</tr>
+<tr>
+<td><code>HealthMetricWalkedDistanceMeters</code></td>
+<td>Estimation of the distance travelled in meters.</td>
+</tr>
+<tr>
+<td><code>HealthMetricSleepSeconds</code></td>
+<td>Duration of time the user was considered asleep.</td>
+</tr>
+<tr>
+<td><code>HealthMetricSleepRestfulSeconds</code></td>
+<td>Duration of time the user was considered in deep restful sleep.</td>
+</tr>
+<tr>
+<td><code>HealthMetricRestingKCalories</code></td>
+<td>The number of kcal (thousand calories) burned due to resting metabolism.</td>
+</tr>
+<tr>
+<td><code>HealthMetricActiveKCalories</code></td>
+<td>The number of kcal (thousand calories) burned due to activity.</td>
+</tr>
+<tr>
+<td><code>HealthMetricHeartRateBPM</code></td>
+<td>The heart rate, in beats per minute.</td>
+</tr>
+</tbody></table>
+<h2 id="subscribing-to-healthservice-events" class="anchor">Subscribing to HealthService Events</h2><p>Like other Event Services, an app can subscribe a handler function to receive a
+callback when new health data is available. This is useful for showing 
+near-realtime activity updates. The handler must be a suitable implementation of
+<a href="/docs/c/Foundation/Event_Service/HealthService/#HealthEventHandler" title="HealthEventHandler" class="link--docs"><code>HealthEventHandler</code></a>. The <code>event</code> parameter describes the type of each update,
+and is one of the following from the <a href="/docs/c/Foundation/Event_Service/HealthService/#HealthEventType" title="HealthEventType" class="link--docs"><code>HealthEventType</code></a> <code>enum</code>:</p>
+<table><thead>
+<tr>
+<th>Event Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>HealthEventSignificantUpdate</code></td>
+<td><code>0</code></td>
+<td>All data is considered as outdated, apps should re-read all health data. This can happen on a change of the day or in other cases that significantly change the underlying data.</td>
+</tr>
+<tr>
+<td><code>HealthEventMovementUpdate</code></td>
+<td><code>1</code></td>
+<td>Recent values around <code>HealthMetricStepCount</code>, <code>HealthMetricActiveSeconds</code>, <code>HealthMetricWalkedDistanceMeters</code>, and <code>HealthActivityMask</code> changed.</td>
+</tr>
+<tr>
+<td><code>HealthEventSleepUpdate</code></td>
+<td><code>2</code></td>
+<td>Recent values around <code>HealthMetricSleepSeconds</code>, <code>HealthMetricSleepRestfulSeconds</code>, <code>HealthActivitySleep</code>, and <code>HealthActivityRestfulSleep</code> changed.</td>
+</tr>
+<tr>
+<td><code>HealthEventHeartRateUpdate</code></td>
+<td><code>4</code></td>
+<td>The value of <code>HealthMetricHeartRateBPM</code> has changed.</td>
+</tr>
+</tbody></table>
+<p>A simple example handler is shown below, which outputs to app logs the type of
+event that fired the callback:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">health_handler</span><span class="p">(</span><span class="n">HealthEventType</span> <span class="n">event</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Which type of event occurred?</span>
+  <span class="k">switch</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nl">HealthEventSignificantUpdate</span><span class="p">:</span>
+      <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> 
+              <span class="s">"New HealthService HealthEventSignificantUpdate event"</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">HealthEventMovementUpdate</span><span class="p">:</span>
+      <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> 
+              <span class="s">"New HealthService HealthEventMovementUpdate event"</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">HealthEventSleepUpdate</span><span class="p">:</span>
+      <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> 
+              <span class="s">"New HealthService HealthEventSleepUpdate event"</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">HealthEventHeartRateUpdate</span><span class="p">:</span>
+      <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span>
+              <span class="s">"New HealthService HealthEventHeartRateUpdate event"</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>The subscription is then registered in the usual way, optionally providing a
+<code>context</code> parameter that is relayed to each event callback. The return value
+should be used to determine whether the subscription was successful:</p><div class="highlight"><pre><span class="cp">#if defined(PBL_HEALTH)</span>
+<span class="c1">// Attempt to subscribe </span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">health_service_events_subscribe</span><span class="p">(</span><span class="n">health_handler</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">))</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Health not available!"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#else</span>
+<span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Health not available!"</span><span class="p">);</span>
+<span class="cp">#endif</span>
+</pre></div><h2 id="reading-health-data" class="anchor">Reading Health Data</h2><p>Health data is collected in the background as part of Pebble Health regardless
+of the state of the app using the <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a> API, and is available to
+apps through various <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a> API functions.</p><p>Before reading any health data, it is recommended to check that data is
+available for the desired time range, if applicable. In addition to the
+<a href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask" title="HealthServiceAccessibilityMask" class="link--docs"><code>HealthServiceAccessibilityMask</code></a> value, health-related code can be
+conditionally compiled using <code>PBL_HEALTH</code>. For example, to check whether 
+any data is available for a given time range:</p><div class="highlight"><pre><span class="cp">#if defined(PBL_HEALTH)</span>
+<span class="c1">// Use the step count metric</span>
+<span class="n">HealthMetric</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">HealthMetricStepCount</span><span class="p">;</span>
+
+<span class="c1">// Create timestamps for midnight (the start time) and now (the end time)</span>
+<span class="kt">time_t</span> <span class="n">start</span> <span class="o">=</span> <span class="n">time_start_of_today</span><span class="p">();</span>
+<span class="kt">time_t</span> <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">// Check step data is available</span>
+<span class="n">HealthServiceAccessibilityMask</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">health_service_metric_accessible</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> 
+                                                                    <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
+<span class="kt">bool</span> <span class="n">any_data_available</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">&amp;</span> <span class="n">HealthServiceAccessibilityMaskAvailable</span><span class="p">;</span>
+<span class="cp">#else</span>
+<span class="c1">// Health data is not available here</span>
+<span class="kt">bool</span> <span class="n">any_data_available</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="cp">#endif</span>
+</pre></div><p>Most applications will want to read the sum of a metric for the current day&#39;s
+activity. This is the simplest method for accessing summaries of users&#39; health
+data, and is shown in the example below:</p><div class="highlight"><pre><span class="n">HealthMetric</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">HealthMetricStepCount</span><span class="p">;</span>
+<span class="kt">time_t</span> <span class="n">start</span> <span class="o">=</span> <span class="n">time_start_of_today</span><span class="p">();</span>
+<span class="kt">time_t</span> <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">// Check the metric has data available for today</span>
+<span class="n">HealthServiceAccessibilityMask</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">health_service_metric_accessible</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> 
+  <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">HealthServiceAccessibilityMaskAvailable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Data is available!</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Steps today: %d"</span><span class="p">,</span> 
+          <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">health_service_sum_today</span><span class="p">(</span><span class="n">metric</span><span class="p">));</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// No data recorded yet today</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Data unavailable!"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>For more specific data queries, the API also allows developers to request data
+records and sums of metrics from a specific time range. If data is available, it
+can be read as a sum of all values recorded between that time range. You can use
+the convenience constants from <a href="/docs/c/Standard_C/Time/" title="Time" class="link--docs"><code>Time</code></a>, such as <a href="/docs/c/Standard_C/Time/#SECONDS_PER_HOUR" title="SECONDS_PER_HOUR" class="link--docs"><code>SECONDS_PER_HOUR</code></a> to adjust
+a timestamp relative to the current moment returned by <a href="/docs/c/Standard_C/Time/" title="Time" class="link--docs"><code>time()</code></a>.</p>
+<blockquote>
+<p>Note: The value returned will be an average since midnight, weighted for the
+length of the specified time range. This may change in the future.</p></blockquote>
+<p>An example of this process is shown below:</p><div class="highlight"><pre><span class="c1">// Make a timestamp for now</span>
+<span class="kt">time_t</span> <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">// Make a timestamp for the last hour's worth of data</span>
+<span class="kt">time_t</span> <span class="n">start</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">SECONDS_PER_HOUR</span><span class="p">;</span>
+
+<span class="c1">// Check data is available</span>
+<span class="n">HealthServiceAccessibilityMask</span> <span class="n">result</span> <span class="o">=</span> 
+    <span class="n">health_service_metric_accessible</span><span class="p">(</span><span class="n">HealthMetricStepCount</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">&amp;</span> <span class="n">HealthServiceAccessibilityMaskAvailable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Data is available! Read it</span>
+  <span class="n">HealthValue</span> <span class="n">steps</span> <span class="o">=</span> <span class="n">health_service_sum</span><span class="p">(</span><span class="n">HealthMetricStepCount</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
+
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Steps in the last hour: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">steps</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"No data available!"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="representing-health-data" class="anchor">Representing Health Data</h2><p>Depending on the locale of the user, the conventional measurement system used to
+represent distances may vary between metric and imperial. For this reason it is
+recommended to query the user&#39;s preferred <a href="/docs/c/Foundation/Event_Service/HealthService/#MeasurementSystem" title="MeasurementSystem" class="link--docs"><code>MeasurementSystem</code></a> before
+formatting distance data from the <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a>:</p>
+<blockquote>
+<p>Note: This API is currently only meaningful when querying the
+<a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetricWalkedDistanceMeters" title="HealthMetricWalkedDistanceMeters" class="link--docs"><code>HealthMetricWalkedDistanceMeters</code></a> metric. <a href="/docs/c/Foundation/Event_Service/HealthService/#MeasurementSystemUnknown" title="MeasurementSystemUnknown" class="link--docs"><code>MeasurementSystemUnknown</code></a> will
+be returned for all other queries.</p></blockquote>
+<div class="highlight"><pre><span class="k">const</span> <span class="n">HealthMetric</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">HealthMetricWalkedDistanceMeters</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">HealthValue</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">health_service_sum_today</span><span class="p">(</span><span class="n">metric</span><span class="p">);</span>
+
+<span class="c1">// Get the preferred measurement system</span>
+<span class="n">MeasurementSystem</span> <span class="n">system</span> <span class="o">=</span> <span class="n">health_service_get_measurement_system_for_display</span><span class="p">(</span>
+                                                                        <span class="n">metric</span><span class="p">);</span>
+
+<span class="c1">// Format accordingly</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="n">s_buffer</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<span class="k">switch</span><span class="p">(</span><span class="n">system</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="nl">MeasurementSystemMetric</span><span class="p">:</span>
+    <span class="n">snprintf</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">),</span> <span class="s">"Walked %d meters"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">distance</span><span class="p">);</span>    
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="nl">MeasurementSystemImperial</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// Convert to imperial first</span>
+    <span class="kt">int</span> <span class="n">feet</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)((</span><span class="kt">float</span><span class="p">)</span><span class="n">distance</span> <span class="o">*</span> <span class="mf">3.28F</span><span class="p">);</span>
+    <span class="n">snprintf</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">),</span> <span class="s">"Walked %d feet"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">feet</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="nl">MeasurementSystemUnknown</span><span class="p">:</span>
+  <span class="k">default</span><span class="o">:</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"MeasurementSystem unknown or does not apply"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Display to user in correct units</span>
+<span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_some_layer</span><span class="p">,</span> <span class="n">s_buffer</span><span class="p">);</span>
+</pre></div><h2 id="obtaining-averaged-data" class="anchor">Obtaining Averaged Data</h2><p>The <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a> also allows developers to read average values of a
+particular <a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetric" title="HealthMetric" class="link--docs"><code>HealthMetric</code></a> with varying degrees of scope. This is useful for
+apps that wish to display an average value (e.g.: as a goal for the user)
+alongside a summed value. </p><p>In this context, the <code>start</code> and <code>end</code> parameters specify the time period to be
+used for the daily average calculation. For example, a start time of midnight
+and an end time ten hours later will return the average value for the specified
+metric measured until 10 AM on average across the days specified by the scope.</p><p>The <a href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScope" title="HealthServiceTimeScope" class="link--docs"><code>HealthServiceTimeScope</code></a> specified when querying for averaged data over a
+given time range determines how the average is calculated, as detailed in the
+table below:</p>
+<table><thead>
+<tr>
+<th>Scope Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>HealthServiceTimeScopeOnce</code></td>
+<td>No average computed. The result is the same as calling <a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_sum" title="health_service_sum" class="link--docs"><code>health_service_sum()</code></a>.</td>
+</tr>
+<tr>
+<td><code>HealthServiceTimeScopeWeekly</code></td>
+<td>Compute average using the same day from each week (up to four weeks). For example, every Monday if the provided time range falls on a Monday.</td>
+</tr>
+<tr>
+<td><code>HealthServiceTimeScopeDailyWeekdayOrWeekend</code></td>
+<td>Compute average using either weekdays (Monday to Friday) or weekends (Saturday and Sunday), depending on which day the provided time range falls.</td>
+</tr>
+<tr>
+<td><code>HealthServiceTimeScopeDaily</code></td>
+<td>Compute average across all days of the week.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Note: If the difference between the start and end times is greater than one
+day, an average will be returned that takes both days into account. Similarly,
+if the time range crosses between scopes (such as including weekend days and
+weekdays with <a href="/docs/c/Foundation/Event_Service/HealthService/#HealthServiceTimeScopeDailyWeekdayOrWeekend" title="HealthServiceTimeScopeDailyWeekdayOrWeekend" class="link--docs"><code>HealthServiceTimeScopeDailyWeekdayOrWeekend</code></a>), the start time
+will be used to determine which days are used.</p></blockquote>
+<p>Reading averaged data values works in a similar way to reading sums. The example
+below shows how to read an average step count across all days of the week for a
+given time range:</p><div class="highlight"><pre><span class="c1">// Define query parameters</span>
+<span class="k">const</span> <span class="n">HealthMetric</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">HealthMetricStepCount</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">HealthServiceTimeScope</span> <span class="n">scope</span> <span class="o">=</span> <span class="n">HealthServiceTimeScopeDaily</span><span class="p">;</span>
+
+<span class="c1">// Use the average daily value from midnight to the current time</span>
+<span class="k">const</span> <span class="kt">time_t</span> <span class="n">start</span> <span class="o">=</span> <span class="n">time_start_of_today</span><span class="p">();</span>
+<span class="k">const</span> <span class="kt">time_t</span> <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="c1">// Check that an averaged value is accessible</span>
+<span class="n">HealthServiceAccessibilityMask</span> <span class="n">mask</span> <span class="o">=</span> 
+          <span class="n">health_service_metric_averaged_accessible</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">scope</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">HealthServiceAccessibilityMaskAvailable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Average is available, read it</span>
+  <span class="n">HealthValue</span> <span class="n">average</span> <span class="o">=</span> <span class="n">health_service_sum_averaged</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">scope</span><span class="p">);</span>
+
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Average step count: %d steps"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">average</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="detecting-activities" class="anchor">Detecting Activities</h2><p>It is possible to detect when the user is sleeping using a
+<a href="/docs/c/Foundation/Event_Service/HealthService/#HealthActivityMask" title="HealthActivityMask" class="link--docs"><code>HealthActivityMask</code></a> value. A useful application of this information could be
+to disable a watchface&#39;s animations or tick at a reduced rate once the user is
+asleep. This is done by checking certain bits of the returned value:</p><div class="highlight"><pre><span class="c1">// Get an activities mask</span>
+<span class="n">HealthActivityMask</span> <span class="n">activities</span> <span class="o">=</span> <span class="n">health_service_peek_current_activities</span><span class="p">();</span>
+
+<span class="c1">// Determine which bits are set, and hence which activity is active</span>
+<span class="k">if</span><span class="p">(</span><span class="n">activities</span> <span class="o">&amp;</span> <span class="n">HealthActivitySleep</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"The user is sleeping."</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">activities</span> <span class="o">&amp;</span> <span class="n">HealthActivityRestfulSleep</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"The user is sleeping peacefully."</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"The user is not currently sleeping."</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="read-per-minute-history" class="anchor">Read Per-Minute History</h2><p>The <a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMinuteData" title="HealthMinuteData" class="link--docs"><code>HealthMinuteData</code></a> structure contains multiple types of activity-related
+data that are recorded in a minute-by-minute fashion. This style of data access
+is best suited to those applications requiring more granular detail (such as
+creating a new fitness algorithm). Up to seven days worth of data is available
+with this API. </p>
+<blockquote>
+<p>See <a href="#notes-on-minute-level-data" title="" class=""><em>Notes on Minute-level Data</em></a> below for more
+information on minute-level data.</p></blockquote>
+<p>The data items contained in the <a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMinuteData" title="HealthMinuteData" class="link--docs"><code>HealthMinuteData</code></a> structure are summarized
+below:</p>
+<table><thead>
+<tr>
+<th>Item</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>steps</code></td>
+<td><code>uint8_t</code></td>
+<td>Number of steps taken in this minute.</td>
+</tr>
+<tr>
+<td><code>orientation</code></td>
+<td><code>uint8_t</code></td>
+<td>Quantized average orientation, encoding the x-y plane (the &quot;yaw&quot;) in the lower 4 bits (360 degrees linearly mapped to 1 of 16 values) and the z axis (the &quot;pitch&quot;) in the upper 4 bits.</td>
+</tr>
+<tr>
+<td><code>vmc</code></td>
+<td><code>uint16_t</code></td>
+<td>Vector Magnitude Counts (VMC). This is a measure of the total amount of movement seen by the watch. More vigorous movement yields higher VMC values.</td>
+</tr>
+<tr>
+<td><code>is_invalid</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> if the item doesn&#39;t represent actual data, and should be ignored.</td>
+</tr>
+<tr>
+<td><code>heart_rate_bpm</code></td>
+<td><code>uint8_t</code></td>
+<td>Heart rate in beats per minute (if available).</td>
+</tr>
+</tbody></table>
+<p>These data items can be obtained in the following manner, similar to obtaining a
+sum. </p><div class="highlight"><pre><span class="c1">// Create an array to store data</span>
+<span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">max_records</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+<span class="n">HealthMinuteData</span> <span class="o">*</span><span class="n">minute_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">HealthMinuteData</span><span class="o">*</span><span class="p">)</span>
+                              <span class="n">malloc</span><span class="p">(</span><span class="n">max_records</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">HealthMinuteData</span><span class="p">));</span>
+
+<span class="c1">// Make a timestamp for 15 minutes ago and an hour before that </span>
+<span class="kt">time_t</span> <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">SECONDS_PER_MINUTE</span><span class="p">);</span>
+<span class="kt">time_t</span> <span class="n">start</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">SECONDS_PER_HOUR</span><span class="p">;</span>
+
+<span class="c1">// Obtain the minute-by-minute records</span>
+<span class="kt">uint32_t</span> <span class="n">num_records</span> <span class="o">=</span> <span class="n">health_service_get_minute_history</span><span class="p">(</span><span class="n">minute_data</span><span class="p">,</span> 
+                                                  <span class="n">max_records</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">start</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">end</span><span class="p">);</span>
+<span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"num_records: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">num_records</span><span class="p">);</span>
+
+<span class="c1">// Print the number of steps for each minute</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_records</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Item %d steps: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">i</span><span class="p">,</span> 
+          <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">minute_data</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">steps</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Don&#39;t forget to free the array once the data is finished with:</p><div class="highlight"><pre><span class="c1">// Free the array</span>
+<span class="n">free</span><span class="p">(</span><span class="n">minute_data</span><span class="p">);</span>
+</pre></div><h3 id="notes-on-minute-level-data" class="anchor">Notes on Minute-level Data</h3><p>Missing minute-level records can occur if the watch is reset, goes into low 
+power (watch-only) mode due to critically low battery, or Pebble Health is 
+disabled during the time period requested.</p><p><a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_get_minute_history" title="health_service_get_minute_history" class="link--docs"><code>health_service_get_minute_history()</code></a> will return as many <strong>consecutive</strong>
+minute-level records that are available after the provided <code>start</code> timestamp, 
+skipping any missing records until one is found. This API behavior enables one 
+to easily continue reading data after a previous query encountered a missing 
+minute. If there are some minutes with missing data, the API will return all 
+available records up to the last available minute, and no further. Conversely, 
+records returned will begin with the first available record after the provided 
+<code>start</code> timestamp, skipping any missing records until one is found. This can 
+be used to continue reading data after a previous query encountered a missing 
+minute.</p><p>The code snippet below shows an example function that packs a provided
+<a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMinuteData" title="HealthMinuteData" class="link--docs"><code>HealthMinuteData</code></a> array with all available values in a time range, up to an
+arbitrary maximum number. Any missing minutes are collapsed, so that as much
+data can be returned as is possible for the allocated array size and time range
+requested.</p>
+<blockquote>
+<p>This example shows querying up to 60 records. More can be obtained, but this
+increases the heap allocation required as well as the time taken to process
+the query.</p></blockquote>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">uint32_t</span> <span class="nf">get_available_records</span><span class="p">(</span><span class="n">HealthMinuteData</span> <span class="o">*</span><span class="n">array</span><span class="p">,</span> <span class="kt">time_t</span> <span class="n">query_start</span><span class="p">,</span> 
+                                      <span class="kt">time_t</span> <span class="n">query_end</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">max_records</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">time_t</span> <span class="n">next_start</span> <span class="o">=</span> <span class="n">query_start</span><span class="p">;</span>
+  <span class="kt">time_t</span> <span class="n">next_end</span> <span class="o">=</span> <span class="n">query_end</span><span class="p">;</span>
+  <span class="kt">uint32_t</span> <span class="n">num_records_found</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// Find more records until no more are returned</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">num_records_found</span> <span class="o">&lt;</span> <span class="n">max_records</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ask_num_records</span> <span class="o">=</span> <span class="n">max_records</span> <span class="o">-</span> <span class="n">num_records_found</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">ret_val</span> <span class="o">=</span> <span class="n">health_service_get_minute_history</span><span class="p">(</span><span class="o">&amp;</span><span class="n">array</span><span class="p">[</span><span class="n">num_records_found</span><span class="p">],</span> 
+                                        <span class="n">ask_num_records</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">next_start</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">next_end</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret_val</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// a 0 return value means no more data is available</span>
+      <span class="k">return</span> <span class="n">num_records_found</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">num_records_found</span> <span class="o">+=</span> <span class="n">ret_val</span><span class="p">;</span>
+    <span class="n">next_start</span> <span class="o">=</span> <span class="n">next_end</span><span class="p">;</span>
+    <span class="n">next_end</span> <span class="o">=</span> <span class="n">query_end</span><span class="p">;</span>
+  <span class="p">}</span> 
+
+  <span class="k">return</span> <span class="n">num_records_found</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">print_last_hours_steps</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Query for the last hour, max 60 minute-level records </span>
+  <span class="c1">// (except the last 15 minutes)</span>
+  <span class="k">const</span> <span class="kt">time_t</span> <span class="n">query_end</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">SECONDS_PER_MINUTE</span><span class="p">);</span>
+  <span class="k">const</span> <span class="kt">time_t</span> <span class="n">query_start</span> <span class="o">=</span> <span class="n">query_end</span> <span class="o">-</span> <span class="n">SECONDS_PER_HOUR</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">max_records</span> <span class="o">=</span> <span class="p">(</span><span class="n">query_end</span> <span class="o">-</span> <span class="n">query_start</span><span class="p">)</span> <span class="o">/</span> <span class="n">SECONDS_PER_MINUTE</span><span class="p">;</span>
+  <span class="n">HealthMinuteData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> 
+              <span class="p">(</span><span class="n">HealthMinuteData</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">max_records</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">HealthMinuteData</span><span class="p">));</span>
+
+  <span class="c1">// Populate the array</span>
+  <span class="n">max_records</span> <span class="o">=</span> <span class="n">get_available_records</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">query_start</span><span class="p">,</span> <span class="n">query_end</span><span class="p">,</span> <span class="n">max_records</span><span class="p">);</span>
+
+  <span class="c1">// Print the results</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">max_records</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">is_invalid</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Record %d contains %d steps."</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">i</span><span class="p">,</span> 
+                                                            <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">steps</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Record %d was not valid."</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">free</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/events-and-services/health/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#api-availability">API Availability</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#available-metrics">Available Metrics</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#subscribing-to-healthservice-events">Subscribing to HealthService Events</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#reading-health-data">Reading Health Data</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#representing-health-data">Representing Health Data</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#obtaining-averaged-data">Obtaining Averaged Data</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#detecting-activities">Detecting Activities</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#read-per-minute-history">Read Per-Minute History</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#notes-on-minute-level-data">Notes on Minute-level Data</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Foundation/Event_Service/HealthService/">HealthService</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/simple-health-example" target="_blank">Simple Health Example</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Adding a Battery Bar // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to add a battery level meter to your watchface.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/tutorials/watchface-tutorial/part4/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started active"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+<div class="section-menu section-menu--getting-started section-menu--dark">
+  <div class="section-menu__header">
+    <h3><a href="/tutorials/">Tutorials</a></h3>
+  </div>
+  <ul>
+    <li class="section-menu__item open"><a href="/tutorials/watchface-tutorial/part1/">Build a Watchface in C</a>
+      <ul>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part2/"><span>Part 2 - Customizing the Watchface</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part3/"><span>Part 3 - Adding Web Content</a></li>
+        <li class="section-menu__subitem active"><a href="/tutorials/watchface-tutorial/part4/"><span>Part 4 - Adding a Battery Bar</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part5/"><span>Part 5 - Vibrate on Disconnect</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/js-watchface-tutorial/part1/">Build a Watchface in JS</a>
+      <ul>
+        <li class="section-menu__subitem"><a href="/tutorials/js-watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/js-watchface-tutorial/part2/"><span>Part 2 - Adding Web Content</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/advanced/vector-animations/">Advanced Tutorials</a>
+      <ul>
+        <li class="section-menu__subitem"><a href="/tutorials/advanced/vector-animations/"><span>Vector Animations</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="what-39-s-next">What&#39;s Next?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-l-8">
+      <h1>Adding a Battery Bar</h1>
+      
+      <div class="markdown markdown--staff">
+      
+      <p>Another popular feature added to a lot of watchfaces is a battery meter,
+enabling users to see the state of their Pebble&#39;s battery charge level at a
+glance. This is typically implemented as the classic &#39;battery icon&#39; that fills
+up according to the current charge level, but some watchfaces favor the more
+minimal approach, which will be implemented here.</p><p>This section continues from
+<a href="/tutorials/watchface-tutorial/part3/" title="" class=""><em>Part 3</em></a>, so be sure to re-use
+your code or start with that finished project.</p><p>The state of the battery is obtained using the <a href="/docs/c/Foundation/Event_Service/BatteryStateService/" title="BatteryStateService" class="link--docs"><code>BatteryStateService</code></a>. This
+service offers two modes of usage - &#39;peeking&#39; at the current level, or
+subscribing to events that take place when the battery state changes. The latter
+approach will be adopted here. The battery level percentage will be stored in an
+integer at the top of the file:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">int</span> <span class="n">s_battery_level</span><span class="p">;</span>
+</pre></div><p>As with all the Event Services, to receive an event when new battery information
+is available, a callback must be registered. Create this callback using the
+signature of <a href="/docs/c/Foundation/Event_Service/BatteryStateService/#BatteryStateHandler" title="BatteryStateHandler" class="link--docs"><code>BatteryStateHandler</code></a>, and use the provided
+<a href="/docs/c/Foundation/Event_Service/BatteryStateService/#BatteryChargeState" title="BatteryChargeState" class="link--docs"><code>BatteryChargeState</code></a> parameter to store the current charge percentage:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">battery_callback</span><span class="p">(</span><span class="n">BatteryChargeState</span> <span class="n">state</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Record the new battery level</span>
+  <span class="n">s_battery_level</span> <span class="o">=</span> <span class="n">state</span><span class="p">.</span><span class="n">charge_percent</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div><p>To enable this function to be called when the battery level changes, subscribe
+to updates in <code>init()</code>:</p><div class="highlight"><pre><span class="c1">// Register for battery level updates</span>
+<span class="n">battery_state_service_subscribe</span><span class="p">(</span><span class="n">battery_callback</span><span class="p">);</span>
+</pre></div><p>With the subscription in place, the UI can be created. This will take the form
+of a <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> with a <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a> that uses the battery level to draw a
+thin, minimalist white meter along the top of the time display.</p><p>Create the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a> that will be used to draw the battery meter:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">battery_update_proc</span><span class="p">(</span><span class="n">Layer</span> <span class="o">*</span><span class="n">layer</span><span class="p">,</span> <span class="n">GContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div><p>Declare this new <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> at the top of the file:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">Layer</span> <span class="o">*</span><span class="n">s_battery_layer</span><span class="p">;</span>
+</pre></div><p>Allocate the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> in <code>main_window_load()</code>, assign it the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a> that will draw it, and
+add it as a child of the main <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> to make it visible:</p><div class="highlight"><pre><span class="c1">// Create battery meter Layer</span>
+<span class="n">s_battery_layer</span> <span class="o">=</span> <span class="n">layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="n">layer_set_update_proc</span><span class="p">(</span><span class="n">s_battery_layer</span><span class="p">,</span> <span class="n">battery_update_proc</span><span class="p">);</span>
+
+<span class="c1">// Add to Window</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="n">s_battery_layer</span><span class="p">);</span>
+</pre></div><p>To ensure the battery meter is updated every time the charge level changes, mark
+it &#39;dirty&#39; (to ask the system to re-render it at the next opportunity) within
+<code>battery_callback()</code>:</p><div class="highlight"><pre><span class="c1">// Update meter</span>
+<span class="n">layer_mark_dirty</span><span class="p">(</span><span class="n">s_battery_layer</span><span class="p">);</span>
+</pre></div><p>The final piece of the puzzle is the actual drawing of the battery meter, which
+takes place within the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a>. The background of the meter is drawn
+to &#39;paint over&#39; the background image, before the width of the meter&#39;s &#39;bar&#39; is
+calculated using the current value as a percentage of the bar&#39;s total width
+(114px).</p><p>The finished version of the update procedure is shown below:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">battery_update_proc</span><span class="p">(</span><span class="n">Layer</span> <span class="o">*</span><span class="n">layer</span><span class="p">,</span> <span class="n">GContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">GRect</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">layer_get_bounds</span><span class="p">(</span><span class="n">layer</span><span class="p">);</span>
+
+  <span class="c1">// Find the width of the bar (total width = 114px)</span>
+  <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="n">s_battery_level</span> <span class="o">*</span> <span class="mi">114</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
+
+  <span class="c1">// Draw the background</span>
+  <span class="n">graphics_context_set_fill_color</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">);</span>
+  <span class="n">graphics_fill_rect</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">GCornerNone</span><span class="p">);</span>
+
+  <span class="c1">// Draw the bar</span>
+  <span class="n">graphics_context_set_fill_color</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GColorWhite</span><span class="p">);</span>
+  <span class="n">graphics_fill_rect</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">h</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">GCornerNone</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Lastly, as with the <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a>, the <a href="/docs/c/Foundation/Event_Service/BatteryStateService/#BatteryStateHandler" title="BatteryStateHandler" class="link--docs"><code>BatteryStateHandler</code></a> can be
+called manually in <code>init()</code> to display an inital value:</p><div class="highlight"><pre><span class="c1">// Ensure battery level is displayed from the start</span>
+<span class="n">battery_callback</span><span class="p">(</span><span class="n">battery_state_service_peek</span><span class="p">());</span>
+</pre></div><p>Don&#39;t forget to free the memory used by the new battery meter:</p><div class="highlight"><pre><span class="n">layer_destroy</span><span class="p">(</span><span class="n">s_battery_layer</span><span class="p">);</span>
+</pre></div><p>With this new feature in place, the watchface will now display the watch&#39;s
+battery charge level in a minimalist fashion that integrates well with the
+existing design style.</p><p><img src="/assets/images/tutorials/intermediate/battery-level.png" alt="battery-level" class="pebble-screenshot pebble-screenshot--steel-black" /></p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>In the next, and final, section of this tutorial, we&#39;ll use the Connection Service
+to notify the user when their Pebble smartwatch disconnects from their phone.</p><p><a href="/tutorials/watchface-tutorial/part5/" title="" class="btn btn--markdown btn--wide btn--bg-dark-red btn--fg-white">Go to Part 5 &rarr;</a></p>
+      </div>
+    </div>
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
+    
+  </ul>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

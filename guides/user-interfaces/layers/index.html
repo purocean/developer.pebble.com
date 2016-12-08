@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Layers // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to use standard Layer components to build an app's UI.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/user-interfaces/layers/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/app-configuration/"><span>App Configuration</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/app-exit-reason/"><span>App Exit Reason</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/appglance-c/"><span>AppGlance C API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/appglance-rest/"><span>AppGlance REST API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/appglance-pebblekit-js/"><span>AppGlance in PebbleKit JS</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/content-size/"><span>Content Size</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/user-interfaces/layers/"><span>Layers</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/round-app-ui/"><span>Round App UI</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/user-interfaces/unobstructed-area/"><span>Unobstructed Area</span></a>
+                </li>
+              
+            
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="layer-heirachy">Layer Heirachy</option>
+          
+            <option value="update-procedures">Update Procedures</option>
+          
+            <option value="layer-subclasses">Layer Subclasses</option>
+          
+            <option value="textlayer">- TextLayer</option>
+          
+            <option value="bitmaplayer">- BitmapLayer</option>
+          
+            <option value="statusbarlayer">- StatusBarLayer</option>
+          
+            <option value="menulayer">- MenuLayer</option>
+          
+            <option value="scrolllayer">- ScrollLayer</option>
+          
+            <option value="actionbarlayer">- ActionBarLayer</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Layers</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>The <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> and associated subclasses (such as <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> and
+<a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>) form the foundation of the UI for every Pebble watchapp or
+watchface, and are added to a <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> to construct the UI&#39;s design. Each
+<a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> type contains at least three basic elements:</p>
+<ul>
+<li><p>Frame - contains the position and dimensions of the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>, relative to the
+parent object.</p></li>
+<li><p>Bounds - contains the drawable bounding box within the frame. This allows only
+a portion of the layer to be visible, and is relative to the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> frame.</p></li>
+<li><p>Update procedure - the function that performs the drawing whenever the
+<a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> is rendered. The subclasses implement a convenience update procedure
+with additional data to achieve their specialization.</p></li>
+</ul>
+<h2 id="layer-heirachy" class="anchor">Layer Heirachy</h2><p>Every app must consist of at least one <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> in order to successfully
+launch. Mutiple <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> objects are added as children of the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, which
+itself contains a <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> known as the &#39;root layer&#39;. When the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> is
+rendered, each child <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> is rendered in the order in which they were
+added. For example:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">Window</span> <span class="o">*</span><span class="n">s_main_window</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="n">BitmapLayer</span> <span class="o">*</span><span class="n">s_background_layer</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">TextLayer</span> <span class="o">*</span><span class="n">s_time_layer</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Get the Window's root layer</span>
+<span class="n">Layer</span> <span class="o">*</span><span class="n">root_layer</span> <span class="o">=</span> <span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">);</span>
+
+<span class="cm">/* set up BitmapLayer and TextLayer */</span>
+
+<span class="c1">// Add the background layer first, so that it is drawn behind the time</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">root_layer</span><span class="p">,</span> <span class="n">bitmap_layer_get_layer</span><span class="p">(</span><span class="n">s_background_layer</span><span class="p">));</span>
+
+<span class="c1">// Add the time layer second</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">root_layer</span><span class="p">,</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">));</span>
+</pre></div><p>Once added to a <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, the ordering of each <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> cannot be modified,
+but one can be placed at the front by removing and re-adding it to the heirachy:</p><div class="highlight"><pre><span class="c1">// Bring a layer to the front</span>
+<span class="n">layer_remove_from_parent</span><span class="p">(</span><span class="n">s_some_layer</span><span class="p">);</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">root_layer</span><span class="p">,</span> <span class="n">s_some_layer</span><span class="p">);</span>
+</pre></div><h2 id="update-procedures" class="anchor">Update Procedures</h2><p>For creating custom drawing implementations, the basic <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> update
+procedure can be reassigned to one created by a developer. This takes the form
+of a <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a>, and provides a <a href="/docs/c/Graphics/Graphics_Context/" title="Graphics Context" class="link--docs"><code>GContext</code></a>
+object which can be used for drawing primitive shapes, paths, text, and images.</p>
+<blockquote>
+<p>Note: See <a href="/guides/graphics-and-animations"><em>Graphics and Animations</em></a> for more information on
+drawing with the graphics context.</p></blockquote>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">layer_update_proc</span><span class="p">(</span><span class="n">Layer</span> <span class="o">*</span><span class="n">layer</span><span class="p">,</span> <span class="n">GContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Custom drawing happens here</span>
+<span class="p">}</span>
+</pre></div><p>This function must then be assigned to the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> that will be drawn with it:</p><div class="highlight"><pre><span class="c1">// Set this Layer's update procedure</span>
+<span class="n">layer_set_update_proc</span><span class="p">(</span><span class="n">s_some_layer</span><span class="p">,</span> <span class="n">layer_update_proc</span><span class="p">);</span>
+</pre></div><p>The update procedure will be called every time the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> must be redrawn.
+This is typically when any other <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> requests a redraw, the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> is
+shown/hidden, the heirarchy changes, or a modal (such as a notification) appears.
+The <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> can also be manually marked as &#39;dirty&#39;, and will be redrawn at the
+next opportunity (usually immediately):</p><div class="highlight"><pre><span class="c1">// Request a redraw</span>
+<span class="n">layer_mark_dirty</span><span class="p">(</span><span class="n">s_some_layer</span><span class="p">);</span>
+</pre></div><h2 id="layer-subclasses" class="anchor">Layer Subclasses</h2><p>For convenience, there are multiple subclasses of <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> included in the
+Pebble SDK to allow developers to easily construct their app&#39;s UI. Each should
+be created when the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> is loading (using the <code>.load</code> <a href="/docs/c/User_Interface/Window/#WindowHandler" title="WindowHandler" class="link--docs"><code>WindowHandler</code></a>)
+and destroyed when it is unloading (using <code>.the unload</code> <a href="/docs/c/User_Interface/Window/#WindowHandler" title="WindowHandler" class="link--docs"><code>WindowHandler</code></a>).</p><p>These are briefly outlined below, alongside a simple usage example split into
+three code snippets - the element declarations, the setup procedure, and the
+teardown procedure.</p><h3 id="textlayer" class="anchor">TextLayer</h3><p>The <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> is the most commonly used subclass of <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>, and allows
+apps to render text using any available font, with built-in behavior to handle
+text color, line wrapping, alignment, etc.</p><div class="highlight"><pre><span class="k">static</span> <span class="n">TextLayer</span> <span class="o">*</span><span class="n">s_text_layer</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Create a TextLayer</span>
+<span class="n">s_text_layer</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span><span class="n">bounds</span><span class="p">);</span>
+
+<span class="c1">// Set some properties</span>
+<span class="n">text_layer_set_text_color</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">,</span> <span class="n">GColorWhite</span><span class="p">);</span>
+<span class="n">text_layer_set_background_color</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">);</span>
+<span class="n">text_layer_set_overflow_mode</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">,</span> <span class="n">GTextOverflowModeWordWrap</span><span class="p">);</span>
+<span class="n">text_layer_set_alignment</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">,</span> <span class="n">GTextAlignmentCenter</span><span class="p">);</span>
+
+<span class="c1">// Set the text shown</span>
+<span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">,</span> <span class="s">"Hello, World!"</span><span class="p">);</span>
+
+<span class="c1">// Add to the Window</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">root_layer</span><span class="p">,</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">));</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Destroy the TextLayer</span>
+<span class="n">text_layer_destroy</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">);</span>
+</pre></div><h3 id="bitmaplayer" class="anchor">BitmapLayer</h3><p>The <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> provides an easy way to show images loaded into <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a>
+objects from an image resource. Images shown using a <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> are
+automatically centered within the bounds provided to <a href="/docs/c/User_Interface/Layers/BitmapLayer/#bitmap_layer_create" title="bitmap_layer_create" class="link--docs"><code>bitmap_layer_create()</code></a>.
+Read <a href="/guides/app-resources/images/"><em>Images</em></a> to learn more about using image
+resources in apps.</p>
+<blockquote>
+<p>Note: PNG images with transparency should use <code>bitmap</code> resource type, and use
+the <a href="/docs/c/Graphics/Graphics_Types/#GCompOpSet" title="GCompOpSet" class="link--docs"><code>GCompOpSet</code></a> compositing mode when being displayed, as shown below.</p></blockquote>
+<div class="highlight"><pre><span class="k">static</span> <span class="n">BitmapLayer</span> <span class="o">*</span><span class="n">s_bitmap_layer</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">GBitmap</span> <span class="o">*</span><span class="n">s_bitmap</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Load the image</span>
+<span class="n">s_bitmap</span> <span class="o">=</span> <span class="n">gbitmap_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_EXAMPLE_IMAGE</span><span class="p">);</span>
+
+<span class="c1">// Create a BitmapLayer</span>
+<span class="n">s_bitmap_layer</span> <span class="o">=</span> <span class="n">bitmap_layer_create</span><span class="p">(</span><span class="n">bounds</span><span class="p">);</span>
+
+<span class="c1">// Set the bitmap and compositing mode</span>
+<span class="n">bitmap_layer_set_bitmap</span><span class="p">(</span><span class="n">s_bitmap_layer</span><span class="p">,</span> <span class="n">s_bitmap</span><span class="p">);</span>
+<span class="n">bitmap_layer_set_compositing_mode</span><span class="p">(</span><span class="n">s_bitmap_layer</span><span class="p">,</span> <span class="n">GCompOpSet</span><span class="p">);</span>
+
+<span class="c1">// Add to the Window</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">root_layer</span><span class="p">,</span> <span class="n">bitmap_layer_get_layer</span><span class="p">(</span><span class="n">s_bitmap_layer</span><span class="p">));</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Destroy the BitmapLayer</span>
+<span class="n">bitmap_layer_destroy</span><span class="p">(</span><span class="n">s_bitmap_layer</span><span class="p">);</span>
+</pre></div><h3 id="statusbarlayer" class="anchor">StatusBarLayer</h3><p>If a user needs to see the current time inside an app (instead of exiting to the
+watchface), the <a href="/docs/c/User_Interface/Layers/StatusBarLayer/" title="StatusBarLayer" class="link--docs"><code>StatusBarLayer</code></a> component can be used to display this
+information at the top of the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>. Colors and separator display style can
+be customized.</p><div class="highlight"><pre><span class="k">static</span> <span class="n">StatusBarLayer</span> <span class="o">*</span><span class="n">s_status_bar</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Create the StatusBarLayer</span>
+<span class="n">s_status_bar</span> <span class="o">=</span> <span class="n">status_bar_layer_create</span><span class="p">();</span>
+
+<span class="c1">// Set properties</span>
+<span class="n">status_bar_layer_set_colors</span><span class="p">(</span><span class="n">s_status_bar</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">,</span> <span class="n">GColorBlueMoon</span><span class="p">);</span>
+<span class="n">status_bar_layer_set_separator_mode</span><span class="p">(</span><span class="n">s_status_bar</span><span class="p">,</span> 
+                                            <span class="n">StatusBarLayerSeparatorModeDotted</span><span class="p">);</span>
+
+<span class="c1">// Add to Window</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">root_layer</span><span class="p">,</span> <span class="n">status_bar_layer_get_layer</span><span class="p">(</span><span class="n">s_status_bar</span><span class="p">));</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Destroy the StatusBarLayer</span>
+<span class="n">status_bar_layer_destroy</span><span class="p">(</span><span class="n">s_status_bar</span><span class="p">);</span>
+</pre></div><h3 id="menulayer" class="anchor">MenuLayer</h3><p>The <a href="/docs/c/User_Interface/Layers/MenuLayer/" title="MenuLayer" class="link--docs"><code>MenuLayer</code></a> allows the user to scroll a list of options using the Up and
+Down buttons, and select an option to trigger an action using the Select button.
+It differs from the other <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> subclasses in that it makes use of a number
+of <a href="/docs/c/User_Interface/Layers/MenuLayer/#MenuLayerCallbacks" title="MenuLayerCallbacks" class="link--docs"><code>MenuLayerCallbacks</code></a> to allow the developer to fully control how it renders
+and behaves. Some minimum example callbacks are shown below:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">MenuLayer</span> <span class="o">*</span><span class="n">s_menu_layer</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="k">static</span> <span class="kt">uint16_t</span> <span class="nf">get_num_rows_callback</span><span class="p">(</span><span class="n">MenuLayer</span> <span class="o">*</span><span class="n">menu_layer</span><span class="p">,</span> 
+                                      <span class="kt">uint16_t</span> <span class="n">section_index</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="kt">uint16_t</span> <span class="n">num_rows</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">num_rows</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">draw_row_callback</span><span class="p">(</span><span class="n">GContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="n">Layer</span> <span class="o">*</span><span class="n">cell_layer</span><span class="p">,</span> 
+                                        <span class="n">MenuIndex</span> <span class="o">*</span><span class="n">cell_index</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="kt">char</span> <span class="n">s_buff</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+  <span class="n">snprintf</span><span class="p">(</span><span class="n">s_buff</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_buff</span><span class="p">),</span> <span class="s">"Row %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">cell_index</span><span class="o">-&gt;</span><span class="n">row</span><span class="p">);</span>
+
+  <span class="c1">// Draw this row's index</span>
+  <span class="n">menu_cell_basic_draw</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">cell_layer</span><span class="p">,</span> <span class="n">s_buff</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">int16_t</span> <span class="nf">get_cell_height_callback</span><span class="p">(</span><span class="k">struct</span> <span class="n">MenuLayer</span> <span class="o">*</span><span class="n">menu_layer</span><span class="p">,</span> 
+                                        <span class="n">MenuIndex</span> <span class="o">*</span><span class="n">cell_index</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="kt">int16_t</span> <span class="n">cell_height</span> <span class="o">=</span> <span class="mi">44</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">cell_height</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">select_callback</span><span class="p">(</span><span class="k">struct</span> <span class="n">MenuLayer</span> <span class="o">*</span><span class="n">menu_layer</span><span class="p">,</span> 
+                                        <span class="n">MenuIndex</span> <span class="o">*</span><span class="n">cell_index</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Do something in response to the button press</span>
+
+<span class="p">}</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Create the MenuLayer</span>
+<span class="n">s_menu_layer</span> <span class="o">=</span> <span class="n">menu_layer_create</span><span class="p">(</span><span class="n">bounds</span><span class="p">);</span>
+
+<span class="c1">// Let it receive click events</span>
+<span class="n">menu_layer_set_click_config_onto_window</span><span class="p">(</span><span class="n">s_menu_layer</span><span class="p">,</span> <span class="n">window</span><span class="p">);</span>
+
+<span class="c1">// Set the callbacks for behavior and rendering</span>
+<span class="n">menu_layer_set_callbacks</span><span class="p">(</span><span class="n">s_menu_layer</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">MenuLayerCallbacks</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">get_num_rows</span> <span class="o">=</span> <span class="n">get_num_rows_callback</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">draw_row</span> <span class="o">=</span> <span class="n">draw_row_callback</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">get_cell_height</span> <span class="o">=</span> <span class="n">get_cell_height_callback</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">select_click</span> <span class="o">=</span> <span class="n">select_callback</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="c1">// Add to the Window</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">root_layer</span><span class="p">,</span> <span class="n">menu_layer_get_layer</span><span class="p">(</span><span class="n">s_menu_layer</span><span class="p">));</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Destroy the MenuLayer</span>
+<span class="n">menu_layer_destroy</span><span class="p">(</span><span class="n">s_menu_layer</span><span class="p">);</span>
+</pre></div><h3 id="scrolllayer" class="anchor">ScrollLayer</h3><p>The <a href="/docs/c/User_Interface/Layers/ScrollLayer/" title="ScrollLayer" class="link--docs"><code>ScrollLayer</code></a> provides an easy way to use the Up and Down buttons to
+scroll large content that does not all fit onto the screen at the same time. The
+usage of this type differs from the others in that the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> objects that
+are scrolled are added as children of the <a href="/docs/c/User_Interface/Layers/ScrollLayer/" title="ScrollLayer" class="link--docs"><code>ScrollLayer</code></a>, which is then in turn
+added as a child of the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>.</p><p>The <a href="/docs/c/User_Interface/Layers/ScrollLayer/" title="ScrollLayer" class="link--docs"><code>ScrollLayer</code></a> frame is the size of the &#39;viewport&#39;, while the content size
+determines how far the user can scroll in each direction. The example below
+shows a <a href="/docs/c/User_Interface/Layers/ScrollLayer/" title="ScrollLayer" class="link--docs"><code>ScrollLayer</code></a> scrolling some long text, the total size of which is
+calculated with <a href="/docs/c/Graphics/Drawing_Text/#graphics_text_layout_get_content_size" title="graphics_text_layout_get_content_size" class="link--docs"><code>graphics_text_layout_get_content_size()</code></a> and used as the
+<a href="/docs/c/User_Interface/Layers/ScrollLayer/" title="ScrollLayer" class="link--docs"><code>ScrollLayer</code></a> content size.</p>
+<blockquote>
+<p>Note: The scrolled <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> frame is relative to that of its parent, the
+<a href="/docs/c/User_Interface/Layers/ScrollLayer/" title="ScrollLayer" class="link--docs"><code>ScrollLayer</code></a>.</p></blockquote>
+<div class="highlight"><pre><span class="k">static</span> <span class="n">TextLayer</span> <span class="o">*</span><span class="n">s_text_layer</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">ScrollLayer</span> <span class="o">*</span><span class="n">s_scroll_layer</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="n">GFont</span> <span class="n">font</span> <span class="o">=</span> <span class="n">fonts_get_system_font</span><span class="p">(</span><span class="n">FONT_KEY_GOTHIC_28_BOLD</span><span class="p">);</span>
+
+<span class="c1">// Find the bounds of the scrolling text</span>
+<span class="n">GRect</span> <span class="n">shrinking_rect</span> <span class="o">=</span> <span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">w</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="s">"Example text that is really really really really really \</span>
+<span class="s">                              really really really really really really long"</span><span class="p">;</span>
+<span class="n">GSize</span> <span class="n">text_size</span> <span class="o">=</span> <span class="n">graphics_text_layout_get_content_size</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">font</span><span class="p">,</span> 
+                <span class="n">shrinking_rect</span><span class="p">,</span> <span class="n">GTextOverflowModeWordWrap</span><span class="p">,</span> <span class="n">GTextAlignmentLeft</span><span class="p">);</span>
+<span class="n">GRect</span> <span class="n">text_bounds</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">;</span>
+<span class="n">text_bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">text_size</span><span class="p">.</span><span class="n">h</span><span class="p">;</span>
+
+<span class="c1">// Create the TextLayer</span>
+<span class="n">s_text_layer</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span><span class="n">text_bounds</span><span class="p">);</span>
+<span class="n">text_layer_set_overflow_mode</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">,</span> <span class="n">GTextOverflowModeWordWrap</span><span class="p">);</span>
+<span class="n">text_layer_set_font</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">,</span> <span class="n">font</span><span class="p">);</span>
+<span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">,</span> <span class="n">text</span><span class="p">);</span>
+
+<span class="c1">// Create the ScrollLayer</span>
+<span class="n">s_scroll_layer</span> <span class="o">=</span> <span class="n">scroll_layer_create</span><span class="p">(</span><span class="n">bounds</span><span class="p">);</span>
+
+<span class="c1">// Set the scrolling content size</span>
+<span class="n">scroll_layer_set_content_size</span><span class="p">(</span><span class="n">s_scroll_layer</span><span class="p">,</span> <span class="n">text_size</span><span class="p">);</span>
+
+<span class="c1">// Let the ScrollLayer receive click events</span>
+<span class="n">scroll_layer_set_click_config_onto_window</span><span class="p">(</span><span class="n">s_scroll_layer</span><span class="p">,</span> <span class="n">window</span><span class="p">);</span>
+
+<span class="c1">// Add the TextLayer as a child of the ScrollLayer</span>
+<span class="n">scroll_layer_add_child</span><span class="p">(</span><span class="n">s_scroll_layer</span><span class="p">,</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">));</span>
+
+<span class="c1">// Add the ScrollLayer as a child of the Window</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">root_layer</span><span class="p">,</span> <span class="n">scroll_layer_get_layer</span><span class="p">(</span><span class="n">s_scroll_layer</span><span class="p">));</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Destroy the ScrollLayer and TextLayer</span>
+<span class="n">scroll_layer_destroy</span><span class="p">(</span><span class="n">s_scroll_layer</span><span class="p">);</span>
+<span class="n">text_layer_destroy</span><span class="p">(</span><span class="n">s_text_layer</span><span class="p">);</span>
+</pre></div><h3 id="actionbarlayer" class="anchor">ActionBarLayer</h3><p>The <a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a> allows apps to use the familiar black right-hand bar,
+featuring icons denoting the action that will occur when each button on the
+right hand side is pressed. For example, &#39;previous track&#39;, &#39;more actions&#39;, and
+&#39;next track&#39; in the built-in Music app. </p><p>For three or fewer actions, the <a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a> can be more appropriate than
+a <a href="/docs/c/User_Interface/Layers/MenuLayer/" title="MenuLayer" class="link--docs"><code>MenuLayer</code></a> for presenting the user with a list of actionable options. Each
+action&#39;s icon must also be loaded into a <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> object from app resources.
+The example below demonstrates show to set up an <a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a> showing an
+up, down, and checkmark icon for each of the buttons.</p><div class="highlight"><pre><span class="k">static</span> <span class="n">ActionBarLayer</span> <span class="o">*</span><span class="n">s_action_bar</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">GBitmap</span> <span class="o">*</span><span class="n">s_up_bitmap</span><span class="p">,</span> <span class="o">*</span><span class="n">s_down_bitmap</span><span class="p">,</span> <span class="o">*</span><span class="n">s_check_bitmap</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Load icon bitmaps</span>
+<span class="n">s_up_bitmap</span> <span class="o">=</span> <span class="n">gbitmap_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_UP_ICON</span><span class="p">);</span>
+<span class="n">s_down_bitmap</span> <span class="o">=</span> <span class="n">gbitmap_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_DOWN_ICON</span><span class="p">);</span>
+<span class="n">s_check_bitmap</span> <span class="o">=</span> <span class="n">gbitmap_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_CHECK_ICON</span><span class="p">);</span>
+
+<span class="c1">// Create ActionBarLayer</span>
+<span class="n">s_action_bar</span> <span class="o">=</span> <span class="n">action_bar_layer_create</span><span class="p">();</span>
+<span class="n">action_bar_layer_set_click_config_provider</span><span class="p">(</span><span class="n">s_action_bar</span><span class="p">,</span> <span class="n">click_config_provider</span><span class="p">);</span>
+
+<span class="c1">// Set the icons</span>
+<span class="n">action_bar_layer_set_icon</span><span class="p">(</span><span class="n">s_action_bar</span><span class="p">,</span> <span class="n">BUTTON_ID_UP</span><span class="p">,</span> <span class="n">s_up_bitmap</span><span class="p">);</span>
+<span class="n">action_bar_layer_set_icon</span><span class="p">(</span><span class="n">s_action_bar</span><span class="p">,</span> <span class="n">BUTTON_ID_DOWN</span><span class="p">,</span> <span class="n">s_down_bitmap</span><span class="p">);</span>
+<span class="n">action_bar_layer_set_icon</span><span class="p">(</span><span class="n">s_action_bar</span><span class="p">,</span> <span class="n">BUTTON_ID_SELECT</span><span class="p">,</span> <span class="n">s_check_bitmap</span><span class="p">);</span>
+
+<span class="c1">// Add to Window</span>
+<span class="n">action_bar_layer_add_to_window</span><span class="p">(</span><span class="n">s_action_bar</span><span class="p">,</span> <span class="n">window</span><span class="p">);</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Destroy the ActionBarLayer</span>
+<span class="n">action_bar_layer_destroy</span><span class="p">(</span><span class="n">s_action_bar</span><span class="p">);</span>
+
+<span class="c1">// Destroy the icon GBitmaps</span>
+<span class="n">gbitmap_destroy</span><span class="p">(</span><span class="n">s_up_bitmap</span><span class="p">);</span>
+<span class="n">gbitmap_destroy</span><span class="p">(</span><span class="n">s_down_bitmap</span><span class="p">);</span>
+<span class="n">gbitmap_destroy</span><span class="p">(</span><span class="n">s_check_bitmap</span><span class="p">);</span>
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/user-interfaces/layers/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#layer-heirachy">Layer Heirachy</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#update-procedures">Update Procedures</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#layer-subclasses">Layer Subclasses</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#textlayer">TextLayer</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#bitmaplayer">BitmapLayer</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#statusbarlayer">StatusBarLayer</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#menulayer">MenuLayer</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#scrolllayer">ScrollLayer</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#actionbarlayer">ActionBarLayer</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/User_Interface/Layers/#Layer">Layer</a></li>
+            
+            <li><a href="/docs/c/User_Interface/Layers/#LayerUpdateProc">LayerUpdateProc</a></li>
+            
+            <li><a href="/docs/c/User_Interface/Window/">Window</a></li>
+            
+            <li><a href="/docs/c/User_Interface/Layers/TextLayer/">TextLayer</a></li>
+            
+            <li><a href="/docs/c/User_Interface/Layers/BitmapLayer/">BitmapLayer</a></li>
+            
+            <li><a href="/docs/c/User_Interface/Layers/MenuLayer/">MenuLayer</a></li>
+            
+            <li><a href="/docs/c/User_Interface/Layers/ScrollLayer/">ScrollLayer</a></li>
+            
+          </ul>
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

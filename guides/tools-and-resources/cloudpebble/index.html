@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CloudPebble // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to use CloudPebble to create apps with no installation required.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/tools-and-resources/cloudpebble/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/app-metadata/"><span>App Metadata</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/tools-and-resources/cloudpebble/"><span>CloudPebble</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/color-picker/"><span>Color Picker Tool</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/pebble-tool/"><span>Command Line Tool</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/developer-connection/"><span>Developer Connection</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/hardware-information/"><span>Hardware Information</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/internationalization/"><span>Internationalization</span></a>
+                </li>
+              
+            
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="creating-a-project">Creating a Project</option>
+          
+            <option value="code-editor">Code Editor</option>
+          
+            <option value="writing-some-code">Writing Some Code</option>
+          
+            <option value="adding-project-resources">Adding Project Resources</option>
+          
+            <option value="installing-and-running-apps">Installing and Running Apps</option>
+          
+            <option value="interacting-with-the-emulator">- Interacting with the Emulator</option>
+          
+            <option value="ui-editor">UI Editor</option>
+          
+            <option value="adding-more-ui">- Adding More UI</option>
+          
+            <option value="using-the-new-window">- Using the New Window</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">CloudPebble</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p><a href="" title="" class="">CloudPebble</a> is an online-only IDE
+(Integrated Development Environment) for easy creation of Pebble apps.
+It can be used as an alternative to the local SDK on Mac OSX and Linux, and is
+the recommended app development option for Windows users. Features include:</p>
+<ul>
+<li><p>All-in-one project management, code editing, compilation, and installation.</p></li>
+<li><p>Intelligent real-time code completion including project symbols.</p></li>
+<li><p>Browser-based emulators for testing apps and generating screenshots without
+physical hardware.</p></li>
+<li><p>Integration with GitHub.</p></li>
+</ul>
+<p>To get started, log in with a Pebble Account. This is the same account as is
+used for the Pebble Forums and the local SDK. Once logged in, a list of projects
+will be displayed.</p><h2 id="creating-a-project" class="anchor">Creating a Project</h2><p>To create a new project, click the &#39;Create&#39; button.</p><p><img src="/assets/images/guides/tools-and-resources/create-project.png" alt="create-project" width="480" /></p><p>Fill out the form including the name of the project, which type of project it
+is, as well as the SDK version. Optionally begin with a project template. When
+done, click &#39;Create&#39;.</p><h2 id="code-editor" class="anchor">Code Editor</h2><p>The next screen will contain the empty project, unless a template was chosen.
+This is the code editor screen, with the main area on the right being used to
+write source files.</p><p><img src="/assets/images/guides/tools-and-resources/empty-project.png" alt="empty-project" /></p><p>The left-hand menu contains links to other useful screens:</p>
+<ul>
+<li><p>Settings - Manage the metadata and behavior of the project as an analogue to
+the local SDK&#39;s <code>package.json</code> file.</p></li>
+<li><p>Timeline - Test inserting and deleting 
+<a href="/guides/pebble-timeline"><em>Pebble timeline</em></a> pins.</p></li>
+<li><p>Compilation - Compile and install the project, view app logs and screenshots.
+This screen also contains the emulator.</p></li>
+<li><p>GitHub - Configure GitHub integration for this project.</p></li>
+</ul>
+<p>In addition, the &#39;Source Files&#39; and &#39;Resources&#39; sections will list the
+respective files as they are added to the project. As code is written, automatic
+code completion will suggest completed symbols as appropriate.</p><h2 id="writing-some-code" class="anchor">Writing Some Code</h2><p>To begin an app from a blank project, click &#39;Add New&#39; next to &#39;Source Files&#39;.
+Choose an appropriate name for the first file (such as <code>main.c</code>), leave the
+target as &#39;App/Watchface&#39;, and click &#39;Create&#39;.</p><p>The main area of the code editor will now display the code in the new file,
+which begins with the standard include statement for the Pebble SDK:</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
+</pre></div><p>To begin a runnable Pebble app, simply add the bare bones functions for
+initialization, the event loop, and deinitialization. From here everything else
+can be constructed:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">deinit</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">init</span><span class="p">();</span>
+  <span class="n">app_event_loop</span><span class="p">();</span>
+  <span class="n">deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>The right-hand side of the code editor screen contains convenient buttons for
+use during development.</p>
+<table><thead>
+<tr>
+<th style="text-align: center">Button</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center"><img src="/assets/images/guides/tools-and-resources/icon-play.png" /></td>
+<td style="text-align: left">Build and run the app as configured on the &#39;Compilation&#39; screen. By default this will be the Basalt emulator.</td>
+</tr>
+<tr>
+<td style="text-align: center"><img src="/assets/images/guides/tools-and-resources/icon-save.png" /></td>
+<td style="text-align: left">Save the currently open file.</td>
+</tr>
+<tr>
+<td style="text-align: center"><img src="/assets/images/guides/tools-and-resources/icon-reload.png" /></td>
+<td style="text-align: left">Reload the currently open file.</td>
+</tr>
+<tr>
+<td style="text-align: center"><img src="/assets/images/guides/tools-and-resources/icon-rename.png" /></td>
+<td style="text-align: left">Rename the currently open file.</td>
+</tr>
+<tr>
+<td style="text-align: center"><img src="/assets/images/guides/tools-and-resources/icon-delete.png" /></td>
+<td style="text-align: left">Delete the currently open file.</td>
+</tr>
+</tbody></table>
+<h2 id="adding-project-resources" class="anchor">Adding Project Resources</h2><p>Adding a resource (such as a bitmap or font) can be done in a similar manner as
+a new code file, by clicking &#39;Add New&#39; next to &#39;Resources&#39; in the left-hand
+pane. Choose the appropriate &#39;Resource Type&#39; and choose an &#39;Identifier&#39;, which
+will be available in code, prefixed with <code>RESOURCE_ID_</code>.</p><p>Depending on the chosen &#39;Resource Type&#39;, the remaining fields will vary:</p>
+<ul>
+<li><p>If a bitmap, the options pertaining to storage and optimization will be
+displayed. It is recommended to use the &#39;Best&#39; settings, but more information
+on specific optimization options can be found in the 
+<a href="/blog/2015/12/02/Bitmap-Resources/#quot-bitmap-quot-to-the-rescue" title="" class=""><em>Bitmap Resources</em></a> 
+blog post. </p></li>
+<li><p>If a font, the specific characters to include (in regex form) and tracking
+adjust options are available to adjust the font, as well as a compatibility
+option that is best left to &#39;Latest&#39;.</p></li>
+<li><p>If a raw resource, no extra options are available, save the &#39;Target Platforms&#39;
+option.</p></li>
+</ul>
+<p>Once the new resource has been configured, browse the the file itself and upload
+it by clicking &#39;Save&#39;.</p><h2 id="installing-and-running-apps" class="anchor">Installing and Running Apps</h2><p>The app under development can be compiled and run using the &#39;play&#39; button on the
+right-hand side of the code editor screen. If the compilation was successful,
+the app will be run as configured. If not, the &#39;Compilation&#39; screen will be
+opened and the reason for failure can be seen by clicking &#39;Build Log&#39; next to
+the appropriate item in the build log. The &#39;Compilation&#39; screen can be thought
+of a comprehensive view of what the &#39;play&#39; buttons does, with more control. Once
+all code errors have been fixed, clicking &#39;Run Build&#39; will do just that.</p><p>When the build is complete, options to install and run the app are presented.
+Clicking one of the hardware platform buttons will run the app on an emulator of
+that platform, while choosing &#39;Phone&#39; and &#39;Install and Run&#39; will install and run
+the app on a physical watch connected to any phone logged in with the same
+Pebble account.</p><p>In addition to running apps, the &#39;Compilation&#39; screen also offers the ability to
+view app log output and capture screenshots with the appropriate buttons.
+Lastly, the <code>.pbw</code> bundle can also be obtained for testing and distribution in
+the <a href="https://dev-portal.getpebble.com/" title="" class="">Developer Portal</a>.</p><h3 id="interacting-with-the-emulator" class="anchor">Interacting with the Emulator</h3><p>Once an app is installed and running in the emulator, button input can be
+simulated using the highlighted regions of the emulator view decoration. There
+are also additional options available under the &#39;gear&#39; button.</p><p><img src="/assets/images/guides/tools-and-resources/gear-options.png" /></p><p>From this panel, muliple forms of input can be simulated:</p>
+<ul>
+<li><p>Adjust the charge level of the emulated battery with the &#39;Battery&#39; slider.</p></li>
+<li><p>Set whether the emulated battery is in the charging state with the &#39;Charging&#39;
+checkbox.</p></li>
+<li><p>Set whether the Bluetooth connection is connected with the &#39;Bluetooth&#39;
+checkbox.</p></li>
+<li><p>Set whether the emulated watch is set to use 24- or 12-hour time format with
+the &#39;24-hour&#39; checkbox.</p></li>
+<li><p>Open the app&#39;s configuration page (if applicable) with the &#39;App Config&#39;
+button. This will use the URL passed to <code>Pebble.openURL()</code>. See 
+<a href="/guides/user-interfaces/app-configuration/"><em>App Configuration</em></a> for more information.</p></li>
+<li><p>Emulate live input of the accelerometer and compass using a mobile device by
+clicking the &#39;Sensors&#39; button and following the instructions.</p></li>
+<li><p>Shut down the emulated watch with the &#39;Shut Down&#39; button.</p></li>
+</ul>
+<h2 id="ui-editor" class="anchor">UI Editor</h2><p>In addition to adding new code files and resources, it is also possible to
+create <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> layouts using a GUI interface with the UI editor. To use this
+feature, create a new code file by clicking &#39;Add New&#39; next to &#39;Source Files&#39; and
+set the &#39;File Type&#39; to &#39;Window Layout&#39;. Choose a name for the window and click
+&#39;Create&#39;.</p><p>The main UI Editor screen will be displayed. This includes a preview of the
+window&#39;s layout, as well as details about the current element and a toolkit of
+new elements. This is shown in the image below:</p><p><img src="/assets/images/guides/publishing-tools/ui-editor.png" alt="ui-editor" /></p><p>Since the only UI element that exists at the moment is the window itself, the
+editor shows the options available for customizing this element&#39;s properties,
+e.g. its background color and whether or not it is fullscreen.</p><h3 id="adding-more-ui" class="anchor">Adding More UI</h3><p>Add a new UI element to the window by clicking on &#39;Toolkit&#39;, which contains a
+set of standard UI elements. Choose a <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> element, and all the
+available properties of the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> to change its appearence and position will
+be displayed:</p><p><img src="/assets/images/guides/publishing-tools/ui-editor-textlayer.png" alt="ui-editor-textlayer" /></p><p>In addition to manually typing in the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>&#39;s dimensions, use the anchor
+points on the preview of the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> on the left of the editor to click and
+drag the size and position of the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>.</p><p><img src="/assets/images/guides/publishing-tools/ui-editor-drag.gif" alt="ui-editor-drag" width="148" /></p><p>When satisfied with the new <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>&#39;s configuration, use the &#39;UI Editor&#39;
+button on the right-hand side of the screen to switch back to the normal code
+editor screen, where the C code that represents the <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> just set up
+visually can be seen. An example of this generated code is shown below, along
+with the preview of that layout.</p><div class="highlight"><pre><span class="c1">// BEGIN AUTO-GENERATED UI CODE; DO NOT MODIFY</span>
+<span class="k">static</span> <span class="n">Window</span> <span class="o">*</span><span class="n">s_window</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">GFont</span> <span class="n">s_res_gothic_24_bold</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">TextLayer</span> <span class="o">*</span><span class="n">s_textlayer_1</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">initialise_ui</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">s_window</span> <span class="o">=</span> <span class="n">window_create</span><span class="p">();</span>
+  <span class="n">window_set_fullscreen</span><span class="p">(</span><span class="n">s_window</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+
+  <span class="n">s_res_gothic_24_bold</span> <span class="o">=</span> <span class="n">fonts_get_system_font</span><span class="p">(</span><span class="n">FONT_KEY_GOTHIC_24_BOLD</span><span class="p">);</span>
+  <span class="c1">// s_textlayer_1</span>
+  <span class="n">s_textlayer_1</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">40</span><span class="p">));</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_textlayer_1</span><span class="p">,</span> <span class="s">"Hello, CloudPebble!"</span><span class="p">);</span>
+  <span class="n">text_layer_set_text_alignment</span><span class="p">(</span><span class="n">s_textlayer_1</span><span class="p">,</span> <span class="n">GTextAlignmentCenter</span><span class="p">);</span>
+  <span class="n">text_layer_set_font</span><span class="p">(</span><span class="n">s_textlayer_1</span><span class="p">,</span> <span class="n">s_res_gothic_24_bold</span><span class="p">);</span>
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">s_window</span><span class="p">),</span> <span class="p">(</span><span class="n">Layer</span> <span class="o">*</span><span class="p">)</span><span class="n">s_textlayer_1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">destroy_ui</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">window_destroy</span><span class="p">(</span><span class="n">s_window</span><span class="p">);</span>
+  <span class="n">text_layer_destroy</span><span class="p">(</span><span class="n">s_textlayer_1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// END AUTO-GENERATED UI CODE</span>
+</pre></div><p><img src="/assets/images/guides/publishing-tools/ui-editor-preview.png" alt="ui-editor-preview" width="148" /></p>
+<blockquote>
+<p>Note: As marked above, the automatically generated code should <strong>not</strong> be
+modified, otherwise it will not be possible to continue editing it with the
+CloudPebble UI Editor.</p></blockquote>
+<h3 id="using-the-new-window" class="anchor">Using the New Window</h3><p>After using the UI Editor to create the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>&#39;s layout, use the two
+functions provided in the generated <code>.h</code> file to include it in the app:</p><p><code>main_window.h</code></p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">show_main_window</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">hide_main_window</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div><p>For example, call the <code>show_</code> function as part of the app&#39;s initialization
+procedure and the <code>hide_</code> function as part of its deinitialization. Be sure to
+include the new header file after <code>pebble.h</code>:</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
+<span class="cp">#include "main_window.h"</span>
+
+<span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">show_main_window</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">deinit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">hide_main_window</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">init</span><span class="p">();</span>
+  <span class="n">app_event_loop</span><span class="p">();</span>
+  <span class="n">deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/tools-and-resources/cloudpebble/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#creating-a-project">Creating a Project</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#code-editor">Code Editor</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#writing-some-code">Writing Some Code</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#adding-project-resources">Adding Project Resources</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#installing-and-running-apps">Installing and Running Apps</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#interacting-with-the-emulator">Interacting with the Emulator</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#ui-editor">UI Editor</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#adding-more-ui">Adding More UI</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#using-the-new-window">Using the New Window</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

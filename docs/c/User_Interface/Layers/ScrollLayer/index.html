@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ScrollLayer // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/User_Interface/Layers/ScrollLayer/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem active"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_create">scroll_layer_create</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_destroy">scroll_layer_destroy</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_layer">scroll_layer_get_layer</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_add_child">scroll_layer_add_child</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_click_config_onto_window">scroll_layer_set_click_config_onto_window</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_callbacks">scroll_layer_set_callbacks</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_context">scroll_layer_set_context</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_content_offset">scroll_layer_set_content_offset</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_content_offset">scroll_layer_get_content_offset</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_content_size">scroll_layer_set_content_size</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_content_size">scroll_layer_get_content_size</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_frame">scroll_layer_set_frame</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_scroll_up_click_handler">scroll_layer_scroll_up_click_handler</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_scroll_down_click_handler">scroll_layer_scroll_down_click_handler</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_shadow_hidden">scroll_layer_set_shadow_hidden</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_shadow_hidden">scroll_layer_get_shadow_hidden</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_paging">scroll_layer_set_paging</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_paging">scroll_layer_get_paging</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_content_indicator">scroll_layer_get_content_indicator</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_create">content_indicator_create</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_destroy">content_indicator_destroy</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_configure_direction">content_indicator_configure_direction</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_get_content_available">content_indicator_get_content_available</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_set_content_available">content_indicator_set_content_available</option>
+
+
+
+          
+<option value="#structs">DATA STRUCTURES</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicatorConfig">ContentIndicatorConfig</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#ScrollLayerCallbacks">ScrollLayerCallbacks</option>
+
+
+
+          
+
+          
+<option value="#enums">ENUMS</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicatorDirection">ContentIndicatorDirection</option>
+
+
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#ScrollLayer">ScrollLayer</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#ScrollLayerCallback">ScrollLayerCallback</option>
+
+  <option value="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicator">ContentIndicator</option>
+
+
+
+          
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">ScrollLayer</h1>
+
+      <p>Layer that scrolls its contents, animated. </p>
+      <p><img type="html" name="scroll_layer.png" src="/assets/images/docs/c/aplite/scroll_layer.png">
+ <h3 level="3">Key Points</h3>
+</p>
+<p><ul>
+<li><p>Facilitates vertical scrolling of a layer sub-hierarchy zero or more arbitrary layers. The example image shows a scroll layer containing one large TextLayer.</p></li>
+<li><p>Shadows to indicate that there is more content are automatically drawn on top of the content. When the end of the scroll layer is reached, the shadow will automatically be retracted.</p></li>
+<li><p>Scrolling from one offset to another is animated implicitly by default.</p></li>
+<li><p>The scroll layer contains a "content" sub-layer, which is the layer that is actually moved up an down. Any layer that is a child of this "content" sub-layer, will be moved as well. Effectively, an entire layout of layers can be scrolled this way. Use the convenience function <a refid="group___scroll_layer_1ga318c7ebc11aa6d2ecf12c534bf1274cb" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_add_child">scroll_layer_add_child()</a> to add child layers to the "content" sub-layer.</p></li>
+<li><p>The scroll layer needs to be informed of the total size of the contents, in order to calculate from and to what point it should be able to scroll. Use <a refid="group___scroll_layer_1ga95d1e0f61d1bf54eabd1c59f3e295489" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_content_size">scroll_layer_set_content_size()</a> to set the size of the contents.</p></li>
+<li><p>The button behavior is set up, using the convenience function <a refid="group___scroll_layer_1ga2c65fbd5bdc6af121312141368207775" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_click_config_onto_window">scroll_layer_set_click_config_onto_window()</a>. This will associate the UP and DOWN buttons with scrolling up and down.</p></li>
+<li><p>The SELECT button can be configured by installing a click configuration provider using <a refid="group___scroll_layer_1ga2aaf8ab053b356ccfc61afefe2504faf" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_callbacks">scroll_layer_set_callbacks()</a>.</p></li>
+<li><p>To scroll programatically to a certain offset, use <a refid="group___scroll_layer_1ga09d6b9d6b9016eb438a7e3d51eb4041d" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_content_offset">scroll_layer_set_content_offset()</a>.</p></li>
+<li><p>It is possible to get called back for each scrolling increment, by installing the <code>.content_offset_changed_handler</code> callback using <a refid="group___scroll_layer_1ga2aaf8ab053b356ccfc61afefe2504faf" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_callbacks">scroll_layer_set_callbacks()</a>.</p></li>
+<li><p>Only vertical scrolling is supported at the moment. </p></li>
+</ul>
+</p>
+
+      
+
+      
+
+
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="scroll_layer_create">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>ScrollLayer * </span><span class="docs__item__name">scroll_layer_create</span><span>(</span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> frame</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates a new ScrollLayer on the heap and initalizes it with the default values: </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><ul>
+<li><p>Clips: <code>true</code></p></li>
+<li><p>Hidden: <code>false</code></p></li>
+<li><p>Content size: <code>frame.size</code></p></li>
+<li><p>Content offset: <a refid="group___graphics_types_1ga24192f6809de17d816671a1d6a7b59b5" kindref="member" href="/docs/c/Graphics/Graphics_Types/#GPointZero">GPointZero</a></p></li>
+<li><p>Callbacks: None (<code>NULL</code> for each one)</p></li>
+<li><p>Callback context: <code>NULL</code> 
+</p></li>
+</ul>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the ScrollLayer. <code>NULL</code> if the ScrollLayer could not be created </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_destroy">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_destroy</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroys a ScrollLayer previously created by scroll_layer_create. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_get_layer">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>Layer * </span><span class="docs__item__name">scroll_layer_get_layer</span><span>(</span><span class="docs__item__param">const ScrollLayer * scroll_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the "root" Layer of the scroll layer, which is the parent for the sub- layers used for its implementation. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>Pointer to the ScrollLayer for which to get the "root" Layer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The "root" Layer of the scroll layer. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_add_child">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_add_child</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span>, </span><span class="docs__item__param">Layer * child</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Adds the child layer to the content sub-layer of the ScrollLayer. This will make the child layer part of the scrollable contents. The content sub-layer of the ScrollLayer will become the parent of the child layer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>You may need to update the size of the scrollable contents using <a refid="group___scroll_layer_1ga95d1e0f61d1bf54eabd1c59f3e295489" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_content_size">scroll_layer_set_content_size()</a>. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer to which to add the child layer. </p></dt>
+  
+  <dt><span style="color: #777"></span> child</dt>
+  <dd><p>The Layer to add to the content sub-layer of the ScrollLayer. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_set_click_config_onto_window">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_set_click_config_onto_window</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span>, </span><span class="docs__item__param">struct Window * window</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to set the <a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a> callback on the given window to scroll layer's internal click config provider. This internal click configuration provider, will set up the default UP &amp; DOWN scrolling behavior. This function calls <a refid="group___window_1gadfbe85cbdb8a0b96d970672639c5421e" kindref="member" href="/docs/c/User_Interface/Window/#window_set_click_config_provider_with_context">window_set_click_config_provider_with_context</a> to accomplish this. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>If you application has set a <code>.click_config_provider</code> callback using <a refid="group___scroll_layer_1ga2aaf8ab053b356ccfc61afefe2504faf" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_callbacks">scroll_layer_set_callbacks()</a>, this will be called by the internal click config provider, after configuring the UP &amp; DOWN buttons. This allows your application to configure the SELECT button behavior and optionally override the UP &amp; DOWN button behavior. The callback context for the SELECT click recognizer is automatically set to the scroll layer's context (see <a refid="group___scroll_layer_1gaeb62332973b899f585563270fa7db637" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_context">scroll_layer_set_context()</a> ). This context is passed into <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> callbacks. For the UP and DOWN buttons, the scroll layer itself is passed in by default as the callback context in order to deal with those buttons presses to scroll up and down automatically. 
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer that needs to receive click events. </p></dt>
+  
+  <dt><span style="color: #777"></span> window</dt>
+  <dd><p>The window for which to set the click configuration. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___clicks" kindref="compound" href="/docs/c/User_Interface/Clicks/">Clicks</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_set_callbacks">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_set_callbacks</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span>, </span><span class="docs__item__param"><a refid="struct_scroll_layer_callbacks" kindref="compound" href="/docs/c/User_Interface/Layers/ScrollLayer/#ScrollLayerCallbacks">ScrollLayerCallbacks</a> callbacks</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the callbacks that the scroll layer exposes. The <code>context</code> as set by <a refid="group___scroll_layer_1gaeb62332973b899f585563270fa7db637" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_context">scroll_layer_set_context()</a> is passed into each of the callbacks. See <a refid="struct_scroll_layer_callbacks" kindref="compound" href="/docs/c/User_Interface/Layers/ScrollLayer/#ScrollLayerCallbacks">ScrollLayerCallbacks</a> for the different callbacks. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>If the <code>context</code> is NULL, a pointer to scroll_layer is used as context parameter instead when calling callbacks. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer for which to assign new callbacks. </p></dt>
+  
+  <dt><span style="color: #777"></span> callbacks</dt>
+  <dd><p>The new callbacks. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_set_context">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_set_context</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span>, </span><span class="docs__item__param">void * context</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets a new callback context. This context is passed into the scroll layer's callbacks and also the <a refid="group___clicks_1ga8a973b4663a5171db84223d6ae79f28d" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickHandler">ClickHandler</a> for the SELECT button. If <code>NULL</code> or not set, the context defaults to a pointer to the ScrollLayer itself. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer for which to assign the new callback context. </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>The new callback context. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___scroll_layer_1ga2c65fbd5bdc6af121312141368207775" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_click_config_onto_window">scroll_layer_set_click_config_onto_window</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_set_content_offset">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_set_content_offset</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span>, </span><span class="docs__item__param"><a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> offset</span><span>, </span><span class="docs__item__param">bool animated</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Scrolls to the given offset, optionally animated. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>When scrolling down, the offset's <code>.y</code> decrements. When scrolling up, the offset's <code>.y</code> increments. If scrolled completely to the top, the offset is <a refid="group___graphics_types_1ga24192f6809de17d816671a1d6a7b59b5" kindref="member" href="/docs/c/Graphics/Graphics_Types/#GPointZero">GPointZero</a>. </p>
+<p></p>
+<p>The <code>.x</code> field must be <code>0</code>. Horizontal scrolling is not supported. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer for which to set the content offset </p></dt>
+  
+  <dt><span style="color: #777"></span> offset</dt>
+  <dd><p>The final content offset </p></dt>
+  
+  <dt><span style="color: #777"></span> animated</dt>
+  <dd><p>Pass in <code>true</code> to animate to the new content offset, or <code>false</code> to set the new content offset without animating. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___scroll_layer_1ga2fda3786915d157310adc5cca2db535a" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_content_offset">scroll_layer_get_content_offset</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_get_content_offset">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> </span><span class="docs__item__name">scroll_layer_get_content_offset</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the point by which the contents are offset. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer for which to get the content offset </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___scroll_layer_1ga09d6b9d6b9016eb438a7e3d51eb4041d" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_content_offset">scroll_layer_set_content_offset</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_set_content_size">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_set_content_size</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span>, </span><span class="docs__item__param"><a refid="struct_g_size" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GSize">GSize</a> size</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the size of the contents layer. This determines the area that is scrollable. At the moment, this needs to be set "manually" and is not derived from the geometry of the contents layers. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer for which to set the content size. </p></dt>
+  
+  <dt><span style="color: #777"></span> size</dt>
+  <dd><p>The new content size. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___scroll_layer_1gaaf9a11857e592b96f6e98f883d3bb479" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_content_size">scroll_layer_get_content_size</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_get_content_size">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="struct_g_size" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GSize">GSize</a> </span><span class="docs__item__name">scroll_layer_get_content_size</span><span>(</span><span class="docs__item__param">const ScrollLayer * scroll_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the size of the contents layer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer for which to get the content size </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___scroll_layer_1ga95d1e0f61d1bf54eabd1c59f3e295489" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_content_size">scroll_layer_set_content_size</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_set_frame">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_set_frame</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span>, </span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> frame</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Set the frame of the scroll layer and adjusts the internal layers' geometry accordingly. The scroll layer is marked dirty automatically. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer for which to set the frame </p></dt>
+  
+  <dt><span style="color: #777"></span> frame</dt>
+  <dd><p>The new frame </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_scroll_up_click_handler">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_scroll_up_click_handler</span><span>(</span><span class="docs__item__param"><a refid="group___clicks_1gab0f235645c2d1eb7b622542b59706085" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickRecognizerRef">ClickRecognizerRef</a> recognizer</span><span>, </span><span class="docs__item__param">void * context</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The click handlers for the UP button that the scroll layer will install as part of <a refid="group___scroll_layer_1ga2c65fbd5bdc6af121312141368207775" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_click_config_onto_window">scroll_layer_set_click_config_onto_window()</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>This handler is exposed, in case one wants to implement an alternative handler for the UP button, as a way to invoke the default behavior. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> recognizer</dt>
+  <dd><p>The click recognizer for which the handler is called </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>A void pointer to the ScrollLayer that is the context of the click event </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_scroll_down_click_handler">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_scroll_down_click_handler</span><span>(</span><span class="docs__item__param"><a refid="group___clicks_1gab0f235645c2d1eb7b622542b59706085" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickRecognizerRef">ClickRecognizerRef</a> recognizer</span><span>, </span><span class="docs__item__param">void * context</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The click handlers for the DOWN button that the scroll layer will install as part of <a refid="group___scroll_layer_1ga2c65fbd5bdc6af121312141368207775" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_click_config_onto_window">scroll_layer_set_click_config_onto_window()</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>This handler is exposed, in case one wants to implement an alternative handler for the DOWN button, as a way to invoke the default behavior. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> recognizer</dt>
+  <dd><p>The click recognizer for which the handler is called </p></dt>
+  
+  <dt><span style="color: #777"></span> context</dt>
+  <dd><p>A void pointer to the ScrollLayer that is the context of the click event </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_set_shadow_hidden">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_set_shadow_hidden</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span>, </span><span class="docs__item__param">bool hidden</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the visibility of the scroll layer shadow. If the visibility has changed, <a refid="group___layer_1ga00bc895642aa02ae2d224659529382c8" kindref="member" href="/docs/c/User_Interface/Layers/#layer_mark_dirty">layer_mark_dirty()</a> will be called automatically on the scroll layer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The scroll layer for which to set the shadow visibility </p></dt>
+  
+  <dt><span style="color: #777"></span> hidden</dt>
+  <dd><p>Supply <code>true</code> to make the shadow hidden, or <code>false</code> to make it non-hidden. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_get_shadow_hidden">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">scroll_layer_get_shadow_hidden</span><span>(</span><span class="docs__item__param">const ScrollLayer * scroll_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the visibility of the scroll layer shadow. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The scroll layer for which to get the visibility </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>True if the shadow is hidden, false if it is not hidden. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_set_paging">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">scroll_layer_set_paging</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span>, </span><span class="docs__item__param">bool paging_enabled</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Enables or disables paging of the ScrollLayer (default: disabled). When enabled, every button press will change the scroll offset by the frame's height. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The scroll layer for which to enable or disable paging </p></dt>
+  
+  <dt><span style="color: #777"></span> paging_enabled</dt>
+  <dd><p>True, if paging should be enabled. False to enable. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_get_paging">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">scroll_layer_get_paging</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Check whether or not the ScrollLayer uses paging when pressing buttons. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The scroll layer for which to get the paging behavior. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>True, if paging is enabled; false otherwise. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="scroll_layer_get_content_indicator">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>ContentIndicator * </span><span class="docs__item__name">scroll_layer_get_content_indicator</span><span>(</span><span class="docs__item__param">ScrollLayer * scroll_layer</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the ContentIndicator for a ScrollLayer. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> scroll_layer</dt>
+  <dd><p>The ScrollLayer for which to get the ContentIndicator </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the ContentIndicator, or <code>NULL</code> upon failure. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="content_indicator_create">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>ContentIndicator * </span><span class="docs__item__name">content_indicator_create</span><span>(</span><span class="docs__item__param">void</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates a ContentIndicator on the heap. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p>A pointer to the ContentIndicator. <code>NULL</code> if the ContentIndicator could not be created. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="content_indicator_destroy">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">content_indicator_destroy</span><span>(</span><span class="docs__item__param">ContentIndicator * content_indicator</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroys a ContentIndicator previously created using <a refid="group___scroll_layer_1gafb0f90c4cd27d04adfcc883a2bfa14f5" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_create">content_indicator_create()</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> content_indicator</dt>
+  <dd><p>The ContentIndicator to destroy. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="content_indicator_configure_direction">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">content_indicator_configure_direction</span><span>(</span><span class="docs__item__param">ContentIndicator * content_indicator</span><span>, </span><span class="docs__item__param"><a refid="group___scroll_layer_1ga8e9145430b2f9f92d02cf73cedab942c" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicatorDirection">ContentIndicatorDirection</a> direction</span><span>, </span><span class="docs__item__param">const <a refid="struct_content_indicator_config" kindref="compound" href="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicatorConfig">ContentIndicatorConfig</a> * config</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Configures a ContentIndicator for the given direction. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> content_indicator</dt>
+  <dd><p>The ContentIndicator to configure. </p></dt>
+  
+  <dt><span style="color: #777"></span> direction</dt>
+  <dd><p>The direction for which to configure the ContentIndicator. </p></dt>
+  
+  <dt><span style="color: #777"></span> config</dt>
+  <dd><p>The configuration to use to configure the ContentIndicator. If NULL, the data for the specified direction will be reset. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>True if the ContentIndicator was successfully configured for the given direction, false otherwise. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="content_indicator_get_content_available">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">content_indicator_get_content_available</span><span>(</span><span class="docs__item__param">ContentIndicator * content_indicator</span><span>, </span><span class="docs__item__param"><a refid="group___scroll_layer_1ga8e9145430b2f9f92d02cf73cedab942c" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicatorDirection">ContentIndicatorDirection</a> direction</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Retrieves the availability status of content in the given direction. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> content_indicator</dt>
+  <dd><p>The ContentIndicator for which to get the content availability. </p></dt>
+  
+  <dt><span style="color: #777"></span> direction</dt>
+  <dd><p>The direction for which to get the content availability. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>True if content is available in the given direction, false otherwise. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="content_indicator_set_content_available">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">content_indicator_set_content_available</span><span>(</span><span class="docs__item__param">ContentIndicator * content_indicator</span><span>, </span><span class="docs__item__param"><a refid="group___scroll_layer_1ga8e9145430b2f9f92d02cf73cedab942c" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicatorDirection">ContentIndicatorDirection</a> direction</span><span>, </span><span class="docs__item__param">bool available</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Sets the availability status of content in the given direction. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>If times_out is enabled, calling this function resets any previously scheduled timeout timer for the ContentIndicator. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> content_indicator</dt>
+  <dd><p>The ContentIndicator for which to set the content availability. </p></dt>
+  
+  <dt><span style="color: #777"></span> direction</dt>
+  <dd><p>The direction for which to set the content availability. </p></dt>
+  
+  <dt><span style="color: #777"></span> available</dt>
+  <dd><p>Whether or not content is available. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="structs">Data Structure<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="ContentIndicatorConfig">
+            
+              
+<div class="docs__item docs__item--struct">
+  <div class="docs__item__header">struct <span class="docs__item__name">ContentIndicatorConfig</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Struct used to configure directions for ContentIndicator. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    <h4>Data Fields</h4>
+    <dl>
+      
+      
+      
+      <dt><span style="color: #777">Layer *</span> layer</dt>
+      <dd><p>The layer where the arrow indicator will be rendered when content is available. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777">bool</span> times_out</dt>
+      <dd><p>Whether the display of the arrow indicator should timeout. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___graphics_types_1gac8aa0eb3d3065fde8d2d6f282fa47f6a" kindref="member" href="/docs/c/Graphics/Graphics_Types/#GAlign">GAlign</a></type></span> alignment</dt>
+      <dd><p>The alignment of the arrow within the provided layer. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777">struct ContentIndicatorConfig::@14</span> colors</dt>
+      <dd>
+      </dt>
+      
+
+      
+      
+    </dl>
+    
+  <h4>See Also</h4>
+  <a refid="group___scroll_layer_1ga76d8252325d83822b5989c3151c296d1" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_configure_direction">content_indicator_configure_direction</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="ScrollLayerCallbacks">
+            
+              
+<div class="docs__item docs__item--struct">
+  <div class="docs__item__header">struct <span class="docs__item__name">ScrollLayerCallbacks</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>All the callbacks that the ScrollLayer exposes for use by applications. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>The context parameter can be set using <a refid="group___scroll_layer_1gaeb62332973b899f585563270fa7db637" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_context">scroll_layer_set_context()</a> and gets passed in as context with all of these callbacks. </p>
+  </div>
+
+
+    <h4>Data Fields</h4>
+    <dl>
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___clicks_1ga9e12024e5769c1a76644a8cfd8288aff" kindref="member" href="/docs/c/User_Interface/Clicks/#ClickConfigProvider">ClickConfigProvider</a></type></span> click_config_provider</dt>
+      <dd><p>Provider function to set up the SELECT button handlers. This will be called after the scroll layer has configured the click configurations for the up/down buttons, so it can also be used to modify the default up/down scrolling behavior. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___scroll_layer_1ga562d848f7db8d2c1fa10d99b256a8b3c" kindref="member" href="/docs/c/User_Interface/Layers/ScrollLayer/#ScrollLayerCallback">ScrollLayerCallback</a></type></span> content_offset_changed_handler</dt>
+      <dd><p>Called every time the the content offset changes. During a scrolling animation, it will be called for each intermediary offset as well. </p>
+      </dt>
+      
+
+      
+      
+    </dl>
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+      
+        <h2 class="anchor" id="enums">Enum<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="ContentIndicatorDirection">
+            
+            
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">ContentIndicatorDirection</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Value to describe directions for ContentIndicator. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p><simplesect kind="see"><para><ref refid="group___scroll_layer_1ga76d8252325d83822b5989c3151c296d1" kindref="member">content_indicator_configure_direction</ref> </para><simplesectsep></simplesectsep><para><ref refid="group___scroll_layer_1ga8beb29f689a257c7b815e809209f6316" kindref="member">content_indicator_set_content_available</ref> </para></simplesect>
+</p>
+</div>
+
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="ContentIndicatorDirectionUp" class="docs__item__anchor"></span>
+      
+        <dt>ContentIndicatorDirectionUp</dt>
+        <dd>
+          
+          <p>The up direction. </p>
+        </dd>
+      
+      
+      <span id="ContentIndicatorDirectionDown" class="docs__item__anchor"></span>
+      
+        <dt>ContentIndicatorDirectionDown</dt>
+        <dd>
+          
+          <p>The down direction. </p>
+        </dd>
+      
+      
+      <span id="NumContentIndicatorDirections" class="docs__item__anchor"></span>
+      
+        <dt>NumContentIndicatorDirections</dt>
+        <dd>
+          
+          <p>The number of supported directions. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="ScrollLayer">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct ScrollLayer <span class="docs__item__name">ScrollLayer</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="ScrollLayerCallback">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">ScrollLayerCallback</span>)(struct ScrollLayer *scroll_layer, void *context)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature for the <code>.content_offset_changed_handler</code> callback. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="ContentIndicator">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct ContentIndicator <span class="docs__item__name">ContentIndicator</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_create">scroll_layer_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_destroy">scroll_layer_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_layer">scroll_layer_get_layer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_add_child">scroll_layer_add_child</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_click_config_onto_window">scroll_layer_set_click_config_onto_window</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_callbacks">scroll_layer_set_callbacks</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_context">scroll_layer_set_context</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_content_offset">scroll_layer_set_content_offset</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_content_offset">scroll_layer_get_content_offset</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_content_size">scroll_layer_set_content_size</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_content_size">scroll_layer_get_content_size</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_frame">scroll_layer_set_frame</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_scroll_up_click_handler">scroll_layer_scroll_up_click_handler</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_scroll_down_click_handler">scroll_layer_scroll_down_click_handler</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_shadow_hidden">scroll_layer_set_shadow_hidden</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_shadow_hidden">scroll_layer_get_shadow_hidden</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_set_paging">scroll_layer_set_paging</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_paging">scroll_layer_get_paging</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#scroll_layer_get_content_indicator">scroll_layer_get_content_indicator</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_create">content_indicator_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_destroy">content_indicator_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_configure_direction">content_indicator_configure_direction</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_get_content_available">content_indicator_get_content_available</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#content_indicator_set_content_available">content_indicator_set_content_available</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#structs">Data Structures</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicatorConfig">ContentIndicatorConfig</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#ScrollLayerCallbacks">ScrollLayerCallbacks</a></li>
+  
+</ul>
+
+
+      
+
+      
+<h3><a href="#enums">Enums</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicatorDirection">ContentIndicatorDirection</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#ScrollLayer">ScrollLayer</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#ScrollLayerCallback">ScrollLayerCallback</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Layers/ScrollLayer/#ContentIndicator">ContentIndicator</a></li>
+  
+</ul>
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

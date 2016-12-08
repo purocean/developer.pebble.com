@@ -1,0 +1,2938 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>PropertyAnimation // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/User_Interface/Animation/PropertyAnimation/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem open">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem active"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create_layer_frame">property_animation_create_layer_frame</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create_bounds_origin">property_animation_create_bounds_origin</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_destroy">property_animation_destroy</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_int16">property_animation_update_int16</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_uint32">property_animation_update_uint32</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gpoint">property_animation_update_gpoint</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_grect">property_animation_update_grect</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gcolor8">property_animation_update_gcolor8</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_animation">property_animation_get_animation</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_subject">property_animation_subject</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_from">property_animation_from</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_to">property_animation_to</option>
+
+
+
+          
+<option value="#structs">DATA STRUCTURES</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationAccessors">PropertyAnimationAccessors</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationImplementation">PropertyAnimationImplementation</option>
+
+
+
+          
+
+          
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimation">PropertyAnimation</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointReturn">GPointReturn</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectReturn">GRectReturn</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#Int16Setter">Int16Setter</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#Int16Getter">Int16Getter</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#UInt32Setter">UInt32Setter</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#UInt32Getter">UInt32Getter</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointSetter">GPointSetter</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointGetter">GPointGetter</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectSetter">GRectSetter</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectGetter">GRectGetter</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#GColor8Setter">GColor8Setter</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#GColor8Getter">GColor8Getter</option>
+
+
+
+          
+<option value="#defines">MACRO DEFINTIONS</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_clone">property_animation_clone</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_from_grect">property_animation_get_from_grect</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_from_grect">property_animation_set_from_grect</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_from_gpoint">property_animation_get_from_gpoint</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_from_gpoint">property_animation_set_from_gpoint</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_from_int16">property_animation_get_from_int16</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_from_int16">property_animation_set_from_int16</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_to_grect">property_animation_get_to_grect</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_to_grect">property_animation_set_to_grect</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_to_gpoint">property_animation_get_to_gpoint</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_to_gpoint">property_animation_set_to_gpoint</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_to_int16">property_animation_get_to_int16</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_to_int16">property_animation_set_to_int16</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_subject">property_animation_get_subject</option>
+
+  <option value="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_subject">property_animation_set_subject</option>
+
+
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">PropertyAnimation</h1>
+
+      <p>A ProperyAnimation animates the value of a "property" of a "subject" over time. </p>
+      <p><h3 level="3">Animating a Layer's frame property</h3>
+</p>
+<p>Currently there is only one specific type of property animation offered off-the-shelf, namely one to change the frame (property) of a layer (subject), see <a refid="group___property_animation_1ga0d817a6385fcc7e42a0ec5dad4338217" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create_layer_frame">property_animation_create_layer_frame()</a>.</p>
+<p><h3 level="3">Implementing a custom PropertyAnimation</h3>
+</p>
+<p>It is fairly simple to create your own variant of a PropertyAnimation.</p>
+<p>Please refer to <a href="https://developer.getpebble.com/guides/pebble-apps/display-and-animations/layers/">User Interface Layers chapter in the Pebble Developer Guides</a> (chapter "Property Animations") for a conceptual overview of the animation framework and make sure you understand the underlying <a refid="group___animation" kindref="compound" href="/docs/c/User_Interface/Animation/">Animation</a>, in case you are not familiar with it, before trying to implement a variation on PropertyAnimation.</p>
+<p>To implement a custom property animation, use <a refid="group___property_animation_1gadfc38439785d09cbb988aea444cf5412" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create()</a> and provide a function pointers to the accessors (getter and setter) and setup, update and teardown callbacks in the implementation argument. Note that the type of property to animate with <a refid="group___property_animation" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/">PropertyAnimation</a> is limited to int16_t, <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> or <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a>.</p>
+<p>For each of these types, there are implementations provided for the necessary <code>.update</code> handler of the animation: see <a refid="group___property_animation_1ga798776416e2c1f86e80ff19672d7ddf5" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_int16">property_animation_update_int16()</a>, <a refid="group___property_animation_1gacf429c1542a3d76735bf23e6fa7d8449" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gpoint">property_animation_update_gpoint()</a> and <a refid="group___property_animation_1ga9e290a0375528eac0a1a12b4387d6caa" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_grect">property_animation_update_grect()</a>. These update functions expect the <code>.accessors</code> to conform to the following interface: Any getter needs to have the following function signature: <code>__type__ getter(void *subject);</code> Any setter needs to have to following function signature: <code>void setter(void *subject, __type__ value);</code> See <a refid="group___property_animation_1ga89f63a97d7bc1f842f3826005100ac8e" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#Int16Getter">Int16Getter</a>, <a refid="group___property_animation_1gaa7ff134ddfbf52b7ea200414796640f2" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#Int16Setter">Int16Setter</a>, <a refid="group___property_animation_1gabcdd675808366340d41299f71df74754" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointGetter">GPointGetter</a>, <a refid="group___property_animation_1gaef28b72d142fabb2986eb7ef2b6c66fe" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointSetter">GPointSetter</a>, <a refid="group___property_animation_1ga48bf0c1eecee160ebdc1a9d179fe1721" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectGetter">GRectGetter</a>, <a refid="group___property_animation_1ga49bec85f2eb8e7ce823789c528dc26c0" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectSetter">GRectSetter</a> for the typedefs that accompany the update fuctions.</p>
+<p><div class="highlight"><pre><span class="k">static</span> <span class="k">const</span> <span class="n">PropertyAnimationImplementation</span> <span class="n">my_implementation</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">.</span><span class="n">base</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// using the "stock" update callback:</span>
+    <span class="p">.</span><span class="n">update</span> <span class="o">=</span> <span class="p">(</span><span class="n">AnimationUpdateImplementation</span><span class="p">)</span> <span class="n">property_animation_update_gpoint</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="p">.</span><span class="n">accessors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// my accessors that get/set a GPoint from/onto my subject:</span>
+    <span class="p">.</span><span class="n">setter</span> <span class="o">=</span> <span class="p">{</span> <span class="p">.</span><span class="n">gpoint</span> <span class="o">=</span> <span class="n">my_layer_set_corner_point</span><span class="p">,</span> <span class="p">},</span>
+    <span class="p">.</span><span class="n">getter</span> <span class="o">=</span> <span class="p">{</span> <span class="p">.</span><span class="n">gpoint</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">GPointGetter</span><span class="p">)</span> <span class="n">my_layer_get_corner_point</span><span class="p">,</span> <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="k">static</span> <span class="n">PropertyAnimation</span><span class="o">*</span> <span class="n">s_my_animation_ptr</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">GPoint</span> <span class="n">s_to_point</span> <span class="o">=</span> <span class="n">GPointZero</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="c1">// Use NULL as 'from' value, this will make the animation framework call the getter</span>
+<span class="c1">// to get the current value of the property and use that as the 'from' value:</span>
+<span class="n">s_my_animation_ptr</span> <span class="o">=</span> <span class="n">property_animation_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">my_implementation</span><span class="p">,</span> <span class="n">my_layer</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s_to_point</span><span class="p">);</span>
+<span class="n">animation_schedule</span><span class="p">(</span><span class="n">property_animation_get_animation</span><span class="p">(</span><span class="n">s_my_animation_ptr</span><span class="p">));</span>
+</pre></div> </p>
+
+      
+
+      
+
+
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="property_animation_create_layer_frame">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>PropertyAnimation * </span><span class="docs__item__name">property_animation_create_layer_frame</span><span>(</span><span class="docs__item__param">struct Layer * layer</span><span>, </span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> * from_frame</span><span>, </span><span class="docs__item__param"><a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> * to_frame</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to create and initialize a property animation that animates the frame of a Layer. It sets up the PropertyAnimation to use <a refid="group___layer_1ga5a984a17781b97ce00ae34c437171934" kindref="member" href="/docs/c/User_Interface/Layers/#layer_set_frame">layer_set_frame()</a> and <a refid="group___layer_1ga76ed01d3619150b87604ebaa9dc282b7" kindref="member" href="/docs/c/User_Interface/Layers/#layer_get_frame">layer_get_frame()</a> as accessors and uses the <code>layer</code> parameter as the subject for the animation. The same defaults are used as with <a refid="group___animation_1ga706e17e0b7e3b000d0e2b938d07a18b0" kindref="member" href="/docs/c/User_Interface/Animation/#animation_create">animation_create()</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Pass in <code>NULL</code> as one of the frame arguments to have it set automatically to the layer's current frame. This will result in a call to <a refid="group___layer_1ga76ed01d3619150b87604ebaa9dc282b7" kindref="member" href="/docs/c/User_Interface/Layers/#layer_get_frame">layer_get_frame()</a> to get the current frame of the layer. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>the layer that will be animated </p></dt>
+  
+  <dt><span style="color: #777"></span> from_frame</dt>
+  <dd><p>the frame that the layer should animate from </p></dt>
+  
+  <dt><span style="color: #777"></span> to_frame</dt>
+  <dd><p>the frame that the layer should animate to </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A handle to the property animation. <code>NULL</code> if animation could not be created </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_create_bounds_origin">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>PropertyAnimation * </span><span class="docs__item__name">property_animation_create_bounds_origin</span><span>(</span><span class="docs__item__param">struct Layer * layer</span><span>, </span><span class="docs__item__param"><a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> * from</span><span>, </span><span class="docs__item__param"><a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> * to</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to create and initialize a property animation that animates the bound's origin of a Layer. It sets up the PropertyAnimation to use <a refid="group___layer_1ga0a99dca38b75b52264c0734b934c865c" kindref="member" href="/docs/c/User_Interface/Layers/#layer_set_bounds">layer_set_bounds()</a> and <a refid="group___layer_1ga3e99442ac9d3af36ec7c25118360710c" kindref="member" href="/docs/c/User_Interface/Layers/#layer_get_bounds">layer_get_bounds()</a> as accessors and uses the <code>layer</code> parameter as the subject for the animation. The same defaults are used as with <a refid="group___animation_1ga706e17e0b7e3b000d0e2b938d07a18b0" kindref="member" href="/docs/c/User_Interface/Animation/#animation_create">animation_create()</a>. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> layer</dt>
+  <dd><p>the layer that will be animated </p></dt>
+  
+  <dt><span style="color: #777"></span> from_origin</dt>
+  <dd><p>the origin that the bounds should animate from </p></dt>
+  
+  <dt><span style="color: #777"></span> to_origin</dt>
+  <dd><p>the origin that the layer should animate to </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A handle to the property animation. <code>NULL</code> if animation could not be created </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_create">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>PropertyAnimation * </span><span class="docs__item__name">property_animation_create</span><span>(</span><span class="docs__item__param">const <a refid="struct_property_animation_implementation" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationImplementation">PropertyAnimationImplementation</a> * implementation</span><span>, </span><span class="docs__item__param">void * subject</span><span>, </span><span class="docs__item__param">void * from_value</span><span>, </span><span class="docs__item__param">void * to_value</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates a new PropertyAnimation on the heap and and initializes it with the specified values. The same defaults are used as with <a refid="group___animation_1ga706e17e0b7e3b000d0e2b938d07a18b0" kindref="member" href="/docs/c/User_Interface/Animation/#animation_create">animation_create()</a>. If the <code>from_value</code> or the <code>to_value</code> is <code>NULL</code>, the getter accessor will be called to get the current value of the property and be used instead. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Pass in <code>NULL</code> as one of the value arguments to have it set automatically to the subject's current property value, as returned by the getter function. Also note that passing in <code>NULL</code> for both <code>from_value</code> and <code>to_value</code>, will result in the animation having the same from- and to- values, effectively not doing anything. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> implementation</dt>
+  <dd><p>Pointer to the implementation of the animation. In most cases, it makes sense to pass in a <code>static const</code> struct pointer. </p></dt>
+  
+  <dt><span style="color: #777"></span> subject</dt>
+  <dd><p>Pointer to the "subject" being animated. This will be passed in when the getter/ setter accessors are called, see <a refid="struct_property_animation_accessors" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationAccessors">PropertyAnimationAccessors</a>, <a refid="group___property_animation_1gaef28b72d142fabb2986eb7ef2b6c66fe" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointSetter">GPointSetter</a>, and friends. The value of this pointer will be copied into the <code>.subject</code> field of the PropertyAnimation struct. </p></dt>
+  
+  <dt><span style="color: #777"></span> from_value</dt>
+  <dd><p>Pointer to the value that the subject should animate from </p></dt>
+  
+  <dt><span style="color: #777"></span> to_value</dt>
+  <dd><p>Pointer to the value that the subject should animate to </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A handle to the property animation. <code>NULL</code> if animation could not be created </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_destroy">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">property_animation_destroy</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroy a property animation allocated by <a refid="group___property_animation_1gadfc38439785d09cbb988aea444cf5412" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create()</a> or relatives. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>the return value from property_animation_create </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_update_int16">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">property_animation_update_int16</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span>, </span><span class="docs__item__param">const <a refid="group___standard_c_1gad53b3f685c3f3153f35ec87ea6f349d1" kindref="member" href="/docs/c/Standard_C/#uint32_t">uint32_t</a> distance_normalized</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Default update callback for a property animations to update a property of type int16_t. Assign this function to the <code>.base.update</code> callback field of your <a refid="struct_property_animation_implementation" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationImplementation">PropertyAnimationImplementation</a>, in combination with a <code>.getter</code> and <code>.setter</code> accessors of types <a refid="group___property_animation_1ga89f63a97d7bc1f842f3826005100ac8e" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#Int16Getter">Int16Getter</a> and <a refid="group___property_animation_1gaa7ff134ddfbf52b7ea200414796640f2" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#Int16Setter">Int16Setter</a>. The implementation of this function will calculate the next value of the animation and call the setter to set the new value upon the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>This function is not supposed to be called "manually", but will be called automatically when the animation is being run. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The property animation for which the update is requested. </p></dt>
+  
+  <dt><span style="color: #777"></span> distance_normalized</dt>
+  <dd><p>The current normalized distance. See <a refid="group___animation_1ga34abb13e87b1f7879058baa96d6f1fbb" kindref="member" href="/docs/c/User_Interface/Animation/#AnimationUpdateImplementation">AnimationUpdateImplementation</a> </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_update_uint32">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">property_animation_update_uint32</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span>, </span><span class="docs__item__param">const <a refid="group___standard_c_1gad53b3f685c3f3153f35ec87ea6f349d1" kindref="member" href="/docs/c/Standard_C/#uint32_t">uint32_t</a> distance_normalized</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Default update callback for a property animations to update a property of type uint32_t. Assign this function to the <code>.base.update</code> callback field of your <a refid="struct_property_animation_implementation" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationImplementation">PropertyAnimationImplementation</a>, in combination with a <code>.getter</code> and <code>.setter</code> accessors of types <a refid="group___property_animation_1ga0320e0ff69acf9aad6259a9d7227bf7f" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#UInt32Getter">UInt32Getter</a> and <a refid="group___property_animation_1gae3ee0aa676995be46fa8c73a1802477b" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#UInt32Setter">UInt32Setter</a>. The implementation of this function will calculate the next value of the animation and call the setter to set the new value upon the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>This function is not supposed to be called "manually", but will be called automatically when the animation is being run. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The property animation for which the update is requested. </p></dt>
+  
+  <dt><span style="color: #777"></span> distance_normalized</dt>
+  <dd><p>The current normalized distance. See <a refid="group___animation_1ga34abb13e87b1f7879058baa96d6f1fbb" kindref="member" href="/docs/c/User_Interface/Animation/#AnimationUpdateImplementation">AnimationUpdateImplementation</a> </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_update_gpoint">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">property_animation_update_gpoint</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span>, </span><span class="docs__item__param">const <a refid="group___standard_c_1gad53b3f685c3f3153f35ec87ea6f349d1" kindref="member" href="/docs/c/Standard_C/#uint32_t">uint32_t</a> distance_normalized</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Default update callback for a property animations to update a property of type <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a>. Assign this function to the <code>.base.update</code> callback field of your <a refid="struct_property_animation_implementation" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationImplementation">PropertyAnimationImplementation</a>, in combination with a <code>.getter</code> and <code>.setter</code> accessors of types <a refid="group___property_animation_1gabcdd675808366340d41299f71df74754" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointGetter">GPointGetter</a> and <a refid="group___property_animation_1gaef28b72d142fabb2986eb7ef2b6c66fe" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointSetter">GPointSetter</a>. The implementation of this function will calculate the next point of the animation and call the setter to set the new point upon the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>This function is not supposed to be called "manually", but will be called automatically when the animation is being run. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The property animation for which the update is requested. </p></dt>
+  
+  <dt><span style="color: #777"></span> distance_normalized</dt>
+  <dd><p>The current normalized distance. See <a refid="group___animation_1ga34abb13e87b1f7879058baa96d6f1fbb" kindref="member" href="/docs/c/User_Interface/Animation/#AnimationUpdateImplementation">AnimationUpdateImplementation</a> </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_update_grect">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">property_animation_update_grect</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span>, </span><span class="docs__item__param">const <a refid="group___standard_c_1gad53b3f685c3f3153f35ec87ea6f349d1" kindref="member" href="/docs/c/Standard_C/#uint32_t">uint32_t</a> distance_normalized</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Default update callback for a property animations to update a property of type <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a>. Assign this function to the <code>.base.update</code> callback field of your <a refid="struct_property_animation_implementation" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationImplementation">PropertyAnimationImplementation</a>, in combination with a <code>.getter</code> and <code>.setter</code> accessors of types <a refid="group___property_animation_1ga48bf0c1eecee160ebdc1a9d179fe1721" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectGetter">GRectGetter</a> and <a refid="group___property_animation_1ga49bec85f2eb8e7ce823789c528dc26c0" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectSetter">GRectSetter</a>. The implementation of this function will calculate the next rectangle of the animation and call the setter to set the new rectangle upon the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>This function is not supposed to be called "manually", but will be called automatically when the animation is being run. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The property animation for which the update is requested. </p></dt>
+  
+  <dt><span style="color: #777"></span> distance_normalized</dt>
+  <dd><p>The current normalized distance. See <a refid="group___animation_1ga34abb13e87b1f7879058baa96d6f1fbb" kindref="member" href="/docs/c/User_Interface/Animation/#AnimationUpdateImplementation">AnimationUpdateImplementation</a> </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_update_gcolor8">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">property_animation_update_gcolor8</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span>, </span><span class="docs__item__param">const <a refid="group___standard_c_1gad53b3f685c3f3153f35ec87ea6f349d1" kindref="member" href="/docs/c/Standard_C/#uint32_t">uint32_t</a> distance_normalized</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Default update callback for a property animations to update a property of type GColor8. Assign this function to the <code>.base.update</code> callback field of your <a refid="struct_property_animation_implementation" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationImplementation">PropertyAnimationImplementation</a>, in combination with a <code>.getter</code> and <code>.setter</code> accessors of types <a refid="group___property_animation_1gaf5b60339645ce7174451a0451bab22a6" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GColor8Getter">GColor8Getter</a> and <a refid="group___property_animation_1gaa8c8a25f98db66d5bf5868e2050487a6" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GColor8Setter">GColor8Setter</a>. The implementation of this function will calculate the next rectangle of the animation and call the setter to set the new value upon the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>This function is not supposed to be called "manually", but will be called automatically when the animation is being run. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The property animation for which the update is requested. </p></dt>
+  
+  <dt><span style="color: #777"></span> distance_normalized</dt>
+  <dd><p>The current normalized distance. See <a refid="group___animation_1ga34abb13e87b1f7879058baa96d6f1fbb" kindref="member" href="/docs/c/User_Interface/Animation/#AnimationUpdateImplementation">AnimationUpdateImplementation</a> </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_get_animation">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>Animation * </span><span class="docs__item__name">property_animation_get_animation</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to retrieve an animation instance from a property animation instance. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The property animation </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The <a refid="group___animation" kindref="compound" href="/docs/c/User_Interface/Animation/">Animation</a> within this PropertyAnimation </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_subject">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">property_animation_subject</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span>, </span><span class="docs__item__param">void ** subject</span><span>, </span><span class="docs__item__param">bool set</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Helper function used by the property_animation_get|set_subject macros. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>Handle to the property animation </p></dt>
+  
+  <dt><span style="color: #777"></span> subject</dt>
+  <dd><p>The subject to get or set. </p></dt>
+  
+  <dt><span style="color: #777"></span> set</dt>
+  <dd><p>true to set new subject, false to retrieve existing value </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true if successful, false on failure (usually a bad animation_h) </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_from">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">property_animation_from</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span>, </span><span class="docs__item__param">void * from</span><span>, </span><span class="docs__item__param"><a refid="group___standard_memory_1ga7b60c5629e55e8ec87a4547dd4abced4" kindref="member" href="/docs/c/Standard_C/Memory/#size_t">size_t</a> size</span><span>, </span><span class="docs__item__param">bool set</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Helper function used by the property_animation_get|set_from_.* macros. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>Handle to the property animation </p></dt>
+  
+  <dt><span style="color: #777"></span> from</dt>
+  <dd><p>Pointer to the value </p></dt>
+  
+  <dt><span style="color: #777"></span> size</dt>
+  <dd><p>Size of the from value </p></dt>
+  
+  <dt><span style="color: #777"></span> set</dt>
+  <dd><p>true to set new value, false to retrieve existing one </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true if successful, false on failure (usually a bad animation_h) </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_to">
+            
+              
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">property_animation_to</span><span>(</span><span class="docs__item__param">PropertyAnimation * property_animation</span><span>, </span><span class="docs__item__param">void * to</span><span>, </span><span class="docs__item__param"><a refid="group___standard_memory_1ga7b60c5629e55e8ec87a4547dd4abced4" kindref="member" href="/docs/c/Standard_C/Memory/#size_t">size_t</a> size</span><span>, </span><span class="docs__item__param">bool set</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Helper function used by the property_animation_get|set_to_.* macros. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>handle to the property animation </p></dt>
+  
+  <dt><span style="color: #777"></span> to</dt>
+  <dd><p>Pointer to the value </p></dt>
+  
+  <dt><span style="color: #777"></span> size</dt>
+  <dd><p>Size of the to value </p></dt>
+  
+  <dt><span style="color: #777"></span> set</dt>
+  <dd><p>true to set new value, false to retrieve existing one </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true if successful, false on failure (usually a bad animation_h) </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="structs">Data Structure<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="PropertyAnimationAccessors">
+            
+              
+<div class="docs__item docs__item--struct">
+  <div class="docs__item__header">struct <span class="docs__item__name">PropertyAnimationAccessors</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Data structure containing the setter and getter function pointers that the property animation should use. The specified setter function will be used by the animation's update callback. <br>
+ Based on the type of the property (int16_t, <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> or <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a>), the accompanying update callback should be used, see <a refid="group___property_animation_1ga798776416e2c1f86e80ff19672d7ddf5" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_int16">property_animation_update_int16()</a>, <a refid="group___property_animation_1gacf429c1542a3d76735bf23e6fa7d8449" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gpoint">property_animation_update_gpoint()</a> and <a refid="group___property_animation_1ga9e290a0375528eac0a1a12b4387d6caa" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_grect">property_animation_update_grect()</a>. <br>
+ The getter function is used when the animation is initialized, to assign the current value of the subject's property as "from" or "to" value, see <a refid="group___property_animation_1gadfc38439785d09cbb988aea444cf5412" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create()</a>. </p>
+</div>
+
+
+    
+
+    
+
+    <h4>Data Fields</h4>
+    <dl>
+      
+      
+      
+      <dt><span style="color: #777">union PropertyAnimationAccessors::@12</span> setter</dt>
+      <dd><p>Function pointer to the implementation of the function that <strong>sets</strong> the updated property value. This function will be called repeatedly for each animation frame. </p>
+      <p>
+</p></dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777">union PropertyAnimationAccessors::@13</span> getter</dt>
+      <dd><p>Function pointer to the implementation of the function that <strong>gets</strong> the current property value. This function will be called during <a refid="group___property_animation_1gadfc38439785d09cbb988aea444cf5412" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create()</a>, to get the current property value, in case the <code>from_value</code> or <code>to_value</code> argument is <code>NULL</code>. </p>
+      <p>
+</p></dt>
+      
+
+      
+      
+    </dl>
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="PropertyAnimationImplementation">
+            
+              
+<div class="docs__item docs__item--struct">
+  <div class="docs__item__header">struct <span class="docs__item__name">PropertyAnimationImplementation</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Data structure containing a collection of function pointers that form the implementation of the property animation. See the code example at the top (<a refid="group___property_animation" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/">PropertyAnimation</a>). </p>
+</div>
+
+
+    
+
+    
+
+    <h4>Data Fields</h4>
+    <dl>
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="struct_animation_implementation" kindref="compound" href="/docs/c/User_Interface/Animation/#AnimationImplementation">AnimationImplementation</a></type></span> base</dt>
+      <dd><p>The "inherited" fields from the Animation "base class". </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="struct_property_animation_accessors" kindref="compound" href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationAccessors">PropertyAnimationAccessors</a></type></span> accessors</dt>
+      <dd><p>The accessors to set/get the property to be animated. </p>
+      </dt>
+      
+
+      
+      
+    </dl>
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="PropertyAnimation">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct PropertyAnimation <span class="docs__item__name">PropertyAnimation</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GPointReturn">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> <span class="docs__item__name">GPointReturn</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Work-around for function pointer return type <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> to avoid tripping the pre-processor to use the equally named <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> define. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GRectReturn">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> <span class="docs__item__name">GRectReturn</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Work-around for function pointer return type <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> to avoid tripping the pre-processor to use the equally named <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> define. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="Int16Setter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">Int16Setter</span>)(void *subject, int16_t int16)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a setter function to set a property of type int16_t onto the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1ga798776416e2c1f86e80ff19672d7ddf5" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_int16">property_animation_update_int16()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="Int16Getter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef int16_t(* <span class="docs__item__name">Int16Getter</span>)(void *subject)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a getter function to get the current property of type int16_t of the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1gadfc38439785d09cbb988aea444cf5412" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="UInt32Setter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">UInt32Setter</span>)(void *subject, uint32_t uint32)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a setter function to set a property of type uint32_t onto the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1ga798776416e2c1f86e80ff19672d7ddf5" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_int16">property_animation_update_int16()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="UInt32Getter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef <a refid="group___standard_c_1gad53b3f685c3f3153f35ec87ea6f349d1" kindref="member" href="/docs/c/Standard_C/#uint32_t">uint32_t</a>(* <span class="docs__item__name">UInt32Getter</span>)(void *subject)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a getter function to get the current property of type uint32_t of the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1gadfc38439785d09cbb988aea444cf5412" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GPointSetter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">GPointSetter</span>)(void *subject, GPoint gpoint)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a setter function to set a property of type <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> onto the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1gacf429c1542a3d76735bf23e6fa7d8449" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gpoint">property_animation_update_gpoint()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GPointGetter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef <a refid="group___property_animation_1ga8e5e2922e940ba341ecd12a1222674c1" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointReturn">GPointReturn</a>(* <span class="docs__item__name">GPointGetter</span>)(void *subject)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a getter function to get the current property of type <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> of the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1gadfc38439785d09cbb988aea444cf5412" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GRectSetter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">GRectSetter</span>)(void *subject, GRect grect)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a setter function to set a property of type <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> onto the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1ga9e290a0375528eac0a1a12b4387d6caa" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_grect">property_animation_update_grect()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GRectGetter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef <a refid="group___property_animation_1gabf18ade37c724a027e0fadee01accbeb" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectReturn">GRectReturn</a>(* <span class="docs__item__name">GRectGetter</span>)(void *subject)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a getter function to get the current property of type <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> of the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1gadfc38439785d09cbb988aea444cf5412" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColor8Setter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">GColor8Setter</span>)(void *subject, GColor8 gcolor)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a setter function to set a property of type GColor8 onto the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1gafc7f66d6981fa46530b212de7b2663aa" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gcolor8">property_animation_update_gcolor8()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="GColor8Getter">
+            
+            
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef GColor8(* <span class="docs__item__name">GColor8Getter</span>)(void *subject)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Function signature of a getter function to get the current property of type GColor8 of the subject. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___property_animation_1gadfc38439785d09cbb988aea444cf5412" kindref="member" href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create()</a>
+
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="defines">Macro Definition<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="property_animation_clone">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_clone </span><span>(</span><span class="docs__item__param"> property_animation</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to clone a property animation instance. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The property animation </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>A clone of the original Animation </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_get_from_grect">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_get_from_grect </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to retrieve the 'from' <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> value from property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>The value will be retrieved into this pointer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_set_from_grect">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_set_from_grect </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to set the 'from' <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> value of property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>Pointer to the new value </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_get_from_gpoint">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_get_from_gpoint </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to retrieve the 'from' <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> value from property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>The value will be retrieved into this pointer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_set_from_gpoint">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_set_from_gpoint </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to set the 'from' <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> value of property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>Pointer to the new value </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_get_from_int16">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_get_from_int16 </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to retrieve the 'from' int16_t value from property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>The value will be retrieved into this pointer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_set_from_int16">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_set_from_int16 </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to set the 'from' int16_t value of property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>Pointer to the new value </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_get_to_grect">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_get_to_grect </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to retrieve the 'to' <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> value from property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>The value will be retrieved into this pointer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_set_to_grect">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_set_to_grect </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to set the 'to' <a refid="struct_g_rect" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GRect">GRect</a> value of property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>Pointer to the new value </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_get_to_gpoint">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_get_to_gpoint </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to retrieve the 'to' <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> value from property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>The value will be retrieved into this pointer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_set_to_gpoint">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_set_to_gpoint </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to set the 'to' <a refid="struct_g_point" kindref="compound" href="/docs/c/Graphics/Graphics_Types/#GPoint">GPoint</a> value of property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>Pointer to the new value </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_get_to_int16">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_get_to_int16 </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to retrieve the 'to' int16_t value from property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>The value will be retrieved into this pointer </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_set_to_int16">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_set_to_int16 </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience function to set the 'to' int16_t value of property animation handle. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>Pointer to the new value </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>true on success, false on failure </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_get_subject">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_get_subject </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Retrieve the subject of a property animation. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>Pointer used to store the subject of this property animation </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The subject of this PropertyAnimation </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="property_animation_set_subject">
+            
+            
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">property_animation_set_subject </span><span>(</span><span class="docs__item__param"> property_animation</span><span>, </span><span class="docs__item__param"> value_ptr</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Set the subject of a property animation. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> property_animation</dt>
+  <dd><p>The PropertyAnimation to be accessed </p></dt>
+  
+  <dt><span style="color: #777"></span> value_ptr</dt>
+  <dd><p>Pointer to the new subject value </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+            
+          </div>
+        
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create_layer_frame">property_animation_create_layer_frame</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create_bounds_origin">property_animation_create_bounds_origin</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_create">property_animation_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_destroy">property_animation_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_int16">property_animation_update_int16</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_uint32">property_animation_update_uint32</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gpoint">property_animation_update_gpoint</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_grect">property_animation_update_grect</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_update_gcolor8">property_animation_update_gcolor8</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_animation">property_animation_get_animation</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_subject">property_animation_subject</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_from">property_animation_from</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_to">property_animation_to</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#structs">Data Structures</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationAccessors">PropertyAnimationAccessors</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimationImplementation">PropertyAnimationImplementation</a></li>
+  
+</ul>
+
+
+      
+
+      
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#PropertyAnimation">PropertyAnimation</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointReturn">GPointReturn</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectReturn">GRectReturn</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#Int16Setter">Int16Setter</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#Int16Getter">Int16Getter</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#UInt32Setter">UInt32Setter</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#UInt32Getter">UInt32Getter</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointSetter">GPointSetter</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#GPointGetter">GPointGetter</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectSetter">GRectSetter</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#GRectGetter">GRectGetter</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#GColor8Setter">GColor8Setter</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#GColor8Getter">GColor8Getter</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#defines">Macro Defintions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_clone">property_animation_clone</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_from_grect">property_animation_get_from_grect</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_from_grect">property_animation_set_from_grect</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_from_gpoint">property_animation_get_from_gpoint</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_from_gpoint">property_animation_set_from_gpoint</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_from_int16">property_animation_get_from_int16</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_from_int16">property_animation_set_from_int16</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_to_grect">property_animation_get_to_grect</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_to_grect">property_animation_set_to_grect</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_to_gpoint">property_animation_get_to_gpoint</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_to_gpoint">property_animation_set_to_gpoint</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_to_int16">property_animation_get_to_int16</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_to_int16">property_animation_set_to_int16</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_get_subject">property_animation_get_subject</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/#property_animation_set_subject">property_animation_set_subject</a></li>
+  
+</ul>
+
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

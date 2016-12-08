@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Heart Rate Monitor // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Information on using the HealthService API to obtain information from the
+Heart Rate Monitor.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/events-and-services/hrm/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/accelerometer/"><span>Accelerometer</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/background-worker/"><span>Background Worker</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/buttons/"><span>Buttons</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/compass/"><span>Compass</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/dictation/"><span>Dictation</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/events/"><span>Event Services</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/events-and-services/hrm/"><span>Heart Rate Monitor</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/health/"><span>Pebble Health</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/persistent-storage/"><span>Persistent Storage</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/wakeups/"><span>Wakeups</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="enable-health-data">Enable Health Data</option>
+          
+            <option value="data-quality">Data Quality</option>
+          
+            <option value="obtaining-the-current-heart-rate">Obtaining the Current Heart Rate</option>
+          
+            <option value="subscribing-to-heart-rate-updates">Subscribing to Heart Rate Updates</option>
+          
+            <option value="heart-rate-sample-periods">Heart Rate Sample Periods</option>
+          
+            <option value="battery-considerations">- Battery Considerations</option>
+          
+            <option value="altering-the-sampling-period">- Altering the Sampling Period</option>
+          
+            <option value="resetting-the-sampling-period">- Resetting the Sampling Period</option>
+          
+            <option value="obtaining-historical-data">Obtaining Historical Data</option>
+          
+            <option value="read-per-minute-history">Read Per-Minute History</option>
+          
+            <option value="next-steps">Next Steps</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Heart Rate Monitor</h1>
+    
+<!-- 
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+    <p>The Pebble Time 2 and Pebble 2 (excluding SE model)
+<a href="/guides/tools-and-resources/hardware-information/"><em>devices</em></a> include a
+heart rate monitor. This guide will demonstrate how to use the <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a>
+API to retrieve information about the user&#39;s current, and historical heart
+rates.</p><p>If you aren&#39;t already familiar with the <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a>, we recommended that
+you read the <a href="/guides/events-and-services/health/"><em>Health guide</em></a>
+before proceeding.</p><h2 id="enable-health-data" class="anchor">Enable Health Data</h2>
+<div class="platform-specific" data-sdk-platform="local">
+<p>Before your application is able to access the heart rate information, you will
+need to add <code>heath</code> to the <code>capabilities</code> array in your applications
+<code>package.json</code> file.</p><div class="highlight"><pre><span class="p">{</span>
+  <span class="p">...</span>
+  <span class="s2">"pebble"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="s2">"capabilities"</span><span class="o">:</span> <span class="p">[</span> <span class="s2">"health"</span> <span class="p">],</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p class="platform-specific" data-sdk-platform="cloudpebble">Before your application is able to access heart rate information, you will
+need to enable the <code>USES HEALTH</code> option in your project settings on
+<a href="" title="" class="">CloudPebble</a>.</p><h2 id="data-quality" class="anchor">Data Quality</h2><p>Heart rate sensors aren&#39;t perfect, and their readings can be affected by
+improper positioning, environmental factors and excessive movement. The raw data
+from the HRM sensor contains a metric to indicate the quality of the readings it
+receives.</p><p>The HRM API provides a raw BPM reading (<a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetricHeartRateRawBPM" title="HealthMetricHeartRateRawBPM" class="link--docs"><code>HealthMetricHeartRateRawBPM</code></a>) and a
+filtered reading (<a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetricHeartRateBPM" title="HealthMetricHeartRateBPM" class="link--docs"><code>HealthMetricHeartRateBPM</code></a>). This filtered value minimizes
+the effect of hand movement and improper sensor placement, by removing the bad
+quality readings. This filtered data makes it easy for developers to integrate
+in their applications, without needing to filter the data themselves.</p><h2 id="obtaining-the-current-heart-rate" class="anchor">Obtaining the Current Heart Rate</h2><p>To obtain the current heart rate, you should first check whether the
+<a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMetricHeartRateBPM" title="HealthMetricHeartRateBPM" class="link--docs"><code>HealthMetricHeartRateBPM</code></a> is available by using the
+<a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_accessible" title="health_service_metric_accessible" class="link--docs"><code>health_service_metric_accessible</code></a> method.</p><p>Then you can obtain the current heart rate using the
+<a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_peek_current_value" title="health_service_peek_current_value" class="link--docs"><code>health_service_peek_current_value</code></a> method:</p><div class="highlight"><pre><span class="n">HealthServiceAccessibilityMask</span> <span class="n">hr</span> <span class="o">=</span> <span class="n">health_service_metric_accessible</span><span class="p">(</span><span class="n">HealthMetricHeartRateBPM</span><span class="p">,</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">hr</span> <span class="o">&amp;</span> <span class="n">HealthServiceAccessibilityMaskAvailable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">HealthValue</span> <span class="n">val</span> <span class="o">=</span> <span class="n">health_service_peek_current_value</span><span class="p">(</span><span class="n">HealthMetricHeartRateBPM</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">val</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Display HRM value</span>
+    <span class="k">static</span> <span class="kt">char</span> <span class="n">s_hrm_buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="n">snprintf</span><span class="p">(</span><span class="n">s_hrm_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_hrm_buffer</span><span class="p">),</span> <span class="s">"%lu BPM"</span><span class="p">,</span> <span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">val</span><span class="p">);</span>
+    <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_hrm_layer</span><span class="p">,</span> <span class="n">s_hrm_buffer</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p><strong>Note</strong> this value is averaged from readings taken over the past minute, but
+due to the <a href="#heart-rate-sample-periods" title="" class="">sampling rate</a> and our data filters,
+this value could be several minutes old. Use <code>HealthMetricHeartRateRawBPM</code> for
+the raw, unfiltered value.</p></blockquote>
+<h2 id="subscribing-to-heart-rate-updates" class="anchor">Subscribing to Heart Rate Updates</h2><p>The user&#39;s heart rate can also be monitored via an event subscription, in a
+similar way to the other health metrics. If you wanted your watchface to update
+the displayed heart rate every time the HRM takes a new reading, you could use
+the <a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_events_subscribe" title="health_service_events_subscribe" class="link--docs"><code>health_service_events_subscribe</code></a> method.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_on_health_data</span><span class="p">(</span><span class="n">HealthEventType</span> <span class="n">type</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// If the update was from the Heart Rate Monitor, query it</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="n">HealthEventHeartRateUpdate</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">HealthValue</span> <span class="n">value</span> <span class="o">=</span> <span class="n">health_service_peek_current_value</span><span class="p">(</span><span class="n">HealthMetricHeartRateBPM</span><span class="p">);</span>
+    <span class="c1">// Display the heart rate</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Subscribe to health event handler</span>
+  <span class="n">health_service_events_subscribe</span><span class="p">(</span><span class="n">prv_on_health_data</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p><strong>Note</strong> The frequency of these updates does not directly correlate to the
+sensor sampling rate.</p></blockquote>
+<h2 id="heart-rate-sample-periods" class="anchor">Heart Rate Sample Periods</h2><p>The default sample period is 10 minutes, but the system automatically controls
+the HRM sample rate based on the level of user activity. It increases the
+sampling rate during intense activity and reduces it again during inactivity.
+This aims to provide the optimal battery usage.</p><h3 id="battery-considerations" class="anchor">Battery Considerations</h3><p>Like all active sensors, accelerometer, backlight etc, the HRM sensor will have
+a negative affect on battery life. It&#39;s important to consider this when using
+the APIs within your application.</p><p>By default the system will automatically control the heart rate sampling period
+for the optimal balance between update frequency and battery usage. In addition,
+the APIs have been designed to allow developers to retrieve values for the most
+common use cases with minimal impact on battery life.</p><h3 id="altering-the-sampling-period" class="anchor">Altering the Sampling Period</h3><p>Developers can request a specific sampling rate using the
+<a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_set_heart_rate_sample_period" title="health_service_set_heart_rate_sample_period" class="link--docs"><code>health_service_set_heart_rate_sample_period</code></a> method. The system will use this
+value as a suggestion, but does not guarantee that value will be used. The
+actual sampling period may be greater or less due to other apps that require
+input from the sensor, or data quality issues.</p><p>The shortest period you can currently specify is <code>1</code> second, and the longest
+period you can specify is <code>600</code> seconds (10 minutes).</p><p>In this example, we will sample the heart rate monitor every second:</p><div class="highlight"><pre><span class="c1">// Set the heart rate monitor to sample every second</span>
+<span class="kt">bool</span> <span class="n">success</span> <span class="o">=</span> <span class="n">health_service_set_heart_rate_sample_period</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+<blockquote>
+<p><strong>Note</strong> This does not mean that you can peek the current value every second,
+only that the sensor will capture more samples.</p></blockquote>
+<h3 id="resetting-the-sampling-period" class="anchor">Resetting the Sampling Period</h3><p>Developers <strong>must</strong> reset the heart rate sampling period when their application
+exits. Failing to do so may result in the heart rate monitor continuing at the
+increased rate for a period of time, even after your application closes. This
+is fundamentally different to other Pebble sensors and was designed so that
+applications which a reliant upon high sampling rates can be temporarily
+interupted for notifications, or music, without affecting the sensor data.</p><div class="highlight"><pre><span class="c1">// Reset the heart rate sampling period to automatic</span>
+<span class="n">health_service_set_heart_rate_sample_period</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</pre></div><h2 id="obtaining-historical-data" class="anchor">Obtaining Historical Data</h2><p>If your application is using heart rate information, it may also want to obtain
+historical data to compare it against. In this section we&#39;ll look at how you can
+use the <code>health_service_aggregate</code> functions to obtain relevant historic data.</p><p>Before requesting historic/aggregate data for a specific time period, you
+should ensure that it is available using the
+<a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_accessible" title="health_service_metric_accessible" class="link--docs"><code>health_service_metric_accessible</code></a> method.</p><p>Then we&#39;ll use the <a href="/docs/c/Foundation/Event_Service/HealthService/#health_service_aggregate_averaged" title="health_service_aggregate_averaged" class="link--docs"><code>health_service_aggregate_averaged</code></a> method to
+obtain the average daily heart rate over the last 7 days.</p><div class="highlight"><pre><span class="c1">// Obtain history for last 7 days</span>
+<span class="kt">time_t</span> <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="kt">time_t</span> <span class="n">start_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="p">(</span><span class="mi">7</span> <span class="o">*</span> <span class="n">SECONDS_PER_DAY</span><span class="p">);</span>
+
+<span class="n">HealthServiceAccessibilityMask</span> <span class="n">hr</span> <span class="o">=</span> <span class="n">health_service_metric_accessible</span><span class="p">(</span><span class="n">HealthMetricHeartRateBPM</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">hr</span> <span class="o">&amp;</span> <span class="n">HealthServiceAccessibilityMaskAvailable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">uint32_t</span> <span class="n">weekly_avg_hr</span> <span class="o">=</span> <span class="n">health_service_aggregate_averaged</span><span class="p">(</span><span class="n">HealthMetricHeartRateBPM</span><span class="p">,</span>
+                              <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span>
+                              <span class="n">HealthAggregationAvg</span><span class="p">,</span> <span class="n">HealthServiceTimeScopeDaily</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>You can also query the average <code>min</code> and <code>max</code> heart rates, but only within the
+past two hours (maximum). This limitation is due to very limited storage
+capacity on the device, but the implementation may change in the future.</p><div class="highlight"><pre><span class="c1">// Obtain history for last 1 hour</span>
+<span class="kt">time_t</span> <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="kt">time_t</span> <span class="n">start_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">SECONDS_PER_HOUR</span><span class="p">;</span>
+
+<span class="n">HealthServiceAccessibilityMask</span> <span class="n">hr</span> <span class="o">=</span> <span class="n">health_service_metric_accessible</span><span class="p">(</span><span class="n">HealthMetricHeartRateBPM</span><span class="p">,</span> <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">hr</span> <span class="o">&amp;</span> <span class="n">HealthServiceAccessibilityMaskAvailable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">uint32_t</span> <span class="n">min_hr</span> <span class="o">=</span> <span class="n">health_service_aggregate_averaged</span><span class="p">(</span><span class="n">HealthMetricHeartRateBPM</span><span class="p">,</span>
+                                <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span>
+                                <span class="n">HealthAggregationMin</span><span class="p">,</span> <span class="n">HealthServiceTimeScopeOnce</span><span class="p">);</span>
+  <span class="kt">uint32_t</span> <span class="n">max_hr</span> <span class="o">=</span> <span class="n">health_service_aggregate_averaged</span><span class="p">(</span><span class="n">HealthMetricHeartRateBPM</span><span class="p">,</span>
+                                <span class="n">start_time</span><span class="p">,</span> <span class="n">end_time</span><span class="p">,</span>
+                                <span class="n">HealthAggregationMax</span><span class="p">,</span> <span class="n">HealthServiceTimeScopeOnce</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="read-per-minute-history" class="anchor">Read Per-Minute History</h2><p>The <a href="/docs/c/Foundation/Event_Service/HealthService/#HealthMinuteData" title="HealthMinuteData" class="link--docs"><code>HealthMinuteData</code></a> structure contains multiple types of activity-related
+data that are recorded in a minute-by-minute fashion. Although this structure
+now contains HRM readings, it does not contain information about the quality of
+those readings.</p>
+<blockquote>
+<p><strong>Note</strong> Please refer to the
+<a href="/guides/events-and-services/health/#read-per-minute-history"><em>Health Guide</em></a>
+for futher information.</p></blockquote>
+<h2 id="next-steps" class="anchor">Next Steps</h2><p>This guide covered the basics of how to interact with realtime and historic
+heart information. We encourage you to further explore the <a href="/docs/c/Foundation/Event_Service/HealthService/" title="HealthService" class="link--docs"><code>HealthService</code></a>
+documentation, and integrate it into your next project.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/events-and-services/hrm/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#enable-health-data">Enable Health Data</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#data-quality">Data Quality</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#obtaining-the-current-heart-rate">Obtaining the Current Heart Rate</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#subscribing-to-heart-rate-updates">Subscribing to Heart Rate Updates</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#heart-rate-sample-periods">Heart Rate Sample Periods</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#battery-considerations">Battery Considerations</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#altering-the-sampling-period">Altering the Sampling Period</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#resetting-the-sampling-period">Resetting the Sampling Period</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#obtaining-historical-data">Obtaining Historical Data</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#read-per-minute-history">Read Per-Minute History</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#next-steps">Next Steps</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Foundation/Event_Service/HealthService/">HealthService</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/watchface-tutorial-hrm" target="_blank">HRM Watchface</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/hrm-activity-example" target="_blank">HRM Activity</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

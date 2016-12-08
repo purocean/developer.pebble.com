@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble Javascript Tips And Tricks // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2013/12/20/Pebble-Javascript-Tips-and-Tricks/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="lint-it">- Lint it!</option>
+          
+            <option value="make-the-best-use-of-your-data-storage">- Make the best use of your data storage</option>
+          
+            <option value="check-for-ack-nack-responses">- Check for ACK/NACK responses</option>
+          
+            <option value="familiarize-yourself-with-the-geolocation-api">- Familiarize yourself with the Geolocation API</option>
+          
+            <option value="double-check-your-strings-for-malformed-data">- Double check your strings for malformed data</option>
+          
+            <option value="use-the-ready-event">- Use the ready event</option>
+          
+            <option value="do-not-use-recurring-timers-such-as-setinterval">- Do not use recurring timers such as setInterval()</option>
+          
+            <option value="identify-users-using-the-pebblekit-js-account-token">- Identify Users using the PebbleKit JS account token</option>
+          
+            <option value="determine-a-user-39-s-timezone-using-a-simple-js-script">- Determine a User&#39;s timezone using a simple JS script</option>
+          
+            <option value="use-the-source">- Use the source!</option>
+          
+            <option value="best-practices-for-the-js-configuration-ui">Best Practices for the JS Configuration UI</option>
+          
+            <option value="immediately-start-loading-your-web-ui">- Immediately start loading your Web UI</option>
+          
+            <option value="apply-mobile-amp-web-best-practices">- Apply mobile &amp; web best practices</option>
+          
+            <option value="be-prepared-for-the-network-to-be-unreachable-during-a-ui-configuration-attempt">- Be prepared for the network to be unreachable during a UI configuration attempt</option>
+          
+            <option value="display-existing-settings">- Display existing settings</option>
+          
+            <option value="name-your-configuration-submission-button-quot-save-quot">- Name your configuration submission button &quot;Save&quot;</option>
+          
+            <option value="prompt-users-to-complete-app-configuration-in-your-pebble-app">- Prompt users to complete app configuration in your Pebble app</option>
+          
+            <option value="questions-more-tips">Questions? More tips?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Pebble Javascript Tips And Tricks</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>20 December 2013</li>
+    <li>team pebble</li>
+    
+    <li>
+      
+        <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
+      
+    </li>
+    <li><a href="/blog/2013/12/20/Pebble-Javascript-Tips-and-Tricks/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p>PebbleKit JavaScript is one of the most popular additions in Pebble SDK 2.0. We are already seeing lots of amazing apps being built that take advantage of http requests, configuration UI, GPS and local storage on the phone.</p><p>Here are some Tips &amp; Tricks to get the most out of JavaScript in your Pebble apps.</p><h3 id="lint-it" class="anchor">Lint it!</h3><p>Use <a href="http://jslint.com/" title="" class="">JSLint</a> (<a href="https://github.com/douglascrockford/JSLint" title="" class="">GitHub</a>) to check that your Javascript is valid. JSLint with default settings has been successful in catching most of the JS errors that have been reported to us.</p><p>If you lint it, there&#39;s a much better chance that your app will run smoothly on both the Android and iOS platforms.</p><h3 id="make-the-best-use-of-your-data-storage" class="anchor">Make the best use of your data storage</h3><p>There are two types of storage that are used with the Pebble, persistent storage and local storage. <a href="/docs/c/Foundation/Storage/" title="Storage" class="link--docs">Persistent storage</a> is available through a C API and saves data on Pebble. <a href="/guides/communication/using-pebblekit-js" title="" class="">Local storage</a> is a JavaScript API and saves data on the phone. These two long-term storage systems are not automatically connected and you will need to use the <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs">AppMessage</a> or <a href="/docs/c/Foundation/AppSync/" title="AppSync" class="link--docs">AppSync</a> API&#39;s to transfer data from one to the other.</p><p>Persistent storage is a key-value storage where the values are limited to 256 bytes and the total space used cannot exceed 4 kb. Persistent storage is not erased when you upgrade the app - but it is erased if you uninstall the app. (Please not that this will be true in Pebble SDK 2.0-BETA4 but was not before).</p><p>Local storage exists on your mobile phone and will persist between app upgrades. It is important that you periodically review the data that your app is storing locally and remove any data that is unneeded or no longer relevant. This can be especially important when your internal app data structures change in an update to your app, as your new code will be expecting data formatted in a deprecated form.</p><p>We strongly recommend that you version your data (adding a key <code>version</code> for example) so that a new version of your app can upgrade the format of your data and erase obsolete data..</p><h3 id="check-for-ack-nack-responses" class="anchor">Check for ACK/NACK responses</h3><p>It is imperative that you check for ACK/NACK responses to your last message between your Pebble and phone before initiating another message. Only one message can be sent at any one time reliably and if you try to send additional messages before ACK/NACK responses are received, you will start seeing failed messages and will have to resend them.</p><p><a href="https://github.com/pebble-examples/pebble-faces/blob/master/src/js/pebble-js-app.js" title="" class="">Pebble-faces</a> is a good example that includes a <code>transferImageBytes()</code> function that sends an image to Pebble, waiting for an ACK after each packet.</p><h3 id="familiarize-yourself-with-the-geolocation-api" class="anchor">Familiarize yourself with the Geolocation API</h3><p>The W3C has <a href="http://www.w3.org/TR/geolocation-API/" title="" class="">extensive documentation</a> on how to use the API, as well as best practices.</p><p>Please be aware that support of this API is dependent on the underlying OS and results may vary wildly depending on the type of phone, OS version and environment of the user. There are situations where you may not get a response right away, you may get cached data, or you may never get a callback from your phone.</p><p>We recommend that you:</p>
+<ul>
+<li>Always pass an error handler to <code>getCurrentPosition()</code> and <code>watchPosition()</code> - and test the error scenarios!</li>
+<li>Set up a timeout (with <code>setTimeout()</code>) when you make a geolocation request. Set it to 5 or 10 seconds and let the user know that something is wrong if the timeout fires before any of the callbacks.</li>
+<li>Take advantage of the different options you can pass to customize the precision and freshness of data.</li>
+<li>Test what happens if you disable location services on Pebble (on iOS, remove or refuse the authorization to get location, or turn off the iPhone&#39;s radio and Wifi ; on Android disable all the location services).</li>
+<li>On your watch app, communicate to the user when the system is looking for geolocation information, and gracefully handle the situation when Geolocation information is not available.</li>
+</ul>
+<h3 id="double-check-your-strings-for-malformed-data" class="anchor">Double check your strings for malformed data</h3><p>Not all valid strings are valid in the context in which they&#39;re used. For instance, spaces in an URL are a bad idea and will throw exceptions. (It may also crash the iOS app in some earlier version of the SDK - Dont do it!) JSLint will not catch errors in quoted strings.</p><h3 id="use-the-ready-event" class="anchor">Use the <code>ready</code> event</h3><p>The <code>ready</code> event is fired when the JS VM is loaded and ready to run. Do not start network request, try to read localstorage, communication with Pebble or perform similar operations before the <code>ready</code> event is fired!</p><p>In practice this means that instead of writing:</p><div class="highlight"><pre><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="s2">"My app has started - Doing stuff..."</span><span class="p">);</span>
+<span class="vg">Pebble</span><span class="o">.</span><span class="vg">showSimpleNotificationOnPebble</span><span class="p">(</span><span class="s2">"BadApp"</span><span class="p">,</span><span class="w"> </span><span class="s2">"I am running!"</span><span class="p">);</span>
+</pre></div><p>You should do:</p><div class="highlight"><pre><span class="vg">Pebble</span><span class="o">.</span><span class="vg">addEventListener</span><span class="p">(</span><span class="s2">"ready"</span><span class="p">,</span><span class="w"> </span><span class="vg">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="s2">"My app has started - Doing stuff..."</span><span class="p">);</span>
+<span class="w">  </span><span class="vg">Pebble</span><span class="o">.</span><span class="vg">showSimpleNotificationOnPebble</span><span class="p">(</span><span class="s2">"BadApp"</span><span class="p">,</span><span class="w"> </span><span class="s2">"I am running!"</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div><h3 id="do-not-use-recurring-timers-such-as-setinterval" class="anchor">Do not use recurring timers such as setInterval()</h3><p>Your Pebble JavaScript can be killed at any time and you should not rely on it to provide long running services. In the future we may also limit the running time of your app and/or limit the use of intervals.</p><p>Follow these guidelines to get the most out of long running apps:</p>
+<ul>
+<li>Design your app so that it can be killed at any time. Save any important configuration or state in local storage when you get it - and reload it in the <code>ready</code> event.</li>
+<li>If you need some function to run at regular intervals, set a timer on Pebble and send a message to the JavaScript. If the JavaScript is dead, the mobile app will re-initialize it and run the message handler.</li>
+<li>Do not use <code>setInterval()</code>. And of course, do not use <code>setTimeout()</code> to simulate intervals.</li>
+</ul>
+<h3 id="identify-users-using-the-pebblekit-js-account-token" class="anchor">Identify Users using the PebbleKit JS account token</h3><p>PebbleKit JavaScript provides a unique account token that is associated with the Pebble account of the current user. The account token is a string that is guaranteed to be identical across devices that belong to the user, but is unique to your app and cannot be used to track users across applications.</p><p>If the user is not logged in, the function will return an empty string (&quot;&quot;). The account token can be accessed via the <code>Pebble.getAccountToken()</code> function call.</p><p>Please note that PebbleKit JavaScript does not have access to the serial number of the Pebble connected.</p><h3 id="determine-a-user-39-s-timezone-using-a-simple-js-script" class="anchor">Determine a User&#39;s timezone using a simple JS script</h3><p>Pebble does not support timezones yet so when Pebble syncs the current time with your phone, it retrieves your local time and stores the local time as a GMT time (ex. 9AM PST -&gt; 9AM GMT), regardless of where you are located in the world.</p><p>If you need to get the current timezone in your app, you can use this simple JavaScript code snippet:</p><div class="highlight"><pre><span class="vg">function</span><span class="w"> </span><span class="vg">sendTimezoneToWatch</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="vg">Get</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">number</span><span class="w"> </span><span class="vg">of</span><span class="w"> </span><span class="vg">seconds</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">add</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">convert</span><span class="w"> </span><span class="vg">localtime</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">utc</span>
+<span class="w">  </span><span class="vg">var</span><span class="w"> </span><span class="vg">offsetMinutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">Date</span><span class="p">()</span><span class="o">.</span><span class="vg">getTimezoneOffset</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="il">60</span><span class="p">;</span>
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="vg">Send</span><span class="w"> </span><span class="vg">it</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">watch</span>
+<span class="w">  </span><span class="vg">Pebble</span><span class="o">.</span><span class="vg">sendAppMessage</span><span class="p">({</span><span class="w"> </span><span class="nl">timezoneOffset:</span><span class="w"> </span><span class="vg">offsetMinutes</span><span class="w"> </span><span class="p">})</span>
+<span class="p">}</span>
+</pre></div><p>You will need to assign a value to the <code>timezoneOffset</code> appKey in your <code>appinfo.json</code>:</p><div class="highlight"><pre><span class="p">{</span>
+<span class="w">  </span><span class="o">...</span>
+<span class="w">  </span><span class="s2">"appKeys"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">"timezoneOffset"</span><span class="o">:</span><span class="w"> </span><span class="il">42</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="o">...</span>
+<span class="p">}</span>
+</pre></div><p>And this is how you would use it on Pebble:</p><div class="highlight"><pre><span class="err">#</span><span class="vg">define</span><span class="w"> </span><span class="vg">KEY_TIMEZONE_OFFSET</span><span class="w"> </span><span class="il">42</span>
+
+<span class="vg">static</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="vg">appmsg_in_received</span><span class="p">(</span><span class="vg">DictionaryIterator</span><span class="w"> </span><span class="o">*</span><span class="vg">received</span><span class="p">,</span><span class="w"> </span><span class="vg">void</span><span class="w"> </span><span class="o">*</span><span class="vg">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="vg">Tuple</span><span class="w"> </span><span class="o">*</span><span class="vg">timezone_offset_tuple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">dict_find</span><span class="p">(</span><span class="vg">received</span><span class="p">,</span><span class="w"> </span><span class="vg">KEY_TIMEZONE_OFFSET</span><span class="p">);</span>
+
+<span class="w">  </span><span class="vg">if</span><span class="w"> </span><span class="p">(</span><span class="vg">timezone_offset_tuple</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="vg">int32_t</span><span class="w"> </span><span class="vg">timezone_offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">timezone_offset_tuple</span><span class="o">-&gt;</span><span class="vg">value</span><span class="o">-&gt;</span><span class="vg">int32</span><span class="p">;</span>
+
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="vg">Calculate</span><span class="w"> </span><span class="vg">UTC</span><span class="w"> </span><span class="vg">time</span>
+<span class="w">    </span><span class="vg">time_t</span><span class="w"> </span><span class="vg">local</span><span class="p">,</span><span class="w"> </span><span class="vg">utc</span><span class="p">;</span>
+<span class="w">    </span><span class="vg">time</span><span class="p">(</span><span class="o">&amp;</span><span class="vg">local</span><span class="p">);</span>
+<span class="w">    </span><span class="vg">utc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">local</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vg">timezone_offset</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="use-the-source" class="anchor">Use the source!</h3><p>We have a growing number of JS examples in the SDK and in our <a href="https://github.com/pebble-hacks" title="" class=""><code>pebble-hacks</code></a> GitHub account. Check them out!</p><p>You can also <a href="https://github.com/search?l=&q=Pebble.addEventListener+in%3Afile&ref=advsearch&type=Code" title="" class="">search for <code>Pebble.addEventListener</code> on GitHub</a> to find more open-source examples.</p><h2 id="best-practices-for-the-js-configuration-ui" class="anchor">Best Practices for the JS Configuration UI</h2><p>The new configuration UI allows you to display a webview on the phone to configure your Pebble watchface or app. Here are some specific recommendations to development of that UI.</p><p>If you have not read it yet, you might want to take a look at our <a href="/blog/2013/11/21/Using-PebbleKit-JS-Configuration/" title="" class="">Using PebbleKit JS for Configuration</a> blog post.</p><h3 id="immediately-start-loading-your-web-ui" class="anchor">Immediately start loading your Web UI</h3><p>To avoid confusion, make sure UI elements are displayed immediately after the user clicks on settings. This means you should not do any http request or complex processing before calling <code>Pebble.openURL()</code> when you get the <code>showConfiguration</code> event:</p><div class="highlight"><pre><span class="vg">Pebble</span><span class="o">.</span><span class="vg">addEventListener</span><span class="p">(</span><span class="s2">"showConfiguration"</span><span class="p">,</span><span class="w"> </span><span class="vg">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="vg">Pebble</span><span class="o">.</span><span class="vg">openURL</span><span class="p">(</span><span class="c1">'http://www.example.com/mypebbleurl');</span>
+<span class="p">});</span>
+</pre></div><p>If the UI rendering is delayed, the user will get no feedbacks for their action (a press on the configure icon) and this would result in a poor user experience.</p><h3 id="apply-mobile-amp-web-best-practices" class="anchor">Apply mobile &amp; web best practices</h3><p>There is a lot of information on the web on how to build webpages that display nicely on mobile devices. iOS and Android both use WebKit based browsers which makes things easier, but it is safe to assume that you will never get the exact same look - and you will always need to test on both platforms. Even if you do not own both devices, you can use the built-in browser in the iOS or Android emulators to test your configuration webpage.</p><p>Also consider using framework such as <a href="http://jquerymobile.com/" title="" class="">JQuery Mobile</a> or <a href="http://www.sencha.com/products/touch/" title="" class="">Sencha Touch</a> to make your life easier. They provide easy to use components and page templates. If you do not want to write any html, <a href="http://www.setpebble.com" title="" class="">setpebble.com</a> is another great option that we have <a href="/blog/2013/12/02/SetPebble-By-Matt-Clark/" title="" class="">discussed on the blog</a> previously.</p><h3 id="be-prepared-for-the-network-to-be-unreachable-during-a-ui-configuration-attempt" class="anchor">Be prepared for the network to be unreachable during a UI configuration attempt</h3><p>UI configuration HTML is not stored locally on the phone and must be accessed from a hosted server. This introduces situations where a user&#39;s phone may not be connected to the network successfully, or your server may be unreachable, in which case the UI configuration screen will not load.</p><p>In this scenario, a user will likely cancel the configuration load, which means a blank string is returned to your application <code>webviewclosed</code> event. Your watchapp should be designed to handle this such that the watchapp does not erase all settings or crash.</p><h3 id="display-existing-settings" class="anchor">Display existing settings</h3><p>When displaying your configuration UI, remember to pass existing settings to the webview and use them to pre-populate the UI!</p><h3 id="name-your-configuration-submission-button-quot-save-quot" class="anchor">Name your configuration submission button &quot;Save&quot;</h3><p>If you want to ensure that the settings a user has entered are saved correctly, make sure you call your button <em>Save</em> so users understand that it is required to save data. If your configuration page is long, consider putting the <em>Save</em> button at both the top and bottom of the page.</p><p>If the user clicks the Exit button (X), a blank string will be passed back to your application. You should be prepared to handle a blank string should a user decide to cancel the configuration process.</p><h3 id="prompt-users-to-complete-app-configuration-in-your-pebble-app" class="anchor">Prompt users to complete app configuration in your Pebble app</h3><p>Users may not be aware that they need to complete a configuration for your watchapp. It is best to advise users in the watchface or watchapp to go to their phone and configure your app before proceeding.</p><p>Use persistent storage or local storage to save a token indicating the user has completed configuration, and consider putting a version string in, to allow you to track which version of your configuration webpage the user has accessed (to assist future upgrades of your app).</p><h2 id="questions-more-tips" class="anchor">Questions? More tips?</h2><p>Have more questions? Or want to share more tips? Please post them in the comments below!</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2013/12/20/Pebble-Javascript-Tips-and-Tricks/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level2"><a href="#lint-it">Lint it!</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#make-the-best-use-of-your-data-storage">Make the best use of your data storage</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#check-for-ack-nack-responses">Check for ACK/NACK responses</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#familiarize-yourself-with-the-geolocation-api">Familiarize yourself with the Geolocation API</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#double-check-your-strings-for-malformed-data">Double check your strings for malformed data</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#use-the-ready-event">Use the ready event</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#do-not-use-recurring-timers-such-as-setinterval">Do not use recurring timers such as setInterval()</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#identify-users-using-the-pebblekit-js-account-token">Identify Users using the PebbleKit JS account token</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#determine-a-user-39-s-timezone-using-a-simple-js-script">Determine a User&#39;s timezone using a simple JS script</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#use-the-source">Use the source!</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#best-practices-for-the-js-configuration-ui">Best Practices for the JS Configuration UI</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#immediately-start-loading-your-web-ui">Immediately start loading your Web UI</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#apply-mobile-amp-web-best-practices">Apply mobile &amp; web best practices</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#be-prepared-for-the-network-to-be-unreachable-during-a-ui-configuration-attempt">Be prepared for the network to be unreachable during a UI configuration attempt</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#display-existing-settings">Display existing settings</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#name-your-configuration-submission-button-quot-save-quot">Name your configuration submission button &quot;Save&quot;</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#prompt-users-to-complete-app-configuration-in-your-pebble-app">Prompt users to complete app configuration in your Pebble app</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#questions-more-tips">Questions? More tips?</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                <strong>Beautiful Code</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

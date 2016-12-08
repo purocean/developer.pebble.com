@@ -1,0 +1,2541 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Smartstrap // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/c/Smartstrap/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/c/">Pebble C API</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Foundation/">Foundation</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App/"><span>App</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Communication/"><span>App Communication</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/App_Glance/"><span>App Glance</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppMessage/"><span>AppMessage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppSync/"><span>AppSync</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/AppWorker/"><span>AppWorker</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataLogging/"><span>DataLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/DataStructures/"><span>DataStructures</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/DataStructures/UUID/"><span>UUID</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictation/"><span>Dictation</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Dictionary/"><span>Dictionary</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Event_Service/"><span>Event Service</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AccelerometerService/"><span>AccelerometerService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/AppFocusService/"><span>AppFocusService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/BatteryStateService/"><span>BatteryStateService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/CompassService/"><span>CompassService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/ConnectionService/"><span>ConnectionService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/HealthService/"><span>HealthService</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Event_Service/TickTimerService/"><span>TickTimerService</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Exit_Reason/"><span>Exit Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Internationalization/"><span>Internationalization</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Launch_Reason/"><span>Launch Reason</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Logging/"><span>Logging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Memory_Management/"><span>Memory Management</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Platform/"><span>Platform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Resources/"><span>Resources</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Foundation/Resources/File_Formats/"><span>File Formats</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Storage/"><span>Storage</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Timer/"><span>Timer</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wakeup/"><span>Wakeup</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Wall_Time/"><span>Wall Time</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/WatchInfo/"><span>WatchInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Foundation/Rocky/"><span>Rocky</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Graphics/">Graphics</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Draw_Commands/"><span>Draw Commands</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Paths/"><span>Drawing Paths</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Primitives/"><span>Drawing Primitives</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Drawing_Text/"><span>Drawing Text</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Fonts/"><span>Fonts</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Context/"><span>Graphics Context</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Graphics/Graphics_Types/"><span>Graphics Types</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/"><span>Color Definitions</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/User_Interface/">User Interface</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Animation/"><span>Animation</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Animation/PropertyAnimation/"><span>PropertyAnimation</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Clicks/"><span>Clicks</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Layers/"><span>Layers</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ActionBarLayer/"><span>ActionBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/BitmapLayer/"><span>BitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/MenuLayer/"><span>MenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/RotBitmapLayer/"><span>RotBitmapLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/ScrollLayer/"><span>ScrollLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/"><span>SimpleMenuLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/StatusBarLayer/"><span>StatusBarLayer</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Layers/TextLayer/"><span>TextLayer</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Light/"><span>Light</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Preferences/"><span>Preferences</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/UnobstructedArea/"><span>UnobstructedArea</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Vibes/"><span>Vibes</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window/"><span>Window</span></a>
+        
+        <ul>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/ActionMenu/"><span>ActionMenu</span></a></li>
+          
+          
+            <li class="section-menu__subsubitem"><a href="/docs/c/User_Interface/Window/NumberWindow/"><span>NumberWindow</span></a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/User_Interface/Window_Stack/"><span>Window Stack</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li class="section-menu__item">
+    <a href="/docs/c/Standard_C/">Standard C</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Format/"><span>Format</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Locale/"><span>Locale</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Math/"><span>Math</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Memory/"><span>Memory</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/String/"><span>String</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/c/Standard_C/Time/"><span>Time</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-11">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          <option value="">Jump to item&hellip;</option>
+          
+
+          
+<option value="#functions">FUNCTIONS</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_subscribe">smartstrap_subscribe</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_unsubscribe">smartstrap_unsubscribe</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_set_timeout">smartstrap_set_timeout</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_attribute_create">smartstrap_attribute_create</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_attribute_destroy">smartstrap_attribute_destroy</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_service_is_available">smartstrap_service_is_available</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_attribute_get_service_id">smartstrap_attribute_get_service_id</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_attribute_get_attribute_id">smartstrap_attribute_get_attribute_id</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_attribute_read">smartstrap_attribute_read</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_attribute_begin_write">smartstrap_attribute_begin_write</option>
+
+  <option value="/docs/c/Smartstrap/#smartstrap_attribute_end_write">smartstrap_attribute_end_write</option>
+
+
+
+          
+<option value="#structs">DATA STRUCTURES</option>
+
+  <option value="/docs/c/Smartstrap/#SmartstrapHandlers">SmartstrapHandlers</option>
+
+
+
+          
+
+          
+<option value="#enums">ENUMS</option>
+
+  <option value="/docs/c/Smartstrap/#SmartstrapResult">SmartstrapResult</option>
+
+
+
+          
+<option value="#typedefs">TYPEDEFS</option>
+
+  <option value="/docs/c/Smartstrap/#SmartstrapServiceId">SmartstrapServiceId</option>
+
+  <option value="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</option>
+
+  <option value="/docs/c/Smartstrap/#SmartstrapAttributeId">SmartstrapAttributeId</option>
+
+  <option value="/docs/c/Smartstrap/#SmartstrapServiceAvailabilityHandler">SmartstrapServiceAvailabilityHandler</option>
+
+  <option value="/docs/c/Smartstrap/#SmartstrapReadHandler">SmartstrapReadHandler</option>
+
+  <option value="/docs/c/Smartstrap/#SmartstrapWriteHandler">SmartstrapWriteHandler</option>
+
+  <option value="/docs/c/Smartstrap/#SmartstrapNotifyHandler">SmartstrapNotifyHandler</option>
+
+
+
+          
+<option value="#defines">MACRO DEFINTIONS</option>
+
+  <option value="/docs/c/Smartstrap/#SMARTSTRAP_TIMEOUT_DEFAULT">SMARTSTRAP_TIMEOUT_DEFAULT</option>
+
+  <option value="/docs/c/Smartstrap/#SMARTSTRAP_RAW_DATA_SERVICE_ID">SMARTSTRAP_RAW_DATA_SERVICE_ID</option>
+
+  <option value="/docs/c/Smartstrap/#SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID">SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID</option>
+
+  <option value="/docs/c/Smartstrap/#PBL_IF_SMARTSTRAP_ELSE">PBL_IF_SMARTSTRAP_ELSE</option>
+
+
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-1">
+    <a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white fa-lg" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false"><i class="fa fa-question-circle"></i></a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8">
+    <div class="documentation documentation__c">
+
+      
+
+      
+
+      <h1 class="pagetitle">Smartstrap</h1>
+
+      <p>Communicating with a Smartstrap. </p>
+      <p>Smartstrap APIs allow Pebble watches to communicate with electronics connected to the watch through the accessory port.</p>
+<p>Apps communicate with smartstraps by manipulating the attributes which the smartstrap supports or by reading and writing raw data using the raw data attribute (see <a refid="group___smartstrap_1ga4474a7976feaad01871ea8bd3f8ee2f6" kindref="member" href="/docs/c/Smartstrap/#SMARTSTRAP_RAW_DATA_SERVICE_ID">SMARTSTRAP_RAW_DATA_SERVICE_ID</a> and <a refid="group___smartstrap_1ga65820921e9784db17cfe8d5deef8f058" kindref="member" href="/docs/c/Smartstrap/#SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID">SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID</a>). A service is a collection of attributes which may be supported by a smartstrap. Once a smartstrap is connected, the availability handler will be called (if subscribed) for each service which is supported by the smartstrap. Then, the app may make read and write requests to attributes within that service on the smartstrap.</p>
+<p>Performing a read request on an attribute will cause the did_read handler to be called for the attribute when either a valid response is received from the smartstrap, or some error (i.e. a timeout) occurs.</p>
+<p>Performing a write request on an attribute will cause the did_write handler to be called for the attribute when the write is completed or an error occurs.</p>
+<p>When either the first attribute is created (see <a refid="group___smartstrap_1ga5465f56e748afa55ba3fb9fda145259e" kindref="member" href="/docs/c/Smartstrap/#smartstrap_attribute_create">smartstrap_attribute_create</a>), or an availability_did_change handler is subscribed (see <a refid="group___smartstrap_1ga5a78e451bd596692e0affbdcc01eae50" kindref="member" href="/docs/c/Smartstrap/#smartstrap_subscribe">smartstrap_subscribe</a>), whichever comes first, power will be applied to the smartstrap, and connection establishment will begin. As part of the connection establishment, the smartstrap will report the services which it supports, at which point the smartstrap APIs will report them as being available and allow requests to be issued. If all created attributes are destroyed (see <a refid="group___smartstrap_1ga078a16b08dbc08080358cbea3dab6a86" kindref="member" href="/docs/c/Smartstrap/#smartstrap_attribute_destroy">smartstrap_attribute_destroy</a>) and the availability_did_change handler is unsubscribed (see <a refid="group___smartstrap_1ga7ebbfcea4142202197d8595f04aee9fc" kindref="member" href="/docs/c/Smartstrap/#smartstrap_unsubscribe">smartstrap_unsubscribe</a>), power will no longer be applied to the smartstrap and the services which it supported will no longer be available.</p>
+<p>Multiple attributes may have a read or write request pending at any given time, but individual attributes may only have a single request (either read or write) pending at any given time.</p>
+<p>Calls made to <a refid="group___smartstrap_1ga5465f56e748afa55ba3fb9fda145259e" kindref="member" href="/docs/c/Smartstrap/#smartstrap_attribute_create">smartstrap_attribute_create</a> on a platform that does not support smartstraps will return NULL. Other calls will do nothing, and return SmartstrapResultNotPresent if possible.</p>
+<p>For code samples, a list of available attributes, and technical details of the Smartstrap protocol, see the <a href="//developer.getpebble.com/guides/hardware/">Building Smartstraps Guide</a>. </p>
+
+      
+
+      
+
+
+      
+
+      
+        <h2 class="anchor" id="functions">Function<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="smartstrap_subscribe">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_subscribe</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___smartstrap_1ga84dc8e008822a759ff6823c06829ac8a" kindref="member" href="/docs/c/Smartstrap/#SmartstrapResult">SmartstrapResult</a> </span><span class="docs__item__name">smartstrap_subscribe</span><span>(</span><span class="docs__item__param"><a refid="struct_smartstrap_handlers" kindref="compound" href="/docs/c/Smartstrap/#SmartstrapHandlers">SmartstrapHandlers</a> handlers</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Subscribes handlers to be called after certain smartstrap events occur. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Registering an availability_did_change handler will cause power to be applied to the smartstrap port and connection establishment to begin. </p>
+  </div>
+
+
+    
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>SmartstrapResultNotPresent</code> if the watch does not have a smartstrap port or <code>SmartstrapResultOk</code> otherwise. </p>
+  
+
+
+    
+  <h4>See Also</h4>
+  <a refid="group___smartstrap_1ga7ebbfcea4142202197d8595f04aee9fc" kindref="member" href="/docs/c/Smartstrap/#smartstrap_unsubscribe">smartstrap_unsubscribe</a>
+
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_unsubscribe">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_unsubscribe</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">smartstrap_unsubscribe</span><span>(</span><span class="docs__item__param">void</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Unsubscribes the handlers. The handlers will no longer be called, but in-flight requests will otherwise be unaffected. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>If power was being applied to the smartstrap port and there are no attributes have been created (or they have all been destroyed), this will cause the smartstrap power to be turned off. </p>
+  </div>
+
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_set_timeout">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_set_timeout</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">smartstrap_set_timeout</span><span>(</span><span class="docs__item__param"><a refid="group___standard_c_1gabf6633e0fef9023e8a1e8d727f4023e1" kindref="member" href="/docs/c/Standard_C/#uint16_t">uint16_t</a> timeout_ms</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Changes the value of the timeout which is used for smartstrap requests. This timeout is started after the request is completely sent to the smartstrap and will be canceled only if the entire response is received before it triggers. The new timeout value will take affect only for requests made after this API is called. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>The maximum allowed timeout is currently 1000ms. If a larger value is passed, it will be internally lowered to the maximum. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> timeout_ms</dt>
+  <dd><p>The duration of the timeout to set, in milliseconds. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+  <h4>See Also</h4>
+  <a refid="group___smartstrap_1ga6c7eaabf882a7666ff5a541644bb74c5" kindref="member" href="/docs/c/Smartstrap/#SMARTSTRAP_TIMEOUT_DEFAULT">SMARTSTRAP_TIMEOUT_DEFAULT</a>
+
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_attribute_create">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_attribute_create</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___smartstrap_1ga4ea96ce94fb4765d39d9c70eff321569" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</a> * </span><span class="docs__item__name">smartstrap_attribute_create</span><span>(</span><span class="docs__item__param"><a refid="group___smartstrap_1ga1ce83768c0652417bf8d273223655b0c" kindref="member" href="/docs/c/Smartstrap/#SmartstrapServiceId">SmartstrapServiceId</a> service_id</span><span>, </span><span class="docs__item__param"><a refid="group___smartstrap_1gabbc436295eaf481c9358813990f85330" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttributeId">SmartstrapAttributeId</a> attribute_id</span><span>, </span><span class="docs__item__param"><a refid="group___standard_memory_1ga7b60c5629e55e8ec87a4547dd4abced4" kindref="member" href="/docs/c/Standard_C/Memory/#size_t">size_t</a> buffer_length</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Creates and returns a SmartstrapAttribute for the specified service and attribute. This API will allocate an internal buffer of the requested length on the app's heap. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Creating an attribute will result in power being applied to the smartstrap port (if it isn't already) and connection establishment to begin. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> service_id</dt>
+  <dd><p>The ServiceId to create the attribute for. </p></dt>
+  
+  <dt><span style="color: #777"></span> attribute_id</dt>
+  <dd><p>The AttributeId to create the attribute for. </p></dt>
+  
+  <dt><span style="color: #777"></span> buffer_length</dt>
+  <dd><p>The length of the internal buffer which will be used to store the read and write requests for this attribute. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The newly created SmartstrapAttribute or NULL if an internal error occured or if the specified length is greater than SMARTSTRAP_ATTRIBUTE_LENGTH_MAXIMUM. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_attribute_destroy">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_attribute_destroy</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>void </span><span class="docs__item__name">smartstrap_attribute_destroy</span><span>(</span><span class="docs__item__param"><a refid="group___smartstrap_1ga4ea96ce94fb4765d39d9c70eff321569" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</a> * attribute</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Destroys a SmartstrapAttribute. No further handlers will be called for this attribute and it may not be used for any future requests. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>If power was being applied to the smartstrap port, no availability_did_change handler is subscribed, and the last attribute is being destroyed, this will cause the smartstrap power to be turned off. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> attribute (in)</dt>
+  <dd><p>The SmartstrapAttribute which should be destroyed. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_service_is_available">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_service_is_available</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span>bool </span><span class="docs__item__name">smartstrap_service_is_available</span><span>(</span><span class="docs__item__param"><a refid="group___smartstrap_1ga1ce83768c0652417bf8d273223655b0c" kindref="member" href="/docs/c/Smartstrap/#SmartstrapServiceId">SmartstrapServiceId</a> service_id</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Checks whether or not the specified service is currently supported by a connected smartstrap. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> service_id</dt>
+  <dd><p>The SmartstrapServiceId of the service to check for availability. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>Whether or not the service is available. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_attribute_get_service_id">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_attribute_get_service_id</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___smartstrap_1ga1ce83768c0652417bf8d273223655b0c" kindref="member" href="/docs/c/Smartstrap/#SmartstrapServiceId">SmartstrapServiceId</a> </span><span class="docs__item__name">smartstrap_attribute_get_service_id</span><span>(</span><span class="docs__item__param"><a refid="group___smartstrap_1ga4ea96ce94fb4765d39d9c70eff321569" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</a> * attribute</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Returns the ServiceId which the attribute was created for (see <a refid="group___smartstrap_1ga5465f56e748afa55ba3fb9fda145259e" kindref="member" href="/docs/c/Smartstrap/#smartstrap_attribute_create">smartstrap_attribute_create</a>). </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> attribute</dt>
+  <dd><p>The SmartstrapAttribute for which to obtain the service ID. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The SmartstrapServiceId which the attribute was created with. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_attribute_get_attribute_id">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_attribute_get_attribute_id</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___smartstrap_1gabbc436295eaf481c9358813990f85330" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttributeId">SmartstrapAttributeId</a> </span><span class="docs__item__name">smartstrap_attribute_get_attribute_id</span><span>(</span><span class="docs__item__param"><a refid="group___smartstrap_1ga4ea96ce94fb4765d39d9c70eff321569" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</a> * attribute</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Gets the AttributeId which the attribute was created for (see <a refid="group___smartstrap_1ga5465f56e748afa55ba3fb9fda145259e" kindref="member" href="/docs/c/Smartstrap/#smartstrap_attribute_create">smartstrap_attribute_create</a>). </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> attribute</dt>
+  <dd><p>The SmartstrapAttribute for which to obtain the attribute ID. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p>The SmartstrapAttributeId which the attribute was created with. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_attribute_read">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_attribute_read</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___smartstrap_1ga84dc8e008822a759ff6823c06829ac8a" kindref="member" href="/docs/c/Smartstrap/#SmartstrapResult">SmartstrapResult</a> </span><span class="docs__item__name">smartstrap_attribute_read</span><span>(</span><span class="docs__item__param"><a refid="group___smartstrap_1ga4ea96ce94fb4765d39d9c70eff321569" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</a> * attribute</span><span></span><span>)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Performs a read request for the specified attribute. The <code>did_read</code> callback will be called when the response is received from the smartstrap or when an error occurs. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> attribute</dt>
+  <dd><p>The attribute to be perform the read request on. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>SmartstrapResultOk</code> if the read operation was started. The <code>did_read</code> callback will be called once the read request has been completed. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_attribute_begin_write">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_attribute_begin_write</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___smartstrap_1ga84dc8e008822a759ff6823c06829ac8a" kindref="member" href="/docs/c/Smartstrap/#SmartstrapResult">SmartstrapResult</a> </span><span class="docs__item__name">smartstrap_attribute_begin_write</span><span>(</span><span class="docs__item__param"><a refid="group___smartstrap_1ga4ea96ce94fb4765d39d9c70eff321569" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</a> * attribute</span><span>, </span><span class="docs__item__param">uint8_t ** buffer</span><span>, </span><span class="docs__item__param"><a refid="group___standard_memory_1ga7b60c5629e55e8ec87a4547dd4abced4" kindref="member" href="/docs/c/Standard_C/Memory/#size_t">size_t</a> * buffer_length</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Begins a write request for the specified attribute and returns a buffer into which the app should write the data before calling smartstrap_attribute_end_write. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>The buffer must not be used after smartstrap_attribute_end_write is called. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> attribute (in)</dt>
+  <dd><p>The attribute to begin writing for. </p></dt>
+  
+  <dt><span style="color: #777"></span> buffer (out)</dt>
+  <dd><p>The buffer to write the data into. </p></dt>
+  
+  <dt><span style="color: #777"></span> buffer_length (out)</dt>
+  <dd><p>The length of the buffer in bytes. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>SmartstrapResultOk</code> if a write operation was started and the <code>buffer</code> and <code>buffer_length</code> parameters were set, or an error otherwise. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="smartstrap_attribute_end_write">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The function <strong>smartstrap_attribute_end_write</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--function">
+  <div class="docs__item__header">
+    <span><a refid="group___smartstrap_1ga84dc8e008822a759ff6823c06829ac8a" kindref="member" href="/docs/c/Smartstrap/#SmartstrapResult">SmartstrapResult</a> </span><span class="docs__item__name">smartstrap_attribute_end_write</span><span>(</span><span class="docs__item__param"><a refid="group___smartstrap_1ga4ea96ce94fb4765d39d9c70eff321569" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</a> * attribute</span><span>, </span><span class="docs__item__param"><a refid="group___standard_memory_1ga7b60c5629e55e8ec87a4547dd4abced4" kindref="member" href="/docs/c/Standard_C/Memory/#size_t">size_t</a> write_length</span><span>, </span><span class="docs__item__param">bool request_read</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>This should be called by the app when it is done writing to the buffer provided by smartstrap_begin_write and the data is ready to be sent to the smartstrap. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> attribute (in)</dt>
+  <dd><p>The attribute to begin writing for. </p></dt>
+  
+  <dt><span style="color: #777"></span> write_length</dt>
+  <dd><p>The length of the data to be written, in bytes. </p></dt>
+  
+  <dt><span style="color: #777"></span> request_read</dt>
+  <dd><p>Whether or not a read request on this attribute should be automatically triggered following a successful write request. </p></dt>
+  
+</dl>
+
+
+    
+  <h4>Returns</h4>
+  
+    <p><code>SmartstrapResultOk</code> if a write operation was queued to be sent to the smartstrap. The <code>did_write</code> handler will be called when the request is written to the smartstrap, and if <code>request_read</code> was set to true, the <code>did_read</code> handler will be called when the read is complete. </p>
+  
+
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="structs">Data Structure<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="SmartstrapHandlers">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The struct <strong>SmartstrapHandlers</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--struct">
+  <div class="docs__item__header">struct <span class="docs__item__name">SmartstrapHandlers</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Handlers which are passed to smartstrap_subscribe. </p>
+</div>
+
+
+    
+
+    
+
+    <h4>Data Fields</h4>
+    <dl>
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___smartstrap_1gad58e09e55f7bbf0a2dcc00295fcd5d66" kindref="member" href="/docs/c/Smartstrap/#SmartstrapServiceAvailabilityHandler">SmartstrapServiceAvailabilityHandler</a></type></span> availability_did_change</dt>
+      <dd><p>The connection handler is called after the connection state changes. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___smartstrap_1gab1a52470270a95939e75937cd6197210" kindref="member" href="/docs/c/Smartstrap/#SmartstrapReadHandler">SmartstrapReadHandler</a></type></span> did_read</dt>
+      <dd><p>The read handler is called whenever a read is complete or the read times-out. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___smartstrap_1gaeb114beb6e28ba7458ad9aa296d46825" kindref="member" href="/docs/c/Smartstrap/#SmartstrapWriteHandler">SmartstrapWriteHandler</a></type></span> did_write</dt>
+      <dd><p>The did_write handler is called when a write has completed. </p>
+      </dt>
+      
+
+      
+      
+      
+      
+      <dt><span style="color: #777"><type><a refid="group___smartstrap_1ga9313158f3cee09852d99791b0131eb5f" kindref="member" href="/docs/c/Smartstrap/#SmartstrapNotifyHandler">SmartstrapNotifyHandler</a></type></span> notified</dt>
+      <dd><p>The notified handler is called whenever a notification is received for an attribute. </p>
+      </dt>
+      
+
+      
+      
+    </dl>
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+      
+
+      
+
+      
+        <h2 class="anchor" id="enums">Enum<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="SmartstrapResult">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The enum <strong>SmartstrapResult</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--enum">
+  <div class="docs__item__header">enum <span class="docs__item__name">SmartstrapResult</span></div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Error values which may be returned from the smartstrap APIs. </p>
+</div>
+
+
+    
+
+    
+
+    
+    <h4>Enumerators</h4>
+    
+    <dl>
+      
+      <span id="SmartstrapResultOk" class="docs__item__anchor"></span>
+      
+        <dt>SmartstrapResultOk</dt>
+        <dd>
+          
+          <p>No error occured. </p>
+        </dd>
+      
+      
+      <span id="SmartstrapResultInvalidArgs" class="docs__item__anchor"></span>
+      
+        <dt>SmartstrapResultInvalidArgs</dt>
+        <dd>
+          
+          <p>Invalid function arguments were supplied. </p>
+        </dd>
+      
+      
+      <span id="SmartstrapResultNotPresent" class="docs__item__anchor"></span>
+      
+        <dt>SmartstrapResultNotPresent</dt>
+        <dd>
+          
+          <p>The smartstrap port is not present on this watch. </p>
+        </dd>
+      
+      
+      <span id="SmartstrapResultBusy" class="docs__item__anchor"></span>
+      
+        <dt>SmartstrapResultBusy</dt>
+        <dd>
+          
+          <p>A request is already pending on the specified attribute. </p>
+        </dd>
+      
+      
+      <span id="SmartstrapResultServiceUnavailable" class="docs__item__anchor"></span>
+      
+        <dt>SmartstrapResultServiceUnavailable</dt>
+        <dd>
+          
+          <p>Either a smartstrap is not connected or the connected smartstrap does not support the specified service. </p>
+        </dd>
+      
+      
+      <span id="SmartstrapResultAttributeUnsupported" class="docs__item__anchor"></span>
+      
+        <dt>SmartstrapResultAttributeUnsupported</dt>
+        <dd>
+          
+          <p>The smartstrap reported that it does not support the requested attribute. </p>
+        </dd>
+      
+      
+      <span id="SmartstrapResultTimeOut" class="docs__item__anchor"></span>
+      
+        <dt>SmartstrapResultTimeOut</dt>
+        <dd>
+          
+          <p>A time-out occured during the request. </p>
+        </dd>
+      
+      
+    </dl>
+    
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="typedefs">Typedef<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="SmartstrapServiceId">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The typedef <strong>SmartstrapServiceId</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef <a refid="group___standard_c_1gabf6633e0fef9023e8a1e8d727f4023e1" kindref="member" href="/docs/c/Standard_C/#uint16_t">uint16_t</a> <span class="docs__item__name">SmartstrapServiceId</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>A type representing a smartstrap ServiceId. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="SmartstrapAttribute">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The typedef <strong>SmartstrapAttribute</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef struct <a refid="group___smartstrap_1ga4ea96ce94fb4765d39d9c70eff321569" kindref="member" href="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</a> <span class="docs__item__name">SmartstrapAttribute</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>A type representing an attribute of a service provided by a smartstrap. This type is used when issuing requests to the smartstrap. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="SmartstrapAttributeId">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The typedef <strong>SmartstrapAttributeId</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef <a refid="group___standard_c_1gabf6633e0fef9023e8a1e8d727f4023e1" kindref="member" href="/docs/c/Standard_C/#uint16_t">uint16_t</a> <span class="docs__item__name">SmartstrapAttributeId</span>
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>A type representing a smartstrap AttributeId. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="SmartstrapServiceAvailabilityHandler">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The typedef <strong>SmartstrapServiceAvailabilityHandler</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">SmartstrapServiceAvailabilityHandler</span>)(SmartstrapServiceId service_id, bool is_available)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The type of function which is called after the smartstrap connection status changes. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> service_id</dt>
+  <dd><p>The ServiceId for which the availability changed. </p></dt>
+  
+  <dt><span style="color: #777"></span> is_available</dt>
+  <dd><p>Whether or not this service is now available. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="SmartstrapReadHandler">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The typedef <strong>SmartstrapReadHandler</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">SmartstrapReadHandler</span>)(SmartstrapAttribute *attribute, SmartstrapResult result, const uint8_t *data, size_t length)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The type of function which can be called when a read request is completed. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+
+</p>
+</div>
+
+
+    
+  <div class="alert alert--docs-notes">
+    <h5>Note</h5>
+    <p>Any write request made to the same attribute within this function will fail with SmartstrapResultBusy. </p>
+  </div>
+
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> attribute</dt>
+  <dd><p>The attribute which was read. </p></dt>
+  
+  <dt><span style="color: #777"></span> result</dt>
+  <dd><p>The result of the read. </p></dt>
+  
+  <dt><span style="color: #777"></span> data</dt>
+  <dd><p>The data read from the smartstrap or NULL if the read was not successful. </p></dt>
+  
+  <dt><span style="color: #777"></span> length</dt>
+  <dd><p>The length of the data or 0 if the read was not successful. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="SmartstrapWriteHandler">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The typedef <strong>SmartstrapWriteHandler</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">SmartstrapWriteHandler</span>)(SmartstrapAttribute *attribute, SmartstrapResult result)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The type of function which can be called when a write request is completed. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> attribute</dt>
+  <dd><p>The attribute which was written. </p></dt>
+  
+  <dt><span style="color: #777"></span> result</dt>
+  <dd><p>The result of the write. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="SmartstrapNotifyHandler">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The typedef <strong>SmartstrapNotifyHandler</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--typedef">
+  <div class="docs__item__header">
+    typedef void(* <span class="docs__item__name">SmartstrapNotifyHandler</span>)(SmartstrapAttribute *attribute)
+    <div class="clearfix"></div>
+  </div>
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The type of function which can be called when the smartstrap sends a notification to the watch. </p>
+</div>
+
+
+    
+<div class="docs__item__description">
+  <p>
+</p>
+</div>
+
+
+    
+
+    
+<h4>Parameters</h4>
+<dl>
+  
+  <dt><span style="color: #777"></span> attribute</dt>
+  <dd><p>The attribute which the notification came from. </p></dt>
+  
+</dl>
+
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+      
+
+      
+        <h2 class="anchor" id="defines">Macro Definition<span class="hidden-s hidden-xs"> Documentation</span></h2>
+        
+          <div class="docs__item__anchor" id="SMARTSTRAP_TIMEOUT_DEFAULT">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The define <strong>SMARTSTRAP_TIMEOUT_DEFAULT</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">SMARTSTRAP_TIMEOUT_DEFAULT </span> 250</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The default request timeout in milliseconds (see <a refid="group___smartstrap_1ga48c5b65d9f8d0070854d9451a26ec30e" kindref="member" href="/docs/c/Smartstrap/#smartstrap_set_timeout">smartstrap_set_timeout</a>). </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="SMARTSTRAP_RAW_DATA_SERVICE_ID">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The define <strong>SMARTSTRAP_RAW_DATA_SERVICE_ID</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">SMARTSTRAP_RAW_DATA_SERVICE_ID </span> 0</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The service_id to specify in order to read/write raw data to the smartstrap. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The define <strong>SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">#define <span class="docs__item__name">SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID </span> 0</div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>The attribute_id to specify in order to read/write raw data to the smartstrap. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+          <div class="docs__item__anchor" id="PBL_IF_SMARTSTRAP_ELSE">
+            
+              <ul class="docs__item__tabs">
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="aplite">SDK 3</a>
+  </li>
+  
+  <li>
+    <a href="javascript:void(0);" data-platform="basalt">SDK 4</a>
+  </li>
+  
+</ul>
+
+              
+                
+                  <section data-platform="aplite">
+  <div class="docs__item docs__item--missing">
+    <p>The define <strong>PBL_IF_SMARTSTRAP_ELSE</strong> does not exist in SDK 3.</p>
+  </div>
+</section>
+
+                
+              
+                
+                <section data-platform="basalt">
+                  
+<div class="docs__item docs__item--define">
+  
+  <div class="docs__item__header">
+    <span>#define  </span><span class="docs__item__name">PBL_IF_SMARTSTRAP_ELSE </span><span>(</span><span class="docs__item__param"> if_true</span><span>, </span><span class="docs__item__param"> if_false</span><span></span><span class="docs__item__param__end">)</span>
+    <div class="clearfix"></div>
+  </div>
+  
+  <div class="docs__item__body">
+    
+<div class="docs__item__summary">
+  <p>Convenience macro to switch between two expressions depending on smartstrap support. On platforms with a smartstrap the first expression will be chosen, the second otherwise. </p>
+</div>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+                </section>
+                
+              
+            
+          </div>
+        
+      
+
+    </div>
+  </div>
+  <div class="col-l-4 hidden-s hidden-xs hidden-m">
+    <div class="gray-box gray-box--fixed">
+      <p><a href="javascript:void(0)" class="btn btn--wide btn--bg-green btn--fg-white" data-modal-target="#modal-docs-help" data-modal-fit-viewport="false">Need some help?</a></p>
+      
+
+      
+<h3><a href="#functions">Functions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_subscribe">smartstrap_subscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_unsubscribe">smartstrap_unsubscribe</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_set_timeout">smartstrap_set_timeout</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_attribute_create">smartstrap_attribute_create</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_attribute_destroy">smartstrap_attribute_destroy</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_service_is_available">smartstrap_service_is_available</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_attribute_get_service_id">smartstrap_attribute_get_service_id</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_attribute_get_attribute_id">smartstrap_attribute_get_attribute_id</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_attribute_read">smartstrap_attribute_read</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_attribute_begin_write">smartstrap_attribute_begin_write</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#smartstrap_attribute_end_write">smartstrap_attribute_end_write</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#structs">Data Structures</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SmartstrapHandlers">SmartstrapHandlers</a></li>
+  
+</ul>
+
+
+      
+
+      
+<h3><a href="#enums">Enums</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SmartstrapResult">SmartstrapResult</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#typedefs">Typedefs</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SmartstrapServiceId">SmartstrapServiceId</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SmartstrapAttribute">SmartstrapAttribute</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SmartstrapAttributeId">SmartstrapAttributeId</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SmartstrapServiceAvailabilityHandler">SmartstrapServiceAvailabilityHandler</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SmartstrapReadHandler">SmartstrapReadHandler</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SmartstrapWriteHandler">SmartstrapWriteHandler</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SmartstrapNotifyHandler">SmartstrapNotifyHandler</a></li>
+  
+</ul>
+
+
+      
+<h3><a href="#defines">Macro Defintions</a></h3>
+<ul class="toc">
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SMARTSTRAP_TIMEOUT_DEFAULT">SMARTSTRAP_TIMEOUT_DEFAULT</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SMARTSTRAP_RAW_DATA_SERVICE_ID">SMARTSTRAP_RAW_DATA_SERVICE_ID</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID">SMARTSTRAP_RAW_DATA_ATTRIBUTE_ID</a></li>
+  
+    <li class="toc__item"><a href="/docs/c/Smartstrap/#PBL_IF_SMARTSTRAP_ELSE">PBL_IF_SMARTSTRAP_ELSE</a></li>
+  
+</ul>
+
+
+    </div>
+  </div>
+</div>
+
+<div id="modal-docs-help" class="hidden" style="width: 40em;">
+  <h4>Getting Help</h4>
+  <p>
+    Do you have questions about the Pebble SDK?
+  </p>
+  <p>
+    Do you need some help understanding something on this page?
+  </p>
+  <p>
+    You can either take advantage of our awesome developer community and
+    <a href="https://forums.getpebble.com/categories/watchface-sdk-help/">check out the SDK Help forums</a>,
+    or you can <a href="/contact/">send us a message</a> through
+    the website!
+  </p>
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/docs/c.js"></script>
+  
+</body>
+</html>

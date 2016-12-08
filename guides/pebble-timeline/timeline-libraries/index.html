@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Libraries for Pushing Pins // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A list of libraries available for interacting with the Pebble timeline.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/pebble-timeline/timeline-libraries/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/pin-structure/"><span>Creating Pins</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/pebble-timeline/timeline-libraries/"><span>Libraries for Pushing Pins</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-js/"><span>Managing Subscriptions</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-public/"><span>Public Web API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-architecture/"><span>Service Architecture</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="timeline-js">timeline.js</option>
+          
+            <option value="pebble-api">pebble-api</option>
+          
+            <option value="pebbletimeline-api-ruby">PebbleTimeline API Ruby</option>
+          
+            <option value="pypebbleapi">pypebbleapi</option>
+          
+            <option value="php-pebble-timeline">php-pebble-timeline</option>
+          
+            <option value="pinpusher">PinPusher</option>
+          
+            <option value="pebble-api-dotnet">pebble-api-dotnet</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Libraries for Pushing Pins</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>This page contains libraries that are currently available to interact with
+the timeline. You can use these to build apps and services that push pins to
+your users.</p><h2 id="timeline-js" class="anchor">timeline.js</h2><p><strong>JavaScript Code Snippet</strong> - <a href="https://gist.github.com/pebble-gists/6a4082ef12e625d23455" title="" class="">Available on GitHub</a></p><p><strong>Install</strong></p><p>Copy into the <code>src/pkjs/</code> directory of your project, add <code>enableMultiJS: true</code> in
+<code>package.json</code>, then <code>require</code> and use in <code>index.js</code>.</p><p><strong>Example</strong></p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">timeline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./timeline'</span><span class="p">);</span>
+
+<span class="c1">// Push a pin when the app starts</span>
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// An hour ahead</span>
+  <span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+  <span class="nx">date</span><span class="p">.</span><span class="nx">setHours</span><span class="p">(</span><span class="nx">date</span><span class="p">.</span><span class="nx">getHours</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="c1">// Create the pin</span>
+  <span class="kd">var</span> <span class="nx">pin</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"id"</span><span class="o">:</span> <span class="s2">"example-pin-0"</span><span class="p">,</span>
+    <span class="s2">"time"</span><span class="o">:</span> <span class="nx">date</span><span class="p">.</span><span class="nx">toISOString</span><span class="p">(),</span>
+    <span class="s2">"layout"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"type"</span><span class="o">:</span> <span class="s2">"genericPin"</span><span class="p">,</span>
+      <span class="s2">"title"</span><span class="o">:</span> <span class="s2">"Example Pin"</span><span class="p">,</span>
+      <span class="s2">"tinyIcon"</span><span class="o">:</span> <span class="s2">"system://images/SCHEDULED_EVENT"</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Inserting pin in the future: '</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">pin</span><span class="p">));</span>
+
+  <span class="c1">// Push the pin</span>
+  <span class="nx">timeline</span><span class="p">.</span><span class="nx">insertUserPin</span><span class="p">(</span><span class="nx">pin</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">responseText</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Result: '</span> <span class="o">+</span> <span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div><h2 id="pebble-api" class="anchor">pebble-api</h2><p><strong>Node Module</strong> - <a href="https://www.npmjs.com/package/pebble-api" title="" class="">Available on NPM</a></p><p><strong>Install</strong></p><div class="highlight"><pre>npm install pebble-api --save
+</pre></div><p><strong>Example</strong></p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Timeline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'pebble-api'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">USER_TOKEN</span> <span class="o">=</span> <span class="s1">'a70b23d3820e9ee640aeb590fdf03a56'</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">timeline</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Timeline</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">pin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Timeline</span><span class="p">.</span><span class="nx">Pin</span><span class="p">({</span>
+  <span class="nx">id</span><span class="o">:</span> <span class="s1">'test-pin-5245'</span><span class="p">,</span>
+  <span class="nx">time</span><span class="o">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span>
+  <span class="nx">duration</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">layout</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Timeline</span><span class="p">.</span><span class="nx">Pin</span><span class="p">.</span><span class="nx">Layout</span><span class="p">({</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="nx">Timeline</span><span class="p">.</span><span class="nx">Pin</span><span class="p">.</span><span class="nx">LayoutType</span><span class="p">.</span><span class="nx">GENERIC_PIN</span><span class="p">,</span>
+    <span class="nx">tinyIcon</span><span class="o">:</span> <span class="nx">Timeline</span><span class="p">.</span><span class="nx">Pin</span><span class="p">.</span><span class="nx">Icon</span><span class="p">.</span><span class="nx">PIN</span><span class="p">,</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">'Pin Title'</span>
+  <span class="p">})</span>
+<span class="p">});</span>
+
+<span class="nx">timeline</span><span class="p">.</span><span class="nx">sendUserPin</span><span class="p">(</span><span class="nx">USER_TOKEN</span><span class="p">,</span> <span class="nx">pin</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Pin sent successfully!'</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div><h2 id="pebbletimeline-api-ruby" class="anchor">PebbleTimeline API Ruby</h2><p><strong>Ruby Gem</strong> - <a href="https://rubygems.org/gems/pebble_timeline/versions/0.0.1" title="" class="">Available on RubyGems</a></p><p><strong>Install</strong></p><div class="highlight"><pre>gem install pebble_timeline
+</pre></div><p><strong>Example</strong></p><div class="highlight"><pre><span class="nb">require</span> <span class="s1">'pebble_timeline'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">PebbleTimeline</span><span class="o">::</span><span class="no">API</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">ENV</span><span class="o">[</span><span class="s1">'PEBBLE_TIMELINE_API_KEY'</span><span class="o">]</span><span class="p">)</span>
+
+<span class="c1"># Shared pins</span>
+<span class="n">pins</span> <span class="o">=</span> <span class="no">PebbleTimeline</span><span class="o">::</span><span class="no">Pins</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
+<span class="n">pins</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="s2">"test-1"</span><span class="p">,</span> <span class="ss">topics</span><span class="p">:</span> <span class="s1">'test'</span><span class="p">,</span> <span class="ss">time</span><span class="p">:</span> <span class="s2">"2015-06-10T08:01:10.229Z"</span><span class="p">,</span> <span class="ss">layout</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s1">'genericPin'</span><span class="p">,</span> <span class="ss">title</span><span class="p">:</span> <span class="s1">'test 1'</span> <span class="p">})</span>
+<span class="n">pins</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"test-1"</span><span class="p">)</span>
+
+<span class="c1"># User pins</span>
+<span class="n">user_pins</span> <span class="o">=</span> <span class="no">PebbleTimeline</span><span class="o">::</span><span class="no">Pins</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="s1">'user'</span><span class="p">,</span> <span class="no">USER_TOKEN</span><span class="p">)</span>
+<span class="n">user_pins</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="s2">"test-1"</span><span class="p">,</span> <span class="ss">time</span><span class="p">:</span> <span class="s2">"2015-06-12T16:42:00Z"</span><span class="p">,</span> <span class="ss">layout</span><span class="p">:</span> <span class="p">{</span> <span class="ss">type</span><span class="p">:</span> <span class="s1">'genericPin'</span><span class="p">,</span> <span class="ss">title</span><span class="p">:</span> <span class="s1">'test 1'</span> <span class="p">})</span>
+<span class="n">user_pins</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"test-1"</span><span class="p">)</span>
+</pre></div><h2 id="pypebbleapi" class="anchor">pypebbleapi</h2><p><strong>Python Library</strong> - <a href="https://pypi.python.org/pypi/pypebbleapi/0.0.1" title="" class="">Available on pip</a></p><p><strong>Install</strong></p><div class="highlight"><pre>pip install pypebbleapi
+</pre></div><p><strong>Example</strong></p><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pypebbleapi</span> <span class="kn">import</span> <span class="n">Timeline</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="n">timeline</span> <span class="o">=</span> <span class="n">Timeline</span><span class="p">(</span><span class="n">my_api_key</span><span class="p">)</span>
+
+<span class="n">my_pin</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s">'123'</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+
+<span class="n">timeline</span><span class="o">.</span><span class="n">send_shared_pin</span><span class="p">([</span><span class="s">'a_topic'</span><span class="p">,</span> <span class="s">'another_topic'</span><span class="p">],</span> <span class="n">my_pin</span><span class="p">)</span>
+</pre></div><h2 id="php-pebble-timeline" class="anchor">php-pebble-timeline</h2><p><strong>PHPebbleTimeline</strong> - <a href="https://github.com/fletchto99/PHPebbleTimeline" title="" class="">Available on Github</a></p><p><strong>Install</strong></p><p>Copy the TimelineAPI folder (from the above repository) to your project&#39;s directory and include the required files.</p><p><strong>Example</strong></p>
+<div>
+<div class="highlight "><pre><span class="c1">//Include the timeline API</span>
+<span class="k">require_once</span> <span class="s1">&#39;TimelineAPI/Timeline.php&#39;</span><span class="p">;</span>
+
+<span class="c1">//Import the required classes</span>
+<span class="k">use</span> <span class="nx">TimelineAPI\Pin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">TimelineAPI\PinLayout</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">TimelineAPI\PinLayoutType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">TimelineAPI\PinIcon</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">TimelineAPI\PinReminder</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">TimelineAPI\Timeline</span><span class="p">;</span>
+
+<span class="c1">//Create some layouts which our pin will use</span>
+<span class="nv">$reminderlayout</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PinLayout</span><span class="p">(</span><span class="nx">PinLayoutType</span><span class="o">::</span><span class="na">GENERIC_REMINDER</span><span class="p">,</span> <span class="s1">&#39;Sample reminder!&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nx">PinIcon</span><span class="o">::</span><span class="na">NOTIFICATION_FLAG</span><span class="p">);</span>
+<span class="nv">$pinlayout</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PinLayout</span><span class="p">(</span><span class="nx">PinLayoutType</span><span class="o">::</span><span class="na">GENERIC_PIN</span><span class="p">,</span> <span class="s1">&#39;Our title&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nx">PinIcon</span><span class="o">::</span><span class="na">NOTIFICATION_FLAG</span><span class="p">);</span>
+
+<span class="c1">//Create a reminder which our pin will push before the event</span>
+<span class="nv">$reminder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PinReminder</span><span class="p">(</span><span class="nv">$reminderlayout</span><span class="p">,</span> <span class="p">(</span><span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">DateInterval</span><span class="p">(</span><span class="s1">&#39;PT10M&#39;</span><span class="p">)));</span>
+
+<span class="c1">//Create the pin</span>
+<span class="nv">$pin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Pin</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR USER TOKEN HERE&gt;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">DateInterval</span><span class="p">(</span><span class="s1">&#39;PT5M&#39;</span><span class="p">)),</span> <span class="nv">$pinlayout</span><span class="p">);</span>
+
+<span class="c1">//Attach the reminder</span>
+<span class="nv">$pin</span> <span class="o">-&gt;</span> <span class="na">addReminder</span><span class="p">(</span><span class="nv">$reminder</span><span class="p">);</span>
+
+<span class="c1">//Push the pin to the timeline</span>
+<span class="nx">Timeline</span><span class="o">::</span><span class="na">pushPin</span><span class="p">(</span><span class="s1">&#39;sample-userToken&#39;</span><span class="p">,</span> <span class="nv">$pin</span><span class="p">);</span>
+</pre></div>
+</div>
+<h2 id="pinpusher" class="anchor">PinPusher</h2><p><strong>PHP Library</strong> - <a href="https://packagist.org/packages/valorin/pinpusher" title="" class="">Available on Composer</a></p><p><strong>Install</strong></p><div class="highlight"><pre>composer require valorin/pinpusher
+</pre></div><p><strong>Example</strong></p>
+<div>
+<div class="highlight "><pre><span class="k">use</span> <span class="nx">Valorin\PinPusher\Pusher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Valorin\PinPusher\Pin</span><span class="p">;</span>
+
+<span class="nv">$pin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Pin</span><span class="p">(</span>
+    <span class="s1">&#39;example-pin-generic-1&#39;</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;2015-03-19T18:00:00Z&#39;</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nx">Pin\Layout\Generic</span><span class="p">(</span>
+        <span class="s2">&quot;News at 6 o&#39;clock&quot;</span><span class="p">,</span>
+        <span class="nx">Pin\Icon</span><span class="o">::</span><span class="na">NOTIFICATION_FLAG</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$pusher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Pusher</span><span class="p">()</span>
+<span class="nv">$pusher</span><span class="o">-&gt;</span><span class="na">pushToUser</span><span class="p">(</span><span class="nv">$userToken</span><span class="p">,</span> <span class="nv">$pin</span><span class="p">);</span>
+</pre></div>
+</div>
+<h2 id="pebble-api-dotnet" class="anchor">pebble-api-dotnet</h2><p><strong>PCL C# Library</strong> - <a href="https://github.com/nothingmn/pebble-api-dotnet" title="" class="">Available on Github</a></p><p><strong>Install</strong></p><div class="highlight"><pre>git clone git@github.com:nothingmn/pebble-api-dotnet.git
+</pre></div><p><strong>Example</strong></p><p>In your C# project, define your global API Key.</p><div class="highlight"><pre><span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="n">APIKey</span> <span class="p">=</span> <span class="s">"APIKEY"</span><span class="p">;</span>
+</pre></div><p>Launch your app on the watch, and make the API call...</p><p>Now, on the server, you can use your &quot;userToken&quot; from the client app, and send pins as follows:</p><div class="highlight"><pre><span class="kt">var</span> <span class="n">timeline</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Timeline</span><span class="p">(</span><span class="n">APIKey</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">timeline</span><span class="p">.</span><span class="n">SendUserPin</span><span class="p">(</span><span class="n">userToken</span><span class="p">,</span> <span class="k">new</span> <span class="n">Pin</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Id</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">(),</span>
+    <span class="n">Layout</span> <span class="p">=</span> <span class="k">new</span> <span class="n">GenericLayout</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Title</span> <span class="p">=</span> <span class="s">"Generic Layout"</span><span class="p">,</span>
+        <span class="n">Type</span> <span class="p">=</span> <span class="n">LayoutTypes</span><span class="p">.</span><span class="n">genericPin</span><span class="p">,</span>
+        <span class="n">SmallIcon</span> <span class="p">=</span> <span class="n">Icons</span><span class="p">.</span><span class="n">Notification</span><span class="p">.</span><span class="n">Flag</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</pre></div><p>See more examples on the 
+<a href="https://github.com/nothingmn/pebble-api-dotnet" title="" class="">GitHub repo</a>.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/pebble-timeline/timeline-libraries/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#timeline-js">timeline.js</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pebble-api">pebble-api</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pebbletimeline-api-ruby">PebbleTimeline API Ruby</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pypebbleapi">pypebbleapi</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#php-pebble-timeline">php-pebble-timeline</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pinpusher">PinPusher</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pebble-api-dotnet">pebble-api-dotnet</a></li>
+    
+  </ul>
+
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/hello-timeline" target="_blank">Hello Timeline</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/timeline-tv-tracker" target="_blank">Timeline TV Tracker</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/timeline-push-pin" target="_blank">Timeline Push Pin</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

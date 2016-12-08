@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introducing Rocky.js Watchfaces! // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2016/08/15/introducing-rockyjs-watchfaces/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="it-39-s-javascript-on-the-freakin-39-watch">It&#39;s JavaScript on the freakin&#39; watch!</option>
+          
+            <option value="rocky-js-projects">Rocky.js Projects</option>
+          
+            <option value="package-json">- - package.json</option>
+          
+            <option value="src-rocky-index-js">- - src/rocky/index.js</option>
+          
+            <option value="src-pkjs-index-js">- - src/pkjs/index.js</option>
+          
+            <option value="additional-scripts">- - Additional Scripts</option>
+          
+            <option value="common-js">- - common/*.js</option>
+          
+            <option value="available-apis">Available APIs</option>
+          
+            <option value="system-events">- System Events</option>
+          
+            <option value="drawing-canvas">- Drawing Canvas</option>
+          
+            <option value="limitations">Limitations</option>
+          
+            <option value="sdk-4-0">SDK 4.0</option>
+          
+            <option value="how-to-get-started">How to Get Started</option>
+          
+            <option value="sample-watchfaces">Sample Watchfaces</option>
+          
+            <option value="feedback-and-help">Feedback and Help</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">Introducing Rocky.js Watchfaces!</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>15 August 2016</li>
+    <li><a href="/blog/authors/jonb/">Jon Barlow</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </li>
+    <li><a href="/blog/2016/08/15/introducing-rockyjs-watchfaces/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p>We&#39;re incredibly excited and proud to announce the first public beta version of
+Rocky.js watchfaces for Pebble. Rocky.js is ECMAScript 5.1 JavaScript running
+natively on Pebble smartwatches, thanks to
+<a href="https://github.com/Samsung/jerryscript/wiki/JerryScriptWorkshopApril2016" title="" class="">our collaboration</a>
+with <a href="https://github.com/pebble/jerryscript" title="" class="">JerryScript</a>. This is an incredible
+feat of engineering!</p><h2 id="it-39-s-javascript-on-the-freakin-39-watch" class="anchor">It&#39;s JavaScript on the freakin&#39; watch!</h2><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rocky</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'rocky'</span><span class="p">);</span>
+
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'minutechange'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">rocky</span><span class="p">.</span><span class="nx">requestDraw</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'draw'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">context</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">);</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s1">'white'</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">textAlign</span> <span class="o">=</span> <span class="s1">'center'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedWidth</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedHeight</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="s1">'JavaScript\non the watch!'</span><span class="p">,</span> <span class="nx">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div><p><img src="/assets/images/blog/2016-08-16-jotw.png" alt="Rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Right now we&#39;re giving you early access to this game-changing environment to
+create watchfaces entirely in JavaScript. Feel free to share your code, to
+install it on the emulator and on your watch (with the upcoming firmware 4.0),
+but please don&#39;t upload apps to the appstore as they will stop working in a
+future release.</p>
+<div class="alert alert--fg-white alert--bg-purple">
+  <p>  <strong>Appstore Publishing</strong></p><p>  Rocky.js JavaScript watchfaces must not be published into the appstore at
+  this time.</p>
+</div>
+<p>We can&#39;t wait to hear your feedback and see what amazing watchfaces you create!</p><p>Enough hype, let&#39;s dive into the eye of the tiger!</p><h2 id="rocky-js-projects" class="anchor">Rocky.js Projects</h2><p>Things are a little different in the JavaScript world, so let&#39;s take a closer
+look at the structure of a Rocky.js project:</p><div class="highlight no-copy"><pre>package.json
+src/rocky/index.js
+src/pkjs/index.js
+common/*.js
+</pre></div><h4 id="package-json" class="anchor">package.json</h4><p>The format of the <code>package.json</code> file remains roughly the same as existing
+Pebble projects, with some minor differences:</p>
+<ul>
+<li><code>&quot;projectType&quot;: &quot;rocky&quot;</code>.</li>
+<li>Aplite <code>targetPlatform</code> is not supported.</li>
+<li><code>resources</code> are not currently supported, but will consume space in your PBW if
+specified.</li>
+<li><code>messageKeys</code> are not permitted.</li>
+</ul>
+<h4 id="src-rocky-index-js" class="anchor">src/rocky/index.js</h4><p>This is now the main entry point into our application on the watch. This is
+where our Rocky.js JavaScript code resides. All code within this file will be
+executed on the smartwatch. Additional scripts may be placed in this folder, see
+<a href="#additional-scripts" title="" class="">below</a>.</p><h4 id="src-pkjs-index-js" class="anchor">src/pkjs/index.js</h4><p>This file contains our <a href="/docs/pebblekit-js/" title="" class="">PebbleKit JS</a> (pkjs) JavaScript
+code. This code will execute on the mobile device connected to the smartwatch.
+Additional scripts may be placed in this folder, see
+<a href="#additional-scripts" title="" class="">below</a>.</p><p>For Rocky.js projects only, we&#39;ve added a new simplified communication channel
+<a href="/docs/rockyjs/rocky/#postMessage" title="" class=""><code>postMessage()</code></a> and
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>on(&#39;message&#39;, ...)</code></a> which allows you to send and
+receive JavaScript JSON objects between the phone and smartwatch.</p><h4 id="additional-scripts" class="anchor">Additional Scripts</h4><p>Both the <code>rocky</code> and <code>pkjs</code> folders support the use of multiple .js files, which
+helps to keep your code clean and modular. Use the
+<a href="http://www.commonjs.org/specs/modules/1.0/" title="" class="">CommonJS Module</a> format for
+your additional scripts, then <code>require()</code> them in your <code>index.js</code>.</p><div class="highlight"><pre><span class="c1">// file: src/rocky/additional.js</span>
+<span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Additional File'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">test</span> <span class="o">=</span> <span class="nx">test</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// file: src/rocky/index.js</span>
+<span class="kd">var</span> <span class="nx">additional</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./additional'</span><span class="p">);</span>
+<span class="nx">additional</span><span class="p">.</span><span class="nx">test</span><span class="p">();</span>
+</pre></div><h4 id="common-js" class="anchor">common/*.js</h4><p>If you need to share code between <code>rocky</code> and <code>pkjs</code>, you can create a <code>common</code>
+folder, then add your JavaScript files.</p><div class="highlight"><pre><span class="c1">// file: src/common/shared.js</span>
+<span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hello from shared code'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">test</span> <span class="o">=</span> <span class="nx">test</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// file: src/rocky/index.js</span>
+<span class="kd">var</span> <span class="nx">shared</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../common/shared'</span><span class="p">);</span>
+<span class="nx">shared</span><span class="p">.</span><span class="nx">test</span><span class="p">();</span>
+</pre></div><div class="highlight"><pre><span class="c1">// file: src/pkjs/index.js</span>
+<span class="kd">var</span> <span class="nx">shared</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../common/shared'</span><span class="p">);</span>
+<span class="nx">shared</span><span class="p">.</span><span class="nx">test</span><span class="p">();</span>
+</pre></div><h2 id="available-apis" class="anchor">Available APIs</h2><p>In this initial release of Rocky.js, we have focused on the ability to create
+watchfaces only. We will be adding more and more APIs as time progresses, and
+we&#39;re determined for JavaScript to have feature parity with the rest of the
+Pebble developer ecosystem.</p><p>We&#39;ve developed our API in-line with standard Web APIs, which may appear strange
+to existing Pebble developers, but we&#39;re confident that this will facilitate
+code re-use and provide a better experience overall.</p><h3 id="system-events" class="anchor">System Events</h3><p>We&#39;ve provided a series of events which every watchface will likely require, and
+each of these events allow you to provide a callback method which is emitted
+when the event occurs.</p><p>Existing Pebble developers will be familiar with the tick style events,
+including:
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>secondchange</code></a>,
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>minutechange</code></a>,
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>hourchange</code></a> and
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>daychange</code></a>. By using these events, instead of
+<a href="/docs/rockyjs" title="" class=""><code>setInterval</code></a>, we&#39;re automatically kept in sync with the wall
+clock time.</p><p>We also have a
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>message</code></a> event for
+receiving JavaScript JSON objects from the <code>pkjs</code> component, and a
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>draw</code></a> event which you&#39;ll use to control the screen
+updates.</p><div class="highlight"><pre><span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'minutechange'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Request the screen to be redrawn on next pass</span>
+  <span class="nx">rocky</span><span class="p">.</span><span class="nx">requestDraw</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div><h3 id="drawing-canvas" class="anchor">Drawing Canvas</h3><p>The canvas is a 2D rendering context and represents the display of the Pebble
+smartwatch. We use the canvas context for drawing text and shapes. We&#39;re aiming
+to support standard Web API methods and properties where possible, so the canvas
+has been made available as a
+<a href="/docs/rockyjs/CanvasRenderingContext2D/" title="" class="">CanvasRenderingContext2D</a>.</p>
+<blockquote>
+<p>Please note that the canvas isn&#39;t fully implemented yet, so certain methods
+and properties are not available yet. We&#39;re still working on this, so expect
+more in future updates!</p></blockquote>
+<div class="highlight"><pre><span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'draw'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">context</span><span class="p">;</span>
+
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s1">'red'</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">textAlign</span> <span class="o">=</span> <span class="s1">'center'</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">font</span> <span class="o">=</span> <span class="s1">'14px Gothic'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedWidth</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedHeight</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="s1">'Rocky.js Rocks!'</span><span class="p">,</span> <span class="nx">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div><h2 id="limitations" class="anchor">Limitations</h2><p>We are still in the early beta phase and there are some limitations and
+restrictions that you need to be aware of:</p>
+<ul>
+<li>Don&#39;t publish Rocky.js watchfaces to the Pebble appstore yet, they will stop
+working.</li>
+<li>Rocky.js watchfaces only run on the 4.0 emulators/firmware. The 4.0 firmware
+will be available soon for Basalt, Chalk and Diorite.</li>
+<li>No support for custom fonts, images and other resources, yet.</li>
+<li>No C code allowed.</li>
+<li>No messageKeys.</li>
+<li>There are file size and memory considerations with your Rocky.js projects.
+If you include a large JS library, it probably won&#39;t work.</li>
+</ul>
+<h2 id="sdk-4-0" class="anchor">SDK 4.0</h2><p>We have published an updated version of
+<a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> which now supports creating
+Rocky.js watchfaces in JavaScript.</p><p>If you prefer our local tools, we&#39;ve also published everything you need to begin
+creating Rocky.js watchfaces. Run the following command to install the Pebble
+Tool and 4.0 SDK:</p><div class="highlight no-copy"><pre>$ brew upgrade pebble-sdk
+$ pebble sdk install latest
+</pre></div><h2 id="how-to-get-started" class="anchor">How to Get Started</h2><p>We created a <a href="/tutorials/js-watchface-tutorial/part1/" title="" class="">2-part tutorial</a> for
+getting started with Rocky.js watchfaces. It explains everything you need to
+know about creating digital and analog watchfaces, plus how to retrieve
+weather conditions from the internet.</p><p>If you&#39;re looking for more detailed information, check out the
+<a href="/docs/rockyjs" title="" class="">API Documentation</a>.</p><h2 id="sample-watchfaces" class="anchor">Sample Watchfaces</h2><p>We&#39;ve already created a few sample watchfaces:</p>
+<ul>
+<li><a href="https://github.com/pebble-examples/rocky-watchface-tutorial-part1" title="" class="">Tictoc</a> -
+Simple analog watchface.</li>
+<li><a href="https://github.com/pebble-examples/rocky-watchface-tutorial-part2" title="" class="">Tictoc Weather</a> -
+Simple analog watchface with weather data from a REST API.</li>
+<li><a href="https://github.com/orviwan/rocky-leco-weather" title="" class="">Leco with Weather</a> - Simple
+digital watchface with weather data from a REST API.</li>
+<li><a href="https://github.com/orviwan/rocky-leco-clay" title="" class="">Leco with Clay</a> - Simple analog
+watchface which uses Clay for configurable settings.</li>
+<li><a href="https://github.com/orviwan/simplicity-rockyjs" title="" class="">Simplicity</a> - Rocky.js version
+of the classic Simplicity watchface.</li>
+</ul>
+<h2 id="feedback-and-help" class="anchor">Feedback and Help</h2><p>We hope you&#39;re as exicited about Rocky.js as we are. If you need assistance,
+have feedback or just want to send us some love, we&#39;re in #rockyjs on
+<a href="http://discord.gg/aRUAYFN" title="" class="">Discord</a> or the
+<a href="https://forums.pebble.com/c/development" title="" class="">Pebble developer forums</a>.</p><p>We&#39;re already working on the next update of Rocky.js and your feedback will help
+shape the future!</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2016/08/15/introducing-rockyjs-watchfaces/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#it-39-s-javascript-on-the-freakin-39-watch">It&#39;s JavaScript on the freakin&#39; watch!</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#rocky-js-projects">Rocky.js Projects</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#package-json">package.json</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#src-rocky-index-js">src/rocky/index.js</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#src-pkjs-index-js">src/pkjs/index.js</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#additional-scripts">Additional Scripts</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#common-js">common/*.js</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#available-apis">Available APIs</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#system-events">System Events</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#drawing-canvas">Drawing Canvas</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#limitations">Limitations</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#sdk-4-0">SDK 4.0</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#how-to-get-started">How to Get Started</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#sample-watchfaces">Sample Watchfaces</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#feedback-and-help">Feedback and Help</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                <strong>Freshly Baked</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                <strong>Jon Barlow</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

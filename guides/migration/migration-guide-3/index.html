@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SDK 3.x Migration Guide // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Migrating Pebble apps from SDK 2.x to SDK 3.x.">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/migration/migration-guide-3/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/pebblekit-ios-3/"><span>PebbleKit iOS 3.0 Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/migration-guide/"><span>SDK 2.x Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/migration/migration-guide-3/"><span>SDK 3.x Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/3x-aplite-migration/"><span>SDK 3.x on Aplite Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/migration-guide-4/"><span>SDK 4.x Migration Guide</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="backwards-compatibility">Backwards Compatibility</option>
+          
+            <option value="pebblekit-considerations">PebbleKit Considerations</option>
+          
+            <option value="changes-to-appinfo-json">Changes to appinfo.json</option>
+          
+            <option value="project-resource-processing">Project Resource Processing</option>
+          
+            <option value="platform-specific-resources">Platform-specific Resources</option>
+          
+            <option value="changes-to-wscript">Changes to wscript</option>
+          
+            <option value="changes-to-timezones">Changes to Timezones</option>
+          
+            <option value="api-changes-quick-reference">API Changes Quick Reference</option>
+          
+            <option value="compatibility-macros">- Compatibility Macros</option>
+          
+            <option value="comparing-colors">- Comparing Colors</option>
+          
+            <option value="assigning-colors-from-integers">- Assigning Colors From Integers</option>
+          
+            <option value="specifying-black-and-white">- Specifying Black and White</option>
+          
+            <option value="pebblekit-js-account-token">- PebbleKit JS Account Token</option>
+          
+            <option value="using-the-status-bar">- Using the Status Bar</option>
+          
+            <option value="using-propertyanimation">- Using PropertyAnimation</option>
+          
+            <option value="accessing-gbitmap-members">- Accessing GBitmap Members</option>
+          
+            <option value="drawing-rotated-bitmaps">- Drawing Rotated Bitmaps</option>
+          
+            <option value="using-inverterlayer">- Using InverterLayer</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">SDK 3.x Migration Guide</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>This guide provides a detailed list of the changes to existing APIs in Pebble
+SDK 3.x. To migrate an older app&#39;s code successfully from Pebble SDK 2.x to
+Pebble SDK 3.x, consider the information outlined here and make the necessary
+changes if the app uses a changed API.</p><p>The number of breaking changes in SDK 3.x for existing apps has been minimized
+as much as possible. This means that:</p>
+<ul>
+<li><p>Apps built with SDK 2.x <strong>will continue to run on firmware 3.x without any
+recompilation needed</strong>.</p></li>
+<li><p>Apps built with SDK 3.x will generate a <code>.pbw</code> file that will run on firmware
+3.x.</p></li>
+</ul>
+<h2 id="backwards-compatibility" class="anchor">Backwards Compatibility</h2><p>Developers can easily modify an existing app (or create a new one) to be
+compilable for both Pebble/Pebble Steel as well as Pebble Time, Pebble Time
+Steel, and Pebble Time Round by using <code>#ifdef</code> and various defines that are made
+available by the SDK at build time. For example, to check that the app will run
+on hardware supporting color:</p><div class="highlight"><pre><span class="cp">#ifdef PBL_COLOR</span>
+  <span class="n">window_set_background_color</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="n">GColorDukeBlue</span><span class="p">);</span>
+<span class="cp">#else</span>
+  <span class="n">window_set_background_color</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">);</span>
+<span class="cp">#endif</span>
+</pre></div><p>When the app is compiled, it will be built once for each platform with
+<code>PBL_COLOR</code> defined as is appropriate. By catering for all cases, apps will run
+and look good on both platforms with minimal effort. This avoids the need to
+maintain two Pebble projects for one app.</p><p>In addition, as of Pebble SDK 3.6 there are macros that can be used to
+selectively include code in single statements. This is an alternative to the
+approach shown above using <code>#ifdef</code>:</p><div class="highlight"><pre><span class="n">window_set_background_color</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span>
+                            <span class="n">PBL_IF_COLOR_ELSE</span><span class="p">(</span><span class="n">GColorDukeBlue</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">));</span>
+</pre></div><p>See 
+<a href="/guides/best-practices/building-for-every-pebble/"><em>Building for Every Pebble</em></a>
+to learn more about these macros, as well as see a complete list.</p><h2 id="pebblekit-considerations" class="anchor">PebbleKit Considerations</h2><p>Apps that use PebbleKit Android will need to be re-compiled in Android Studio
+(or similar) with the PebbleKit Android <strong>3.x</strong> (see 
+<a href="/guides/communication/using-pebblekit-android/"><em>PebbleKit Android</em></a>)
+library in order to be compatible with the Pebble Time mobile application.
+No code changes are required, however.</p><p>PebbleKit iOS developers remain unaffected and their apps will continue to run
+with the new Pebble mobile application. However, iOS companion apps will need to
+be recompiled with PebbleKit iOS <strong>3.x</strong> (see 
+<a href="/guides/migration/pebblekit-ios-3/"><em>PebbleKit iOS 3.0 Migration Guide</em></a>) 
+to work with Pebble Time Round.</p><h2 id="changes-to-appinfo-json" class="anchor">Changes to appinfo.json</h2><p>There is a new field for tracking which version of the SDK the app is built for.
+For example, when using 3.x SDK add this line to the project&#39;s <code>appinfo.json</code>.</p><div class="highlight"><pre><span class="s2">"sdkVersion"</span><span class="o">:</span><span class="w"> </span><span class="s2">"3"</span>
+</pre></div><p>Apps will specify which hardware platforms they support (and wish to be built
+for) by declaring them in the <code>targetPlatforms</code> field of the project&#39;s
+<code>appinfo.json</code> file.</p><div class="highlight"><pre><span class="s2">"targetPlatforms"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">"aplite"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"basalt"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"chalk"</span>
+<span class="p">]</span>
+</pre></div><p>For each platform listed here, the SDK will generate an appropriate binary and
+resource pack that will be included in the <code>.pbw</code> file. This means that the app
+is actually compiled and resources are optimized once for each platform. The
+image below summarizes this build process:</p><p><img src="/assets/images/sdk/build-process-3.png" alt="build process" /></p>
+<blockquote>
+<p>Note: If <code>targetPlatforms</code> is not specified in <code>appinfo.json</code> the app will be
+compiled for all platforms. </p></blockquote>
+<p>Apps can also elect to not appear in the app menu on the watch (if is is only
+pushing timeline pins, for example) by setting <code>hiddenApp</code>:</p><div class="highlight"><pre><span class="s2">"watchapp"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"watchface"</span><span class="o">:</span><span class="w"> </span><span class="vg">false</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"hiddenApp"</span><span class="o">:</span><span class="w"> </span><span class="vg">true</span>
+<span class="p">},</span>
+</pre></div><h2 id="project-resource-processing" class="anchor">Project Resource Processing</h2><p>SDK 3.x enhances the options for adding image resources to a Pebble project,
+including performing some pre-processing of images into compatible formats prior
+to bundling. For more details on the available resource types, check out the 
+<a href="/guides/app-resources"><em>App Resources</em></a> section of the guides.</p><h2 id="platform-specific-resources" class="anchor">Platform-specific Resources</h2><p><strong>Different Resources per Platform</strong></p><p>It is possible to include different versions of resources on only one of the
+platforms with a specific type of display. Do this by appending <code>~bw</code> or
+<code>~color</code> to the name of the resource file and the SDK will prefer that file over
+another with the same name, but lacking the suffix.</p><p>This means is it possible to can include a smaller black and white version of an
+image by naming it <code>example-image~bw.png</code>, which will be included in the
+appropriate build over another file named <code>example-image.png</code>. In a similar
+manner, specify a resource for a color platform by appending <code>~color</code> to the
+file name.</p><p>An example file structure is shown below.</p><div class="highlight"><pre>my-project/
+  resources/
+    images/
+      example-image~bw.png
+      example-image~color.png
+  src/
+    main.c
+  appinfo.json
+  wscript
+</pre></div><p>This resource will appear in <code>appinfo.json</code> as shown below.</p><div class="highlight"><pre><span class="s2">"resources"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"media"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"bitmap"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"EXAMPLE_IMAGE"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"file"</span><span class="o">:</span><span class="w"> </span><span class="s2">"images/example-image.png"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div><p>Read <a href="/guides/app-resources/platform-specific/"><em>Platform-specific Resources</em></a> for more information about
+specifying resources per-platform.</p><p><strong>Single-platform Resources</strong></p><p>To only include a resource on a <strong>specific</strong> platform, add a <code>targetPlatforms</code>
+field to the resource&#39;s entry in the <code>media</code> array in <code>appinfo.json</code>. For
+example, the resource shown below will only be included for the Basalt build.</p><div class="highlight"><pre><span class="s2">"resources"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"media"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"bitmap"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"BACKGROUND_IMAGE"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"file"</span><span class="o">:</span><span class="w"> </span><span class="s2">"images/background.png"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"targetPlatforms"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"basalt"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div><h2 id="changes-to-wscript" class="anchor">Changes to wscript</h2><p>To support compilation for multiple hardware platforms and capabilities, the
+default <code>wscript</code> file included in every Pebble project has been updated.</p><p>If a project uses a customized <code>wscript</code> file and <code>pebble convert-project</code> is
+run (which will fully replace the file with a new compatible version), the
+<code>wscript</code> will be copied to <code>wscript.backup</code>.</p><p>View 
+<a href="https://gist.github.com/pebble-gists/72a1a7c85980816e7f9b" title="" class="">this GitHub gist</a>
+to see a sample of what the new format looks like, and re-add any customizations
+afterwards.</p><h2 id="changes-to-timezones" class="anchor">Changes to Timezones</h2><p>With SDK 2.x, all time-related SDK functions returned values in local time, with
+no concept of timezones. With SDK 3.x, the watch is aware of the user&#39;s timezone
+(specified in Settings), and will return values adjusted for this value.</p><h2 id="api-changes-quick-reference" class="anchor">API Changes Quick Reference</h2><h3 id="compatibility-macros" class="anchor">Compatibility Macros</h3><p>Since SDK 3.0-dp2, <code>pebble.h</code> includes compatibility macros enabling developers
+to use the new APIs to access fields of opaque structures and still be
+compatible with both platforms. An example is shown below:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">GBitmap</span> <span class="o">*</span><span class="n">s_bitmap</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// SDK 2.9</span>
+<span class="n">GRect</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">s_bitmap</span><span class="o">-&gt;</span><span class="n">bounds</span><span class="p">;</span>
+
+<span class="c1">// SDK 3.x</span>
+<span class="n">GRect</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">gbitmap_get_bounds</span><span class="p">(</span><span class="n">s_bitmap</span><span class="p">);</span>
+</pre></div><h3 id="comparing-colors" class="anchor">Comparing Colors</h3><p>Instead of comparing two GColor values directly, use the new <a href="/docs/c/Graphics/Graphics_Types/#gcolor_equal" title="gcolor_equal" class="link--docs"><code>gcolor_equal</code></a>
+function to check for identical colors.</p><div class="highlight"><pre><span class="n">GColor</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+
+<span class="c1">// SDK 2.x, bad</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="c1">// SDK 3.x, good</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">gcolor_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span> <span class="p">{</span> <span class="p">}</span>
+</pre></div>
+<blockquote>
+<p>Note: Two colors with an alpha transparency(<code>.a</code>) component equal to <code>0</code>
+(completely transparent) are considered as equal.</p></blockquote>
+<h3 id="assigning-colors-from-integers" class="anchor">Assigning Colors From Integers</h3><p>Specify a color previously stored as an <code>int</code> and convert it to a
+<code>GColor</code>:</p><div class="highlight"><pre><span class="n">GColor</span> <span class="n">a</span><span class="p">;</span>
+
+<span class="c1">// SDK 2.x</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">GColor</span><span class="p">)</span><span class="n">persist_read_int</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+
+<span class="c1">// SDK 3.x</span>
+<span class="n">a</span><span class="p">.</span><span class="n">argb</span> <span class="o">=</span> <span class="n">persist_read_int</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+
+<span class="cm">/* OR */</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">GColor</span><span class="p">){.</span><span class="n">argb</span> <span class="o">=</span> <span class="n">persist_read_int</span><span class="p">(</span><span class="n">key</span><span class="p">)};</span>
+</pre></div><h3 id="specifying-black-and-white" class="anchor">Specifying Black and White</h3><p>The internal representation of SDK 2.x colors such as <a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlack" title="GColorBlack" class="link--docs"><code>GColorBlack</code></a> and
+<a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorWhite" title="GColorWhite" class="link--docs"><code>GColorWhite</code></a> have changed, but they can still be used with the same name.</p><h3 id="pebblekit-js-account-token" class="anchor">PebbleKit JS Account Token</h3><p>In SDK 3.0 the behavior of <code>Pebble.getAccountToken()</code> changes slightly. In
+previous versions, the token returned on Android could differ from that returned
+on iOS by dropping some zero characters. The table below shows the different
+tokens received for a single user across platforms and versions:</p>
+<table><thead>
+<tr>
+<th style="text-align: left">Platform</th>
+<th>Token</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">iOS 2.6.5</td>
+<td>29f00dd7872ada4bd14b90e5d49568a8</td>
+</tr>
+<tr>
+<td style="text-align: left">iOS 3.x</td>
+<td>29f00dd7872ada4bd14b90e5d49568a8</td>
+</tr>
+<tr>
+<td style="text-align: left">Android 2.3</td>
+<td>29f0dd7872ada4bd14b90e5d49568a8</td>
+</tr>
+<tr>
+<td style="text-align: left">Android 3.x</td>
+<td>29f00dd7872ada4bd14b90e5d49568a8</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Note: This process should <strong>only</strong> be applied to new tokens obtained from
+Android platforms, to compare to tokens from older app versions.</p></blockquote>
+<p>To account for this difference, developers should adapt the new account token as
+shown below.</p><p><strong>JavaScript</strong></p><div class="highlight"><pre><span class="kd">function</span> <span class="nx">newToOld</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">token</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">''</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">x</span> <span class="o">!==</span> <span class="s1">'0'</span> <span class="o">||</span> <span class="nx">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">?</span> <span class="nx">x</span> <span class="o">:</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="p">}).</span><span class="nx">join</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p><strong>Python</strong></p><div class="highlight"><pre><span class="k">def</span> <span class="nf">new_to_old</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s">'0'</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div><p><strong>Ruby</strong></p><div class="highlight"><pre><span class="k">def</span> <span class="nf">new_to_old</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+  <span class="n">token</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="o">.</span><span class="n">with_index</span> <span class="p">{</span> <span class="o">|</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> <span class="p">(</span><span class="n">c</span> <span class="o">!=</span> <span class="s1">'0'</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div><p><strong>PHP</strong></p>
+<div>
+<div class="highlight "><pre><span class="k">function</span> <span class="nf">newToOld</span><span class="p">(</span><span class="nv">$token</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$array</span> <span class="o">=</span> <span class="nb">str_split</span><span class="p">(</span><span class="nv">$token</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">array_map</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nv">$char</span><span class="p">,</span> <span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nv">$char</span> <span class="o">!==</span> <span class="s1">&#39;0&#39;</span> <span class="o">||</span> <span class="nv">$i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$char</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="p">},</span> <span class="nv">$array</span><span class="p">,</span> <span class="nb">array_keys</span><span class="p">(</span><span class="nv">$array</span><span class="p">)));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<h3 id="using-the-status-bar" class="anchor">Using the Status Bar</h3><p>To help apps integrate aesthetically with the new system experience, all
+<a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>s are now fullscreen-only in SDK 3.x. To keep the time-telling
+functionality, developers should use the new <a href="/docs/c/User_Interface/Layers/StatusBarLayer/" title="StatusBarLayer" class="link--docs"><code>StatusBarLayer</code></a> API in their
+<code>.load</code> handler.</p>
+<blockquote>
+<p>Note: Apps built with SDK 2.x will still keep the system status bar unless
+specified otherwise with <code>window_set_fullscreen(window, true)</code>. As a result,
+such apps that have been recompiled will be shifted up sixteen pixels, and
+should account for this in any window layouts.</p></blockquote>
+<div class="highlight"><pre><span class="k">static</span> <span class="n">StatusBarLayer</span> <span class="o">*</span><span class="n">s_status_bar</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Layer</span> <span class="o">*</span><span class="n">window_layer</span> <span class="o">=</span> <span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+
+  <span class="cm">/* other UI code */</span>
+
+  <span class="c1">// Set up the status bar last to ensure it is on top of other Layers</span>
+  <span class="n">s_status_bar</span> <span class="o">=</span> <span class="n">status_bar_layer_create</span><span class="p">();</span>
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_layer</span><span class="p">,</span> <span class="n">status_bar_layer_get_layer</span><span class="p">(</span><span class="n">s_status_bar</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div><p>By default, the status bar will look the same as it did on 2.x, minus the
+battery meter.</p><p><img src="/assets/images/sdk/status-bar-default.png" alt="status-bar-default" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>To display the legacy battery meter on the Basalt platform, simply add an
+additional <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> after the <a href="/docs/c/User_Interface/Layers/StatusBarLayer/" title="StatusBarLayer" class="link--docs"><code>StatusBarLayer</code></a>, and use the following code in
+its <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a>.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">battery_proc</span><span class="p">(</span><span class="n">Layer</span> <span class="o">*</span><span class="n">layer</span><span class="p">,</span> <span class="n">GContext</span> <span class="o">*</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Emulator battery meter on Aplite</span>
+  <span class="n">graphics_context_set_stroke_color</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GColorWhite</span><span class="p">);</span>
+  <span class="n">graphics_draw_rect</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GRect</span><span class="p">(</span><span class="mi">126</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
+  <span class="n">graphics_draw_line</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">GPoint</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">9</span><span class="p">));</span>
+
+  <span class="n">BatteryChargeState</span> <span class="n">state</span> <span class="o">=</span> <span class="n">battery_state_service_peek</span><span class="p">();</span>
+  <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="kt">float</span><span class="p">)(((</span><span class="kt">float</span><span class="p">)</span><span class="n">state</span><span class="p">.</span><span class="n">charge_percent</span> <span class="o">/</span> <span class="mf">100.0F</span><span class="p">)</span> <span class="o">*</span> <span class="mf">10.0F</span><span class="p">);</span>
+  <span class="n">graphics_context_set_fill_color</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GColorWhite</span><span class="p">);</span>
+  <span class="n">graphics_fill_rect</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">GRect</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">GCornerNone</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Layer</span> <span class="o">*</span><span class="n">window_layer</span> <span class="o">=</span> <span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+  <span class="n">GRect</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">layer_get_bounds</span><span class="p">(</span><span class="n">window_layer</span><span class="p">);</span>
+
+  <span class="cm">/* other UI code */</span>
+
+  <span class="c1">// Set up the status bar last to ensure it is on top of other Layers</span>
+  <span class="n">s_status_bar</span> <span class="o">=</span> <span class="n">status_bar_layer_create</span><span class="p">();</span>
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_layer</span><span class="p">,</span> <span class="n">status_bar_layer_get_layer</span><span class="p">(</span><span class="n">s_status_bar</span><span class="p">));</span>
+
+  <span class="c1">// Show legacy battery meter</span>
+  <span class="n">s_battery_layer</span> <span class="o">=</span> <span class="n">layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="n">bounds</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">bounds</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> 
+                                      <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">w</span><span class="p">,</span> <span class="n">STATUS_BAR_LAYER_HEIGHT</span><span class="p">));</span>
+  <span class="n">layer_set_update_proc</span><span class="p">(</span><span class="n">s_battery_layer</span><span class="p">,</span> <span class="n">battery_proc</span><span class="p">);</span>
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_layer</span><span class="p">,</span> <span class="n">s_battery_layer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p>Note: To update the battery meter more frequently, use <a href="/docs/c/User_Interface/Layers/#layer_mark_dirty" title="layer_mark_dirty" class="link--docs"><code>layer_mark_dirty()</code></a>
+in a <a href="/docs/c/Foundation/Event_Service/BatteryStateService/" title="BatteryStateService" class="link--docs"><code>BatteryStateService</code></a> subscription. Unless the current <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> is
+long-running, this should not be neccessary.</p></blockquote>
+<p>The <a href="/docs/c/User_Interface/Layers/StatusBarLayer/" title="StatusBarLayer" class="link--docs"><code>StatusBarLayer</code></a> can also be extended by the developer in similar ways to
+the above. The API also allows setting the layer&#39;s separator mode and
+foreground/background colors:</p><div class="highlight"><pre><span class="n">status_bar_layer_set_separator_mode</span><span class="p">(</span><span class="n">s_status_bar</span><span class="p">,</span> 
+                                            <span class="n">StatusBarLayerSeparatorModeDotted</span><span class="p">);</span>
+<span class="n">status_bar_layer_set_colors</span><span class="p">(</span><span class="n">s_status_bar</span><span class="p">,</span> <span class="n">GColorClear</span><span class="p">,</span> <span class="n">GColorWhite</span><span class="p">);</span>
+</pre></div><p>This results in a a look that is much easier to integrate into a color app.</p><p><img src="/assets/images/sdk/status-bar-color.png" alt="status-bar-color" class="pebble-screenshot pebble-screenshot--time-red" /></p><h3 id="using-propertyanimation" class="anchor">Using PropertyAnimation</h3><p>The internal structure of <a href="/docs/c/User_Interface/Animation/PropertyAnimation/" title="PropertyAnimation" class="link--docs"><code>PropertyAnimation</code></a> has changed, but it is still
+possible to access the underlying <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>:</p><div class="highlight"><pre><span class="c1">// SDK 2.x</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">animation</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">prop_animation</span><span class="o">-&gt;</span><span class="n">animation</span><span class="p">;</span>
+<span class="n">animation</span> <span class="o">=</span> <span class="p">(</span><span class="n">Animation</span><span class="o">*</span><span class="p">)</span><span class="n">prop_animation</span><span class="p">;</span>
+
+<span class="c1">// SDK 3.x</span>
+<span class="n">Animation</span> <span class="o">*</span><span class="n">animation</span> <span class="o">=</span> <span class="n">property_animation_get_animation</span><span class="p">(</span><span class="n">prop_animation</span><span class="p">);</span>
+<span class="n">animation</span> <span class="o">=</span> <span class="p">(</span><span class="n">Animation</span><span class="o">*</span><span class="p">)</span><span class="n">prop_animation</span><span class="p">;</span>
+</pre></div><p>Accessing internal fields of <a href="/docs/c/User_Interface/Animation/PropertyAnimation/" title="PropertyAnimation" class="link--docs"><code>PropertyAnimation</code></a> has also changed. For
+example, to access the <a href="/docs/c/Graphics/Graphics_Types/#GPoint" title="GPoint" class="link--docs"><code>GPoint</code></a> in the <code>from</code> member of an animation:</p><div class="highlight"><pre><span class="n">GPoint</span> <span class="n">p</span><span class="p">;</span>
+<span class="n">PropertyAnimation</span> <span class="o">*</span><span class="n">prop_anim</span><span class="p">;</span>
+
+<span class="c1">// SDK 2.x</span>
+<span class="n">prop_animation</span><span class="o">-&gt;</span><span class="n">values</span><span class="p">.</span><span class="n">from</span><span class="p">.</span><span class="n">gpoint</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+
+<span class="c1">// SDK 3.x</span>
+<span class="n">property_animation_set_from_gpoint</span><span class="p">(</span><span class="n">prop_anim</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
+</pre></div><p>Animations are now automatically freed when they have finished. This means that
+code using <a href="/docs/c/User_Interface/Animation/#animation_destroy" title="animation_destroy" class="link--docs"><code>animation_destroy()</code></a> should be corrected to no longer do this
+manually when building with SDK 3.x, which will fail. <strong>SDK 2.x code must still
+manually free Animations as before.</strong></p><p>Developers can now create complex synchronized and chained animations using the
+new features of the Animation Framework. Read
+<a href="/guides/graphics-and-animations/animations/"><em>Animations</em></a>
+to learn more.</p><h3 id="accessing-gbitmap-members" class="anchor">Accessing GBitmap Members</h3><p><a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> is now opaque, so accessing structure members directly is no longer
+possible. However, direct references to members can be obtained with the new
+accessor functions provided by SDK 3.x:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">GBitmap</span> <span class="o">*</span><span class="n">s_bitmap</span> <span class="o">=</span> <span class="n">gbitmap_create_with_resource</span><span class="p">(</span><span class="n">RESOURCE_ID_EXAMPLE_IMAGE</span><span class="p">);</span>
+
+<span class="c1">// SDK 2.x</span>
+<span class="n">GRect</span> <span class="n">image_bounds</span> <span class="o">=</span> <span class="n">s_bitmap</span><span class="o">-&gt;</span><span class="n">bounds</span><span class="p">;</span>
+
+<span class="c1">// SDK 3.x</span>
+<span class="n">GRect</span> <span class="n">image_bounds</span> <span class="o">=</span> <span class="n">gbitmap_get_bounds</span><span class="p">(</span><span class="n">s_bitmap</span><span class="p">);</span>
+</pre></div><h3 id="drawing-rotated-bitmaps" class="anchor">Drawing Rotated Bitmaps</h3>
+<div class="alert alert--fg-white alert--bg-dark-red">
+<p>  The bitmap rotation API requires a significant amount of CPU power and will
+  have a substantial effect on users&#39; battery life.</p><p>  There will also be a large reduction in performance of the app and a lower
+  framerate may be seen. Use alternative drawing methods such as 
+  <a href="/docs/c/Graphics/Draw_Commands/" title="Draw Commands" class="link--docs"><code>Draw Commands</code></a> or <a href="/docs/c/Graphics/Drawing_Paths/#GPath" title="GPath" class="link--docs"><code>GPaths</code></a> wherever possible.</p>
+</div>
+<p>Alternatively, draw a <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> with a rotation angle and center point inside a
+<a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a> using <a href="/docs/c/Graphics/Drawing_Primitives/#graphics_draw_rotated_bitmap" title="graphics_draw_rotated_bitmap" class="link--docs"><code>graphics_draw_rotated_bitmap()</code></a>.</p><h3 id="using-inverterlayer" class="anchor">Using InverterLayer</h3><p>SDK 3.x deprecates the <code>InverterLayer</code> UI component which was primarily used
+for <a href="/docs/c/User_Interface/Layers/MenuLayer/" title="MenuLayer" class="link--docs"><code>MenuLayer</code></a> highlighting. Developers can now make use of
+<code>menu_cell_layer_is_highlighted()</code> inside a <a href="/docs/c/User_Interface/Layers/MenuLayer/#MenuLayerDrawRowCallback" title="MenuLayerDrawRowCallback" class="link--docs"><code>MenuLayerDrawRowCallback</code></a> to
+determine which text and selection highlighting colors they prefer.</p>
+<blockquote>
+<p>Using this for determining highlight behaviour is preferable to using
+<a href="/docs/c/User_Interface/Layers/MenuLayer/#menu_layer_get_selected_index" title="menu_layer_get_selected_index" class="link--docs"><code>menu_layer_get_selected_index()</code></a>. Row drawing callbacks may be invoked
+multiple times with a different highlight status on the same cell in order to
+handle partially highlighted cells during animation.</p></blockquote>
+
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/migration/migration-guide-3/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#backwards-compatibility">Backwards Compatibility</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#pebblekit-considerations">PebbleKit Considerations</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#changes-to-appinfo-json">Changes to appinfo.json</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#project-resource-processing">Project Resource Processing</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#platform-specific-resources">Platform-specific Resources</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#changes-to-wscript">Changes to wscript</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#changes-to-timezones">Changes to Timezones</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#api-changes-quick-reference">API Changes Quick Reference</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#compatibility-macros">Compatibility Macros</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#comparing-colors">Comparing Colors</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#assigning-colors-from-integers">Assigning Colors From Integers</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#specifying-black-and-white">Specifying Black and White</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#pebblekit-js-account-token">PebbleKit JS Account Token</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#using-the-status-bar">Using the Status Bar</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#using-propertyanimation">Using PropertyAnimation</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#accessing-gbitmap-members">Accessing GBitmap Members</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#drawing-rotated-bitmaps">Drawing Rotated Bitmaps</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#using-inverterlayer">Using InverterLayer</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

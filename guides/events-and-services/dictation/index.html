@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Dictation // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to use the Dictation API to get voice-to-text input in watchapps.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/events-and-services/dictation/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/accelerometer/"><span>Accelerometer</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/background-worker/"><span>Background Worker</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/buttons/"><span>Buttons</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/compass/"><span>Compass</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/events-and-services/dictation/"><span>Dictation</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/events/"><span>Event Services</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/hrm/"><span>Heart Rate Monitor</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/health/"><span>Pebble Health</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/persistent-storage/"><span>Persistent Storage</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/events-and-services/wakeups/"><span>Wakeups</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="how-the-dictation-api-works">How the Dictation API Works</option>
+          
+            <option value="beginning-a-dictation-session">Beginning a Dictation Session</option>
+          
+            <option value="obtaining-dictated-text">Obtaining Dictated Text</option>
+          
+            <option value="dictationsessionstatus-values">- DictationSessionStatus Values</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Dictation</h1>
+    
+    <div class="alert alert--fg-white alert--bg-purple alert--medium">
+      <p>
+        <strong>PLATFORM NOTICE</strong><br>
+        This guide does not apply to apps built to run on the Aplite platform
+        (Pebble Classic, Pebble Steel).
+      </p>
+    </div>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>On hardware <a href="/faqs/#pebble-sdk" title="" class="">platforms</a> supporting a microphone, the 
+<a href="/docs/c/Foundation/Dictation/" title="Dictation" class="link--docs"><code>Dictation</code></a> API can be used to gather arbitrary text input from a user. 
+This approach is much faster than any previous button-based text input system 
+(such as <a href="https://github.com/vgmoose/tertiary_text" title="" class="">tertiary text</a>), and 
+includes the ability to allow users to re-attempt dictation if there are any 
+errors in the returned transcription.</p>
+<blockquote>
+<p>Note: Apps running on multiple hardware platforms that may or may not include
+a microphone should use the <code>PBL_MICROPHONE</code> compile-time define (as well as
+checking API return values) to gracefully handle when it is not available.</p></blockquote>
+<h2 id="how-the-dictation-api-works" class="anchor">How the Dictation API Works</h2><p>The <a href="/docs/c/Foundation/Dictation/" title="Dictation" class="link--docs"><code>Dictation</code></a> API invokes the same UI that is shown to the user when
+responding to notifications via the system menu, with events occuring in the
+following order:</p>
+<ul>
+<li><p>The user initiates transcription and the dictation UI is displayed.</p></li>
+<li><p>The user dictates the phrase they would like converted into text.</p></li>
+<li><p>The audio is transmitted via the Pebble phone application to a 3rd party
+service and translated into text.</p></li>
+<li><p>When the text is returned, the user is given the opportunity to review the
+result of the transcription. At this time they may elect to re-attempt the
+dictation by pressing the Back button and speaking clearer.</p></li>
+<li><p>When the user is happy with the transcription, the text is provided to the
+app by pressing the Select button.</p></li>
+<li><p>If an error occurs in the transcription attempt, the user is automatically
+allowed to re-attempt the dictation.</p></li>
+<li><p>The user can retry their dictation by rejecting a successful transcription,
+but only if confirmation dialogs are enabled.</p></li>
+</ul>
+<h2 id="beginning-a-dictation-session" class="anchor">Beginning a Dictation Session</h2><p>To get voice input from a user, an app must first create a <a href="/docs/c/Foundation/Dictation/#DictationSession" title="DictationSession" class="link--docs"><code>DictationSession</code></a>
+that contains data relating to the status of the dictation service, as well as
+an allocated buffer to store the result of any transcriptions. This should be
+declared in the file-global scope (as <code>static</code>), so it can be used at any time
+(in button click handlers, for example).</p><div class="highlight"><pre><span class="k">static</span> <span class="n">DictationSession</span> <span class="o">*</span><span class="n">s_dictation_session</span><span class="p">;</span>
+</pre></div><p>A callback of type <a href="/docs/c/Foundation/Dictation/#DictationSessionStatusCallback" title="DictationSessionStatusCallback" class="link--docs"><code>DictationSessionStatusCallback</code></a> is also required to notify
+the developer to the status of any dictation requests and transcription results.
+This is called at any time the dictation UI exits, which can be for any of the
+following reasons:</p>
+<ul>
+<li><p>The user accepts a transcription result.</p></li>
+<li><p>A transcription is successful but the confirmation dialog is disabled.</p></li>
+<li><p>The user exits the dictation UI with the Back button.</p></li>
+<li><p>When any error occurs and the error dialogs are disabled.</p></li>
+<li><p>Too many transcription errors occur.</p></li>
+</ul>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">dictation_session_callback</span><span class="p">(</span><span class="n">DictationSession</span> <span class="o">*</span><span class="n">session</span><span class="p">,</span> <span class="n">DictationSessionStatus</span> <span class="n">status</span><span class="p">,</span>
+                                       <span class="kt">char</span> <span class="o">*</span><span class="n">transcription</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Print the results of a transcription attempt</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Dictation status: %d"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">status</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>At the end of this callback the <code>transcription</code> pointer becomes invalid - if the
+text is required later it should be copied into a separate buffer provided by
+the app. The size of this dictation buffer is chosen by the developer, and
+should be large enough to accept all expected input. Any transcribed text longer
+than the length of the buffer will be truncated.</p><div class="highlight"><pre><span class="c1">// Declare a buffer for the DictationSession</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="n">s_last_text</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+</pre></div><p>Finally, create the <a href="/docs/c/Foundation/Dictation/#DictationSession" title="DictationSession" class="link--docs"><code>DictationSession</code></a> and supply the size of the buffer and
+the <a href="/docs/c/Foundation/Dictation/#DictationSessionStatusCallback" title="DictationSessionStatusCallback" class="link--docs"><code>DictationSessionStatusCallback</code></a>. This session may be used as many times
+as requires for multiple transcriptions. A context pointer may also optionally
+be provided.</p><div class="highlight"><pre><span class="c1">// Create new dictation session</span>
+<span class="n">s_dictation_session</span> <span class="o">=</span> <span class="n">dictation_session_create</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">s_last_text</span><span class="p">),</span>
+                                               <span class="n">dictation_session_callback</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div><h2 id="obtaining-dictated-text" class="anchor">Obtaining Dictated Text</h2><p>After creating a <a href="/docs/c/Foundation/Dictation/#DictationSession" title="DictationSession" class="link--docs"><code>DictationSession</code></a>, the developer can begin a dictation
+attempt at any time, providing that one is not already in progress.</p><div class="highlight"><pre><span class="c1">// Start dictation UI</span>
+<span class="n">dictation_session_start</span><span class="p">(</span><span class="n">s_dictation_session</span><span class="p">);</span>
+</pre></div><p>The dictation UI will be displayed and the user will speak their desired input.</p><p><img src="/assets/images/guides/pebble-apps/sensors/listening.png" alt="listening" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>It is recommended to provide visual guidance on the format of the expected input
+before the <a href="/docs/c/Foundation/Dictation/#dictation_session_start" title="dictation_session_start" class="link--docs"><code>dictation_session_start()</code></a> is called. For example, if the user is
+expected to speak a location that should be a city name, they should be briefed
+as such before being asked to provide input.</p><p>When the user exits the dictation UI, the developer&#39;s
+<a href="/docs/c/Foundation/Dictation/#DictationSessionStatusCallback" title="DictationSessionStatusCallback" class="link--docs"><code>DictationSessionStatusCallback</code></a> will be called. The <code>status</code> parameter
+provided will inform the developer as to whether or not the transcription was
+successful using a <a href="/docs/c/Foundation/Dictation/#DictationSessionStatus" title="DictationSessionStatus" class="link--docs"><code>DictationSessionStatus</code></a> value. It is useful to check this
+value, as there are multiple reasons why a dictation request may not yield a
+successful result. These values are described below under
+<a href="#dictationsessionstatus-values" title="" class=""><em>DictationSessionStatus Values</em></a>.</p><p>If the value of <code>status</code> is equal to <a href="/docs/c/Foundation/Dictation/#DictationSessionStatusSuccess" title="DictationSessionStatusSuccess" class="link--docs"><code>DictationSessionStatusSuccess</code></a>, the
+transcription was successful. The user&#39;s input can be read from the
+<code>transcription</code> parameter for evaluation and storage for later use if required.
+Note that once the callback returns, <code>transcription</code> will no longer be valid.</p><p>For example, a <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> in the app&#39;s UI with variable name <code>s_output_layer</code>
+may be used to show the status of an attempted transcription:</p><div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">DictationSessionStatusSuccess</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Display the dictated text</span>
+  <span class="n">snprintf</span><span class="p">(</span><span class="n">s_last_text</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_last_text</span><span class="p">),</span> <span class="s">"Transcription:</span><span class="se">\n\n</span><span class="s">%s"</span><span class="p">,</span> <span class="n">transcription</span><span class="p">);</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_output_layer</span><span class="p">,</span> <span class="n">s_last_text</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// Display the reason for any error</span>
+  <span class="k">static</span> <span class="kt">char</span> <span class="n">s_failed_buff</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+  <span class="n">snprintf</span><span class="p">(</span><span class="n">s_failed_buff</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_failed_buff</span><span class="p">),</span> <span class="s">"Transcription failed.</span><span class="se">\n\n</span><span class="s">Reason:</span><span class="se">\n</span><span class="s">%d"</span><span class="p">,</span>
+           <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">status</span><span class="p">);</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_output_layer</span><span class="p">,</span> <span class="n">s_failed_buff</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>The confirmation mechanism allowing review of the transcription result can be
+disabled if it is not needed. An example of such a scenario may be to speed up a
+&#39;yes&#39; or &#39;no&#39; decision where the two expected inputs are distinct and different.</p><div class="highlight"><pre><span class="c1">// Disable the confirmation screen</span>
+<span class="n">dictation_session_enable_confirmation</span><span class="p">(</span><span class="n">s_dictation_session</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+</pre></div><p>It is also possible to disable the error dialogs, if so desired. This will
+disable the dialogs that appear when a transcription attempt fails, as well as
+disabling the ability to retry the dictation if a failure occurs.</p><div class="highlight"><pre><span class="c1">// Disable error dialogs</span>
+<span class="n">dictation_session_enable_error_dialogs</span><span class="p">(</span><span class="n">s_dictation_session</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+</pre></div><h3 id="dictationsessionstatus-values" class="anchor">DictationSessionStatus Values</h3><p>These are the possible values provided by a <a href="/docs/c/Foundation/Dictation/#DictationSessionStatusCallback" title="DictationSessionStatusCallback" class="link--docs"><code>DictationSessionStatusCallback</code></a>,
+and should be used to handle transcription success or failure for any of the
+following reasons.</p>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="/docs/c/Foundation/Dictation/#DictationSessionStatusSuccess" title="DictationSessionStatusSuccess" class="link--docs"><code>DictationSessionStatusSuccess</code></a></td>
+<td><code>0</code></td>
+<td>Transcription successful, with a valid result.</td>
+</tr>
+<tr>
+<td><a href="/docs/c/Foundation/Dictation/#DictationSessionStatusFailureTranscriptionRejected" title="DictationSessionStatusFailureTranscriptionRejected" class="link--docs"><code>DictationSessionStatusFailureTranscriptionRejected</code></a></td>
+<td><code>1</code></td>
+<td>User rejected transcription and dismissed the dictation UI.</td>
+</tr>
+<tr>
+<td><a href="/docs/c/Foundation/Dictation/#DictationSessionStatusFailureTranscriptionRejectedWithError" title="DictationSessionStatusFailureTranscriptionRejectedWithError" class="link--docs"><code>DictationSessionStatusFailureTranscriptionRejectedWithError</code></a></td>
+<td><code>2</code></td>
+<td>User exited the dictation UI after a transcription error.</td>
+</tr>
+<tr>
+<td><a href="/docs/c/Foundation/Dictation/#DictationSessionStatusFailureSystemAborted" title="DictationSessionStatusFailureSystemAborted" class="link--docs"><code>DictationSessionStatusFailureSystemAborted</code></a></td>
+<td><code>3</code></td>
+<td>Too many errors occurred during transcription and the dictation UI exited.</td>
+</tr>
+<tr>
+<td><a href="/docs/c/Foundation/Dictation/#DictationSessionStatusFailureNoSpeechDetected" title="DictationSessionStatusFailureNoSpeechDetected" class="link--docs"><code>DictationSessionStatusFailureNoSpeechDetected</code></a></td>
+<td><code>4</code></td>
+<td>No speech was detected and the dictation UI exited.</td>
+</tr>
+<tr>
+<td><a href="/docs/c/Foundation/Dictation/#DictationSessionStatusFailureConnectivityError" title="DictationSessionStatusFailureConnectivityError" class="link--docs"><code>DictationSessionStatusFailureConnectivityError</code></a></td>
+<td><code>5</code></td>
+<td>No Bluetooth or Internet connection available.</td>
+</tr>
+<tr>
+<td><a href="/docs/c/Foundation/Dictation/#DictationSessionStatusFailureDisabled" title="DictationSessionStatusFailureDisabled" class="link--docs"><code>DictationSessionStatusFailureDisabled</code></a></td>
+<td><code>6</code></td>
+<td>Voice transcription disabled for this user. This can occur if the user has disabled sending &#39;Usage logs&#39; in the Pebble mobile app.</td>
+</tr>
+<tr>
+<td><a href="/docs/c/Foundation/Dictation/#DictationSessionStatusFailureInternalError" title="DictationSessionStatusFailureInternalError" class="link--docs"><code>DictationSessionStatusFailureInternalError</code></a></td>
+<td><code>7</code></td>
+<td>Voice transcription failed due to an internal error.</td>
+</tr>
+<tr>
+<td><a href="/docs/c/Foundation/Dictation/#DictationSessionStatusFailureRecognizerError" title="DictationSessionStatusFailureRecognizerError" class="link--docs"><code>DictationSessionStatusFailureRecognizerError</code></a></td>
+<td><code>8</code></td>
+<td>Cloud recognizer failed to transcribe speech (only possible if error dialogs are disabled).</td>
+</tr>
+</tbody></table>
+
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/events-and-services/dictation/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#how-the-dictation-api-works">How the Dictation API Works</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#beginning-a-dictation-session">Beginning a Dictation Session</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#obtaining-dictated-text">Obtaining Dictated Text</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#dictationsessionstatus-values">DictationSessionStatus Values</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Foundation/Dictation/">Dictation</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/simple-voice-demo" target="_blank">Simple Voice Demo</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/voice-quiz" target="_blank">Voice Quiz</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

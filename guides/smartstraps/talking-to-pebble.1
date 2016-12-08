@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Talking To Pebble // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Information on how to implement the smartstrap protocol to talk to the Pebble
+accessory port.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/smartstraps/talking-to-pebble/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/smartstraps/smartstrap-hardware/"><span>Hardware Specification</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/smartstraps/smartstrap-protocol/"><span>Protocol Specification</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/smartstraps/talking-to-pebble/"><span>Talking To Pebble</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/smartstraps/talking-to-smartstraps/"><span>Talking To Smartstraps</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="arduino-library">Arduino Library</option>
+          
+            <option value="connecting-to-pebble">Connecting to Pebble</option>
+          
+            <option value="hardware-serial">- Hardware Serial</option>
+          
+            <option value="software-serial">- Software Serial</option>
+          
+            <option value="checking-connection-status">Checking Connection Status</option>
+          
+            <option value="processing-commands">Processing Commands</option>
+          
+            <option value="notifying-the-watch">Notifying the Watch</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Talking To Pebble</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>In order to communicate successfully with Pebble, the smartstrap hardware must
+correctly implement the smartstrap protocol as defined in 
+<a href="/guides/smartstraps/smartstrap-protocol/"><em>Protocol Specification</em></a>.</p><h2 id="arduino-library" class="anchor">Arduino Library</h2><p>For developers prototyping with some of the most common Arduino boards
+(based on the AVR ATmega 32U4, 2560, 328, or 328P chips), the simplest way of
+doing this is to use the
+<a href="https://github.com/pebble/arduinopebbleserial" title="" class="">ArduinoPebbleSerial</a> library.
+This open-source reference implementation takes care of the smartstrap protocol
+and allows easy communication with the Pebble accessory port.</p><p>Download the library as a .zip file. In the Arduino IDE, go to &#39;Sketch&#39; -&gt;
+&#39;Include Library&#39; -&gt; &#39;Add .ZIP LIbrary...&#39;. Choose the library .zip file. This
+will import the library into Arduino and add the appropriate include statement
+at the top of the sketch:</p><div class="highlight"><pre><span class="cp">#include &lt;ArduinoPebbleSerial.h&gt;</span>
+</pre></div><p>After including the ArduinoPebbleSerial library, begin the sketch with the
+standard template functions (these may already exist):</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div><h2 id="connecting-to-pebble" class="anchor">Connecting to Pebble</h2><p>Declare the buffer to be used for transferring data (of type <code>uint8_t</code>), and its
+maximum length. This should be large enough for managing the largest possible
+request from the watch, but not so large that there is no memory left for the
+rest of the program:</p>
+<blockquote>
+<p>Note: The buffer <strong>must</strong> be at least 6 bytes in length to handle internal
+protocol messages.</p></blockquote>
+<div class="highlight"><pre><span class="c1">// The buffer for transferring data</span>
+<span class="k">static</span> <span class="kt">uint8_t</span> <span class="n">s_data_buffer</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</pre></div><p>Define which service IDs the strap will support. See
+<a href="/guides/smartstraps/smartstrap-protocol/#generic-service-profile"><em>Generic Service Profile</em></a>
+for details on which values may be used here. An example service ID and
+attribute ID both of value <code>0x1001</code> are shown below:</p><div class="highlight"><pre><span class="k">static</span> <span class="k">const</span> <span class="kt">uint16_t</span> <span class="n">s_service_ids</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">uint16_t</span><span class="p">)</span><span class="mh">0x1001</span><span class="p">};</span>
+<span class="k">static</span> <span class="k">const</span> <span class="kt">uint16_t</span> <span class="n">s_attr_ids</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">uint16_t</span><span class="p">)</span><span class="mh">0x1001</span><span class="p">};</span>
+</pre></div><p>The last decision to be made before connection is which baud rate will be used.
+This will be the speed of the connection, chosen as one of the available baud
+rates from the <code>Baud</code> <code>enum</code>:</p><div class="highlight"><pre><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+  <span class="n">Baud9600</span><span class="p">,</span>
+  <span class="n">Baud14400</span><span class="p">,</span>
+  <span class="n">Baud19200</span><span class="p">,</span>
+  <span class="n">Baud28800</span><span class="p">,</span>
+  <span class="n">Baud38400</span><span class="p">,</span>
+  <span class="n">Baud57600</span><span class="p">,</span>
+  <span class="n">Baud62500</span><span class="p">,</span>
+  <span class="n">Baud115200</span><span class="p">,</span>
+  <span class="n">Baud125000</span><span class="p">,</span>
+  <span class="n">Baud230400</span><span class="p">,</span>
+  <span class="n">Baud250000</span><span class="p">,</span>
+  <span class="n">Baud460800</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">Baud</span><span class="p">;</span>
+</pre></div><p>This should be chosen as the highest rate supported by the board used, to allow
+the watch to save power by sleeping as much as possible. The recommended value
+is <code>Baud57600</code> for most Arduino-like boards.</p><h3 id="hardware-serial" class="anchor">Hardware Serial</h3><p>If using the hardware UART for the chosen board (the <code>Serial</code> library),
+initialize the ArduinoPebbleSerial library in the <code>setup()</code> function to prepare
+for connection:</p><div class="highlight"><pre><span class="c1">// Setup the Pebble smartstrap connection</span>
+<span class="n">ArduinoPebbleSerial</span><span class="o">::</span><span class="n">begin_hardware</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">),</span>
+                                                  <span class="n">Baud57600</span><span class="p">,</span> <span class="n">s_service_ids</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div><h3 id="software-serial" class="anchor">Software Serial</h3><p>Alternatively, software serial emulation can be used for any pin on the chosen
+board that 
+<a href="https://www.arduino.cc/en/Reference/AttachInterrupt" title="" class="">supports interrupts</a>. In
+this case, initialize the library in the following manner, where <code>pin</code> is the
+compatible pin number. For example, using Arduino Uno pin D8, specify a value of
+<code>8</code>. As with <code>begin_hardware()</code>, the baud rate and supported service IDs must
+also be provided here:</p><div class="highlight"><pre><span class="kt">int</span> <span class="n">pin</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+
+<span class="c1">// Setup the Pebble smartstrap connection using one wire software serial</span>
+<span class="n">ArduinoPebbleSerial</span><span class="o">::</span><span class="n">begin_software</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">s_data_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">),</span>
+                                                   <span class="n">Baud57600</span><span class="p">,</span> <span class="n">s_service_ids</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div><h2 id="checking-connection-status" class="anchor">Checking Connection Status</h2><p>Once the smartstrap has been physically connected to the watch and the
+connection has been established, calling <code>ArduinoPebbleSerial::is_connected()</code>
+will allow the program to check the status of the connection, and detect
+disconnection on the smartstrap side. This can be indicated to the wearer using
+an LED, for example:</p><div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">ArduinoPebbleSerial</span><span class="o">::</span><span class="n">is_connected</span><span class="p">())</span> <span class="p">{</span>
+  <span class="c1">// Connection is valid, turn LED on</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// Connection is not valid, turn LED off</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="processing-commands" class="anchor">Processing Commands</h2><p>In each iteration of the <code>loop()</code> function, the program must allow the library
+to process any bytes which have been received over the serial connection using
+<code>ArduinoPebbleSerial::feed()</code>. This function will return <code>true</code> if a complete
+frame has been received, and set the values of the parameters to inform the
+program of which type of frame was received:</p><div class="highlight"><pre><span class="kt">size_t</span> <span class="n">length</span><span class="p">;</span>
+<span class="n">RequestType</span> <span class="n">type</span><span class="p">;</span>
+<span class="kt">uint16_t</span> <span class="n">service_id</span><span class="p">;</span>
+<span class="kt">uint16_t</span> <span class="n">attribute_id</span><span class="p">;</span>
+
+<span class="c1">// Check to see if a frame was received, and for which service and attribute</span>
+<span class="k">if</span><span class="p">(</span><span class="n">ArduinoPebbleSerial</span><span class="o">::</span><span class="n">feed</span><span class="p">(</span><span class="o">&amp;</span><span class="n">service_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">attribute_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">length</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">type</span><span class="p">))</span> <span class="p">{</span>
+  <span class="c1">// We got a frame!</span>
+  <span class="k">if</span><span class="p">((</span><span class="n">service_id</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">attribute_id</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// This is a raw data service frame</span>
+    <span class="c1">// Null-terminate and display what was received in the Arduino terminal</span>
+    <span class="n">s_data_buffer</span><span class="p">[</span><span class="n">min</span><span class="p">(</span><span class="n">length_read</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">))]</span> <span class="o">=</span> <span class="err">`\</span><span class="mi">0</span><span class="err">`</span><span class="p">;</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// This may be one of our service IDs, check it.</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">service_id</span> <span class="o">==</span> <span class="n">s_service_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">attribute_id</span> <span class="o">==</span> <span class="n">s_attr_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+      <span class="c1">// This frame is for our supported service!</span>
+      <span class="n">s_data_buffer</span><span class="p">[</span><span class="n">min</span><span class="p">(</span><span class="n">length_read</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">))]</span> <span class="o">=</span> <span class="err">`\</span><span class="mi">0</span><span class="err">`</span><span class="p">;</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Write to service ID: "</span><span class="p">);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">service_id</span><span class="p">);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">" Attribute ID: "</span><span class="p">);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">attribute_id</span><span class="p">);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">": "</span><span class="p">);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>If the watch is requesting data, the library also allows the Arduino to respond
+back using <code>ArduinoPebbleSerial::write()</code>. This function accepts parameters to
+tell the connected watch which service and attribute is responding to the read
+request, as well is whether or not the read was successful:</p>
+<blockquote>
+<p>Note: A write to the watch <strong>must</strong> occur during processing for a
+<code>RequestType</code> of <code>RequestTypeRead</code> or <code>RequestTypeWriteRead</code>.</p></blockquote>
+<div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="n">RequestTypeRead</span> <span class="o">||</span> <span class="n">type</span> <span class="o">==</span> <span class="n">RequestTypeWriteRead</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// The watch is requesting data, send a friendly response</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">msg</span> <span class="o">=</span> <span class="s">"Hello, Pebble"</span><span class="p">;</span>
+
+  <span class="c1">// Clear the buffer</span>
+  <span class="n">memset</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">));</span>
+
+  <span class="c1">// Write the response into the buffer</span>
+  <span class="n">snprintf</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">s_data_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_data_buffer</span><span class="p">),</span> <span class="s">"%s"</span><span class="p">,</span> <span class="n">msg</span><span class="p">);</span>
+
+  <span class="c1">// Send the data to the watch for this service and attribute</span>
+  <span class="n">ArduinoPebbleSerial</span><span class="o">::</span><span class="n">write</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="n">s_data_buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">s_data_buffer</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h2 id="notifying-the-watch" class="anchor">Notifying the Watch</h2><p>To save power, it is strongly encouraged to design the communication scheme in
+such a way that avoids needing the watch to constantly query the status of the
+smartstrap, allowing it to sleep. To aid in this effort, the ArduinoPebbleSerial
+library includes the <code>ArduinoPebbleSerial::notify()</code> function to cause the
+watchapp to receive a <a href="/docs/c/Smartstrap/#SmartstrapNotifyHandler" title="SmartstrapNotifyHandler" class="link--docs"><code>SmartstrapNotifyHandler</code></a>.</p><p>For example, to notify the watch once a second:</p><div class="highlight"><pre><span class="c1">// The last time the watch was notified</span>
+<span class="k">static</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">s_last_notif_time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="cm">/* other code */</span>
+
+  <span class="c1">// Notify the watch every second</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">millis</span><span class="p">()</span> <span class="o">-</span> <span class="n">s_last_notif_time</span>  <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Send notification with our implemented serviceID  and attribute ID</span>
+    <span class="n">ArduinoPebbleSerial</span><span class="o">::</span><span class="n">notify</span><span class="p">(</span><span class="n">s_service_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s_attr_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+
+    <span class="c1">// Record the time of this notification</span>
+    <span class="n">s_last_notif_time</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/smartstraps/talking-to-pebble/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#arduino-library">Arduino Library</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#connecting-to-pebble">Connecting to Pebble</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#hardware-serial">Hardware Serial</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#software-serial">Software Serial</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#checking-connection-status">Checking Connection Status</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#processing-commands">Processing Commands</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#notifying-the-watch">Notifying the Watch</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Smartstrap/">Smartstrap</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/smartstrap-button-counter" target="_blank">Smartstrap Button Counter</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/smartstrap-library-test" target="_blank">Smartstrap Library Test</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

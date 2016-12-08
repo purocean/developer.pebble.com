@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SDK 2.x Migration Guide // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Migrating Pebble apps from SDK 1.x to SDK 2.x.">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/migration/migration-guide/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/pebblekit-ios-3/"><span>PebbleKit iOS 3.0 Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/migration/migration-guide/"><span>SDK 2.x Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/migration-guide-3/"><span>SDK 3.x Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/3x-aplite-migration/"><span>SDK 3.x on Aplite Migration Guide</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/migration/migration-guide-4/"><span>SDK 4.x Migration Guide</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="introduction">Introduction</option>
+          
+            <option value="discovering-the-new-pebble-tools-native-sdk-only">Discovering the new Pebble tools (Native SDK only)</option>
+          
+            <option value="upgrading-a-1-x-app-to-2-0">Upgrading a 1.x app to 2.0</option>
+          
+            <option value="application-metadata">- Application metadata</option>
+          
+            <option value="pebble-header-files">- Pebble Header files</option>
+          
+            <option value="initializing-your-app">- Initializing your app</option>
+          
+            <option value="opaque-structures-and-dynamic-memory-allocation">- Opaque structures and Dynamic Memory allocation</option>
+          
+            <option value="allocating-dynamic-memory-a-simple-example">- - Allocating dynamic memory: A simple example</option>
+          
+            <option value="dynamic-memory-general-rules-in-pebble-sdk-2-0">- - Dynamic memory: General rules in Pebble SDK 2.0</option>
+          
+            <option value="appmessage-changes">- AppMessage changes</option>
+          
+            <option value="dealing-with-tick-events">- Dealing with Tick events</option>
+          
+            <option value="timer-changes">- Timer changes</option>
+          
+            <option value="walltime-api-changes">- WallTime API changes</option>
+          
+            <option value="click-handler-changes">- Click handler changes</option>
+          
+            <option value="other-changes">- Other changes</option>
+          
+            <option value="quick-reference-for-the-upgrader">Quick reference for the upgrader</option>
+          
+            <option value="using-_create-_destroy-instead-of-_init-_deinit-functions">- Using *_create()/*_destroy() instead of *_init()/*_deinit() functions</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">SDK 2.x Migration Guide</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <div class="alert alert--fg-white alert--bg-dark-red"><strong>Important</strong><br/><p>This page is outdated, intended for updating SDK 1.x apps to SDK 2.x. All app
+should now be created with SDK 3.x. For migrating an app from SDK 2.x to SDK
+3.x, the read <a href="/guides/migration/migration-guide-3/"><em>SDK 3.x Migration Guide</em></a>.</p></div>
+<h2 id="introduction" class="anchor">Introduction</h2><p>This guide provides you with a summary and a detailed list of the changes,
+updates and new APIs available in Pebble SDK 2.0. To migrate your code successfully
+from Pebble SDK 1.x to Pebble SDK 2.x, you should read this guide.</p><p>In addition to updated and new Pebble APIs, you&#39;ll find updated developer tools
+and a simplified build system that makes it easier to create, build, and deploy
+Pebble apps.</p><p><strong>Applications written for Pebble SDK 1.x do not work on Pebble 2.0.</strong> It is
+extremely important that you upgrade your apps, so that your users can continue
+to enjoy your watchfaces and watchapps.</p><p>These are the essential steps to perform the upgrade:</p>
+<ul>
+<li>You&#39;ll need to upgrade Pebble SDK on your computer, the firmware on your
+Pebble, and the Pebble mobile application on your phone.</li>
+<li>You need to upgrade the <code>arm-cs-tools</code>. The version shipped with Pebble SDK 2
+contains several important improvements that help reduce the size of the
+binaries generated and improve the performance of your app.</li>
+<li>You need to upgrade the python dependencies
+<code>pip install --user -r /requirements.txt</code>).</li>
+</ul>
+<h2 id="discovering-the-new-pebble-tools-native-sdk-only" class="anchor">Discovering the new Pebble tools (Native SDK only)</h2><p>One of the new features introduced in Pebble native SDK 2.0 is the <code>pebble</code> command
+line tool. This tool is used to create new apps, build and install those apps on
+your Pebble.</p><p>The tool was designed to simplify and optimize the build process for your Pebble
+watchfaces and watchapps. Give it a try right now:</p><div class="highlight"><pre><span class="err">$</span> <span class="n">pebble</span> <span class="n">new</span><span class="o">-</span><span class="n">project</span> <span class="n">helloworld</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="n">helloworld</span>
+<span class="err">$</span> <span class="n">ls</span>
+<span class="n">appinfo</span><span class="p">.</span><span class="n">json</span>      <span class="n">resources</span>    <span class="n">src</span>          <span class="n">wscript</span>
+</pre></div><p>Notice that the new SDK does not require symlinks as the earlier SDK did. There
+is also a new <code>appinfo.json</code> file, described in greater detail later in this
+guide. The file provides you with a more readable format and includes all the
+metadata about your app.</p><div class="highlight"><pre><span class="err">$</span> <span class="n">pebble</span> <span class="n">build</span>
+<span class="p">...</span>
+
+<span class="n">Memory</span> <span class="nl">usage</span><span class="p">:</span>
+<span class="o">=============</span>
+<span class="n">Total</span> <span class="n">app</span> <span class="n">footprint</span> <span class="n">in</span> <span class="nl">RAM</span><span class="p">:</span>        <span class="mi">801</span> <span class="n">bytes</span> <span class="o">/</span> <span class="o">~</span><span class="mi">24</span><span class="n">kb</span>
+<span class="n">Free</span> <span class="n">RAM</span> <span class="n">available</span> <span class="p">(</span><span class="n">heap</span><span class="p">)</span><span class="o">:</span>       <span class="mi">23775</span> <span class="n">bytes</span>
+
+<span class="p">[</span><span class="mi">12</span><span class="o">/</span><span class="mi">13</span><span class="p">]</span> <span class="n">inject</span><span class="o">-</span><span class="nl">metadata</span><span class="p">:</span> <span class="n">build</span><span class="o">/</span><span class="n">pebble</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="n">raw</span><span class="p">.</span><span class="n">bin</span> <span class="n">build</span><span class="o">/</span><span class="n">app_resources</span><span class="p">.</span><span class="n">pbpack</span><span class="p">.</span><span class="n">data</span> <span class="o">-&gt;</span> <span class="n">build</span><span class="o">/</span><span class="n">pebble</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="n">bin</span>
+<span class="p">[</span><span class="mi">13</span><span class="o">/</span><span class="mi">13</span><span class="p">]</span> <span class="n">helloworld</span><span class="p">.</span><span class="nl">pbw</span><span class="p">:</span> <span class="n">build</span><span class="o">/</span><span class="n">pebble</span><span class="o">-</span><span class="n">app</span><span class="p">.</span><span class="n">bin</span> <span class="n">build</span><span class="o">/</span><span class="n">app_resources</span><span class="p">.</span><span class="n">pbpack</span> <span class="o">-&gt;</span> <span class="n">build</span><span class="o">/</span><span class="n">helloworld</span><span class="p">.</span><span class="n">pbw</span>
+
+<span class="p">...</span>
+
+<span class="err">'</span><span class="n">build</span><span class="err">'</span> <span class="n">finished</span> <span class="n">successfully</span> <span class="p">(</span><span class="mf">0.562</span><span class="n">s</span><span class="p">)</span>
+</pre></div><p>You don&#39;t need to call the <code>waf</code> tool to configure and then build the project
+anymore (<code>pebble</code> still uses <code>waf</code>, however). The new SDK also gives you some
+interesting information on how much memory your app will use and how much memory
+will be left for you in RAM.</p><div class="highlight"><pre><span class="err">$</span>  <span class="n">pebble</span> <span class="n">install</span> <span class="o">--</span><span class="n">phone</span> <span class="mf">10.0.64.113</span> <span class="o">--</span><span class="n">logs</span>
+<span class="p">[</span><span class="n">INFO</span>    <span class="p">]</span> <span class="n">Installation</span> <span class="n">successful</span>
+<span class="p">[</span><span class="n">INFO</span>    <span class="p">]</span> <span class="n">Enabling</span> <span class="n">application</span> <span class="n">logging</span><span class="p">...</span>
+<span class="p">[</span><span class="n">INFO</span>    <span class="p">]</span> <span class="n">Displaying</span> <span class="n">logs</span> <span class="p">...</span> <span class="n">Ctrl</span><span class="o">-</span><span class="n">C</span> <span class="n">to</span> <span class="n">interrupt</span><span class="p">.</span>
+<span class="p">[</span><span class="n">INFO</span>    <span class="p">]</span> <span class="n">D</span> <span class="n">helloworld</span><span class="p">.</span><span class="nl">c</span><span class="p">:</span><span class="mi">58</span> <span class="n">Done</span> <span class="n">initializing</span><span class="p">,</span> <span class="n">pushed</span> <span class="nl">window</span><span class="p">:</span> <span class="mh">0x2001a524</span>
+</pre></div><p>Installing an app with <code>pebble</code> is extremely simple. It uses your phone and the
+official Pebble application as a gateway. You do need to configure your phone
+first, however. For more information on working with this tool, read
+<a href="/guides/tools-and-resources/pebble-tool/"><em>Command Line Tool</em></a>.</p><p>You don&#39;t need to run a local HTTP server or connect with Bluetooth like you did
+with SDK 1.x. You will also get logs sent directly to the console, which will
+make development a lot easier!</p><h2 id="upgrading-a-1-x-app-to-2-0" class="anchor">Upgrading a 1.x app to 2.0</h2><p>Pebble 2.0 is a major release with many changes visible to users and developers
+and some major changes in the system that are not visible at first sight but
+will have a strong impact on your apps.</p><p>Here are the biggest changes in Pebble SDK 2.0 that will impact you when
+migrating your app. The changes are discussed in more detail below:</p>
+<ul>
+<li>Every app now requires an <code>appinfo.json</code>, which includes your app name, UUID,
+resources and a few other new configuration parameters. For more information,
+refer to <a href="/guides/tools-and-resources/app-metadata/"><em>App Metadata</em></a>.</li>
+<li>Your app entry point is called <code>main()</code> and not <code>pbl_main()</code>.</li>
+<li>Most of the system structures are not visible to apps anymore, and instead of
+allocating the memory yourself, you ask the system to allocate the memory and
+return a pointer to the structure.</li>
+</ul>
+
+<blockquote>
+<p>This means that you&#39;ll have to change most of your system calls and
+significantly rework your app. This change was required to allow us to
+update the structs in the future (for example, to add new fields in them)
+without forcing you to recompile your app code.</p></blockquote>
+
+<ul>
+<li>Pebble has redesigned many APIs to follow standard C best practices and
+futureproof the SDK.</li>
+</ul>
+<h3 id="application-metadata" class="anchor">Application metadata</h3><p>To upgrade your app for Pebble SDK 2.0, you should first run the
+<code>pebble convert-project</code> command in your existing 1.x project. This will
+automatically try to generate the <code>appinfo.json</code> file based on your existing
+source code and resource file. It will not touch your C code.</p><p>Please review your <code>appinfo.json</code> file and make sure everything is OK. If it is,
+you can safely remove the UUID and the <code>PBL_APP_INFO</code> in your C file.</p><p>Refer to <a href="/guides/tools-and-resources/app-metadata/"><em>App Metadata</em></a>
+for more information on application metadata and the basic structure of an app
+in Pebble SDK 2.0.</p><h3 id="pebble-header-files" class="anchor">Pebble Header files</h3><p>In Pebble SDK 1.x, you would reference Pebble header files with three include
+statements:</p><div class="highlight"><pre><span class="cp">#include "pebble_os.h"</span>
+<span class="cp">#include "pebble_app.h"</span>
+<span class="cp">#include "pebble_fonts.h"</span>
+</pre></div><p>In Pebble SDK 2.x, you can replace them with one statement:</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
+</pre></div><h3 id="initializing-your-app" class="anchor">Initializing your app</h3><p>In Pebble SDK 1.x, your app was initialized in a <code>pbl_main()</code> function:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">pbl_main</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">PebbleAppHandlers</span> <span class="n">handlers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">init_handler</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">handle_init</span>
+  <span class="p">};</span>
+  <span class="n">app_event_loop</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">handlers</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>In Pebble SDK 2.0:</p>
+<ul>
+<li><code>pbl_main</code> is replaced by <code>main</code>.</li>
+<li>The <code>PebbleAppHandlers</code> structure no longer exists. You call your init and
+destroy handlers directly from the <code>main()</code> function.</li>
+</ul>
+<div class="highlight"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">handle_init</span><span class="p">();</span>
+  <span class="n">app_event_loop</span><span class="p">();</span>
+  <span class="n">handle_deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>There were other fields in the <code>PebbleAppHandlers</code>:</p>
+<ul>
+<li><code>PebbleAppInputHandlers</code>:
+Use a <a href="/docs/c/User_Interface/Clicks/#ClickConfigProvider" title="ClickConfigProvider" class="link--docs"><code>ClickConfigProvider</code></a> instead.</li>
+<li><code>PebbleAppMessagingInfo</code>: Refer to the section below on <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a>
+changes.</li>
+<li><code>PebbleAppTickInfo</code>: Refer to the section below on Tick events.</li>
+<li><code>PebbleAppTimerHandler</code>: Refer to the section below on <a href="/docs/c/Foundation/Timer/" title="Timer" class="link--docs"><code>Timer</code></a> events.</li>
+<li><code>PebbleAppRenderEventHandler</code>: Use a <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a> and call
+<a href="/docs/c/User_Interface/Layers/#layer_set_update_proc" title="layer_set_update_proc" class="link--docs"><code>layer_set_update_proc()</code></a> to provide your own function to render.</li>
+</ul>
+<h3 id="opaque-structures-and-dynamic-memory-allocation" class="anchor">Opaque structures and Dynamic Memory allocation</h3><p>In Pebble SDK 2.0, system structures are opaque and your app can&#39;t directly
+allocate memory for them. Instead, you use system functions that allocate memory
+and initialize the structure at the same time.</p><h4 id="allocating-dynamic-memory-a-simple-example" class="anchor">Allocating dynamic memory: A simple example</h4><p>In Pebble SDK 1.x, you would allocate memory for system structures inside your
+app with static global variables. For example, it was very common to write:</p><div class="highlight"><pre><span class="n">Window</span> <span class="n">my_window</span><span class="p">;</span>
+<span class="n">TextLayer</span> <span class="n">text_layer</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">handle_init</span><span class="p">(</span><span class="n">AppContextRef</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">window_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">my_window</span><span class="p">,</span> <span class="s">"My App"</span><span class="p">);</span>
+  <span class="n">text_layer_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">text_layer</span><span class="p">,</span> <span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">20</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div><p>In Pebble SDK 2, you can&#39;t allocate memory statically in your program because
+the compiler doesn&#39;t know at compile time how big the system structures are
+(here, in the above code snippet <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> and <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>). Instead, you use
+pointers and ask the system to allocate the memory for you.</p><p>This simple example becomes:</p><div class="highlight"><pre><span class="n">Window</span> <span class="o">*</span><span class="n">my_window</span><span class="p">;</span>
+<span class="n">TextLayer</span> <span class="o">*</span><span class="n">text_layer</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">handle_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">my_window</span> <span class="o">=</span> <span class="n">window_create</span><span class="p">();</span>
+
+  <span class="n">text_layer</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span><span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">20</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div><p>Instead of using <code>*_init()</code> functions and passing them a pointer to the structure,
+in SDK 2.0, you call functions that end in <code>_create()</code>, and these functions will
+allocate memory and return to your app a pointer to a structure that is
+initialized.</p><p>Because the memory is dynamically allocated, it is extremely important that you
+release that memory when you are finished using the structure. This can be done
+with the <code>*_destroy()</code> functions. For our example, we could write:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">handle_deinit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">text_layer_destroy</span><span class="p">(</span><span class="n">text_layer</span><span class="p">);</span>
+  <span class="n">window_destroy</span><span class="p">(</span><span class="n">my_window</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h4 id="dynamic-memory-general-rules-in-pebble-sdk-2-0" class="anchor">Dynamic memory: General rules in Pebble SDK 2.0</h4>
+<ul>
+<li>Replace all statically allocated system structures with a pointer to the
+structure.</li>
+<li>Replace functions that ended in <code>_init()</code> with their equivalent that end in
+<code>_create()</code>.</li>
+<li>Keep pointers to the structures that you have initialized. Call the
+<code>*_destroy()</code> functions to release the memory.</li>
+</ul>
+<h3 id="appmessage-changes" class="anchor">AppMessage changes</h3>
+<ul>
+<li>Instead of defining your buffer sizes in <code>PebbleAppMessagingInfo</code>, you pass
+them to <a href="/docs/c/Foundation/AppMessage/#app_message_open" title="app_message_open" class="link--docs"><code>app_message_open()</code></a></li>
+<li><p>Instead of using a <code>AppMessageCallbacksNode</code> structure and
+<code>app_message_register_callbacks()</code>, you register handler for the different
+<a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> events with:</p>
+<ul>
+<li><a href="/docs/c/Foundation/AppMessage/#app_message_register_inbox_received" title="app_message_register_inbox_received" class="link--docs"><code>app_message_register_inbox_received()</code></a></li>
+<li><a href="/docs/c/Foundation/AppMessage/#app_message_register_inbox_dropped" title="app_message_register_inbox_dropped" class="link--docs"><code>app_message_register_inbox_dropped()</code></a></li>
+<li><a href="/docs/c/Foundation/AppMessage/#app_message_register_outbox_failed" title="app_message_register_outbox_failed" class="link--docs"><code>app_message_register_outbox_failed()</code></a></li>
+<li><a href="/docs/c/Foundation/AppMessage/#app_message_register_outbox_sent" title="app_message_register_outbox_sent" class="link--docs"><code>app_message_register_outbox_sent()</code></a></li>
+<li><a href="/docs/c/Foundation/AppMessage/#app_message_set_context" title="app_message_set_context" class="link--docs"><code>app_message_set_context(void *context)</code></a>: To set the context that will be
+passed to all the handlers.</li>
+<li><code>app_message_out_get()</code> is replaced by <a href="/docs/c/Foundation/AppMessage/#app_message_outbox_begin" title="app_message_outbox_begin" class="link--docs"><code>app_message_outbox_begin()</code></a>.</li>
+<li><code>app_message_out_send()</code> is replaced by <a href="/docs/c/Foundation/AppMessage/#app_message_outbox_send" title="app_message_outbox_send" class="link--docs"><code>app_message_outbox_send()</code></a>.</li>
+<li><code>app_message_out_release()</code> is removed. You do not need to call this anymore.</li>
+</ul></li>
+</ul>
+<p>For more information, please review the <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> API Documentation.</p><p>For working examples using AppMessage and AppSync in SDK 2.0, refer to:</p>
+<ul>
+<li><code>/PebbleSDK-2.x/Examples/pebblekit-js/quotes</code>:
+Demonstrates how to use PebbleKit JS to fetch price quotes from the web.
+It uses AppMessage on the C side.</li>
+<li><code>/PebbleSDK-2.x/Examples/pebblekit-js/weather</code>:
+A PebbleKit JS version of the traditional <code>weather-demo</code> example. It uses
+AppSync on the C side.</li>
+</ul>
+<h3 id="dealing-with-tick-events" class="anchor">Dealing with Tick events</h3><p>Callbacks for tick events can&#39;t be defined through <code>PebbleAppHandlers</code> anymore.
+Instead, use the Tick Timer Event service with:
+<a href="/docs/c/Foundation/Event_Service/TickTimerService/#tick_timer_service_subscribe" title="tick_timer_service_subscribe" class="link--docs"><code>tick_timer_service_subscribe()</code></a>.</p><p>For more information, read <a href="/guides/events-and-services/events/"><em>Event Services</em></a>/</p><h3 id="timer-changes" class="anchor">Timer changes</h3><p><code>app_timer_send_event()</code> is replaced by <a href="/docs/c/Foundation/Timer/#app_timer_register" title="app_timer_register" class="link--docs"><code>app_timer_register()</code></a>.</p><p>For more information, refer to the <a href="/docs/c/Foundation/Timer/" title="Timer" class="link--docs"><code>Timer</code></a> API documentation.</p><h3 id="walltime-api-changes" class="anchor">WallTime API changes</h3>
+<ul>
+<li><p><code>PblTm</code> has been removed and replaced by the libc standard struct. Use struct
+<code>tm</code> from <code>#include &lt;time.h&gt;</code>.</p></li>
+<li><p><code>tm string_format_time()</code> function is replaced by <a href="/docs/c/Standard_C/Time/#strftime" title="strftime" class="link--docs"><code>strftime()</code></a>.</p></li>
+<li><p><code>get_time()</code> is replaced by <code>localtime(time(NULL))</code>. This lets you convert a
+timestamp into a struct.</p></li>
+<li><p>Pebble OS does not, as yet, support timezones. However, Pebble SDK 2
+introduces <code>gmtime()</code> and <code>localtime()</code> functions to prepare for timezone
+support.</p></li>
+</ul>
+<h3 id="click-handler-changes" class="anchor">Click handler changes</h3><p>In SDK 1.x, you would set up click handlers manually by modifying an array of
+config structures to contain the desired configuration. In SDK 2.x, how click
+handlers are registered and used has changed.</p><p>The following functions for subscribing to events have been added in SDK 2.x:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">window_set_click_context</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">window_single_click_subscribe</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">window_single_repeating_click_subscribe</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">window_multi_click_subscribe</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">window_multi_click_subscribe</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">window_long_click_subscribe</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">window_raw_click_subscribe</span><span class="p">();</span>
+</pre></div><p>For more information, refer to the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> API documentation.</p><p>For example, in SDK 1.x you would do this:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">click_config_provider</span><span class="p">(</span><span class="n">ClickConfig</span> <span class="o">**</span><span class="n">config</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_UP</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">click</span><span class="p">.</span><span class="n">handler</span> <span class="o">=</span> <span class="n">up_click_handler</span><span class="p">;</span>
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_UP</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">context</span> <span class="o">=</span> <span class="n">context</span><span class="p">;</span>
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_UP</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">click</span><span class="p">.</span><span class="n">repeat_interval_ms</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_SELECT</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">click</span><span class="p">.</span><span class="n">handler</span> <span class="o">=</span> <span class="n">select_click_handler</span><span class="p">;</span>
+
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_DOWN</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">multi_click</span><span class="p">.</span><span class="n">handler</span> <span class="o">=</span> <span class="n">down_click_handler</span><span class="p">;</span>
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_DOWN</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">multi_click</span><span class="p">.</span><span class="n">min</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_DOWN</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">multi_click</span><span class="p">.</span><span class="n">max</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_DOWN</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">multi_click</span><span class="p">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="cm">/* default timeout */</span>
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_DOWN</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">multi_click</span><span class="p">.</span><span class="n">last_click_only</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_SELECT</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">long_click</span><span class="p">.</span><span class="n">delay_ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+  <span class="n">config</span><span class="p">[</span><span class="n">BUTTON_ID_SELECT</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">long_click</span><span class="p">.</span><span class="n">handler</span> <span class="o">=</span> <span class="n">select_long_click_handler</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div><p>In SDK 2.x, you would use the following calls instead:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">click_config_provider</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">window_set_click_context</span><span class="p">(</span><span class="n">BUTTON_ID_UP</span><span class="p">,</span> <span class="n">context</span><span class="p">);</span>
+  <span class="n">window_single_repeating_click_subscribe</span><span class="p">(</span><span class="n">BUTTON_ID_UP</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">up_click_handler</span><span class="p">);</span>
+
+  <span class="n">window_single_click_subscribe</span><span class="p">(</span><span class="n">BUTTON_ID_SELECT</span><span class="p">,</span> <span class="n">select_click_handler</span><span class="p">);</span>
+
+  <span class="n">window_multi_click_subscribe</span><span class="p">(</span><span class="n">BUTTON_ID_DOWN</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="n">down_click_handler</span><span class="p">);</span>
+
+  <span class="n">window_long_click_subscribe</span><span class="p">(</span><span class="n">BUTTON_ID_SELECT</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">select_long_click_handler</span><span class="p">,</span> <span class="nb">NULL</span> <span class="cm">/* No handler on button release */</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Notice that the signature of <a href="/docs/c/User_Interface/Clicks/#ClickConfigProvider" title="ClickConfigProvider" class="link--docs"><code>ClickConfigProvider</code></a> has also changed. These
+<a href="/docs/c/User_Interface/Clicks/" title="Clicks" class="link--docs"><code>Clicks</code></a> API functions <strong>must</strong> be called from within the
+ClickConfigProvider function. If they are not, your app code will fail.</p><h3 id="other-changes" class="anchor">Other changes</h3>
+<ul>
+<li><code>graphics_text_draw()</code> has been renamed to <a href="/docs/c/Graphics/Drawing_Text/#graphics_draw_text" title="graphics_draw_text" class="link--docs"><code>graphics_draw_text()</code></a>, matching
+the rest of Pebble&#39;s graphics_draw_ functions. There are no changes with the
+usage of the function.</li>
+</ul>
+<h2 id="quick-reference-for-the-upgrader" class="anchor">Quick reference for the upgrader</h2><p><strong>Table 1. API changes from SDK 1.x to 2.x</strong></p>
+<table><thead>
+<tr>
+<th style="text-align: left">API Call in SDK 1.x</th>
+<th style="text-align: left">API Call in SDK 2.x</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>#define APP_TIMER_INVALID_HANDLE ((AppTimerHandle)0)</code></td>
+<td style="text-align: left">Changed. No longer needed; <code>app_timer_register()</code> always succeeds. See [<a href="/docs/c/Foundation/Timer/" title="Timer" class="link--docs"><code>Timer</code></a>.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>#define INT_MAX 32767</code></td>
+<td style="text-align: left">Changed. See <code>#include &lt;limits.h&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>AppTimerHandle app_timer_send_event();</code></td>
+<td style="text-align: left">See <a href="/docs/c/Foundation/Timer/#app_timer_register" title="app_timer_register" class="link--docs"><code>app_timer_register()</code></a> for more information at <a href="/docs/c/Foundation/Timer/" title="Timer" class="link--docs"><code>Timer</code></a>.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>ARRAY_MAX</code></td>
+<td style="text-align: left">Removed from Pebble headers. Now use limits.h</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>bool app_timer_cancel_event();</code></td>
+<td style="text-align: left">Changed. See <a href="/docs/c/Foundation/Timer/#app_timer_cancel" title="app_timer_cancel" class="link--docs"><code>app_timer_cancel()</code></a> for more information at <a href="/docs/c/Foundation/Timer/" title="Timer" class="link--docs"><code>Timer</code></a>.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>GContext *app_get_current_graphics_context();</code></td>
+<td style="text-align: left">Removed. Use the context supplied to you in the drawing callbacks.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>GSize text_layer_get_max_used_size();</code></td>
+<td style="text-align: left">Use <a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_get_content_size" title="text_layer_get_content_size" class="link--docs"><code>text_layer_get_content_size()</code></a>. See <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>INT_MAX</code></td>
+<td style="text-align: left">Removed from Pebble headers. Now use limits.h</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>void get_time();</code></td>
+<td style="text-align: left">Use <code>localtime(time(NULL))</code> from <code>#include &lt;time.h&gt;</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>void resource_init_current_app();</code></td>
+<td style="text-align: left">No longer needed.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>void string_format_time();</code></td>
+<td style="text-align: left">Use <a href="/docs/c/Standard_C/Time/#strftime" title="strftime" class="link--docs"><code>strftime</code></a> from <code>#include &lt;time.h&gt;</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>void window_render();</code></td>
+<td style="text-align: left">No longer available.</td>
+</tr>
+</tbody></table>
+<h3 id="using-_create-_destroy-instead-of-_init-_deinit-functions" class="anchor">Using <code>*_create()/*_destroy()</code> instead of <code>*_init()/*_deinit()</code> functions</h3><p>If you were using the following <code>_init()/_deinit()</code> functions, you should now
+use <code>*_create()/*_destroy()</code> instead when making these calls:</p>
+<ul>
+<li><code>bool rotbmp_init_container();</code> See <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>.</li>
+<li><code>bool rotbmp_pair_init_container();</code> <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>.</li>
+<li><code>void action_bar_layer_init();</code> See <a href="/docs/c/User_Interface/Layers/ActionBarLayer/" title="ActionBarLayer" class="link--docs"><code>ActionBarLayer</code></a>.</li>
+<li><code>void animation_init();</code> See <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>.</li>
+<li><code>void bitmap_layer_init();</code> <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>.</li>
+<li><code>void gbitmap_init_as_sub_bitmap();</code> See <a href="/docs/c/Graphics/Graphics_Types/" title="Graphics Types" class="link--docs">Graphics Types</a>.</li>
+<li><code>void gbitmap_init_with_data();</code> See <a href="/docs/c/Graphics/Graphics_Types/" title="Graphics Types" class="link--docs">Graphics Types</a>.</li>
+<li><code>void inverter_layer_init();</code> Now <code>InverterLayer</code> (deprecated in SDK 3.0).</li>
+<li><code>void layer_init();</code> See <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>.</li>
+<li><code>void menu_layer_init();</code> See <a href="/docs/c/User_Interface/Layers/MenuLayer/" title="MenuLayer" class="link--docs"><code>MenuLayer</code></a>.</li>
+<li><code>void number_window_init();</code></li>
+<li><code>void property_animation_init_layer_frame();</code> See <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>.</li>
+<li><code>void property_animation_init();</code> See <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>.</li>
+<li><code>void rotbmp_deinit_container();</code> <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>.</li>
+<li><code>void rotbmp_pair_deinit_container();</code> <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>.</li>
+<li><code>void scroll_layer_init();</code> See <a href="/docs/c/User_Interface/Layers/ScrollLayer/" title="ScrollLayer" class="link--docs"><code>ScrollLayer</code></a>.</li>
+<li><code>void simple_menu_layer_init();</code> See <a href="/docs/c/User_Interface/Layers/SimpleMenuLayer/" title="SimpleMenuLayer" class="link--docs"><code>SimpleMenuLayer</code></a>.</li>
+<li><code>void text_layer_deinit();</code> See <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>.</li>
+<li><code>void text_layer_init();</code> See <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>.</li>
+<li><code>void window_deinit();</code> See <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>.</li>
+<li><code>void window_init();</code> See <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>.</li>
+</ul>
+
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/migration/migration-guide/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#introduction">Introduction</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#discovering-the-new-pebble-tools-native-sdk-only">Discovering the new Pebble tools (Native SDK only)</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#upgrading-a-1-x-app-to-2-0">Upgrading a 1.x app to 2.0</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#application-metadata">Application metadata</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#pebble-header-files">Pebble Header files</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#initializing-your-app">Initializing your app</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#opaque-structures-and-dynamic-memory-allocation">Opaque structures and Dynamic Memory allocation</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#allocating-dynamic-memory-a-simple-example">Allocating dynamic memory: A simple example</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#dynamic-memory-general-rules-in-pebble-sdk-2-0">Dynamic memory: General rules in Pebble SDK 2.0</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#appmessage-changes">AppMessage changes</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#dealing-with-tick-events">Dealing with Tick events</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#timer-changes">Timer changes</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#walltime-api-changes">WallTime API changes</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#click-handler-changes">Click handler changes</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#other-changes">Other changes</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#quick-reference-for-the-upgrader">Quick reference for the upgrader</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#using-_create-_destroy-instead-of-_init-_deinit-functions">Using *_create()/*_destroy() instead of *_init()/*_deinit() functions</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

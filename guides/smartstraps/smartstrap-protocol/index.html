@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Protocol Specification // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Reference information on the Pebble smartstrap protocol.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/smartstraps/smartstrap-protocol/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/smartstraps/smartstrap-hardware/"><span>Hardware Specification</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/smartstraps/smartstrap-protocol/"><span>Protocol Specification</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/smartstraps/talking-to-pebble/"><span>Talking To Pebble</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/smartstraps/talking-to-smartstraps/"><span>Talking To Smartstraps</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="communication-model">Communication Model</option>
+          
+            <option value="assumptions">Assumptions</option>
+          
+            <option value="sample-implementation">Sample Implementation</option>
+          
+            <option value="protocol-layers">Protocol Layers</option>
+          
+            <option value="physical-layer">- Physical Layer</option>
+          
+            <option value="link-layer">- Link Layer</option>
+          
+            <option value="frame-format">- - Frame Format</option>
+          
+            <option value="encoding">- - Encoding</option>
+          
+            <option value="example-frames">- - Example Frames</option>
+          
+            <option value="invalid-frames">- - Invalid Frames</option>
+          
+            <option value="timeout">- - Timeout</option>
+          
+            <option value="notification-mechanism">- Notification Mechanism</option>
+          
+            <option value="profile-layer">- Profile Layer</option>
+          
+            <option value="link-control-profile">- - Link Control Profile</option>
+          
+            <option value="raw-data-service">- - Raw Data Service</option>
+          
+            <option value="generic-service-profile">- - Generic Service Profile</option>
+          
+            <option value="supported-services-and-attributes">- - Supported Services and Attributes</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Protocol Specification</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>This page describes the protocol used for communication with Pebble smartstraps,
+intended to gracefully handle bus contention and allow two-way communication.
+The protocol is error-free and unreliable, meaning datagrams either arrive
+intact or not at all.</p><h2 id="communication-model" class="anchor">Communication Model</h2><p>Most smartstrap communication follows a master-slave model with the watch being
+the master and the smartstrap being the slave. This means that the watch will
+never receive data from the smartstrap which it isn&#39;t expecting. The one
+exception to the master/slave model is the notification mechanism, which allows
+the smartstrap to notify the watch of an event it may need to respond to. This
+is roughly equivalent to an interrupt line on an I2C device, but for smartstraps
+is done over the single data line (marked &#39;Data&#39; on diagrams).</p><h2 id="assumptions" class="anchor">Assumptions</h2><p>The following are assumed to be universally true for the purposes of the
+smartstrap protocol:</p>
+<ol>
+<li>Data is sent in <a href="https://en.wikipedia.org/wiki/Endianness" title="" class="">little-endian</a>
+byte order.</li>
+<li>A byte is defined as an octet (8 bits).</li>
+<li>Any undefined values should be treated as reserved and should not be used.</li>
+</ol>
+<h2 id="sample-implementation" class="anchor">Sample Implementation</h2><p>Pebble provides complete working sample implementations for common
+micro-controllers platforms such as the <a href="https://www.pjrc.com/teensy/" title="" class="">Teensy</a>
+and <a href="https://www.arduino.cc/en/Main/arduinoBoardUno" title="" class="">Arduino Uno</a>.
+This means that when using one of these platforms, it is not necessary to
+understand all of the details of the low level communications and thus can rely
+on the provided library.</p><p><a href="https://github.com/pebble/ArduinoPebbleSerial/" title="" class="btn btn--markdown btn--center btn--bg-dark-red btn--fg-white">Arduino Pebble Serial Sample Library</a></p><p>Read <a href="/guides/smartstraps/talking-to-pebble" title="" class=""><em>Talking to Pebble</em></a> for
+instructions on how to use this library to connect to Pebble.</p><h2 id="protocol-layers" class="anchor">Protocol Layers</h2><p>The smartstrap protocol is split up into 3 layers as shown in the table below:</p>
+<table><thead>
+<tr>
+<th>Layer</th>
+<th>Function</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#profile-layer" title="" class="">Profile Layer</a></td>
+<td>Determines the format of the high-level message being transmitted.</td>
+</tr>
+<tr>
+<td><a href="#link-layer" title="" class="">Link Layer</a></td>
+<td>Provides framing and error detection to allow transmission of datagrams between the watch and the smartstrap.</td>
+</tr>
+<tr>
+<td><a href="#physical-layer" title="" class="">Physical Layer</a></td>
+<td>Transmits raw bits over the electrical connection.</td>
+</tr>
+</tbody></table>
+<h3 id="physical-layer" class="anchor">Physical Layer</h3><p>The physical layer defines the hardware-level protocol that is used to send bits
+over the single data wire. In the case of the smartstrap interface, there is a
+single data line, with the two endpoints using open-drain outputs with an
+external pull-up resistor on the smartstrap side. Frames are transmitted over
+this data line as half-duplex asynchronous serial (UART).</p><p>The UART configuration is 8-N-1: eight data bits, no
+<a href="https://en.wikipedia.org/wiki/Parity_bit" title="" class="">parity bit</a>, and one
+<a href="https://en.wikipedia.org/wiki/Asynchronous_serial_communication" title="" class="">stop bit</a>. The
+default baud rate is 9600 bps (bits per second), but can be changed by the
+higher protocol layers. The smallest data unit in a frame is a byte.</p><p><strong>Auto-detection</strong></p><p>The physical layer is responsible for providing the smartstrap auto-detection
+mechanism. Smartstraps are required to have a pull-up resistor on the data line
+which is always active and not dependent on any initialization (i.e. activating
+internal pull-ups on microcontroller pins). The value of the pull-up resistor
+must be low enough that adding a 30kΩ pull-down resistor to the data line will
+leave the line at &gt;=1.26V (10kΩ is generally recommended). Before communication
+with the smartstrap is attempted, the watch will check to see if the pull-up is
+present. If (and only if) it is, the connection will proceed.</p><p><strong>Break Character</strong></p><p>A break character is defined by the physical layer and used by the
+<a href="#link-layer" title="" class="">link layer</a> for the notification mechanism. The physical layer for
+smartstraps defines a break character as a <code>0x00</code> byte with an extra low bit
+before the stop bit. For example, in 8-N-1 UART, this means the start bit is
+followed by nine low (<code>0</code>) bits and a stop bit.</p><h3 id="link-layer" class="anchor">Link Layer</h3><p>The link layer is responsible for transmitting frames between the smartstrap and
+the watch. The goal of the link layer is to detect transmission errors such as
+flipped bits (including those caused by bus contention) and to provide a framing
+mechanism to the upper layers.</p><h4 id="frame-format" class="anchor">Frame Format</h4><p>The structure of the link layer frame is shown below. The fields are transmitted
+from top to bottom.</p>
+<blockquote>
+<p>Note: This does not include the delimiting flags or bytes inserted for
+transparency as described in the <a href="#encoding" title="" class="">encoding</a> section below.</p></blockquote>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Length</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>version</code></td>
+<td>1 byte</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>4 bytes</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td>2 bytes</td>
+</tr>
+<tr>
+<td><code>payload</code></td>
+<td>Variable length (may be empty)</td>
+</tr>
+<tr>
+<td><code>checksum</code></td>
+<td>1 byte</td>
+</tr>
+</tbody></table>
+<p><strong>Version</strong></p><p>The <code>version</code> field contains the current version of the link layer of the
+smartstrap protocol.</p>
+<table><thead>
+<tr>
+<th>Version</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Initial release version.</td>
+</tr>
+</tbody></table>
+<p><strong>Flags</strong></p><p>The <code>flags</code> field is four bytes in length and is made up of the following
+fields.</p>
+<table><thead>
+<tr>
+<th>Bit(s)</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td><code>IsRead</code></td>
+<td><code>0</code>: The smartstrap should not reply to this frame.</br><code>1</code>: This is a read and the smartstrap should reply.</br></br>This field field should only be set by the watch. The smartstrap should always set this field to <code>0</code>.</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>IsMaster</code></td>
+<td><code>0</code>: This frame was sent by the smartstrap.</br><code>1</code>: This frame was sent by the watch.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>IsNotification</code></td>
+<td><code>0</code>: This is not a notification frame.</br><code>1</code>: This frame was sent by the smartstrap as part of the notification.</br></br>This field should only be set by the smartstrap. The watch should always set this field to <code>0</code>.</td>
+</tr>
+<tr>
+<td>3-31</td>
+<td><code>Reserved</code></td>
+<td>All reserved bits should be set to <code>0</code>.</td>
+</tr>
+</tbody></table>
+<p><strong>Profile</strong></p><p>The <code>profile</code> field determines the specific profile used for communication. The
+details of each of the profiles are defined in the 
+<a href="#profile-layer" title="" class="">Profile Layer</a> section.</p>
+<table><thead>
+<tr>
+<th>Number</th>
+<th>Value</th>
+<th>Name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td><code>0x0001</code></td>
+<td>Link Control Profile</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>0x0002</code></td>
+<td>Raw Data Profile</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>0x0003</code></td>
+<td>Generic Service Profile</td>
+</tr>
+</tbody></table>
+<p><strong>Payload</strong></p><p>The <code>payload</code> field contains the profile layer data. The link layer considers an
+empty frame as being valid, and there is no maximum length.</p><p><strong>Checksum</strong></p><p>The checksum is an 8-bit 
+<a href="https://en.wikipedia.org/wiki/Cyclic_redundancy_check" title="" class="">CRC</a> with a polynomial 
+of <code>x^8 + x^5 + x^3 + x^2 + x + 1</code>. This is <strong>not</strong> the typical CRC-8 
+polynomial.</p><p>An example implementation of this CRC can be found in the
+<a href="https://github.com/pebble/ArduinoPebbleSerial/blob/master/utility/crc.c" title="" class="">ArduinoPebbleSerial library</a>.</p><p><strong>Frame Length</strong></p><p>The length of a frame is defined as the number of bytes in the <code>flags</code>,
+<code>profile</code>, <code>checksum</code>, and <code>payload</code> fields of the link layer frame. This does
+not include the delimiting flags or the bytes inserted for transparency as part
+of <a href="#encoding" title="" class="">encoding</a>. The smallest valid frame is eight bytes in size: one
+byte for the version, four for the flags, two for the profile type, one for the
+checksum, and zero for the empty payload. The protocol is designed to work
+without the need for fixed buffers.</p><h4 id="encoding" class="anchor">Encoding</h4><p>A delimiting flag (i.e.: a byte with value of <code>0x7e</code>) is used to delimit frames
+(indicating the beginning or end of a frame). The byte stream is examined on a
+byte-by-byte basis for this flag value. Each frame begins and ends with the
+delimiting flag, although only one delimiting flag is required between two
+frames. Two consecutive delimiting flags constitute an empty frame, which is
+silently discarded by the link layer and is not considered an error.</p><p><strong>Transparency</strong></p><p>A byte-stuffing procedure is used to escape <code>0x7e</code> bytes in the frame payload.
+After checksum computation, the link layer of the transmitter within the
+smartstrap encodes the entire frame between the two delimiting flags. Any
+occurrence of <code>0x7e</code> or <code>0x7d</code> in the frame is escaped with a proceeding <code>0x7d</code>
+byte and logically-XORed with <code>0x20</code>. For example:</p>
+<ul>
+<li><p>The byte <code>0x7d</code> when escaped is encoded as <code>0x7d 0x5d</code>.</p></li>
+<li><p>The byte <code>0x7e</code> when escaped is encoded as <code>0x7d 0x5e</code>.</p></li>
+</ul>
+<p>On reception, prior to checksum computation, decoding is performed on the byte
+stream before passing the data to the profile layer.</p><h4 id="example-frames" class="anchor">Example Frames</h4><p>The images below show some example frames of the smartstrap protocol under two
+example conditions, including the calculated checksum. Click them to see more
+detail.</p><p><strong>Raw Profile Read Request</strong></p><p><a href="/assets/images/guides/hardware/raw-read.png"><img src="/assets/images/guides/hardware/raw-read.png"></img></a></p><p><strong>Raw Profile Response</strong></p><p><a href="/assets/images/guides/hardware/raw-response.png"><img src="/assets/images/guides/hardware/raw-response.png"></img></a></p><h4 id="invalid-frames" class="anchor">Invalid Frames</h4><p>Frames which are too short, have invalid transparency bytes, or encounter a UART
+error (such as an invalid stop bit) are silently discarded.</p><h4 id="timeout" class="anchor">Timeout</h4><p>If the watch does not receive a response to a message sent with the <code>IsRead</code>
+flag set (a value of <code>1</code>) within a certain period of time, a timeout will occur.
+The amount of time before a timeout occurs is always measured by the watch from
+the time it starts to send the message to the time it completely reads the
+response.</p><p>The amount of time it takes to send a frame (based on the baud rate, maximum
+size of the data after encoding, and efficiency of the physical layer UART
+implementation) should be taken into account when determining timeout values.
+The value itself can be set with <a href="/docs/c/Smartstrap/#smartstrap_set_timeout" title="smartstrap_set_timeout" class="link--docs"><code>smartstrap_set_timeout()</code></a>, up to a maximum
+value of 1000ms.</p>
+<blockquote>
+<p>Note: In order to avoid bus contention and potentially corrupting other
+frames, the smartstrap should not respond after the timeout has elapsed. Any frame
+received after a timeout has occurred will be dropped by the watch.</p></blockquote>
+<h3 id="notification-mechanism" class="anchor">Notification Mechanism</h3><p>There are many use-cases where the smartstrap will need to notify the watch of
+some event. For example, smartstraps may contain input devices which will be
+used to control the watch. These smartstraps require a low-latency mechanism for
+notifying the watch upon receiving user-input. The primary goal of this
+mechanism is to keep the code on the smartstrap as simple as possible.</p><p>In order to notify the watch, the smartstrap can send a break character
+(detailed under <a href="#physical-layer" title="" class=""><em>Physical Layer</em></a>) to the watch. Notifications
+are handled on a per-profile granularity, so the frame immediately following
+a break character, called the context frame, is required in order to communicate
+which profile is responsible for handling the notification. The context
+frame must have the <code>IsNotification</code> flag (detailed under <a href="#flags" title="" class=""><em>Flags</em></a>) set
+and have an empty payload. How the watch responds to notifications is dependent
+on the profile.</p><h3 id="profile-layer" class="anchor">Profile Layer</h3><p>The profile layer defines the format of the payload. Exactly which profile a
+frame belongs to is determined by the <code>profile</code> field in the link layer header.
+Each profile type defines three things: a set of requirements, the format of
+all messages of that type, and notification handling.</p><h4 id="link-control-profile" class="anchor">Link Control Profile</h4><p>The link control profile is used to establish and manage the connection with the
+smartstrap. It must be fully implemented by all smartstraps in order to be
+compatible with the smartstrap protocol as a whole. Any invalid responses or
+timeouts encountered as part of link control profile communication will cause
+the smartstrap to be marked as disconnected and powered off unless otherwise
+specified. The auto-detection mechanism will cause the connection establishment
+procedure to restart after some time has passed.</p><p><strong>Requirements</strong></p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Notifications Allowed?</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Message Timeout</td>
+<td>100ms.</td>
+</tr>
+<tr>
+<td>Maximum Payload Length</td>
+<td>6 bytes.</td>
+</tr>
+</tbody></table>
+<p><strong>Payload Format</strong></p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Length (bytes)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Variable length (may be empty)</td>
+</tr>
+</tbody></table>
+<p><strong>Version</strong></p><p>The Version field contains the current version of link control profile.</p>
+<table><thead>
+<tr>
+<th>Version</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>1</code></td>
+<td>Initial release version.</td>
+</tr>
+</tbody></table>
+<p><strong>Type</strong></p>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Value</th>
+<th>Data</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Status</td>
+<td><code>0x01</code></td>
+<td>Watch: <em>Empty</em>. Smartstrap: Status (see below).</td>
+</tr>
+<tr>
+<td>Profiles</td>
+<td><code>0x02</code></td>
+<td>Watch: <em>Empty</em>. Smartstrap: Supported profiles (see below).</td>
+</tr>
+<tr>
+<td>Baud rate</td>
+<td><code>0x03</code></td>
+<td>Watch: <em>Empty</em>. Smartstrap: Baud rate (see below).</td>
+</tr>
+</tbody></table>
+<p><strong>Status</strong></p><p>This message type is used to poll the status of the smartstrap and allow it to
+request a change to the parameters of the connection. The smartstrap should send
+one of the following status values in its response.</p>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0x00</code></td>
+<td>OK</td>
+<td>This is a simple acknowledgement that the smartstrap is still alive and is not requesting any changes to the connection parameters.</td>
+</tr>
+<tr>
+<td><code>0x01</code></td>
+<td>Baud rate</td>
+<td>The smartstrap would like to change the baud rate for the connection. The watch should follow-up with a baud rate message to request the new baud rate.</td>
+</tr>
+<tr>
+<td><code>0x02</code></td>
+<td>Disconnect</td>
+<td>The smartstrap would like the watch to mark it as disconnected.</td>
+</tr>
+</tbody></table>
+<p>A status message is sent by the watch at a regular interval. If a timeout
+occurs, the watch will retry after an interval of time. If an invalid response
+is received or the retry also hits a timeout, the smartstrap will be marked as
+disconnected.</p><p><strong>Profiles</strong></p><p>This message is sent to determine which profiles the smartstrap supports. The
+smartstrap should respond with a series of two byte words representing all the
+<a href="#profile" title="" class="">profiles</a> which it supports. There are the following requirements for
+the response.</p>
+<ul>
+<li><p>All smartstraps must support the link control profile and should not include
+it in the response.</p></li>
+<li><p>All smartstraps must support at least one profile other than the link control
+profile, such as the raw data profile.</p></li>
+<li><p>If more than one profile is supported, they should be reported in consecutive
+bytes in any order.</p></li>
+</ul>
+
+<blockquote>
+<p>Note: Any profiles which are not supported by the watch are silently ignored.</p></blockquote>
+<p><strong>Baud Rate</strong></p><p>This message type is used to allow the smartstrap to request a change in the
+baud rate. The smartstrap should respond with a pre-defined value corresponding
+to the preferred baud rate as listed below. Any unlisted value is invalid. In
+order to conserve power on the watch, the baud rate should be set as high as
+possible to keep time spent alive and communicating to a minimum.</p>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Baud Rate (bits per second)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0x00</code></td>
+<td>9600</td>
+</tr>
+<tr>
+<td><code>0x01</code></td>
+<td>14400</td>
+</tr>
+<tr>
+<td><code>0x02</code></td>
+<td>19200</td>
+</tr>
+<tr>
+<td><code>0x03</code></td>
+<td>28800</td>
+</tr>
+<tr>
+<td><code>0x04</code></td>
+<td>38400</td>
+</tr>
+<tr>
+<td><code>0x05</code></td>
+<td>57600</td>
+</tr>
+<tr>
+<td><code>0x06</code></td>
+<td>62500</td>
+</tr>
+<tr>
+<td><code>0x07</code></td>
+<td>115200</td>
+</tr>
+<tr>
+<td><code>0x08</code></td>
+<td>125000</td>
+</tr>
+<tr>
+<td><code>0x09</code></td>
+<td>230400</td>
+</tr>
+<tr>
+<td><code>0x0A</code></td>
+<td>250000</td>
+</tr>
+<tr>
+<td><code>0x0B</code></td>
+<td>460800</td>
+</tr>
+</tbody></table>
+<p>Upon receiving the response from the smartstrap, the watch will change its baud
+rate and then send another status message. If the smartstrap does not respond to
+the status message at the new baud rate, it is treated as being disconnected.
+The watch will revert back to the default baud rate of 9600, and the connection
+establishment will start over. The default baud rate (9600) must always be the
+lowest baud rate supported by the smartstrap.</p><p><strong>Notification Handling</strong></p><p>Notifications are not supported for this profile.</p><h4 id="raw-data-service" class="anchor">Raw Data Service</h4><p>The raw data profile provides a mechanism for exchanging raw data with the
+smartstrap without any additional overhead. It should be used for any messages
+which do not fit into one of the other profiles.</p><p><strong>Requirements</strong></p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Notifications Allowed?</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Message Timeout</td>
+<td>100ms from sending to complete reception of the response.</td>
+</tr>
+<tr>
+<td>Maximum Payload Length</td>
+<td>Not defined.</td>
+</tr>
+</tbody></table>
+<p><strong>Payload Format</strong></p><p>There is no defined message format for the raw data profile. The payload may
+contain any number of bytes (including being empty).</p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data</code></td>
+<td>Variable length (may be empty).</td>
+</tr>
+</tbody></table>
+<p><strong>Notification Handling</strong></p><p>The handling of notifications is allowed, but not specifically defined for the
+raw data profile.</p><h4 id="generic-service-profile" class="anchor">Generic Service Profile</h4><p>The generic service profile is heavily inspired by (but not identical to) the
+<a href="https://developer.bluetooth.org/gatt/Pages/default.aspx" title="" class="">GATT bluetooth profile</a>.
+It allows the watch to write to and read from pre-defined attributes on the
+smartstrap. Similar attributes are grouped together into services. These
+attributes can be either read or written to, where a read requires the
+smartstrap to respond with the data from the requested attribute, and a write
+requiring the smartstrap to set the value of the attribute to the value provided
+by the watch. All writes require the smartstrap to send a response to
+acknowledge that it received the request. The data type and size varies by
+attribute.</p><p><strong>Requirements</strong></p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Notifications Allowed?</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Message Timeout</td>
+<td>Not defined. A maximum of 1000ms is supported.</td>
+</tr>
+<tr>
+<td>Maximum Payload Length</td>
+<td>Not defined.</td>
+</tr>
+</tbody></table>
+<p><strong>Payload Format</strong></p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Length (bytes)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Version</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Service ID</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Attribute ID</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Error Code</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Variable length (may be empty)</td>
+</tr>
+</tbody></table>
+<p><strong>Version</strong></p><p>The Version field contains the current version of generic service profile.</p>
+<table><thead>
+<tr>
+<th>Version</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>1</code></td>
+<td>Initial release version.</td>
+</tr>
+</tbody></table>
+<p><strong>Service ID</strong></p><p>The two byte identifier of the service as defined in the Supported Services and
+Attributes section below. The available Service IDs are blocked off into five
+ranges:</p>
+<table><thead>
+<tr>
+<th>Service ID Range (Inclusive)</th>
+<th>Service Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0x0000</code> - <code>0x00FF</code></td>
+<td>Reserved</td>
+<td>These services are treated as invalid by the watch and should never be used by a smartstrap. The <code>0x0000</code> service is currently aliased to the raw data profile by the SDK.</td>
+</tr>
+<tr>
+<td><code>0x0100</code> - <code>0x0FFF</code></td>
+<td>Restricted</td>
+<td>These services are handled internally in the firmware of the watch and are not available to apps. Smartstraps may (and in the case of the management service, must) support services in this range.</td>
+</tr>
+<tr>
+<td><code>0x1000</code> - <code>0x1FFF</code></td>
+<td>Experimentation</td>
+<td>These services are for pre-release product experimentation and development and should NOT be used in a commercial product. When a smartstrap is going to be sold commercially, the manufacturer should contact Pebble to request a Service ID in the &quot;Commerical&quot; range.</td>
+</tr>
+<tr>
+<td><code>0x2000</code> - <code>0x7FFF</code></td>
+<td>Spec-Defined</td>
+<td>These services are defined below under <a href="#supported-services-and-attributes" title="" class=""><em>Supported Services and Attributes</em></a>, and any smartstrap which implements them must strictly follow the spec to ensure compatibility.</td>
+</tr>
+<tr>
+<td><code>0x8000</code> - <code>0xFFFF</code></td>
+<td>Commercial</td>
+<td>These services are allocated by Pebble to smartstrap manufacturers who will define their own attributes.</td>
+</tr>
+</tbody></table>
+<p><strong>Attribute ID</strong></p><p>The two byte identifier of the attribute as defined in the Supported Services
+and Attributes section below.</p><p><strong>Type</strong></p><p>One byte representing the type of message being transmitted. When the smartstrap
+replies, it should preserve this field from the request.</p>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0</code></td>
+<td>Read</td>
+<td>This is a read request with the watch not sending any data, but expecting to get data back from the smartstrap.</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Write</td>
+<td>This is a write request with the watch sending data to the smartstrap, but not expected to get any data back.</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>WriteRead</td>
+<td>This is a write+read request which consists of the watch writing data to the smartstrap <strong>and</strong> expecting to get some data back in response.</td>
+</tr>
+</tbody></table>
+<p><strong>Error Code</strong></p><p>The error code is set by the smartstrap to indicate the result of the previous
+request and must be one of the following values.</p>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Name</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0</code></td>
+<td>OK</td>
+<td>The read or write request has been fulfilled successfully. The watch should always use this value when making a request.</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Not Supported</td>
+<td>The requested attribute is not supported by the smartstrap.</td>
+</tr>
+</tbody></table>
+<p><strong>Length</strong></p><p>The length of the data in bytes.</p><h4 id="supported-services-and-attributes" class="anchor">Supported Services and Attributes</h4><p><strong>Management Service (Service ID: <code>0x0101</code>)</strong></p>
+<table><thead>
+<tr>
+<th>Attribute ID</th>
+<th>Attribute Name</th>
+<th>Type</th>
+<th>Data Type</th>
+<th>Data</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0x0001</code></td>
+<td>Service Discovery</td>
+<td>Read</td>
+<td>uint16[1..10]</td>
+<td>A list of Service ID values for all of the services supported by the smartstrap. A maximum of 10 (inclusive) services may be reported. In order to support the generic service profile, the management service must be supported and should not be reported in the response.</td>
+</tr>
+<tr>
+<td><code>0x0002</code></td>
+<td>Notification Info</td>
+<td>Read</td>
+<td>uint16_t[2]</td>
+<td>If a read is performed by the watch after the smartstrap issues a notification, the response data should be the IDs of the service and attribute which generated the notification.</td>
+</tr>
+</tbody></table>
+<p><strong>Pebble Control Service (Service ID: <code>0x0102</code>)</strong></p>
+<blockquote>
+<p>Note: This service is not yet implemented.</p></blockquote>
+
+<table><thead>
+<tr>
+<th>Attribute ID</th>
+<th>Attribute Name</th>
+<th>Type</th>
+<th>Data Type</th>
+<th>Data</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0x0001</code></td>
+<td>Launch App</td>
+<td>Read</td>
+<td>uint8[16]</td>
+<td>The UUID of the app to launch.</td>
+</tr>
+<tr>
+<td><code>0x0002</code></td>
+<td>Button Event</td>
+<td>Read</td>
+<td>uint8[2]</td>
+<td>This message allows the smartstrap trigger button events on the watch. The smartstrap should send two bytes: the button being acted on and the click type. The possible values are defined below:</br></br>Buttons Values:</br><code>0x00</code>: No Button</br><code>0x01</code>: Back button</br><code>0x02</code>: Up button</br><code>0x03</code>: Select button</br><code>0x04</code>: Down button</br></br>Click Types:</br><code>0x00</code>: No Event</br><code>0x01</code>: Single click</br><code>0x02</code>: Double click</br><code>0x03</code>: Long click</br></br>The smartstrap can specify a button value of <code>0x00</code> and a click type of <code>0x00</code> to indicate no pending button events. Any other use of the <code>0x00</code> values is invalid.</td>
+</tr>
+</tbody></table>
+<p><strong>Location and Navigation Service (Service ID: <code>0x2001</code>)</strong></p>
+<table><thead>
+<tr>
+<th>Attribute ID</th>
+<th>Attribute Name</th>
+<th>Type</th>
+<th>Data Type</th>
+<th>Data</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0x0001</code></td>
+<td>Location</td>
+<td>Read</td>
+<td>sint32[2]</td>
+<td>The current longitude and latitude in degrees with a precision of 1/10^7. The latitude comes before the longitude in the data. For example, Pebble HQ is at (37.4400662, -122.1583808), which would be specified as {374400662, -1221583808}.</td>
+</tr>
+<tr>
+<td><code>0x0002</code></td>
+<td>Location Accuracy</td>
+<td>Read</td>
+<td>uint16</td>
+<td>The accuracy of the location in meters.</td>
+</tr>
+<tr>
+<td><code>0x0003</code></td>
+<td>Speed</td>
+<td>Read</td>
+<td>uint16</td>
+<td>The current speed in meters per second with a precision of 1/100. For example, 1.5 m/s would be specified as 150.</td>
+</tr>
+<tr>
+<td><code>0x0101</code></td>
+<td>GPS Satellites</td>
+<td>Read</td>
+<td>uint8</td>
+<td>The number of GPS satellites (typically reported via NMEA.</td>
+</tr>
+<tr>
+<td><code>0x0102</code></td>
+<td>GPS Fix Quality</td>
+<td>Read</td>
+<td>uint8</td>
+<td>The quality of the GPS fix (reported via NMEA). The possible values are listed in the <a href="http://www.gpsinformation.org/dale/nmea.htm#GGA" title="" class="">NMEA specification</a>.</td>
+</tr>
+</tbody></table>
+<p><strong>Heart Rate Service (Service ID: <code>0x2002</code>)</strong></p>
+<table><thead>
+<tr>
+<th>Attribute ID</th>
+<th>Attribute Name</th>
+<th>Type</th>
+<th>Data Type</th>
+<th>Data</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0x0001</code></td>
+<td>Measurement Read</td>
+<td>uint8</td>
+<td>The current heart rate in beats per minute.</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Battery Service (Service ID: <code>0x2003</code>)</strong></p>
+<table><thead>
+<tr>
+<th>Attribute ID</th>
+<th>Attribute Name</th>
+<th>Type</th>
+<th>Data Type</th>
+<th>Data</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0x0001</code></td>
+<td>Charge Level</td>
+<td>Read</td>
+<td>uint8</td>
+<td>The percentage of charge left in the smartstrap battery (between 0 and 100).</td>
+</tr>
+<tr>
+<td><code>0x0002</code></td>
+<td>Capacity</td>
+<td>Read</td>
+<td>uint16</td>
+<td>The total capacity of the smartstrap battery in mAh when fully charged.</td>
+</tr>
+</tbody></table>
+<p><strong>Notification Handling</strong></p><p>When a notification is received for this profile, a &quot;Notification Info&quot; message
+should be sent as described above.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/smartstraps/smartstrap-protocol/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#communication-model">Communication Model</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#assumptions">Assumptions</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#sample-implementation">Sample Implementation</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#protocol-layers">Protocol Layers</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#physical-layer">Physical Layer</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#link-layer">Link Layer</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#frame-format">Frame Format</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#encoding">Encoding</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#example-frames">Example Frames</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#invalid-frames">Invalid Frames</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#timeout">Timeout</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#notification-mechanism">Notification Mechanism</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#profile-layer">Profile Layer</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#link-control-profile">Link Control Profile</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#raw-data-service">Raw Data Service</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#generic-service-profile">Generic Service Profile</a></li>
+    
+      <li class="toc__item toc__item--level3"><a href="#supported-services-and-attributes">Supported Services and Attributes</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

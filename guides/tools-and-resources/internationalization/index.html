@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Internationalization // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How to localize an app to multiple languages.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/tools-and-resources/internationalization/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/app-metadata/"><span>App Metadata</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/cloudpebble/"><span>CloudPebble</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/color-picker/"><span>Color Picker Tool</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/pebble-tool/"><span>Command Line Tool</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/developer-connection/"><span>Developer Connection</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/tools-and-resources/hardware-information/"><span>Hardware Information</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/tools-and-resources/internationalization/"><span>Internationalization</span></a>
+                </li>
+              
+            
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="internationalization-on-pebble">Internationalization on Pebble</option>
+          
+            <option value="locales-supported-by-pebble">Locales Supported By Pebble</option>
+          
+            <option value="translating-an-app">Translating an App</option>
+          
+            <option value="using-the-locale-in-javascript">Using the Locale in JavaScript</option>
+          
+            <option value="choosing-the-app-39-s-locale">Choosing the App&#39;s Locale</option>
+          
+            <option value="effect-of-setting-a-locale">Effect of Setting a Locale</option>
+          
+            <option value="using-locale-dictionaries">Using Locale Dictionaries</option>
+          
+            <option value="publishing-localized-apps">Publishing Localized Apps</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Internationalization</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>When distributing an app in the Pebble appstore, it can be downloaded by Pebble
+users all over the world. Depending on the app, this means that developers may
+want to internationalize their apps for a varierty of different locales. The
+locale is the region in the world in which the user may be using an app. The
+strings used in the app to convey information should be available as
+translations in locales where the app is used by speakers of a different
+language. This is the process of localization. For example, users in France may
+prefer to see an app in French, if the translation is available.</p><h2 id="internationalization-on-pebble" class="anchor">Internationalization on Pebble</h2><p>The Pebble SDK allows an app to be localized with the <a href="/docs/c/Foundation/Internationalization/" title="Internationalization" class="link--docs"><code>Internationalization</code></a>
+API. Developers can use this to adjust how their app displays and behaves to
+cater for users in non-English speaking countries. By default all apps are
+assumed to be in English. Choose the user selected locale using
+<a href="/docs/c/Foundation/Internationalization/#i18n_get_system_locale" title="i18n_get_system_locale" class="link--docs"><code>i18n_get_system_locale()</code></a> or to force one using <a href="/docs/c/Standard_C/Locale/#setlocale" title="setlocale" class="link--docs"><code>setlocale()</code></a>.</p>
+<blockquote>
+<p>Note: The app&#39;s locale also affects <a href="/docs/c/Standard_C/Time/#strftime" title="strftime" class="link--docs"><code>strftime()</code></a>, which will output
+different strings for different languages. Bear in mind that these strings may
+be different lengths and use different character sets, so the app&#39;s layout
+should scale accordingly.</p></blockquote>
+<h2 id="locales-supported-by-pebble" class="anchor">Locales Supported By Pebble</h2><p>This is the set of locales that are currently supported:</p>
+<table><thead>
+<tr>
+<th>Language</th>
+<th>Region</th>
+<th>Value returned by <a href="/docs/c/Foundation/Internationalization/#i18n_get_system_locale" title="i18n_get_system_locale" class="link--docs"><code>i18n_get_system_locale()</code></a></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>English</td>
+<td>United States</td>
+<td><code>&quot;en_US&quot;</code></td>
+</tr>
+<tr>
+<td>French</td>
+<td>France</td>
+<td><code>&quot;fr_FR&quot;</code></td>
+</tr>
+<tr>
+<td>German</td>
+<td>Germany</td>
+<td><code>&quot;de_DE&quot;</code></td>
+</tr>
+<tr>
+<td>Spanish</td>
+<td>Spain</td>
+<td><code>&quot;es_ES&quot;</code></td>
+</tr>
+<tr>
+<td>Italian</td>
+<td>Italy</td>
+<td><code>&quot;it_IT&quot;</code></td>
+</tr>
+<tr>
+<td>Portuguese</td>
+<td>Portugal</td>
+<td><code>&quot;pt_PT&quot;</code></td>
+</tr>
+<tr>
+<td>Chinese</td>
+<td>China</td>
+<td><code>&quot;en_CN&quot;</code></td>
+</tr>
+<tr>
+<td>Chinese</td>
+<td>Taiwan</td>
+<td><code>&quot;en_TW&quot;</code></td>
+</tr>
+</tbody></table>
+<p>When the user&#39;s preferred language is set using the Pebble Time mobile app, the
+required characters will be loaded onto Pebble and will be used by the
+compatible system fonts. <strong>This means that any custom fonts used should include
+the necessary locale-specific characters in order to display correctly.</strong></p><h2 id="translating-an-app" class="anchor">Translating an App</h2><p>By calling <code>setlocale(LC_ALL, &quot;&quot;)</code>, the app can tell the system that it supports
+internationalization. Use the value returned by <a href="/docs/c/Standard_C/Locale/#setlocale" title="setlocale" class="link--docs"><code>setlocale()</code></a> to translate any
+app strings. The implementation follows the
+<a href="https://www.gnu.org/software/libc/manual/html_node/Setting-the-Locale.html#Setting-the-Locale" title="" class="">libc convention</a>.
+Users may expect text strings, images, time display formats, and numbers to
+change if they use an app in a certain language.</p><p>Below is a simple approach to providing a translation:</p><div class="highlight"><pre><span class="c1">// Use selocale() to obtain the system locale for translation</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">sys_locale</span> <span class="o">=</span> <span class="n">setlocale</span><span class="p">(</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+
+<span class="c1">// Set the TextLayer's contents depending on locale</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="s">"fr_FR"</span><span class="p">,</span> <span class="n">sys_locale</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_output_layer</span><span class="p">,</span> <span class="s">"Bonjour tout le monde!"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="cm">/* Next locale string comparison */</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/* other language cases... */</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// Fall back to English</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_output_layer</span><span class="p">,</span> <span class="s">"Hello, world!"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>The above method is most suitable for a few strings in a small number of
+languages, but may become unwieldly if an app uses many strings. A more
+streamlined approach for these situations is given below in 
+<a href="#using-locale-dictionaries" title="" class=""><em>Using Locale Dictionaries</em></a>.</p><h2 id="using-the-locale-in-javascript" class="anchor">Using the Locale in JavaScript</h2><p>Determine the language used by the user&#39;s phone in PebbleKit JS using the
+standard
+<a href="http://www.w3schools.com/jsref/prop_nav_language.asp" title="" class=""><code>navigator</code></a> property:</p><div class="highlight"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Phone language is '</span> <span class="o">+</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">language</span><span class="p">);</span>
+</pre></div><div class="highlight"><pre><span class="cp">[</span><span class="nx">INFO</span>    <span class="cp">]</span><span class="x"> js-i18n-example__1.0/index.js:19 Phone language is en-US</span>
+</pre></div><p>This will reflect the user&#39;s choice of &#39;Language &amp; Input&#39; -&gt; &#39;Language&#39; on
+Android and &#39;General&#39; -&gt; &#39;Language &amp; Region&#39; -&gt; &#39;i[Pod or Phone] Language&#39; on
+iOS.</p>
+<blockquote>
+<p>Note: Changing the language on these platforms will require a force close of
+the Pebble app or device restart before changes take effect.</p></blockquote>
+<h2 id="choosing-the-app-39-s-locale" class="anchor">Choosing the App&#39;s Locale</h2><p>It is also possible to explicitly set an app&#39;s locale using <a href="/docs/c/Standard_C/Locale/#setlocale" title="setlocale" class="link--docs"><code>setlocale()</code></a>.
+This is useful for providing a language selection option for users who wish to
+do so. This function takes two arguments; the <code>category</code> and the <code>locale</code>
+string. To set localization <strong>only</strong> for the current time, use <code>LC_TIME</code> as the
+<code>category</code>, else use <code>LC_ALL</code>. The <code>locale</code> argument accepts the ISO locale
+code, such as <code>&quot;fr_FR&quot;</code>. Alternatively, set <code>locale</code> to <code>NULL</code> to query the
+current locale or <code>&quot;&quot;</code> (an empty string) to set the app&#39;s locale to the system
+default.</p><div class="highlight"><pre><span class="c1">// Force the app's locale to French</span>
+<span class="n">setlocale</span><span class="p">(</span><span class="n">LC_ALL</span><span class="p">,</span> <span class="s">"fr_FR"</span><span class="p">);</span>
+</pre></div><p>To adapt the way an application displays time, call <code>setlocale(LC_TIME, &quot;&quot;)</code>.
+This will change the locale used to display time and dates in <a href="/docs/c/Standard_C/Time/#strftime" title="strftime" class="link--docs"><code>strftime()</code></a>
+without translating any strings.</p><h2 id="effect-of-setting-a-locale" class="anchor">Effect of Setting a Locale</h2><p>Besides returning the value of the current system locale, calling
+<a href="/docs/c/Standard_C/Locale/#setlocale" title="setlocale" class="link--docs"><code>setlocale()</code></a> will have a few other effects:</p>
+<ul>
+<li><p>Translate month and day names returned by <a href="/docs/c/Standard_C/Time/#strftime" title="strftime" class="link--docs"><code>strftime()</code></a> <code>%a</code>, <code>%A</code>, <code>%b</code>, and
+<code>%B</code>.</p></li>
+<li><p>Translate the date and time representation returned by <a href="/docs/c/Standard_C/Time/#strftime" title="strftime" class="link--docs"><code>strftime()</code></a> <code>%c</code>.</p></li>
+<li><p>Translate the date representation returned by <a href="/docs/c/Standard_C/Time/#strftime" title="strftime" class="link--docs"><code>strftime()</code></a> <code>%x</code>.</p></li>
+</ul>
+<p>Note that currently the SDK will not change the decimal separator added by the
+<code>printf()</code> family of functions when the locale changes; it will always be a <code>.</code>
+regardless of the currently selected locale.</p><h2 id="using-locale-dictionaries" class="anchor">Using Locale Dictionaries</h2><p>A more advanced method to include multiple translations of strings in an app
+(without needing a large number of <code>if</code>, <code>else</code> statements) is to use the
+<a href="https://github.com/pebble-hacks/locale_framework" title="" class="">Locale Framework</a>. This
+framework works by wrapping every string in the project&#39;s <code>src</code> directory in
+the <code>_()</code> and replacing it with with a hashed value, which is then used with
+the current locale to look up the translated string from a binary resource file
+for that language.</p><p>Instructions for using this framework are as follows:</p>
+<ul>
+<li><p>Add <code>hash.h</code>, <code>localize.h</code> and <code>localize.c</code> to the project. This will be the
+<code>src</code> directory in the native SDK.</p></li>
+<li><p>Include <code>localize.h</code> in any file to be localized:</p></li>
+</ul>
+<div class="highlight"><pre><span class="cp">#include "localize.h"</span>
+</pre></div>
+<ul>
+<li>Initalize the framework at the start of the app&#39;s execution:</li>
+</ul>
+<div class="highlight"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Init locale framework</span>
+  <span class="n">locale_init</span><span class="p">();</span>
+
+  <span class="cm">/** Other app setup code **/</span>
+<span class="p">}</span>
+</pre></div>
+<ul>
+<li>For every string in each source file to be translated, wrap it in <code>_()</code>:</li>
+</ul>
+<div class="highlight"><pre><span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">some_layer</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s">"Meal application"</span><span class="p">));</span>
+</pre></div>
+<ul>
+<li>Save all source files (this will require downloading and extracting the
+project from &#39;Settings&#39; on CloudPebble), then run <code>get_dict.py</code> from the
+project root directory to get a JSON file containing the hashed strings to be
+translated. This file will look like the one below:</li>
+</ul>
+<div class="highlight"><pre><span class="p">{</span>
+<span class="w">  </span><span class="s2">"1204784839"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Breakfast Time"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"1383429240"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Meal application"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"1426781285"</span><span class="o">:</span><span class="w"> </span><span class="s2">"A fine meal with family"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"1674248270"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Lunch Time"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"1753964326"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Healthy in a hurry"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"1879903262"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Start your day right"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"2100983732"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Dinner Time"</span>
+<span class="p">}</span>
+</pre></div>
+<ul>
+<li><p>Create a copy of the JSON file and perform translation of each string, keeping
+the equivalent hash values the same. Name the file according to the language,
+such as <code>locale_french.json</code>.</p></li>
+<li><p>Convert both JSON files into app binary resource files:</p></li>
+</ul>
+<div class="highlight"><pre><span class="nv">$ </span>python dict2bin.py locale_english.json
+<span class="nv">$ </span>python dict2bin.py locale_french.json
+</pre></div>
+<ul>
+<li>Add the output binary files as project resources as described in
+<a href="/guides/app-resources/raw-data-files/"><em>Raw Data Files</em></a>.</li>
+</ul>
+<p>When the app is compiled and run, the <code>_()</code> macro will be replaced with calls
+to <code>locale_str()</code>, which will use the app&#39;s locale to load the translated string
+out of the binary resource files.</p>
+<blockquote>
+<p>Note: If the translation lookup fails, the framework will fall back to the
+English binary resource file.</p></blockquote>
+<h2 id="publishing-localized-apps" class="anchor">Publishing Localized Apps</h2><p>The appstore does not yet support localizing an app&#39;s resources (such as name,
+description, images etc), so use this guide to prepare the app itself. To cater
+for users viewing appstore listings in a different locale, include a list of
+supported languages in the listing description, which itself can be written in
+multiple languages.</p><p>The format for a multi-lingual appstore description should display the supported
+languages at the top and a include a copy in each language, as shown in the
+example below:</p>
+<blockquote>
+<p>Now supports - French, German and Spanish.</p><p>This compass app allows you to navigate in any directions from your wrist!
+Simply open the app and tilt to show the layout you prefer.</p><p>Français</p><p>Cette application de la boussole vous permet de naviguer dans toutes les
+directions à partir de votre poignet! Il suffit d&#39;ouvrir l&#39;application et de
+l&#39;inclinaison pour montrer la disposition que vous préférez.</p><p>Deutsch</p><p>Dieser Kompass App ermöglicht es Ihnen, in jeder Richtung vom Handgelenk zu
+navigieren! Öffnen Sie einfach die App und kippen, um das Layout Sie
+bevorzugen zu zeigen.</p><p>Español</p><p>Esta aplicación brújula le permite navegar en cualquier dirección de la muñeca
+! Basta con abrir la aplicación y la inclinación para mostrar el diseño que
+prefiera.</p></blockquote>
+
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/tools-and-resources/internationalization/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#internationalization-on-pebble">Internationalization on Pebble</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#locales-supported-by-pebble">Locales Supported By Pebble</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#translating-an-app">Translating an App</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#using-the-locale-in-javascript">Using the Locale in JavaScript</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#choosing-the-app-39-s-locale">Choosing the App&#39;s Locale</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#effect-of-setting-a-locale">Effect of Setting a Locale</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#using-locale-dictionaries">Using Locale Dictionaries</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#publishing-localized-apps">Publishing Localized Apps</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

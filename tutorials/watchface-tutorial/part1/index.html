@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Build Your Own Watchface in C // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A guide to making a new Pebble watchface with the Pebble C API">
+  <link rel="canonical" href="http://developer.getpebble.com/tutorials/watchface-tutorial/part1/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started active"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+<div class="section-menu section-menu--getting-started section-menu--dark">
+  <div class="section-menu__header">
+    <h3><a href="/tutorials/">Tutorials</a></h3>
+  </div>
+  <ul>
+    <li class="section-menu__item open"><a href="/tutorials/watchface-tutorial/part1/">Build a Watchface in C</a>
+      <ul>
+        <li class="section-menu__subitem active"><a href="/tutorials/watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part2/"><span>Part 2 - Customizing the Watchface</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part3/"><span>Part 3 - Adding Web Content</a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part4/"><span>Part 4 - Adding a Battery Bar</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part5/"><span>Part 5 - Vibrate on Disconnect</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/js-watchface-tutorial/part1/">Build a Watchface in JS</a>
+      <ul>
+        <li class="section-menu__subitem active"><a href="/tutorials/js-watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/js-watchface-tutorial/part2/"><span>Part 2 - Adding Web Content</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/advanced/vector-animations/">Advanced Tutorials</a>
+      <ul>
+        <li class="section-menu__subitem active"><a href="/tutorials/advanced/vector-animations/"><span>Vector Animations</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="first-steps">First Steps</option>
+          
+            <option value="watchface-basics">Watchface Basics</option>
+          
+            <option value="first-compilation-and-installation">First Compilation and Installation</option>
+          
+            <option value="showing-some-text">Showing Some Text</option>
+          
+            <option value="telling-the-time">Telling the Time</option>
+          
+            <option value="conclusion">Conclusion</option>
+          
+            <option value="what-39-s-next">What&#39;s Next?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-l-8">
+      <h1>Build Your Own Watchface in C</h1>
+      
+      <div class="markdown markdown--staff">
+      
+      <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+      
+      <p>In this tutorial we&#39;ll cover the basics of writing a simple watchface with
+Pebble&#39;s C API. Customizability is at the heart of the Pebble philosophy, so
+we&#39;ll be sure to add some exciting features for the user!</p><p>When we are done this section of the tutorial, you should end up with a brand
+new basic watchface looking something like this:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-time~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-time~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-time~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<h2 id="first-steps" class="anchor">First Steps</h2><p>So, let&#39;s get started!</p><p class="platform-specific" data-sdk-platform="cloudpebble">Go to <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> and click &#39;Get Started&#39;
+to log in using your Pebble account, or create a new one if you do not already
+have one. Next, click &#39;Create&#39; to create a new project. Give your project a
+suitable name, such as &#39;Tutorial 1&#39; and leave the &#39;Project Type&#39; as &#39;Pebble C
+SDK&#39;, with a &#39;Template&#39; of &#39;Empty project&#39;, as we will be starting from scratch
+to help maximize your understanding as we go.</p><p class="platform-specific" data-sdk-platform="local">Before you can start the tutorial you will need to have the Pebble SDK
+installed. If you haven&#39;t done this yet, go to our <a href="/sdk" title="" class="">download page</a> to grab
+the SDK and follow the instructions to install it on your machine. Once you&#39;ve
+done that you can come back here and carry on where you left off.</p><p class="platform-specific" data-sdk-platform="local">Once you have installed the SDK, navigate to a directory of your choosing
+and run <code>pebble new-project watchface</code> (where &#39;watchface&#39; is the name of your
+new project) to start a new project and set up all the relevant files.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Click &#39;Create&#39; and you will see the main CloudPebble project screen. The
+left menu shows all the relevant links you will need to create your watchface.
+Click on &#39;Settings&#39; and you will see the name you just supplied, along with
+several other options. As we are creating a watchface, change the &#39;App Kind&#39; to
+&#39;Watchface&#39;.</p><p class="platform-specific" data-sdk-platform="local">In an SDK project, all the information about how an app is configured (its
+name, author, capabilities and resource listings etc) is stored in a file in the
+project root directory called <code>package.json</code>. Since this project will be a
+watchface, you will need to modify the <code>watchapp</code> object in this file to reflect
+this:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="s2">&quot;watchapp&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;watchface&quot;</span><span class="o">:</span><span class="w"> </span><span class="vg">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The main difference between the two kinds are that watchfaces serve as the
+default display on the watch, with the Up and Down buttons allowing use of the
+Pebble timeline. This means that these buttons are not available for custom
+behavior (Back and Select are also not available to watchfaces). In contrast,
+watchapps are launched from the Pebble system menu. These have more capabilities
+such as button clicks and menu elements, but we will come to those later.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Finally, set your &#39;Company Name&#39; and we can start to write some code!</p><p class="platform-specific" data-sdk-platform="local">Finally, set a value for <code>companyName</code> and we can start to write some code!</p><h2 id="watchface-basics" class="anchor">Watchface Basics</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Create the first source file by clicking &#39;Add New&#39; on the left menu,
+selecting &#39;C file&#39; as the type and choosing a suitable name such as &#39;main.c&#39;.
+Click &#39;Create&#39; and you will be shown the main editor screen.</p><p class="platform-specific" data-sdk-platform="local">Our first source file is already created for you by the <code>pebble</code> command
+line tool and lives in the project&#39;s <code>src</code> directory. By default, this file
+contains sample code which you can safely remove, since we will be starting from
+scratch. Alternatively, you can avoid this by using the <code>--simple</code> flag when
+creating the project.</p><p>Let&#39;s add the basic code segments which are required by every watchapp. The
+first of these is the main directive to use the Pebble SDK at the top of the
+file like so:</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
+</pre></div><p>After this first line, we must begin with the recommended app structure,
+specifically a standard C <code>main()</code> function and two other functions to help us
+organize the creation and destruction of all the Pebble SDK elements. This helps
+make the task of managing memory allocation and deallocation as simple as
+possible. Additionally, <code>main()</code> also calls <a href="/docs/c/Foundation/App/#app_event_loop" title="app_event_loop" class="link--docs"><code>app_event_loop()</code></a>, which lets the
+watchapp wait for system events until it exits.</p><p class="platform-specific" data-sdk-platform="cloudpebble">The recommended structure is shown below, and you can use it as the basis
+for your own watchface file by copying it into CloudPebble:</p><p class="platform-specific" data-sdk-platform="local">The recommended structure is shown below, and you can use it as the basis
+for your main C file:</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">deinit</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">init</span><span class="p">();</span>
+  <span class="n">app_event_loop</span><span class="p">();</span>
+  <span class="n">deinit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>To add the first <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, we first declare a static pointer to a <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>
+variable, so that we can access it wherever we need to, chiefly in the <code>init()</code>
+and <code>deinit()</code> functions. Add this declaration below <code>#include</code>, prefixed with
+<code>s_</code> to denote its <code>static</code> nature (<code>static</code> here means it is accessible only
+within this file):</p><div class="highlight"><pre><span class="k">static</span> <span class="n">Window</span> <span class="o">*</span><span class="n">s_main_window</span><span class="p">;</span>
+</pre></div><p>The next step is to create an instance of <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> to assign to this pointer,
+which we will do in <code>init()</code> using the appropriate Pebble SDK functions. In this
+process we also assign two handler functions that provide an additional layer of
+abstraction to manage the subsequent creation of the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>&#39;s sub-elements,
+in a similar way to how <code>init()</code> and <code>deinit()</code> perform this task for the
+watchapp as a whole. These two functions should be created above <code>init()</code> and
+must match the following signatures (the names may differ, however):</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_unload</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div><p>With this done, we can complete the creation of the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> element, making
+reference to these two new handler functions that are called by the system
+whenever the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> is being constructed. This process is shown below, and
+takes place in <code>init()</code>:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Create main Window element and assign to pointer</span>
+  <span class="n">s_main_window</span> <span class="o">=</span> <span class="n">window_create</span><span class="p">();</span>
+
+  <span class="c1">// Set handlers to manage the elements inside the Window</span>
+  <span class="n">window_set_window_handlers</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="p">(</span><span class="n">WindowHandlers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">load</span> <span class="o">=</span> <span class="n">main_window_load</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">unload</span> <span class="o">=</span> <span class="n">main_window_unload</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Show the Window on the watch, with animated=true</span>
+  <span class="n">window_stack_push</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>A good best-practice to learn at this early stage is to match every Pebble SDK
+<code>_create()</code> function call with the equivalent <code>_destroy()</code> function to make sure
+all memory used is given back to the system when the app exits. Let&#39;s do this
+now in <code>deinit()</code> for our main <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> element:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">deinit</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Destroy Window</span>
+  <span class="n">window_destroy</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>We can now compile and run this watchface, but it will not show anything
+interesting yet. It is also a good practice to check that our code is still
+valid after each iterative change, so let&#39;s do this now.</p><h2 id="first-compilation-and-installation" class="anchor">First Compilation and Installation</h2><p class="platform-specific" data-sdk-platform="cloudpebble">To compile the watchface, make sure you have saved your C file by clicking
+the &#39;Save&#39; icon on the right of the editor screen and then proceed to the
+&#39;Compilation&#39; screen by clicking the appropriate link on the left of the screen.
+Click &#39;Run Build&#39; to start the compilation process and wait for the result.
+Hopefully the status should become &#39;Succeeded&#39;, meaning the code is valid and
+can be run on the watch.</p><p class="platform-specific" data-sdk-platform="local">To compile the watchface, make sure you have saved your project files and
+then run <code>pebble build</code> from the project&#39;s root directory. The installable
+<code>.pbw</code> file will be deposited in the <code>build</code> directory. After a successful
+compile you will see a message reading <code>&#39;build&#39; finished successfully</code>. If there
+are any problems with your code, the compiler will tell you which lines are in
+error so you can fix them.</p><p>In order to install your watchface on your Pebble, first
+<a href="/guides/tools-and-resources/developer-connection/" title="" class="">setup the Pebble Developer Connection</a>.
+Make sure you are using the latest version of the Pebble app.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Click &#39;Install and Run&#39; and wait for the app to install.</p><p class="platform-specific" data-sdk-platform="local">Install the watchapp by running <code>pebble install</code>, supplying your phone&#39;s IP
+address with the <code>--phone</code> flag. For example: <code>pebble install
+--phone 192.168.1.78</code>.</p>
+<div class="platform-specific" data-sdk-platform="local">
+<blockquote>
+<p>Instead of using the --phone flag every time you install, set the PEBBLE_PHONE environment variable:
+<code>export PEBBLE_PHONE=192.168.1.78</code> and simply use <code>pebble install</code>.</p></blockquote>
+
+</div>
+<p>Congratulations! You should see that you have a new item in the watchface menu,
+but it is entirely blank!</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-blank~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-blank~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-blank~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>Let&#39;s change that with the next stage towards a basic watchface - the
+<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> element.</p><h2 id="showing-some-text" class="anchor">Showing Some Text</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Navigate back to the CloudPebble code editor and open your main C file to
+continue adding code.</p><p class="platform-specific" data-sdk-platform="local">Re-open your main C file to continue adding code.</p><p>The best way to show some text on a watchface or watchapp
+is to use a <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> element. The first step in doing this is to follow a
+similar procedure to that used for setting up the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> with a pointer,
+ideally added below <code>s_main_window</code>:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">TextLayer</span> <span class="o">*</span><span class="n">s_time_layer</span><span class="p">;</span>
+</pre></div><p>This will be the first element added to our <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, so we will make the
+Pebble SDK function calls to create it in <code>main_window_load()</code>. After calling
+<a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_create" title="text_layer_create" class="link--docs"><code>text_layer_create()</code></a>, we call other functions with plain English names that
+describe exactly what they do, which is to help setup layout properties for the
+text shown in the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> including colors, alignment and font size. We
+also include a call to <a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_set_text" title="text_layer_set_text" class="link--docs"><code>text_layer_set_text()</code></a> with &quot;00:00&quot; so that we can
+verify that the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> is set up correctly.</p><p>The layout parameters will vary depending on the shape of the display. To easily
+specify which value of the vertical position is used on each of the round and
+rectangular display shapes we use <a href="/docs/c/Graphics/Graphics_Types/#PBL_IF_ROUND_ELSE" title="PBL_IF_ROUND_ELSE" class="link--docs"><code>PBL_IF_ROUND_ELSE()</code></a>. Thus
+<code>main_window_load()</code> becomes:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Get information about the Window</span>
+  <span class="n">Layer</span> <span class="o">*</span><span class="n">window_layer</span> <span class="o">=</span> <span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">);</span>
+  <span class="n">GRect</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">layer_get_bounds</span><span class="p">(</span><span class="n">window_layer</span><span class="p">);</span>
+
+  <span class="c1">// Create the TextLayer with specific bounds</span>
+  <span class="n">s_time_layer</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span>
+      <span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PBL_IF_ROUND_ELSE</span><span class="p">(</span><span class="mi">58</span><span class="p">,</span> <span class="mi">52</span><span class="p">),</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">w</span><span class="p">,</span> <span class="mi">50</span><span class="p">));</span>
+
+  <span class="c1">// Improve the layout to be more like a watchface</span>
+  <span class="n">text_layer_set_background_color</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="n">GColorClear</span><span class="p">);</span>
+  <span class="n">text_layer_set_text_color</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="n">GColorBlack</span><span class="p">);</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="s">"00:00"</span><span class="p">);</span>
+  <span class="n">text_layer_set_font</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="n">fonts_get_system_font</span><span class="p">(</span><span class="n">FONT_KEY_BITHAM_42_BOLD</span><span class="p">));</span>
+  <span class="n">text_layer_set_text_alignment</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="n">GTextAlignmentCenter</span><span class="p">);</span>
+
+  <span class="c1">// Add it as a child layer to the Window's root layer</span>
+  <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_layer</span><span class="p">,</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div><p>Note the use of SDK values such as <a href="/docs/c/Graphics/Graphics_Types/Color_Definitions/#GColorBlack" title="GColorBlack" class="link--docs"><code>GColorBlack</code></a> and <code>FONT_KEY_BITHAM_42_BOLD</code>
+which allow use of built-in features and behavior. These examples here are the
+color black and a built in system font. Later we will discuss loading a custom
+font file, which can be used to replace this value.</p><p>Just like with <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, we must be sure to destroy each element we create. We
+will do this in <code>main_window_unload()</code>, to keep the management of the
+<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> completely within the loading and unloading of the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> it
+is associated with. This function should now look like this:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">main_window_unload</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Destroy TextLayer</span>
+  <span class="n">text_layer_destroy</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p class="platform-specific" data-sdk-platform="cloudpebble">This completes the setup of the basic watchface layout. If you return to
+&#39;Compilation&#39; and install a new build, you should now see the following:</p><p class="platform-specific" data-sdk-platform="local">This completes the setup of the basic watchface layout. If you run <code>pebble
+build &amp;&amp; pebble install</code> (with your phone&#39;s IP address) for the new build, you
+should now see the following:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-textlayer-test~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-textlayer-test~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-textlayer-test~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>The final step is to get the current time and display it using the
+<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. This is done with the <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a>.</p><h2 id="telling-the-time" class="anchor">Telling the Time</h2><p>The <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a> is an Event Service that allows access to the current
+time by subscribing a function to be run whenever the time changes. Normally
+this may be every minute, but can also be every hour, or every second. However,
+the latter will incur extra battery costs, so use it sparingly. We can do this
+by calling <a href="/docs/c/Foundation/Event_Service/TickTimerService/#tick_timer_service_subscribe" title="tick_timer_service_subscribe" class="link--docs"><code>tick_timer_service_subscribe()</code></a>, but first we must create a
+function to give the service to call whenever the time changes, and must match
+this signature:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">tick_handler</span><span class="p">(</span><span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">tick_time</span><span class="p">,</span> <span class="n">TimeUnits</span> <span class="n">units_changed</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div><p>This means that whenever the time changes, we are provided with a data structure
+of type <code>struct tm</code> containing the current time
+<a href="http://www.cplusplus.com/reference/ctime/tm/" title="" class="">in various forms</a>, as well as a
+constant <a href="/docs/c/Foundation/Event_Service/TickTimerService/#TimeUnits" title="TimeUnits" class="link--docs"><code>TimeUnits</code></a> value that tells us which unit changed, to allow
+filtering of behaviour. With our <a href="/docs/c/Foundation/Event_Service/TickTimerService/#TickHandler" title="TickHandler" class="link--docs"><code>TickHandler</code></a> created, we can register it
+with the Event Service in <code>init()</code> like so:</p><div class="highlight"><pre><span class="c1">// Register with TickTimerService</span>
+<span class="n">tick_timer_service_subscribe</span><span class="p">(</span><span class="n">MINUTE_UNIT</span><span class="p">,</span> <span class="n">tick_handler</span><span class="p">);</span>
+</pre></div><p>The logic to update the time <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> will be created in a function called
+<code>update_time()</code>, enabling us to call it both from the <a href="/docs/c/Foundation/Event_Service/TickTimerService/#TickHandler" title="TickHandler" class="link--docs"><code>TickHandler</code></a> as well as
+<code>main_window_load()</code> to ensure it is showing a time from the very beginning.</p><p>This function will use <code>strftime()</code>
+(<a href="http://www.cplusplus.com/reference/ctime/strftime/" title="" class="">See here for formatting</a>)
+to extract the hours and minutes from the <code>struct tm</code> data structure and write
+it into a character buffer. This buffer is required by <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> to be
+long-lived as long as the text is to be displayed, as it is not copied into the
+<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>, but merely referenced. We achieve this by making the buffer
+<code>static</code>, so it persists across multiple calls to <code>update_time()</code>. Therefore
+this function should be created before <code>main_window_load()</code> and look like this:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">update_time</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Get a tm structure</span>
+  <span class="kt">time_t</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+  <span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">tick_time</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">temp</span><span class="p">);</span>
+
+  <span class="c1">// Write the current hours and minutes into a buffer</span>
+  <span class="k">static</span> <span class="kt">char</span> <span class="n">s_buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+  <span class="n">strftime</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">s_buffer</span><span class="p">),</span> <span class="n">clock_is_24h_style</span><span class="p">()</span> <span class="o">?</span>
+                                          <span class="s">"%H:%M"</span> <span class="o">:</span> <span class="s">"%I:%M"</span><span class="p">,</span> <span class="n">tick_time</span><span class="p">);</span>
+
+  <span class="c1">// Display this time on the TextLayer</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_time_layer</span><span class="p">,</span> <span class="n">s_buffer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Our <a href="/docs/c/Foundation/Event_Service/TickTimerService/#TickHandler" title="TickHandler" class="link--docs"><code>TickHandler</code></a> follows the correct function signature and contains only a
+single call to <code>update_time()</code> to do just that:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">tick_handler</span><span class="p">(</span><span class="k">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">tick_time</span><span class="p">,</span> <span class="n">TimeUnits</span> <span class="n">units_changed</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">update_time</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>Lastly, <code>init()</code> should be modified include a call to
+<code>update_time()</code> after <a href="/docs/c/User_Interface/Window_Stack/#window_stack_push" title="window_stack_push" class="link--docs"><code>window_stack_push()</code></a> to ensure the time is displayed
+correctly when the watchface loads:</p><div class="highlight"><pre><span class="c1">// Make sure the time is displayed from the start</span>
+<span class="n">update_time</span><span class="p">();</span>
+</pre></div><p>Since we can now display the time we can remove the call to
+<a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_set_text" title="text_layer_set_text" class="link--docs"><code>text_layer_set_text()</code></a> in <code>main_window_load()</code>, as it is no longer needed to
+test the layout.</p><p>Re-compile and re-install the watchface on your Pebble, and it should look like
+this:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-time~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-time~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-time~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<h2 id="conclusion" class="anchor">Conclusion</h2><p>So there we have it, the basic process required to create a brand new Pebble
+watchface! To do this we:</p>
+<ol>
+<li>Created a new Pebble project.</li>
+<li>Setup basic app structure.</li>
+<li>Setup a main <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>.</li>
+<li>Setup a <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> to display the time.</li>
+<li>Subscribed to <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a> to get updates on the time, and wrote
+these to a buffer for display in the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>.</li>
+</ol>
+<p>If you have problems with your code, check it against the sample source code
+provided using the button below.</p><p class="platform-specific" data-sdk-platform="cloudpebble"><a href="https://cloudpebble.net/ide/gist/9b9d50b990d742a3ae34" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">Edit in CloudPebble</a></p><p class="platform-specific" data-sdk-platform="local"><a href="https://gist.github.com/9b9d50b990d742a3ae34" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">View Source Code</a></p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>The next section of the tutorial will introduce adding custom fonts and bitmap
+images to your watchface.</p><p><a href="/tutorials/watchface-tutorial/part2/" title="" class="btn btn--markdown btn--wide btn--bg-dark-red btn--fg-white">Go to Part 2 &rarr;</a></p>
+      </div>
+    </div>
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#first-steps">First Steps</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#watchface-basics">Watchface Basics</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#first-compilation-and-installation">First Compilation and Installation</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#showing-some-text">Showing Some Text</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#telling-the-time">Telling the Time</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
+    
+  </ul>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

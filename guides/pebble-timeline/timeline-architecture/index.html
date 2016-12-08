@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Service Architecture // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Find out what the timeline is, how it works and how developers can take
+advantage of it in their apps.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/pebble-timeline/timeline-architecture/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/pin-structure/"><span>Creating Pins</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-libraries/"><span>Libraries for Pushing Pins</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-js/"><span>Managing Subscriptions</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/pebble-timeline/timeline-public/"><span>Public Web API</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/pebble-timeline/timeline-architecture/"><span>Service Architecture</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="architecture-overview">Architecture Overview</option>
+          
+            <option value="public-web-api">- Public Web API</option>
+          
+            <option value="pebble-mobile-app">- Pebble Mobile App</option>
+          
+            <option value="developer-39-s-app-server-service">- Developer&#39;s App Server/Service</option>
+          
+            <option value="three-ways-to-use-pins">Three Ways to Use Pins</option>
+          
+            <option value="push-to-all-users">- Push to All Users</option>
+          
+            <option value="let-users-choose-their-pins">- Let Users Choose Their Pins</option>
+          
+            <option value="target-individual-users">- Target Individual Users</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Service Architecture</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>Every item on the timeline is called a &#39;pin&#39;. A pin can have information
+attached to it which is used to show it to the user, such as layout, title,
+start time and actions. When the user is viewing their timeline, they can use
+the information provided about the immediate past and future to make decisions
+about how they plan the rest of their day and how to respond to any missed
+notifications or events.</p><p>While the system and mobile application populate the user&#39;s timeline
+automatically with items such as calendar appointments and weather details, the
+real value of the timeline is realized by third party apps. For example, a
+sports app could show a pin representing an upcoming match and the user could
+tell how much time remained until they needed to be home to watch it.</p><p>Developers can use a watchapp to subscribe their users to one of two types pin:</p>
+<ul>
+<li><p>Personal pins pushed to a user&#39;s timeline token. These pins are only delivered
+to the user the token belongs to, allows a high degree of personalization in
+the pin&#39;s contents.</p></li>
+<li><p>Channels called &#39;topics&#39; (one more more, depending on their preferences),
+allow an app to push pins to a large number of users at once. Topics are
+created on a per-app basis, meaning a user receiving pins for a &#39;football&#39;
+topic from one app will not receive pins from another app using the same topic
+name.</p></li>
+</ul>
+<p>Developers can use the PebbleKit JS API to combine the user&#39;s preferences with
+their location and data from other web-connected sources to make pin updates
+more personal, or more intelligently delivered.</p><p>The public timeline web API is used to push data from a own backend server to
+app users according to the topics they have subscribed to, or to individual
+users. Methods for doing this are discussed below under 
+<a href="#three-ways-to-use-pins" title="" class="">Three Ways to Use Pins</a>.</p><h2 id="architecture-overview" class="anchor">Architecture Overview</h2><p><img src="/assets/images/guides/3.0/timeline-architecture.png" alt="diagram" /></p><p>The timeline architecture consists of multiple components that work together to
+bring timely and relevant data, events, and notifications to the user without
+their intervention. These components are discussed in more detail below.</p><h3 id="public-web-api" class="anchor">Public Web API</h3><p>The Pebble timeline web API (detailed in 
+<a href="/guides/pebble-timeline/timeline-public/"><em>Public Web API</em></a>) manages the currently
+available topics, published pins, and timeline-enabled apps&#39; data. All pins that
+are delivered to users pass through this service. When a developer pushes a pin
+it is sent to this service for distribution to the applicable users.</p><h3 id="pebble-mobile-app" class="anchor">Pebble Mobile App</h3><p>The Pebble mobile app is responsible for synchronizing the pins visible on the
+watch with those that are currently available in the cloud. The PebbleKit JS
+APIs allow a developer to use a configuration page (detailed in 
+<a href="/guides/user-interfaces/app-configuration/"><em>App Configuration</em></a>) or onboard menu to give
+users the choice of which pins they receive via the topics they are subscribed
+to. Developers can also send the user&#39;s token to their own server to maintain a
+custom list of users, and provide a more personal service.</p><p>The Pebble mobile app is also responsible for inserting pins directly into the
+user&#39;s timeline for their upcoming calendar events and missed calls. These pins
+originate on the phone and are sent straight to the watch, not via the public
+web API. Alarm pin are also inserted directly from the watch itself.</p><h3 id="developer-39-s-app-server-service" class="anchor">Developer&#39;s App Server/Service</h3><p>When a developer wants to push pins, they can do so from their own third-party
+server. Such a server will generate pins using topics that the watchapp
+subscribes to (either for all users or just those that elect to be subscribed)
+or user tokens received from PebbleKit JS to target individual users. See
+<a href="/guides/pebble-timeline/timeline-public/"><em>Public Web API</em></a> for information on
+how to do this.</p><h2 id="three-ways-to-use-pins" class="anchor">Three Ways to Use Pins</h2><p>The timeline API is flexible enough to enable apps to use it to send data to
+users in three distinct ways.</p><h3 id="push-to-all-users" class="anchor">Push to All Users</h3><p><img src="/assets/images/guides/timeline/all-users.png" alt="all-users" /></p><p>The most basic subscription method involves subscribing a user to a topic that
+is global to the app. This means all users of the app will receive the pins
+pushed to that topic. To do this, a developer can choose a single topic name
+such as &#39;all-users&#39; and subscribe all users to that topic when the app is first
+installed, or the user opts in to receive pins.</p><p>Read <a href="/guides/pebble-timeline/timeline-public/#shared-pins"><em>Shared Pins</em></a> 
+to find out how to create topics.</p><h3 id="let-users-choose-their-pins" class="anchor">Let Users Choose Their Pins</h3><p><img src="/assets/images/guides/timeline/some-users.png" alt="some-users" /></p><p>Developers can also use a configuration page in their app to allow users to
+subscribe to different topics, leeting them customize their experience and only
+receive pins they want to see. In the image above, the pin broadcast with the
+topic &#39;baseball&#39; is received by users 1 and 3, but not User 2 who has only
+subscribed to the &#39;golf&#39; topic.</p><h3 id="target-individual-users" class="anchor">Target Individual Users</h3><p><img src="/assets/images/guides/timeline/individual.png" alt="individual" /></p><p>Lastly, developers can use the timeline token to target individual users. This
+adds another dimension to how personal an app can become, allowing apps to be
+customized to the user in more ways than just their topic preferences. The image
+above shows a pin pushed from an app&#39;s pin server to just the user with the
+matching <code>X-User-Token</code>. For example, an app tracking the delivery of a user&#39;s
+packages will only be applicable to that user.</p><p>See <a href="/guides/pebble-timeline/timeline-public/#create-a-pin"><em>Create a Pin</em></a> 
+to learn how to send a pin to a single user.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/pebble-timeline/timeline-architecture/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#architecture-overview">Architecture Overview</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#public-web-api">Public Web API</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#pebble-mobile-app">Pebble Mobile App</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#developer-39-s-app-server-service">Developer&#39;s App Server/Service</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#three-ways-to-use-pins">Three Ways to Use Pins</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#push-to-all-users">Push to All Users</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#let-users-choose-their-pins">Let Users Choose Their Pins</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#target-individual-users">Target Individual Users</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

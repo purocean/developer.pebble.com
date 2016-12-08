@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>System Fonts // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A complete list of all the system fonts available for use in Pebble projects.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/app-resources/system-fonts/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/app-resources/animated-images/"><span>Animated Images</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/app-resources/app-assets/"><span>App Assets</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/app-resources/converting-svg-to-pdc/"><span>Converting SVG to PDC</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/app-resources/fonts/"><span>Fonts</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/app-resources/images/"><span>Images</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/app-resources/pdc-format/"><span>Pebble Draw Command File Format</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/app-resources/platform-specific/"><span>Platform-specific Resources</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/app-resources/raw-data-files/"><span>Raw Data Files</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/app-resources/system-fonts/"><span>System Fonts</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="available-system-fonts">Available System Fonts</option>
+          
+            <option value="raster-gothic">- Raster Gothic</option>
+          
+            <option value="bitham">- Bitham</option>
+          
+            <option value="roboto-droid-serif">- Roboto/Droid Serif</option>
+          
+            <option value="leco">- LECO</option>
+          
+            <option value="obtaining-system-font-files">Obtaining System Font Files</option>
+          
+            <option value="using-emoji-fonts">Using Emoji Fonts</option>
+          
+            <option value="deprecated-emoji-symbols">- Deprecated Emoji Symbols</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">System Fonts</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>The tables below show all the system font identifiers available in the Pebble
+SDK, sorted by family. A sample of each is also shown.</p><h2 id="available-system-fonts" class="anchor">Available System Fonts</h2><h3 id="raster-gothic" class="anchor">Raster Gothic</h3>
+<table>
+  <thead>
+    <th>Available Font Keys</th>
+    <th>Preview</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>FONT_KEY_GOTHIC_14</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/gothic_14_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_GOTHIC_14_BOLD</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/gothic_14_bold_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_GOTHIC_18</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/gothic_18_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_GOTHIC_18_BOLD</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/gothic_18_bold_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_GOTHIC_24</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/gothic_24_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_GOTHIC_24_BOLD</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/gothic_24_bold_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_GOTHIC_28</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/gothic_28_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_GOTHIC_28_BOLD</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/gothic_28_bold_preview.png"/></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="bitham" class="anchor">Bitham</h3>
+<table>
+  <thead>
+    <th>Available Font Keys</th>
+    <th>Preview</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>FONT_KEY_BITHAM_30_BLACK</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/bitham_30_black_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_BITHAM_34_MEDIUM_NUMBERS</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/bitham_34_medium_numbers_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_BITHAM_42_BOLD</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/bitham_42_bold_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_BITHAM_42_LIGHT</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/bitham_42_light_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_BITHAM_42_MEDIUM_NUMBERS</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/bitham_42_medium_numbers_preview.png"/></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="roboto-droid-serif" class="anchor">Roboto/Droid Serif</h3>
+<table>
+  <thead>
+    <th>Available Font Keys</th>
+    <th>Preview</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>FONT_KEY_ROBOTO_CONDENSED_21</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/roboto_21_condensed_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_ROBOTO_BOLD_SUBSET_49</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/roboto_49_bold_subset_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_DROID_SERIF_28_BOLD</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/droid_28_bold_preview.png"/></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="leco" class="anchor">LECO</h3>
+<table>
+  <thead>
+    <th>Available Font Keys</th>
+    <th>Preview</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>FONT_KEY_LECO_20_BOLD_NUMBERS</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/leco_20_bold_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_LECO_26_BOLD_NUMBERS_AM_PM</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/leco_26_bold_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_LECO_28_LIGHT_NUMBERS</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/leco_28_light_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_LECO_32_BOLD_NUMBERS</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/leco_32_bold_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_LECO_36_BOLD_NUMBERS</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/leco_36_bold_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_LECO_38_BOLD_NUMBERS</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/leco_38_bold_preview.png"/></td>
+    </tr><tr>
+      <td><code>FONT_KEY_LECO_42_NUMBERS</code></td>
+      <td><img src="/assets/images/guides/app-resources/fonts/leco_42_preview.png"/></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="obtaining-system-font-files" class="anchor">Obtaining System Font Files</h2><p>The following system fonts are available to developers in the SDK can be found
+online for use in design mockups:</p>
+<ul>
+<li><p><a href="http://www.marksimonson.com/" title="" class="">Raster Gothic</a> - By Mark Simonson</p></li>
+<li><p><a href="http://www.typography.com/fonts/gotham/overview/" title="" class="">Gotham (Bitham)</a> -
+Available from Typography.com</p></li>
+<li><p><a href="https://www.google.com/fonts/specimen/Droid+Serif" title="" class="">Droid Serif</a> - Available
+from Google Fonts</p></li>
+<li><p><a href="https://www.myfonts.com/fonts/carnoky/leco-1976/" title="" class="">LECO 1976</a> - Available from
+Myfonts.com</p></li>
+</ul>
+<h2 id="using-emoji-fonts" class="anchor">Using Emoji Fonts</h2><p>A subset of the built-in system fonts support the use of a set of emoji
+characters. These are the Gothic 24, Gothic 24 Bold, Gothic 18, and Gothic 18
+Bold fonts, but do not include the full range.</p><p>To print an emoji on Pebble, specify the code in a character string like the one
+shown below when using a <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>, or <a href="/docs/c/Graphics/Drawing_Text/#graphics_draw_text" title="graphics_draw_text" class="link--docs"><code>graphics_draw_text()</code></a>:</p><div class="highlight"><pre><span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_layer</span><span class="p">,</span> <span class="s">"Smiley face: </span><span class="se">\U0001F603</span><span class="s">"</span><span class="p">);</span>
+</pre></div><p>An app containing a <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> displaying the above string will look similar
+to this:</p><p><img src="/assets/images/guides/pebble-apps/resources/emoji-screenshot.png" alt="emoji-screenshot" class="pebble-screenshot pebble-screenshot--steel-black" /></p><p>The supported characters are displayed below with their corresponding unicode
+values.</p><p><img style="align: center;" src="/assets/images/guides/pebble-apps/resources/emoji1.png"/></p><h3 id="deprecated-emoji-symbols" class="anchor">Deprecated Emoji Symbols</h3><p>The following emoji characters are no longer available on the Aplite platform.</p><p><img style="align: center;" src="/assets/images/guides/pebble-apps/resources/emoji-unsupported.png"/></p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/app-resources/system-fonts/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#available-system-fonts">Available System Fonts</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#raster-gothic">Raster Gothic</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#bitham">Bitham</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#roboto-droid-serif">Roboto/Droid Serif</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#leco">LECO</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#obtaining-system-font-files">Obtaining System Font Files</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#using-emoji-fonts">Using Emoji Fonts</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#deprecated-emoji-symbols">Deprecated Emoji Symbols</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

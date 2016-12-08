@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Adding Web Content // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A guide to adding web-based content your Pebble watchface">
+  <link rel="canonical" href="http://developer.getpebble.com/tutorials/watchface-tutorial/part3/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started active"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+<div class="section-menu section-menu--getting-started section-menu--dark">
+  <div class="section-menu__header">
+    <h3><a href="/tutorials/">Tutorials</a></h3>
+  </div>
+  <ul>
+    <li class="section-menu__item open"><a href="/tutorials/watchface-tutorial/part1/">Build a Watchface in C</a>
+      <ul>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part2/"><span>Part 2 - Customizing the Watchface</span></a></li>
+        <li class="section-menu__subitem active"><a href="/tutorials/watchface-tutorial/part3/"><span>Part 3 - Adding Web Content</a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part4/"><span>Part 4 - Adding a Battery Bar</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/watchface-tutorial/part5/"><span>Part 5 - Vibrate on Disconnect</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/js-watchface-tutorial/part1/">Build a Watchface in JS</a>
+      <ul>
+        <li class="section-menu__subitem"><a href="/tutorials/js-watchface-tutorial/part1/"><span>Part 1 - Displaying the Time</span></a></li>
+        <li class="section-menu__subitem"><a href="/tutorials/js-watchface-tutorial/part2/"><span>Part 2 - Adding Web Content</span></a></li>
+      </ul>
+    </li>
+
+    <li class="section-menu__item"><a href="/tutorials/advanced/vector-animations/">Advanced Tutorials</a>
+      <ul>
+        <li class="section-menu__subitem"><a href="/tutorials/advanced/vector-animations/"><span>Vector Animations</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="preparing-the-watchface-layout">Preparing the Watchface Layout</option>
+          
+            <option value="preparing-appmessage">Preparing AppMessage</option>
+          
+            <option value="preparing-pebblekit-js">Preparing PebbleKit JS</option>
+          
+            <option value="getting-weather-information">Getting Weather Information</option>
+          
+            <option value="showing-weather-on-pebble">Showing Weather on Pebble</option>
+          
+            <option value="conclusion">Conclusion</option>
+          
+            <option value="what-39-s-next">What&#39;s Next?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-l-8">
+      <h1>Adding Web Content</h1>
+      
+      <div class="markdown markdown--staff">
+      
+      <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+      
+      <p>In the previous tutorial parts, we created a simple watchface to tell the time
+and then improved it with a custom font and background bitmap. There&#39;s a lot you
+can do with those elements, such as add more bitmaps, an extra <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>
+showing the date, but let&#39;s aim even higher. This part is longer than the last,
+so make sure you have a nice cup of your favourite hot beverage on hand before
+embarking!</p><p>In this tutorial we will add some extra content to the watchface that is fetched
+from the web using <a href="/guides/communication/using-pebblekit-js/" title="" class="">PebbleKit JS</a>.
+This part of the SDK allows you to use JavaScript to access the web as well as
+the phone&#39;s location services and storage. It even allows you to display a
+configuration screen to give users options over how they want your watchface or
+app to look and run.</p><p>By the end of this tutorial we will arrive at a watchface like the one below, in
+all its customized glory:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/3-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/3-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/3-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>To continue from the last part, you can either modify your existing Pebble
+project or create a new one, using the code from that project&#39;s main <code>.c</code> file
+as a starting template. For reference, that should look 
+<a href="https://gist.github.com/pebble-gists/d216d9e0b840ed296539" title="" class="">something like this</a>. </p><p class="platform-specific" data-sdk-platform="cloudpebble">You can create a new CloudPebble project from this template by 
+<a href="https://cloudpebble.net/ide/gist/d216d9e0b840ed296539" title="" class="">clicking here</a>.</p><h2 id="preparing-the-watchface-layout" class="anchor">Preparing the Watchface Layout</h2><p>The content we will be fetching will be the current weather conditions and
+temperature from <a href="http://openweathermap.org" title="" class="">OpenWeatherMap</a>. We will need a new
+<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> to show this extra content. Let&#39;s do that now at the top of the C
+file, as we did before:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">TextLayer</span> <span class="o">*</span><span class="n">s_weather_layer</span><span class="p">;</span>
+</pre></div><p>As usual, we then create it properly in <code>main_window_load()</code> after the existing
+elements. Here is the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> setup; this should all be familiar to you
+from the previous two tutorial parts:</p><div class="highlight"><pre><span class="c1">// Create temperature Layer</span>
+<span class="n">s_weather_layer</span> <span class="o">=</span> <span class="n">text_layer_create</span><span class="p">(</span>
+    <span class="n">GRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">PBL_IF_ROUND_ELSE</span><span class="p">(</span><span class="mi">125</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">w</span><span class="p">,</span> <span class="mi">25</span><span class="p">));</span>
+
+<span class="c1">// Style the text</span>
+<span class="n">text_layer_set_background_color</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">,</span> <span class="n">GColorClear</span><span class="p">);</span>
+<span class="n">text_layer_set_text_color</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">,</span> <span class="n">GColorWhite</span><span class="p">);</span>
+<span class="n">text_layer_set_text_alignment</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">,</span> <span class="n">GTextAlignmentCenter</span><span class="p">);</span>
+<span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">,</span> <span class="s">"Loading..."</span><span class="p">);</span>
+</pre></div><p>We will be using the same font as the time display, but at a reduced font size.</p><p class="platform-specific" data-sdk-platform="cloudpebble">To do this, we return to our uploaded font resource and click &#39;Another
+Font. The second font that appears below should be given an &#39;Identifier&#39; with
+<code>_20</code> at the end, signifying we now want font size 20 (suitable for the example
+font provided).</p><p class="platform-specific" data-sdk-platform="local">You can add another font in <code>package.json</code> by duplicating the first font&#39;s
+entry in the <code>media</code> array and changing the font size indicated in the <code>name</code>
+field to <code>_20</code> or similar. Below is an example showing both fonts:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="s2">&quot;media&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;font&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;FONT_PERFECT_DOS_48&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;file&quot;</span><span class="o">:</span><span class="s2">&quot;perfect-dos-vga.ttf&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;compatibility&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2.7&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;font&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;FONT_PERFECT_DOS_20&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;file&quot;</span><span class="o">:</span><span class="s2">&quot;perfect-dos-vga.ttf&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;compatibility&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2.7&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Now we will load and apply that font as we did last time, beginning with a new
+<a href="/docs/c/Graphics/Fonts/#GFont" title="GFont" class="link--docs"><code>GFont</code></a> declared at the top of the file:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">GFont</span> <span class="n">s_weather_font</span><span class="p">;</span>
+</pre></div><p>Next, we load the resource and apply it to the new <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> and then add
+that as a child layer to the main <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>:</p><div class="highlight"><pre><span class="c1">// Create second custom font, apply it and add to Window</span>
+<span class="n">s_weather_font</span> <span class="o">=</span> <span class="n">fonts_load_custom_font</span><span class="p">(</span><span class="n">resource_get_handle</span><span class="p">(</span><span class="n">RESOURCE_ID_FONT_PERFECT_DOS_20</span><span class="p">));</span>
+<span class="n">text_layer_set_font</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">,</span> <span class="n">s_weather_font</span><span class="p">);</span>
+<span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">));</span>
+</pre></div><p>Finally, as usual, we add the same destruction calls in <code>main_window_unload()</code>
+as for everything else:</p><div class="highlight"><pre><span class="c1">// Destroy weather elements</span>
+<span class="n">text_layer_destroy</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">);</span>
+<span class="n">fonts_unload_custom_font</span><span class="p">(</span><span class="n">s_weather_font</span><span class="p">);</span>
+</pre></div><p>After compiling and installing, your watchface should look something like this:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/3-loading~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/3-loading~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/3-loading~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<h2 id="preparing-appmessage" class="anchor">Preparing AppMessage</h2><p>The primary method of communication for all Pebble watchapps and watchfaces is
+the <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> API. This allows the construction of key-value dictionaries
+for transmission between the watch and connected phone. The standard procedure
+we will be following for enabling this communication is as follows:</p>
+<ol>
+<li>Create <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> callback functions to process incoming messages and
+errors.</li>
+<li>Register this callback with the system. </li>
+<li>Open <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> to allow app communication.</li>
+</ol>
+<p>After this process is performed any incoming messages will cause a call to the
+<a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" title="AppMessageInboxReceived" class="link--docs"><code>AppMessageInboxReceived</code></a> callback and allow us to react to its contents.
+Let&#39;s get started!</p><p>The callbacks should be placed before they are referred to in the code file, so
+a good place is above <code>init()</code> where we will be registering them. The function
+signature for <a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" title="AppMessageInboxReceived" class="link--docs"><code>AppMessageInboxReceived</code></a> is shown below:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_received_callback</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iterator</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div><p>We will also create and register three other callbacks so we can see all
+outcomes and any errors that may occur, such as dropped messages. These are
+reported with calls to <a href="/docs/c/Foundation/Logging/#app_log" title="app_log" class="link--docs"><code>APP_LOG</code></a> for now, but more detail 
+<a href="http://stackoverflow.com/questions/21150193/logging-enums-on-the-pebble-watch" title="" class="">can be gotten from them</a>:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_dropped_callback</span><span class="p">(</span><span class="n">AppMessageResult</span> <span class="n">reason</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Message dropped!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">outbox_failed_callback</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iterator</span><span class="p">,</span> <span class="n">AppMessageResult</span> <span class="n">reason</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Outbox send failed!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">outbox_sent_callback</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iterator</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"Outbox send success!"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>With this in place, we will now register the callbacks with the system in
+<code>init()</code>:</p><div class="highlight"><pre><span class="c1">// Register callbacks</span>
+<span class="n">app_message_register_inbox_received</span><span class="p">(</span><span class="n">inbox_received_callback</span><span class="p">);</span>
+<span class="n">app_message_register_inbox_dropped</span><span class="p">(</span><span class="n">inbox_dropped_callback</span><span class="p">);</span>
+<span class="n">app_message_register_outbox_failed</span><span class="p">(</span><span class="n">outbox_failed_callback</span><span class="p">);</span>
+<span class="n">app_message_register_outbox_sent</span><span class="p">(</span><span class="n">outbox_sent_callback</span><span class="p">);</span>
+</pre></div><p>And finally the third step, opening <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> to allow the watchface to
+receive incoming messages, directly below
+<a href="/docs/c/Foundation/AppMessage/#app_message_register_inbox_received" title="app_message_register_inbox_received" class="link--docs"><code>app_message_register_inbox_received()</code></a>. It is considered best practice to
+register callbacks before opening <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> to ensure that no messages are
+missed. The code snippet below shows this process using two variables to specify
+the inbox and outbox size (in bytes):</p><div class="highlight"><pre><span class="c1">// Open AppMessage</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">inbox_size</span> <span class="o">=</span> <span class="mi">128</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">outbox_size</span> <span class="o">=</span> <span class="mi">128</span><span class="p">;</span>
+<span class="n">app_message_open</span><span class="p">(</span><span class="n">inbox_size</span><span class="p">,</span> <span class="n">outbox_size</span><span class="p">);</span>
+</pre></div>
+<blockquote>
+<p>Read 
+<a href="/guides/pebble-apps/communications/appmessage/#buffer-sizes" title="" class=""><em>Buffer Sizes</em></a> 
+to learn about using correct buffer sizes for your app.</p></blockquote>
+<h2 id="preparing-pebblekit-js" class="anchor">Preparing PebbleKit JS</h2><p>The weather data itself will be downloaded by the JavaScript component of the
+watchface, and runs on the connected phone whenever the watchface is opened. </p><p class="platform-specific" data-sdk-platform="cloudpebble">To begin using PebbleKit JS, click &#39;Add New&#39; in the CloudPebble editor,
+next to &#39;Source Files&#39;. Select &#39;JavaScript file&#39; and choose a file name.
+CloudPebble allows any normally valid file name, such as <code>weather.js</code>.</p><p class="platform-specific" data-sdk-platform="local">To begin using PebbleKit JS, add a new file to your project at 
+<code>src/pkjs/index.js</code> to contain your JavaScript code.</p><p>To get off to a quick start, we will provide a basic template for using the
+PebbleKit JS SDK. This template features two basic event listeners. One is for
+the &#39;ready&#39; event, which fires when the JS environment on the phone is first
+available after launch. The second is for the &#39;appmessage&#39; event, which fires
+when an AppMessage is sent from the watch to the phone.</p><p>This template is shown below for you to start your JS file:</p><div class="highlight"><pre><span class="c1">// Listen for when the watchface is opened</span>
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> 
+  <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'PebbleKit JS ready!'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="c1">// Listen for when an AppMessage is received</span>
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'appmessage'</span><span class="p">,</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'AppMessage received!'</span><span class="p">);</span>
+  <span class="p">}</span>                     
+<span class="p">);</span>
+</pre></div><p>After compiling and installing the watchface, open the app logs.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Click the &#39;View Logs&#39; button on the confirmation dialogue or the
+&#39;Compilation&#39; screen if it was already dismissed.</p><p class="platform-specific" data-sdk-platform="local">You can listen for app logs by running <code>pebble logs</code>, supplying your
+phone&#39;s IP address with the <code>--phone</code> switch. For example:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="vg">pebble</span><span class="w"> </span><span class="vg">logs</span><span class="w"> </span><span class="o">--</span><span class="vg">phone</span><span class="w"> </span><span class="mf">192.168.1.78</span>
+</pre></div>
+</div>
+<p class="platform-specific" data-sdk-platform="local">You can also combine these two commands into one:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="vg">pebble</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">logs</span><span class="w"> </span><span class="o">--</span><span class="vg">phone</span><span class="w"> </span><span class="mf">192.168.1.78</span>
+</pre></div>
+</div>
+<p>You should see a message matching that set to appear using <code>console.log()</code> in
+the JS console in the snippet above! This is where any information sent using
+<a href="/docs/c/Foundation/Logging/#app_log" title="app_log" class="link--docs"><code>APP_LOG</code></a> in the C file or <code>console.log()</code> in the JS file will be shown, and
+is very useful for debugging!</p><h2 id="getting-weather-information" class="anchor">Getting Weather Information</h2><p>To download weather information from 
+<a href="http://openweathermap.org" title="" class="">OpenWeatherMap.org</a>, we will perform three steps in 
+our JS file:</p>
+<ol>
+<li>Request the user&#39;s location from the phone.</li>
+<li>Perform a call to the OpenWeatherMap API using an <code>XMLHttpRequest</code> object,
+supplying the location given to us from step 1.</li>
+<li>Send the information we want from the XHR request response to the watch for
+display on our watchface.</li>
+</ol>
+<p class="platform-specific" data-sdk-platform="cloudpebble">Firstly, go to &#39;Settings&#39; and check the &#39;Uses Location&#39; box at the bottom
+of the page. This will allow the watchapp to access the phone&#39;s location
+services.</p><p class="platform-specific" data-sdk-platform="local">You will need to add <code>location</code> to the <code>capabilities</code> array in the
+<code>package.json</code> file. This will allow the watchapp to access the phone&#39;s location
+services. This is shown in the code segment below:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="s2">&quot;capabilities&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;location&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The next step is simple to perform, and is shown in full below. The method we
+are using requires two other functions to use as callbacks for the success and
+failure conditions after requesting the user&#39;s location. It also requires two
+other pieces of information: <code>timeout</code> of the request and the <code>maximumAge</code> of
+the data:</p><div class="highlight"><pre><span class="kd">function</span> <span class="nx">locationSuccess</span><span class="p">(</span><span class="nx">pos</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// We will request the weather here</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">locationError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Error requesting location!'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getWeather</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">(</span>
+    <span class="nx">locationSuccess</span><span class="p">,</span>
+    <span class="nx">locationError</span><span class="p">,</span>
+    <span class="p">{</span><span class="nx">timeout</span><span class="o">:</span> <span class="mi">15000</span><span class="p">,</span> <span class="nx">maximumAge</span><span class="o">:</span> <span class="mi">60000</span><span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Listen for when the watchface is opened</span>
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> 
+  <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'PebbleKit JS ready!'</span><span class="p">);</span>
+
+    <span class="c1">// Get the initial weather</span>
+    <span class="nx">getWeather</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</pre></div><p>Notice that when the <code>ready</code> event occurs, <code>getWeather()</code> is called, which in
+turn calls <code>getCurrentPosition()</code>. When this is successful, <code>locationSuccess()</code>
+is called and provides us with a single argument: <code>pos</code>, which contains the
+location information we require to make the weather info request. Let&#39;s do that
+now.</p><p>The next step is to assemble and send an <code>XMLHttpRequest</code> object to make the
+request to OpenWeatherMap.org. To make this easier, we will provide a function
+that simplifies its usage. Place this before <code>locationSuccess()</code>:</p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">xhrRequest</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">type</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+  <span class="nx">xhr</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">callback</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">};</span>
+  <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
+  <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div><p>The three arguments we have to provide when calling <code>xhrRequest()</code> are the URL,
+the type of request (<code>GET</code> or <code>POST</code>, for example) and a callback for when the
+response is received. The URL is specified on the OpenWeatherMap API page, and
+contains the coordinates supplied by <code>getCurrentPosition()</code>, the latitude and
+longitude encoded at the end:</p>
+<div class="alert alert--bg-purple alert--fg-white">
+  <b>API KEY REQUIRED</b>
+  <p>As of October 2015, an API key is required to fetch OpenWeatherMap data. 
+    These can be freely obtained from <a href="http://openweathermap.org/appid">OpenWeatherMap.org</a>.</p>
+</div>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://api.openweathermap.org/data/2.5/weather?lat='</span> <span class="o">+</span>
+  <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span> <span class="o">+</span> <span class="s1">'&amp;lon='</span> <span class="o">+</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span> <span class="o">+</span> <span class="s1">'&amp;appid='</span> <span class="o">+</span> <span class="nx">myAPIKey</span><span class="p">;</span>
+</pre></div><p>The type of the XHR will be a &#39;GET&#39; request, to <em>get</em> information from the
+service. We will incorporate the callback into the function call for
+readability, and the full code snippet is shown below:</p><div class="highlight"><pre><span class="kd">function</span> <span class="nx">locationSuccess</span><span class="p">(</span><span class="nx">pos</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Construct URL</span>
+  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://api.openweathermap.org/data/2.5/weather?lat='</span> <span class="o">+</span>
+      <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span> <span class="o">+</span> <span class="s1">'&amp;lon='</span> <span class="o">+</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span> <span class="o">+</span> <span class="s1">'&amp;appid='</span> <span class="o">+</span> <span class="nx">myAPIKey</span><span class="p">;</span>
+
+  <span class="c1">// Send request to OpenWeatherMap</span>
+  <span class="nx">xhrRequest</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">,</span> 
+    <span class="kd">function</span><span class="p">(</span><span class="nx">responseText</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// responseText contains a JSON object with weather info</span>
+      <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">responseText</span><span class="p">);</span>
+
+      <span class="c1">// Temperature in Kelvin requires adjustment</span>
+      <span class="kd">var</span> <span class="nx">temperature</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">main</span><span class="p">.</span><span class="nx">temp</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Temperature is '</span> <span class="o">+</span> <span class="nx">temperature</span><span class="p">);</span>
+
+      <span class="c1">// Conditions</span>
+      <span class="kd">var</span> <span class="nx">conditions</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">weather</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">main</span><span class="p">;</span>      
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Conditions are '</span> <span class="o">+</span> <span class="nx">conditions</span><span class="p">);</span>
+    <span class="p">}</span>      
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Thus when the location is successfully obtained, <code>xhrRequest()</code> is called. When
+the response arrives, the JSON object is parsed and the temperature and weather
+conditions obtained. To discover the structure of the JSON object we can use
+<code>console.log(responseText)</code> to see its contents.</p><p>To see how we arrived at some of the statements above, such as
+<code>json.weather[0].main</code>, here is an 
+<a href="https://gist.github.com/pebble-gists/216e6d5a0f0bd2328509#file-example-response-json" title="" class="">example response</a> 
+for London, UK. We can see that by following the JSON structure from our
+variable called <code>json</code> (which represents the root of the structure) we can
+access any of the data items. So to get the wind speed we would access
+<code>json.wind.speed</code>, and so on.</p><h2 id="showing-weather-on-pebble" class="anchor">Showing Weather on Pebble</h2><p>The final JS step is to send the weather data back to the watch. To do this we must
+pick some appmessage keys to send back. Since we want to display the temperature
+and current conditions, we&#39;ll create one key for each of those.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Firstly, go to the &#39;Settings&#39; screen, find the &#39;PebbleKit JS Message Keys&#39;
+section and enter some names, like &quot;TEMPERATURE&quot; and &quot;CONDITIONS&quot;:</p><p class="platform-specific" data-sdk-platform="local">You can add your <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> keys in the <code>messageKeys</code> object in
+<code>package.json</code> as shown below for the example keys:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<div class="highlight "><pre><span class="s2">&quot;messageKeys&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">&quot;TEMPERATURE&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">&quot;CONDITIONS&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>To send the data, we call <code>Pebble.sendAppMessage()</code> after assembling the weather
+info variables <code>temperature</code> and <code>conditions</code> into a dictionary. We can
+optionally also supply two functions as success and failure callbacks:</p><div class="highlight"><pre><span class="c1">// Assemble dictionary using our keys</span>
+<span class="kd">var</span> <span class="nx">dictionary</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'TEMPERATURE'</span><span class="o">:</span> <span class="nx">temperature</span><span class="p">,</span>
+  <span class="s1">'CONDITIONS'</span><span class="o">:</span> <span class="nx">conditions</span>
+<span class="p">};</span>
+
+<span class="c1">// Send to Pebble</span>
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">sendAppMessage</span><span class="p">(</span><span class="nx">dictionary</span><span class="p">,</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Weather info sent to Pebble successfully!'</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Error sending weather info to Pebble!'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</pre></div><p>While we are here, let&#39;s add another call to <code>getWeather()</code> in the <code>appmessage</code>
+event listener for when we want updates later, and will send an <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a>
+from the watch to achieve this:</p><div class="highlight"><pre><span class="c1">// Listen for when an AppMessage is received</span>
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'appmessage'</span><span class="p">,</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'AppMessage received!'</span><span class="p">);</span>
+    <span class="nx">getWeather</span><span class="p">();</span>
+  <span class="p">}</span>                     
+<span class="p">);</span>
+</pre></div><p>The final step on the Pebble side is to act on the information received from
+PebbleKit JS and show the weather data in the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> we created for this
+very purpose. To do this, go back to your C code file and find your
+<a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" title="AppMessageInboxReceived" class="link--docs"><code>AppMessageInboxReceived</code></a> implementation (such as our
+<code>inbox_received_callback()</code> earlier). This will now be modified to process the
+received data. When the watch receives an <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> message from the JS
+part of the watchface, this callback will be called and we will be provided a
+dictionary of data in the form of a <code>DictionaryIterator</code> object, as seen in the
+callback signature. <code>MESSAGE_KEY_TEMPERATURE</code> and <code>MESSAGE_KEY_CONDITIONS</code>
+will be automatically provided as we specified them in <code>package.json</code>.</p><p>Before examining the dictionary we add three character
+buffers; one each for the temperature and conditions and the other for us to
+assemble the entire string. Remember to be generous with the buffer sizes to
+prevent overruns:</p><div class="highlight"><pre><span class="c1">// Store incoming information</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="n">temperature_buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="n">conditions_buffer</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="n">weather_layer_buffer</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+</pre></div><p>We then store the incoming information by reading the appropriate <code>Tuple</code>s to
+the two buffers using <code>snprintf()</code>:</p><div class="highlight"><pre><span class="c1">// Read tuples for data</span>
+<span class="n">Tuple</span> <span class="o">*</span><span class="n">temp_tuple</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iterator</span><span class="p">,</span> <span class="n">MESSAGE_KEY_TEMPERATURE</span><span class="p">);</span>
+<span class="n">Tuple</span> <span class="o">*</span><span class="n">conditions_tuple</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iterator</span><span class="p">,</span> <span class="n">MESSAGE_KEY_CONDITIONS</span><span class="p">);</span>
+
+<span class="c1">// If all data is available, use it</span>
+<span class="k">if</span><span class="p">(</span><span class="n">temp_tuple</span> <span class="o">&amp;&amp;</span> <span class="n">conditions_tuple</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">snprintf</span><span class="p">(</span><span class="n">temperature_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">temperature_buffer</span><span class="p">),</span> <span class="s">"%dC"</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">temp_tuple</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">);</span>
+  <span class="n">snprintf</span><span class="p">(</span><span class="n">conditions_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">conditions_buffer</span><span class="p">),</span> <span class="s">"%s"</span><span class="p">,</span> <span class="n">conditions_tuple</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">cstring</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Lastly within this <code>if</code> statement, we assemble the complete string and instruct
+the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> to display it:</p><div class="highlight"><pre><span class="c1">// Assemble full string and display</span>
+<span class="n">snprintf</span><span class="p">(</span><span class="n">weather_layer_buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">weather_layer_buffer</span><span class="p">),</span> <span class="s">"%s, %s"</span><span class="p">,</span> <span class="n">temperature_buffer</span><span class="p">,</span> <span class="n">conditions_buffer</span><span class="p">);</span>
+<span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">,</span> <span class="n">weather_layer_buffer</span><span class="p">);</span>
+</pre></div><p>After re-compiling and re-installing you should be presented with a watchface
+that looks similar to the one shown below:</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/3-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/3-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/3-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p class="platform-specific" data-sdk-platform="cloudpebble">Remember, if the text is too large for the screen, you can reduce the font
+size in the &#39;Resources&#39; section of the CloudPebble editor. Don&#39;t forget to
+change the constants in the <code>.c</code> file to match the new &#39;Identifier&#39;.</p><p class="platform-specific" data-sdk-platform="local">Remember, if the text is too large for the screen, you can reduce the font
+size in <code>package.json</code> for that resource&#39;s entry in the <code>media</code> array. Don&#39;t
+forget to change the constants in the <code>.c</code> file to match the new resource&#39;s
+<code>name</code>.</p><p>An extra step we will perform is to modify the C code to obtain regular weather
+updates, in addition to whenever the watchface is loaded. To do this we will
+take advantage of a timer source we already have - the <a href="/docs/c/Foundation/Event_Service/TickTimerService/#TickHandler" title="TickHandler" class="link--docs"><code>TickHandler</code></a>
+implementation, which we have called <code>tick_handler()</code>. Let&#39;s modify this to get
+weather updates every 30 minutes by adding the following code to the end of
+<code>tick_handler()</code> in our main <code>.c</code> file:</p><div class="highlight"><pre><span class="c1">// Get weather update every 30 minutes</span>
+<span class="k">if</span><span class="p">(</span><span class="n">tick_time</span><span class="o">-&gt;</span><span class="n">tm_min</span> <span class="o">%</span> <span class="mi">30</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Begin dictionary</span>
+  <span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">;</span>
+  <span class="n">app_message_outbox_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">iter</span><span class="p">);</span>
+
+  <span class="c1">// Add a key-value pair</span>
+  <span class="n">dict_write_uint8</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="c1">// Send the message!</span>
+  <span class="n">app_message_outbox_send</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>Thanks to us adding a call to <code>getWeather()</code> in the <code>appmessage</code> JS event
+handler earlier, this message send in the <a href="/docs/c/Foundation/Event_Service/TickTimerService/#TickHandler" title="TickHandler" class="link--docs"><code>TickHandler</code></a> will result in new
+weather data being downloaded and sent to the watch. Job done!</p><h2 id="conclusion" class="anchor">Conclusion</h2><p>Whew! That was quite a long tutorial, but here&#39;s all you&#39;ve learned:</p>
+<ol>
+<li>Managing multiple font sizes.</li>
+<li>Preparing and opening <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a>.</li>
+<li>Setting up PebbleKit JS for interaction with the web.</li>
+<li>Getting the user&#39;s current location with <code>navigator.getCurrentPosition()</code>.</li>
+<li>Extracting information from a JSON response.</li>
+<li>Sending <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> to and from the watch.</li>
+</ol>
+<p>Using all this it is possible to <code>GET</code> and <code>POST</code> to a huge number of web
+services to display data and control these services.</p><p>As usual, you can compare your code to the example code provided using the button
+below.</p><p class="platform-specific" data-sdk-platform="cloudpebble"><a href="https://cloudpebble.net/ide/gist/216e6d5a0f0bd2328509" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">Edit in CloudPebble</a></p><p class="platform-specific" data-sdk-platform="local"><a href="https://gist.github.com/216e6d5a0f0bd2328509" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">View Source Code</a></p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>The next section of the tutorial will introduce the Battery Service, and
+demonstrate how to add a battery bar to your watchface.</p><p><a href="/tutorials/watchface-tutorial/part4/" title="" class="btn btn--markdown btn--wide btn--bg-dark-red btn--fg-white">Go to Part 4 &rarr;</a></p>
+      </div>
+    </div>
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#preparing-the-watchface-layout">Preparing the Watchface Layout</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#preparing-appmessage">Preparing AppMessage</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#preparing-pebblekit-js">Preparing PebbleKit JS</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#getting-weather-information">Getting Weather Information</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#showing-weather-on-pebble">Showing Weather on Pebble</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
+    
+  </ul>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

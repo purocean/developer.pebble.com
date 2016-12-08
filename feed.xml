@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pebble Developer Blog</title>
+    <description>The official blog of the Pebble Developer site.</description>
+    <link>http://developer.getpebble.com/blog/</link>
+    <atom:link href="http://developer.getpebble.com/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 07 Dec 2016 14:27:31 +0000</pubDate>
+    <lastBuildDate>Wed, 07 Dec 2016 14:27:31 +0000</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Let’s Keep Making Awesome Happen</title>
+        <description>&lt;p&gt;Dear Pebble Devs,&lt;/p&gt;&lt;p&gt;We want to thank each and every one of you for your incredible contributions,
+feedback, feature requests, support, and—above all—friendship these past four
+years. Because of you, the Pebble smartwatch experience was phenomenal for over
+two million users in every corner of the globe. We’re closing a chapter today
+&lt;a href=&quot;https://blog.getpebble.com/2016/12/07/fitbit&quot; title=&quot;&quot; class=&quot;&quot;&gt;as Pebble shuts down hardware operations&lt;/a&gt;,
+but want you alongside us for
+&lt;a href=&quot;https://www.kickstarter.com/projects/597507018/pebble-2-time-2-and-core-an-entirely-new-3g-ultra/posts/1752929&quot; title=&quot;&quot; class=&quot;&quot;&gt;a new adventure with Fitbit&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-12-06-pdr15.jpg&quot; alt=&quot;Pebble Developer Retreat 2015&quot; /&gt;&lt;/p&gt;&lt;h2 id=&quot;our-achievements&quot; class=&quot;anchor&quot;&gt;Our Achievements&lt;/h2&gt;&lt;p&gt;The journey hasn&amp;#39;t always been easy, but together, we’ve shared amazing
+experiences, online and in-person. We&amp;#39;re all incredibly honored to have played a
+small part in the ecosystem and community you formed around our pioneering
+wearable platform.&lt;/p&gt;&lt;p&gt;The Pebble Dev Community has delivered apps and experiences beyond our wildest
+dreams. You’ve published over 15,000 watchfaces and watchapps, 130 companion
+apps, created some awesome libraries and packages, and performed 4.6 million
+builds on CloudPebble! You truly did #MakeAwesomeHappen, and we love you for
+that!&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-12-06-02.jpg&quot; alt=&quot;Tintin and Snowy&quot; /&gt;&lt;/p&gt;&lt;h2 id=&quot;logistics&quot; class=&quot;anchor&quot;&gt;Logistics&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;In the short term, the Pebble Developer experience remains unchanged.&lt;/strong&gt; We’re
+happy to report that our transition to Fitbit gives Pebble Developers an
+exciting opportunity to reach and delight over 50 million users and counting.
+The Pebble SDK, CloudPebble, mobile apps, developer portal, appstore, timeline
+API, dictation service, messaging service, and firmware will all continue to
+operate without interruption. Further down the road, we’ll be working to
+phase out cloud services, providing the ability for the community to take over,
+where possible.&lt;/p&gt;&lt;h2 id=&quot;the-future&quot; class=&quot;anchor&quot;&gt;The Future&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-12-06-03.jpg&quot; alt=&quot;Wrists and Watches&quot; /&gt;&lt;/p&gt;&lt;p&gt;Although this chapter in Pebble’s developer story is closing, our team and ethos
+have found a new, welcoming home at Fitbit. We can’t wait to have you alongside
+us for this next adventure. Third-party Pebble developers have a massive
+opportunity to drive how a Fitbit developer ecosystem will take shape. We hope
+you’re as excited about seizing this opportunity as we are.&lt;/p&gt;&lt;p&gt;Over the coming months we will be working closely with our new friends at Fitbit,
+building the foundation for the next great wearable experiences. We want you—our
+fantastic developer community—to keep playing a crucial role in our success.
+More information will follow soon, so stay tuned!&lt;/p&gt;&lt;h2 id=&quot;share-the-love&quot; class=&quot;anchor&quot;&gt;Share the Love&lt;/h2&gt;&lt;p&gt;In the meantime, we&amp;#39;d love for you to join the conversation. Share your ideas,
+fond developer moments, and favorite photos on
+&lt;a href=&quot;https://www.facebook.com/getpebble&quot; title=&quot;&quot; class=&quot;&quot;&gt;Facebook&lt;/a&gt;,
+&lt;a href=&quot;http://twitter.com/pebbledev&quot; title=&quot;&quot; class=&quot;&quot;&gt;Twitter&lt;/a&gt;,
+&lt;a href=&quot;http://instagram.com/getpebble&quot; title=&quot;&quot; class=&quot;&quot;&gt;Instagram&lt;/a&gt;, and
+&lt;a href=&quot;http://www.reddit.com/r/pebble/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Reddit&lt;/a&gt; with #pebbleXfitbit.&lt;/p&gt;&lt;p&gt;Stay awesome!&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-12-06-04.jpg&quot; alt=&quot;Team Pebble&quot; /&gt;&lt;/p&gt;</description>
+        <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/12/06/developer-community-update/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/12/06/developer-community-update/</guid>
+        
+        <category>At the Pub</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Announcing Pebble SDK 4.3</title>
+        <description>&lt;p&gt;Things have been a bit &amp;#39;quiet&amp;#39; recently, but we&amp;#39;re back with another fresh
+Pebble SDK! In this release we&amp;#39;ve included one of the most frequently requested
+APIs, exposed the raw HRM sensor value, released PebbleKit 4.0, plus added an
+exciting new BLE HRM mode.&lt;/p&gt;&lt;h2 id=&quot;it-39-s-oh-so-quiet-ssshhhhhh&quot; class=&quot;anchor&quot;&gt;It&amp;#39;s. Oh. So quiet. Ssshhhhhh.&lt;/h2&gt;&lt;p&gt;We&amp;#39;ve added an often requested method for developers to detect if &lt;em&gt;Quiet Time&lt;/em&gt;
+is enabled. To say that we had a lot of requests for this would be an
+understatement.&lt;/p&gt;&lt;p&gt;&lt;em&gt;Quiet Time&lt;/em&gt; can be enabled manually, via calendar events, or via scheduled
+times, so we&amp;#39;ve made a simple method for querying whether it&amp;#39;s currently active.&lt;/p&gt;&lt;p&gt;All you need to do is check each minute if it&amp;#39;s active. This is easily done
+within the tick event, as follows:&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handle_tick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tick_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TimeUnits&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;units_changed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;units_changed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MINUTE_UNIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;quiet_time_is_active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// It&#39;s nice and quiet&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// Starts another big riot&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You may also peek this value, for example, to prevent your application from
+vibrating during &lt;em&gt;Quiet Time&lt;/em&gt;:&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;do_vibration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;quiet_time_is_active&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vibes_short_pulse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&quot;raw-hrm-bpm&quot; class=&quot;anchor&quot;&gt;Raw HRM BPM&lt;/h2&gt;&lt;p&gt;The Pebble &lt;a href=&quot;/docs/c/Foundation/Event_Service/HealthService/&quot; title=&quot;HealthService&quot; class=&quot;link--docs&quot;&gt;Health API&lt;/a&gt; now exposes the raw BPM value from
+the Heart Rate Monitor sensor. This raw value is not filtered and is useful for
+applications which need to display the real-time sensor value, similar to the
+Pebble Workout app.&lt;/p&gt;&lt;p&gt;For example, in order to peek the current real-time HRM sensor, you would do the
+following:&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;HealthServiceAccessibilityMask&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;health_service_metric_accessible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HealthMetricHeartRateRawBPM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HealthServiceAccessibilityMaskAvailable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;HealthValue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;health_service_peek_current_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HealthMetricHeartRateRawBPM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Display raw HRM value&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_hrm_buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;snprintf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s_hrm_buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s_hrm_buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%lu BPM&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;uint32_t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;text_layer_set_text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s_hrm_layer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_hrm_buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Find out more in the
+&lt;a href=&quot;/guides/events-and-services/hrm/&quot;&gt;&lt;em&gt;Heart Rate Monitor API guide&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&lt;h2 id=&quot;pebblekit-4-0&quot; class=&quot;anchor&quot;&gt;PebbleKit 4.0&lt;/h2&gt;&lt;p&gt;PebbleKit for &lt;a href=&quot;https://github.com/pebble/pebble-ios-sdk/&quot; title=&quot;&quot; class=&quot;&quot;&gt;iOS&lt;/a&gt; and
+&lt;a href=&quot;https://github.com/pebble/pebble-android-sdk/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Android&lt;/a&gt; facilitates
+communication between Pebble watchapps and 3rd party companion phone apps.
+Version 4.0 introduces a number of new features and bug fixes, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support for Pebble 2 &lt;em&gt;(required for iOS only)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Removal of Bluetooth Classic (iOS)&lt;/li&gt;
+&lt;li&gt;Sports API - Support 3rd party HRM&lt;/li&gt;
+&lt;li&gt;Sports API - Custom data field and label&lt;/li&gt;
+&lt;li&gt;Sports API - Helper object to simplify usage, and minimize updates via
+Bluetooth&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For further information about the specific platform changes, view the full
+&lt;a href=&quot;https://github.com/pebble/pebble-ios-sdk/&quot; title=&quot;&quot; class=&quot;&quot;&gt;iOS&lt;/a&gt;, or
+&lt;a href=&quot;https://github.com/pebble/pebble-android-sdk/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Android&lt;/a&gt; changelogs.&lt;/p&gt;&lt;h2 id=&quot;ble-hrm-mode&quot; class=&quot;anchor&quot;&gt;BLE HRM Mode&lt;/h2&gt;&lt;p&gt;Ever wanted to use your &lt;em&gt;Pebble 2 HRM&lt;/em&gt; as a dedicated BLE HRM device with your
+favourite mobile fitness app? Well now you can! Firmware 4.3 now implements the
+standard
+&lt;a href=&quot;https://www.bluetooth.org/docman/handlers/downloaddoc.ashx?doc_id=239866&quot; title=&quot;&quot; class=&quot;&quot;&gt;Bluetooth Heart Rate Service profile&lt;/a&gt;.
+In order to enable this profile, users must enable &amp;#39;Pebble Health&amp;#39;, then enable
+&amp;#39;Heart Rate Monitoring&amp;#39; within the &lt;code&gt;Pebble Health&lt;/code&gt; settings within the Pebble
+mobile app.&lt;/p&gt;&lt;p&gt;Developers who are looking to integrate directly with this profile should be
+aware of the following:&lt;/p&gt;&lt;p&gt;The Heart Rate Service UUID will be present in the advertising payload of
+Pebble, but you must open the Bluetooth settings on the Pebble to make it
+advertise and be discoverable over Bluetooth.&lt;/p&gt;&lt;p&gt;Because it&amp;#39;s highly likely that the Pebble is already connected to the phone, it
+will not be advertising. Therefore, we recommend that your mobile app also
+enumerates already connected devices, to see if any of them support the Heart
+Rate Service. This is in addition to scanning for advertisements to find new
+devices that support HRS. By enumerating connected devices, you improve the user
+experience: users will not have to go into the Bluetooth settings menu on Pebble
+if their Pebble is already connected to the phone.&lt;/p&gt;&lt;p&gt;The first time an application subscribes to the Heart Rate Measurement
+characteristic, a UI prompt will appear on the Pebble, asking the user to allow
+sharing of their heart rate data. This permission is stored for the duration of
+the Bluetooth connection.&lt;/p&gt;&lt;p&gt;When HR data sharing is active, the HR sensor will run continuously at ~1Hz
+sample rate. This means there is a significant battery impact when using this
+feature for an extended period of time.&lt;/p&gt;&lt;p&gt;When all applications have unsubscribed from the Heart Rate Measurement
+characteristic, the HR sensor automatically returns to its default state.&lt;/p&gt;&lt;p&gt;Mobile apps should unsubscribe from the Heart Rate Measurement characteristic as
+soon as the data is no longer required. For example, a workout app should
+unsubscribe when the workout has finished and/or the application is exited.&lt;/p&gt;&lt;p&gt;If the Heart Rate Service is used continuously for a prolonged period of time
+(currently 4hrs), a notification is presented on the watch to remind the user
+that the HR data is still being shared.&lt;/p&gt;&lt;p&gt;The user can stop sharing HRM data from &lt;em&gt;Settings &amp;gt; Bluetooth &amp;gt; Device&lt;/em&gt;. If the
+user chooses to stop sharing, the Bluetooth connection is briefly disconnected
+and reconnected to forcefully remove all subscribers. Unfortunately the
+Bluetooth GATT specification does not provide a better mechanism for a service
+to unsubscribe subscribers, only subscribers can unsubscribe themselves.&lt;/p&gt;&lt;p&gt;Service Characteristics Notes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;#39;Sensor Contact&amp;#39; field is used.&lt;/li&gt;
+&lt;li&gt;&amp;#39;Body Sensor&amp;#39; characteristic is used. The value is constant though (It will
+read &amp;quot;Wrist&amp;quot; / 0x02)&lt;/li&gt;
+&lt;li&gt;&amp;#39;RR Interval&amp;#39; is currently NOT used.&lt;/li&gt;
+&lt;li&gt;&amp;#39;Energy Expended&amp;#39; field is currently NOT used.&lt;/li&gt;
+&lt;li&gt;&amp;#39;Heart Rate Control Point&amp;#39; characteristic is currently NOT used.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;what-39-s-next&quot; class=&quot;anchor&quot;&gt;What&amp;#39;s Next&lt;/h2&gt;&lt;p&gt;Check out the &lt;a href=&quot;/sdk/changelogs/4.3/&quot; title=&quot;&quot; class=&quot;&quot;&gt;release notes&lt;/a&gt; for a full list of
+changes and fixes that were included in SDK 4.3.&lt;/p&gt;&lt;p&gt;Let us know on &lt;a href=&quot;https://twitter.com/pebbledev/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Twitter&lt;/a&gt; if you built something
+cool using the new APIs! We&amp;#39;d love to hear about your experiences with the SDK.&lt;/p&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;&lt;p&gt;Team Pebble&lt;/p&gt;</description>
+        <pubDate>Wed, 23 Nov 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/11/23/Announcing-Pebble-SDK-4.3/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/11/23/Announcing-Pebble-SDK-4.3/</guid>
+        
+        <category>Freshly Baked</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>4.2-beta4 SDK - Emery Edition!</title>
+        <description>&lt;p&gt;We&amp;#39;re incredibly excited to announce the first public beta of the Pebble SDK
+4.2. This is the first time that developers can experience the new &amp;#39;Emery&amp;#39;
+platform which is specifically created for the upcoming
+&lt;a href=&quot;https://www.pebble.com/buy-pebble-time-2-smartwatch&quot; title=&quot;&quot; class=&quot;&quot;&gt;Pebble Time 2&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-10-11-intro.jpg&quot; alt=&quot;Pebble Time 2&quot; /&gt;&lt;/p&gt;&lt;h2 id=&quot;all-about-those-pixels&quot; class=&quot;anchor&quot;&gt;All About Those Pixels&lt;/h2&gt;&lt;p&gt;The new display on the &lt;em&gt;Pebble Time 2&lt;/em&gt; is almost 53% physically larger, and the
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Pixel_density&quot; title=&quot;&quot; class=&quot;&quot;&gt;Pixels per inch&lt;/a&gt; (PPI) has been
+increased from 182 PPI to 202 PPI. This is a massive 200x228 pixels, compared to
+144x168 on the &lt;em&gt;Pebble Time Steel&lt;/em&gt;, that&amp;#39;s an 88% increase in the total amount
+of pixels!.&lt;/p&gt;&lt;p&gt;Take a look at our
+&lt;a href=&quot;/guides/tools-and-resources/hardware-information/&quot;&gt;&lt;em&gt;Hardware guide&lt;/em&gt;&lt;/a&gt; for
+further information about the specifications of the Pebble Time 2.&lt;/p&gt;&lt;p&gt;Watchfaces and watchapps that have not been updated for the Emery platform will
+run in &lt;em&gt;Bezel Mode&lt;/em&gt;. This means they will appear centered on screen at their
+original resolution (144x168), but due to the change in PPI, they appear
+slightly smaller.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-10-11-bezel.png&quot; alt=&quot;Pebble Time 2 Bezel&quot; /&gt;
+&lt;p class=&quot;blog__image-text&quot;&gt;Left: Pebble Time Steel, Middle: Pebble Time 2 -
+Bezel Mode, Right: Optimized for Pebble Time 2.&lt;br /&gt;
+&lt;a href=&quot;https://github.com/pebble-examples/concentricity&quot;&gt;Concentricity
+Watchface&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;&lt;p&gt;The increased number of pixels would immediately make you think that you can
+just add more elements to your watchface design, but due to the increase in PPI,
+existing elements and fonts may feel slightly smaller than expected when viewed
+on an actual device.&lt;/p&gt;&lt;p&gt;The image below simulates how the PPI difference makes a bezel mode application
+feel smaller on the Pebble Time 2.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-10-11-dpi-comparison.png&quot; alt=&quot;Pebble Time 2 PPI&quot; /&gt;
+&lt;p class=&quot;blog__image-text&quot;&gt;Left: Pebble Time Steel, Right: Pebble Time 2 - Bezel Mode.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;We&amp;#39;ve now seen that the increased amount of pixels doesn&amp;#39;t necessarily equate to
+bigger text on our devices, due to the change in PPI, that&amp;#39;s why we&amp;#39;ve created
+the new &lt;a href=&quot;/docs/c/preview/User_Interface/Preferences/#preferred_content_size&quot; title=&quot;&quot; class=&quot;&quot;&gt;ContentSize&lt;/a&gt;
+API.&lt;/p&gt;&lt;h2 id=&quot;introducing-the-contentsize-api&quot; class=&quot;anchor&quot;&gt;Introducing the ContentSize API&lt;/h2&gt;&lt;p&gt;All existing Pebble smartwatches provide the ability for users to change the
+size of text for notifications and some system UI components using &lt;em&gt;Settings &amp;gt;
+Notifications &amp;gt; Text Size&lt;/em&gt;.&lt;/p&gt;&lt;p&gt;The new
+&lt;a href=&quot;/docs/c/preview/User_Interface/Preferences/#preferred_content_size&quot; title=&quot;&quot; class=&quot;&quot;&gt;ContentSize&lt;/a&gt;
+API now exposes this setting to developers, in order for
+them to adapt their application design and layout based on this user preference.&lt;/p&gt;&lt;p&gt;In the previous section, we saw how the PPI increase on Pebble Time 2 affected
+the relative size of a watchface. In the image below you can see precisely how
+text sizes are affected by the PPI change.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-10-11-contentsize.png&quot; alt=&quot;Pebble Time 2 ContentSize&quot; /&gt;
+&lt;p class=&quot;blog__image-text&quot;&gt;Yellow: Pebble Time Steel, Green: Pebble Time 2.&lt;/p&gt;&lt;/p&gt;&lt;p&gt;To negate the effects of this reduced font size, the Emery platform uses larger
+fonts by default. Developers can use the
+&lt;a href=&quot;/docs/c/preview/User_Interface/Preferences/#preferred_content_size&quot; title=&quot;&quot; class=&quot;&quot;&gt;ContentSize&lt;/a&gt;
+API to match this
+behaviour within their own applications.&lt;/p&gt;&lt;p&gt;The following table explains how the text size setting affects the content size
+on each platform:&lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Platform&lt;/th&gt;
+&lt;th&gt;Text Size: Small&lt;/th&gt;
+&lt;th&gt;Text Size: Medium&lt;/th&gt;
+&lt;th&gt;Text Size: Large&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Aplite, Basalt, Chalk, Diorite&lt;/td&gt;
+&lt;td&gt;ContentSize: Small&lt;/td&gt;
+&lt;td&gt;ContentSize: Medium&lt;/td&gt;
+&lt;td&gt;ContentSize: Large&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Emery&lt;/td&gt;
+&lt;td&gt;ContentSize: Medium&lt;/td&gt;
+&lt;td&gt;ContentSize: Large&lt;/td&gt;
+&lt;td&gt;ContentSize: Extra Large&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;Developers should aim to implement designs which adapt to the capabilities of
+the device, but also the accessibility requirements of the user. The
+&lt;a href=&quot;/docs/c/preview/User_Interface/Preferences/#preferred_content_size&quot; title=&quot;&quot; class=&quot;&quot;&gt;ContentSize&lt;/a&gt;
+API satisfies both of these goals.&lt;/p&gt;&lt;p&gt;For more information, read the
+&lt;a href=&quot;/guides/user-interfaces/content-size/&quot;&gt;&lt;em&gt;ContentSize guide&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&lt;h2 id=&quot;new-for-rocky-js&quot; class=&quot;anchor&quot;&gt;New for Rocky.js&lt;/h2&gt;&lt;p&gt;With the release of SDK 4.2, we&amp;#39;re extremely proud to announce that
+&lt;a href=&quot;/docs/rockyjs/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Rocky.js&lt;/a&gt; watchfaces can be published into the Pebble appstore!
+As usual, don&amp;#39;t publish apps with the beta SDK into the appstore, please wait
+for the final release.&lt;/p&gt;&lt;p&gt;In addition to finalizing the memory contract for Rocky.js apps, we&amp;#39;ve also
+added a few new APIs to work with:&lt;/p&gt;&lt;h3 id=&quot;memory-pressure&quot; class=&quot;anchor&quot;&gt;Memory Pressure&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;memorypressure&lt;/code&gt; event has been added to allow developers to handle the
+situations which occur when the amount of memory available to their application
+has changed. Initially we&amp;#39;ve only implemented the &lt;code&gt;high&lt;/code&gt; memory pressure level,
+which occurs right before your application is about to be terminated, due to a
+lack of memory. If you can free sufficient memory within the callback for this
+event, your application will continue to run. Please refer to the Rocky.js
+&lt;a href=&quot;/docs/rockyjs/rocky/#RockyMemoryPressureCallback&quot; title=&quot;&quot; class=&quot;&quot;&gt;documentation&lt;/a&gt; and the memory
+pressure &lt;a href=&quot;https://github.com/pebble-examples/rocky-memorypressure&quot; title=&quot;&quot; class=&quot;&quot;&gt;example application&lt;/a&gt;.&lt;/p&gt;&lt;h3 id=&quot;userpreferences&quot; class=&quot;anchor&quot;&gt;UserPreferences&lt;/h3&gt;&lt;p&gt;The first watchface setting exposed in the new &lt;code&gt;UserPreferences&lt;/code&gt; object is
+&lt;code&gt;contentSize&lt;/code&gt;. This exposes the new
+&lt;a href=&quot;/docs/c/preview/User_Interface/Preferences/#preferred_content_size&quot; title=&quot;&quot; class=&quot;&quot;&gt;ContentSize&lt;/a&gt;
+API to Rocky.js watchface
+developers. Find out more in the Rocky.js
+&lt;a href=&quot;/docs/rockyjs/rocky/#userPreferences&quot; title=&quot;&quot; class=&quot;&quot;&gt;UserPreferences documentation&lt;/a&gt;.&lt;/p&gt;&lt;h2 id=&quot;what-39-s-next&quot; class=&quot;anchor&quot;&gt;What&amp;#39;s Next&lt;/h2&gt;&lt;p&gt;Check out the &lt;a href=&quot;/sdk/changelogs/4.2-beta4/&quot; title=&quot;&quot; class=&quot;&quot;&gt;release notes&lt;/a&gt; for a full list of
+changes and fixes that were included in SDK 4.2-beta4.&lt;/p&gt;&lt;p&gt;Let us know on &lt;a href=&quot;https://twitter.com/pebbledev/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Twitter&lt;/a&gt; if you built something
+cool using the new APIs! We&amp;#39;d love to hear about your experiences with the SDK.&lt;/p&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;&lt;p&gt;Team Pebble&lt;/p&gt;</description>
+        <pubDate>Tue, 11 Oct 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/10/11/Emery-SDK-Beta/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/10/11/Emery-SDK-Beta/</guid>
+        
+        <category>Freshly Baked</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Ready for Pebble 2</title>
+        <description>&lt;p&gt;The latest 4.1 releases of the firmware, mobile apps and SDK bring support for
+the new Pebble 2 smartwatches, which have started appearing on the wrists of
+developers and reviewers around the globe.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-09-27-silk-in-the-wild.jpg&quot; alt=&quot;Pebble 2 in the Wild&quot; /&gt;&lt;/p&gt;&lt;p&gt;Pebble 2 smartwatches are on their way to Kickstarter backers, and firmware 4.1
+will be ready and waiting for them.&lt;/p&gt;&lt;h2 id=&quot;heart-rate-monitor-api&quot; class=&quot;anchor&quot;&gt;Heart Rate Monitor API&lt;/h2&gt;&lt;p&gt;The HRM APIs allow allow developers to query the user&amp;#39;s current and historical
+heart rates. We&amp;#39;ve provided a simple to use API which caters for the most common
+use-cases.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-09-27-heart-beat.gif&quot; alt=&quot;HRM&quot; class=&quot;pebble-screenshot pebble-screenshot--pebble2-black-lime&quot; /&gt;&lt;/p&gt;&lt;p&gt;Find out more in the
+&lt;a href=&quot;/guides/events-and-services/hrm/&quot;&gt;&lt;em&gt;Heart Rate Monitor API guide&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&lt;h2 id=&quot;appglance-rest-api&quot; class=&quot;anchor&quot;&gt;AppGlance REST API&lt;/h2&gt;&lt;p&gt;The AppGlance REST API enables developers to programmatically set the icon and
+subtitle that appears alongside their app in the launcher. Developers can push
+slices to the their app&amp;#39;s glance using their own backend servers by sending
+HTTPS requests to the timeline endpoint.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif&quot; alt=&quot;HRM&quot; class=&quot;pebble-screenshot pebble-screenshot--pebble2-white-teal&quot; /&gt;&lt;/p&gt;&lt;p&gt;Find out more about &lt;a href=&quot;/docs/c/Foundation/App_Glance/&quot; title=&quot;App Glance&quot; class=&quot;link--docs&quot;&gt;&lt;code&gt;App Glance&lt;/code&gt;&lt;/a&gt; in the SDK documentation, or read the
+&lt;a href=&quot;/guides/user-interfaces/appglance-rest/&quot;&gt;&lt;em&gt;AppGlance REST API guide&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&lt;h2 id=&quot;what-39-s-next&quot; class=&quot;anchor&quot;&gt;What&amp;#39;s Next&lt;/h2&gt;&lt;p&gt;Check out the &lt;a href=&quot;/sdk/changelogs/4.1/&quot; title=&quot;&quot; class=&quot;&quot;&gt;release notes&lt;/a&gt; for a full list of changes
+and fixes that were included in SDK 4.1.&lt;/p&gt;&lt;p&gt;Let us know on &lt;a href=&quot;https://twitter.com/pebbledev/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Twitter&lt;/a&gt; if you built something
+cool using the new APIs! We&amp;#39;d love to hear about your experiences with the SDK.&lt;/p&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;&lt;p&gt;Team Pebble&lt;/p&gt;</description>
+        <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/10/04/ready-for-pebble-2/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/10/04/ready-for-pebble-2/</guid>
+        
+        <category>Freshly Baked</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Timeline - The Future of the Past!</title>
+        <description>&lt;p&gt;If you’ve been living under a rock, or have just been sunning yourself on the
+beach for the past week, you might have missed the
+&lt;a href=&quot;/blog/2016/08/30/announcing-pebble-sdk4/&quot; title=&quot;&quot; class=&quot;&quot;&gt;launch of Pebble OS 4.0&lt;/a&gt;. This new
+version introduced some fantastic new features, such as the
+&lt;a href=&quot;https://blog.getpebble.com/2016/08/30/fw4-0/&quot; title=&quot;&quot; class=&quot;&quot;&gt;updated health app&lt;/a&gt;,
+&lt;a href=&quot;/guides/user-interfaces/unobstructed-area/&quot;&gt;&lt;em&gt;timeline quick view&lt;/em&gt;&lt;/a&gt;,
+&lt;a href=&quot;/guides/user-interfaces/appglance-c/&quot;&gt;&lt;em&gt;app glances&lt;/em&gt;&lt;/a&gt;,
+&lt;a href=&quot;/blog/2016/08/15/introducing-rockyjs-watchfaces/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Rocky.js&lt;/a&gt; and a new
+&lt;a href=&quot;/blog/2016/08/19/prime-time-is-approaching-for-os-4.0/#menu-icon-in-the-launcher&quot; title=&quot;&quot; class=&quot;&quot;&gt;system launcher&lt;/a&gt;.&lt;/p&gt;&lt;h3 id=&quot;the-past-and-the-furious&quot; class=&quot;anchor&quot;&gt;The Past and the Furious&lt;/h3&gt;&lt;p&gt;However, there was one change which was met with mixed feedback from both users
+and developers alike, the removal of timeline past. Previously accessible via
+the UP button, timeline past was removed as part of the new 4.0 user
+experience (UX). In 4.0 we introduced new APIs to give developers more options
+to improve their application’s UX and potentially shift away from using the past
+for interactions&lt;/p&gt;&lt;p&gt;Unfortunately, this change prevented users from accessing any timeline pin which
+wasn’t in the present or future, negatively affecting a number of apps and their
+use cases for the timeline.&lt;/p&gt;&lt;p&gt;We carefully listened to feedback and suggestions from our developer community
+via the &lt;a href=&quot;https://forums.pebble.com&quot; title=&quot;&quot; class=&quot;&quot;&gt;forums&lt;/a&gt;,
+&lt;a href=&quot;https://www.reddit.com/r/pebble&quot; title=&quot;&quot; class=&quot;&quot;&gt;Reddit&lt;/a&gt;,
+&lt;a href=&quot;https://twitter.com/pebbledev&quot; title=&quot;&quot; class=&quot;&quot;&gt;Twitter&lt;/a&gt; and
+&lt;a href=&quot;http://discord.gg/aRUAYFN&quot; title=&quot;&quot; class=&quot;&quot;&gt;Discord&lt;/a&gt;, and we are happy to announce that timeline past
+has returned in the v4.0.1 update. Users who need to access the timeline past
+can now assign it to one of their quick launch buttons.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-09-06-quick-launch.gif&quot; alt=&quot;Quick Launch&quot; class=&quot;pebble-screenshot pebble-screenshot--time-red&quot; /&gt;&lt;/p&gt;&lt;p&gt;And so, with the reintroduction of timeline past, balanced was restored, and
+that was the end of the story. Or was it?&lt;/p&gt;&lt;h3 id=&quot;back-to-the-future&quot; class=&quot;anchor&quot;&gt;Back to the Future!&lt;/h3&gt;&lt;p&gt;If you’re the developer of an application which relies upon timeline past, you
+will probably want to inform your users about how they can access timeline past,
+as it will not be enabled by default. Fortunately, there are multiple ways in
+which you can do this easily.&lt;/p&gt;&lt;h4 id=&quot;1-app-store-description&quot; class=&quot;anchor&quot;&gt;1. App Store Description&lt;/h4&gt;&lt;p&gt;Use the app store description of your app to explain that your application
+utilizes timeline past and that users will need to assign it to quick launch.
+For example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This application utilizes pins in the timeline past. On your Pebble, go to
+‘Settings’, ‘Quick Launch’, ‘Up Button’, then select ‘Timeline Past’. You can
+then access timeline past by long pressing UP.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&quot;2-display-a-splash-screen&quot; class=&quot;anchor&quot;&gt;2. Display a Splash Screen&lt;/h4&gt;&lt;p&gt;Add a splash screen to your application which only runs once, and display a
+message informing users how to enable timeline past. You could use the
+‘&lt;a href=&quot;https://www.npmjs.com/package/@smallstoneapps/about-window&quot; title=&quot;&quot; class=&quot;&quot;&gt;about-window&lt;/a&gt;’
+Pebble package for a really quick and easy solution.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-09-06-about-window.png&quot; alt=&quot;About Window&quot; class=&quot;pebble-screenshot pebble-screenshot--time-white&quot; /&gt;&lt;/p&gt;&lt;h4 id=&quot;3-display-a-one-time-notification&quot; class=&quot;anchor&quot;&gt;3. Display a One-Time Notification&lt;/h4&gt;&lt;p&gt;Display a
+&lt;a href=&quot;https://developer.pebble.com/guides/communication/using-pebblekit-js/#showing-a-notification&quot; title=&quot;&quot; class=&quot;&quot;&gt;system notification&lt;/a&gt;
+which only fires once, and display a message informing users how to enable
+timeline past.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-09-06-system-notification.png&quot; alt=&quot;System Notification&quot; class=&quot;pebble-screenshot pebble-screenshot--time-black&quot; /&gt;&lt;/p&gt;&lt;h4 id=&quot;4-display-a-timeline-notification&quot; class=&quot;anchor&quot;&gt;4. Display a Timeline Notification&lt;/h4&gt;&lt;p&gt;Display a
+&lt;a href=&quot;https://developer.pebble.com/guides/pebble-timeline/&quot; title=&quot;&quot; class=&quot;&quot;&gt;timeline notification&lt;/a&gt;,
+and display a message informing users how to enable timeline past.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-09-06-timeline-notification.png&quot; alt=&quot;Timeline Notification&quot; class=&quot;pebble-screenshot pebble-screenshot--time-red&quot; /&gt;&lt;/p&gt;&lt;h3 id=&quot;the-future-of-the-past&quot; class=&quot;anchor&quot;&gt;The Future of the Past&lt;/h3&gt;&lt;p&gt;For now, developers can continue to utilize timeline past, but over time we
+would like to provide a more diverse set of functionality that allows developers
+to surface information to their users. For example, some use cases of timeline
+past may be more appropriate as using an app glance, or timeline quick view
+instead.&lt;/p&gt;&lt;h3 id=&quot;were-listening&quot; class=&quot;anchor&quot;&gt;We’re Listening!&lt;/h3&gt;&lt;p&gt;Your feedback is incredibly important to us, it’s how we keep making awesome
+things. We love to receive your product and feature
+&lt;a href=&quot;http://pbl.io/ideas&quot; title=&quot;&quot; class=&quot;&quot;&gt;suggestions&lt;/a&gt; too.&lt;/p&gt;&lt;p&gt;We’re particularly interested to hear about your use cases and ideas for
+timeline as we travel further into the future! Let us know via
+&lt;a href=&quot;https://forums.pebble.com&quot; title=&quot;&quot; class=&quot;&quot;&gt;the forums&lt;/a&gt;,
+&lt;a href=&quot;https://twitter.com/pebbledev&quot; title=&quot;&quot; class=&quot;&quot;&gt;Twitter&lt;/a&gt; and &lt;a href=&quot;http://discord.gg/aRUAYFN&quot; title=&quot;&quot; class=&quot;&quot;&gt;Discord&lt;/a&gt;!&lt;/p&gt;</description>
+        <pubDate>Tue, 06 Sep 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/09/06/timeline-the-future-of-the-past/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/09/06/timeline-the-future-of-the-past/</guid>
+        
+        <category>Freshly Baked</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Announcing Pebble SDK 4.0</title>
+        <description>&lt;p&gt;Today we have the pleasure of announcing the release of Pebble SDK 4.0. We have
+published an updated version of the Pebble Tool, the SDK itself, and we&amp;#39;ve
+deployed 4.0 onto &lt;a href=&quot;https://cloudpebble.net/&quot; title=&quot;&quot; class=&quot;&quot;&gt;CloudPebble&lt;/a&gt;. It&amp;#39;s time to get
+busy!&lt;/p&gt;&lt;h2 id=&quot;what-39-s-new&quot; class=&quot;anchor&quot;&gt;What&amp;#39;s New&lt;/h2&gt;&lt;p&gt;Pebble OS 4.0 has been released and users with Pebble Time, Pebble Time Steel
+and Pebble Time Round will be receiving the update today.&lt;/p&gt;&lt;p&gt;We covered the new features in detail
+&lt;a href=&quot;/blog/2016/08/19/prime-time-is-approaching-for-os-4.0/&quot; title=&quot;&quot; class=&quot;&quot;&gt;very recently&lt;/a&gt;, but
+let&amp;#39;s have a quick reminder of the new APIs and functionality that&amp;#39;s included.&lt;/p&gt;&lt;h3 id=&quot;rocky-js&quot; class=&quot;anchor&quot;&gt;Rocky.js&lt;/h3&gt;&lt;p&gt;Javascript on the freakin&amp;#39; watch! Although still in beta,
+&lt;a href=&quot;/docs/rockyjs/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Rocky.js&lt;/a&gt; lets you start developing watchfaces in JavaScript
+using standard Web APIs, which you can then run directly on your watch. It&amp;#39;s an
+embedded JavaScript revolution!&lt;/p&gt;&lt;p&gt;Read the updated
+&lt;a href=&quot;/blog/2016/08/15/introducing-rockyjs-watchfaces/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Rocky.js blog post&lt;/a&gt;
+to get started.&lt;/p&gt;&lt;h3 id=&quot;timeline-quick-view&quot; class=&quot;anchor&quot;&gt;Timeline Quick View&lt;/h3&gt;&lt;p&gt;Timeline Quick View displays upcoming information from your timeline on your
+watchface. We introduced the &lt;a href=&quot;/docs/c/User_Interface/UnobstructedArea/&quot; title=&quot;UnobstructedArea&quot; class=&quot;link--docs&quot;&gt;&lt;code&gt;UnobstructedArea&lt;/code&gt;&lt;/a&gt; API to allow developers to
+detect if the screen is being obstructed by a system modal, such as Timeline
+Quick View. Developers can use this new API to adapt their watchface layout
+according to the available screen real estate.&lt;/p&gt;&lt;p&gt;Read the &lt;a href=&quot;/guides/user-interfaces/unobstructed-area/&quot;&gt;&lt;em&gt;UnobstructedArea guide&lt;/em&gt;&lt;/a&gt;
+to get started.&lt;/p&gt;&lt;h3 id=&quot;appglances&quot; class=&quot;anchor&quot;&gt;AppGlances&lt;/h3&gt;&lt;p&gt;With the new &lt;code&gt;AppGlance&lt;/code&gt; API, developers can dynamically change the icon and
+subtitle of their watchapp within the system launcher, at runtime. This allows
+developers to provide meaningful feedback to users without the need for their
+application to be launched.&lt;/p&gt;&lt;p&gt;Read the
+&lt;a href=&quot;/guides/user-interfaces/appglance-c/&quot;&gt;&lt;em&gt;AppGlance C guide&lt;/em&gt;&lt;/a&gt; and the
+&lt;a href=&quot;/guides/user-interfaces/appglance-pebblekit-js/&quot;&gt;&lt;em&gt;AppGlance PebbleKit JS guide&lt;/em&gt;&lt;/a&gt;
+to get started.&lt;/p&gt;&lt;h3 id=&quot;diorite-platform&quot; class=&quot;anchor&quot;&gt;Diorite Platform&lt;/h3&gt;&lt;p&gt;The new Pebble 2 devices use apps built for the Diorite platform, so you&amp;#39;ll need
+SDK 4.0 to develop applications which target those devices.&lt;/p&gt;&lt;p&gt;Take a look at the
+&lt;a href=&quot;/guides/tools-and-resources/hardware-information/&quot;&gt;&lt;em&gt;Hardware Information guide&lt;/em&gt;&lt;/a&gt;
+to find out about the capabilities of the Pebble 2.&lt;/p&gt;&lt;h3 id=&quot;one-click-action-application&quot; class=&quot;anchor&quot;&gt;One Click Action application&lt;/h3&gt;&lt;p&gt;The One Click Action application pattern promotes a type of watchapp which
+serves a single purpose. It launches, performs an action, and then terminates.
+This pattern utilizes the new &lt;code&gt;AppGlance&lt;/code&gt; and &lt;a href=&quot;/docs/c/Foundation/Exit_Reason/#AppExitReason&quot; title=&quot;AppExitReason&quot; class=&quot;link--docs&quot;&gt;&lt;code&gt;AppExitReason&lt;/code&gt;&lt;/a&gt; APIs.&lt;/p&gt;&lt;p&gt;Take a look at the
+&lt;a href=&quot;/guides/design-and-interaction/one-click-actions/&quot;&gt;&lt;em&gt;One Click Actions guide&lt;/em&gt;&lt;/a&gt;
+to get started.&lt;/p&gt;&lt;h2 id=&quot;dude-where-39-s-my-hrm-api&quot; class=&quot;anchor&quot;&gt;Dude, Where&amp;#39;s my HRM API?&lt;/h2&gt;&lt;p&gt;We had planned on shipping the Heart Rate API with 4.0, but it&amp;#39;s been pushed
+back into 4.1 so that we can add even more awesomeness. Pebble 2 devices will
+begin to appear on wrists after firmware 4.1 ships, so you&amp;#39;ll still have time to
+begin implementing HRM data into your watchapps and watchfaces. We will announce
+details of the HRM API as soon as it&amp;#39;s available.&lt;/p&gt;&lt;h2 id=&quot;what-39-s-next&quot; class=&quot;anchor&quot;&gt;What&amp;#39;s Next&lt;/h2&gt;&lt;p&gt;Please remember that we will promote watchfaces and watchapps that make use of
+these new 4.0 APIs if you submit them to the appstore &lt;strong&gt;from August 31st
+onwards&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Let us know on &lt;a href=&quot;https://twitter.com/pebbledev/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Twitter&lt;/a&gt; if you build something
+cool using the new APIs! We&amp;#39;d love to hear about your experiences with the SDK.&lt;/p&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;&lt;p&gt;Team Pebble&lt;/p&gt;</description>
+        <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/08/30/announcing-pebble-sdk4/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/08/30/announcing-pebble-sdk4/</guid>
+        
+        <category>Freshly Baked</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Prime Time is Approaching for OS 4.0</title>
+        <description>&lt;p&gt;Pebble developers of the world unite! Pebble OS 4.0 is just around the corner
+and it&amp;#39;s now time to put those finishing touches on your projects, and prepare
+them for publishing!&lt;/p&gt;&lt;p&gt;Pebble Time owners will be receiving OS 4.0 before Kickstarter backers receive
+their Pebble 2 watches, so we&amp;#39;re recommending that developers publish their
+4.0 watchapps and watchfaces into the appstore &lt;strong&gt;from August 31st onwards&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;We&amp;#39;ll be promoting new and updated apps which utilize the new SDK 4.0 APIs and
+features by creating a brand new category in the appstore called
+&amp;#39;Optimized for 4.0&amp;#39;. This is your time to shine!&lt;/p&gt;&lt;p&gt;If you haven&amp;#39;t even begun to prepare for 4.0, there are some really quick wins
+you can use to your advantage.&lt;/p&gt;&lt;h2 id=&quot;menu-icon-in-the-launcher&quot; class=&quot;anchor&quot;&gt;Menu Icon in the Launcher&lt;/h2&gt;&lt;p&gt;The new launcher in 4.0 allows developers to provide a custom icon for
+their watchapps and watchfaces.&lt;/p&gt;
+&lt;div class=&quot;pebble-dual-image&quot;&gt;
+  &lt;div class=&quot;panel&quot;&gt;
+  &lt;p&gt;  &lt;img src=&quot;/assets/images/blog/2016-08-19-pikachu-icon.png&quot; alt=&quot;Launcher Icon&quot; /&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;panel&quot;&gt;
+  &lt;p&gt;  &lt;img src=&quot;/assets/images/blog/2016-08-19-pikachu-launcher.png&quot; alt=&quot;Launcher&quot; class=&quot;pebble-screenshot pebble-screenshot--time-red&quot; /&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If your &lt;code&gt;png&lt;/code&gt; file is color, we will use the luminance of the image to add
+some subtle gray when rendering it in the launcher, rather than just black
+and white. Transparency will be preserved.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;You should add a 25x25 &lt;code&gt;png&lt;/code&gt; to the &lt;code&gt;resources.media&lt;/code&gt; section of the
+&lt;code&gt;package.json&lt;/code&gt; file, and set &lt;code&gt;&amp;quot;menuIcon&amp;quot;: true&lt;/code&gt;.
+Please note that icons that are larger will be ignored and 
+your app will have the default icon instead.&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;s2&quot;&gt;&quot;resources&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;media&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;menuIcon&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;IMAGE_MENU_ICON&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;file&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;images/icon.png&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&quot;timeline-quick-view&quot; class=&quot;anchor&quot;&gt;Timeline Quick View&lt;/h2&gt;&lt;p&gt;This new feature really brings your timeline into the present, with your
+next appointment appearing as a modal notification over the active watchface.&lt;/p&gt;&lt;p&gt;We introduced the &lt;a href=&quot;/docs/c/User_Interface/UnobstructedArea/&quot; title=&quot;UnobstructedArea&quot; class=&quot;link--docs&quot;&gt;&lt;code&gt;UnobstructedArea&lt;/code&gt;&lt;/a&gt; API in 4.0 to allow developers to detect
+if the screen is being obstructed by a system modal. Below you can see two
+examples of the Simplicity watchface. The Pebble on the left is not using the
+&lt;a href=&quot;/docs/c/User_Interface/UnobstructedArea/&quot; title=&quot;UnobstructedArea&quot; class=&quot;link--docs&quot;&gt;&lt;code&gt;UnobstructedArea&lt;/code&gt;&lt;/a&gt; API, and the Pebble on the right is.&lt;/p&gt;
+&lt;div class=&quot;pebble-dual-image&quot;&gt;
+  &lt;div class=&quot;panel&quot;&gt;
+  &lt;p&gt;  &lt;img src=&quot;/assets/images/blog/2016-08-19-simplicity-std.png&quot; alt=&quot;Simplicity&quot; class=&quot;pebble-screenshot pebble-screenshot--time-white&quot; /&gt;&lt;/p&gt;
+  &lt;p class=&quot;blog__image-text&quot;&gt;Watchface not updated&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;panel&quot;&gt;
+  &lt;p&gt;  &lt;img src=&quot;/assets/images/blog/2016-08-19-simplicity-qv.png&quot; alt=&quot;Simplicity&quot; class=&quot;pebble-screenshot pebble-screenshot--time-white&quot; /&gt;&lt;/p&gt;
+  &lt;p class=&quot;blog__image-text&quot;&gt;Respects new 4.0 unobstructed area&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;You can detect changes to the available screen real-estate and then move, scale,
+or hide their layers to achieve an optimal layout while the screen is partially
+obscured. This provides a fantastic experience to your users.&lt;/p&gt;&lt;p&gt;There&amp;#39;s &lt;a href=&quot;/guides/user-interfaces/unobstructed-area/&quot;&gt;&lt;em&gt;a dedicated guide&lt;/em&gt;&lt;/a&gt;
+which goes into more detail about the &lt;a href=&quot;/docs/c/User_Interface/UnobstructedArea/&quot; title=&quot;UnobstructedArea&quot; class=&quot;link--docs&quot;&gt;&lt;code&gt;UnobstructedArea&lt;/code&gt;&lt;/a&gt; API, it contains
+examples and links to sample implementations.&lt;/p&gt;&lt;h2 id=&quot;appglances&quot; class=&quot;anchor&quot;&gt;AppGlances&lt;/h2&gt;&lt;p&gt;While your static app icon and app title from the &lt;code&gt;package.json&lt;/code&gt; are being used as the 
+default to present your app to the user,
+&lt;em&gt;AppGlances&lt;/em&gt; allow developers to control this content at runtime and
+to provide meaningful feedback to users directly from the new launcher. 
+The API exposes the ability to dynamically change
+the &lt;code&gt;icon&lt;/code&gt; and &lt;code&gt;subtitle_template_string&lt;/code&gt; text of your application in the
+launcher.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif&quot;
+alt=&quot;Updated Launcher&quot; class=&quot;pebble-screenshot pebble-screenshot--time-black&quot;&gt;
+&lt;p class=&quot;blog__image-text&quot;&gt;Preview version of 4.0 launcher&lt;/p&gt;&lt;/p&gt;&lt;p&gt;Utilizing the &lt;a href=&quot;/docs/c/Foundation/App_Glance/&quot; title=&quot;App Glance&quot; class=&quot;link--docs&quot;&gt;&lt;code&gt;App Glance&lt;/code&gt;&lt;/a&gt; API doesn&amp;#39;t need to be difficult. We&amp;#39;ve provided
+guides, examples and sample applications for using the
+&lt;a href=&quot;/guides/user-interfaces/appglance-c/&quot;&gt;&lt;em&gt;AppGlance C API&lt;/em&gt;&lt;/a&gt; and the
+&lt;a href=&quot;/guides/user-interfaces/appglance-pebblekit-js/&quot;&gt;&lt;em&gt;AppGlance PebbleKit JS API&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;&lt;h2 id=&quot;the-diorite-platform&quot; class=&quot;anchor&quot;&gt;The Diorite Platform&lt;/h2&gt;&lt;p&gt;The Diorite platform was created for the new Pebble 2 devices. Its display is
+rectangular, 144x168 pixels, with 2 colors (black and white). It has a
+microphone and heart rate monitor, but it doesn&amp;#39;t have a compass. If your app
+works with Aplite it will already work with Diorite, but there are some important considerations to note:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you chose to limit your app to some platforms, you need to add &lt;code&gt;&amp;quot;diorite&amp;quot;&lt;/code&gt; to your &lt;code&gt;targetPlatforms&lt;/code&gt; in the &lt;code&gt;package.json&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Check for the appropriate usage of
+&lt;a href=&quot;/guides/best-practices/building-for-every-pebble/#available-defines-and-macros&quot;&gt;&lt;em&gt;compiler directives&lt;/em&gt;&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In general, it&amp;#39;s better to use capability and feature detection, rather than platform
+detection. For example, when dealing with resources, use the suffix &lt;code&gt;~bw&lt;/code&gt; instead of &lt;code&gt;~aplite&lt;/code&gt; so they are picked on all black and white platforms.&lt;/p&gt;&lt;h2 id=&quot;what-39-s-next&quot; class=&quot;anchor&quot;&gt;What&amp;#39;s Next&lt;/h2&gt;&lt;p&gt;We&amp;#39;re really excited for the release of Pebble OS 4.0 and the new features it
+brings. It&amp;#39;s now time for you to take advantage of the new APIs and
+enhance your existing projects, or even create entirely new ones!&lt;/p&gt;&lt;p&gt;Why not build something like the
+&lt;a href=&quot;/guides/design-and-interaction/one-click-actions/&quot;&gt;&lt;em&gt;One Click Action&lt;/em&gt;&lt;/a&gt;
+application, which utilizes the new &lt;a href=&quot;/docs/c/Foundation/App_Glance/&quot; title=&quot;App Glance&quot; class=&quot;link--docs&quot;&gt;&lt;code&gt;App Glance&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;/docs/c/Foundation/Exit_Reason/#AppExitReason&quot; title=&quot;AppExitReason&quot; class=&quot;link--docs&quot;&gt;&lt;code&gt;AppExitReason&lt;/code&gt;&lt;/a&gt; APIs.&lt;/p&gt;&lt;p&gt;Please remember that we will promote watchfaces and watchapps
+that make use of these new 4.0 APIs if you
+submit them to the appstore &lt;strong&gt;from August 31st onwards&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;Let us know on &lt;a href=&quot;https://twitter.com/pebbledev&quot; title=&quot;&quot; class=&quot;&quot;&gt;Twitter&lt;/a&gt; if you build something
+cool using the new APIs! We&amp;#39;d love to hear about your experiences with the SDK.&lt;/p&gt;&lt;p&gt;Happy Hacking!&lt;/p&gt;&lt;p&gt;Team Pebble&lt;/p&gt;</description>
+        <pubDate>Fri, 19 Aug 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/08/19/prime-time-is-approaching-for-os-4.0/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/08/19/prime-time-is-approaching-for-os-4.0/</guid>
+        
+        <category>Freshly Baked</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Introducing Rocky.js Watchfaces!</title>
+        <description>&lt;p&gt;We&amp;#39;re incredibly excited and proud to announce the first public beta version of
+Rocky.js watchfaces for Pebble. Rocky.js is ECMAScript 5.1 JavaScript running
+natively on Pebble smartwatches, thanks to
+&lt;a href=&quot;https://github.com/Samsung/jerryscript/wiki/JerryScriptWorkshopApril2016&quot; title=&quot;&quot; class=&quot;&quot;&gt;our collaboration&lt;/a&gt;
+with &lt;a href=&quot;https://github.com/pebble/jerryscript&quot; title=&quot;&quot; class=&quot;&quot;&gt;JerryScript&lt;/a&gt;. This is an incredible
+feat of engineering!&lt;/p&gt;&lt;h2 id=&quot;it-39-s-javascript-on-the-freakin-39-watch&quot; class=&quot;anchor&quot;&gt;It&amp;#39;s JavaScript on the freakin&amp;#39; watch!&lt;/h2&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rocky&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;rocky&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;rocky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;minutechange&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;rocky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;requestDraw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;rocky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;draw&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clearRect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clientHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fillStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;white&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textAlign&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;center&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unobstructedWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unobstructedHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fillText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;JavaScript\non the watch!&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-08-16-jotw.png&quot; alt=&quot;Rocky&quot; class=&quot;pebble-screenshot pebble-screenshot--time-red&quot; /&gt;&lt;/p&gt;&lt;p&gt;Right now we&amp;#39;re giving you early access to this game-changing environment to
+create watchfaces entirely in JavaScript. Feel free to share your code, to
+install it on the emulator and on your watch (with the upcoming firmware 4.0),
+but please don&amp;#39;t upload apps to the appstore as they will stop working in a
+future release.&lt;/p&gt;
+&lt;div class=&quot;alert alert--fg-white alert--bg-purple&quot;&gt;
+  &lt;p&gt;  &lt;strong&gt;Appstore Publishing&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;  Rocky.js JavaScript watchfaces must not be published into the appstore at
+  this time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;We can&amp;#39;t wait to hear your feedback and see what amazing watchfaces you create!&lt;/p&gt;&lt;p&gt;Enough hype, let&amp;#39;s dive into the eye of the tiger!&lt;/p&gt;&lt;h2 id=&quot;rocky-js-projects&quot; class=&quot;anchor&quot;&gt;Rocky.js Projects&lt;/h2&gt;&lt;p&gt;Things are a little different in the JavaScript world, so let&amp;#39;s take a closer
+look at the structure of a Rocky.js project:&lt;/p&gt;&lt;div class=&quot;highlight no-copy&quot;&gt;&lt;pre&gt;package.json
+src/rocky/index.js
+src/pkjs/index.js
+common/*.js
+&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&quot;package-json&quot; class=&quot;anchor&quot;&gt;package.json&lt;/h4&gt;&lt;p&gt;The format of the &lt;code&gt;package.json&lt;/code&gt; file remains roughly the same as existing
+Pebble projects, with some minor differences:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;projectType&amp;quot;: &amp;quot;rocky&amp;quot;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Aplite &lt;code&gt;targetPlatform&lt;/code&gt; is not supported.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;resources&lt;/code&gt; are not currently supported, but will consume space in your PBW if
+specified.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;messageKeys&lt;/code&gt; are not permitted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;src-rocky-index-js&quot; class=&quot;anchor&quot;&gt;src/rocky/index.js&lt;/h4&gt;&lt;p&gt;This is now the main entry point into our application on the watch. This is
+where our Rocky.js JavaScript code resides. All code within this file will be
+executed on the smartwatch. Additional scripts may be placed in this folder, see
+&lt;a href=&quot;#additional-scripts&quot; title=&quot;&quot; class=&quot;&quot;&gt;below&lt;/a&gt;.&lt;/p&gt;&lt;h4 id=&quot;src-pkjs-index-js&quot; class=&quot;anchor&quot;&gt;src/pkjs/index.js&lt;/h4&gt;&lt;p&gt;This file contains our &lt;a href=&quot;/docs/pebblekit-js/&quot; title=&quot;&quot; class=&quot;&quot;&gt;PebbleKit JS&lt;/a&gt; (pkjs) JavaScript
+code. This code will execute on the mobile device connected to the smartwatch.
+Additional scripts may be placed in this folder, see
+&lt;a href=&quot;#additional-scripts&quot; title=&quot;&quot; class=&quot;&quot;&gt;below&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;For Rocky.js projects only, we&amp;#39;ve added a new simplified communication channel
+&lt;a href=&quot;/docs/rockyjs/rocky/#postMessage&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;postMessage()&lt;/code&gt;&lt;/a&gt; and
+&lt;a href=&quot;/docs/rockyjs/rocky/#on&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;on(&amp;#39;message&amp;#39;, ...)&lt;/code&gt;&lt;/a&gt; which allows you to send and
+receive JavaScript JSON objects between the phone and smartwatch.&lt;/p&gt;&lt;h4 id=&quot;additional-scripts&quot; class=&quot;anchor&quot;&gt;Additional Scripts&lt;/h4&gt;&lt;p&gt;Both the &lt;code&gt;rocky&lt;/code&gt; and &lt;code&gt;pkjs&lt;/code&gt; folders support the use of multiple .js files, which
+helps to keep your code clean and modular. Use the
+&lt;a href=&quot;http://www.commonjs.org/specs/modules/1.0/&quot; title=&quot;&quot; class=&quot;&quot;&gt;CommonJS Module&lt;/a&gt; format for
+your additional scripts, then &lt;code&gt;require()&lt;/code&gt; them in your &lt;code&gt;index.js&lt;/code&gt;.&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// file: src/rocky/additional.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Additional File&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// file: src/rocky/index.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;additional&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;./additional&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;additional&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&quot;common-js&quot; class=&quot;anchor&quot;&gt;common/*.js&lt;/h4&gt;&lt;p&gt;If you need to share code between &lt;code&gt;rocky&lt;/code&gt; and &lt;code&gt;pkjs&lt;/code&gt;, you can create a &lt;code&gt;common&lt;/code&gt;
+folder, then add your JavaScript files.&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// file: src/common/shared.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Hello from shared code&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// file: src/rocky/index.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shared&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;../common/shared&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;shared&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// file: src/pkjs/index.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shared&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;../common/shared&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;shared&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&quot;available-apis&quot; class=&quot;anchor&quot;&gt;Available APIs&lt;/h2&gt;&lt;p&gt;In this initial release of Rocky.js, we have focused on the ability to create
+watchfaces only. We will be adding more and more APIs as time progresses, and
+we&amp;#39;re determined for JavaScript to have feature parity with the rest of the
+Pebble developer ecosystem.&lt;/p&gt;&lt;p&gt;We&amp;#39;ve developed our API in-line with standard Web APIs, which may appear strange
+to existing Pebble developers, but we&amp;#39;re confident that this will facilitate
+code re-use and provide a better experience overall.&lt;/p&gt;&lt;h3 id=&quot;system-events&quot; class=&quot;anchor&quot;&gt;System Events&lt;/h3&gt;&lt;p&gt;We&amp;#39;ve provided a series of events which every watchface will likely require, and
+each of these events allow you to provide a callback method which is emitted
+when the event occurs.&lt;/p&gt;&lt;p&gt;Existing Pebble developers will be familiar with the tick style events,
+including:
+&lt;a href=&quot;/docs/rockyjs/rocky/#on&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;secondchange&lt;/code&gt;&lt;/a&gt;,
+&lt;a href=&quot;/docs/rockyjs/rocky/#on&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;minutechange&lt;/code&gt;&lt;/a&gt;,
+&lt;a href=&quot;/docs/rockyjs/rocky/#on&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;hourchange&lt;/code&gt;&lt;/a&gt; and
+&lt;a href=&quot;/docs/rockyjs/rocky/#on&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;daychange&lt;/code&gt;&lt;/a&gt;. By using these events, instead of
+&lt;a href=&quot;/docs/rockyjs&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;setInterval&lt;/code&gt;&lt;/a&gt;, we&amp;#39;re automatically kept in sync with the wall
+clock time.&lt;/p&gt;&lt;p&gt;We also have a
+&lt;a href=&quot;/docs/rockyjs/rocky/#on&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;message&lt;/code&gt;&lt;/a&gt; event for
+receiving JavaScript JSON objects from the &lt;code&gt;pkjs&lt;/code&gt; component, and a
+&lt;a href=&quot;/docs/rockyjs/rocky/#on&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;draw&lt;/code&gt;&lt;/a&gt; event which you&amp;#39;ll use to control the screen
+updates.&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nx&quot;&gt;rocky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;minutechange&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Request the screen to be redrawn on next pass&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;rocky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;requestDraw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&quot;drawing-canvas&quot; class=&quot;anchor&quot;&gt;Drawing Canvas&lt;/h3&gt;&lt;p&gt;The canvas is a 2D rendering context and represents the display of the Pebble
+smartwatch. We use the canvas context for drawing text and shapes. We&amp;#39;re aiming
+to support standard Web API methods and properties where possible, so the canvas
+has been made available as a
+&lt;a href=&quot;/docs/rockyjs/CanvasRenderingContext2D/&quot; title=&quot;&quot; class=&quot;&quot;&gt;CanvasRenderingContext2D&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please note that the canvas isn&amp;#39;t fully implemented yet, so certain methods
+and properties are not available yet. We&amp;#39;re still working on this, so expect
+more in future updates!&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nx&quot;&gt;rocky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;draw&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fillStyle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;red&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textAlign&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;center&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;font&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;14px Gothic&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unobstructedWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unobstructedHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fillText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Rocky.js Rocks!&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&quot;limitations&quot; class=&quot;anchor&quot;&gt;Limitations&lt;/h2&gt;&lt;p&gt;We are still in the early beta phase and there are some limitations and
+restrictions that you need to be aware of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Don&amp;#39;t publish Rocky.js watchfaces to the Pebble appstore yet, they will stop
+working.&lt;/li&gt;
+&lt;li&gt;Rocky.js watchfaces only run on the 4.0 emulators/firmware. The 4.0 firmware
+will be available soon for Basalt, Chalk and Diorite.&lt;/li&gt;
+&lt;li&gt;No support for custom fonts, images and other resources, yet.&lt;/li&gt;
+&lt;li&gt;No C code allowed.&lt;/li&gt;
+&lt;li&gt;No messageKeys.&lt;/li&gt;
+&lt;li&gt;There are file size and memory considerations with your Rocky.js projects.
+If you include a large JS library, it probably won&amp;#39;t work.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;sdk-4-0&quot; class=&quot;anchor&quot;&gt;SDK 4.0&lt;/h2&gt;&lt;p&gt;We have published an updated version of
+&lt;a href=&quot;https://cloudpebble.net/&quot; title=&quot;&quot; class=&quot;&quot;&gt;CloudPebble&lt;/a&gt; which now supports creating
+Rocky.js watchfaces in JavaScript.&lt;/p&gt;&lt;p&gt;If you prefer our local tools, we&amp;#39;ve also published everything you need to begin
+creating Rocky.js watchfaces. Run the following command to install the Pebble
+Tool and 4.0 SDK:&lt;/p&gt;&lt;div class=&quot;highlight no-copy&quot;&gt;&lt;pre&gt;$ brew upgrade pebble-sdk
+$ pebble sdk install latest
+&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&quot;how-to-get-started&quot; class=&quot;anchor&quot;&gt;How to Get Started&lt;/h2&gt;&lt;p&gt;We created a &lt;a href=&quot;/tutorials/js-watchface-tutorial/part1/&quot; title=&quot;&quot; class=&quot;&quot;&gt;2-part tutorial&lt;/a&gt; for
+getting started with Rocky.js watchfaces. It explains everything you need to
+know about creating digital and analog watchfaces, plus how to retrieve
+weather conditions from the internet.&lt;/p&gt;&lt;p&gt;If you&amp;#39;re looking for more detailed information, check out the
+&lt;a href=&quot;/docs/rockyjs&quot; title=&quot;&quot; class=&quot;&quot;&gt;API Documentation&lt;/a&gt;.&lt;/p&gt;&lt;h2 id=&quot;sample-watchfaces&quot; class=&quot;anchor&quot;&gt;Sample Watchfaces&lt;/h2&gt;&lt;p&gt;We&amp;#39;ve already created a few sample watchfaces:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/pebble-examples/rocky-watchface-tutorial-part1&quot; title=&quot;&quot; class=&quot;&quot;&gt;Tictoc&lt;/a&gt; -
+Simple analog watchface.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/pebble-examples/rocky-watchface-tutorial-part2&quot; title=&quot;&quot; class=&quot;&quot;&gt;Tictoc Weather&lt;/a&gt; -
+Simple analog watchface with weather data from a REST API.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/orviwan/rocky-leco-weather&quot; title=&quot;&quot; class=&quot;&quot;&gt;Leco with Weather&lt;/a&gt; - Simple
+digital watchface with weather data from a REST API.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/orviwan/rocky-leco-clay&quot; title=&quot;&quot; class=&quot;&quot;&gt;Leco with Clay&lt;/a&gt; - Simple analog
+watchface which uses Clay for configurable settings.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/orviwan/simplicity-rockyjs&quot; title=&quot;&quot; class=&quot;&quot;&gt;Simplicity&lt;/a&gt; - Rocky.js version
+of the classic Simplicity watchface.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;feedback-and-help&quot; class=&quot;anchor&quot;&gt;Feedback and Help&lt;/h2&gt;&lt;p&gt;We hope you&amp;#39;re as exicited about Rocky.js as we are. If you need assistance,
+have feedback or just want to send us some love, we&amp;#39;re in #rockyjs on
+&lt;a href=&quot;http://discord.gg/aRUAYFN&quot; title=&quot;&quot; class=&quot;&quot;&gt;Discord&lt;/a&gt; or the
+&lt;a href=&quot;https://forums.pebble.com/c/development&quot; title=&quot;&quot; class=&quot;&quot;&gt;Pebble developer forums&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;We&amp;#39;re already working on the next update of Rocky.js and your feedback will help
+shape the future!&lt;/p&gt;</description>
+        <pubDate>Mon, 15 Aug 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/08/15/introducing-rockyjs-watchfaces/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/08/15/introducing-rockyjs-watchfaces/</guid>
+        
+        <category>Freshly Baked</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Creating Native Companion Apps with JS and Cordova</title>
+        <description>&lt;p&gt;Creating companion apps using 
+&lt;a href=&quot;/guides/communication/using-pebblekit-android/&quot; title=&quot;&quot; class=&quot;&quot;&gt;PebbleKit Android&lt;/a&gt; and 
+&lt;a href=&quot;/guides/communication/using-pebblekit-ios/&quot; title=&quot;&quot; class=&quot;&quot;&gt;PebbleKit iOS&lt;/a&gt; is a great way to 
+extend the functionality of your Pebble watchfaces and apps, but what if Java 
+or Objective C just isn&amp;#39;t your thing?  What if you love JavaScript? What if 
+you just don&amp;#39;t want to write the same companion app twice?&lt;/p&gt;&lt;p&gt;Now you don&amp;#39;t have to! Enter &lt;a href=&quot;http://cordova.apache.org/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Cordova&lt;/a&gt; - an open
+source framework for building cross-platform mobile apps using web technologies
+such as HTML5 and JavaScript.  What does this mean for you?  One framework, and
+one codebase for building Pebble companion apps for iOS and Android!&lt;/p&gt;&lt;p&gt;Cordova allows developers to create plugins that wrap native functionality such
+as accessing the phone&amp;#39;s contacts, calendar, camera, and other phone APIs. 
+Plugins allow you to interface with these APIs through JavaScript, and use them
+in your Cordova projects.  Needless to say, PebbleKit Android and PebbleKit iOS 
+are now available as a singular 
+&lt;a href=&quot;https://www.npmjs.com/package/cordova-plugin-pebblekit&quot; title=&quot;&quot; class=&quot;&quot;&gt;Cordova plugin&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;In this blog post, we&amp;#39;ll look at how to use Cordova to create a companion
+app that allows you to retrieve the next upcoming calendar event for the
+current day.&lt;/p&gt;&lt;h2 id=&quot;setup&quot; class=&quot;anchor&quot;&gt;Setup&lt;/h2&gt;&lt;p&gt;The first step will be installing Cordova and creating a new project.
+Cordova provides these steps generically
+&lt;a href=&quot;http://cordova.apache.org/plugins/?platforms=cordova-android%2Ccordova-ios&amp;sortBy=Downloads&quot; title=&quot;&quot; class=&quot;&quot;&gt;here&lt;/a&gt;,
+but if you want to follow along down to the T, here are the steps listed below.&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g cordova
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cordova create calendar-example com.pebble.calendarexample &lt;span class=&quot;s2&quot;&gt;&quot;Calendar Example&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;calendar-example
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cordova platform add android
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cordova platform add ios
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cordova plugin add cordova-plugin-calendar
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cordova plugin add cordova-plugin-pebblekit
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note, this assumes you have node/npm already installed and avaiable on your
+machine. If not, head on over to &lt;a href=&quot;https://nodejs.org/en/&quot; title=&quot;&quot; class=&quot;&quot;&gt;nodejs.org&lt;/a&gt; to
+install node.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Doesn&amp;#39;t seem too bad! If the &lt;code&gt;cordova create&lt;/code&gt; command seems a little scary to
+you, don&amp;#39;t be afraid to ask for help with &lt;code&gt;cordova create --help&lt;/code&gt;.&lt;/p&gt;&lt;h2 id=&quot;querying-events&quot; class=&quot;anchor&quot;&gt;Querying Events&lt;/h2&gt;&lt;p&gt;The next step is to use the calendar plugin we added earlier in order to fetch
+the next event for the day.  Before we do that though, we&amp;#39;ll need to to setup
+the Cordova PebbleKit plugin, as shown below.  Fire up your favourite text
+editor and open &lt;code&gt;www/js/index.js&lt;/code&gt; file.  This is the JavaScript file that runs
+when your app starts up, your application&amp;#39;s control logic will go here.&lt;/p&gt;&lt;p&gt;Upon opening the file, you&amp;#39;ll notice there&amp;#39;s already a fair bit of code
+generated by Cordova.  What&amp;#39;s important here is the &lt;code&gt;onDeviceReady&lt;/code&gt; function,
+this is a callback you can use to be notified once the plugins for your Cordova
+project have been loaded and are ready to be called.  Let&amp;#39;s create our own
+function called &lt;code&gt;fetchCalendarEvent&lt;/code&gt; to be called once the PebbleKit plugin has
+been setup.  We&amp;#39;ll also declare a variable uuid with our Pebble app&amp;#39;s UUID,
+which is required when communicating with our watchapp via AppMessage.&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uuid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ebc92429-483e-4b91-b5f2-ead22e7e002d&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;cm&quot;&gt;/* ... */&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;onDeviceReady&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;receivedEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;deviceready&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pebblekit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fetchCalendarEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;fetchCalendarEvent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;startDate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Now&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;endDate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;endDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Nearest midnight in the future&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calendar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;findEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// title&lt;/span&gt;
+      &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// eventLocation&lt;/span&gt;
+      &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// notes&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;startDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;endDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calendarSuccessCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calendarFailureCallback&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;calendarSuccessCallback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// TODO&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;calendarFailureCallback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Failed to fatch calendar events&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;cm&quot;&gt;/* ... */&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note, the calendar plugin recommends &lt;a href=&quot;https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin#android-6-m-permissions&quot; title=&quot;&quot; class=&quot;&quot;&gt;checking that you have sufficient
+permissions&lt;/a&gt;
+before using its APIs.  For the sake of brevity, the permission workflow has
+been omitted in this post.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;The first 3 parameters we passed to the &lt;code&gt;calendar.findEvent&lt;/code&gt; function are
+undefined, since we don&amp;#39;t want to filter out events with specific titles,
+locations, or notes.  The last two parameters are callback functions that will
+be executed when the app has succeeded or failed to fetch calendar data.  Our
+calendarFailureCallback will log a simple message, and our 
+calendarSuccessCallback will sort through the events and find the earliest 
+event in the list.&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nx&quot;&gt;calendarSuccessCallback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// TODO&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Find the earliest returned event&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;earliestEvent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tempDate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;earliestEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tempDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;earliestEvent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tempDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&quot;sending-an-appmessage&quot; class=&quot;anchor&quot;&gt;Sending An AppMessage&lt;/h2&gt;&lt;p&gt;All we have to do now is send the relevent bits of information down to our
+Pebble app.  This is where the Pebble plugin is going to come in handy.  At the
+end of the function, we&amp;#39;ll call &lt;code&gt;sendAppMessage&lt;/code&gt; which works in a similar
+manner to &lt;a href=&quot;/pebblekit-js/Pebble/#sendAppMessage&quot; title=&quot;&quot; class=&quot;&quot;&gt;PebbleKit JS&amp;#39;
+sendAppMessage&lt;/a&gt;
+function.&lt;/p&gt;&lt;p&gt;The title is easy to snag - it&amp;#39;s a property on the event object, available via
+&lt;code&gt;event.title&lt;/code&gt;.  The hours and minutes will take a bit of work since they only
+exist within a string property on the object (&lt;code&gt;event.startDate&lt;/code&gt;).  Luckily the
+format for the date is fixed, so we know where in the string it will be.&lt;/p&gt;&lt;p&gt;With this in mind, we can use the
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring&quot; title=&quot;&quot; class=&quot;&quot;&gt;String.prototype.substring&lt;/a&gt;
+method to extract the numbers we want.  The method takes two parameters, the
+first is the starting index (inclusive) of the substring, and the second is the
+the end index (exclusive).  So if we want the hour, we&amp;#39;d pass 11 as the
+starting index, and 13 as the end index.  This will create a substring
+containing the 11th and 12th characters of the string.&lt;/p&gt;&lt;p&gt;Also in this example, the &lt;code&gt;data&lt;/code&gt; object represents our AppMessage, where &lt;code&gt;10&lt;/code&gt;,
+&lt;code&gt;11&lt;/code&gt;, and &lt;code&gt;12&lt;/code&gt; are the AppMessage keys.&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Format is in YYYY-MM-DD HH:mm:ss&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hourString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;earliestEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hour&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hourString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;minuteString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;earliestEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;minute&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;minuteString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// AppMessage keys&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;10&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;earliestEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;11&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;12&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;minute&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pebblekit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendAppMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;sent AppMessage&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Couldn\&#39;t send AppMessage&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The only thing left is to read the AppMessage on the C side.  To quote every
+university professor I&amp;#39;ve ever had: &amp;quot;We leave this as an exercise to the
+reader&amp;quot;.  (Just kidding, you can see the watchface&amp;#39;s full C
+code &lt;a href=&quot;https://github.com/pebble-hacks/cordova-plugin-pebblekit/blob/master/example/pebble/src/pebble.c&quot; title=&quot;&quot; class=&quot;&quot;&gt;here&lt;/a&gt;,
+or consult the
+&lt;a href=&quot;/guides/communication/sending-and-receiving-data&quot; title=&quot;&quot; class=&quot;&quot;&gt;documentation&lt;/a&gt;).&lt;/p&gt;&lt;p&gt;While we only used two of the APIs of the PebbleKit Cordova plugin here, there
+is much more available to you, all with &lt;a href=&quot;https://github.com/pebble-hacks/cordova-plugin-pebblekit&quot; title=&quot;&quot; class=&quot;&quot;&gt;new and shiny
+documentation&lt;/a&gt;&lt;/p&gt;&lt;p&gt;For folks that are interested, our Cordova plugin is completely open source,
+and hosted on
+&lt;a href=&quot;https://github.com/pebble-hacks/cordova-plugin-pebblekit&quot; title=&quot;&quot; class=&quot;&quot;&gt;Github&lt;/a&gt;. We welcome
+bug reports, feature requests, and contributions with open arms :).&lt;/p&gt;&lt;p&gt;And that&amp;#39;s all there is to it!  If you&amp;#39;ve been holding back on writing a
+companion app for your amazing app, now&amp;#39;s the time to try it!&lt;/p&gt;</description>
+        <pubDate>Fri, 01 Jul 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/07/01/creating-native-companion-apps-with-js-and-cordova/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/07/01/creating-native-companion-apps-with-js-and-cordova/</guid>
+        
+        <category>Freshly Baked</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Introducing Clay - App configuration made easy</title>
+        <description>&lt;p&gt;It is with great pleasure that I present to you, Clay, a Pebble package that makes it easy to add offline configuration pages to your Pebble apps. All you need to get started is a couple lines of JavaScript and a JSON file; no servers, HTML or CSS required.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/assets/images/blog/2016-06-24-introducing-clay/clay-example.png&quot; alt=&quot;Clay Example&quot; width=&quot;421&quot; /&gt;&lt;/p&gt;&lt;h2 id=&quot;how-to-get-started&quot; class=&quot;anchor&quot;&gt;How to get started&lt;/h2&gt;&lt;p&gt;This post aims to provide high level explanation of how the framework works and how it came to be. Below is a quick overview of how easy it is to make your app configurable with Clay. If you would like to learn how to integrate Clay into your project, read our guide on &lt;a href=&quot;/guides/user-interfaces/app-configuration/&quot; title=&quot;&quot; class=&quot;&quot;&gt;app configuration&lt;/a&gt; or read the full documentation on the project &lt;a href=&quot;https://github.com/pebble/clay#clay&quot; title=&quot;&quot; class=&quot;&quot;&gt;GitHub repository.&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;1) Install the module via &lt;a href=&quot;/guides/pebble-packages/using-packages/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Pebble Packages&lt;/a&gt;&lt;/strong&gt;
+ - SDK: &lt;code&gt;$ pebble package install pebble-clay&lt;/code&gt;
+ - CloudPebble: Add &lt;code&gt;pebble-clay&lt;/code&gt;, version &lt;code&gt;^1.0.0&lt;/code&gt; to your project dependencies.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;2) Create a configuration file that looks something like:&lt;/strong&gt;&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;heading&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;defaultValue&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Example App&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;section&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;items&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;color&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;messageKey&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;BackgroundColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;defaultValue&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;0x000000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Background Color&quot;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;toggle&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;messageKey&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Animations&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Enable Animations&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;defaultValue&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;submit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;defaultValue&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Save Settings&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;3) Update your project settings with the matching &lt;code&gt;messageKeys&lt;/code&gt; from the config above.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;4) Add a few lines to your &lt;code&gt;index.js&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Clay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;pebble-clay&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clayConfig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;./config&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;clay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Clay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clayConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;5) Retrieve the values on the C side using standard &lt;a href=&quot;/guides/communication/sending-and-receiving-data/&quot; title=&quot;&quot; class=&quot;&quot;&gt;app messages&lt;/a&gt; or alternatively let &lt;a href=&quot;https://github.com/gregoiresage/enamel&quot; title=&quot;&quot; class=&quot;&quot;&gt;enamel&lt;/a&gt; do the work for you.&lt;/strong&gt;&lt;/p&gt;&lt;h2 id=&quot;why-i-created-clay&quot; class=&quot;anchor&quot;&gt;Why I created Clay&lt;/h2&gt;&lt;p&gt;Clay began as a side project of mine. Whilst developing my &lt;a href=&quot;https://apps.pebble.com/applications/560ae4754d43a36393000001&quot; title=&quot;&quot; class=&quot;&quot;&gt;Segment watchface&lt;/a&gt;, I wanted to add a configuration page to allow users to customize the colors of the watchface. However, I soon discovered this process to be rather fiddly. The old way of doing things required you to create and host HTML pages even for simple things like changing a background color or toggling an option. You would also need to write a bunch of boilerplate JavaScript to serialize and send the settings to the watch. Best case, for developers, this is super tedious. Worst case, it is terrifying. By day, I work as a web developer (mainly front-end) so if I was finding the process tiresome, I could only imagine how challenging it would be for someone who wasn&amp;#39;t familiar with web technologies. And so I decided to create a framework that would alleviate this barrier for developers. I had a number of requirements that needed to be met in order for the framework to achieve my goals:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It should not require developers to write any HTML or CSS.&lt;/li&gt;
+&lt;li&gt;It should use JSON to define the generated config page.&lt;/li&gt;
+&lt;li&gt;It should all work offline&lt;/li&gt;
+&lt;li&gt;Developers should be able to add interactivity to the config page without manually manipulating DOM.&lt;/li&gt;
+&lt;li&gt;Developers should be able to create and share their own custom components.&lt;/li&gt;
+&lt;li&gt;The config page should be able to be versioned with the rest of the code in the project.&lt;/li&gt;
+&lt;li&gt;It should have extensive unit tests with 100% test coverage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;how-clay-actually-works&quot; class=&quot;anchor&quot;&gt;How Clay Actually Works&lt;/h2&gt;&lt;p&gt;Clay has two main components. The first is a very long string that is compiled from all the HTML, CSS and JavaScript that forms the skeleton of the generated config page. The second is the module that gets included in your &lt;code&gt;index.js&lt;/code&gt;. This module is in charge of bundling all the dynamic elements set by the developer into a format that can be opened using &lt;code&gt;Pebble.openURL()&lt;/code&gt;. It is also in charge of listening for the &lt;code&gt;webviewclosed&lt;/code&gt; event and persisting the user&amp;#39;s settings to local storage. I use Gulp and a series of Browserify transforms to compile all these components into a single module. The advantage of using a system such as Browserify, is that later, Clay can be made into a stand alone module to be used by developers who have very advanced use cases that require Clay to be run in a hosted HTML page.&lt;/p&gt;&lt;p&gt;The most challenging item on the requirements list was making the whole thing work offline. Neither of the Pebble mobile apps allow file system access from the config page&amp;#39;s webview, so I had to get a little creative. It turns out that &lt;a href=&quot;https://en.wikipedia.org/wiki/Data_URI_scheme&quot; title=&quot;&quot; class=&quot;&quot;&gt;Data URIs&lt;/a&gt; work with more than images. You can in fact encode an entire HTML page into the URI. This was the solution to making the config pages offline. It sounds crazy but this method actually provides other advantages for developers beyond offline access. By bundling all the HTML, CSS and JavaScript into the Clay package, the version of Clay being used by the developer will not change without the developer rebuilding their app. This means developers do not need to worry about the behavior of their app&amp;#39;s configuration page potentially breaking as new versions of Clay get released.&lt;/p&gt;&lt;h2 id=&quot;advanced-use&quot; class=&quot;anchor&quot;&gt;Advanced Use&lt;/h2&gt;&lt;p&gt;If developers want to add additional functionality to their config page, they can. Clay allows developers to inject, what I call a &lt;a href=&quot;https://github.com/pebble/clay#custom-function&quot; title=&quot;&quot; class=&quot;&quot;&gt;&lt;code&gt;custom function&lt;/code&gt;&lt;/a&gt; into the generated config page. This allows developers control of their config page without needing to manipulate the DOM. Clay achieves this by exposing an API that provides a consistent way of interacting with the config page as well as making AJAX requests. Instead of manually updating the values of HTML elements, developers can use the much simpler Clay API.&lt;/p&gt;&lt;h2 id=&quot;where-to-find-more-information&quot; class=&quot;anchor&quot;&gt;Where to find more information&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/guides/user-interfaces/app-configuration/&quot; title=&quot;&quot; class=&quot;&quot;&gt;App configuration guide.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/pebble/clay&quot; title=&quot;&quot; class=&quot;&quot;&gt;Clay GitHub repository including full documentation.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Chat to us in the &lt;code&gt;#clay&lt;/code&gt; channel on &lt;a href=&quot;http://discord.gg/aRUAYFN&quot; title=&quot;&quot; class=&quot;&quot;&gt;Discord&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Visit the &lt;a href=&quot;https://forums.pebble.com/&quot; title=&quot;&quot; class=&quot;&quot;&gt;Pebble Forums&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tweet at &lt;a href=&quot;https://twitter.com/pebbledev&quot; title=&quot;&quot; class=&quot;&quot;&gt;@pebbledev&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;how-to-get-involved&quot; class=&quot;anchor&quot;&gt;How to get involved&lt;/h2&gt;&lt;p&gt;Clay is open source and welcomes pull requests from anybody. Have a look at the &lt;a href=&quot;https://github.com/pebble/clay/blob/master/CONTRIBUTING.md&quot; title=&quot;&quot; class=&quot;&quot;&gt;contributing guide&lt;/a&gt; for instructions on how you can help make Clay even better. Regardless of your skill level, if you have any ideas on how Clay could be improved or if you find any bugs, we would love you to &lt;a href=&quot;https://github.com/pebble/clay/issues/new&quot; title=&quot;&quot; class=&quot;&quot;&gt;submit an issue on GitHub&lt;/a&gt;.&lt;/p&gt;</description>
+        <pubDate>Fri, 24 Jun 2016 00:00:00 +0000</pubDate>
+        <link>http://developer.getpebble.com/blog/2016/06/24/introducing-clay/</link>
+        <guid isPermaLink="true">http://developer.getpebble.com/blog/2016/06/24/introducing-clay/</guid>
+        
+        <category>Freshly Baked</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

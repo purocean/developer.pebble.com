@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Core Experience Design // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How design guidelines shape the core Pebble app experience.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/design-and-interaction/core-experience/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/benefits/"><span>Benefits of Design Guidelines</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/design-and-interaction/core-experience/"><span>Core Experience Design</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/one-click-actions/"><span>One Click Actions</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/recommended/"><span>Recommended Guidelines and Patterns</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/in-the-round/"><span>Round App Design</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/implementation/"><span>Example Implementations</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="system-experience-design">System Experience Design</option>
+          
+            <option value="music">- Music</option>
+          
+            <option value="notifications">- Notifications</option>
+          
+            <option value="alarms">- Alarms</option>
+          
+            <option value="watchfaces">- Watchfaces</option>
+          
+            <option value="settings">- Settings</option>
+          
+            <option value="sports-api">- Sports API</option>
+          
+            <option value="timeline-experience-design">Timeline Experience Design</option>
+          
+            <option value="what-39-s-next">What&#39;s Next?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Core Experience Design</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>The core Pebble experience includes several built-in system apps that use
+repeatable design and interaction concepts in their implementation. These
+are:</p>
+<ul>
+<li><p>Apps are designed with a single purpose in mind, and they do it well.</p></li>
+<li><p>Fast animations are used to draw attention to changing or updating
+information.</p></li>
+<li><p>Larger, bolder fonts to highlight important data.</p></li>
+<li><p>A preference for displaying multiple data items in a paginated format rather
+than many &#39;menus within menus&#39;. This is called the &#39;card&#39; pattern and is
+detail in
+<a href="/guides/design-and-interaction/recommended/#display-data-sets-using-cards"><em>Display Data Sets Using Cards</em></a>.</p></li>
+<li><p>Colors are used to enhance the app&#39;s look and feel, and are small in number.
+Colors are also sometimes used to indicate state, such as the temperature in a
+weather app, or to differentiate between different areas of a layout.</p></li>
+</ul>
+<h2 id="system-experience-design" class="anchor">System Experience Design</h2><p>The core system design and navigation model is a simple metaphor for time on the
+user&#39;s wrist - a linear representation of the past, present, and future. The
+first two are presented using the timeline design, with a press of the Up button
+displaying past events (also known as pins), and a press of the Down button
+displaying future events. As was the case for previous versions of the system
+experience, pressing the Select button opens the app menu. This contains the
+system apps, such as Music and Notifications, as well as all the 3rd party apps
+the user has installed in their locker.</p><p><img src="/assets/images/guides/design-and-interaction/system-navigation.png" alt="system-navigation" /></p><p>Evidence of the concepts outlined above in action can be seen within the core
+system apps in firmware 3.x. These are described in detail in the sections
+below.</p><h3 id="music" class="anchor">Music</h3><p><img src="/assets/images/guides/design-and-interaction/music.png" alt="music" /></p><p>The Music app is designed with a singular purpose in mind - display the current
+song and allow control over playback. To achieve this, the majority of the
+screen space is devoted to the most important data such as the song title and
+artist. The remainder of the space is largely used to display the most immediate
+controls for ease of interaction in an action bar UI element.</p><p>The &#39;previous track&#39; and &#39;next track&#39; icons on the action bar are ones with
+pre-existing affordances which do not require specific instruction for new users
+thanks to their universal usaging other media applications. The use of the &#39;...&#39;
+icon is used as an additional commonly understood action to indicate more
+functionality is available. By single-pressing this action, the available
+actions change from preview/next to volume up/volume down, reverting on a
+timeout. This is preferable to a long-press, which is typically harder to
+discover without an additional prompt included in the UI.</p><p>A press of the Back button returns the user to the appface menu, where the Music
+appface displays the name and artist of the currently playing track, in a
+scrolling &#39;marquee&#39; manner. If no music is playing, no information is shown
+here.</p><h3 id="notifications" class="anchor">Notifications</h3><p><img src="/assets/images/guides/design-and-interaction/notifications.png" alt="notifications" /></p><p>The system Notifications app allows a user to access all their past received
+notifications in one place. Due to the fact that the number of notifications
+received can be either small or large, the main view of the app is implemented
+as a menu, with each item showing each notification&#39;s icon, title and the first
+line of the body content. In this way it is easy for a user to quickly scroll
+down the list and identify the notification they are looking for based on these
+first hints.</p><p>The first item in the menu is a &#39;Clear All&#39; option, which when selected prompts
+the user to confirm this action using a dialog. This dialog uses the action bar
+component to give the user the opportunity to confirm this action with the
+Select button, or to cancel it with the Back button.</p><p>Once the desired item has been found, a press of the Select button opens a more
+detailed view, where the complete notification content can be read, scrolling
+down if needed. The fact that there is more content available to view is hinted
+at using the arrow marker and overlapping region at the bottom of the layout.</p><h3 id="alarms" class="anchor">Alarms</h3><p><img src="/assets/images/guides/design-and-interaction/alarms.png" alt="alarms" /></p><p>The Alarms app is the most complex of the system apps, with multiple screens
+dedicated to input collection from the user. Like the Watchfaces and Music apps,
+the appface in the system menu shows the time of the next upcoming scheduled
+alarm, if any. Also in keeping with other system apps, the main screen is
+presented using a menu, with each item representing a scheduled alarm. Each
+alarm is treated as a separate item, containing different settings and values.</p><p>A press of the Select button on an existing item will open the action menu
+containing a list of possible actions, such as &#39;Delete&#39; or &#39;Disable&#39;. Pressing
+Select on the top item (&#39;+&#39;) will add a new item to the list, using multiple
+subsequent screens to collect data about the alarm the user wishes to schedule.
+Using multiple screens avoids the need for one screen to contain a lot of input
+components and clutter up the display. In the time selection screen, the current
+selection is marked using a green highlight. The Up and Down buttons are used to
+increase and decrease the currently selected field respectively.</p><p>Once a time and recurring frequency has been chosen by the user, the new alarm
+is added to the main menu list. The default state is enabled, marked by the word
+&#39;ON&#39; to the right hand side, but can be disabled in which case &#39;OFF&#39; is
+displayed instead.</p><h3 id="watchfaces" class="anchor">Watchfaces</h3><p><img src="/assets/images/guides/design-and-interaction/watchfaces.png" alt="watchfaces" /></p><p>The Watchfaces system app is similar to the Notifications app, in that it uses a
+menu as its primary means of navigation. Each watchface available in the user&#39;s
+locker is shown as a menu item, with a menu icon if one has been included by the
+watchface developer. The currently active watchface is indicated by the presence
+of &#39;Active&#39; as that item&#39;s subtitle.</p><p>Once the user has selected a new watchface, they are shown a confirmation dialog
+to let them know their choice was successful. If the watchface is not currently
+loaded on the watch, a progress bar is shown briefly while the data is loaded.
+Once this is done the newly chosen watchface is displayed.</p><h3 id="settings" class="anchor">Settings</h3><p><img src="/assets/images/guides/design-and-interaction/settings.png" alt="settings" /></p><p>The Settings app uses the system appface to display the date, the battery charge
+level, and the Bluetooth connection without the need to open the app proper. If
+the user does open the app, they are greeted with a menu allowing a choice of
+settings category. This approach saves the need for a single long list of
+settings that would require a lot of scrolling.</p><p>Once a category has been chosen, the app displays another menu filled with
+interactive menu rows that change various settings. Each item shows the name of
+the setting in bold as the item title, with the current state of the setting
+shown as the subtitle.</p><p>When the user presses Select, the state of the currently selected setting is
+changed, usually in a binary rotation of On -&gt; Off states. If the setting does
+not operate with a binary state (two states), or has more than two options, an
+action menu window is displayed with the available actions, allowing the user to
+select one with the Select button.</p><p>A press of the Back button from a category screen returns the user to the
+category list, where they can make another selection, or press Back again to
+return to the app menu.</p><h3 id="sports-api" class="anchor">Sports API</h3>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/design-and-interaction/sports~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/design-and-interaction/sports~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/design-and-interaction/sports~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>The Sports API app is designed around displaying the most immediate relevant
+data of a particular sporting activity, such as running or cycling. A suitable
+Android or iOS companion app pushes data to this app using the
+<a href="/guides/communication/using-the-sports-api/"><em>PebbleKit Sports API</em></a>
+at regular intervals. This API enables third-party sports app developers to
+easily add support for Pebble without needing to create and maintain their own
+watchapp.</p><p>The high contrast choice of colors makes the information easy to read at a
+glance in a wide variety of lighting conditions, ideal for use in outdoor
+activities. The action bar is also used to present the main action available to
+the user - the easily recognizable &#39;pause&#39; action to suspend the current
+activity for a break. This is replaced by the equally recognizable &#39;play&#39; icon,
+the action now used to resume the activity.</p><p>This API also contains a separate Golf app for PebbleKit-compatible apps to
+utilize in tracking the user&#39;s golf game.</p>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/guides/design-and-interaction/golf~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/guides/design-and-interaction/golf~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/guides/design-and-interaction/golf~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<p>The Golf app uses a similar design style with larger fonts for important numbers
+in the center of the layout, with the action bar reserved for additional input,
+such as moving between holes. Being an app that is intended to be in use for
+long periods of time, the status bar is used to display the current time for
+quick reference without needing to exit back to the watchface.</p><h2 id="timeline-experience-design" class="anchor">Timeline Experience Design</h2><p>Evidence of guided design can also be found in other aspects of the system, most
+noticeably the timeline view. With pins containing possibly a large variety of
+types of information, it is important to display a view which caters for as many
+types as possible. As detailed in
+<a href="/guides/pebble-timeline/pin-structure/"><em>Creating Pins</em></a>,
+pins can be shown in two different ways; the event time, icon and title on two
+lines or a single line, depending on how the user is currently navigating the
+timeline. When a pin is highlighted, as much information is shown to the user as
+possible.</p><p><img src="/assets/images/guides/design-and-interaction/timeline.png" alt="timeline" /></p><p>Users access the timeline view using Up and Down buttons from the watchface to
+go into the past and future respectively. The navigation of the timeline also
+uses animations for moving elements that gives life to the user interface, and
+elements such as moving the pin icon between windows add cohesion between the
+different screens. A press of the Select button opens the pin to display all the
+information it contains, and is only one click away.</p><p>A further press of the Select button opens the pin&#39;s action menu, containing a
+list of all the actions a user may take. These actions are directly related to
+the pin, and can be specified when it is created. The system provides two
+default actions: &#39;Remove&#39; to remove the pin from the user&#39;s timeline, and &#39;Mute
+[Name]&#39; to mute all future pins from that source. This gives the user control
+over which pins they see in their personal timeline. Mute actions can be
+reversed later in the mobile app&#39;s &#39;Apps/Timeline&#39; screen.</p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>Read <a href="/guides/design-and-interaction/recommended/"><em>Recommended Guidelines and Patterns</em></a> for tips on creating an
+intuitive app experience.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/design-and-interaction/core-experience/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#system-experience-design">System Experience Design</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#music">Music</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#notifications">Notifications</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#alarms">Alarms</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#watchfaces">Watchfaces</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#settings">Settings</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#sports-api">Sports API</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#timeline-experience-design">Timeline Experience Design</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
+    
+  </ul>
+
+        
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

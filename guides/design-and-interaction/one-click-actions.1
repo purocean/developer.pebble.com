@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>One Click Actions // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Details about how to create One Click Action watchapps
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/design-and-interaction/one-click-actions/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/benefits/"><span>Benefits of Design Guidelines</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/core-experience/"><span>Core Experience Design</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/design-and-interaction/one-click-actions/"><span>One Click Actions</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/recommended/"><span>Recommended Guidelines and Patterns</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/in-the-round/"><span>Round App Design</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/design-and-interaction/implementation/"><span>Example Implementations</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="the-one-click-flow">The One Click Flow</option>
+          
+            <option value="building-a-one-click-application">Building a One Click Application</option>
+          
+            <option value="handling-launch-reasons">Handling Launch Reasons</option>
+          
+            <option value="conclusion">Conclusion</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">One Click Actions</h1>
+    
+<!-- 
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <p>One click actions are set to revolutionize the way users interact with their
+Pebble by providing instant access to their favorite one click watchapps,
+directly from the new system launcher. Want to unlock your front door?
+Call an Uber? Or perhaps take an instant voice note? With one click actions,
+the user is able to instantly perform a single action by launching an app, and
+taking no further action.</p><p><img src="/assets/images/guides/design-and-interaction/lockitron.png" alt="Lockitron" class="pebble-screenshot pebble-screenshot--time-black" /></p><h3 id="the-one-click-flow" class="anchor">The One Click Flow</h3><p>It’s important to develop your one click application with a simple and elegant
+flow. You need to simplify the process of your application by essentially
+creating an application which serves a single purpose.</p><p>The typical flow for a one click application would be as follows:</p>
+<ol>
+<li>Application is launched</li>
+<li>Application performs action</li>
+<li>Application displays status to user</li>
+<li>Application automatically exits to watchface if the action was successful,
+or displays status message and does not exit if the action failed</li>
+</ol>
+<p>If we were creating an instant voice note watchapp, the flow could be as
+follows:</p>
+<ol>
+<li>Application launched</li>
+<li>Application performs action (take a voice note)
+
+<ol>
+<li>Start listening for dictation</li>
+<li>Accept dictation response</li>
+</ol></li>
+<li>Application displays a success message</li>
+<li>Exit to watchface</li>
+</ol>
+<p>In the case of a one click application for something like Uber, we would need to
+track the state of any existing booking to prevent ordering a second car. We
+would also want to update the <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a>
+as the status of the booking changes.</p>
+<ol>
+<li>Application launched</li>
+<li>If a booking exists:
+
+<ol>
+<li>Refresh booking status</li>
+<li>Update <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a> with new status</li>
+<li>Exit to watchface</li>
+</ol></li>
+<li>Application performs action (create a booking)
+
+<ol>
+<li>Update AppGlance: “Your Uber is on it’s way”</li>
+<li>Application displays a success message</li>
+<li>Exit to watchface</li>
+</ol></li>
+</ol>
+<h3 id="building-a-one-click-application" class="anchor">Building a One Click Application</h3><p>For this example, we’re going to build a one click watchapp which will lock or
+unlock the front door of our virtual house. We’re going to use a virtual
+<a href="https://lockitron.com/" title="" class="">Lockitron</a>, or a real one if you’re lucky enough to
+have one.</p><p>Our flow will be incredibly simple:</p>
+<ol>
+<li>Launch the application</li>
+<li>Take an action (toggle the state of the lock)</li>
+<li>Update the <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a> to indicate the new lock state</li>
+<li>Display a success message</li>
+<li>Exit to watchface</li>
+</ol>
+<p>For the sake of simplicity in our example, we will not know if someone else has
+locked or unlocked the door using a different application. You can investigate
+the <a href="http://api.lockitron.com" title="" class="">Lockitron API</a> if you want to develop this idea
+further.</p><p>In order to control our Lockitron, we need the UUID of the lock and an access
+key. You can generate your own virtual lockitron UUID and access code on the
+<a href="https://api.lockitron.com/v1/getting_started/virtual_locks" title="" class="">Lockitron website</a>.</p><div class="highlight"><pre><span class="cp">#define LOCKITRON_LOCK_UUID "95c22a11-4c9e-4420-adf0-11f1b36575f2"</span>
+<span class="cp">#define LOCKITRON_ACCESS_TOKEN "99e75a775fe737bb716caf88f161460bb623d283c3561c833480f0834335668b"</span>
+</pre></div>
+<blockquote>
+<p>Never publish your actual Lockitron access token in the appstore, unless you
+want strangers unlocking your door! Ideally you would make these fields
+configurable using <a href="https://github.com/pebble/clay" title="" class="">Clay for Pebble</a>.</p></blockquote>
+<p>We’re going to need a simple enum for the state of our lock, where 0 is
+unlocked, 1 is locked and anything else is unknown.</p><div class="highlight"><pre><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+  <span class="n">LOCKITRON_UNLOCKED</span><span class="p">,</span>
+  <span class="n">LOCKITRON_LOCKED</span><span class="p">,</span>
+  <span class="n">LOCKITRON_UNKNOWN</span>
+<span class="p">}</span> <span class="n">LockitronLockState</span><span class="p">;</span>
+</pre></div><p>We’re also going to use a static variable to keep track of the state of our
+lock.</p><div class="highlight"><pre><span class="k">static</span> <span class="n">LockitronLockState</span> <span class="n">s_lockitron_state</span><span class="p">;</span>
+</pre></div><p>When our application launches, we’re going to initialize <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> and
+then wait for PebbleKit JS to tell us it’s ready.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">app_message_register_inbox_received</span><span class="p">(</span><span class="n">prv_inbox_received_handler</span><span class="p">);</span>
+  <span class="n">app_message_open</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">);</span>
+  <span class="n">s_window</span> <span class="o">=</span> <span class="n">window_create</span><span class="p">();</span>
+  <span class="n">window_stack_push</span><span class="p">(</span><span class="n">s_window</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_inbox_received_handler</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="n">ready_tuple</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_APP_READY</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ready_tuple</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// PebbleKit JS is ready, toggle the Lockitron!</span>
+    <span class="n">prv_lockitron_toggle_state</span><span class="p">();</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div><p>In order to toggle the state of the Lockitron, we’re going to send an
+<a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> to PebbleKit JS, containing our UUID and our access key.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_lockitron_toggle_state</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">out</span><span class="p">;</span>
+  <span class="n">AppMessageResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">app_message_outbox_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">out</span><span class="p">);</span>
+  <span class="n">dict_write_cstring</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">MESSAGE_KEY_LOCK_UUID</span><span class="p">,</span> <span class="n">LOCKITRON_LOCK_UUID</span><span class="p">);</span>
+  <span class="n">dict_write_cstring</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">MESSAGE_KEY_ACCESS_TOKEN</span><span class="p">,</span> <span class="n">LOCKITRON_ACCESS_TOKEN</span><span class="p">);</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">app_message_outbox_send</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>PebbleKit JS will handle this request and make the relevant ajax request to the
+Lockitron API. It will then return the current state of the lock and tell our
+application to exit back to the default watchface using
+<a href="/docs/c/Foundation/Exit_Reason/#AppExitReason" title="AppExitReason" class="link--docs"><code>AppExitReason</code></a>. See the
+<a href="https://github.com/pebble-examples/one-click-action-example" title="" class="">full example</a> for
+the actual Javascript implementation.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_inbox_received_handler</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="n">lock_state_tuple</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_LOCK_STATE</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">lock_state_tuple</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Lockitron state has changed</span>
+    <span class="n">s_lockitron_state</span> <span class="o">=</span> <span class="p">(</span><span class="n">LockitronLockState</span><span class="p">)</span><span class="n">lock_state_tuple</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">;</span>
+    <span class="c1">// App will exit to default watchface</span>
+    <span class="n">app_exit_reason_set</span><span class="p">(</span><span class="n">APP_EXIT_ACTION_PERFORMED_SUCCESSFULLY</span><span class="p">);</span>
+    <span class="c1">// Exit the application by unloading the only window</span>
+    <span class="n">window_stack_remove</span><span class="p">(</span><span class="n">s_window</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>Before our application terminates, we need to update the
+<a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a> with the current state
+of our lock. We do this by passing our current lock state into the
+<a href="/docs/c/Foundation/App_Glance/#app_glance_reload" title="app_glance_reload" class="link--docs"><code>app_glance_reload</code></a> method.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_deinit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">window_destroy</span><span class="p">(</span><span class="n">s_window</span><span class="p">);</span>
+  <span class="c1">// Before the application terminates, setup the AppGlance</span>
+  <span class="n">app_glance_reload</span><span class="p">(</span><span class="n">prv_update_app_glance</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s_lockitron_state</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>We only need a single <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="AppGlanceSlice" class="link--docs"><code>AppGlanceSlice</code></a> for our <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a>, but it’s worth
+noting you can have multiple slices with varying expiration times.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_update_app_glance</span><span class="p">(</span><span class="n">AppGlanceReloadSession</span> <span class="o">*</span><span class="n">session</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">limit</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Check we haven't exceeded system limit of AppGlances</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">limit</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+  <span class="c1">// Retrieve the current Lockitron state from context</span>
+  <span class="n">LockitronLockState</span> <span class="o">*</span><span class="n">lockitron_state</span> <span class="o">=</span> <span class="n">context</span><span class="p">;</span>
+
+  <span class="c1">// Generate a friendly message for the current Lockitron state</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="n">prv_lockitron_status_message</span><span class="p">(</span><span class="n">lockitron_state</span><span class="p">);</span>
+  <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"STATE: %s"</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+
+  <span class="c1">// Create the AppGlanceSlice (no icon, no expiry)</span>
+  <span class="k">const</span> <span class="n">AppGlanceSlice</span> <span class="n">entry</span> <span class="o">=</span> <span class="p">(</span><span class="n">AppGlanceSlice</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">layout</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">.</span><span class="n">template_string</span> <span class="o">=</span> <span class="n">str</span>
+    <span class="p">},</span>
+    <span class="p">.</span><span class="n">expiration_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span><span class="o">+</span><span class="mi">3600</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Add the slice, and check the result</span>
+  <span class="k">const</span> <span class="n">AppGlanceResult</span> <span class="n">result</span> <span class="o">=</span> <span class="n">app_glance_add_slice</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">entry</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">APP_GLANCE_RESULT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"AppGlance Error: %d"</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h3 id="handling-launch-reasons" class="anchor">Handling Launch Reasons</h3><p>In the example above, we successfully created an application that will
+automatically execute our One Click Action when the application is launched.
+But we also need to be aware of some additional launch reasons where it would
+not be appropriate to perform the action.</p><p>By using the <a href="/docs/c/Foundation/Launch_Reason/#launch_reason" title="launch_reason" class="link--docs"><code>launch_reason()</code></a> method, we can detect why our application was
+started and prevent the One Click Action from firing unnecessarily.</p><p>A common example, would be to detect if the application was actually started by
+the user, from either the launcher, or quick launch.</p><div class="highlight"><pre>  <span class="k">if</span><span class="p">(</span><span class="n">launch_reason</span><span class="p">()</span> <span class="o">==</span> <span class="n">APP_LAUNCH_USER</span> <span class="o">||</span> <span class="n">launch_reason</span><span class="p">()</span> <span class="o">==</span> <span class="n">APP_LAUNCH_QUICK_LAUNCH</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Perform One Click</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Display a message</span>
+  <span class="p">}</span>
+</pre></div><h3 id="conclusion" class="anchor">Conclusion</h3><p>As you can see, it’s a relatively small amount of code to create one click
+watchapps and we hope this inspires you to build your own!</p><p>We recommend that you check out the complete
+<a href="https://github.com/pebble-examples/one-click-action-example" title="" class="">Lockitron sample</a>
+application and also the <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a> and <a href="/docs/c/Foundation/Exit_Reason/#AppExitReason" title="AppExitReason" class="link--docs"><code>AppExitReason</code></a> guides for further
+information.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/design-and-interaction/one-click-actions/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#the-one-click-flow">The One Click Flow</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#building-a-one-click-application">Building a One Click Application</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#handling-launch-reasons">Handling Launch Reasons</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Foundation/Exit_Reason/#AppExitReason">AppExitReason</a></li>
+            
+            <li><a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice">AppGlanceSlice</a></li>
+            
+            <li><a href="/docs/c/Foundation/AppMessage/">AppMessage</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/one-click-action-example" target="_blank">One Click Action Example</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

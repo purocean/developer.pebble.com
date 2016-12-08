@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Rocky.js Overview // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Details of Rocky.js projects, available APIs, limitations, and how to get
+started.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/rocky-js/rocky-js-overview/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/rocky-js/rocky-js-overview/"><span>Rocky.js Overview</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="it-39-s-javascript-on-the-freakin-39-watch">It&#39;s JavaScript on the freakin&#39; watch!</option>
+          
+            <option value="rocky-js-projects">Rocky.js Projects</option>
+          
+            <option value="creating-a-project">- Creating a Project</option>
+          
+            <option value="rocky-js">- Rocky JS</option>
+          
+            <option value="pebblekit-js">- PebbleKit JS</option>
+          
+            <option value="shared-js">- Shared JS</option>
+          
+            <option value="additional-scripts">- Additional Scripts</option>
+          
+            <option value="available-apis">Available APIs</option>
+          
+            <option value="system-events">- System Events</option>
+          
+            <option value="drawing-canvas">- Drawing Canvas</option>
+          
+            <option value="messaging">- Messaging</option>
+          
+            <option value="memory-pressure">- Memory Pressure</option>
+          
+            <option value="content-size">- Content Size</option>
+          
+            <option value="app-configuration">App Configuration</option>
+          
+            <option value="limitations">Limitations</option>
+          
+            <option value="how-to-get-started">How to Get Started</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Rocky.js Overview</h1>
+    
+<!-- 
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+    <p>Rocky.js can be used to create Pebble 4.0 watchfaces using ECMAScript 5.1
+JavaScript, which runs natively on the watch. Rocky.js is possible due to
+<a href="https://github.com/Samsung/jerryscript/wiki/JerryScriptWorkshopApril2016" title="" class="">our collaboration</a>
+with <a href="https://github.com/pebble/jerryscript" title="" class="">JerryScript</a>.</p>
+<blockquote>
+<p>At this time, Rocky.js cannot be used to create watchapps, but we&#39;re currently
+working towards this goal.</p></blockquote>
+<h2 id="it-39-s-javascript-on-the-freakin-39-watch" class="anchor">It&#39;s JavaScript on the freakin&#39; watch!</h2><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rocky</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'rocky'</span><span class="p">);</span>
+
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'minutechange'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">rocky</span><span class="p">.</span><span class="nx">requestDraw</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'draw'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">context</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">);</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s1">'white'</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">textAlign</span> <span class="o">=</span> <span class="s1">'center'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedWidth</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedHeight</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="s1">'JavaScript\non the watch!'</span><span class="p">,</span> <span class="nx">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div><p><img src="/assets/images/blog/2016-08-16-jotw.png" alt="Rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="rocky-js-projects" class="anchor">Rocky.js Projects</h2><p>Rocky.js projects have a different structure from projects created using our C
+SDK. There is a Rocky.js (rocky) component which runs on the watch, and a
+<a href="/guides/communication/using-pebblekit-js/"><em>PebbleKit JS</em></a> (pkjs) component
+which runs on the phone. The pkjs component allows developers to access web
+services, use geolocation, and offload data processing tasks to the phone.</p><h3 id="creating-a-project" class="anchor">Creating a Project</h3><p class="platform-specific" data-sdk-platform="cloudpebble">Go to <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> and click &#39;CREATE&#39;, enter
+a project name, then select the &#39;Rocky.js&#39; project type.</p>
+<div class="platform-specific" data-sdk-platform="local">
+<p>Once you&#39;ve installed the Pebble SDK, you can create a new Rocky.js project
+using the following command:</p><div class="highlight no-copy"><pre>$ pebble new-project --rocky <strong><em>projectname</em></strong>
+</pre></div>
+</div>
+<h3 id="rocky-js" class="anchor">Rocky JS</h3><p class="platform-specific" data-sdk-platform="cloudpebble">In <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a>, add a new App Source, the
+file type is JavaScript and the target is <code>Rocky JS</code>. <code>index.js</code> is now the main
+entry point into the application on the watch.</p><p class="platform-specific" data-sdk-platform="local">In the local SDK, our main entry point into the application on the watch is
+<code>/src/rocky/index.js</code>.</p><p>This is file is where our Rocky.js JavaScript code resides. All code within this
+file will be executed on the smartwatch. In addition to standard JavaScript,
+developers have access to the <a href="/docs/rockyjs/rocky/" title="" class="">rocky</a> object. Additional
+scripts may also be added, see <a href="#additional-scripts" title="" class="">below</a>.</p><h3 id="pebblekit-js" class="anchor">PebbleKit JS</h3><p class="platform-specific" data-sdk-platform="cloudpebble">In <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a>, add a new App Source, the
+file type is JavaScript and the target is <a href="/docs/pebblekit-js/" title="" class="">PebbleKit JS</a>.
+This file should be named <code>index.js</code>.</p><p class="platform-specific" data-sdk-platform="local">In the local SDK, our primary <a href="/docs/pebblekit-js/" title="" class="">PebbleKit JS</a> script is
+<code>/src/pkjs/index.js</code>.</p><p>All PebbleKit JS code will execute on the mobile device connected to the
+smartwatch. In addition to standard JavaScript, developers have access to
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API" title="" class="">WebSockets</a>,
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="" class="">XMLHttpRequest</a>,
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation" title="" class="">Geolocation</a>,
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/LocalStorage" title="" class="">LocalStorage</a>
+and the <a href="/docs/pebblekit-js/" title="" class="">Pebble</a> object. Additional scripts may also be
+added, see <a href="#additional-scripts" title="" class="">below</a>.</p><h3 id="shared-js" class="anchor">Shared JS</h3><p>If you need to share code between Rocky.js and PebbleKit JS, you can place
+JavaScript files in a shared area.</p><p class="platform-specific" data-sdk-platform="cloudpebble">In <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a>, add a new App Source, the
+file type is JavaScript and the target is <code>Shared JS</code>.</p><p class="platform-specific" data-sdk-platform="local">In the local SDK, place your shared files in <code>/src/common/</code>.</p><p>Shared JavaScript files can be referenced using the
+<a href="http://www.commonjs.org/specs/modules/1.0/" title="" class="">CommonJS Module</a> format.</p><div class="highlight"><pre><span class="c1">// Shared JS (index.js)</span>
+<span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hello from shared code'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">test</span> <span class="o">=</span> <span class="nx">test</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Rocky JS</span>
+<span class="kd">var</span> <span class="nx">shared</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../common/index'</span><span class="p">);</span>
+<span class="nx">shared</span><span class="p">.</span><span class="nx">test</span><span class="p">();</span>
+</pre></div><div class="highlight"><pre><span class="c1">// PebbleKit JS</span>
+<span class="kd">var</span> <span class="nx">shared</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../common/index'</span><span class="p">);</span>
+<span class="nx">shared</span><span class="p">.</span><span class="nx">test</span><span class="p">();</span>
+</pre></div><h3 id="additional-scripts" class="anchor">Additional Scripts</h3><p>Both the <code>Rocky JS</code> and <code>PebbleKit JS</code> support the use of multiple .js files.
+This helps to keep your code clean and modular. Use the
+<a href="http://www.commonjs.org/specs/modules/1.0/" title="" class="">CommonJS Module</a> format for
+your additional scripts, then <code>require()</code> them within your script.</p><div class="highlight"><pre><span class="c1">// additional.js</span>
+<span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Additional File'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">test</span> <span class="o">=</span> <span class="nx">test</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="kd">var</span> <span class="nx">additional</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./additional'</span><span class="p">);</span>
+<span class="nx">additional</span><span class="p">.</span><span class="nx">test</span><span class="p">();</span>
+</pre></div><h2 id="available-apis" class="anchor">Available APIs</h2><p>In this initial release of Rocky.js, we have focused on the ability to create
+watchfaces only. We will be adding more and more APIs as time progresses, and
+we&#39;re determined for JavaScript to have feature parity with the rest of the
+Pebble developer ecosystem.</p><p>We&#39;ve developed our API in-line with standard
+<a href="https://developer.mozilla.org/en-US/docs/Web/API" title="" class="">Web APIs</a>, which may appear
+strange to existing Pebble developers, but we&#39;re confident that this will
+facilitate code re-use and provide a better experience overall.</p><h3 id="system-events" class="anchor">System Events</h3><p>We&#39;ve provided a series of events which every watchface will likely require, and
+each of these events allow you to provide a callback function that is called
+when the event occurs.</p><p>Existing Pebble developers will be familiar with the tick style events,
+including:</p>
+<ul>
+<li><a href="/docs/rockyjs/rocky/#on" title="" class=""><code>secondchange</code></a></li>
+<li><a href="/docs/rockyjs/rocky/#on" title="" class=""><code>minutechange</code></a></li>
+<li><a href="/docs/rockyjs/rocky/#on" title="" class=""><code>hourchange</code></a></li>
+<li><a href="/docs/rockyjs/rocky/#on" title="" class=""><code>daychange</code></a></li>
+</ul>
+<p>By using these events, instead of
+<a href="/docs/rockyjs" title="" class=""><code>setInterval</code></a>, we&#39;re automatically kept in sync with the wall
+clock time.</p><p>We also have a
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>message</code></a> event for
+receiving JavaScript JSON objects from the <code>pkjs</code> component, a
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>memorypressure</code></a> event when there is a notable change
+in available system memory, and a <a href="/docs/rockyjs/rocky/#on" title="" class=""><code>draw</code></a> event which
+you&#39;ll use to control the screen updates.</p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rocky</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'rocky'</span><span class="p">);</span>
+
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'minutechange'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Request the screen to be redrawn on next pass</span>
+  <span class="nx">rocky</span><span class="p">.</span><span class="nx">requestDraw</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div><h3 id="drawing-canvas" class="anchor">Drawing Canvas</h3><p>The canvas is a 2D rendering context and represents the display of the Pebble
+smartwatch. We use the canvas context for drawing text and shapes. We&#39;re aiming
+to support standard Web API methods and properties where possible, so the canvas
+has been made available as a
+<a href="/docs/rockyjs/CanvasRenderingContext2D/" title="" class="">CanvasRenderingContext2D</a>.</p>
+<blockquote>
+<p>Please note that the canvas isn&#39;t fully implemented yet, so certain methods
+and properties are not available at this time. We&#39;re still working on this, so
+expect more features in future updates!</p></blockquote>
+<div class="highlight"><pre><span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'draw'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">context</span><span class="p">;</span>
+
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s1">'red'</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">textAlign</span> <span class="o">=</span> <span class="s1">'center'</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">font</span> <span class="o">=</span> <span class="s1">'14px Gothic'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedWidth</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedHeight</span><span class="p">;</span>
+  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="s1">'Rocky.js Rocks!'</span><span class="p">,</span> <span class="nx">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div><h3 id="messaging" class="anchor">Messaging</h3><p>For Rocky.js projects only, we&#39;ve added a new simplified communication channel
+<a href="/docs/rockyjs/rocky/#postMessage" title="" class=""><code>postMessage()</code></a> and
+<a href="/docs/rockyjs/rocky/#on" title="" class=""><code>on(&#39;message&#39;, ...)</code></a> which allows you to send and
+receive JavaScript JSON objects between the phone and smartwatch.</p><div class="highlight"><pre><span class="c1">// Rocky.js (rocky)</span>
+
+<span class="c1">// Receive data from the phone (pkjs)</span>
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="c1">// Send data to the phone (pkjs)</span>
+<span class="nx">rocky</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="nx">command</span><span class="o">:</span> <span class="s1">'fetch'</span><span class="p">});</span>
+</pre></div><div class="highlight"><pre><span class="c1">// PebbleKit JS (pkjs)</span>
+
+<span class="c1">// Receive data from the watch (rocky)</span>
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">command</span> <span class="o">===</span> <span class="s1">'fetch'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// doSomething();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Send data to the watch (rocky)</span>
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span>
+  <span class="s1">'temperature'</span><span class="o">:</span> <span class="mi">90</span><span class="p">,</span>
+  <span class="s1">'condition'</span><span class="o">:</span> <span class="s1">'Hot'</span>
+<span class="p">});</span>
+</pre></div><p>You can see an example of post message in action in
+<a href="https://github.com/pebble-examples/rocky-watchface-tutorial-part2" title="" class="">part 2</a> of
+the Rocky.js tutorial.</p><h3 id="memory-pressure" class="anchor">Memory Pressure</h3><p>The <a href="/docs/rockyjs/rocky/#on" title="" class=""><code>memorypressure</code></a> event is emitted every time
+there is a notable change in available system memory. This provides developers
+with an opportunity to free some memory, in order to prevent their application
+from being terminated when memory pressure is high.</p><div class="highlight"><pre><span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'memorypressure'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">level</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div><p>A detailed example of the <a href="(/docs/rockyjs/rocky/#on)" title="" class=""><code>memorypressure</code></a> event
+is provided <a href="https://github.com/pebble-examples/rocky-memorypressure" title="" class="">here</a>.</p><h3 id="content-size" class="anchor">Content Size</h3><p>The <a href="/docs/rockyjs/rocky/#UserPreferences" title="" class=""><code>contentSize</code></a> property allows
+developers to dynamically adapt their watchface design based upon the system
+<code>Text Size</code> preference (<em>Settings &gt; Notifications &gt; Text Size</em>).</p><p><code>contentSize</code> is exposed in Rocky.js via the
+<a href="/docs/rockyjs/rocky/#UserPreferences" title="" class=""><code>UserPreferences</code></a> object.</p><div class="highlight"><pre><span class="nx">rocky</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'draw'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">context</span><span class="p">;</span>
+  <span class="c1">// ...</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">rocky</span><span class="p">.</span><span class="nx">userPreferences</span><span class="p">.</span><span class="nx">contentSize</span> <span class="o">===</span> <span class="s1">'x-large'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">font</span> <span class="o">=</span> <span class="s1">'42px bold numbers Leco-numbers'</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">font</span> <span class="o">=</span> <span class="s1">'32px bold numbers Leco-numbers'</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// ...</span>
+<span class="p">});</span>
+</pre></div><h2 id="app-configuration" class="anchor">App Configuration</h2><p><a href="https://github.com/pebble/clay#" title="" class="">Clay</a> is a JavaScript library that makes it
+easy to add offline configuration pages to your Pebble apps. Out of the box,
+Clay is not currently compatible with Rocky.js, but it can be made to work by
+manually including the clay.js file and overriding the default events.</p><p>You can find a community Rocky.js project which uses Clay
+<a href="https://github.com/orviwan/rocky-leco-clay" title="" class="">here</a>.</p><h2 id="limitations" class="anchor">Limitations</h2><p>Although Rocky.js is finally out of beta, there are still some limitations and
+restrictions that you need to be aware of:</p>
+<ul>
+<li>No support for custom fonts, images and other resources, yet.</li>
+<li>No C code allowed.</li>
+<li>No messageKeys.</li>
+<li>Pebble Packages are not supported.</li>
+<li>There are file size and memory constraints for Rocky.js projects.
+If you include a large JS library, it probably won&#39;t work.</li>
+</ul>
+<h2 id="how-to-get-started" class="anchor">How to Get Started</h2><p>We created a <a href="/tutorials/js-watchface-tutorial/part1/" title="" class="">2-part tutorial</a> for
+getting started with Rocky.js watchfaces. It explains everything you need to
+know about creating digital and analog watchfaces, plus how to retrieve
+weather conditions from the internet.</p><p>If you&#39;re looking for more detailed information, check out the
+<a href="/docs/rockyjs" title="" class="">API Documentation</a>.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/rocky-js/rocky-js-overview/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#it-39-s-javascript-on-the-freakin-39-watch">It&#39;s JavaScript on the freakin&#39; watch!</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#rocky-js-projects">Rocky.js Projects</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#creating-a-project">Creating a Project</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#rocky-js">Rocky JS</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#pebblekit-js">PebbleKit JS</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#shared-js">Shared JS</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#additional-scripts">Additional Scripts</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#available-apis">Available APIs</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#system-events">System Events</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#drawing-canvas">Drawing Canvas</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#messaging">Messaging</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#memory-pressure">Memory Pressure</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#content-size">Content Size</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#app-configuration">App Configuration</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#limitations">Limitations</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#how-to-get-started">How to Get Started</a></li>
+    
+  </ul>
+
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/rocky-watchface-tutorial-part1" target="_blank">Tutorial Part 1</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/rocky-watchface-tutorial-part2" target="_blank">Tutorial Part 2</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/rocky-memorypressure" target="_blank">Memory Pressure</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

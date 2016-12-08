@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The Road to Pebble SDK 3.0 in Ten Questions // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/2015/04/03/The-Road-To-Pebble-SDK-3.0-In-Ten-Questions/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="what-is-the-timeline-shown-in-the-kickstarter-video-and-how-can-i-plug-into-it">What is the “timeline” shown in the Kickstarter video and how can I plug into it?</option>
+          
+            <option value="how-can-i-build-apps-with-transitions-and-animations-like-the-ones-shown-in-the-kickstarter-videos">How can I build apps with transitions and animations like the ones shown in the Kickstarter videos?</option>
+          
+            <option value="what-is-up-with-the-icons-on-pebble-time-can-i-use-these-effects-in-my-applications">What is up with the icons on Pebble Time? Can I use these effects in my applications?</option>
+          
+            <option value="what-is-really-happening-when-i-compile-an-app-today-to-be-compatible-with-all-pebbles">What is really happening when I compile an app today to be compatible with all Pebbles?</option>
+          
+            <option value="what-are-appfaces-and-when-can-we-use-them">What are AppFaces and when can we use them?</option>
+          
+            <option value="when-can-we-start-interacting-with-smartstraps">When can we start interacting with smartstraps?</option>
+          
+            <option value="how-can-i-get-my-hands-on-pebble-time-when-will-users-get-them">How can I get my hands on Pebble Time? When will users get them?</option>
+          
+            <option value="what-about-pebblekit-for-ios-and-android-any-improvements">What about PebbleKit for iOS and Android? Any improvements?</option>
+          
+            <option value="will-developers-have-access-to-the-microphone-what-can-we-do-with-it">Will developers have access to the microphone? What can we do with it?</option>
+          
+            <option value="can-we-submit-apps-for-pebble-time-to-the-pebble-appstore-now">Can we submit apps for Pebble Time to the Pebble appstore now?</option>
+          
+            <option value="want-more-answers">Want more answers?</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle">The Road to Pebble SDK 3.0 in Ten Questions</h1>
+<div class="markdown markdown--staff">
+<div class="blog__meta">
+  <ul class="inline-list inline-list--piped">
+    <li>03 April 2015</li>
+    <li><a href="/blog/authors/thomas/">Thomas Sarlandie</a></li>
+    
+    <li>
+      
+        <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </li>
+    <li><a href="/blog/2015/04/03/The-Road-To-Pebble-SDK-3.0-In-Ten-Questions/#comments">Comments</a></li>
+    
+  </ul>
+</div>
+
+<p><img src="/assets/images/blog/road30-banner.png"></p>
+
+<p>We launched the first version of our new SDK with support for Pebble Time two
+days into our Kickstarter campaign. Since then, we have updated it every week,
+releasing six iterations of our developer preview. Some of these versions
+included major new features like support for color in the emulator and support
+for the timeline. Some other features were more subtle, like the new
+antialiased drawing mode and the updates to the animation system. All these
+changes together, and a bunch more that you have not seen yet, will form the
+SDK that you will use to build watchfaces, watchapps and timeline apps for all
+models of Pebble watches in the coming months.</p><p>These updates include lots of changes, and no matter how hard we try to
+document everything there are a lot of unanswered questions. Some subjects have
+just not been addressed by the developer previews yet, some need more
+explaining and as always there are things we just missed in our communication
+efforts.</p><p>In this update, I want to answer publicly the most frequent questions received
+from the community in the last few weeks. I will cover components that have
+been released but also those that are still to come so you have the information
+needed to plan ahead and prepare your apps for the Pebble Time launch.</p><h2 id="what-is-the-timeline-shown-in-the-kickstarter-video-and-how-can-i-plug-into-it" class="anchor">What is the “timeline” shown in the Kickstarter video and how can I plug into it?</h2><p>The timeline is a system-provided app that allows the user to navigate through
+important events in their near future and their past.</p><p><img src="/assets/images/blog/road30-timeline.gif" alt="A glipse at the future (on the timeline)" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Apps have a very important role to play in the timeline. All Pebble apps (but
+not companion apps that use our native PebbleSDK on Android and iOS) can push
+“pins” to the timeline. From a developer perspective, pins are just a block of
+JSON which describes the information to show to the user and what layout to use
+to display the information (generic, calendar, sports or weather). Pins can
+also include notifications that will be shown to the user when the pin is
+created or updated on the watch, and reminders that can trigger at a specific
+time. Finally pins can have actions attached to them. Actions can open a
+Pebble app with a <code>uint32</code> parameter.</p><p>You can experiment with pins in CloudPebble’s new “Timeline” tab or with the
+command line SDK and the <code>pebble insert-pin</code> command. For documentation, refer
+to our <a href="/guides/pebble-timeline/pin-structure/" title="" class="">“Understanding Timeline Pins”</a>
+guide. Once you have nailed down what you want your pins to look and feel like
+you can start pushing them via a public HTTP API. This API requires that your
+app is submitted on the Pebble appstore; that is also how you get your API key
+to use the timeline API. We have built a <a href="https://github.com/pebble/pebble-api-node" title="" class="">Node.js
+library</a> to make this easier and
+David Moreau has already shared a 
+<a href="https://github.com/dav-m85/pebble-api-php/" title="" class="">PHP library</a>.</p><p>We also have a number of examples to help you get started: </p>
+<ul>
+<li>A very simple <a href="https://github.com/pebble-examples/hello-timeline" title="" class="">timeline hello
+world</a> that shows how
+to push a pin every time you press a button in your app </li>
+<li>A <a href="https://github.com/pebble-examples/timeline-tv-tracker/" title="" class="">TV show tracker</a>
+that announces your favorite tv show and lets users click on the pins to
+increase the number of viewers in realtime.</li>
+</ul>
+<p>Get started now with our <a href="/blog/2015/03/20/Getting-Started-With-Timeline/" title="" class="">Getting started with Timeline
+post</a> or join us at the next
+<a href="http://www.meetup.com/PebbleSF/" title="" class="">Pebble SF developer meetup</a> on April 24th
+where we will do a walkthrough of how to build a timeline app. If you are unable
+to make it, you can also find this session on our <a href="https://www.youtube.com/channel/UCFnawAsyEiux7oPWvGPJCJQ" title="" class="">YouTube
+channel</a>.</p><p>As a side note, many people have asked us what will happen if their app does
+not integrate with the timeline. The new Pebble system still includes a main
+menu in which all the apps will appear and they can be still be launched from
+there.</p><h2 id="how-can-i-build-apps-with-transitions-and-animations-like-the-ones-shown-in-the-kickstarter-videos" class="anchor">How can I build apps with transitions and animations like the ones shown in the Kickstarter videos?</h2><p>The user interface in the new OS is full of extremely rich animations, and of
+course we are not limiting them to the system applications. We want all apps to
+take advantage of them and to achieve that, we are investing a lot of effort.</p><p>An essential part of all the animations is the core graphics framework used to
+draw shapes, text and images. We have improved it a lot in recent weeks with
+<a href="/guides/graphics-and-animations/animations" title="" class="">much better support for animations</a>,
+<a href="/guides/graphics-and-animations/drawing-primitives-images-and-text/" title="" class="">anti-aliasing and stroke width</a>, 
+color bitmap handling and a lot of bugfixes and performance improvements.</p><p>Upcoming releases of the SDK will add the new UI components that you saw in the
+Kickstarter video: </p>
+<ul>
+<li>A new MenuLayer with support for color, infinite scrolling (i.e. looping back
+to the top), and new animations <img src="/assets/images/blog/road30-menulayer.gif" alt="The new MenuLayer
+>{pebble-screenshot,pebble-screenshot--time-red}" /></li>
+<li>A new ActionBar (available this week in developer preview 6!) that is wider,
+takes the full height of the screen, and includes some new animations.  <img src="/assets/images/blog/road30-actionbar.png" alt="The
+updated ActionBar
+>{pebble-screenshot,pebble-screenshot--time-red}" /></li>
+<li>An ActionMenuWindow which is a full screen component to select an action in a
+list. This is the same UI used to select an action on a pin or a
+notification, and it is available to all apps.  <img src="/assets/images/blog/road30-actionmenu.gif" alt="The new ActionMenuWindow
+>{pebble-screenshot,pebble-screenshot--time-red}" /></li>
+<li>A StatusBarLayer that gives you much more control over the status bar,
+including the ability to animate it and add goodies like a progress indicator
+and a card counter for the card pattern.  <img src="/assets/images/blog/road30-statusbar.png" alt="The new StatusBar
+>{pebble-screenshot,pebble-screenshot--time-red}" /></li>
+<li>Cards are not really a UI Component but more of a standard pattern, seen in
+the Weather app in the Kickstarter video and we expect that a lot more apps
+will want to re-use it because it is an extremely efficient way to represent
+information and looks very good! We will have a full example available to you
+very soon showing how to build this type of app.  <img src="/assets/images/blog/road30-card.gif" alt="A preview of the Weather
+app and its animations
+>{pebble-screenshot,pebble-screenshot--time-red}" /></li>
+</ul>
+<p>For more information on the design of apps in SDK 3.0, we are putting the
+finishing touches on a completely new design guide. Stay tuned!</p><h2 id="what-is-up-with-the-icons-on-pebble-time-can-i-use-these-effects-in-my-applications" class="anchor">What is up with the icons on Pebble Time? Can I use these effects in my applications?</h2><p>A lot of the new design aesthetic is provided by icons, and those icons are not
+your usual bitmap file. They animate during transitions to give a level of life
+and personality never seen in any User Interface framework before.</p><p>They are vector based animations and we came up with a complete new set of APIs
+called Pebble Drawing Commands, as well as a new file format (.pdc) to
+implement them. Compared to bitmap icons they can be automatically animated by
+the system depending on the context: the same icon can explode on the screen,
+regroup into a dot or fly through one of the screen edges; all of this in a
+fraction of the space it would normally take to do such effects with animated
+PNGs.</p><p>We will be providing a large set of icons that you can use in your timeline
+pins and in your apps. You will also be able to make your own animated icons to
+play in your app.</p><h2 id="what-is-really-happening-when-i-compile-an-app-today-to-be-compatible-with-all-pebbles" class="anchor">What is really happening when I compile an app today to be compatible with all Pebbles?</h2><p>With the current version of the Pebble SDK, we compile your apps once with SDK
+2.9 for Aplite (Pebble and Pebble Steel) and once with SDK 3.0 for Basalt
+(Pebble Time and Pebble Time Steel). This means that your apps can have a
+different look on each platform. This is going to be even more true as we
+introduce the new UI components in the next few releases.</p><p><img src="/assets/images/blog/road30-aplite-differences.png" alt="Aplite differences" /></p><p>However, as soon as we provide official support for Aplite in SDK 3.0, we will
+start compiling against the same set of APIs and the UI components will have
+similar sizes, look and behavior.</p><p>All the new software features of Pebble Time will be available on the original
+Pebble, including the timeline, as well as the new UI components, PNG, Pebble
+Drawing Commands, unlimited apps, AppFaces, etc. Of course features that are
+hardware-dependent (such as the microphone) will not be supported on Aplite.</p><p>We encourage everyone to maintain support for both Aplite and Basalt in their
+source code. You can easily do it with <code>#ifdef</code> calls. If you just want to
+freeze your Aplite app as it is today and focus on your Basalt app this will be
+possible too with a new feature in the build process coming in the near future.</p><h2 id="what-are-appfaces-and-when-can-we-use-them" class="anchor">What are AppFaces and when can we use them?</h2><p>AppFaces are previews of your app that are displayed in the launcher before the
+user starts your app. To use them, your app will need to support being launched
+without a UI to update the AppFace.</p><p><img src="/assets/images/blog/road30-appfaces.png" alt="AppFaces" /></p><p>AppFaces will not be part of Pebble SDK when we launch Pebble Time. Your apps
+will just appear with their name until we add this API at a later stage. This
+also means that your app icons defined in the appinfo.json are not used with
+the new launcher (but they will still appear on Aplite until 3.0 ships for
+Aplite).</p><h2 id="when-can-we-start-interacting-with-smartstraps" class="anchor">When can we start interacting with smartstraps?</h2><p>We have released a lot of <a href="/smartstraps/" title="" class="">mechanical and electrical information about
+smartstraps</a> but no APIs yet. You will quickly find out that
+without software support, the smartstrap does not get any power.</p><p>We are working hard with our first smartstrap partners to finalize the
+specifications for this API. If you want to be a part of this discussion,
+<a href="/contact" title="" class="">please make yourself known!</a></p><h2 id="how-can-i-get-my-hands-on-pebble-time-when-will-users-get-them" class="anchor">How can I get my hands on Pebble Time? When will users get them?</h2><p>If you did not order one on Kickstarter you can register on <a href="https://www.pebble.com/pebble_time/" title="" class="">our
+website</a> to be notified as soon as they are
+available for normal orders. We will ship every Kickstarter pledge before we
+start selling them on the Pebble website.  If you ordered one through the
+Kickstarter campaign, we are working hard to get it to you as soon as possible.</p><p>As you know if you are a Kickstarter backer, Pebble Time starts shipping in May.</p><p>As a developer, you already have access to the emulator. It includes everything
+you need to work on your app. If you are missing anything, <a href="/contact" title="" class="">contact us</a>. 
+With only about a month left, there is no time to lose!</p><h2 id="what-about-pebblekit-for-ios-and-android-any-improvements" class="anchor">What about PebbleKit for iOS and Android? Any improvements?</h2><p>We decided to focus all our efforts on the new UI framework and the timeline.
+There are no functional changes to PebbleKit in SDK 3.0. However, all Android
+apps must be recompiled with the new PebbleKit Android library to be compatible
+with Pebble Time. If you do not recompile, your app will not work with Pebble
+Time. </p><p>We have lots of plans for PebbleKit in the future and hope to share them
+with you soon. </p><p>If you have suggestions for APIs you’d like to see, please
+<a href="/contact" title="" class="">contact us</a></p><h2 id="will-developers-have-access-to-the-microphone-what-can-we-do-with-it" class="anchor">Will developers have access to the microphone? What can we do with it?</h2><p>Absolutely. We will give developers access to our speech-to-text APIs. You will
+be able to show a UI to start a recording and your app will receive the text
+spoken by the user. This API is coming soon™ - not in 3.0.</p><p>We are considering other APIs such as direct microphone access. Stay tuned for
+more information on those.</p><h2 id="can-we-submit-apps-for-pebble-time-to-the-pebble-appstore-now" class="anchor">Can we submit apps for Pebble Time to the Pebble appstore now?</h2><p>No, you should not. As long as you are using a developer preview SDK, the APIs
+are non-final and apps built with the developer preview SDK may not work with
+the final firmware and SDK shipped with Pebble Time.</p><p>Once the APIs are stable, we will announce a final SDK and encourage everyone
+to push applications built with the final SDK to the Pebble appstore.</p><h2 id="want-more-answers" class="anchor">Want more answers?</h2><p>For more questions and answers, such as the future of the <code>InverterLayer</code>,
+information on floating point support or whether Pebble is really powered by
+unicorns and rainbows, please take a look at this <a href="http://www.reddit.com/r/pebbledevelopers/comments/314uvg/what_would_you_like_to_know_about_pebble_sdk_30/" title="" class="">/r/pebbledevelopers
+thread</a>.</p><p>Much thanks to all the developers who contributed questions to prepare this
+blog post!</p><p>If there is anything else you would like to know, <a href="http://www.reddit.com/r/pebbledevelopers/comments/314uvg/what_would_you_like_to_know_about_pebble_sdk_30/" title="" class="">this
+thread</a>
+is just <a href="https://forums.pebble.com/c/development" title="" class="">one</a> <a href="https://twitter.com/pebbledev" title="" class="">of
+the</a> <a href="/contact" title="" class="">many
+ways</a> <a href="http://www.meetup.com/pro/pebble/" title="" class="">to get in touch</a>
+with us and get answers!</p>
+<hr>
+<a id="comments" class="anchor"></a>
+<div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2015/04/03/The-Road-To-Pebble-SDK-3.0-In-Ten-Questions/">
+  You need JavaScript enabled to read and post comments.
+</div>
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#what-is-the-timeline-shown-in-the-kickstarter-video-and-how-can-i-plug-into-it">What is the “timeline” shown in the Kickstarter video and how can I plug into it?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#how-can-i-build-apps-with-transitions-and-animations-like-the-ones-shown-in-the-kickstarter-videos">How can I build apps with transitions and animations like the ones shown in the Kickstarter videos?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-is-up-with-the-icons-on-pebble-time-can-i-use-these-effects-in-my-applications">What is up with the icons on Pebble Time? Can I use these effects in my applications?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-is-really-happening-when-i-compile-an-app-today-to-be-compatible-with-all-pebbles">What is really happening when I compile an app today to be compatible with all Pebbles?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-are-appfaces-and-when-can-we-use-them">What are AppFaces and when can we use them?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#when-can-we-start-interacting-with-smartstraps">When can we start interacting with smartstraps?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#how-can-i-get-my-hands-on-pebble-time-when-will-users-get-them">How can I get my hands on Pebble Time? When will users get them?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#what-about-pebblekit-for-ios-and-android-any-improvements">What about PebbleKit for iOS and Android? Any improvements?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#will-developers-have-access-to-the-microphone-what-can-we-do-with-it">Will developers have access to the microphone? What can we do with it?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#can-we-submit-apps-for-pebble-time-to-the-pebble-appstore-now">Can we submit apps for Pebble Time to the Pebble appstore now?</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#want-more-answers">Want more answers?</a></li>
+    
+  </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                <strong>Freshly Baked</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                <strong>Thomas Sarlandie</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                Katharine Berry
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

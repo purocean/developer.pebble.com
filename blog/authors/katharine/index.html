@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pebble Developer Blog: Katharine Berry // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/blog/authors/katharine/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog active"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-l-8">
+      
+
+      <div class="hidden-l">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+      </div>
+      <h1 class="pagetitle pagetitle--skinny">
+  <a href="/blog/">Pebble Developer Blog</a>
+</h1>
+<h2 class="pagesubtitle">Katharine Berry</h2>
+<div class="blog-index">
+  
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Jun 07, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/06/07/pebble-packages/">Introducing Pebble Packages</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>I am thrilled to announce that, as part of SDK 3.13 and Pebble Tool 4.3, we have
+launched our own packaging system: Pebble Packages!</p></div>
+    <div class="text-right"><a href="/blog/2016/06/07/pebble-packages/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Feb 29, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/02/29/introducing-app-debugging/">Introducing App Debugging</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Happy leap day! Today is a once-every-four-years day of bizarre date-related
+bugs, and thus an opportune moment for us to introduce our latest developer
+feature: app debugging in the emulator! This gives you a powerful new way to
+hunt down errors in your apps.</p></div>
+    <div class="text-right"><a href="/blog/2016/02/29/introducing-app-debugging/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Jan 29, 2016</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2016/01/29/Multiple-JavaScript-Files/">Multiple JavaScript Files</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>In SDK 3.9 we will introduce a new feature to the Pebble SDK: the ability to
+cleanly use multiple JavaScript files in the PebbleKit JS app portion of
+your project.</p></div>
+    <div class="text-right"><a href="/blog/2016/01/29/Multiple-JavaScript-Files/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Dec 02, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/12/02/Bitmap-Resources/">Unifying bitmap resources</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>With the upcoming release of firmware 3.8 on Pebble and Pebble Steel, and the
+associated SDK 3.8, we have decided to redesign how image resources work in
+Pebble apps.</p></div>
+    <div class="text-right"><a href="/blog/2015/12/02/Bitmap-Resources/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Dec 01, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/12/01/A-New-Pebble-Tool/">Introducing Pebble Tool 4.0</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>I am pleased to today announce that version 4.0-rc4 of the <code>pebble</code> tool is now
+available. The key new feature is a new paradigm for dealing with firmware and
+SDK versions. This makes it much easier to deal with differing SDK versions, or
+to test code on multiple (emulated) firmware versions.</p><p><em>A note: while the tool is now at version 4.0, the SDK, firmware and mobile apps
+will not be following. Pebble tool versioning is now completely independent of
+the rest of the Pebble ecosystem.</em></p></div>
+    <div class="text-right"><a href="/blog/2015/12/01/A-New-Pebble-Tool/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Jan 30, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/01/30/Pebble-Emulator-JavaScript-Simulation/">Pebble Emulator 2/2 - JavaScript and CloudPebble</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/down-the-rabbit-hole/">Down the Rabbit Hole</a>
+      
+    </p>
+    <div><p>This is another in a series of technical articles provided by the members of the
+Pebble software engineering team. This article describes some recent work done
+at Pebble to develop a Pebble emulator based on the QEMU project (QEMU, short
+for Quick EMUlator, is a generic, open source machine emulator and virtualizer).</p></div>
+    <div class="text-right"><a href="/blog/2015/01/30/Pebble-Emulator-JavaScript-Simulation/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Jan 22, 2015</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2015/01/22/cloudpebble-pebble-emulator/">Pebble Smartwatch Emulator in CloudPebble!</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>, 
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>We&#39;re thrilled to announce the latest addition to CloudPebble: a Pebble smartwatch
+emulator!</p></div>
+    <div class="text-right"><a href="/blog/2015/01/22/cloudpebble-pebble-emulator/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Oct 09, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/10/09/CloudPebble-code-completion/">New CloudPebble Code Completion</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>CloudPebble today gains significantly enhanced support for code completion, as
+well as inline syntax checking and the ability to &quot;go to definition&quot;.</p><p>Check it out!</p></div>
+    <div class="text-right"><a href="/blog/2014/10/09/CloudPebble-code-completion/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Sep 30, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/09/30/SDK-2.6-Meetup-More/">Build background apps with SDK 2.6.1</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>Today we released SDK 2.6.1, which includes support for background workers. This
+enables great activity tracking apps like Misfit and Jawbone&#39;s Up to keep
+counting in the background — and you can use them too! Head over to our
+<a href="/guides/events-and-services/background-worker/" title="" class="">background worker guide</a>
+and read through the <a href="/docs/c/Foundation/AppWorker/" title="AppWorker" class="link--docs">API documentation</a> to find out how.</p><p>We have also added APIs for direct access to the framebuffer, and to retrieve
+information on the watch, including its color and firmware version.</p><p>Browse through <a href="/sdk/changelogs/2.6" title="" class="">the release notes</a> for full details.</p></div>
+    <div class="text-right"><a href="/blog/2014/09/30/SDK-2.6-Meetup-More/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Aug 26, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/08/26/Getting-Ready-for-Automatic-App-Updates/">Getting Ready for Automatic App Updates</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
+      
+    </p>
+    <div><p>We are pleased to announce that we will soon be automatically updating apps installed from the Pebble
+appstore. We believe this will be a significant improvement to your ability to get your work into
+the hands of your users, as well as to the user experience.</p><p>However, as developers, you need to make sure that your app is ready for these updates. In
+particular, you will need to make sure that your app conforms to our new version numbering, and
+that it can tolerate persistent storage left over from old app versions.</p></div>
+    <div class="text-right"><a href="/blog/2014/08/26/Getting-Ready-for-Automatic-App-Updates/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Aug 08, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/08/08/CloudPebble-Graphical-UI-Editor/">CloudPebble Graphical UI Editor</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>Today we&#39;re adding a new feature to <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> that will make it easier than
+ever to build your watchfaces and watchapps! The new UI Editor will let you
+graphically build the user interface for your C app; you can then use the
+generated C to build anything you like.</p></div>
+    <div class="text-right"><a href="/blog/2014/08/08/CloudPebble-Graphical-UI-Editor/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Apr 14, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/04/14/API-documentation-in-CloudPebble/">API documentation now inside CloudPebble</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>To help make your Pebble development experience even better, CloudPebble can now display the API
+documentation for any function directly in the editor view.</p></div>
+    <div class="text-right"><a href="/blog/2014/04/14/API-documentation-in-CloudPebble/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Apr 04, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/04/04/Easier-app-deployment-from-Cloudpebble/">Easier app deployment from CloudPebble</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>We now have an even easier way for you to deploy apps to your watches! No longer will you
+have to launch the app, turn on the development server, and type in your IP address. Instead, you
+now simply need to select your phone from a list.</p></div>
+    <div class="text-right"><a href="/blog/2014/04/04/Easier-app-deployment-from-Cloudpebble/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+  <div class="blog-index__post clearfix">
+  <div class="pull blog-index__meta visible-m visible-l">
+    
+    <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
+    
+    <p>Mar 14, 2014</p>
+  </div>
+  <div class="blog-index__body">
+    <h3><a href="/blog/2014/03/14/CloudPebble-now-supports-Simplyjs/">CloudPebble now supports Simply.js</a></h3>
+    <p class="blog-index__tags">
+      <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
+      
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
+      
+      <a href="/blog/tags/cloudpebble/">CloudPebble</a>
+      
+    </p>
+    <div><p>It&#39;s now even easier to get started with Pebble development or prototype new ideas!</p><p>CloudPebble recently gained support for building Simply.js projects – which means you
+can now write, build and install simple apps entirely in JavaScript and inside your
+web browser.</p></div>
+    <div class="text-right"><a href="/blog/2014/03/14/CloudPebble-now-supports-Simplyjs/">Read More &rarr;</a></div>
+  </div>
+</div>
+
+  
+</div>
+
+    </div>
+    <div class="col-l-4">
+
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        <div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-xs-6">
+        <a href="/feed.xml" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-rss fa-lg"></i> Get Updates</a>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://twitter.com/pebbledev/" class="btn btn--blog btn--wide btn--small btn--square"><i class="fa fa-twitter fa-lg"></i> Follow Us</a>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 0.5em;">
+    <div class="col-l-12">
+        <a href="javascript:void();" data-modal-target="#modal-newsletter" data-modal-fit-viewport="false" class="btn btn--small btn--blog--alt btn--wide btn--square"><i class="fa fa-envelope-o fa-lg"></i> Subscribe to the Newsletter</a>
+    </div>
+</div>
+
+
+        
+        <h3>Categories</h3>
+        <ul>
+            <li>
+              <a href="/blog/">
+                
+                All Posts
+                
+              </a>
+            </li>
+            
+            
+            <li>
+              <a href="/blog/tags/makeawesomehappen/">
+                
+                #makeawesomehappen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/at-the-pub/">
+                
+                At the Pub
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/beautiful-code/">
+                
+                Beautiful Code
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/cloudpebble/">
+                
+                CloudPebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/down-the-rabbit-hole/">
+                
+                Down the Rabbit Hole
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/freshly-baked/">
+                
+                Freshly Baked
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/tags/timeline/">
+                
+                Timeline
+                
+              </a>
+            </li>
+          
+        </ul>
+
+        <h3>Authors</h3>
+        <ul>
+          
+          
+            <li>
+              <a href="/blog/authors/thomas/">
+                
+                Thomas Sarlandie
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/niharika/">
+                
+                Niharika Bedekar
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katharine/">
+                
+                <strong>Katharine Berry</strong>
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/jonb/">
+                
+                Jon Barlow
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cherie/">
+                
+                Cherie Williams
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/chrislewis/">
+                
+                Chris Lewis
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/pebble/">
+                
+                Team Pebble
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/katherine/">
+                
+                Katherine McAuliffe
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/cat/">
+                
+                Cat Haines
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alex/">
+                
+                Alex Lin
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/kirby/">
+                
+                Kirby Kohlmorgen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/brad/">
+                
+                Brad Murray
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/alexey/">
+                
+                Alexey Komissarouk
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/lukasz/">
+                
+                Łukasz Zalewski
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/tom/">
+                
+                Tom Maremaa
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/ryan/">
+                
+                Ryan Case
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/rperryng/">
+                
+                Ryan Perry-Nguyen
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/keegan/">
+                
+                Keegan Lillo
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/blog/authors/meiguro/">
+                
+                Meiguro
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-newsletter" class="hidden">
+  <h3>Subscribe to the Pebble Developers Newsletter</h3>
+<form action="//getpebble.us2.list-manage.com/subscribe/post?u=dd6d54b0e22472d9f5004013a&amp;id=9548e2c0aa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+  <div id="mce-responses">
+    <div class="alert alert--error" id="mce-error-response" style="display:none"></div>
+    <div class="alert alert--success" id="mce-success-response" style="display:none"></div>
+  </div>
+  <div class="form__group">
+    <label for="mce-EMAIL">Email Address </label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+  </div>
+  <div style="position: absolute; left: -5000px;">
+    <input type="text" name="b_dd6d54b0e22472d9f5004013a_9548e2c0aa" tabindex="-1" value="">
+  </div>
+  <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn--bg-lightblue btn--fg-white btn--wide btn--large">
+</form>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[4]='MMERGE4';ftypes[4]='text';fnames[3]='MMERGE3';ftypes[3]='text';fnames[5]='MMERGE5';ftypes[5]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+</div>
+
+</div>
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

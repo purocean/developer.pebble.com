@@ -1,0 +1,2940 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>PBWatch Class Reference // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The official developer website for the Pebble smartwatch.">
+  <link rel="canonical" href="http://developer.getpebble.com/docs/pebblekit-ios/Classes/PBWatch/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs active"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--docs section-menu--dark">
+    <div class="section-menu__header">
+      
+      <h3><a href="/docs/pebblekit-ios/">PebbleKit iOS</a><a href="#"><i class="fa fa-chevron-down fa-lg documentation-menu__arrow js-doc-menu-toggle"></i></a></h3>
+      
+      <ul class="documentation-menu js-doc-menu">
+        <li><a href="/docs/c/">Pebble C API</a></li>
+        
+        <li><a href="/docs/rockyjs/">Pebble JavaScript API</a></li>
+        <li><a href="/docs/pebblekit-js/">PebbleKit JS</a></li>
+        <li><a href="/docs/pebblekit-ios/">PebbleKit iOS</a></li>
+        <li><a href="/docs/pebblekit-android/">PebbleKit Android</a></li>
+      </ul>
+    </div>
+    
+    <ul>
+
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/pebblekit-ios/#class-references">Class References</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBBitmap/"><span>PBBitmap</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBDataLoggingService/"><span>PBDataLoggingService</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBDataLoggingSessionMetadata/"><span>PBDataLoggingSessionMetadata</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBFirmwareMetadata/"><span>PBFirmwareMetadata</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBFirmwareVersion/"><span>PBFirmwareVersion</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBPebbleCentral/"><span>PBPebbleCentral</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBPebbleKitLogging/"><span>PBPebbleKitLogging</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBResourceMetadata/"><span>PBResourceMetadata</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBSemanticVersion/"><span>PBSemanticVersion</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBSportsUpdate/"><span>PBSportsUpdate</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Classes/PBVersionInfo/"><span>PBVersionInfo</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem open active">
+        <a href="/docs/pebblekit-ios/Classes/PBWatch/"><span>PBWatch</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/pebblekit-ios/#protocol-references">Protocol References</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Protocols/PBDataLoggingServiceDelegate/"><span>PBDataLoggingServiceDelegate</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Protocols/PBPebbleCentralDelegate/"><span>PBPebbleCentralDelegate</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Protocols/PBWatchDelegate/"><span>PBWatchDelegate</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/pebblekit-ios/#constant-references">Constant References</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Constants/FirmwareMetadataPlatform/"><span>FirmwareMetadataPlatform</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Constants/GolfAppCommand/"><span>GolfAppCommand</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Constants/PBDataLoggingType/"><span>PBDataLoggingType</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Constants/PBErrorCode/"><span>PBErrorCode</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Constants/PBPebbleKitLogFlag/"><span>PBPebbleKitLogFlag</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Constants/PBPebbleKitLogLevel/"><span>PBPebbleKitLogLevel</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Constants/PBRemoteProtocolCapabilitiesFlags/"><span>PBRemoteProtocolCapabilitiesFlags</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Constants/PBUnitSystem/"><span>PBUnitSystem</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Constants/SportsAppActivityState/"><span>SportsAppActivityState</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+  
+  
+  <li class="section-menu__item open">
+    <a href="/docs/pebblekit-ios/#category-references">Category References</a>
+    <ul>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Categories/NSData%2BPebble/"><span>NSData(Pebble)</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Categories/NSDictionary%2BPebble/"><span>NSDictionary(Pebble)</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Categories/NSError%2BPebble/"><span>NSError(Pebble)</span></a>
+        
+      </li>
+    
+      <li class="section-menu__subitem">
+        <a href="/docs/pebblekit-ios/Categories/NSNumber%2BPBStandardIntegerExtensions/"><span>NSNumber(PBStandardIntegerExtensions)</span></a>
+        
+      </li>
+    
+    </ul>
+  </li>
+  
+  
+</ul>
+
+    
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    <h1 class="pagetitle">PBWatch Class Reference</h1>
+
+<div class="documentation__ios">
+<div id="content">
+				<main role="main">
+					
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td>NSObject</td>
+</tr>
+<tr>
+	<td class="specification-title">Declared in</td>
+	<td>PBWatch.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview" class=""></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Represents a Pebble watch.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks" class=""></a>
+						
+
+						
+						<h2 class="task-title">Other Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/central" title="central" class=""></a>
+	<h3 class="subsubtitle method-title">central</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The central that is managing this watch.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak, readonly) PBPebbleCentral *central</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This property is KVO-compliant.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/isNew" title="isNew" class=""></a>
+	<h3 class="subsubtitle method-title">– isNew</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>YES if the receiver it’s the first time that watch has been seen.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isNew</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This property is KVO-compliant.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/connected" title="connected" class=""></a>
+	<h3 class="subsubtitle method-title">connected</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>YES if the receiver is connected and NO if the receiver is disconnected.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, readonly, getter=isConnected) BOOL connected</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This property is KVO-compliant.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/name" title="name" class=""></a>
+	<h3 class="subsubtitle method-title">name</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The human-friendly name of the receiver.
+This is the same name as the user will see in the iOS Bluetooth Settings.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *name</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/serialNumber" title="serialNumber" class=""></a>
+	<h3 class="subsubtitle method-title">serialNumber</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The serial number of the receiver.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, copy, readonly) NSString *serialNumber</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/versionInfo" title="versionInfo" class=""></a>
+	<h3 class="subsubtitle method-title">versionInfo</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The versionInfo of the receiver.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) PBVersionInfo *versionInfo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Classes/PBVersionInfo.html">PBVersionInfo</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/delegate" title="delegate" class=""></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The delegate of the watch that will be notified of disconnections and errors.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak) id&lt;PBWatchDelegate&gt; __nullable delegate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Protocols/PBWatchDelegate.html">PBWatchDelegate</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/userInfo" title="userInfo" class=""></a>
+	<h3 class="subsubtitle method-title">userInfo</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The userInfo property can be used to associate application specific data
+with the watch. Note that the application itself is responsible for persisting
+the information if neccessary.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) id __nullable userInfo</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/lastConnectedDate" title="lastConnectedDate" class=""></a>
+	<h3 class="subsubtitle method-title">lastConnectedDate</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The date when the watch was last known to be <a href="#//api/name/connected">connected</a>.
+This date will be updated automatically when the watch connects and
+disconnects. While the watch is being <a href="#//api/name/connected">connected</a>, this date will not be updated.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, strong, readonly) NSDate *lastConnectedDate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/friendlyDescription" title="friendlyDescription" class=""></a>
+	<h3 class="subsubtitle method-title">– friendlyDescription</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Developer-friendly debugging description of the watch.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)friendlyDescription</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>developer-friendly summary of the receiver, including
+software and hardware version information, if available.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/releaseSharedSession" title="releaseSharedSession" class=""></a>
+	<h3 class="subsubtitle method-title">– releaseSharedSession</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Releases the shared session to the watch (if one exists). (<b class="deprecated">Deprecated:</b><span class="deprecated"> Remove usages of this method. The implementation is empty.</span>)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)releaseSharedSession</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Depending on availability a per-app dedicated Bluetooth LE based session
+(CoreBluetooth.framework) will be used to talk to the watch. In other cases
+a Bluetooth Classic based session (ExternalAccessory.framework) will be used
+that is shared between all 3rd party iOS apps.</p>
+
+<p>Once the user is done using the app/watch-integration, the shared sessions
+has to be released using this method so it can be used by other apps.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Golf Methods" name="task_Golf%20Methods" class=""></a>
+						<h2 class="task-title">Golf Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/golfGetIsSupported:" title="golfGetIsSupported:" class=""></a>
+	<h3 class="subsubtitle method-title">– golfGetIsSupported:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Queries the watch whether Golf Messages are supported.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)golfGetIsSupported:(void ( ^ ) ( PBWatch *watch , BOOL isGolfSupported ))<em>fetchedBlock</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>fetchedBlock</em></dt>
+<dd>The block that will be called when the inquiry has
+finished. The block will be called asynchronously
+on the queue that was originally used when calling this
+method.
+
+
+watch: The watch on which the query was performed.
+isGolfSupported: YES if Golf Messages are
+supported, NO if not.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Golf.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/golfAppLaunch:" title="golfAppLaunch:" class=""></a>
+	<h3 class="subsubtitle method-title">– golfAppLaunch:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send a command to launch the golf app on the watch that the receiver
+represents.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)golfAppLaunch:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the launch command has
+been sent or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Golf.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/golfAppKill:" title="golfAppKill:" class=""></a>
+	<h3 class="subsubtitle method-title">– golfAppKill:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send a command to kill the golf app on the watch that the receiver
+represents.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)golfAppKill:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the kill command has
+been sent or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Golf.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/golfAppUpdate:onSent:" title="golfAppUpdate:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– golfAppUpdate:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sends an update to the golf app on the watch that the receiver represents.
+Must be called from the main thread.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)golfAppUpdate:(NSDictionary *)<em>update</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>update</em></dt>
+<dd>The update to send. Use one or more keys from
+PBGolfFrontKey, PBGolfMidKey, PBGolfBackKey,
+PBGolfHoleKey, or PBGolfParKey. Note that the value for
+each key MUST be of NSString type.</dd>
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the update has been sent
+or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Golf.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/golfAppAddReceiveUpdateHandler:" title="golfAppAddReceiveUpdateHandler:" class=""></a>
+	<h3 class="subsubtitle method-title">– golfAppAddReceiveUpdateHandler:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a receive handler for incoming Golf updates that are send by the Golf
+watch application.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)golfAppAddReceiveUpdateHandler:(BOOL ( ^ ) ( PBWatch *watch , GolfAppCommand command ))<em>onReceive</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onReceive</em></dt>
+<dd>The block that will be called every time a new update
+message arrives.
+
+
+watch: The receiver of the update.
+command: The command as sent by the watch.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An opaque handle object representing the installed receive handler,
+that can be used in <a href="#//api/name/golfAppRemoveUpdateHandler:">golfAppRemoveUpdateHandler:</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Constants/GolfAppCommand.html">GolfAppCommand</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/golfAppRemoveUpdateHandler:">- golfAppRemoveUpdateHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Golf.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/golfAppRemoveUpdateHandler:" title="golfAppRemoveUpdateHandler:" class=""></a>
+	<h3 class="subsubtitle method-title">– golfAppRemoveUpdateHandler:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes a receive handler that was previously installed using
+<a href="#//api/name/golfAppAddReceiveUpdateHandler:">golfAppAddReceiveUpdateHandler:</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)golfAppRemoveUpdateHandler:(id)<em>opaqueHandle</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>opaqueHandle</em></dt>
+<dd>The handle object as returned by
+golfAppAddReceiveUpdateHandler:</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/golfAppAddReceiveUpdateHandler:">- golfAppAddReceiveUpdateHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Golf.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/golfSetTitle:icon:onSent:" title="golfSetTitle:icon:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– golfSetTitle:icon:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Assigns a custom title and icon to the golf app on the watch.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)golfSetTitle:(NSString *)<em>title</em> icon:(UIImage *)<em>icon</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>title</em></dt>
+<dd>The custom title (max. 20 bytes of UTF-8 string)</dd>
+<dt><em>icon</em></dt>
+<dd>The custom icon (max. 32x32 pixels, black/white only)</dd>
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the title and icon have
+been set or timed out.
+
+
+watch: the recipient of the title and icon.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+
+<p>It is recommended to perform this as the first call after
+<a href="#//api/name/golfGetIsSupported:">golfGetIsSupported:</a> to avoid changing the title and icon while it is being
+displayed in the menu as to avoid confusion.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Golf.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Ping Methods" name="task_Ping%20Methods" class=""></a>
+						<h2 class="task-title">Ping Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/pingWithCookie:onPong:onTimeout:" title="pingWithCookie:onPong:onTimeout:" class=""></a>
+	<h3 class="subsubtitle method-title">– pingWithCookie:onPong:onTimeout:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sends a ping to the watch.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)pingWithCookie:(uint32_t)<em>cookie</em> onPong:(void ( ^ __nullable ) ( PBWatch *watch , uint32_t cookie ))<em>onPong</em> onTimeout:(void ( ^ __nullable ) ( PBWatch *watch , uint32_t cookie ))<em>onTimeout</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>cookie</em></dt>
+<dd>A number identifying the ping.</dd>
+<dt><em>onPong</em></dt>
+<dd>The block handler that will be called when the “pong” reply from the watch has been received.</dd>
+<dt><em>onTimeout</em></dt>
+<dd>The block handler that will be called when the watch failed to reply in time.</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Ping.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="SportsDeprecated Methods" name="task_SportsDeprecated%20Methods" class=""></a>
+						<h2 class="task-title">SportsDeprecated Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sportsAppSetLabel:onSent:" title="sportsAppSetLabel:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsAppSetLabel:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send a command to the sports app on the watch that the receiver represents,
+to set the preferred data label (either PACE or SPEED) and corresponding
+units. (<b class="deprecated">Deprecated:</b><span class="deprecated"> Prefer using [PBSportsUpdate pace] or [PBSportsUpdate speed].</span>)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsAppSetLabel:(BOOL)<em>isPace</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>isPace</em></dt>
+<dd>YES to request the pace label or NO to request the speed
+label.</dd>
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the unit command has been
+sent or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/sportsAppSetMetric:onSent:" title="sportsAppSetMetric:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsAppSetMetric:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send a command to the sports app on the watch that the receiver represents,
+to set the preferred unit system, either metric or imperial. (<b class="deprecated">Deprecated:</b><span class="deprecated"> Prefer using [PBWatch(Sports) sportsAppSetUnitSystem:onSent:]</span>)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsAppSetMetric:(BOOL)<em>isMetric</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>isMetric</em></dt>
+<dd>YES to request metric units or NO to request imperial
+units.</dd>
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the unit command has been
+sent or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="AppMessages Methods" name="task_AppMessages%20Methods" class=""></a>
+						<h2 class="task-title">AppMessages Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/appMessagesGetIsSupported:" title="appMessagesGetIsSupported:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesGetIsSupported:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Queries the watch whether AppMessages are supported.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)appMessagesGetIsSupported:(void ( ^ ) ( PBWatch *watch , BOOL isAppMessagesSupported ))<em>fetchedBlock</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>fetchedBlock</em></dt>
+<dd>The block that will be called when the inquiry has
+finished. The block will be called asynchronously on the
+queue that was originally used when calling this method.
+
+
+watch: The watch on which the query was performed.
+isAppMessagesSupported: YES if AppMessages are
+supported, NO if not.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/appMessagesPushUpdate:onSent:" title="appMessagesPushUpdate:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesPushUpdate:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Pushes an update to the watch application with UUID as set using
+<a href="../Classes/PBPebbleCentral.html#//api/name/appUUID">[PBPebbleCentral setAppUUID:]</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)appMessagesPushUpdate:(NSDictionary&lt;NSNumber*,id&gt; *)<em>dictionary</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSDictionary *update , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>dictionary</em></dt>
+<dd>Contains the key/value pairs to update. The dictionary can
+only contain items with an NSNumber key and only contain
+NSString, NSNumber or NSData values. Use the methods
+in the NSNumber (stdint) category to create NSNumbers
+with specific types standard integer types.</dd>
+<dt><em>onSent</em></dt>
+<dd>The block that will be called when the message was accepted,
+rejected or timed out.
+
+
+watch: The watch to which the update was sent.
+update: The dictionary that was sent.
+error: If there was a problem, this will contain
+information about the underlying problem. See
+PBErrorCode for error codes.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/appMessagesPushUpdate:withUUID:onSent:" title="appMessagesPushUpdate:withUUID:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesPushUpdate:withUUID:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Pushes an update to the watch application with the specified UUID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)appMessagesPushUpdate:(NSDictionary&lt;NSNumber*,id&gt; *)<em>dictionary</em> withUUID:(NSUUID *)<em>appUUID</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSDictionary *update , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>dictionary</em></dt>
+<dd>Contains the key/value pairs to update. The dictionary can
+only contain items with an NSNumber key and only contain
+NSString, NSNumber or NSData values. Use the methods
+in the NSNumber (stdint) category to create NSNumbers
+with specific types standard integer types.</dd>
+<dt><em>appUUID</em></dt>
+<dd>The UUID of the watchapp to which the update should be sent.</dd>
+<dt><em>onSent</em></dt>
+<dd>The block that will be called when the message was accepted,
+rejected or timed out.
+
+
+watch: The watch to which the update was sent.
+update: The dictionary that was sent.
+error: If there was a problem, this will contain
+information about the underlying problem. See
+PBErrorCode for error codes.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/appMessagesAddReceiveUpdateHandler:" title="appMessagesAddReceiveUpdateHandler:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesAddReceiveUpdateHandler:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a receive handler for incoming updates that are send by the watch
+application with UUID as set using <a href="../Classes/PBPebbleCentral.html#//api/name/appUUID">[PBPebbleCentral setAppUUID:]</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)appMessagesAddReceiveUpdateHandler:(BOOL ( ^ ) ( PBWatch *watch , NSDictionary&lt;NSNumber*,id&gt; *update ))<em>onReceive</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onReceive</em></dt>
+<dd>The block that will be called every time a new update
+message arrives.
+
+
+watch: The watch that has sent the update.
+update: The dictionary containing the values sent by
+the watch.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An opaque handle object representing the installed receive handler,
+that can be used in <a href="#//api/name/appMessagesRemoveUpdateHandler:">appMessagesRemoveUpdateHandler:</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/appMessagesRemoveUpdateHandler:">- appMessagesRemoveUpdateHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/appMessagesAddReceiveUpdateHandler:withUUID:" title="appMessagesAddReceiveUpdateHandler:withUUID:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesAddReceiveUpdateHandler:withUUID:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a receive handler for incoming updates that are send by the watch
+application with the specified UUID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)appMessagesAddReceiveUpdateHandler:(BOOL ( ^ ) ( PBWatch *watch , NSDictionary&lt;NSNumber*,id&gt; *update ))<em>onReceive</em> withUUID:(NSUUID *)<em>appUUID</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onReceive</em></dt>
+<dd>The block that will be called every time a new update
+message arrives. You should always return YES so than an
+ACK is sent to the watch.
+
+
+watch: The watch that has sent the update.
+update: The dictionary containing the values sent by
+the watch.
+
+</dd>
+<dt><em>appUUID</em></dt>
+<dd>The UUID of the watchapp for which sent messages should be
+handled by the onReceive block.</dd>
+</dl>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An opaque handle object representing the installed receive handler,
+that can be used in <a href="#//api/name/appMessagesRemoveUpdateHandler:">appMessagesRemoveUpdateHandler:</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/appMessagesRemoveUpdateHandler:">- appMessagesRemoveUpdateHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/appMessagesRemoveUpdateHandler:" title="appMessagesRemoveUpdateHandler:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesRemoveUpdateHandler:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes a receive handler that was previously installed using
+<a href="#//api/name/appMessagesAddReceiveUpdateHandler:">appMessagesAddReceiveUpdateHandler:</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)appMessagesRemoveUpdateHandler:(id)<em>opaqueHandle</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>opaqueHandle</em></dt>
+<dd>The handle object as returned by
+appMessagesAddReceiveUpdateHandler:</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/appMessagesAddReceiveUpdateHandler:">- appMessagesAddReceiveUpdateHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/appMessagesLaunch:" title="appMessagesLaunch:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesLaunch:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sends a command to launch the watch application with UUID as set using
+<a href="../Classes/PBPebbleCentral.html#//api/name/appUUID">[PBPebbleCentral setAppUUID:]</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)appMessagesLaunch:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onSent</em></dt>
+<dd>The block that will be called after the launch command has been
+sent to the watch.
+
+
+watch: The watch to which the command was sent.
+error: If there was a problem, this will contain
+information about the underlying problem. See PBErrorCode
+for error codes.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/appMessagesLaunch:withUUID:" title="appMessagesLaunch:withUUID:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesLaunch:withUUID:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sends a command to launch the watch application with the specified UUID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)appMessagesLaunch:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em> withUUID:(NSUUID *)<em>appUUID</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onSent</em></dt>
+<dd>The block that will be called after the launch command has been
+sent to the watch.
+
+
+watch: The watch to which the command was sent.
+error: If there was a problem, this will contain
+information about the underlying problem. See PBErrorCode
+for error codes.
+
+</dd>
+<dt><em>appUUID</em></dt>
+<dd>The UUID of the watch application to launch.</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/appMessagesKill:" title="appMessagesKill:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesKill:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sends a command to kill the watch application with UUID as set using
+<a href="../Classes/PBPebbleCentral.html#//api/name/appUUID">[PBPebbleCentral setAppUUID:]</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)appMessagesKill:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onSent</em></dt>
+<dd>The block that will be called after the kill command has been
+sent to the watch.
+
+
+watch: The watch to which the command was sent.
+error: If there was a problem, this will contain
+information about the underlying problem. See PBErrorCode
+for error codes.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/appMessagesKill:withUUID:" title="appMessagesKill:withUUID:" class=""></a>
+	<h3 class="subsubtitle method-title">– appMessagesKill:withUUID:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sends a command to kill the watch application with the specified UUID.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)appMessagesKill:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em> withUUID:(NSUUID *)<em>appUUID</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onSent</em></dt>
+<dd>The block that will be called after the kill command has been
+sent to the watch.
+
+
+watch: The watch to which the command was sent.
+error: If there was a problem, this will contain
+information about the underlying problem. See PBErrorCode
+for error codes.
+
+</dd>
+<dt><em>appUUID</em></dt>
+<dd>The UUID of the watch application to launch.</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+AppMessages.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Legacy Methods" name="task_Legacy%20Methods" class=""></a>
+						<h2 class="task-title">Legacy Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/closeSession:" title="closeSession:" class=""></a>
+	<h3 class="subsubtitle method-title">– closeSession:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Closes the communication session with the watch. (<b class="deprecated">Deprecated:</b><span class="deprecated"> Use [PBWatch releaseSharedSession]</span>)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)closeSession:(void ( ^ __nullable ) ( void ))<em>onDone</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onDone</em></dt>
+<dd>Callback block that will be called after the closing of the
+session has completed. If there is no open session, the
+onDone block will (also) be executed asynchronously on the
+calling queue.</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Since there is only one, shared session for all 3rd party iOS apps, an app
+should close the session after the user is done using the
+app/watch-integration, so it can be used by other apps.</p>
+
+<p>The communication session is implicitely opened automatically when needed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Legacy.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Sports Methods" name="task_Sports%20Methods" class=""></a>
+						<h2 class="task-title">Sports Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sportsGetIsSupported:" title="sportsGetIsSupported:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsGetIsSupported:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Queries the watch whether Sports Messages are supported.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsGetIsSupported:(void ( ^ ) ( PBWatch *watch , BOOL isSportsSupported ))<em>fetchedBlock</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>fetchedBlock</em></dt>
+<dd>The block that will be called when the inquiry has
+finished. The block will be called asynchronously
+on the queue that was originally used when calling this
+method.
+
+
+watch: the recipient of the query.
+isSportsSupported: YES if Sports API is supported,
+NO otherwise.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/sportsAppLaunch:" title="sportsAppLaunch:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsAppLaunch:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send a command to launch the sports app on the watch that the receiver represents.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsAppLaunch:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the launch command has
+been sent or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread, and before <a href="#//api/name/sportsAppSetMetric:onSent:">sportsAppSetMetric:onSent:</a>
+or <a href="#//api/name/sportsAppUpdate:onSent:">sportsAppUpdate:onSent:</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/sportsAppKill:" title="sportsAppKill:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsAppKill:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send a command to kill the sports app on the watch that the receiver represents.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsAppKill:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the kill command has been
+sent or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/sportsAppSetUnitSystem:onSent:" title="sportsAppSetUnitSystem:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsAppSetUnitSystem:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send a command to the sports app on the watch that the receiver represents,
+to set the preferred unit system.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsAppSetUnitSystem:(PBUnitSystem)<em>unitSystem</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>unitSystem</em></dt>
+<dd>PBUnitSystemMetric to request metric units or
+PBUnitSystemImperial to request imperial units.</dd>
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the unit command has been
+sent or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/sportsAppSetActivityState:onSent:" title="sportsAppSetActivityState:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsAppSetActivityState:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Send a command to the sports app on the watch that the receiver represents,
+to set the state of the sports activity. Currently only
+<code>SportsAppActivityStateRunning</code> and <code>SportsAppActivityStatePaused</code> are
+supported.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsAppSetActivityState:(SportsAppActivityState)<em>state</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>state</em></dt>
+<dd>The new sports activity state</dd>
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the unit command has been
+sent or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/sportsAppUpdate:onSent:" title="sportsAppUpdate:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsAppUpdate:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sends the update to the sports app on the watch that the receiver represents.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsAppUpdate:(NSDictionary *)<em>update</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>update</em></dt>
+<dd>The update to send.</dd>
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the unit command has been
+sent or timed out (after 1.5 secs).
+
+
+watch: the recipient of the command.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+
+<p>The valid keys and values for the dictionary are the following:</p>
+
+<ul>
+<li>
+<code>PBSportsTimeKey</code>: the string representing the time. The value must be an
+<code>NSString</code>. The maximum number of characters is about 8.</li>
+<li>
+<code>PBSportsDistanceKey</code>: the string representing the distance. The value must
+be an <code>NSString</code>. The maximum number of characters is about 5.</li>
+<li>
+<code>PBSportsDataKey</code>: the string representing the pace or the speed. The value
+must be an <code>NSString</code>. The maximum number of characters is about 5.</li>
+<li>
+<code>PBSportsActivityStateKey</code>: the state of the activity. The value must be an
+<code>NSNumber</code> created using +[NSNumber(stdint) pb_numberWithUint8:]. The value
+must be one of the values from the enum <a href="../Constants/SportsAppActivityState.html">SportsAppActivityState</a>.</li>
+<li>
+<code>PBSportsIsPaceKey</code>: whether the value sent in <code>PBSportsDataKey</code> is the
+pace (use value 1) or the speed (use value 0). You don’t need to
+continously send this value. The value must be an <code>NSNumber</code> created using
++[NSNumber(stdin) pb_numberWithUint8:].</li>
+<li>
+<code>PBSportsHeartBPMKey</code>: the current heart rate in beats per minute. The
+value must be an <code>NSNumber</code> created using
+[NSNumber(stdin) pb_numberWithUint8:].</li>
+<li>
+<code>PBSportsCustomLabelKey</code>: the string to show as a custom label. The value
+must be an <code>NSString</code>. The maximum number of characters is about 10. The
+string will be transformed into upper case before being sent to the watch.</li>
+<li>
+<code>PBSportsCustomValueKey</code>: the string to show as a custom value. The value
+must be an <code>NSString</code>. The maximum number of characters is about 8.</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/sportsAppAddReceiveUpdateHandler:" title="sportsAppAddReceiveUpdateHandler:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsAppAddReceiveUpdateHandler:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Add a receive handler for incoming Sports updates that are send by the
+Sports watch application.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)sportsAppAddReceiveUpdateHandler:(BOOL ( ^ ) ( PBWatch *watch , SportsAppActivityState state ))<em>onReceive</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>onReceive</em></dt>
+<dd>The block that will be called every time a new update
+message arrives.
+
+
+watch: The watch that has sent the update.
+state: The new sports activity state as set by the
+watch.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An opaque handle object representing the installed receive handler,
+that can be used in <a href="#//api/name/sportsAppRemoveUpdateHandler:">sportsAppRemoveUpdateHandler:</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="../Constants/SportsAppActivityState.html">SportsAppActivityState</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/sportsAppRemoveUpdateHandler:">- sportsAppRemoveUpdateHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/sportsAppRemoveUpdateHandler:" title="sportsAppRemoveUpdateHandler:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsAppRemoveUpdateHandler:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes a receive handler that was previously installed using
+<a href="#//api/name/sportsAppAddReceiveUpdateHandler:">sportsAppAddReceiveUpdateHandler:</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsAppRemoveUpdateHandler:(id)<em>opaqueHandle</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>opaqueHandle</em></dt>
+<dd>The handle object as returned by
+sportsAppAddReceiveUpdateHandler:</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/sportsAppAddReceiveUpdateHandler:">- sportsAppAddReceiveUpdateHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+<div class="section-method">
+	<a name="//api/name/sportsSetTitle:icon:onSent:" title="sportsSetTitle:icon:onSent:" class=""></a>
+	<h3 class="subsubtitle method-title">– sportsSetTitle:icon:onSent:</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Assigns a custom title and icon to the sports app on the watch.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)sportsSetTitle:(NSString *)<em>title</em> icon:(UIImage *)<em>icon</em> onSent:(void ( ^ __nullable ) ( PBWatch *watch , NSError *__nullable error ))<em>onSent</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<dl class="argument-def parameter-def">
+<dt><em>title</em></dt>
+<dd>The custom title (max. 20 bytes of UTF-8 string)</dd>
+<dt><em>icon</em></dt>
+<dd>The custom icon (max. 32x32 pixels, black/white only). This
+image cannot be nil.</dd>
+<dt><em>onSent</em></dt>
+<dd>The handler that will be called when the title and icon have
+been set or timed out.
+
+
+watch: the recipient of the custom title and icon.
+error: nil if the operation was successful, or else an
+NSError with more information on why it failed.
+
+</dd>
+</dl>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Must be called from the main thread.</p>
+<p>It is recommended to perform this as the first call after
+<a href="#//api/name/sportsGetIsSupported:">sportsGetIsSupported:</a> to avoid changing the title
+and icon while it is being displayed in the menu as to avoid
+confusion.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">PBWatch+Sports.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				
+			</div>
+</div>
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>

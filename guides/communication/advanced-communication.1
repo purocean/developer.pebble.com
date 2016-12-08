@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Advanced Communication // Pebble Developers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Details of communication tips and best practices for more advanced scenarios.
+">
+  <link rel="canonical" href="http://developer.getpebble.com/guides/communication/advanced-communication/">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+  
+  <noscript>
+  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  </noscript>
+  
+  <script type="text/javascript" >
+    var _rollbarConfig = {
+      accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
+      captureUncaught: true,
+      payload: {
+        environment: 'production'
+      }
+    };
+    !function(a,b){function c(b){this.shimId=++h,this.notifier=null,this.parentShim=b,this.logger=function(){},a.console&&void 0===a.console.shimId&&(this.logger=a.console.log)}function d(b,c,d){a._rollbarWrappedError&&(d[4]||(d[4]=a._rollbarWrappedError),d[5]||(d[5]=a._rollbarWrappedError._rollbarContext),a._rollbarWrappedError=null),b.uncaughtError.apply(b,d),c&&c.apply(a,d)}function e(b){var d=c;return g(function(){if(this.notifier)return this.notifier[b].apply(this.notifier,arguments);var c=this,e="scope"===b;e&&(c=new d(this));var f=Array.prototype.slice.call(arguments,0),g={shim:c,method:b,args:f,ts:new Date};return a._rollbarShimQueue.push(g),e?c:void 0})}function f(a,b){if(b.hasOwnProperty&&b.hasOwnProperty("addEventListener")){var c=b.addEventListener;b.addEventListener=function(b,d,e){c.call(this,b,a.wrap(d),e)};var d=b.removeEventListener;b.removeEventListener=function(a,b,c){d.call(this,a,b&&b._wrapped?b._wrapped:b,c)}}}function g(a,b){return b=b||this.logger,function(){try{return a.apply(this,arguments)}catch(c){b("Rollbar internal error:",c)}}}var h=0;c.init=function(a,b){var e=b.globalAlias||"Rollbar";if("object"==typeof a[e])return a[e];a._rollbarShimQueue=[],a._rollbarWrappedError=null,b=b||{};var h=new c;return g(function(){if(h.configure(b),b.captureUncaught){var c=a.onerror;a.onerror=function(){var a=Array.prototype.slice.call(arguments,0);d(h,c,a)};var g,i,j="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(g=0;g<j.length;++g)i=j[g],a[i]&&a[i].prototype&&f(h,a[i].prototype)}return a[e]=h,h},h.logger)()},c.prototype.loadFull=function(a,b,c,d,e){var f=g(function(){var a=b.createElement("script"),e=b.getElementsByTagName("script")[0];a.src=d.rollbarJsUrl,a.async=!c,a.onload=h,e.parentNode.insertBefore(a,e)},this.logger),h=g(function(){var b;if(void 0===a._rollbarPayloadQueue){var c,d,f,g;for(b=new Error("rollbar.js did not load");c=a._rollbarShimQueue.shift();)for(f=c.args,g=0;g<f.length;++g)if(d=f[g],"function"==typeof d){d(b);break}}"function"==typeof e&&e(b)},this.logger);g(function(){c?f():a.addEventListener?a.addEventListener("load",f,!1):a.attachEvent("onload",f)},this.logger)()},c.prototype.wrap=function(b,c){try{var d;if(d="function"==typeof c?c:function(){return c||{}},"function"!=typeof b)return b;if(b._isWrap)return b;if(!b._wrapped){b._wrapped=function(){try{return b.apply(this,arguments)}catch(c){throw c._rollbarContext=d(),c._rollbarContext._wrappedSource=b.toString(),a._rollbarWrappedError=c,c}},b._wrapped._isWrap=!0;for(var e in b)b.hasOwnProperty(e)&&(b._wrapped[e]=b[e])}return b._wrapped}catch(f){return b}};for(var i="log,debug,info,warn,warning,error,critical,global,configure,scope,uncaughtError".split(","),j=0;j<i.length;++j)c.prototype[i[j]]=e(i[j]);var k="//d37gvrvc0wt4s1.cloudfront.net/js/v1.1/rollbar.min.js";_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||k;var l=c.init(a,_rollbarConfig);l.loadFull(a,b,!1,_rollbarConfig)}(window,document);
+  </script>
+  <script type="text/javascript" async>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-30638158-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+<body class="">
+  <div class="mmenu__wrapper">
+    <div class="sidebar__wrapper sidebar__wrapper--sectionmenu">
+  <div class="sidebar sidebar--narrow">
+    <a href="/" class="sidebar__header">
+      <span>pebble</span>
+    </a>
+    <ul class="mainmenu">
+      <li class="mainmenu__item mainmenu__item--getting-started"><a href="/tutorials/"><span>Tutorials</span></a></li>
+<li class="mainmenu__item mainmenu__item--sdk"><a href="/sdk/"><span>Get the SDK</span></a></li>
+<li class="mainmenu__item mainmenu__item--guides active"><a href="/guides/"><span>Guides</span></a></li>
+<li class="mainmenu__item mainmenu__item--docs"><a href="/docs/"><span>Documentation</span></a></li>
+<li class="mainmenu__item mainmenu__item--examples"><a href="/examples/"><span>Examples</span></a></li>
+<li class="mainmenu__item mainmenu__item--community"><a href="/community/"><span>Community</span></a></li>
+<li class="mainmenu__item mainmenu__item--blog"><a href="/blog/"><span>Blog</span></a></li>
+<li class="mainmenu__item mainmenu__item--more"><a href="/more/"><span>More</span></a></li>
+
+    </ul>
+    <div class="sidebar__legal">
+      <a href="https://www.pebble.com/legal/privacy/" target="_blank">Privacy</a>
+      <br>
+      <a href="https://www.pebble.com/legal/cookies/" target="_blank">Cookies</a>
+    </div>
+    <a href="https://dev-portal.getpebble.com/" target="_blank" class="sidebar__footer">Publish</a>
+  </div>
+  <div class="section-menu section-menu--guides section-menu--light">
+    <div class="section-menu__header">
+      <h3><a href="/guides/">Guides</a></h3>
+    </div>
+    <ul>
+      <li class="section-menu__item">
+        <a href="/guides/toc/">Table of Contents</a>
+      </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/app-resources/">
+            
+            App Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/appstore-publishing/">
+            
+            Appstore Publishing
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/best-practices/">
+            
+            Best Practices
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item open">
+          <a href="/guides/communication/">
+            
+            Communication
+          </a>
+          
+            <ul>
+            
+            
+            
+              
+                <li class="section-menu__subitem active">
+                  <a href="/guides/communication/advanced-communication/"><span>Advanced Communication</span></a>
+                </li>
+              
+            
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/datalogging/"><span>Datalogging</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-pebblekit-android/"><span>PebbleKit Android</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-pebblekit-js/"><span>PebbleKit JS</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-pebblekit-ios/"><span>PebbleKit iOS</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/sending-and-receiving-data/"><span>Sending and Receiving Data</span></a>
+                </li>
+              
+            
+              
+                <li class="section-menu__subitem">
+                  <a href="/guides/communication/using-the-sports-api/"><span>Sports API</span></a>
+                </li>
+              
+            
+            
+            </ul>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/debugging/">
+            
+            Debugging
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/design-and-interaction/">
+            
+            Design and Interaction
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/events-and-services/">
+            
+            Events and Services
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/graphics-and-animations/">
+            
+            Graphics and Animations
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/migration/">
+            
+            Migrating Older Apps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-packages/">
+            
+            Pebble Packages
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/pebble-timeline/">
+            
+            Pebble Timeline
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/rocky-js/">
+            
+            Rocky.js
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/smartstraps/">
+            
+            Smartstraps
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/tools-and-resources/">
+            
+            Tools and Resources
+          </a>
+          
+        </li>
+      
+        
+        
+        
+        <li class="section-menu__item">
+          <a href="/guides/user-interfaces/">
+            
+            User Interfaces
+          </a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</div><!-- sidebar__wrapper -->
+<div class="content content--section-menu">
+  <div class="search">
+  <a  href="javascript:void(0);" class="mobile-nav__hamburger js-mobile-nav-toggle"><i class="fa fa-reorder"></i></a>
+  <i class="fa fa-lg fa-search search__icon"></i><input type="search" id="quicksearch" placeholder="Search Developer Site">
+</div>
+<div class="quicksearch" style="display: none;" id="quicksearch__results"></div>
+<div id="search__blackout" style="display: none;"></div>
+
+  <div class="container">
+    
+<div class="visible-m visible-s visible-xs row">
+  <div class="col-xs-12">
+    <div class="form__group">
+      <div class="select-style no-label">
+        <select class="js-toc-select">
+          
+            <option value="waiting-for-pebblekit-js">Waiting for PebbleKit JS</option>
+          
+            <option value="timeouts-and-retries">Timeouts and Retries</option>
+          
+            <option value="using-a-timeout-timer">- Using a Timeout Timer</option>
+          
+            <option value="retry-a-failed-message">- Retry a Failed Message</option>
+          
+            <option value="sending-lists">Sending Lists</option>
+          
+            <option value="sending-a-list-to-the-phone">- Sending a List to the Phone</option>
+          
+            <option value="sending-a-list-to-pebble">- Sending a List to Pebble</option>
+          
+            <option value="sending-image-data">Sending Image Data</option>
+          
+            <option value="image-data-format">- Image Data Format</option>
+          
+            <option value="sending-compressed-png-data">- Sending Compressed PNG Data</option>
+          
+            <option value="receiving-compressed-png-data">- Receiving Compressed PNG Data</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-l-8 col-m-12">
+    <h1 class="pagetitle">Advanced Communication</h1>
+    
+<!-- 
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+ -->
+    <div class="markdown markdown--staff">
+    
+    <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
+  <p>
+    This page contains some instructions that are different if you're using
+    CloudPebble or if you're using the SDK locally on your computer.
+  </p>
+  <p>
+    Select whether you're using CloudPebble or the SDK below to show the
+    relevant instructions!
+  </p>
+  <div class="text-center">
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
+      <img src="/assets/images/sdk/cloud.svg">
+      <h4>CloudPebble</h4>
+    </a>
+    <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
+      <img src="/assets/images/sdk/sdk-box.svg">
+      <h4>SDK</h4>
+    </a>
+  </div>
+</div>
+<div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
+  <p class="platform-specific" data-sdk-platform="cloudpebble">
+    <img src="/assets/images/sdk/cloud.svg">
+    Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
+  </p>
+  <p class="platform-specific" data-sdk-platform="local">
+    <img src="/assets/images/sdk/sdk-box.svg">
+    Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
+  </p>
+</div>
+
+    
+    <p>Many types of connected Pebble watchapps and watchfaces perform common tasks
+such as the ones discussed here. Following these best practices can increase the
+quality of the implementation of each one, and avoid common bugs.</p><h2 id="waiting-for-pebblekit-js" class="anchor">Waiting for PebbleKit JS</h2><p>Any app that wishes to send data from the watch to the phone via 
+<a href="/guides/communication/using-pebblekit-js/"><em>PebbleKit JS</em></a> <strong>must</strong>
+wait until the JavaScript <code>ready</code> event has occured, indicating that the phone
+has loaded the JavaScript component of the launching app. If this JavaScript
+code implements the <code>appmessage</code> event listsner, it is ready to receive data.</p>
+<blockquote>
+<p>An watchapp that only <em>receives</em> data from PebbleKit JS does not have to wait
+for the <code>ready</code> event. In addition, Android companion apps do not have to wait
+for such an event thanks to the <code>Intent</code> system. iOS companion apps must wait
+for <code>-watchDidConnect:</code>.</p></blockquote>
+
+<div class="platform-specific" data-sdk-platform="local">
+<p>A simple method is to define a key in <code>package.json</code> that will be interpreted by
+the watchapp to mean that the JS environment is ready for exchange data:</p><div class="highlight"><pre><span class="s2">"messageKeys"</span><span class="o">:</span> <span class="p">[</span>
+  <span class="s2">"JSReady"</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+
+<div class="platform-specific" data-sdk-platform="cloudpebble">
+<p>A simple method is to define a key in Settings that will be interpreted by
+the watchapp to mean that the JS environment is ready for exchange data:</p>
+<ul>
+<li>JSReady</li>
+</ul>
+
+</div>
+<p>The watchapp should implement a variable that describes if the <code>ready</code> event has
+occured. An example is shown below:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">bool</span> <span class="n">s_js_ready</span><span class="p">;</span>
+</pre></div><p>This can be exported in a header file for other parts of the app to check. Any
+parts of the app that are waiting should call this as part of a 
+<a href="#timeouts-and-retries" title="" class="">retry</a> mechanism.</p><div class="highlight"><pre><span class="kt">bool</span> <span class="nf">comm_is_js_ready</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">s_js_ready</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div><p>The state of this variable will be <code>false</code> until set to <code>true</code> when the <code>ready</code>
+event causes the key to be transmitted:</p><div class="highlight"><pre><span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'PebbleKit JS ready.'</span><span class="p">);</span>
+
+  <span class="c1">// Update s_js_ready on watch</span>
+  <span class="nx">Pebble</span><span class="p">.</span><span class="nx">sendAppMessage</span><span class="p">({</span><span class="s1">'JSReady'</span><span class="o">:</span> <span class="mi">1</span><span class="p">});</span>
+<span class="p">});</span>
+</pre></div><p>This key should be interpreted in the app&#39;s <a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" title="AppMessageInboxReceived" class="link--docs"><code>AppMessageInboxReceived</code></a>
+implementation:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_received_handler</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="n">ready_tuple</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_JSReady</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">ready_tuple</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// PebbleKit JS is ready! Safe to send messages</span>
+    <span class="n">s_js_ready</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><h2 id="timeouts-and-retries" class="anchor">Timeouts and Retries</h2><p>Due to the wireless and stateful nature of the Bluetooth connection, some
+messages sent between the watch and phone may fail. A tried-and-tested method
+for dealing with these failures is to implement a &#39;timeout and retry&#39; mechanism.
+Under such a scheme:</p>
+<ul>
+<li><p>A message is sent and a timer started.</p></li>
+<li><p>If the message is sent successfully (and optionally a reply received), the
+timer is cancelled.</p></li>
+<li><p>If the timer elapses before the message can be sent successfully, the message
+is reattempted. Depending on the nature of the failure, a suitable retry
+interval (such as a few seconds) is used to avoid saturating the connection.</p></li>
+</ul>
+<p>The interval chosen before a timeout occurs and the message is resent may vary
+depending on the circumstances. The first failure should be reattempted fairly
+quickly (one second), with the interval increasing as successive failures
+occurs. If the connection is not available the timer interval should be 
+<a href="https://en.wikipedia.org/wiki/Exponential_backoff" title="" class="">even longer</a>, or wait until
+the connection is restored.</p><h3 id="using-a-timeout-timer" class="anchor">Using a Timeout Timer</h3><p>The example below shows the sending of a message and scheduling a timeout timer.
+The first step is to declare a handle for the timeout timer:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">AppTimer</span> <span class="o">*</span><span class="n">s_timeout_timer</span><span class="p">;</span>
+</pre></div><p>When the message is sent, the timer should be scheduled:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">send_with_timeout</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Construct and send the message</span>
+  <span class="n">DitionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">app_message_outbox_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">iter</span><span class="p">)</span> <span class="o">==</span> <span class="n">APP_MSG_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dict_write_int</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span> <span class="nb">true</span><span class="p">);</span>
+    <span class="n">app_message_outbox_send</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Schedule the timeout timer</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">interval_ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+  <span class="n">s_timout_timer</span> <span class="o">=</span> <span class="n">app_timer_register</span><span class="p">(</span><span class="n">interval_ms</span><span class="p">,</span> <span class="n">timout_timer_handler</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>If the <a href="/docs/c/Foundation/AppMessage/#AppMessageOutboxSent" title="AppMessageOutboxSent" class="link--docs"><code>AppMessageOutboxSent</code></a> is called, the message was a success, and the
+timer should be cancelled:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">outbox_sent_handler</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Successful message, the timeout is not needed anymore for this message</span>
+  <span class="n">app_timer_cancel</span><span class="p">(</span><span class="n">s_timout_timer</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><h3 id="retry-a-failed-message" class="anchor">Retry a Failed Message</h3><p>However, if the timeout timer elapses before the message&#39;s success can be
+determined or an expected reply is not received, the callback to
+<code>timout_timer_handler()</code> should be used to inform the user of the failure, and
+schedule another attempt and retry the message:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">timout_timer_handler</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// The timer elapsed because no success was reported</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_status_layer</span><span class="p">,</span> <span class="s">"Failed. Retrying..."</span><span class="p">);</span>
+
+  <span class="c1">// Retry the message</span>
+  <span class="n">send_with_timeout</span><span class="p">(</span><span class="n">some_key</span><span class="p">,</span> <span class="n">some_value</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Alternatively, if the <a href="/docs/c/Foundation/AppMessage/#AppMessageOutboxFailed" title="AppMessageOutboxFailed" class="link--docs"><code>AppMessageOutboxFailed</code></a> is called the message failed to
+send, sometimes immediately. The timeout timer should be cancelled and the
+message reattempted after an additional delay (the &#39;retry interval&#39;) to avoid
+saturating the channel:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">outbox_failed_handler</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> 
+                                      <span class="n">AppMessageResult</span> <span class="n">reason</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Message failed before timer elapsed, reschedule for later</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">s_timout_timer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">app_timer_cancel</span><span class="p">(</span><span class="n">s_timout_timer</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Inform the user of the failure</span>
+  <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_status_layer</span><span class="p">,</span> <span class="s">"Failed. Retrying..."</span><span class="p">);</span>
+
+  <span class="c1">// Use the timeout handler to perform the same action - resend the message</span>
+  <span class="k">const</span> <span class="kt">int</span> <span class="n">retry_interval_ms</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+  <span class="n">app_timer_register</span><span class="p">(</span><span class="n">retry_interval_ms</span><span class="p">,</span> <span class="n">timout_timer_handler</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<blockquote>
+<p>Note: All eventualities where a message fails must invoke a resend of the
+message, or the purpose of an automated &#39;timeout and retry&#39; mechanism is
+defeated. However, the number of attempts made and the interval between them
+is for the developer to decide.</p></blockquote>
+<h2 id="sending-lists" class="anchor">Sending Lists</h2><p>Until SDK 3.8, the size of <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> buffers did not facilitate sending
+large amounts of data in one message. With the current buffer sizes of up to 8k
+for each an outbox the need for efficient transmission of multiple sequential
+items of data is lessened, but the technique is still important. For instance,
+to transmit sensor data as fast as possible requires careful scheduling of
+successive messages.</p><p>Because there is no guarantee of how long a message will take to transmit,
+simply using timers to schedule multiple messages after one another is not
+reliable. A much better method is to make good use of the callbacks provided by
+the <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> API. </p><h3 id="sending-a-list-to-the-phone" class="anchor">Sending a List to the Phone</h3><p>For instance, the <a href="/docs/c/Foundation/AppMessage/#AppMessageOutboxSent" title="AppMessageOutboxSent" class="link--docs"><code>AppMessageOutboxSent</code></a> callback can be used to safely
+schedule the next message to the phone, since the previous one has been
+acknowledged by the other side at that time. Here is an example array of items:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">int</span> <span class="n">s_data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span> <span class="p">};</span>
+
+<span class="cp">#define NUM_ITEMS sizeof(s_data);</span>
+</pre></div><p>A variable can be used to keep track of the current list item index that should
+be transmitted next:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">int</span> <span class="n">s_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div><p>When a message has been sent, this index is used to construct the next message:</p>
+<div class="platform-specific" data-sdk-platform="local">
+<blockquote>
+<p>Note: A useful key scheme is to use the item&#39;s array index as the key. For
+PebbleKit JS that number of keys will have to be declared in <code>package.json</code>,
+like so: <code>someArray[6]</code></p></blockquote>
+
+</div>
+
+<div class="platform-specific" data-sdk-platform="cloudpebble">
+<blockquote>
+<p>Note: A useful key scheme is to use the item&#39;s array index as the key. For
+PebbleKit JS that number of keys will have to be declared in the project&#39;s
+&#39;Settings&#39; page, like so: <code>someArray[6]</code></p></blockquote>
+
+</div>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">outbox_sent_handler</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Increment the index</span>
+  <span class="n">s_index</span><span class="o">++</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">s_index</span> <span class="o">&lt;</span> <span class="n">NUM_ITEMS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Send the next item</span>
+    <span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">app_message_outbox_begin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">iter</span><span class="p">)</span> <span class="o">==</span> <span class="n">APP_MSG_OK</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">dict_write_int</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_someArray</span> <span class="o">+</span> <span class="n">s_index</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s_data</span><span class="p">[</span><span class="n">s_index</span><span class="p">],</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span> <span class="nb">true</span><span class="p">);</span>
+      <span class="n">app_message_outbox_send</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// We have reached the end of the sequence</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"All transmission complete!"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>This results in a callback loop that repeats until the last data item has been
+transmitted, and the index becomes equal to the total number of items. This
+technique can be combined with a timeout and retry mechanism to reattempt a
+particular item if transmission fails. This is a good way to avoid gaps in the
+received data items.</p><p>On the phone side, the data items are received in the same order. An analogous
+<code>index</code> variable is used to keep track of which item has been received. This
+process will look similar to the example shown below:</p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">NUM_ITEMS</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'message_keys'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'appmessage'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Store this data item</span>
+  <span class="nx">data</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">payload</span><span class="p">[</span><span class="nx">keys</span><span class="p">.</span><span class="nx">someArray</span> <span class="o">+</span> <span class="nx">index</span><span class="p">];</span>
+
+  <span class="c1">// Increment index for next message</span>
+  <span class="nx">index</span><span class="o">++</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="nx">index</span> <span class="o">==</span> <span class="nx">NUM_ITEMS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Received all data items!'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div><h3 id="sending-a-list-to-pebble" class="anchor">Sending a List to Pebble</h3><p>Conversely, the <code>success</code> callback of <code>Pebble.sendAppMessage()</code> in PebbleKit JS
+is the equivalent safe time to send the next message to the watch.</p><p>An example implementation that achieves this is shown below. After the message
+is sent with <code>Pebble.sendAppMessage()</code>, the <code>success</code> callback calls the
+<code>sendNextItem()</code> function repeatedly until the index is larger than that of the
+last list item to be sent, and transmission will be complete. Again, an index
+variable is maintained to keep track of which item is being transmitted:</p><div class="highlight"><pre><span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'message_keys'</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">sendNextItem</span><span class="p">(</span><span class="nx">items</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Build message</span>
+  <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">someArray</span> <span class="o">+</span> <span class="nx">index</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">dict</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="nx">dict</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+
+  <span class="c1">// Send the message</span>
+  <span class="nx">Pebble</span><span class="p">.</span><span class="nx">sendAppMessage</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Use success callback to increment index</span>
+    <span class="nx">index</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Send next item</span>
+      <span class="nx">sendNextItem</span><span class="p">(</span><span class="nx">items</span><span class="p">,</span> <span class="nx">index</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Last item sent!'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Item transmission failed at index: '</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">sendList</span><span class="p">(</span><span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nx">sendNextItem</span><span class="p">(</span><span class="nx">items</span><span class="p">,</span> <span class="nx">index</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">onDownloadComplete</span><span class="p">(</span><span class="nx">responseText</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Some web response containing a JSON object array</span>
+  <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">responseText</span><span class="p">);</span>
+
+  <span class="c1">// Begin transmission loop</span>
+  <span class="nx">sendList</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">items</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>On the watchapp side, the items are received in the same order in the
+<a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" title="AppMessageInboxReceived" class="link--docs"><code>AppMessageInboxReceived</code></a> handler:</p><div class="highlight"><pre><span class="cp">#define NUM_ITEMS 6</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">s_index</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">s_data</span><span class="p">[</span><span class="n">NUM_ITEMS</span><span class="p">];</span>
+</pre></div><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_received_handler</span><span class="p">(</span><span class="n">DictionaryIterator</span> <span class="o">*</span><span class="n">iter</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Tuple</span> <span class="o">*</span><span class="kt">data_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_someArray</span> <span class="o">+</span> <span class="n">s_index</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="kt">data_t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Store this item</span>
+    <span class="n">s_data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="kt">data_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">;</span>
+
+    <span class="c1">// Increment index for next item</span>
+    <span class="n">s_index</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">s_index</span> <span class="o">==</span> <span class="n">NUM_ITEMS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// We have reached the end of the sequence</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_INFO</span><span class="p">,</span> <span class="s">"All transmission complete!"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>This sequence of events is demonstrated for PebbleKit JS, but the same technique
+can be applied exactly to either and Android or iOS companion app wishing to
+transmit many data items to Pebble.</p><p>Get the complete source code for this example from the 
+<a href="https://github.com/pebble-examples/list-items-example" title="" class=""><code>list-items-example</code></a>
+repository on GitHub.</p><h2 id="sending-image-data" class="anchor">Sending Image Data</h2><p>A common task developers want to accomplish is display a dynamically loaded
+image resource (for example, showing an MMS photo or a news item thumbnail
+pulled from a webservice). Because some images could be larger than the largest
+buffer size available to the app, the techniques shown above for sending lists
+also prove useful here, as the image is essentially a list of color byte values.</p><h3 id="image-data-format" class="anchor">Image Data Format</h3><p>There are two methods available for displaying image data downloaded from the
+web:</p>
+<ol>
+<li><p>Download a <code>png</code> image, transmit the compressed data, and decompress using
+<a href="/docs/c/Graphics/Graphics_Types/#gbitmap_create_from_png_data" title="gbitmap_create_from_png_data" class="link--docs"><code>gbitmap_create_from_png_data()</code></a>. This involves sending less data, but can
+be prone to failure depending on the exact format of the image. The image
+must be in a compatible palette (1, 2, 4, or 8-bit) and small enough such
+that there is enough memory for a compessed copy, an uncompressed copy, and
+~2k overhead when it is being processed.</p></li>
+<li><p>Download a <code>png</code> image, decompress in the cloud or in PebbleKit JS into an
+array of image pixel bytes, transmit the pixel data into a blank
+<a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a>&#39;s <code>data</code> member. Each byte must be in the compatible Pebble color
+format (2 bits per ARGB). This process can be simplified by pre-formatting
+the image to be dowloaded, as resizing or palette-reduction is difficult to
+do locally.</p></li>
+</ol>
+<h3 id="sending-compressed-png-data" class="anchor">Sending Compressed PNG Data</h3><p>As the fastest and least complex of the two methods described above, an example
+of how to display a compressed PNG image will be discussed here. The image that
+will be displayed is
+<a href="https://www.w3.org/html/logo/" title="" class="">the HTML 5 logo</a>:</p><p><img src="http://developer.getpebble.com.s3.amazonaws.com/assets/other/html5-logo-small.png" /></p>
+<blockquote>
+<p>Note: The above image has been resized and palettized for compatibility.</p></blockquote>
+<p>To download this image in PebbleKit JS, use an <code>XmlHttpRequest</code> object. It is
+important to specify the <code>responseType</code> as &#39;arraybuffer&#39; to obtain the image
+data in the correct format:</p><div class="highlight"><pre><span class="kd">function</span> <span class="nx">downloadImage</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://developer.getpebble.com.s3.amazonaws.com/assets/other/html5-logo-small.png'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+  <span class="nx">request</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">processImage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">response</span><span class="p">);</span>
+  <span class="p">};</span>
+  <span class="nx">request</span><span class="p">.</span><span class="nx">responseType</span> <span class="o">=</span> <span class="s2">"arraybuffer"</span><span class="p">;</span>
+  <span class="nx">request</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
+  <span class="nx">request</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div><p>When the response has been received, <code>processImage()</code> will be called. The
+received data must be converted into an array of unsigned bytes, which is
+achieved through the use of a <code>Uint8Array</code>. This process is shown below (see
+the 
+<a href="https://github.com/pebble-examples/png-download-example" title="" class=""><code>png-download-example</code></a> 
+repository for the full example):</p><div class="highlight"><pre><span class="kd">function</span> <span class="nx">processImage</span><span class="p">(</span><span class="nx">responseData</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Convert to a array</span>
+  <span class="kd">var</span> <span class="nx">byteArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Uint8Array</span><span class="p">(</span><span class="nx">responseData</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">byteArray</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">array</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">byteArray</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Send chunks to Pebble</span>
+  <span class="nx">transmitImage</span><span class="p">(</span><span class="nx">array</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Now that the image data has been converted, the transmission to Pebble can
+begin. At a high level, the JS side transmits the image data in chunks, using an
+incremental array index to coordinate saving of data on the C side in a mirror
+array. In downloading the image data, the following keys are used for the
+specified purposes:</p>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Purpose</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Index</code></td>
+<td>The array index that the current chunk should be stored at. This gets larger as each chunk is transmitted.</td>
+</tr>
+<tr>
+<td><code>DataLength</code></td>
+<td>This length of the entire data array to be downloaded. As the image is compressed, this is <em>not</em> the product of the width and height of the image.</td>
+</tr>
+<tr>
+<td><code>DataChunk</code></td>
+<td>The chunk&#39;s image data.</td>
+</tr>
+<tr>
+<td><code>ChunkSize</code></td>
+<td>The size of this chunk.</td>
+</tr>
+<tr>
+<td><code>Complete</code></td>
+<td>Used to signify that the image transfer is complete.</td>
+</tr>
+</tbody></table>
+<p>The first message in the sequence should tell the C side how much memory to
+allocate to store the compressed image data:</p><div class="highlight"><pre><span class="kd">function</span> <span class="nx">transmitImage</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">arrayLength</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+
+  <span class="c1">// Transmit the length for array allocation</span>
+  <span class="nx">Pebble</span><span class="p">.</span><span class="nx">sendAppMessage</span><span class="p">({</span><span class="s1">'DataLength'</span><span class="o">:</span> <span class="nx">arrayLength</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Success, begin sending chunks</span>
+    <span class="nx">sendChunk</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">arrayLength</span><span class="p">);</span>
+  <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Failed to initiate image transfer!'</span><span class="p">);</span>
+  <span class="p">})</span>
+<span class="p">}</span>
+</pre></div><p>If this message is successful, the transmission of actual image data commences
+with the first call to <code>sendChunk()</code>. This function calculates the size of the
+next chunk (the smallest of either the size of the <code>AppMessage</code> inbox buffer, or
+the remainder of the data) and assembles the dictionary containing the index in
+the array it is sliced from, the length of the chunk, and the actual data
+itself:</p><div class="highlight"><pre><span class="kd">function</span> <span class="nx">sendChunk</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">arrayLength</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Determine the next chunk size</span>
+  <span class="kd">var</span> <span class="nx">chunkSize</span> <span class="o">=</span> <span class="nx">BUFFER_SIZE</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">arrayLength</span> <span class="o">-</span> <span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">BUFFER_SIZE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Resize to fit just the remaining data items</span>
+    <span class="nx">chunkSize</span> <span class="o">=</span> <span class="nx">arrayLength</span> <span class="o">-</span> <span class="nx">index</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Prepare the dictionary</span>
+  <span class="kd">var</span> <span class="nx">dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'DataChunk'</span><span class="o">:</span> <span class="nx">array</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">index</span> <span class="o">+</span> <span class="nx">chunkSize</span><span class="p">),</span>
+    <span class="s1">'ChunkSize'</span><span class="o">:</span> <span class="nx">chunkSize</span><span class="p">,</span>
+    <span class="s1">'Index'</span><span class="o">:</span> <span class="nx">index</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Send the chunk</span>
+  <span class="nx">Pebble</span><span class="p">.</span><span class="nx">sendAppMessage</span><span class="p">(</span><span class="nx">dict</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Success</span>
+    <span class="nx">index</span> <span class="o">+=</span> <span class="nx">chunkSize</span><span class="p">;</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">index</span> <span class="o">&lt;</span> <span class="nx">arrayLength</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Send the next chunk</span>
+      <span class="nx">sendChunk</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">arrayLength</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// Complete!</span>
+      <span class="nx">Pebble</span><span class="p">.</span><span class="nx">sendAppMessage</span><span class="p">({</span><span class="s1">'Complete'</span><span class="o">:</span> <span class="mi">0</span><span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Failed to send chunk with index '</span> <span class="o">+</span> <span class="nx">index</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</pre></div><p>After each chunk is sent, the index is incremented with the size of the chunk
+that was just sent, and compared to the total length of the array. If the index
+exceeds the size of the array, the loop has sent all the data (this could be
+just a single chunk if the array is smaller than the maximum message size). The
+<code>AppKeyComplete</code> key is sent to inform the C side that the image is complete and
+ready for display.</p><h3 id="receiving-compressed-png-data" class="anchor">Receiving Compressed PNG Data</h3><p>In the previous section, the process for using PebbleKit JS to download and
+transmit an image to the C side was discussed. The process for storing and
+displaying this data is discussed here. Only when both parts work in harmony can
+an image be successfully shown from the web.</p><p>The majority of the process takes place within the watchapp&#39;s
+<a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" title="AppMessageInboxReceived" class="link--docs"><code>AppMessageInboxReceived</code></a> handler, with the presence of each key being
+detected and the appropriate actions taken to reconstruct the image.</p><p>The first item expected is the total size of the data to be transferred. This is
+recorded (for later use with <a href="/docs/c/Graphics/Graphics_Types/#gbitmap_create_from_png_data" title="gbitmap_create_from_png_data" class="link--docs"><code>gbitmap_create_from_png_data()</code></a>) and the buffer
+used to store the chunks is allocated to this exact size:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">s_img_data</span><span class="p">;</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">s_img_size</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Get the received image chunk</span>
+<span class="n">Tuple</span> <span class="o">*</span><span class="kt">img_size_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_DataLength</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="kt">img_size_t</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">s_img_size</span> <span class="o">=</span> <span class="kt">img_size_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">;</span>
+
+  <span class="c1">// Allocate buffer for image data</span>
+  <span class="n">img_data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">s_img_size</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div><p>When the message containing the data size is acknowledged, the JS side begins
+sending chunks with <code>sendChunk()</code>. When one of these subsequent messages is
+received, the three keys (<code>DataChunk</code>, <code>ChunkSize</code>, and
+<code>Index</code>) are used to store that chunk of data at the correct offset in the
+array:</p><div class="highlight"><pre><span class="c1">// An image chunk</span>
+<span class="n">Tuple</span> <span class="o">*</span><span class="kt">chunk_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_DataChunk</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="kt">chunk_t</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">chunk_data</span> <span class="o">=</span> <span class="kt">chunk_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+
+  <span class="n">Tuple</span> <span class="o">*</span><span class="kt">chunk_size_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_ChunkSize</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">chunk_size</span> <span class="o">=</span> <span class="kt">chunk_size_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">;</span>
+
+  <span class="n">Tuple</span> <span class="o">*</span><span class="kt">index_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_Index</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="kt">index_t</span><span class="o">-&gt;</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">int32</span><span class="p">;</span>
+
+  <span class="c1">// Save the chunk</span>
+  <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s_img_data</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">chunk_data</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div><p>Finally, once the array index exceeds the size of the data array on the JS side,
+the <code>AppKeyComplete</code> key is transmitted, triggering the data to be transformed
+into a <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a>:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">BitmapLayer</span> <span class="o">*</span><span class="n">s_bitmap_layer</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">GBitmap</span> <span class="o">*</span><span class="n">s_bitmap</span><span class="p">;</span>
+</pre></div><div class="highlight"><pre><span class="c1">// Complete?</span>
+<span class="n">Tuple</span> <span class="o">*</span><span class="kt">complete_t</span> <span class="o">=</span> <span class="n">dict_find</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span> <span class="n">MESSAGE_KEY_Complete</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="kt">complete_t</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Create new GBitmap from downloaded PNG data</span>
+  <span class="n">s_bitmap</span> <span class="o">=</span> <span class="n">gbitmap_create_from_png_data</span><span class="p">(</span><span class="n">s_img_data</span><span class="p">,</span> <span class="n">s_img_size</span><span class="p">);</span>
+
+  <span class="c1">// Show the image</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">s_bitmap</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">bitmap_layer_set_bitmap</span><span class="p">(</span><span class="n">s_bitmap_layer</span><span class="p">,</span> <span class="n">s_bitmap</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Error creating GBitmap from PNG data!"</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div><p>The final result is a compressed PNG image downloaded from the web displayed in
+a Pebble watchapp.</p><p><img src="/assets/images/guides/pebble-apps/communications/html-5-watch.png" alt="watch" class="pebble-screenshot pebble-screenshot--time-black" /></p><p>Get the complete source code for this example from the 
+<a href="https://github.com/pebble-examples/png-download-example" title="" class=""><code>png-download-example</code></a> 
+repository on GitHub.</p>
+    </div>
+    
+    <a id="comments" class="anchor"></a>
+    <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/communication/advanced-communication/">
+      You need JavaScript enabled to read and post comments.
+    </div>
+    
+    
+  </div>
+  
+    <div class="col-m-4 hidden-s hidden-xs hidden-m">
+      <div class="gray-box gray-box--fixed gray-box--scrollspy">
+        
+  <h3>Overview</h3>
+  <ul class="toc">
+    
+      <li class="toc__item toc__item--level1"><a href="#waiting-for-pebblekit-js">Waiting for PebbleKit JS</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#timeouts-and-retries">Timeouts and Retries</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#using-a-timeout-timer">Using a Timeout Timer</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#retry-a-failed-message">Retry a Failed Message</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#sending-lists">Sending Lists</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#sending-a-list-to-the-phone">Sending a List to the Phone</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#sending-a-list-to-pebble">Sending a List to Pebble</a></li>
+    
+      <li class="toc__item toc__item--level1"><a href="#sending-image-data">Sending Image Data</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#image-data-format">Image Data Format</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#sending-compressed-png-data">Sending Compressed PNG Data</a></li>
+    
+      <li class="toc__item toc__item--level2"><a href="#receiving-compressed-png-data">Receiving Compressed PNG Data</a></li>
+    
+  </ul>
+
+        
+          <h3>Related SDK Docs</h3>
+          <ul>
+            
+            <li><a href="/docs/c/Foundation/AppMessage/">AppMessage</a></li>
+            
+          </ul>
+        
+        
+          <h3>Examples</h3>
+          <ul>
+            
+            <li><a href="https://github.com/pebble-examples/js-ready-example" target="_blank">JS Ready Example</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/list-items-example" target="_blank">List Items Example</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/accel-data-stream" target="_blank">Accel Data Stream</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/png-download-example" target="_blank">PNG Download Example</a></li>
+            
+            <li><a href="https://github.com/pebble-examples/pebble-faces" target="_blank">Pebble Faces</a></li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  
+</div>
+
+  </div>
+</div>
+
+    
+  </div>
+  <script type="text/javascript">
+    var searchPrimary = '';
+  </script>
+  
+  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+  
+  <script type="text/javascript" src="/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/assets/js/app.js"></script>
+  <script type="text/javascript" src="/assets/js/search.js"></script>
+  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/assets/js/disqus.js"></script>
+  
+</body>
+</html>
