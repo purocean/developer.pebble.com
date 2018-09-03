@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2014/12/19/Leverage-Android-Actionable-Notifications/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,25 +73,25 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="actionable-notifications">Actionable Notifications</option>
-          
+
             <option value="pushing-a-notification-to-the-watch">Pushing a Notification to the Watch</option>
-          
+
             <option value="adding-actions-to-notifications">Adding Actions to Notifications</option>
-          
+
             <option value="user-input-on-action">User Input on Action</option>
-          
+
             <option value="caveat">Caveat</option>
-          
+
             <option value="that-39-s-all-folks">That&#39;s All Folks!</option>
-          
+
         </select>
       </div>
     </div>
@@ -121,31 +121,31 @@
   <ul class="inline-list inline-list--piped">
     <li>19 December 2014</li>
     <li><a href="/blog/authors/thomas/">Thomas Sarlandie</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
-      
+
     </li>
     <li><a href="/blog/2014/12/19/Leverage-Android-Actionable-Notifications/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
-<p><img src="/assets/images/blog/1219-header.jpg"></p>
+<p><img src="/developer.pebble.com/assets/images/blog/1219-header.jpg"></p>
 
 <p>Just a few days ago, we released <a href="https://blog.getpebble.com/2014/12/16/ad-23/" title="" class="">beta version 2.3 of our Android
 Application</a> with support for actionable notifications. If you
 have not tested it already, <a href="/blog/2014/06/12/Android-Beta-Channel/" title="" class="">enroll in our beta channel</a> and try
 it out for yourself!</p><p>Notifications have always been a key use case for Pebble, and we are excited by
 this new feature which is going to change the way you look at
-notifications. With actionable notifications Pebble not only informs you 
+notifications. With actionable notifications Pebble not only informs you
 about relevant events, users can now interact with them and choose from actions
 you as an Android developer attach to them.</p><p>When connected to an Android device, Pebble will show all wearable actions, just
-like any Android Wear device. While supporting wearable notifications is easy 
-we have found that there are still a number of mobile apps who miss the opportunity 
+like any Android Wear device. While supporting wearable notifications is easy
+we have found that there are still a number of mobile apps who miss the opportunity
 to extend their reach to the wrist. Don&#39;t let your app be one of those!</p><p>In this post, we will describe what you can do with actions on wearable devices
-and how to add them to your Android notifications.</p><h2 id="actionable-notifications" class="anchor">Actionable Notifications</h2><p>Android actionable notifications on the phone were introduced with Android 4.1. 
+and how to add them to your Android notifications.</p><h2 id="actionable-notifications" class="anchor">Actionable Notifications</h2><p>Android actionable notifications on the phone were introduced with Android 4.1.
 Developers specify different actions per notification and users can react to them
 by pushing a button on the phone&#39;s screen.
 By default those actions are shown in the notification area.</p><p>You can make those actions visible to wearable devices and you even have the
@@ -178,7 +178,7 @@ properties on it. At the very least, you need an icon, a title and some text:</p
 notification later.</p></blockquote>
 <p>Once you give your app the permission to send notifications to your Pebble
 via the notifications menu in the Pebble Android app,
-this notification appears with the default <em>Dismiss</em> action.</p><p><img src="/assets/images/blog/1219-an-notif.png" alt="A simple notification on an Android device and a Pebble" /></p><p>If you press <em>Dismiss</em> on Pebble, the notification will be dismissed on the
+this notification appears with the default <em>Dismiss</em> action.</p><p><img src="/developer.pebble.com/assets/images/blog/1219-an-notif.png" alt="A simple notification on an Android device and a Pebble" /></p><p>If you press <em>Dismiss</em> on Pebble, the notification will be dismissed on the
 watch <strong>and</strong> on the phone. This is a nice start, but there&#39;s so much more
 control you can give to your users with custom actions.</p>
 <blockquote>
@@ -207,7 +207,7 @@ directly to the notification:</p><div class="highlight"><pre><span class="vg">bu
 </pre></div><p>Finally, <strong>and this is the only <em>wearable</em> specific step</strong>, to make the action
 available on Pebble and Android Wear, you <strong>must</strong> declare it as available to
 wearable devices:</p><div class="highlight"><pre><span class="vg">builder</span><span class="o">.</span><span class="vg">extend</span><span class="p">(</span><span class="vg">new</span><span class="w"> </span><span class="vg">NotificationCompat</span><span class="o">.</span><span class="vg">WearableExtender</span><span class="p">()</span><span class="o">.</span><span class="vg">addAction</span><span class="p">(</span><span class="vg">pauseAction</span><span class="p">));</span>
-</pre></div><p>We now have an action available on Android and on Pebble:</p><p><img src="/assets/images/blog/1219-an-pause.png" alt="An action shown on the phone and the watch" /></p><p>You can add multiple actions as you want. If you have more than one, Pebble will
+</pre></div><p>We now have an action available on Android and on Pebble:</p><p><img src="/developer.pebble.com/assets/images/blog/1219-an-pause.png" alt="An action shown on the phone and the watch" /></p><p>You can add multiple actions as you want. If you have more than one, Pebble will
 show a &quot;More...&quot; menu and display all the actions in a list.</p>
 <blockquote>
 <p>The option to &quot;Open on Phone&quot; is not available in this example because we did
@@ -215,7 +215,7 @@ not define a default action for the notification. It will appear automatically
 if you do.</p></blockquote>
 <h2 id="user-input-on-action" class="anchor">User Input on Action</h2><p>In some cases a simple choice of actions is not enough. You may want to collect
 some information from the user, for example a reply to a text message.</p><p>On Pebble, the user will be presented with a list of possible replies that you
-can customize. Such actions always present a list of emojis, too. 
+can customize. Such actions always present a list of emojis, too.
 In Android lingo, this is an
 action with support for remote input and it is trivial to set up and configure:</p><div class="highlight"><pre><span class="vg">String</span><span class="p">[]</span><span class="w"> </span><span class="vg">excuses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"Coworker"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Facebook"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Exercise"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Nap"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Phone"</span><span class="p">,</span><span class="w"> </span><span class="s2">"N/A"</span><span class="w"> </span><span class="p">};</span>
 <span class="vg">RemoteInput</span><span class="w"> </span><span class="vg">remoteInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">new</span><span class="w"> </span><span class="vg">RemoteInput</span><span class="o">.</span><span class="vg">Builder</span><span class="p">(</span><span class="vg">KEY_INTERRUPT_REASON</span><span class="p">)</span>
@@ -231,7 +231,7 @@ action with support for remote input and it is trivial to set up and configure:<
 <p>Pebble will hide input actions if you set <code>.setAllowFreeFormInput(false)</code>.</p></blockquote>
 <p>Don&#39;t forget to add this action to the WearableExtender to <strong>make it visible on
 wearable devices</strong>:</p><div class="highlight"><pre><span class="vg">builder</span><span class="o">.</span><span class="vg">extend</span><span class="p">(</span><span class="vg">new</span><span class="w"> </span><span class="vg">Notification</span><span class="o">.</span><span class="vg">WearableExtender</span><span class="p">()</span><span class="o">.</span><span class="vg">addAction</span><span class="p">(</span><span class="vg">pauseAction</span><span class="p">)</span><span class="o">.</span><span class="vg">addAction</span><span class="p">(</span><span class="vg">replyAction</span><span class="p">));</span>
-</pre></div><p>And this is what it looks like on Pebble:</p><p><img src="/assets/images/blog/1219-an-pebble-interrupt.png" alt="Action with remote input on Pebble" /></p><h2 id="caveat" class="anchor">Caveat</h2><p>One useful caveat to know about when you are sending notifications to Pebble is
+</pre></div><p>And this is what it looks like on Pebble:</p><p><img src="/developer.pebble.com/assets/images/blog/1219-an-pebble-interrupt.png" alt="Action with remote input on Pebble" /></p><h2 id="caveat" class="anchor">Caveat</h2><p>One useful caveat to know about when you are sending notifications to Pebble is
 that the watch will automatically de-duplicate identical notifications. So if
 the title and content of your notification is identical to another notification
 recently displayed, Pebble will not show it.</p><p>This is very useful in the field to avoid spamming the user when notifications
@@ -271,249 +271,249 @@ most of notifications!</p></blockquote>
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#actionable-notifications">Actionable Notifications</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#pushing-a-notification-to-the-watch">Pushing a Notification to the Watch</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#adding-actions-to-notifications">Adding Actions to Notifications</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#user-input-on-action">User Input on Action</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#caveat">Caveat</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#that-39-s-all-folks">That&#39;s All Folks!</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 <strong>Beautiful Code</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 <strong>Thomas Sarlandie</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -540,19 +540,19 @@ most of notifications!</p></blockquote>
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/tutorials/watchface-tutorial/part1/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -100,27 +100,27 @@
 <div id="search__blackout" style="display: none;"></div>
 
   <div class="container">
-  
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="first-steps">First Steps</option>
-          
+
             <option value="watchface-basics">Watchface Basics</option>
-          
+
             <option value="first-compilation-and-installation">First Compilation and Installation</option>
-          
+
             <option value="showing-some-text">Showing Some Text</option>
-          
+
             <option value="telling-the-time">Telling the Time</option>
-          
+
             <option value="conclusion">Conclusion</option>
-          
+
             <option value="what-39-s-next">What&#39;s Next?</option>
-          
+
         </select>
       </div>
     </div>
@@ -131,9 +131,9 @@
   <div class="row">
     <div class="col-l-8">
       <h1>Build Your Own Watchface in C</h1>
-      
+
       <div class="markdown markdown--staff">
-      
+
       <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
   <p>
     This page contains some instructions that are different if you're using
@@ -145,32 +145,32 @@
   </p>
   <div class="text-center">
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
-      <img src="/assets/images/sdk/cloud.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
       <h4>CloudPebble</h4>
     </a>
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
-      <img src="/assets/images/sdk/sdk-box.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
       <h4>SDK</h4>
     </a>
   </div>
 </div>
 <div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
   <p class="platform-specific" data-sdk-platform="cloudpebble">
-    <img src="/assets/images/sdk/cloud.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
     Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
   </p>
   <p class="platform-specific" data-sdk-platform="local">
-    <img src="/assets/images/sdk/sdk-box.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
     Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
   </p>
 </div>
 
-      
+
       <p>In this tutorial we&#39;ll cover the basics of writing a simple watchface with
 Pebble&#39;s C API. Customizability is at the heart of the Pebble philosophy, so
 we&#39;ll be sure to add some exciting features for the user!</p><p>When we are done this section of the tutorial, you should end up with a brand
 new basic watchface looking something like this:</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-time~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-time~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-time~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-time~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-time~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-time~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <h2 id="first-steps" class="anchor">First Steps</h2><p>So, let&#39;s get started!</p><p class="platform-specific" data-sdk-platform="cloudpebble">Go to <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> and click &#39;Get Started&#39;
 to log in using your Pebble account, or create a new one if you do not already
 have one. Next, click &#39;Create&#39; to create a new project. Give your project a
@@ -298,7 +298,7 @@ address with the <code>--phone</code> flag. For example: <code>pebble install
 </div>
 <p>Congratulations! You should see that you have a new item in the watchface menu,
 but it is entirely blank!</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-blank~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-blank~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-blank~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-blank~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-blank~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-blank~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <p>Let&#39;s change that with the next stage towards a basic watchface - the
 <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> element.</p><h2 id="showing-some-text" class="anchor">Showing Some Text</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Navigate back to the CloudPebble code editor and open your main C file to
 continue adding code.</p><p class="platform-specific" data-sdk-platform="local">Re-open your main C file to continue adding code.</p><p>The best way to show some text on a watchface or watchapp
@@ -347,7 +347,7 @@ is associated with. This function should now look like this:</p><div class="high
 &#39;Compilation&#39; and install a new build, you should now see the following:</p><p class="platform-specific" data-sdk-platform="local">This completes the setup of the basic watchface layout. If you run <code>pebble
 build &amp;&amp; pebble install</code> (with your phone&#39;s IP address) for the new build, you
 should now see the following:</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-textlayer-test~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-textlayer-test~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-textlayer-test~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-textlayer-test~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-textlayer-test~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-textlayer-test~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <p>The final step is to get the current time and display it using the
 <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. This is done with the <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a>.</p><h2 id="telling-the-time" class="anchor">Telling the Time</h2><p>The <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a> is an Event Service that allows access to the current
 time by subscribing a function to be run whenever the time changes. Normally
@@ -399,7 +399,7 @@ correctly when the watchface loads:</p><div class="highlight"><pre><span class="
 <a href="/docs/c/User_Interface/Layers/TextLayer/#text_layer_set_text" title="text_layer_set_text" class="link--docs"><code>text_layer_set_text()</code></a> in <code>main_window_load()</code>, as it is no longer needed to
 test the layout.</p><p>Re-compile and re-install the watchface on your Pebble, and it should look like
 this:</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-time~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-time~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-time~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-time~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-time~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-time~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <h2 id="conclusion" class="anchor">Conclusion</h2><p>So there we have it, the basic process required to create a brand new Pebble
 watchface! To do this we:</p>
 <ol>
@@ -417,27 +417,27 @@ images to your watchface.</p><p><a href="/tutorials/watchface-tutorial/part2/" t
     </div>
     <div class="col-m-4 hidden-s hidden-xs hidden-m">
       <div class="gray-box gray-box--fixed gray-box--scrollspy">
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#first-steps">First Steps</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#watchface-basics">Watchface Basics</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#first-compilation-and-installation">First Compilation and Installation</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#showing-some-text">Showing Some Text</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#telling-the-time">Telling the Time</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
-    
+
   </ul>
 
-        
+
       </div>
     </div>
   </div>
@@ -445,19 +445,19 @@ images to your watchface.</p><p><a href="/tutorials/watchface-tutorial/part2/" t
 
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2016/09/06/timeline-the-future-of-the-past/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,29 +73,29 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="the-past-and-the-furious">The Past and the Furious</option>
-          
+
             <option value="back-to-the-future">Back to the Future!</option>
-          
+
             <option value="1-app-store-description">- 1. App Store Description</option>
-          
+
             <option value="2-display-a-splash-screen">- 2. Display a Splash Screen</option>
-          
+
             <option value="3-display-a-one-time-notification">- 3. Display a One-Time Notification</option>
-          
+
             <option value="4-display-a-timeline-notification">- 4. Display a Timeline Notification</option>
-          
+
             <option value="the-future-of-the-past">The Future of the Past</option>
-          
+
             <option value="were-listening">We’re Listening!</option>
-          
+
         </select>
       </div>
     </div>
@@ -125,14 +125,14 @@
   <ul class="inline-list inline-list--piped">
     <li>06 September 2016</li>
     <li><a href="/blog/authors/jonb/">Jon Barlow</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </li>
     <li><a href="/blog/2016/09/06/timeline-the-future-of-the-past/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
@@ -157,7 +157,7 @@ via the <a href="https://forums.pebble.com" title="" class="">forums</a>,
 <a href="https://twitter.com/pebbledev" title="" class="">Twitter</a> and
 <a href="http://discord.gg/aRUAYFN" title="" class="">Discord</a>, and we are happy to announce that timeline past
 has returned in the v4.0.1 update. Users who need to access the timeline past
-can now assign it to one of their quick launch buttons.</p><p><img src="/assets/images/blog/2016-09-06-quick-launch.gif" alt="Quick Launch" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>And so, with the reintroduction of timeline past, balanced was restored, and
+can now assign it to one of their quick launch buttons.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-06-quick-launch.gif" alt="Quick Launch" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>And so, with the reintroduction of timeline past, balanced was restored, and
 that was the end of the story. Or was it?</p><h3 id="back-to-the-future" class="anchor">Back to the Future!</h3><p>If you’re the developer of an application which relies upon timeline past, you
 will probably want to inform your users about how they can access timeline past,
 as it will not be enabled by default. Fortunately, there are multiple ways in
@@ -171,12 +171,12 @@ then access timeline past by long pressing UP.</p></blockquote>
 <h4 id="2-display-a-splash-screen" class="anchor">2. Display a Splash Screen</h4><p>Add a splash screen to your application which only runs once, and display a
 message informing users how to enable timeline past. You could use the
 ‘<a href="https://www.npmjs.com/package/@smallstoneapps/about-window" title="" class="">about-window</a>’
-Pebble package for a really quick and easy solution.</p><p><img src="/assets/images/blog/2016-09-06-about-window.png" alt="About Window" class="pebble-screenshot pebble-screenshot--time-white" /></p><h4 id="3-display-a-one-time-notification" class="anchor">3. Display a One-Time Notification</h4><p>Display a
+Pebble package for a really quick and easy solution.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-06-about-window.png" alt="About Window" class="pebble-screenshot pebble-screenshot--time-white" /></p><h4 id="3-display-a-one-time-notification" class="anchor">3. Display a One-Time Notification</h4><p>Display a
 <a href="https://developer.pebble.com/guides/communication/using-pebblekit-js/#showing-a-notification" title="" class="">system notification</a>
 which only fires once, and display a message informing users how to enable
-timeline past.</p><p><img src="/assets/images/blog/2016-09-06-system-notification.png" alt="System Notification" class="pebble-screenshot pebble-screenshot--time-black" /></p><h4 id="4-display-a-timeline-notification" class="anchor">4. Display a Timeline Notification</h4><p>Display a
+timeline past.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-06-system-notification.png" alt="System Notification" class="pebble-screenshot pebble-screenshot--time-black" /></p><h4 id="4-display-a-timeline-notification" class="anchor">4. Display a Timeline Notification</h4><p>Display a
 <a href="https://developer.pebble.com/guides/pebble-timeline/" title="" class="">timeline notification</a>,
-and display a message informing users how to enable timeline past.</p><p><img src="/assets/images/blog/2016-09-06-timeline-notification.png" alt="Timeline Notification" class="pebble-screenshot pebble-screenshot--time-red" /></p><h3 id="the-future-of-the-past" class="anchor">The Future of the Past</h3><p>For now, developers can continue to utilize timeline past, but over time we
+and display a message informing users how to enable timeline past.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-06-timeline-notification.png" alt="Timeline Notification" class="pebble-screenshot pebble-screenshot--time-red" /></p><h3 id="the-future-of-the-past" class="anchor">The Future of the Past</h3><p>For now, developers can continue to utilize timeline past, but over time we
 would like to provide a more diverse set of functionality that allows developers
 to surface information to their users. For example, some use cases of timeline
 past may be more appropriate as using an app glance, or timeline quick view
@@ -212,253 +212,253 @@ timeline as we travel further into the future! Let us know via
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-past-and-the-furious">The Past and the Furious</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#back-to-the-future">Back to the Future!</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#1-app-store-description">1. App Store Description</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#2-display-a-splash-screen">2. Display a Splash Screen</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#3-display-a-one-time-notification">3. Display a One-Time Notification</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#4-display-a-timeline-notification">4. Display a Timeline Notification</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-future-of-the-past">The Future of the Past</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#were-listening">We’re Listening!</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 <strong>Freshly Baked</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 <strong>Jon Barlow</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -485,19 +485,19 @@ timeline as we travel further into the future! Let us know via
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

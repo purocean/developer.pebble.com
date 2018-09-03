@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2016/05/24/Kickstarter-3/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,27 +73,27 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="the-smartwatches">The Smartwatches</option>
-          
+
             <option value="pebble-core">Pebble Core</option>
-          
+
             <option value="sdk-4-0-the-c-part">SDK 4.0 (The C Part)</option>
-          
+
             <option value="sdk-4-0-the-embedded-javascript-part">SDK 4.0 (The Embedded JavaScript Part)</option>
-          
+
             <option value="this-is-real-really">This is Real (Really!)</option>
-          
+
             <option value="lets-meetup-irl">Let’s Meetup IRL</option>
-          
+
             <option value="we-need-you-to-make-this-happen">We Need You to Make This Happen</option>
-          
+
         </select>
       </div>
     </div>
@@ -123,14 +123,14 @@
   <ul class="inline-list inline-list--piped">
     <li>24 May 2016</li>
     <li><a href="/blog/authors/cat/">Cat Haines</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </li>
     <li><a href="/blog/2016/05/24/Kickstarter-3/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
@@ -143,7 +143,7 @@ user and developer experiences look like. We are introducing an entirely new
 class of wearable device, and adding a modern JavaScript SDK that takes
 advantage of the Web APIs JavaScript developers around the world know and love.</p><p>There is a lot to take in, so we’re here to help break down what’s new and
 exciting for our favorite developer community!</p><h2 id="the-smartwatches" class="anchor">The Smartwatches</h2><p>We are introducing two new smartwatches designed to track and improve your
-health, and simplify your life.</p><p><img src="/assets/images/blog/2016-05-24-kickstarter-3/smartwatches.png" alt="Pebble 2, and Time 2" />
+health, and simplify your life.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/smartwatches.png" alt="Pebble 2, and Time 2" />
 <p class="blog__image-text">Pebble 2, and Time 2</p></p><p>Pebble 2 is a take on our classic Pebble that launched the smartwatch market in
 2012. It includes updated hardware with a high contrast black and white display,
 microphone, up to seven days battery life, plus activity, sleep and heart rate
@@ -252,7 +252,7 @@ that includes 3D drawings of all our smartwatches!</p>
 </table>
 <h2 id="pebble-core" class="anchor">Pebble Core</h2><p>A lot of people like to call Pebble a ‘smartwatch’ company, but we’ve decided
 it’s <em>Time</em> to prove them wrong, and expand our <em>Core</em> business with an entirely
-new ultra-wearable!</p><p><img src="/assets/images/blog/2016-05-24-kickstarter-3/core.jpg" alt="Pebble Core" />
+new ultra-wearable!</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/core.jpg" alt="Pebble Core" />
 <p class="blog__image-text">Pebble Core</p></p><p>Pebble Core is an entirely new class of wearable device - it features 3G,
 WiFi, Bluetooth, GPS, an accelerometer, two programmable buttons, a headphone
 jack, and a hardware expansion port accessible to developers.</p><p><strong>Oh yeah, and it’s an open platform.</strong></p><p>Pebble Core is built on top of Android, but has the familiar Pebble
@@ -277,17 +277,17 @@ they need at a glance, and take quick, simple actions.</p><p>Let’s look at som
 advantage of them as a developer.</p><p>The most obvious change is that we have replaced timeline past with an updated
 Launcher capable of displaying glanceable information through a new AppGlances
 API. To help accommodate the removal of timeline past, we’ve updated the
-behaviour of “Now” pins to allow them to persist into the future.</p><p><img src="/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif" alt="Updated Launcher" class="pebble-screenshot pebble-screenshot--time-black">
+behaviour of “Now” pins to allow them to persist into the future.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif" alt="Updated Launcher" class="pebble-screenshot pebble-screenshot--time-black">
 <p class="blog__image-text">Preview version of updated launcher with AppGlances</p></p><p>Along with the updated launcher, we’re also helping users gain better insight
 into what’s going on right now through a new feature called timeline quick view.
-Timeline Quick View is a small notification displayed on the user’s watchface 
-to let them know what’s happening right now, or coming up soon.</p><p><a href="/assets/images/blog/2016-05-24-kickstarter-3/peek.png" title="" class=""><img src="/assets/images/blog/2016-05-24-kickstarter-3/peek.png" alt="Timeline Quick View" /></a>
-<p class="blog__image-text">Preview version of timeline quick view</p></p><p>The default behaviour for timeline quick view is to simply draw over the bottom 
-of the watchface, however, developers will have access to a new set of APIs to 
-manage how their watchface responds to timeline quick view events. SDK 4.0 will 
-include APIs to find the “unobstructed area” of the display, and to react to 
-timeline quick view being displayed, and hidden. Using these APIs, developers 
-can create watchfaces that respond to timeline quick view, and programmatically 
+Timeline Quick View is a small notification displayed on the user’s watchface
+to let them know what’s happening right now, or coming up soon.</p><p><a href="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/peek.png" title="" class=""><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/peek.png" alt="Timeline Quick View" /></a>
+<p class="blog__image-text">Preview version of timeline quick view</p></p><p>The default behaviour for timeline quick view is to simply draw over the bottom
+of the watchface, however, developers will have access to a new set of APIs to
+manage how their watchface responds to timeline quick view events. SDK 4.0 will
+include APIs to find the “unobstructed area” of the display, and to react to
+timeline quick view being displayed, and hidden. Using these APIs, developers
+can create watchfaces that respond to timeline quick view, and programmatically
 adjust!</p><p>And of course, you’ll have programmatic access to the heart rate monitor through
 an updated HealthService, capable of providing both real time, and historical
 heart rate information.</p><h2 id="sdk-4-0-the-embedded-javascript-part" class="anchor">SDK 4.0 (The Embedded JavaScript Part)</h2><p>We’ve been hard at work enabling developers to write JavaScript applications
@@ -349,251 +349,251 @@ should look like!</p><p><a href="https://pebble.com/kickstarter">https://pebble.
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-smartwatches">The Smartwatches</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#pebble-core">Pebble Core</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#sdk-4-0-the-c-part">SDK 4.0 (The C Part)</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#sdk-4-0-the-embedded-javascript-part">SDK 4.0 (The Embedded JavaScript Part)</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#this-is-real-really">This is Real (Really!)</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#lets-meetup-irl">Let’s Meetup IRL</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#we-need-you-to-make-this-happen">We Need You to Make This Happen</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 <strong>Freshly Baked</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 <strong>Cat Haines</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -620,19 +620,19 @@ should look like!</p><p><a href="https://pebble.com/kickstarter">https://pebble.
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

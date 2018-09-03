@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2015/04/03/The-Road-To-Pebble-SDK-3.0-In-Ten-Questions/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,35 +73,35 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="what-is-the-timeline-shown-in-the-kickstarter-video-and-how-can-i-plug-into-it">What is the “timeline” shown in the Kickstarter video and how can I plug into it?</option>
-          
+
             <option value="how-can-i-build-apps-with-transitions-and-animations-like-the-ones-shown-in-the-kickstarter-videos">How can I build apps with transitions and animations like the ones shown in the Kickstarter videos?</option>
-          
+
             <option value="what-is-up-with-the-icons-on-pebble-time-can-i-use-these-effects-in-my-applications">What is up with the icons on Pebble Time? Can I use these effects in my applications?</option>
-          
+
             <option value="what-is-really-happening-when-i-compile-an-app-today-to-be-compatible-with-all-pebbles">What is really happening when I compile an app today to be compatible with all Pebbles?</option>
-          
+
             <option value="what-are-appfaces-and-when-can-we-use-them">What are AppFaces and when can we use them?</option>
-          
+
             <option value="when-can-we-start-interacting-with-smartstraps">When can we start interacting with smartstraps?</option>
-          
+
             <option value="how-can-i-get-my-hands-on-pebble-time-when-will-users-get-them">How can I get my hands on Pebble Time? When will users get them?</option>
-          
+
             <option value="what-about-pebblekit-for-ios-and-android-any-improvements">What about PebbleKit for iOS and Android? Any improvements?</option>
-          
+
             <option value="will-developers-have-access-to-the-microphone-what-can-we-do-with-it">Will developers have access to the microphone? What can we do with it?</option>
-          
+
             <option value="can-we-submit-apps-for-pebble-time-to-the-pebble-appstore-now">Can we submit apps for Pebble Time to the Pebble appstore now?</option>
-          
+
             <option value="want-more-answers">Want more answers?</option>
-          
+
         </select>
       </div>
     </div>
@@ -131,18 +131,18 @@
   <ul class="inline-list inline-list--piped">
     <li>03 April 2015</li>
     <li><a href="/blog/authors/thomas/">Thomas Sarlandie</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </li>
     <li><a href="/blog/2015/04/03/The-Road-To-Pebble-SDK-3.0-In-Ten-Questions/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
-<p><img src="/assets/images/blog/road30-banner.png"></p>
+<p><img src="/developer.pebble.com/assets/images/blog/road30-banner.png"></p>
 
 <p>We launched the first version of our new SDK with support for Pebble Time two
 days into our Kickstarter campaign. Since then, we have updated it every week,
@@ -160,7 +160,7 @@ efforts.</p><p>In this update, I want to answer publicly the most frequent quest
 from the community in the last few weeks. I will cover components that have
 been released but also those that are still to come so you have the information
 needed to plan ahead and prepare your apps for the Pebble Time launch.</p><h2 id="what-is-the-timeline-shown-in-the-kickstarter-video-and-how-can-i-plug-into-it" class="anchor">What is the “timeline” shown in the Kickstarter video and how can I plug into it?</h2><p>The timeline is a system-provided app that allows the user to navigate through
-important events in their near future and their past.</p><p><img src="/assets/images/blog/road30-timeline.gif" alt="A glipse at the future (on the timeline)" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Apps have a very important role to play in the timeline. All Pebble apps (but
+important events in their near future and their past.</p><p><img src="/developer.pebble.com/assets/images/blog/road30-timeline.gif" alt="A glipse at the future (on the timeline)" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Apps have a very important role to play in the timeline. All Pebble apps (but
 not companion apps that use our native PebbleSDK on Android and iOS) can push
 “pins” to the timeline. From a developer perspective, pins are just a block of
 JSON which describes the information to show to the user and what layout to use
@@ -176,7 +176,7 @@ you can start pushing them via a public HTTP API. This API requires that your
 app is submitted on the Pebble appstore; that is also how you get your API key
 to use the timeline API. We have built a <a href="https://github.com/pebble/pebble-api-node" title="" class="">Node.js
 library</a> to make this easier and
-David Moreau has already shared a 
+David Moreau has already shared a
 <a href="https://github.com/dav-m85/pebble-api-php/" title="" class="">PHP library</a>.</p><p>We also have a number of examples to help you get started: </p>
 <ul>
 <li>A very simple <a href="https://github.com/pebble-examples/hello-timeline" title="" class="">timeline hello
@@ -199,30 +199,30 @@ course we are not limiting them to the system applications. We want all apps to
 take advantage of them and to achieve that, we are investing a lot of effort.</p><p>An essential part of all the animations is the core graphics framework used to
 draw shapes, text and images. We have improved it a lot in recent weeks with
 <a href="/guides/graphics-and-animations/animations" title="" class="">much better support for animations</a>,
-<a href="/guides/graphics-and-animations/drawing-primitives-images-and-text/" title="" class="">anti-aliasing and stroke width</a>, 
+<a href="/guides/graphics-and-animations/drawing-primitives-images-and-text/" title="" class="">anti-aliasing and stroke width</a>,
 color bitmap handling and a lot of bugfixes and performance improvements.</p><p>Upcoming releases of the SDK will add the new UI components that you saw in the
 Kickstarter video: </p>
 <ul>
 <li>A new MenuLayer with support for color, infinite scrolling (i.e. looping back
-to the top), and new animations <img src="/assets/images/blog/road30-menulayer.gif" alt="The new MenuLayer
+to the top), and new animations <img src="/developer.pebble.com/assets/images/blog/road30-menulayer.gif" alt="The new MenuLayer
 >{pebble-screenshot,pebble-screenshot--time-red}" /></li>
 <li>A new ActionBar (available this week in developer preview 6!) that is wider,
-takes the full height of the screen, and includes some new animations.  <img src="/assets/images/blog/road30-actionbar.png" alt="The
+takes the full height of the screen, and includes some new animations.  <img src="/developer.pebble.com/assets/images/blog/road30-actionbar.png" alt="The
 updated ActionBar
 >{pebble-screenshot,pebble-screenshot--time-red}" /></li>
 <li>An ActionMenuWindow which is a full screen component to select an action in a
 list. This is the same UI used to select an action on a pin or a
-notification, and it is available to all apps.  <img src="/assets/images/blog/road30-actionmenu.gif" alt="The new ActionMenuWindow
+notification, and it is available to all apps.  <img src="/developer.pebble.com/assets/images/blog/road30-actionmenu.gif" alt="The new ActionMenuWindow
 >{pebble-screenshot,pebble-screenshot--time-red}" /></li>
 <li>A StatusBarLayer that gives you much more control over the status bar,
 including the ability to animate it and add goodies like a progress indicator
-and a card counter for the card pattern.  <img src="/assets/images/blog/road30-statusbar.png" alt="The new StatusBar
+and a card counter for the card pattern.  <img src="/developer.pebble.com/assets/images/blog/road30-statusbar.png" alt="The new StatusBar
 >{pebble-screenshot,pebble-screenshot--time-red}" /></li>
 <li>Cards are not really a UI Component but more of a standard pattern, seen in
 the Weather app in the Kickstarter video and we expect that a lot more apps
 will want to re-use it because it is an extremely efficient way to represent
 information and looks very good! We will have a full example available to you
-very soon showing how to build this type of app.  <img src="/assets/images/blog/road30-card.gif" alt="A preview of the Weather
+very soon showing how to build this type of app.  <img src="/developer.pebble.com/assets/images/blog/road30-card.gif" alt="A preview of the Weather
 app and its animations
 >{pebble-screenshot,pebble-screenshot--time-red}" /></li>
 </ul>
@@ -241,7 +241,7 @@ play in your app.</p><h2 id="what-is-really-happening-when-i-compile-an-app-toda
 2.9 for Aplite (Pebble and Pebble Steel) and once with SDK 3.0 for Basalt
 (Pebble Time and Pebble Time Steel). This means that your apps can have a
 different look on each platform. This is going to be even more true as we
-introduce the new UI components in the next few releases.</p><p><img src="/assets/images/blog/road30-aplite-differences.png" alt="Aplite differences" /></p><p>However, as soon as we provide official support for Aplite in SDK 3.0, we will
+introduce the new UI components in the next few releases.</p><p><img src="/developer.pebble.com/assets/images/blog/road30-aplite-differences.png" alt="Aplite differences" /></p><p>However, as soon as we provide official support for Aplite in SDK 3.0, we will
 start compiling against the same set of APIs and the UI components will have
 similar sizes, look and behavior.</p><p>All the new software features of Pebble Time will be available on the original
 Pebble, including the timeline, as well as the new UI components, PNG, Pebble
@@ -251,7 +251,7 @@ source code. You can easily do it with <code>#ifdef</code> calls. If you just wa
 freeze your Aplite app as it is today and focus on your Basalt app this will be
 possible too with a new feature in the build process coming in the near future.</p><h2 id="what-are-appfaces-and-when-can-we-use-them" class="anchor">What are AppFaces and when can we use them?</h2><p>AppFaces are previews of your app that are displayed in the launcher before the
 user starts your app. To use them, your app will need to support being launched
-without a UI to update the AppFace.</p><p><img src="/assets/images/blog/road30-appfaces.png" alt="AppFaces" /></p><p>AppFaces will not be part of Pebble SDK when we launch Pebble Time. Your apps
+without a UI to update the AppFace.</p><p><img src="/developer.pebble.com/assets/images/blog/road30-appfaces.png" alt="AppFaces" /></p><p>AppFaces will not be part of Pebble SDK when we launch Pebble Time. Your apps
 will just appear with their name until we add this API at a later stage. This
 also means that your app icons defined in the appinfo.json are not used with
 the new launcher (but they will still appear on Aplite until 3.0 ships for
@@ -264,7 +264,7 @@ website</a> to be notified as soon as they are
 available for normal orders. We will ship every Kickstarter pledge before we
 start selling them on the Pebble website.  If you ordered one through the
 Kickstarter campaign, we are working hard to get it to you as soon as possible.</p><p>As you know if you are a Kickstarter backer, Pebble Time starts shipping in May.</p><p>As a developer, you already have access to the emulator. It includes everything
-you need to work on your app. If you are missing anything, <a href="/contact" title="" class="">contact us</a>. 
+you need to work on your app. If you are missing anything, <a href="/contact" title="" class="">contact us</a>.
 With only about a month left, there is no time to lose!</p><h2 id="what-about-pebblekit-for-ios-and-android-any-improvements" class="anchor">What about PebbleKit for iOS and Android? Any improvements?</h2><p>We decided to focus all our efforts on the new UI framework and the timeline.
 There are no functional changes to PebbleKit in SDK 3.0. However, all Android
 apps must be recompiled with the new PebbleKit Android library to be compatible
@@ -313,259 +313,259 @@ with us and get answers!</p>
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-is-the-timeline-shown-in-the-kickstarter-video-and-how-can-i-plug-into-it">What is the “timeline” shown in the Kickstarter video and how can I plug into it?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#how-can-i-build-apps-with-transitions-and-animations-like-the-ones-shown-in-the-kickstarter-videos">How can I build apps with transitions and animations like the ones shown in the Kickstarter videos?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-is-up-with-the-icons-on-pebble-time-can-i-use-these-effects-in-my-applications">What is up with the icons on Pebble Time? Can I use these effects in my applications?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-is-really-happening-when-i-compile-an-app-today-to-be-compatible-with-all-pebbles">What is really happening when I compile an app today to be compatible with all Pebbles?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-are-appfaces-and-when-can-we-use-them">What are AppFaces and when can we use them?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#when-can-we-start-interacting-with-smartstraps">When can we start interacting with smartstraps?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#how-can-i-get-my-hands-on-pebble-time-when-will-users-get-them">How can I get my hands on Pebble Time? When will users get them?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-about-pebblekit-for-ios-and-android-any-improvements">What about PebbleKit for iOS and Android? Any improvements?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#will-developers-have-access-to-the-microphone-what-can-we-do-with-it">Will developers have access to the microphone? What can we do with it?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#can-we-submit-apps-for-pebble-time-to-the-pebble-appstore-now">Can we submit apps for Pebble Time to the Pebble appstore now?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#want-more-answers">Want more answers?</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 <strong>Freshly Baked</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 <strong>Thomas Sarlandie</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -592,19 +592,19 @@ with us and get answers!</p>
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

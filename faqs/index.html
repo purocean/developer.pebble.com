@@ -10,13 +10,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/faqs/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -35,7 +35,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -82,7 +82,7 @@
       </li>
       <li class="section-menu__item"><a href="/open-source/">Open Source</a></li>
       <li class="section-menu__item"><a href="/build/">Build Tools</a></li>
-      
+
     </ul>
   </div>
 </div><!-- sidebar__wrapper -->
@@ -98,15 +98,15 @@
   <h1 class="pagetitle">Frequently Asked Questions</h1>
   <div class="row">
     <div class="col-l-8">
-    
+
     <h2 id="pebble-sdk" class="anchor">Pebble SDK</h2>
-      
+
       <p><b><p>What are the Aplite, Basalt, and Chalk platforms?</p></b></p>
       <p><p>These are the platform names we use to describe our different generations of watches. Aplite refers to the original Pebble and Pebble Steel. Basalt refers to Pebble Time. Chalk refers to Pebble Time Round.</p></p>
-      
+
       <p><b><p>I cannot find the &quot;Developer Mode&quot; or &quot;Developer Connection&quot; toggle in the iOS or Android application</p></b></p>
       <p><p>Please make sure you have updated your mobile applications to at least 2.0. On iOS, you first need to enable Developer Mode in the global <em>Settings</em> application on the phone. On Android, this can be enabled from the navigation drawer.</p></p>
-      
+
       <p><b><p><code>pebble</code> tool error: &#39;RuntimeError: Freetype library not found&#39;</p></b></p>
       <p><p>Please install the freetype library on your computer: </p>
 <ul>
@@ -114,78 +114,78 @@
 <li><p>Linux users should not have to do anything.</p></li>
 </ul>
 </p>
-      
+
       <p><b><p>How do I save the state between app invocations, for example, if I want to store user selections etc and persist it across app invocations?</p></b></p>
       <p><p>Use the <a href="/guides/events-and-services/persistent-storage" title="" class="">Persistent Storage API</a>, or <a href="/guides/communication/using-pebblekit-js" title="" class="">PebbleKit JS</a> <code>localStorage</code>.</p></p>
-      
+
       <p><b><p>How do I calculate the total size of a dictionary?</p></b></p>
       <p><p>If you have a pointer to a <code>DictionaryIterator</code>, you can easily calculate the total size of this dictionary:</p><div class="highlight"><pre><span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">received</span><span class="o">-&gt;</span><span class="n">end</span> <span class="o">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">received</span><span class="o">-&gt;</span><span class="n">dictionary</span><span class="p">;</span>
 </pre></div></p>
-      
+
       <p><b><p>Can I get realtime accelerometer data?</p></b></p>
       <p><p>Yes. See <a href="http://ninedof.wordpress.com/2014/03/28/streaming-pebble-accelerometer-data/" title="" class="">this community blog post (external link)</a> for more information.</p></p>
-      
-    
+
+
     <h2 id="app-communication" class="anchor">App Communication</h2>
-      
+
       <p><b><p>App message error: &#39;The app rejected the update&#39;</p></b></p>
       <p><p>This is likely caused by a mismatch between your watch application UUID and the UUID you registered for on the mobile application. Please make sure you use the same UUID on both ends.</p></p>
-      
-    
+
+
     <h2 id="memory-management" class="anchor">Memory Management</h2>
-      
+
       <p><b><p>How apps are loaded for execution? For example, are apps always in RAM, or loaded in RAM one at a time when the user starts that specific app?</p></b></p>
       <p><p>Apps (code and static variables) are loaded entirely in RAM when they are started. Your resources are only loaded in RAM when you call <code>resource_load()</code> or one of the function that calls it (like <code>fonts_load_custom_font()</code> or <code>gbitmap_create_with_resource_id()</code>). Your app, and all memory it has allocated, will be removed from RAM when it is terminated.</p></p>
-      
+
       <p><b><p>What is the maximum code segment size? The data segment size?</p></b></p>
       <p><p>All segments share the same memory space. There is no limit on the segment sizes but the global limit of memory available to apps is currently around 24k bytes.</p></p>
-      
+
       <p><b><p>Is there a separate Read-Only data segment vs a Read-Write data?</p></b></p>
       <p><p>No. For apps, the data segment is all Read-Write.</p></p>
-      
+
       <p><b><p>Can one app invoke another app to get around app size limits?</p></b></p>
       <p><p>You can use the PebbleKit iOS or Android to launch any application on Pebble.</p></p>
-      
-    
+
+
     <h2 id="app-publishing" class="anchor">App Publishing</h2>
-      
+
       <p><b><p>My companion app got rejected</p></b></p>
       <p><p>It probably hasn&#39;t been accepted yet. You will get a confirmation email from pebbledev after it has been submitted to Apple. After this, it will be 2-3 days for it to be officially in the MFi program.</p></p>
-      
-    
+
+
     <h2 id="hardware-issues" class="anchor">Hardware Issues</h2>
-      
+
       <p><b><p>My screen is artifacting/flashing/ customer support issues</p></b></p>
       <p><p>Contact <a href="mailto:support@getpebble.com" title="" class="">support@getpebble.com</a> for RMA issues.</p></p>
-      
-    
+
+
     <h2 id="pebble-sdk-1-x-migration" class="anchor">Pebble SDK 1.x Migration</h2>
-      
+
       <p><b><p>In my old app <code>PBL_APP_INFO</code> I was setting the flags <code>APP_INFO_STANDARD_APP | APP_INFO_VISIBILITY_SHOWN_ON_COMMUNICATION</code>. How do I do that with the new <code>appinfo.json</code> file?</p></b></p>
       <p><p>You can add another flag to <code>package.json</code> under the <code>&quot;watchapp&quot;</code> block:</p><div class="highlight"><pre><span class="s2">"watchapp"</span><span class="o">:</span> <span class="p">{</span>
   <span class="s2">"watchface"</span><span class="o">:</span> <span class="kc">false</span>
   <span class="s2">"onlyShownOnCommunication"</span><span class="o">:</span> <span class="kc">true</span><span class="p">}</span>
 </pre></div></p>
-      
-    
+
+
     </div>
     <div class="col-l-4">
       <div class="gray-box gray-box--fixed">
         <h3>Sections</h3>
         <ul>
-        
+
           <li><a href="#pebble-sdk">Pebble SDK</a></li>
-        
+
           <li><a href="#app-communication">App Communication</a></li>
-        
+
           <li><a href="#memory-management">Memory Management</a></li>
-        
+
           <li><a href="#app-publishing">App Publishing</a></li>
-        
+
           <li><a href="#hardware-issues">Hardware Issues</a></li>
-        
+
           <li><a href="#pebble-sdk-1-x-migration">Pebble SDK 1.x Migration</a></li>
-        
+
         </ul>
       </div>
     </div>
@@ -193,19 +193,19 @@
 </div>
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

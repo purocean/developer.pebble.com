@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/tutorials/js-watchface-tutorial/part2/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -100,33 +100,33 @@
 <div id="search__blackout" style="display: none;"></div>
 
   <div class="container">
-  
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="first-steps">First Steps</option>
-          
+
             <option value="sending-and-receiving-messages">Sending and Receiving Messages</option>
-          
+
             <option value="sending-messages">- Sending Messages</option>
-          
+
             <option value="message-listeners">- Message Listeners</option>
-          
+
             <option value="requesting-location">Requesting Location</option>
-          
+
             <option value="web-service-calls">Web Service Calls</option>
-          
+
             <option value="fetching-weather-data">- Fetching Weather Data</option>
-          
+
             <option value="finishing-up">Finishing Up</option>
-          
+
             <option value="conclusion">Conclusion</option>
-          
+
             <option value="what-39-s-next">What&#39;s Next</option>
-          
+
         </select>
       </div>
     </div>
@@ -137,9 +137,9 @@
   <div class="row">
     <div class="col-l-8">
       <h1>Adding Web Content to a Rocky.js JavaScript Watchface</h1>
-      
+
       <div class="markdown markdown--staff">
-      
+
       <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
   <p>
     This page contains some instructions that are different if you're using
@@ -151,34 +151,34 @@
   </p>
   <div class="text-center">
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
-      <img src="/assets/images/sdk/cloud.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
       <h4>CloudPebble</h4>
     </a>
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
-      <img src="/assets/images/sdk/sdk-box.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
       <h4>SDK</h4>
     </a>
   </div>
 </div>
 <div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
   <p class="platform-specific" data-sdk-platform="cloudpebble">
-    <img src="/assets/images/sdk/cloud.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
     Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
   </p>
   <p class="platform-specific" data-sdk-platform="local">
-    <img src="/assets/images/sdk/sdk-box.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
     Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
   </p>
 </div>
 
-      
+
       <div class="alert alert--fg-white alert--bg-purple">
   <p>  <strong>Device Compatibility</strong></p><p>  Rocky.js requires Pebble OS v4.x and therefore will not support Pebble Classic
   or Pebble Steel.</p>
 </div>
 <p>In the <a href="/tutorials/js-watchface-tutorial/part1" title="" class="">previous tutorial</a>, we looked
 at the process of creating a basic watchface using Pebble&#39;s new JavaScript API.</p><p>In this tutorial, we&#39;ll extend the example to add weather conditions from the
-Internet to our watchface.</p><p><img src="/assets/images/tutorials/js-watchface-tutorial/tictoc-weather.png" alt="rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>We&#39;ll be using the JavaScript component <code>pkjs</code>, which runs on the user&#39;s mobile
+Internet to our watchface.</p><p><img src="/developer.pebble.com/assets/images/tutorials/js-watchface-tutorial/tictoc-weather.png" alt="rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>We&#39;ll be using the JavaScript component <code>pkjs</code>, which runs on the user&#39;s mobile
 device using <a href="/docs/pebblekit-js" title="" class="">PebbleKit JS</a>. This <code>pkjs</code> component can be
 used to access information from the Internet and process it on the phone. This
 <code>pkjs</code> environment does not have the same the hardware and memory constraints of
@@ -285,7 +285,7 @@ coordinates supplied by <code>getCurrentPosition()</code> (latitude and longitud
 followed by the API key:</p>
 <div class="alert alert--bg-purple alert--fg-white">
   <b>API KEY REQUIRED</b>
-  <p>As of October 2015, an API key is required to fetch OpenWeatherMap data. 
+  <p>As of October 2015, an API key is required to fetch OpenWeatherMap data.
     These can be freely obtained from <a href="http://openweathermap.org/appid">OpenWeatherMap.org</a>.</p>
 </div>
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">myAPIKey</span> <span class="o">=</span> <span class="s1">'1234567'</span><span class="p">;</span>
@@ -418,33 +418,33 @@ community on <a href="http://discord.gg/aRUAYFN" title="" class="">Discord</a>.<
     </div>
     <div class="col-m-4 hidden-s hidden-xs hidden-m">
       <div class="gray-box gray-box--fixed gray-box--scrollspy">
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#first-steps">First Steps</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#sending-and-receiving-messages">Sending and Receiving Messages</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#sending-messages">Sending Messages</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#message-listeners">Message Listeners</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#requesting-location">Requesting Location</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#web-service-calls">Web Service Calls</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#fetching-weather-data">Fetching Weather Data</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#finishing-up">Finishing Up</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next</a></li>
-    
+
   </ul>
 
-        
+
       </div>
     </div>
   </div>
@@ -452,19 +452,19 @@ community on <a href="http://discord.gg/aRUAYFN" title="" class="">Discord</a>.<
 
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2015/07/24/timeline-challenge-week-twelve/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,19 +73,19 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="q-amp-a-with-edwin-and-philipp">Q&amp;A with Edwin and Philipp</option>
-          
+
             <option value="a-great-12-weeks">A Great 12 Weeks</option>
-          
+
             <option value="past-winners">Past Winners</option>
-          
+
         </select>
       </div>
     </div>
@@ -115,111 +115,111 @@
   <ul class="inline-list inline-list--piped">
     <li>24 July 2015</li>
     <li><a href="/blog/authors/niharika/">Niharika Bedekar</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </li>
     <li><a href="/blog/2015/07/24/timeline-challenge-week-twelve/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
 <p><img src="https://assets.getpebble.com/api/file/oTPKvUUzSLCvKS0M7722/convert?cache=true&fit=crop&w=720&h=320"></p>
 
-<p>Since we announced the Pebble timeline, getting timeline pins about your favorite 
-TV shows has been a much requested use case. Now, with the 12th and final winner 
-of the timeline challenge, you can! With 
-<a href="https://apps.getpebble.com/en_US/application/55a461f5c12bc1287100007c" title="" class="">TV Shows</a>, 
-get timeline pins and notifications from up to 25 shows.</p><p><a href="http://www.edwinfinch.com" title="" class="">Edwin Finch</a>, one of our most devoted and active developers, 
-created this app with the design help of <a href="http://www.iphibse.ch" title="" class="">Philipp Weder</a>, his 
-partner in all things Pebble development. Together, they created the 
-<a href="http://lignite.io/" title="" class="">Lignite collection</a>, a series of watchfaces designed and 
-optimized for the Pebble Time. They have also collaborated on a number of other 
-watchfaces and watchapps, which you can read more about 
+<p>Since we announced the Pebble timeline, getting timeline pins about your favorite
+TV shows has been a much requested use case. Now, with the 12th and final winner
+of the timeline challenge, you can! With
+<a href="https://apps.getpebble.com/en_US/application/55a461f5c12bc1287100007c" title="" class="">TV Shows</a>,
+get timeline pins and notifications from up to 25 shows.</p><p><a href="http://www.edwinfinch.com" title="" class="">Edwin Finch</a>, one of our most devoted and active developers,
+created this app with the design help of <a href="http://www.iphibse.ch" title="" class="">Philipp Weder</a>, his
+partner in all things Pebble development. Together, they created the
+<a href="http://lignite.io/" title="" class="">Lignite collection</a>, a series of watchfaces designed and
+optimized for the Pebble Time. They have also collaborated on a number of other
+watchfaces and watchapps, which you can read more about
 <a href="https://www.edwinfinch.com/pebble/" title="" class="">here</a>. </p><p>To make this app, Edwin and Philipp used a number of Pebble features as well as
 created some of their own. </p>
 <ul>
 <li><a href="/guides/communication/using-pebblekit-js/" title="" class="">PebbleKit JS</a> </li>
 <li>Many APIs from the <a href="/sdk/" title="" class="">Pebble C SDK</a></li>
-<li>A self designed server that includes JavaScript, PHP, Node.js, MongoDB, and 
+<li>A self designed server that includes JavaScript, PHP, Node.js, MongoDB, and
 HTML/CSS for the webpage. </li>
 </ul>
 <p>Below, Edwin and Philipp tell us about their experiences with Pebble and Pebble
-development!</p><h3 id="q-amp-a-with-edwin-and-philipp" class="anchor">Q&amp;A with Edwin and Philipp</h3><p><strong>Tell us about your experiences as Pebble Developers.</strong></p><p><em>Edwin</em></p><p>I got a Pebble when the original Kickstarter classics started shipping, but 
-never got around to SDK 1.x. A few months after SDK 2.0 came out(which was a 
-game changer), in January 2014, I just started messing around with it. I found 
-it really easy to get started: CloudPebble helped me through getting set up 
-because it’s so easy to use, and I messed around with other peoples’ open source 
-projects. In one weekend I’d created my first two watchfaces: 
-<a href="https://www.edwinfinch.com/pebble/watchfaces/cleanandsimple/" title="" class="">Clean &amp; Simple</a> 
-and <a href="https://www.edwinfinch.com/pebble/watchfaces/pebbleboy/" title="" class="">PebbleBoy</a>. </p><p>I eventually asked the community for ideas to create watchfaces and apps, and 
-I’d do it for free, just because it was fun to do. This is when I met Philipp, 
-who’d mocked up some concepts which I was really looking forward to writing and 
-did end up writing. We ended up working together for weeks, which turned into 
-months, and are now close friends.</p><p>We created Lignite - a successful Kickstarter campaign for a collection of 
-watchfaces and apps for Pebble Time. Philipp created another amazing 20 designs 
-for it, and I wrote the code. Lignite has companion apps for iOS and Android 
-(because PebbleKit is multi platform, which is awesome) which are fully featured 
-with settings and more. We’re still working on Lignite, and plan to add a lot 
-more to it!</p><p><em>Philipp</em></p><p>I actually only bought my Pebble for this very reason: creating my own 
-watchfaces! Since I did not want to charge my smartwatch each and every day, a 
-Pebble was the only logical smartwatch to buy.</p><p>I was known for creating homescreens for the then-popular Windows Mobile 
-smartphones many years ago. I ended up releasing over a hundred homescreens, 
-which landed me some awesome freelance jobs for Microsoft, HTC, and the likes.</p><p>Initially wanting to code my own watchfaces, I soon found out what I already 
-expected to happen: I am not a real coder but rather a designer. This is where 
-Edwin came in. </p><p>I sent him my mockups, and that’s pretty much where it all took off.</p><p>We released about 6 different watchfaces before the Kickstarter campaign for the 
-Pebble Time started and gave us many more possibilities for designing watchfaces! 
-Before the campaign even ended, we decided to launch our own campaign with 
-Lignite. We were blown away by the feedback, the total amount pledged, and number 
-of backers!</p><p>We would have never expected such a need for custom watchfaces!</p><p><strong>What is the backstory behind TV Guide?</strong></p><p><em>Edwin</em></p><p>Philipp actually came up with the idea after brainstorming long and hard. We 
-first discussed an app for managing your water consumption and reminding you to 
-drink water throughout the day (another idea of Philipp’s). Luckily enough we 
-had a more suitable idea for us and soon thereafter found out that 
-<a href="https://apps.getpebble.com/en_US/application/5544c004946ce2b650000037" title="" class="">8-A-Day</a> 
-won with exactly the same idea (by the way - congrats to them on their win!).</p><p><strong>Could you give us a few details about the creation of TV Guide? 
-(any hurdles you ran into, etc)</strong></p><p><em>Edwin</em></p><p>TV APIs are few and far between, especially APIs which you can use easily. After 
-some research, we had found a scraper named Zap2XML which pulls data off of 
-Zap2it and puts it into XML format. It was great because it provided key 
-information like start and end times, 119 channels, etc. I took this and 
-converted it into JSON format (which is easily readable for PebbleKit JS), and 
-made a few optimization tweaks.</p><p>I then built the internal API for it, which I use to pull the data and put it on 
-the Pebble (and the website). I slowly built up the platform, first adding a 
-list of channels, then show list based on channel, show detail view, and finally 
-subscriptions. My original server backend was very messy and actually had an 
-accounts system, which wasn’t user friendly and was very buggy. I ended up 
-taking accounts out to improve the user experience. </p><p>Philipp’s mockups featured many awesome features which we could not implement 
-yet (since time was running out) but will later, such as images of the show 
-right there on your wrist. We’re planning on expanding our feature set to match 
-with his mockups eventually.</p><p><strong>What was your favorite part about making the app?</strong></p><p><em>Edwin</em></p><p>My favourite part about making TV Guide had to be just seeing all of that data 
-pushed to my wrist. When I first saw all of the channels load into view, I had 
-this rush of excitement and felt like I was in the future. Only a few years ago, 
-smartwatches weren’t even a category (or to be more accurate, weren’t anything 
-significant). Now, I am writing apps to display TV schedules on my watch, which 
-is something else. With any project, I love seeing it grow, in files and 
-features.</p><p><strong>Were there any significant challenges you faced? If so, would you like to 
-expand upon them?</strong></p><p><em>Edwin</em></p><p>Yes, I faced a couple of significant challenges. Mainly having to do with 
-creating the mobile web version of the platform, since I’m no web developer and 
-a lot of the concepts I worked with were fairly new to me. I also hit a few 
-scaling problems. Dealing with between 7000-9000 TV shows can prove slow and 
-cumbersome. For example, it takes about 80-85 minutes total to run through each 
-show and push the pin for that respective show (and that’s in best case scenario 
-with a lower amount of shows). A small annoying problem: at early stages of 
-development, I had to wait for all 119 channels to load each time I wanted to 
-test the app once. While all of these challenges were frustrating, they sure 
-were a blast to deal with. And seeing all of that data at my wrist made me feel 
-awesome!</p><p><strong>Do you have any other app ideas that you’re planning on exploring in the future?</strong></p><p>There was another idea which we had to put on hold because it would have 
-required more time than we had. But we have put it on our todo list and are sure 
-that we will release it one day. Maybe on the next timeline contest? :-)</p><p>And of course loads more watchfaces and apps for the Lignite Collection. Philipp 
-has designed many more faces/apps in the meantime and we are not running out of 
-things to do in the future with Pebble!</p><p><strong>Anything else you’d like to tell us?</strong> </p><p><em>Edwin</em></p><p>Thanks for making an awesome platform. I don’t know where I’d be if it weren’t 
-for Pebble. I wouldn’t have met Philipp, went to Austin to teach people how to 
-write Pebble apps (for Austin Spark League), or have written this. Writing apps 
-for Pebble has completely changed my life and I’m thankful every day for it. 
-Keep making awesome happen!</p><p><img src="/assets/images/blog/edwin-and-philipp.png" /></p><h3 id="a-great-12-weeks" class="anchor">A Great 12 Weeks</h3><p>That&#39;s a wrap! We&#39;ve had a great 12 weeks, and were amazed by the apps that 
-our developers submitted. Keep an eye out over the next few weeks for some 
-honorable mentions as well as special features! </p><p>To everyone that participated in the timeline challenge, thanks for showing us 
+development!</p><h3 id="q-amp-a-with-edwin-and-philipp" class="anchor">Q&amp;A with Edwin and Philipp</h3><p><strong>Tell us about your experiences as Pebble Developers.</strong></p><p><em>Edwin</em></p><p>I got a Pebble when the original Kickstarter classics started shipping, but
+never got around to SDK 1.x. A few months after SDK 2.0 came out(which was a
+game changer), in January 2014, I just started messing around with it. I found
+it really easy to get started: CloudPebble helped me through getting set up
+because it’s so easy to use, and I messed around with other peoples’ open source
+projects. In one weekend I’d created my first two watchfaces:
+<a href="https://www.edwinfinch.com/pebble/watchfaces/cleanandsimple/" title="" class="">Clean &amp; Simple</a>
+and <a href="https://www.edwinfinch.com/pebble/watchfaces/pebbleboy/" title="" class="">PebbleBoy</a>. </p><p>I eventually asked the community for ideas to create watchfaces and apps, and
+I’d do it for free, just because it was fun to do. This is when I met Philipp,
+who’d mocked up some concepts which I was really looking forward to writing and
+did end up writing. We ended up working together for weeks, which turned into
+months, and are now close friends.</p><p>We created Lignite - a successful Kickstarter campaign for a collection of
+watchfaces and apps for Pebble Time. Philipp created another amazing 20 designs
+for it, and I wrote the code. Lignite has companion apps for iOS and Android
+(because PebbleKit is multi platform, which is awesome) which are fully featured
+with settings and more. We’re still working on Lignite, and plan to add a lot
+more to it!</p><p><em>Philipp</em></p><p>I actually only bought my Pebble for this very reason: creating my own
+watchfaces! Since I did not want to charge my smartwatch each and every day, a
+Pebble was the only logical smartwatch to buy.</p><p>I was known for creating homescreens for the then-popular Windows Mobile
+smartphones many years ago. I ended up releasing over a hundred homescreens,
+which landed me some awesome freelance jobs for Microsoft, HTC, and the likes.</p><p>Initially wanting to code my own watchfaces, I soon found out what I already
+expected to happen: I am not a real coder but rather a designer. This is where
+Edwin came in. </p><p>I sent him my mockups, and that’s pretty much where it all took off.</p><p>We released about 6 different watchfaces before the Kickstarter campaign for the
+Pebble Time started and gave us many more possibilities for designing watchfaces!
+Before the campaign even ended, we decided to launch our own campaign with
+Lignite. We were blown away by the feedback, the total amount pledged, and number
+of backers!</p><p>We would have never expected such a need for custom watchfaces!</p><p><strong>What is the backstory behind TV Guide?</strong></p><p><em>Edwin</em></p><p>Philipp actually came up with the idea after brainstorming long and hard. We
+first discussed an app for managing your water consumption and reminding you to
+drink water throughout the day (another idea of Philipp’s). Luckily enough we
+had a more suitable idea for us and soon thereafter found out that
+<a href="https://apps.getpebble.com/en_US/application/5544c004946ce2b650000037" title="" class="">8-A-Day</a>
+won with exactly the same idea (by the way - congrats to them on their win!).</p><p><strong>Could you give us a few details about the creation of TV Guide?
+(any hurdles you ran into, etc)</strong></p><p><em>Edwin</em></p><p>TV APIs are few and far between, especially APIs which you can use easily. After
+some research, we had found a scraper named Zap2XML which pulls data off of
+Zap2it and puts it into XML format. It was great because it provided key
+information like start and end times, 119 channels, etc. I took this and
+converted it into JSON format (which is easily readable for PebbleKit JS), and
+made a few optimization tweaks.</p><p>I then built the internal API for it, which I use to pull the data and put it on
+the Pebble (and the website). I slowly built up the platform, first adding a
+list of channels, then show list based on channel, show detail view, and finally
+subscriptions. My original server backend was very messy and actually had an
+accounts system, which wasn’t user friendly and was very buggy. I ended up
+taking accounts out to improve the user experience. </p><p>Philipp’s mockups featured many awesome features which we could not implement
+yet (since time was running out) but will later, such as images of the show
+right there on your wrist. We’re planning on expanding our feature set to match
+with his mockups eventually.</p><p><strong>What was your favorite part about making the app?</strong></p><p><em>Edwin</em></p><p>My favourite part about making TV Guide had to be just seeing all of that data
+pushed to my wrist. When I first saw all of the channels load into view, I had
+this rush of excitement and felt like I was in the future. Only a few years ago,
+smartwatches weren’t even a category (or to be more accurate, weren’t anything
+significant). Now, I am writing apps to display TV schedules on my watch, which
+is something else. With any project, I love seeing it grow, in files and
+features.</p><p><strong>Were there any significant challenges you faced? If so, would you like to
+expand upon them?</strong></p><p><em>Edwin</em></p><p>Yes, I faced a couple of significant challenges. Mainly having to do with
+creating the mobile web version of the platform, since I’m no web developer and
+a lot of the concepts I worked with were fairly new to me. I also hit a few
+scaling problems. Dealing with between 7000-9000 TV shows can prove slow and
+cumbersome. For example, it takes about 80-85 minutes total to run through each
+show and push the pin for that respective show (and that’s in best case scenario
+with a lower amount of shows). A small annoying problem: at early stages of
+development, I had to wait for all 119 channels to load each time I wanted to
+test the app once. While all of these challenges were frustrating, they sure
+were a blast to deal with. And seeing all of that data at my wrist made me feel
+awesome!</p><p><strong>Do you have any other app ideas that you’re planning on exploring in the future?</strong></p><p>There was another idea which we had to put on hold because it would have
+required more time than we had. But we have put it on our todo list and are sure
+that we will release it one day. Maybe on the next timeline contest? :-)</p><p>And of course loads more watchfaces and apps for the Lignite Collection. Philipp
+has designed many more faces/apps in the meantime and we are not running out of
+things to do in the future with Pebble!</p><p><strong>Anything else you’d like to tell us?</strong> </p><p><em>Edwin</em></p><p>Thanks for making an awesome platform. I don’t know where I’d be if it weren’t
+for Pebble. I wouldn’t have met Philipp, went to Austin to teach people how to
+write Pebble apps (for Austin Spark League), or have written this. Writing apps
+for Pebble has completely changed my life and I’m thankful every day for it.
+Keep making awesome happen!</p><p><img src="/developer.pebble.com/assets/images/blog/edwin-and-philipp.png" /></p><h3 id="a-great-12-weeks" class="anchor">A Great 12 Weeks</h3><p>That&#39;s a wrap! We&#39;ve had a great 12 weeks, and were amazed by the apps that
+our developers submitted. Keep an eye out over the next few weeks for some
+honorable mentions as well as special features! </p><p>To everyone that participated in the timeline challenge, thanks for showing us
 how you <strong>#makeawesomehappen</strong>.  </p><h3 id="past-winners" class="anchor">Past Winners</h3>
 <ul>
 <li>Week 1: <a href="/blog/2015/05/08/timeline-challenge-week-1/" title="" class="">Battery+</a></li>
@@ -261,243 +261,243 @@ how you <strong>#makeawesomehappen</strong>.  </p><h3 id="past-winners" class="a
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#q-amp-a-with-edwin-and-philipp">Q&amp;A with Edwin and Philipp</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#a-great-12-weeks">A Great 12 Weeks</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#past-winners">Past Winners</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 <strong>Timeline</strong>
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 <strong>Niharika Bedekar</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -524,19 +524,19 @@ how you <strong>#makeawesomehappen</strong>.  </p><h3 id="past-winners" class="a
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

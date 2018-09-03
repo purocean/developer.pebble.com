@@ -84,7 +84,7 @@
     });
   }
 
-  ZeroClipboard.config({ swfPath: "/assets/other/ZeroClipboard.swf" });
+  ZeroClipboard.config({ swfPath: "/developer.pebble.com/assets/other/ZeroClipboard.swf" });
 
   // Adding ClickToCopy to the code blocks.
   $('.highlight:not(.no-copy)').append('<a href="javascript:void(0)" class="code-copy-link"><i class="fa fa-clipboard fa-fw"></i></a>');

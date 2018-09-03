@@ -10,13 +10,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/tutorials/watchface-tutorial/part5/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -35,7 +35,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -101,15 +101,15 @@
 <div id="search__blackout" style="display: none;"></div>
 
   <div class="container">
-  
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="what-39-s-next">What&#39;s Next?</option>
-          
+
         </select>
       </div>
     </div>
@@ -120,9 +120,9 @@
   <div class="row">
     <div class="col-l-8">
       <h1>Vibrate on Disconnect</h1>
-      
+
       <div class="markdown markdown--staff">
-      
+
       <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
   <p>
     This page contains some instructions that are different if you're using
@@ -134,27 +134,27 @@
   </p>
   <div class="text-center">
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
-      <img src="/assets/images/sdk/cloud.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
       <h4>CloudPebble</h4>
     </a>
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
-      <img src="/assets/images/sdk/sdk-box.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
       <h4>SDK</h4>
     </a>
   </div>
 </div>
 <div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
   <p class="platform-specific" data-sdk-platform="cloudpebble">
-    <img src="/assets/images/sdk/cloud.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
     Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
   </p>
   <p class="platform-specific" data-sdk-platform="local">
-    <img src="/assets/images/sdk/sdk-box.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
     Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
   </p>
 </div>
 
-      
+
       <p>The final popular watchface addition explored in this tutorial series
 is the concept of using the Bluetooth connection service to alert the user
 when their watch connects or disconnects. This can be useful to know when the
@@ -173,7 +173,7 @@ the <a href="/docs/c/Foundation/Event_Service/ConnectionService/#ConnectionHandl
 <span class="p">});</span>
 </pre></div><p>The indicator itself will take the form of the following &#39;Bluetooth
 disconnected&#39; icon that will be displayed when the watch is disconnected, and
-hidden when reconnected. Save the image below for use in this project:</p><p><img style="background-color: #CCCCCC;" src="/assets/images/tutorials/intermediate/bt-icon.png"</img></p>
+hidden when reconnected. Save the image below for use in this project:</p><p><img style="background-color: #CCCCCC;" src="/developer.pebble.com/assets/images/tutorials/intermediate/bt-icon.png"</img></p>
 <div class="platform-specific" data-sdk-platform="cloudpebble"><p>Add this icon to your project by clicking &#39;Add New&#39; under &#39;Resources&#39; in
 the left hand side of the editor. Specify the &#39;Resource Type&#39; as &#39;Bitmap Image&#39;,
 upload the file for the &#39;File&#39; field. Give it an &#39;Identifier&#39; such as
@@ -221,7 +221,7 @@ occurs, and the current state is evaluated. Manually call the handler in
 <span class="n">bluetooth_callback</span><span class="p">(</span><span class="n">connection_service_peek_pebble_app_connection</span><span class="p">());</span>
 </pre></div><p>With this last feature in place, running the app and disconnecting the Bluetooth
 connection will cause the new indicator to appear, and the watch to vibrate
-twice.</p><p><img src="/assets/images/tutorials/intermediate/bt.png" alt="bt" class="pebble-screenshot pebble-screenshot--steel-black" /></p><p class="platform-specific" data-sdk-platform="cloudpebble">You can create a new CloudPebble project from the completed project by
+twice.</p><p><img src="/developer.pebble.com/assets/images/tutorials/intermediate/bt.png" alt="bt" class="pebble-screenshot pebble-screenshot--steel-black" /></p><p class="platform-specific" data-sdk-platform="cloudpebble">You can create a new CloudPebble project from the completed project by
 <a href="https://cloudpebble.net/ide/gist/ddd15cbe8b0986fda407" title="" class="">clicking here</a>.</p><p class="platform-specific" data-sdk-platform="local">You can see the finished project source code in
 <a href="https://gist.github.com/pebble-gists/ddd15cbe8b0986fda407" title="" class="">this GitHub Gist</a>.</p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>Now that you&#39;ve successfully built a feature rich watchface, it&#39;s time to
 <a href="/guides/appstore-publishing/publishing-an-app/" title="" class="">publish it</a>!</p>
@@ -229,15 +229,15 @@ twice.</p><p><img src="/assets/images/tutorials/intermediate/bt.png" alt="bt" cl
     </div>
     <div class="col-m-4 hidden-s hidden-xs hidden-m">
       <div class="gray-box gray-box--fixed gray-box--scrollspy">
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
-    
+
   </ul>
 
-        
+
       </div>
     </div>
   </div>
@@ -245,19 +245,19 @@ twice.</p><p><img src="/assets/images/tutorials/intermediate/bt.png" alt="bt" cl
 
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

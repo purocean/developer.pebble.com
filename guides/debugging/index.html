@@ -10,13 +10,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/guides/debugging/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -35,7 +35,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -70,205 +70,205 @@
       <li class="section-menu__item">
         <a href="/guides/toc/">Table of Contents</a>
       </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/app-resources/">
-            
+
             App Resources
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/appstore-publishing/">
-            
+
             Appstore Publishing
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/best-practices/">
-            
+
             Best Practices
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/communication/">
-            
+
             Communication
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item open active">
           <a href="/guides/debugging/">
-            
+
             Debugging
           </a>
-          
+
             <ul>
-            
-            
-            
-              
+
+
+
+
                 <li class="section-menu__subitem">
                   <a href="/guides/debugging/common-runtime-errors/"><span>Common Runtime Errors</span></a>
                 </li>
-              
-            
-              
+
+
+
                 <li class="section-menu__subitem">
                   <a href="/guides/debugging/common-syntax-errors/"><span>Common Syntax Errors</span></a>
                 </li>
-              
-            
-              
-            
-              
+
+
+
+
+
                 <li class="section-menu__subitem">
                   <a href="/guides/debugging/debugging-with-app-logs/"><span>Debugging with App Logs</span></a>
                 </li>
-              
-            
-              
+
+
+
                 <li class="section-menu__subitem">
                   <a href="/guides/debugging/debugging-with-gdb/"><span>Debugging with GDB</span></a>
                 </li>
-              
-            
-            
+
+
+
             </ul>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/design-and-interaction/">
-            
+
             Design and Interaction
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/events-and-services/">
-            
+
             Events and Services
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/graphics-and-animations/">
-            
+
             Graphics and Animations
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/migration/">
-            
+
             Migrating Older Apps
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/pebble-packages/">
-            
+
             Pebble Packages
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/pebble-timeline/">
-            
+
             Pebble Timeline
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/rocky-js/">
-            
+
             Rocky.js
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/smartstraps/">
-            
+
             Smartstraps
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/tools-and-resources/">
-            
+
             Tools and Resources
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/user-interfaces/">
-            
+
             User Interfaces
           </a>
-          
+
         </li>
-      
+
     </ul>
   </div>
 </div><!-- sidebar__wrapper -->
@@ -281,17 +281,17 @@
 <div id="search__blackout" style="display: none;"></div>
 
   <div class="container">
-    
+
 
 <div class="row">
   <div class="col-l-8 col-m-12">
     <h1 class="pagetitle">Debugging</h1>
-    
-<!-- 
-    
+
+<!--
+
  -->
     <div class="markdown markdown--staff">
-    
+
     <p>When writing apps, everyone makes mistakes. Sometimes a simple typo or omission
 can lead to all kinds of mysterious behavior or crashes. The guides in this
 section are aimed at trying to help developers identify and fix a variety of
@@ -300,9 +300,9 @@ app on Pebble (runtime).</p><p>There are also a few strategies outlined here, su
 features of the <code>pebble</code> <a href="/guides/tools-and-resources/pebble-tool/"><em>Command Line Tool</em></a> that
 can indicate the source of a problem in the vast majority of cases.</p><h2 id="contents" class="anchor">Contents</h2>
 <ul>
-<li><p><a href="/guides/debugging/common-runtime-errors/" title="" class=""><strong>Common Runtime Errors</strong></a> - Examples of commonly encountered runtime problems that cannot be detected at 
+<li><p><a href="/guides/debugging/common-runtime-errors/" title="" class=""><strong>Common Runtime Errors</strong></a> - Examples of commonly encountered runtime problems that cannot be detected at
 compile time and can usually be fixed by logical thought and experimentation.</p></li>
-<li><p><a href="/guides/debugging/common-syntax-errors/" title="" class=""><strong>Common Syntax Errors</strong></a> - Details of common problems encountered when writing C apps for Pebble, and how 
+<li><p><a href="/guides/debugging/common-syntax-errors/" title="" class=""><strong>Common Syntax Errors</strong></a> - Details of common problems encountered when writing C apps for Pebble, and how
 to resolve them.</p></li>
 <li><p><a href="/guides/debugging/debugging-with-app-logs/" title="" class=""><strong>Debugging with App Logs</strong></a> - How to use the app logs to debug problems with an app, as well as tips on
 interpreting common run time errors.</p></li>
@@ -310,43 +310,43 @@ interpreting common run time errors.</p></li>
 </ul>
 
     </div>
-    
-    
+
+
   </div>
-  
+
     <div class="col-m-4 hidden-s hidden-xs hidden-m">
       <div class="gray-box gray-box--fixed gray-box--scrollspy">
-        
-        
+
+
           <h3>Related SDK Docs</h3>
           <ul>
-            
+
             <li><a href="/docs/c/Foundation/Logging/">Logging</a></li>
-            
+
           </ul>
-        
-        
+
+
       </div>
     </div>
-  
+
 </div>
 
   </div>
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

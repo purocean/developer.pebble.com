@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/5/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,7 +73,7 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 
       <div class="hidden-l">
         <div class="row" style="margin-bottom: 0.5em;">
@@ -97,21 +97,21 @@
 <h2 class="pagesubtitle">A Wristed Development</h2>
 
 <div class="blog-index">
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
-    
+
     <p>Sep 23, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/09/23/Pebble-Time-Round-SDK-Developer-Preview-2/">Pebble Time Round SDK - Developer Preview 2</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/pebble/">Team Pebble</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p>You may have heard about <a href="https://www.pebble.com/timeround" title="" class="">Pebble Time Round</a>,
 our newest addition to the Pebble family which adds a whole bunch of new
@@ -127,169 +127,169 @@ this one!</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
-    <img src="/assets/images/blog/authors/alex-lin.jpeg" width=80 height=80>
-    
+
+    <img src="/developer.pebble.com/assets/images/blog/authors/alex-lin.jpeg" width=80 height=80>
+
     <p>Sep 11, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/09/11/boulder-hackathon/">5 Bits from Pebble Rocks Boulder</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/alex/">Alex Lin</a> &middot;
-      
+
       <a href="/blog/tags/at-the-pub/">At the Pub</a>
-      
+
     </p>
     <div><p>Our first steps down the red brick paved Pearl St in downtown Boulder Colorado set the tone for the weekend. The streets were bustling with activity. Street musicians were setting up their stage. Students and locals alike were just getting started with their Friday evening, funneling into the many restaurants and bars that lined the street. We had a different target, <a href="http://www.galvanize.com/" title="" class="">Galvanize-Boulder</a>, the coworking space that was the venue of Pebble&#39;s first hardware hackathon, Pebble Rocks Boulder. This would prove to be one of the most successful and worthwhile events we&#39;ve had the pleasure of attending. Here are 5 ideas on what made Pebble Rocks Boulder great.</p></div>
     <div class="text-right"><a href="/blog/2015/09/11/boulder-hackathon/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
-    <img src="/assets/images/blog/authors/niharika.png" width=80 height=80>
-    
+
+    <img src="/developer.pebble.com/assets/images/blog/authors/niharika.png" width=80 height=80>
+
     <p>Aug 24, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/08/24/time-to-code-hackathon/">Guest Post - A Reflection on a Pebble Hackathon</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
-      
+
       <a href="/blog/tags/at-the-pub/">At the Pub</a>
-      
+
     </p>
     <div><p><em>This is a guest post by Matt Langlois, developer of the Pebble
-<a href="/blog/2015/06/12/timeline-challenge-week-six/" title="" class="">Meetup</a> app, contributor to 
-pebble.js, and active Pebble developer.</em></p><p>The 
-<a href="http://www.meetup.com/PebbleOTT/events/222726467/" title="" class="">Time to Code</a> hackathon in 
-Ottawa, Canada on July 11th and 12th was a huge success! We had developers from 
-all over the city come and join us to create their first app. We even had a 
+<a href="/blog/2015/06/12/timeline-challenge-week-six/" title="" class="">Meetup</a> app, contributor to
+pebble.js, and active Pebble developer.</em></p><p>The
+<a href="http://www.meetup.com/PebbleOTT/events/222726467/" title="" class="">Time to Code</a> hackathon in
+Ottawa, Canada on July 11th and 12th was a huge success! We had developers from
+all over the city come and join us to create their first app. We even had a
 developer who had never touched code before join us to create his first app ever!</p></div>
     <div class="text-right"><a href="/blog/2015/08/24/time-to-code-hackathon/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://assets.getpebble.com/api/file/BxDVwzJ9RXiRZTL3gMnA/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
-    
+
     <p>Jul 24, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/07/24/timeline-challenge-week-twelve/">Pebble Timeline Challenge Week 12 Winner - TV Shows!</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
-      
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
-    <div><p>Since we announced the Pebble timeline, getting timeline pins about your favorite 
-TV shows has been a much requested use case. Now, with the 12th and final winner 
-of the timeline challenge, you can! With 
-<a href="https://apps.getpebble.com/en_US/application/55a461f5c12bc1287100007c" title="" class="">TV Shows</a>, 
+    <div><p>Since we announced the Pebble timeline, getting timeline pins about your favorite
+TV shows has been a much requested use case. Now, with the 12th and final winner
+of the timeline challenge, you can! With
+<a href="https://apps.getpebble.com/en_US/application/55a461f5c12bc1287100007c" title="" class="">TV Shows</a>,
 get timeline pins and notifications from up to 25 shows.</p></div>
     <div class="text-right"><a href="/blog/2015/07/24/timeline-challenge-week-twelve/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
-    <img src="/assets/images/blog/watchpop-icon.png" width="80" height="80"/>
-    
+
+    <img src="/developer.pebble.com/assets/images/blog/watchpop-icon.png" width="80" height="80"/>
+
     <p>Jul 17, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/07/17/timeline-challenge-week-eleven/">Pebble Timeline Challenge Week 11 Winner - WatchPop!</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
-      
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
     <div><p>At its core, Pebble is personal and customizable: with thousands of apps
-and watchfaces to choose from, it&#39;s likely that no two Pebblers have the same 
+and watchfaces to choose from, it&#39;s likely that no two Pebblers have the same
 experience. Now, with the 11th winner of the Pebble Timeline Challenge, you have
-the opportunity to personalize your Pebble even further: add your beloved 
+the opportunity to personalize your Pebble even further: add your beloved
 pictures, and show off your customized, beautiful watchfaces!</p></div>
     <div class="text-right"><a href="/blog/2015/07/17/timeline-challenge-week-eleven/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
-    <img src="/assets/images/blog/water-glass.png" width="80" height="80"/>
-    
+
+    <img src="/developer.pebble.com/assets/images/blog/water-glass.png" width="80" height="80"/>
+
     <p>Jul 09, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/07/09/timeline-challenge-week-ten/">Pebble Timeline Challenge Week 10 Winner - 8-A-Day!</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
-      
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
     <div><p>Doctors have been telling us this for years: drink 8 glasses of water a day,
-preferably more. Now, with the 10th winner of the Pebble Timeline Challenge, 
+preferably more. Now, with the 10th winner of the Pebble Timeline Challenge,
 <a href="https://apps.getpebble.com/en_US/application/5544c004946ce2b650000037" title="" class="">8-A-Day</a>,
-you can have your Pebble remind you instead! Get pinged hourly, and use your 
+you can have your Pebble remind you instead! Get pinged hourly, and use your
 timeline to stay healthy and hydrated. </p></div>
     <div class="text-right"><a href="/blog/2015/07/09/timeline-challenge-week-ten/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://assets.getpebble.com/api/file/F4DF5LhgSr6JkhEjPslZ/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
-    
+
     <p>Jul 02, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/07/02/timeline-challenge-week-nine/">Pebble Timeline Challenge Week 9 Winner - Tideline!</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
-      
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
-    <div><p>With summer in full swing, we&#39;re all itching to get to the beach. Use the 9th 
-winner of the Pebble Timeline Challenge to find the best waves to sail, surf, or 
-ride! Keep track of the local tides with 
-<a href="http://apps.getpebble.com/en_US/application/552e04460835235bf50000b7" title="" class="">Tideline</a> 
+    <div><p>With summer in full swing, we&#39;re all itching to get to the beach. Use the 9th
+winner of the Pebble Timeline Challenge to find the best waves to sail, surf, or
+ride! Keep track of the local tides with
+<a href="http://apps.getpebble.com/en_US/application/552e04460835235bf50000b7" title="" class="">Tideline</a>
 and make sure your sandcastles are never swept away again.</p></div>
     <div class="text-right"><a href="/blog/2015/07/02/timeline-challenge-week-nine/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="http://photos2.meetupstatic.com/photos/event/6/8/7/d/global_433826749.jpeg" width="80" height="80"/>
-    
+
     <p>Jul 01, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/07/01/my-life-as-a-pebble-developer-and-rockstar/">Guest Post - My Life As a Pebble Developer and Rockstar</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/katherine/">Katherine McAuliffe</a> &middot;
-      
+
       <a href="/blog/tags/at-the-pub/">At the Pub</a>
-      
+
     </p>
     <div><p><em>This is a guest post by Jonathan LaRocque, developer of <a href="https://play.google.com/store/apps/details?id=ca.rebootsramblings.musicboss" title="" class="">MusicBoss</a>, <a href="https://play.google.com/store/apps/details?id=ca.rebootsramblings.musictime" title="" class="">MusicTime</a>, <a href="https://play.google.com/store/apps/details?id=ca.rebootsramblings.simplyalarmholo" title="" class="">SimplyAlarm</a> and Rockstar of the Pebble Developer Meetup Ottawa, <a href="http://www.meetup.com/PebbleOTT/" title="" class="">PebbleOTT</a>.</em></p><p>April 2012 seems like such a long time ago. My first born is three years older,
 and now has a younger sibling. It also means that it has been three years since
@@ -300,113 +300,113 @@ This was the beginning of something special for me.</p></div>
   </div>
 </div>
 
-  
+
   <div class="hidden-s hidden-xs">
     <ul class="pagination clearfix">
       <li><a href="/blog/4">Prev</a></li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/">1</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/2">2</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/3">3</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/4">4</a>
-          
+
         </li>
-      
+
         <li class="active" >
-          
+
           <a href="/blog/5">5</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/6">6</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/7">7</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/8">8</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/9">9</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/10">10</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/11">11</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/12">12</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/13">13</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/14">14</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/15">15</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/16">16</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/17">17</a>
-          
+
         </li>
-      
+
       <li><a href="/blog/6">Next</a></li>
     </ul>
   </div>
@@ -420,75 +420,75 @@ This was the beginning of something special for me.</p></div>
           <div class="select-style no-label">
             <select class="js-toc-select">
             <option>JUMP TO PAGE</option>
-              
-                
+
+
                 <option value="/blog/">1</option>
-                
-              
-                
+
+
+
                 <option value="/blog/2">2</option>
-                
-              
-                
+
+
+
                 <option value="/blog/3">3</option>
-                
-              
-                
+
+
+
                 <option value="/blog/4">4</option>
-                
-              
-                
+
+
+
                 <option value="/blog/5">5</option>
-                
-              
-                
+
+
+
                 <option value="/blog/6">6</option>
-                
-              
-                
+
+
+
                 <option value="/blog/7">7</option>
-                
-              
-                
+
+
+
                 <option value="/blog/8">8</option>
-                
-              
-                
+
+
+
                 <option value="/blog/9">9</option>
-                
-              
-                
+
+
+
                 <option value="/blog/10">10</option>
-                
-              
-                
+
+
+
                 <option value="/blog/11">11</option>
-                
-              
-                
+
+
+
                 <option value="/blog/12">12</option>
-                
-              
-                
+
+
+
                 <option value="/blog/13">13</option>
-                
-              
-                
+
+
+
                 <option value="/blog/14">14</option>
-                
-              
-                
+
+
+
                 <option value="/blog/15">15</option>
-                
-              
-                
+
+
+
                 <option value="/blog/16">16</option>
-                
-              
-                
+
+
+
                 <option value="/blog/17">17</option>
-                
-              
+
+
             </select>
           </div>
         </div>
@@ -519,232 +519,232 @@ This was the beginning of something special for me.</p></div>
 </div>
 
 
-        
+
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 <strong>All Posts</strong>
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -771,19 +771,19 @@ This was the beginning of something special for me.</p></div>
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

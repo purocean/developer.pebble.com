@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2015/07/17/timeline-challenge-week-eleven/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,19 +73,19 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="q-amp-a-with-watchpop">Q&amp;A with WatchPop</option>
-          
+
             <option value="the-final-countdown">The Final Countdown</option>
-          
+
             <option value="past-winners">Past Winners</option>
-          
+
         </select>
       </div>
     </div>
@@ -115,76 +115,76 @@
   <ul class="inline-list inline-list--piped">
     <li>17 July 2015</li>
     <li><a href="/blog/authors/niharika/">Niharika Bedekar</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </li>
     <li><a href="/blog/2015/07/17/timeline-challenge-week-eleven/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
-<p><img src="/assets/images/blog/watchpop-banner.png"></p>
+<p><img src="/developer.pebble.com/assets/images/blog/watchpop-banner.png"></p>
 
 <p>At its core, Pebble is personal and customizable: with thousands of apps
-and watchfaces to choose from, it&#39;s likely that no two Pebblers have the same 
+and watchfaces to choose from, it&#39;s likely that no two Pebblers have the same
 experience. Now, with the 11th winner of the Pebble Timeline Challenge, you have
-the opportunity to personalize your Pebble even further: add your beloved 
-pictures, and show off your customized, beautiful watchfaces!</p><p>WatchPop gives users the chance to make a watchface out of their personal 
-pictures. The attention to detail is what has set this app apart and made it a 
+the opportunity to personalize your Pebble even further: add your beloved
+pictures, and show off your customized, beautiful watchfaces!</p><p>WatchPop gives users the chance to make a watchface out of their personal
+pictures. The attention to detail is what has set this app apart and made it a
 favorite among Pebblers. With features like color matching, WatchPop&#39;s watchfaces
-are well designed and aesthetically pleasing. </p><p><img src="/assets/images/blog/watchpop-color-matching.png" /></p><p>A group of three developers (Adam Fourney, Mike Terry, and Kent Lyons) met through
-the computer science research community and worked in tandem on this app. 
-Adam and Mike also work together in their professional lives: Mike is Adam&#39;s PhD 
-advisor! Here are some of the features and frameworks they used to make WatchPop 
+are well designed and aesthetically pleasing. </p><p><img src="/developer.pebble.com/assets/images/blog/watchpop-color-matching.png" /></p><p>A group of three developers (Adam Fourney, Mike Terry, and Kent Lyons) met through
+the computer science research community and worked in tandem on this app.
+Adam and Mike also work together in their professional lives: Mike is Adam&#39;s PhD
+advisor! Here are some of the features and frameworks they used to make WatchPop
 a reality: </p>
 <ul>
 <li><a href="/guides/communication/using-pebblekit-js/" title="" class="">PebbleKit JS</a> </li>
 <li><a href="/guides/communication/using-pebblekit-android/" title="" class="">PebbleKit Android</a></li>
-<li><a href="http://www.imagemagick.org/script/index.php" title="" class="">ImageMagick</a> to create, edit, 
+<li><a href="http://www.imagemagick.org/script/index.php" title="" class="">ImageMagick</a> to create, edit,
 compose, or convert bitmap images. </li>
 </ul>
-<p>Read on to hear more about WatchPop and its developers! </p><h3 id="q-amp-a-with-watchpop" class="anchor">Q&amp;A with WatchPop</h3><p><strong>Tell us about your experiences as Pebble developers.</strong></p><p>We&#39;ve been developing for the Pebble for about 8 months now. We&#39;ve found the 
-Pebble development environment to be really easy to work with, especially given 
-PebbleKit JS and 
+<p>Read on to hear more about WatchPop and its developers! </p><h3 id="q-amp-a-with-watchpop" class="anchor">Q&amp;A with WatchPop</h3><p><strong>Tell us about your experiences as Pebble developers.</strong></p><p>We&#39;ve been developing for the Pebble for about 8 months now. We&#39;ve found the
+Pebble development environment to be really easy to work with, especially given
+PebbleKit JS and
 <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a>. With these tools, you can quickly
-prototype and test out new ideas, which is great.</p><p>We&#39;re also huge fans of the Pebble platform itself - it is a very open platform. 
-This openness really encourages experimentation, letting you explore all the ways 
-smart watches can fit into people&#39;s lives.</p><p><strong>What spurred the development of WatchPop?</strong></p><p>Our first watch face was Sunshine, which shows the latest solar flare images 
-captured by NASA. Almost as soon as we released it, people started asking about 
-how they could put other pictures on their watch.</p><p>In retrospect this was the obvious thing to do -- if we could deliver satellite 
-imagery to your watch, we should be able to put pictures from your phone on your 
-watch. So we created WatchPop. </p><p><strong>Tell us a bit about developing WatchPop.</strong></p><p>WatchPop really pushes the limits of the platform in a lot of ways — especially 
-on Aplite. We move a lot of bytes around to make pictures appear on your wrist, 
-and we have to do it without a lot of memory, bandwidth, or CPU to spare. This 
-forces you to get creative, which can be fun in its own right. Working within 
-those constraints was challenging at times, but the dev community really 
-provided great advice to help us when we hit roadblocks.</p><p><strong>What was your favorite part about making the app?</strong></p><p>Our favorite part of making the app has been the feedback we&#39;ve received from 
-our users. People really seem to cherish the ability to have pictures of their 
-loved ones on their Pebble. It seems to make the Pebble that much more personal 
-for them.</p><p>We&#39;ve also been surprised at some of the creative uses of WatchPop. We&#39;ve had a 
-user put his company logo on his wrist using WatchPop, and a tattoo artist put a 
-mini portfolio of her work on her Pebble with WatchPop. We also attended a 
-wedding where a common graphic appeared on the invitation and program. We took a 
-picture of it, and it became our new watch face. People seemed to think that it 
-was a nice way to celebrate the event. In all these cases the common element is 
-that it&#39;s a relatively instant process -- you take a picture, and it shows up on 
-your watch -- so it makes it easy to use it in creative ways.</p><p><strong>Do you have any other app ideas that you&#39;re planning on exploring in the future?</strong></p><p>One of the features we&#39;ve been working on are picture feeds. We already have one 
-feed, which spotlights cool pictures we come across.</p><p>A couple of weeks ago, we realized we had an opportunity to do something cool 
-with the feed: we could rebroadcast images of the New Horizons Pluto fly-by to 
-peoples&#39; Pebbles, so we&#39;ve been doing that for the past week.</p><p>This took off! (forgive the pun, but we are huge space nerds) We&#39;ve received a 
-lot of positive feedback, with requests for a permanent space-themed feed. 
-There&#39;s just something about cool about images being captured billions of miles 
-away, and showing up on your wrist.</p><p>Given this experience, we&#39;re really interested in other types of content or 
-feeds that people would like to have on their Pebble. We think there is a huge 
-space of content that people would like to see updated on a regular basis on 
-their Pebble.</p><p>To support this, we&#39;ve started exploring an API that lets developers send 
-pictures or other content to people&#39;s watches using the WatchPop backend. We&#39;d 
-love to talk to people who&#39;d be interested in using such a service.</p><p><strong>Anything else you’d like to tell us?</strong></p><p>We&#39;re really honored and excited to have received this award! We&#39;re big fans of 
-Pebble and this platform!</p><p><img src="/assets/images/blog/watchpop-guys.png" /></p><h3 id="the-final-countdown" class="anchor">The Final Countdown</h3><p>The timeline challenge has almost wrapped up, but there&#39;s still <strong>ONE</strong> chance 
-left to win! Make sure you submit your apps by 11:59 pm PST this Sunday, July 
+prototype and test out new ideas, which is great.</p><p>We&#39;re also huge fans of the Pebble platform itself - it is a very open platform.
+This openness really encourages experimentation, letting you explore all the ways
+smart watches can fit into people&#39;s lives.</p><p><strong>What spurred the development of WatchPop?</strong></p><p>Our first watch face was Sunshine, which shows the latest solar flare images
+captured by NASA. Almost as soon as we released it, people started asking about
+how they could put other pictures on their watch.</p><p>In retrospect this was the obvious thing to do -- if we could deliver satellite
+imagery to your watch, we should be able to put pictures from your phone on your
+watch. So we created WatchPop. </p><p><strong>Tell us a bit about developing WatchPop.</strong></p><p>WatchPop really pushes the limits of the platform in a lot of ways — especially
+on Aplite. We move a lot of bytes around to make pictures appear on your wrist,
+and we have to do it without a lot of memory, bandwidth, or CPU to spare. This
+forces you to get creative, which can be fun in its own right. Working within
+those constraints was challenging at times, but the dev community really
+provided great advice to help us when we hit roadblocks.</p><p><strong>What was your favorite part about making the app?</strong></p><p>Our favorite part of making the app has been the feedback we&#39;ve received from
+our users. People really seem to cherish the ability to have pictures of their
+loved ones on their Pebble. It seems to make the Pebble that much more personal
+for them.</p><p>We&#39;ve also been surprised at some of the creative uses of WatchPop. We&#39;ve had a
+user put his company logo on his wrist using WatchPop, and a tattoo artist put a
+mini portfolio of her work on her Pebble with WatchPop. We also attended a
+wedding where a common graphic appeared on the invitation and program. We took a
+picture of it, and it became our new watch face. People seemed to think that it
+was a nice way to celebrate the event. In all these cases the common element is
+that it&#39;s a relatively instant process -- you take a picture, and it shows up on
+your watch -- so it makes it easy to use it in creative ways.</p><p><strong>Do you have any other app ideas that you&#39;re planning on exploring in the future?</strong></p><p>One of the features we&#39;ve been working on are picture feeds. We already have one
+feed, which spotlights cool pictures we come across.</p><p>A couple of weeks ago, we realized we had an opportunity to do something cool
+with the feed: we could rebroadcast images of the New Horizons Pluto fly-by to
+peoples&#39; Pebbles, so we&#39;ve been doing that for the past week.</p><p>This took off! (forgive the pun, but we are huge space nerds) We&#39;ve received a
+lot of positive feedback, with requests for a permanent space-themed feed.
+There&#39;s just something about cool about images being captured billions of miles
+away, and showing up on your wrist.</p><p>Given this experience, we&#39;re really interested in other types of content or
+feeds that people would like to have on their Pebble. We think there is a huge
+space of content that people would like to see updated on a regular basis on
+their Pebble.</p><p>To support this, we&#39;ve started exploring an API that lets developers send
+pictures or other content to people&#39;s watches using the WatchPop backend. We&#39;d
+love to talk to people who&#39;d be interested in using such a service.</p><p><strong>Anything else you’d like to tell us?</strong></p><p>We&#39;re really honored and excited to have received this award! We&#39;re big fans of
+Pebble and this platform!</p><p><img src="/developer.pebble.com/assets/images/blog/watchpop-guys.png" /></p><h3 id="the-final-countdown" class="anchor">The Final Countdown</h3><p>The timeline challenge has almost wrapped up, but there&#39;s still <strong>ONE</strong> chance
+left to win! Make sure you submit your apps by 11:59 pm PST this Sunday, July
 19th, and show the world how you <strong>#makeawesomehappen</strong>. </p><h3 id="past-winners" class="anchor">Past Winners</h3>
 <ul>
 <li>Week 1: <a href="/blog/2015/05/08/timeline-challenge-week-1/" title="" class="">Battery+</a></li>
@@ -225,243 +225,243 @@ left to win! Make sure you submit your apps by 11:59 pm PST this Sunday, July
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#q-amp-a-with-watchpop">Q&amp;A with WatchPop</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-final-countdown">The Final Countdown</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#past-winners">Past Winners</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 <strong>Timeline</strong>
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 <strong>Niharika Bedekar</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -488,19 +488,19 @@ left to win! Make sure you submit your apps by 11:59 pm PST this Sunday, July
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

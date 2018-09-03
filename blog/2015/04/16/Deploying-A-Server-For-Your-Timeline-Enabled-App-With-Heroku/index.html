@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2015/04/16/Deploying-A-Server-For-Your-Timeline-Enabled-App-With-Heroku/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,29 +73,29 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="prerequisites">Prerequisites</option>
-          
+
             <option value="the-project">The Project</option>
-          
+
             <option value="why-do-i-need-my-own-server">Why Do I Need My Own Server?</option>
-          
+
             <option value="setup-a-simple-webserver">Setup A Simple Webserver</option>
-          
+
             <option value="commit-push-deploy">Commit, Push, Deploy</option>
-          
+
             <option value="pushing-nested-folders-to-heroku">Pushing Nested Folders to Heroku</option>
-          
+
             <option value="heroku-scheduler">Heroku Scheduler</option>
-          
+
             <option value="conclusion">Conclusion</option>
-          
+
         </select>
       </div>
     </div>
@@ -125,18 +125,18 @@
   <ul class="inline-list inline-list--piped">
     <li>16 April 2015</li>
     <li><a href="/blog/authors/kirby/">Kirby Kohlmorgen</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </li>
     <li><a href="/blog/2015/04/16/Deploying-A-Server-For-Your-Timeline-Enabled-App-With-Heroku/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
-<p><img src="/assets/images/blog/deploying-server-header.png"></p>
+<p><img src="/developer.pebble.com/assets/images/blog/deploying-server-header.png"></p>
 
 <p>Pins are a new and intuitive way for your users to interact with your app via
 the Pebble timeline. In a previous <a href="/blog/2015/03/20/Getting-Started-With-Timeline/" title="" class="">blog post</a>
@@ -157,7 +157,7 @@ Our server will run Node.js with the <code>Express</code> npm module to serve ou
 endpoints. This allows us to utilize the <a href="https://www.npmjs.com/package/pebble-api" title="" class="">pebble-api</a>
 npm module which makes it super easy to create pins and push them to our users.</p><h2 id="why-do-i-need-my-own-server" class="anchor">Why Do I Need My Own Server?</h2><p>With the addition of timeline to the Pebble SDK developers are now encouraged to
 enhance their applications by running their own servers that bridge
-communication between their users&#39; Pebble and the timeline web API.</p><p><img src="/assets/images/guides/3.0/timeline-architecture.png" alt="timeline architecture" /></p><p>This type of architecture allows you to do more for your users. Some of the
+communication between their users&#39; Pebble and the timeline web API.</p><p><img src="/developer.pebble.com/assets/images/guides/3.0/timeline-architecture.png" alt="timeline architecture" /></p><p>This type of architecture allows you to do more for your users. Some of the
 things you can now do include:</p>
 <ul>
 <li>Push pins to users without your app running</li>
@@ -314,7 +314,7 @@ article.</p></blockquote>
 <h2 id="conclusion" class="anchor">Conclusion</h2><p>This tutorial should help you hit the ground running when deploying your first
 server for timeline. I highly encourage you to try and deploy the <a href="https://github.com/pebble-examples/timeline-tv-tracker" title="" class="">Timeline TV Tracker</a>
 and see how it all works together.</p><p>Have questions or want to share something awesome you&#39;ve made for Pebble?
-Contact at us on twitter <a href="https://twitter.com/pebbledev/" title="" class="">@pebbledev</a> or 
+Contact at us on twitter <a href="https://twitter.com/pebbledev/" title="" class="">@pebbledev</a> or
 <a href="/contact" title="" class="">share your project</a>.</p>
 <hr>
 <a id="comments" class="anchor"></a>
@@ -342,253 +342,253 @@ Contact at us on twitter <a href="https://twitter.com/pebbledev/" title="" class
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#prerequisites">Prerequisites</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-project">The Project</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#why-do-i-need-my-own-server">Why Do I Need My Own Server?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#setup-a-simple-webserver">Setup A Simple Webserver</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#commit-push-deploy">Commit, Push, Deploy</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#pushing-nested-folders-to-heroku">Pushing Nested Folders to Heroku</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#heroku-scheduler">Heroku Scheduler</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 <strong>Timeline</strong>
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 <strong>Kirby Kohlmorgen</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -615,19 +615,19 @@ Contact at us on twitter <a href="https://twitter.com/pebbledev/" title="" class
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

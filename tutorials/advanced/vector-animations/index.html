@@ -10,13 +10,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/tutorials/advanced/vector-animations/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -35,7 +35,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -101,27 +101,27 @@
 <div id="search__blackout" style="display: none;"></div>
 
   <div class="container">
-  
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="what-are-vector-images">What Are Vector Images?</option>
-          
+
             <option value="creating-compatible-files">Creating Compatible Files</option>
-          
+
             <option value="pdc-icons">- PDC icons</option>
-          
+
             <option value="getting-started">Getting Started</option>
-          
+
             <option value="drawing-a-pdc-image">Drawing a PDC Image</option>
-          
+
             <option value="playing-a-pdc-sequence">Playing a PDC Sequence</option>
-          
+
             <option value="what-39-s-next">What&#39;s Next?</option>
-          
+
         </select>
       </div>
     </div>
@@ -132,7 +132,7 @@
   <div class="row">
     <div class="col-l-8">
       <h1>Vector Animations</h1>
-      
+
       <div class="alert alert--fg-white alert--bg-purple alert--medium">
         <p>
           <strong>PLATFORM NOTICE</strong><br>
@@ -140,9 +140,9 @@
           (Pebble Time watches).
         </p>
       </div>
-      
+
       <div class="markdown markdown--staff">
-      
+
       <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
   <p>
     This page contains some instructions that are different if you're using
@@ -154,27 +154,27 @@
   </p>
   <div class="text-center">
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
-      <img src="/assets/images/sdk/cloud.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
       <h4>CloudPebble</h4>
     </a>
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
-      <img src="/assets/images/sdk/sdk-box.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
       <h4>SDK</h4>
     </a>
   </div>
 </div>
 <div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
   <p class="platform-specific" data-sdk-platform="cloudpebble">
-    <img src="/assets/images/sdk/cloud.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
     Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
   </p>
   <p class="platform-specific" data-sdk-platform="local">
-    <img src="/assets/images/sdk/sdk-box.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
     Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
   </p>
 </div>
 
-      
+
       <p>Some of the best Pebble apps make good use of the <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a> and the
 <a href="/docs/c/Graphics/" title="Graphics" class="link--docs"><code>Graphics Context</code></a> to create beautiful and eye-catching user
 interfaces that look better than those created with just the standard <a href="/docs/c/User_Interface/Layers/#Layer" title="Layer" class="link--docs"><code>Layer</code></a>
@@ -191,9 +191,9 @@ load and display PDC (Pebble Draw Command) images and sequences that contain
 sets of these instructions. An example is the weather icon used in weather
 timeline pins. The benefit of using vector graphics for this icon is that is
 allows the image to stretch in the familiar manner as it moves between the
-timeline view and the pin detail view:</p><p><img src="/assets/images/tutorials/advanced/weather.png" alt="weather" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>By including two or more vector images in a single file, an animation can be
+timeline view and the pin detail view:</p><p><img src="/developer.pebble.com/assets/images/tutorials/advanced/weather.png" alt="weather" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>By including two or more vector images in a single file, an animation can be
 created to enable fast and detailed animated sequences to be played. Examples
-can be seen in the Pebble system UI, such as when an action is completed:</p><p><img src="/assets/images/tutorials/advanced/action-completed.gif" alt="action-completed" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>The main benefits of vectors over bitmaps for simple images and icons are:</p>
+can be seen in the Pebble system UI, such as when an action is completed:</p><p><img src="/developer.pebble.com/assets/images/tutorials/advanced/action-completed.gif" alt="action-completed" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>The main benefits of vectors over bitmaps for simple images and icons are:</p>
 <ul>
 <li><p>Smaller resource size - instructions for joining points are less memory
 expensive than per-pixel bitmap data.</p></li>
@@ -240,7 +240,7 @@ elements: <code>g</code>, <code>layer</code>, <code>path</code>, <code>rect</cod
 use in your own project.</p><h3 id="pdc-icons" class="anchor">PDC icons</h3><p>Example PDC image files are available for the icons listed in
 <a href="/guides/app-resources/app-assets/" title="" class=""><em>App Assets</em></a>.
 These are ideal for use in many common types of apps, such as notification or
-weather apps.</p><p><a href="https://developer-assets.getpebble.com/assets/other/pebble-timeline-icons-pdc.zip" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">Download PDC icon files</a></p><h2 id="getting-started" class="anchor">Getting Started</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Begin a new <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> project using the
+weather apps.</p><p><a href="https://developer-assets.getpebble.com/developer.pebble.com/assets/other/pebble-timeline-icons-pdc.zip" title="" class="btn btn--markdown btn--center btn--bg-lightblue btn--fg-white">Download PDC icon files</a></p><h2 id="getting-started" class="anchor">Getting Started</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Begin a new <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> project using the
 blank template and add code only to push an initial <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, such as the
 example below:</p><p class="platform-specific" data-sdk-platform="local">Begin a new project using <code>pebble new-project</code> and create a simple app that
 pushes a blank <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>, such as the example below:</p><div class="highlight"><pre><span class="cp">#include &lt;pebble.h&gt;</span>
@@ -276,7 +276,7 @@ pushes a blank <a href="/docs/c/User_Interface/Window/" title="Window" class="li
   <span class="n">deinit</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div><h2 id="drawing-a-pdc-image" class="anchor">Drawing a PDC Image</h2><p>For this tutorial, use the example
-<a href="/assets/other/weather_image.pdc" title="" class=""><code>weather_image.pdc</code></a> file provided.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Add the PDC file as a project resource using the &#39;Add new&#39; under
+<a href="/developer.pebble.com/assets/other/weather_image.pdc" title="" class=""><code>weather_image.pdc</code></a> file provided.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Add the PDC file as a project resource using the &#39;Add new&#39; under
 &#39;Resources&#39; on the left-hand side of the CloudPebble editor, with an
 &#39;Identifier&#39; of <code>WEATHER_IMAGE</code>, and a type of &#39;raw binary blob&#39;. The file is
 assumed to be called <code>weather_image.pdc</code>.</p><p class="platform-specific" data-sdk-platform="local">Add the PDC file to your project resources in <code>package.json</code> as shown
@@ -339,10 +339,10 @@ in <code>main_window_unload()</code>:</p><div class="highlight"><pre><span class
 </pre></div><p>When run, the PDC image will be loaded, and rendered in the <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a>.
 To put the image into contrast, we will finally change the <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a> background
 color after <code>window_create()</code>:</p><div class="highlight"><pre><span class="n">window_set_background_color</span><span class="p">(</span><span class="n">s_main_window</span><span class="p">,</span> <span class="n">GColorBlueMoon</span><span class="p">);</span>
-</pre></div><p>The result will look similar to the example shown below.</p><p><img src="/assets/images/tutorials/advanced/weather-image.png" alt="weather-image" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="playing-a-pdc-sequence" class="anchor">Playing a PDC Sequence</h2><p>The <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandSequence" title="GDrawCommandSequence" class="link--docs"><code>GDrawCommandSequence</code></a> API allows developers to use vector graphics as
+</pre></div><p>The result will look similar to the example shown below.</p><p><img src="/developer.pebble.com/assets/images/tutorials/advanced/weather-image.png" alt="weather-image" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="playing-a-pdc-sequence" class="anchor">Playing a PDC Sequence</h2><p>The <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandSequence" title="GDrawCommandSequence" class="link--docs"><code>GDrawCommandSequence</code></a> API allows developers to use vector graphics as
 individual frames in a larger animation. Just like <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandImage" title="GDrawCommandImage" class="link--docs"><code>GDrawCommandImage</code></a>s, each
 <a href="/docs/c/Graphics/Draw_Commands/#GDrawCommandFrame" title="GDrawCommandFrame" class="link--docs"><code>GDrawCommandFrame</code></a> is drawn to a graphics context in a <a href="/docs/c/User_Interface/Layers/#LayerUpdateProc" title="LayerUpdateProc" class="link--docs"><code>LayerUpdateProc</code></a>.</p><p>For this tutorial, use the example
-<a href="/assets/other/clock_sequence.pdc" title="" class=""><code>clock_sequence.pdc</code></a> file provided.</p><p>Begin a new app, with a C file containing the <a href="#getting-started" title="" class="">template</a> provided above.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Next, add the file as a <code>raw</code> resource in the same way as for a PDC image,
+<a href="/developer.pebble.com/assets/other/clock_sequence.pdc" title="" class=""><code>clock_sequence.pdc</code></a> file provided.</p><p>Begin a new app, with a C file containing the <a href="#getting-started" title="" class="">template</a> provided above.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Next, add the file as a <code>raw</code> resource in the same way as for a PDC image,
 for example with an <code>Identifier</code> specified as <code>CLOCK_SEQUENCE</code>.</p><p class="platform-specific" data-sdk-platform="local">Next, add the file as a <code>raw</code> resource in the same way as for a PDC image,
 for example with the <code>name</code> field specified in <code>package.json</code> as
 <code>CLOCK_SEQUENCE</code>.</p>
@@ -422,7 +422,7 @@ procedure and add it to the <a href="/docs/c/User_Interface/Window/" title="Wind
   <span class="n">gdraw_command_sequence_destroy</span><span class="p">(</span><span class="n">s_command_seq</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div><p>When run, the animation will be played by the timer at a framerate dictated by
-<code>DELTA</code>, looking similar to the example shown below:</p><p><img src="/assets/images/tutorials/advanced/pdcs-example.gif" alt="pdcs-example" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>You have now learned how to add vector images and animations to your apps.
+<code>DELTA</code>, looking similar to the example shown below:</p><p><img src="/developer.pebble.com/assets/images/tutorials/advanced/pdcs-example.gif" alt="pdcs-example" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="what-39-s-next" class="anchor">What&#39;s Next?</h2><p>You have now learned how to add vector images and animations to your apps.
 Complete examples for these APIs are available under the <code>pebble-examples</code>
 GitHub organization:</p>
 <ul>
@@ -436,27 +436,27 @@ implementation of a Pebble Draw Command Sequence animated icon.</p></li>
     </div>
     <div class="col-m-4 hidden-s hidden-xs hidden-m">
       <div class="gray-box gray-box--fixed gray-box--scrollspy">
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-are-vector-images">What Are Vector Images?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#creating-compatible-files">Creating Compatible Files</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#pdc-icons">PDC icons</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#getting-started">Getting Started</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#drawing-a-pdc-image">Drawing a PDC Image</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#playing-a-pdc-sequence">Playing a PDC Sequence</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
-    
+
   </ul>
 
-        
+
       </div>
     </div>
   </div>
@@ -464,19 +464,19 @@ implementation of a Pebble Draw Command Sequence animated icon.</p></li>
 
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

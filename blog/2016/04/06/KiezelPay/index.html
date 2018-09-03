@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2016/04/06/KiezelPay/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,27 +73,27 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="how-does-it-work">How Does it Work?</option>
-          
+
             <option value="why-use-kiezelpay">Why Use KiezelPay?</option>
-          
+
             <option value="security">- Security</option>
-          
+
             <option value="taxes-legal">- Taxes/Legal</option>
-          
+
             <option value="ease-of-integration">- Ease of Integration</option>
-          
+
             <option value="features">- Features</option>
-          
+
             <option value="the-future">The Future!</option>
-          
+
         </select>
       </div>
     </div>
@@ -123,18 +123,18 @@
   <ul class="inline-list inline-list--piped">
     <li>06 April 2016</li>
     <li><a href="/blog/authors/cat/">Cat Haines</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/at-the-pub/">At the Pub</a>
-      
+
     </li>
     <li><a href="/blog/2016/04/06/KiezelPay/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
-<p><em>This is a guest blog post from <a href="https://www.kiezelwatchfaces.com/" title="" class="">Kiezel&#39;s</a> Kristof (in Belgium) and Jaron (in the US), who recently opened their KiezelPay payments platform to all Pebble developers! We&#39;re super excited to see how it will be used and adopted! You can find a list of KiezelPay Powered <a href="https://apps.getpebble.com/en_US/collection/kiezelpay/watchapps" title="" class="">watchapps</a> and <a href="https://apps.getpebble.com/en_US/collection/kiezelpay/watchfaces" title="" class="">watchfaces</a> in Pebble&#39;s appstore.</em></p><p><a href="https://kiezelpay.com" title="" class="">KiezelPay</a> was designed to help developers sell their apps and watchfaces for the Pebble smartwatch as easily, securely, and globally as possible. We learned a lot when we created a payment system for our Kiezel Watchfaces, and we wanted to improve that system and open it to all developers!</p><p><strong>We strongly believe you deserve to get paid.</strong></p><p>As a team we felt that bringing a solid payment system to the Pebble ecosystem would not only increase developer interest but also bring a much greater quality of apps and watchfaces to Pebble users.</p><h2 id="how-does-it-work" class="anchor">How Does it Work?</h2><p>KiezelPay apps have 3 possible statuses - unlicensed, trial, and licensed.</p><p>When the app is compiled with the trial setting enabled, it will check its status on our server as soon as the KiezelPay library is initialized for the first time after a clean install - otherwise, the app will check its status when told to do so by the developer (e.g. <a href="http://apps.getpebble.com/en_US/application/54e69569ad38b6399f000017" title="" class="">PinyWings</a> checks for the app&#39;s status after the first level, allowing users to play the first level before purchasing the game).</p><p><a href="/assets/images/blog/2016-04-05-kiezelpay/kiezelpay.png" title="" class=""><img src="/assets/images/blog/2016-04-05-kiezelpay/kiezelpay.png" alt="KiezelPay Flow" /></a></p><p>The diagram above describes the flow of communication between the Pebble app and the KiezelPay servers, including what it looks like when the optional &#39;trial&#39; and &#39;periodic rechecks after purchase&#39; features are enabled.</p><h2 id="why-use-kiezelpay" class="anchor">Why Use KiezelPay?</h2><p>KiezelPay is secure, simple to integrate, and jam packed with features like trial based apps and watchfaces, discount/promo codes, a day-­to-­day sales dashboard, worldwide transactions, and handles international taxes with ease!</p><h3 id="security" class="anchor">Security</h3><p>The first thing that comes to mind when thinking about a payment system is security. Whatever solution we created, we knew it had to be difficult to manipulate the system into giving away free usage of the app, and that the payments should be performed in a secure and trustworthy environment.</p><p>We ensure that all vital information and critical security checks happen in the application&#39;s C code, and that all communication with the KiezelPay servers use checksums, app secrets, and <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce" title="" class="">nonces</a> to help secure the system.</p><p><em>We put a lot of effort into securing our platform, and if you would like to learn more we invite you to contact us at <a href="mailto:support@kiezelpay.com" title="" class="">support@kiezelpay.com</a>.</em></p><h3 id="taxes-legal" class="anchor">Taxes/Legal</h3><p>International tax laws are becoming increasingly difficult to handle. Many governments have noticed that the digital goods sector is growing rapidly, and they are losing a lot of money because foreign companies can sell their digital goods with easy without having to pay local sales tax.</p><p>For these reasons, the EU recently changed their digital goods tax system, which now requires everyone to charge VAT to anyone from the EU buying digital goods from them, regardless of where the company/person selling those goods is located, and regardless of the amount sold... and many more countries are either following suit, or creating new tax requirements for digital goods of their own.</p><p>Trying to stay on top of tax requirements is an insurmountable burden for a single developer that just wants to make a few bucks selling their apps. At KiezelPay, we have spent an enormous amount of time with international accountants and lawyers to ensure we&#39;re compliant with current international taxes and laws - not only for accepting payments, but getting the developer paid legally and correctly in a timely manner.</p><h3 id="ease-of-integration" class="anchor">Ease of Integration</h3><p>Pebble goes to great lengths to make their development platform accessible to new and experienced developers alike, and we wanted to ensure our platform was the same. An average developer should be able to setup KiezelPay and integrate it into their app in about an hour.</p><p>Once a developer creates a product in KiezelPay, they can download a pre-built watchface that includes the KiezelPay integration that has been configured for the product they just setup!</p><h3 id="features" class="anchor">Features</h3><p>Our KiezelPay platform currently offers you the following features:</p>
+<p><em>This is a guest blog post from <a href="https://www.kiezelwatchfaces.com/" title="" class="">Kiezel&#39;s</a> Kristof (in Belgium) and Jaron (in the US), who recently opened their KiezelPay payments platform to all Pebble developers! We&#39;re super excited to see how it will be used and adopted! You can find a list of KiezelPay Powered <a href="https://apps.getpebble.com/en_US/collection/kiezelpay/watchapps" title="" class="">watchapps</a> and <a href="https://apps.getpebble.com/en_US/collection/kiezelpay/watchfaces" title="" class="">watchfaces</a> in Pebble&#39;s appstore.</em></p><p><a href="https://kiezelpay.com" title="" class="">KiezelPay</a> was designed to help developers sell their apps and watchfaces for the Pebble smartwatch as easily, securely, and globally as possible. We learned a lot when we created a payment system for our Kiezel Watchfaces, and we wanted to improve that system and open it to all developers!</p><p><strong>We strongly believe you deserve to get paid.</strong></p><p>As a team we felt that bringing a solid payment system to the Pebble ecosystem would not only increase developer interest but also bring a much greater quality of apps and watchfaces to Pebble users.</p><h2 id="how-does-it-work" class="anchor">How Does it Work?</h2><p>KiezelPay apps have 3 possible statuses - unlicensed, trial, and licensed.</p><p>When the app is compiled with the trial setting enabled, it will check its status on our server as soon as the KiezelPay library is initialized for the first time after a clean install - otherwise, the app will check its status when told to do so by the developer (e.g. <a href="http://apps.getpebble.com/en_US/application/54e69569ad38b6399f000017" title="" class="">PinyWings</a> checks for the app&#39;s status after the first level, allowing users to play the first level before purchasing the game).</p><p><a href="/developer.pebble.com/assets/images/blog/2016-04-05-kiezelpay/kiezelpay.png" title="" class=""><img src="/developer.pebble.com/assets/images/blog/2016-04-05-kiezelpay/kiezelpay.png" alt="KiezelPay Flow" /></a></p><p>The diagram above describes the flow of communication between the Pebble app and the KiezelPay servers, including what it looks like when the optional &#39;trial&#39; and &#39;periodic rechecks after purchase&#39; features are enabled.</p><h2 id="why-use-kiezelpay" class="anchor">Why Use KiezelPay?</h2><p>KiezelPay is secure, simple to integrate, and jam packed with features like trial based apps and watchfaces, discount/promo codes, a day-­to-­day sales dashboard, worldwide transactions, and handles international taxes with ease!</p><h3 id="security" class="anchor">Security</h3><p>The first thing that comes to mind when thinking about a payment system is security. Whatever solution we created, we knew it had to be difficult to manipulate the system into giving away free usage of the app, and that the payments should be performed in a secure and trustworthy environment.</p><p>We ensure that all vital information and critical security checks happen in the application&#39;s C code, and that all communication with the KiezelPay servers use checksums, app secrets, and <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce" title="" class="">nonces</a> to help secure the system.</p><p><em>We put a lot of effort into securing our platform, and if you would like to learn more we invite you to contact us at <a href="mailto:support@kiezelpay.com" title="" class="">support@kiezelpay.com</a>.</em></p><h3 id="taxes-legal" class="anchor">Taxes/Legal</h3><p>International tax laws are becoming increasingly difficult to handle. Many governments have noticed that the digital goods sector is growing rapidly, and they are losing a lot of money because foreign companies can sell their digital goods with easy without having to pay local sales tax.</p><p>For these reasons, the EU recently changed their digital goods tax system, which now requires everyone to charge VAT to anyone from the EU buying digital goods from them, regardless of where the company/person selling those goods is located, and regardless of the amount sold... and many more countries are either following suit, or creating new tax requirements for digital goods of their own.</p><p>Trying to stay on top of tax requirements is an insurmountable burden for a single developer that just wants to make a few bucks selling their apps. At KiezelPay, we have spent an enormous amount of time with international accountants and lawyers to ensure we&#39;re compliant with current international taxes and laws - not only for accepting payments, but getting the developer paid legally and correctly in a timely manner.</p><h3 id="ease-of-integration" class="anchor">Ease of Integration</h3><p>Pebble goes to great lengths to make their development platform accessible to new and experienced developers alike, and we wanted to ensure our platform was the same. An average developer should be able to setup KiezelPay and integrate it into their app in about an hour.</p><p>Once a developer creates a product in KiezelPay, they can download a pre-built watchface that includes the KiezelPay integration that has been configured for the product they just setup!</p><h3 id="features" class="anchor">Features</h3><p>Our KiezelPay platform currently offers you the following features:</p>
 <ul>
 <li><strong>Trial usage</strong>: You, as the developer, can choose if you want to allow users to test your app before purchasing by having a trial period. With a simple setting in your KiezelPay account, you can enable/disable trials, and define how long they last. After the trial is expired, the user will be required to purchase to continue.</li>
 <li><strong>Discounts</strong>: Want to reward that user that helped you hunt down a hard to find bug with a free license or have a holiday specific pricing? No problem! Our system allows you to create all kinds of discounts for every situation: percentage based or fixed amount, one time valid or during a specific period in time, with code or for anyone that purchases, etc.</li>
@@ -179,251 +179,251 @@ apps/faces</li>
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#how-does-it-work">How Does it Work?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#why-use-kiezelpay">Why Use KiezelPay?</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#security">Security</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#taxes-legal">Taxes/Legal</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#ease-of-integration">Ease of Integration</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#features">Features</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-future">The Future!</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 <strong>At the Pub</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 <strong>Cat Haines</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -450,19 +450,19 @@ apps/faces</li>
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/tutorials/watchface-tutorial/part2/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -100,23 +100,23 @@
 <div id="search__blackout" style="display: none;"></div>
 
   <div class="container">
-  
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="first-steps">First Steps</option>
-          
+
             <option value="adding-a-custom-font">Adding a Custom Font</option>
-          
+
             <option value="adding-a-bitmap">Adding a Bitmap</option>
-          
+
             <option value="conclusion">Conclusion</option>
-          
+
             <option value="what-39-s-next">What&#39;s Next?</option>
-          
+
         </select>
       </div>
     </div>
@@ -127,9 +127,9 @@
   <div class="row">
     <div class="col-l-8">
       <h1>Customizing Your Watchface</h1>
-      
+
       <div class="markdown markdown--staff">
-      
+
       <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
   <p>
     This page contains some instructions that are different if you're using
@@ -141,27 +141,27 @@
   </p>
   <div class="text-center">
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
-      <img src="/assets/images/sdk/cloud.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
       <h4>CloudPebble</h4>
     </a>
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
-      <img src="/assets/images/sdk/sdk-box.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
       <h4>SDK</h4>
     </a>
   </div>
 </div>
 <div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
   <p class="platform-specific" data-sdk-platform="cloudpebble">
-    <img src="/assets/images/sdk/cloud.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
     Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
   </p>
   <p class="platform-specific" data-sdk-platform="local">
-    <img src="/assets/images/sdk/sdk-box.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
     Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
   </p>
 </div>
 
-      
+
       <p>In the previous page of the tutorial, you learned how to create a new Pebble
 project, set it up as a basic watchface and use <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a> to display
 the current time. However, the design was pretty basic, so let&#39;s improve it with
@@ -175,14 +175,14 @@ some customization!</p><p>In order to do this we will be using some new Pebble S
 will provide some sample materials to use, but once you understand the process
 be sure to replace these with your own to truly make it your own! Once we&#39;re
 done, you should end up with a watchface looking like this:</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/2-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/2-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/2-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/2-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/2-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/2-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <h2 id="first-steps" class="anchor">First Steps</h2><p>To continue from the last part, you can either modify your existing Pebble
 project or create a new one, using the code from that project&#39;s main <code>.c</code> file
 as a starting template. For reference, that should look
 <a href="https://gist.github.com/pebble-gists/9b9d50b990d742a3ae34" title="" class="">something like this</a>.</p><p class="platform-specific" data-sdk-platform="cloudpebble">You can create a new CloudPebble project from this template by
 <a href="https://cloudpebble.net/ide/gist/9b9d50b990d742a3ae34" title="" class="">clicking here</a>.</p><p>The result of the first part should look something like this - a basic time
 display:</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/1-time~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/1-time~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/1-time~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-time~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-time~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/1-time~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <p>Let&#39;s improve it!</p><h2 id="adding-a-custom-font" class="anchor">Adding a Custom Font</h2><p class="platform-specific" data-sdk-platform="cloudpebble">To add a custom font resource to use for the time display <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>,
 click &#39;Add New&#39; on the left of the CloudPebble editor. Set the &#39;Resource Type&#39;
 to &#39;TrueType font&#39; and upload a font file. Choose an &#39;Identifier&#39;, which is the
@@ -191,8 +191,8 @@ with the desired font size, which must be small enough to show a wide time such
 as &#39;23:50&#39; in the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. If it does not fit, you can always return here
 to try another size. Click save and the font will be added to your project.</p><p class="platform-specific" data-sdk-platform="local">App resources (fonts and images etc.) are managed in the <code>package.json</code>
 file in the project&#39;s root directory, as detailed in
-<a href="/guides/app-resources/" title="" class=""><em>App Resources</em></a>. All image files and fonts must 
-reside in subfolders of the <code>/resources</code> folder of your project. Below is an 
+<a href="/guides/app-resources/" title="" class=""><em>App Resources</em></a>. All image files and fonts must
+reside in subfolders of the <code>/resources</code> folder of your project. Below is an
 example entry in the <code>media</code> array:</p>
 <div class="platform-specific" data-sdk-platform="local">
 <div class="highlight "><pre><span class="s2">&quot;media&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
@@ -208,7 +208,7 @@ example entry in the <code>media</code> array:</p>
 <p class="platform-specific" data-sdk-platform="local">In the example above, we would place our <code>perfect-dos-vga.ttf</code> file in the
 <code>/resources/fonts/</code> folder of our project.</p><p>A custom font file must be a
 <a href="http://en.wikipedia.org/wiki/TrueType" title="" class="">TrueType</a> font in the <code>.ttf</code> file format.
-<a href="/assets/fonts/getting-started/watchface-tutorial/perfect-dos-vga.ttf" title="" class="">Here is an example font to use</a>
+<a href="/developer.pebble.com/assets/fonts/getting-started/watchface-tutorial/perfect-dos-vga.ttf" title="" class="">Here is an example font to use</a>
 (<a href="http://www.dafont.com/perfect-dos-vga-437.font" title="" class="">source</a>).</p><p>Now we will substitute the system font used before (<code>FONT_KEY_BITHAM_42_BOLD</code>)
 for our newly imported one.</p><p>To do this, we will declare a <a href="/docs/c/Graphics/Fonts/#GFont" title="GFont" class="link--docs"><code>GFont</code></a> globally.</p><div class="highlight"><pre><span class="c1">// Declare globally</span>
 <span class="k">static</span> <span class="n">GFont</span> <span class="n">s_time_font</span><span class="p">;</span>
@@ -235,7 +235,7 @@ button to the top right of the CloudPebble editor, or by clicking &#39;Run Build
 and &#39;Install and Run&#39; on the &#39;Compilation&#39; screen), the watchface should feature
 a much more interesting font.</p><p class="platform-specific" data-sdk-platform="local">After re-compiling and re-installing with <code>pebble build &amp;&amp; pebble install</code>,
 the watchface should feature a much more interesting font.</p><p>An example screenshot is shown below:</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/2-custom-font~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/2-custom-font~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/2-custom-font~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/2-custom-font~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/2-custom-font~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/2-custom-font~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <h2 id="adding-a-bitmap" class="anchor">Adding a Bitmap</h2><p>The Pebble SDK also allows you to use a 2-color (black and white) bitmap image
 in your watchface project. You can ensure that you meet this requirement by
 checking the export settings in your graphics package, or by purely using only
@@ -260,7 +260,7 @@ object will have a <code>type</code> of <code>bitmap</code>. Below is an example
 </pre></div>
 </div>
 <p>As before, here is an example bitmap we have created for you to use, which looks
-like this:</p><p><a href="/assets/images/getting-started/watchface-tutorial/background.png" title="" class=""><img src="/assets/images/getting-started/watchface-tutorial/background.png" title="background" alt="background" /></a></p><p>Once this has been added to the project, return to your <code>.c</code> file and declare
+like this:</p><p><a href="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/background.png" title="" class=""><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/background.png" title="background" alt="background" /></a></p><p>Once this has been added to the project, return to your <code>.c</code> file and declare
 two more pointers, one each of <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> and <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a> near the top of
 the file:</p><div class="highlight"><pre><span class="k">static</span> <span class="n">BitmapLayer</span> <span class="o">*</span><span class="n">s_background_layer</span><span class="p">;</span>
 <span class="k">static</span> <span class="n">GBitmap</span> <span class="o">*</span><span class="n">s_background_bitmap</span><span class="p">;</span>
@@ -290,7 +290,7 @@ the background image. Do this in <code>init()</code>:</p><div class="highlight">
 time and match the style of the new custom font. Of course, if you have used
 your own font and bitmap (highly recommended!) then your watchface will not look
 exactly like this.</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/2-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/2-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/2-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/2-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/2-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/2-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <h2 id="conclusion" class="anchor">Conclusion</h2><p>After adding a custom font and a background image, our new watchface now looks
 much nicer. If you want to go a bit further, try adding a new <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> in
 the same way as the time display one to show the current date (hint: look at the
@@ -302,23 +302,23 @@ web-based content to your watchface.</p><p><a href="/tutorials/watchface-tutoria
     </div>
     <div class="col-m-4 hidden-s hidden-xs hidden-m">
       <div class="gray-box gray-box--fixed gray-box--scrollspy">
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#first-steps">First Steps</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#adding-a-custom-font">Adding a Custom Font</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#adding-a-bitmap">Adding a Bitmap</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
-    
+
   </ul>
 
-        
+
       </div>
     </div>
   </div>
@@ -326,19 +326,19 @@ web-based content to your watchface.</p><p><a href="/tutorials/watchface-tutoria
 
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

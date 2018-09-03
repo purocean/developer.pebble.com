@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2014/06/10/Pebble-SDK-Tutorial-1/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,33 +73,33 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="your-first-watchapp">Your First Watchapp</option>
-          
+
             <option value="introduction">- Introduction</option>
-          
+
             <option value="development-environment">- Development Environment</option>
-          
+
             <option value="first-steps">- First Steps</option>
-          
+
             <option value="setting-up-the-basics">- Setting Up the Basics</option>
-          
+
             <option value="using-the-sdk">- Using the SDK</option>
-          
+
             <option value="displaying-content">- Displaying Content</option>
-          
+
             <option value="compilation-and-installation">- Compilation and Installation</option>
-          
+
             <option value="conclusions">- Conclusions</option>
-          
+
             <option value="source-code">- Source Code</option>
-          
+
         </select>
       </div>
     </div>
@@ -129,7 +129,7 @@
   <ul class="inline-list inline-list--piped">
     <li>10 June 2014</li>
     <li>Chris Lewis</li>
-    
+
   </ul>
 </div>
 
@@ -246,7 +246,7 @@ of <code>g_window</code> at the top of the file. Think of them as the <code>init
 <span class="p">}</span>
 </pre></div><p>This modular approach to app creation allows a developer to create apps with all
 relevant sub-elements managed within the life of that particular <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>.
-This process is shown visually in the diagram below:</p><p><img src="/assets/images/blog/tut_1_lifecycle.png" title="Lifecycle" alt="Lifecycle" /></p><p>As a responsible app developer, it is a good practice to free up any memory we
+This process is shown visually in the diagram below:</p><p><img src="/developer.pebble.com/assets/images/blog/tut_1_lifecycle.png" title="Lifecycle" alt="Lifecycle" /></p><p>As a responsible app developer, it is a good practice to free up any memory we
 use to the system when our app is closed. Pebble SDK elements use functions
 suffixed with <code>_destroy</code> for this purpose, which can be done for our <a href="/docs/c/User_Interface/Window/" title="Window" class="link--docs"><code>Window</code></a>
 element in <code>deinit()</code>:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">deinit</span><span class="p">()</span>
@@ -321,7 +321,7 @@ Run&#39; to install your app.</li>
 <p>If your code does not compile, compare it to the
 <a href="https://gist.github.com/C-D-Lewis/a911f0b053260f209390" title="" class="">sample code</a> to see
 where you might have made an error. Once this is successful, you should see
-something similar to the screenshot below:</p><p><img src="/assets/images/blog/tut_1_preview.png" title="Screenshot" alt="Screenshot" /></p><h3 id="conclusions" class="anchor">Conclusions</h3><p>There you have it, a <em>very</em> simple watchapp to show some text of your choosing.
+something similar to the screenshot below:</p><p><img src="/developer.pebble.com/assets/images/blog/tut_1_preview.png" title="Screenshot" alt="Screenshot" /></p><h3 id="conclusions" class="anchor">Conclusions</h3><p>There you have it, a <em>very</em> simple watchapp to show some text of your choosing.
 This was done by:</p>
 <ol>
 <li>Setting up boilerplate app structure.</li>
@@ -365,257 +365,257 @@ questions to <a href="http://twitter.com/PebbleDev" title="" class="">@PebbleDev
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#your-first-watchapp">Your First Watchapp</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#introduction">Introduction</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#development-environment">Development Environment</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#first-steps">First Steps</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#setting-up-the-basics">Setting Up the Basics</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#using-the-sdk">Using the SDK</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#displaying-content">Displaying Content</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#compilation-and-installation">Compilation and Installation</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#conclusions">Conclusions</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#source-code">Source Code</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -642,19 +642,19 @@ questions to <a href="http://twitter.com/PebbleDev" title="" class="">@PebbleDev
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

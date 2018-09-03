@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2014/12/15/Parlez-vous-Pebble/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,27 +73,27 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="localization-101">Localization 101</option>
-          
+
             <option value="firmware-and-sdk-2-8-1-released">Firmware and SDK 2.8.1 Released!</option>
-          
+
             <option value="cloudpebble-now-available-in-chinese">CloudPebble Now Available in Chinese!</option>
-          
+
             <option value="pebble-teaches-with-codementor-office-hours">Pebble Teaches with Codementor Office Hours</option>
-          
+
             <option value="pebblekit-ios-deadline-for-christmas">PebbleKit iOS Deadline for Christmas</option>
-          
+
             <option value="win-a-pebble-steel-for-the-best-community-contribution-of-the-month">Win a Pebble Steel for the best Community Contribution of The Month</option>
-          
+
             <option value="we-39-re-hiring">We&#39;re Hiring!</option>
-          
+
         </select>
       </div>
     </div>
@@ -123,18 +123,18 @@
   <ul class="inline-list inline-list--piped">
     <li>15 December 2014</li>
     <li><a href="/blog/authors/chrislewis/">Chris Lewis</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </li>
     <li><a href="/blog/2014/12/15/Parlez-vous-Pebble/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
-<p><img src="/assets/images/blog/1212-world.png"></p>
+<p><img src="/developer.pebble.com/assets/images/blog/1212-world.png"></p>
 
 <p>The official Pebble Android and iOS apps have been updated to 2.2 and 2.6
 respectively. These updates add support for the French, German and Spanish
@@ -144,17 +144,17 @@ language and automatically adapt to it.</p><p>To translate the names of days and
 you support localization. Call <code>setlocale(LC_ALL, &quot;&quot;);</code> when your app starts and
 <code>strftime()</code> will take care of the rest.</p><p>If you have more content to translate, <code>setlocale()</code> also conveniently returns a
 string with the user locale!</p><p>For more information and tips on how to effectively translate your app
-(including the list of supported languages), read 
-<a href="/guides/tools-and-resources/internationalization/" title="" class="">our new internationalization guide</a>.</p><h2 id="firmware-and-sdk-2-8-1-released" class="anchor">Firmware and SDK 2.8.1 Released!</h2><p><img src="/assets/images/blog/1212-sdk.png" alt="sdk" /></p><p>After all the <a href="/blog/2014/11/28/Firmware-2-8-Android-2-1-Meetups/" title="" class="">new features</a>
+(including the list of supported languages), read
+<a href="/guides/tools-and-resources/internationalization/" title="" class="">our new internationalization guide</a>.</p><h2 id="firmware-and-sdk-2-8-1-released" class="anchor">Firmware and SDK 2.8.1 Released!</h2><p><img src="/developer.pebble.com/assets/images/blog/1212-sdk.png" alt="sdk" /></p><p>After all the <a href="/blog/2014/11/28/Firmware-2-8-Android-2-1-Meetups/" title="" class="">new features</a>
 of 2.8 were released, there were unfortunately some bugs that needed squashing
 as soon as possible. Hence we have released firmware 2.8.1, which will fix
 these issues, as well as improved iOS BLE pairing and better translations.
 Simply check your Pebble phone app to update your Pebble.</p><p>This release also comes with an <a href="/sdk/" title="" class="">updated SDK</a>, which now
 allows non-ASCII characters in the app name, includes <code>locale.h</code>, as well as
-several other app building related issues.</p><p>As always, check the <a href="/sdk/changelogs/2.8.1/" title="" class="">changelog</a> for all the details.</p><h2 id="cloudpebble-now-available-in-chinese" class="anchor">CloudPebble Now Available in Chinese!</h2><p><img src="/assets/images/blog/1212-cp.png" alt="cp" /></p><p>Previously supporting English, French, Spanish and German, developers can now
+several other app building related issues.</p><p>As always, check the <a href="/sdk/changelogs/2.8.1/" title="" class="">changelog</a> for all the details.</p><h2 id="cloudpebble-now-available-in-chinese" class="anchor">CloudPebble Now Available in Chinese!</h2><p><img src="/developer.pebble.com/assets/images/blog/1212-cp.png" alt="cp" /></p><p>Previously supporting English, French, Spanish and German, developers can now
 build Pebble apps using <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> in Chinese!</p><p>CloudPebble automatically switches to your browser language but you can also
 manually switch to any of these languages from the dropdown list at the bottom
-of the UI.</p><h2 id="pebble-teaches-with-codementor-office-hours" class="anchor">Pebble Teaches with Codementor Office Hours</h2><p><img src="/assets/images/blog/1212-codementor.png" alt="codementor" /></p><p>Our lead evangelist Thomas Sarlandie led an online workshop entitled <a href="https://www.codementor.io/javascript/tutorial/intro-wearable-development-pebble-watch-apps" title="" class=""><em>Building
+of the UI.</p><h2 id="pebble-teaches-with-codementor-office-hours" class="anchor">Pebble Teaches with Codementor Office Hours</h2><p><img src="/developer.pebble.com/assets/images/blog/1212-codementor.png" alt="codementor" /></p><p>Our lead evangelist Thomas Sarlandie led an online workshop entitled <a href="https://www.codementor.io/javascript/tutorial/intro-wearable-development-pebble-watch-apps" title="" class=""><em>Building
 Your First Pebble App in 1
 Hour</em></a>,
 which guided attendees in developing their first web-connected Pebble watchapp
@@ -199,251 +199,251 @@ enthusiasm and a taste for the Valley lifestyle, have a look at our
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#localization-101">Localization 101</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#firmware-and-sdk-2-8-1-released">Firmware and SDK 2.8.1 Released!</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#cloudpebble-now-available-in-chinese">CloudPebble Now Available in Chinese!</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#pebble-teaches-with-codementor-office-hours">Pebble Teaches with Codementor Office Hours</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#pebblekit-ios-deadline-for-christmas">PebbleKit iOS Deadline for Christmas</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#win-a-pebble-steel-for-the-best-community-contribution-of-the-month">Win a Pebble Steel for the best Community Contribution of The Month</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#we-39-re-hiring">We&#39;re Hiring!</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 <strong>Freshly Baked</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 <strong>Chris Lewis</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -470,19 +470,19 @@ enthusiasm and a taste for the Valley lifestyle, have a look at our
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

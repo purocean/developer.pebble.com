@@ -15,7 +15,7 @@ function updateFavicon(hex) {
     ctx.fillRect(2, 4, 9, 8);
     $('#favicon').attr('href', canvas.toDataURL('image/png'));
   };
-  img.src = '/assets/favicon.png';
+  img.src = '/developer.pebble.com/assets/favicon.png';
 }
 
 function selectColor($polygon) {

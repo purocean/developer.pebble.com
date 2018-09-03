@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2014/06/18/Your-First-Watchface/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,29 +73,29 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="your-first-watchface">Your First Watchface</option>
-          
+
             <option value="previous-tutorial-parts">- Previous Tutorial Parts</option>
-          
+
             <option value="introduction">- Introduction</option>
-          
+
             <option value="getting-started">- Getting Started</option>
-          
+
             <option value="telling-the-time">- Telling the Time</option>
-          
+
             <option value="adding-bitmaps">- Adding Bitmaps</option>
-          
+
             <option value="conclusion">- Conclusion</option>
-          
+
             <option value="source-code">- Source Code</option>
-          
+
         </select>
       </div>
     </div>
@@ -125,7 +125,7 @@
   <ul class="inline-list inline-list--piped">
     <li>18 June 2014</li>
     <li>Chris Lewis</li>
-    
+
   </ul>
 </div>
 
@@ -134,10 +134,10 @@ experienced begin creating their own watchapps. In this section we will be using
 the <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a> to display the current time, which is the basis of all
 great watchfaces. After this, we will use <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a>s and <a href="/docs/c/User_Interface/Layers/BitmapLayer/" title="BitmapLayer" class="link--docs"><code>BitmapLayer</code></a>s to
 improve the aesthetics of our watchface. By the end of this section, our app
-will look like this:</p><p><img src="/assets/images/blog/tut_2_frame_added.png" title="final" alt="final" /></p><h3 id="getting-started" class="anchor">Getting Started</h3><p>To begin creating this watchface, we will be using the 
-<a href="https://gist.github.com/C-D-Lewis/a911f0b053260f209390" title="" class="">source code</a> from the 
-last post as a starting point, which you can import into 
-<a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> as a new project 
+will look like this:</p><p><img src="/developer.pebble.com/assets/images/blog/tut_2_frame_added.png" title="final" alt="final" /></p><h3 id="getting-started" class="anchor">Getting Started</h3><p>To begin creating this watchface, we will be using the
+<a href="https://gist.github.com/C-D-Lewis/a911f0b053260f209390" title="" class="">source code</a> from the
+last post as a starting point, which you can import into
+<a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> as a new project
 <a href="https://cloudpebble.net/ide/gist/a911f0b053260f209390" title="" class="">here</a>. </p><p>As you may have noticed, the current watchapp is started from the Pebble main
 menu, and not on the watchface carousel like other watchfaces. To change this,
 go to &#39;Settings&#39; in your CloudPebble project and change the &#39;App Kind&#39; to
@@ -167,11 +167,11 @@ used, which is above <code>init()</code>:</p><div class="highlight"><pre><span c
 <a href="/docs/c/Foundation/Event_Service/TickTimerService/#TimeUnits" title="TimeUnits" class="link--docs"><code>TimeUnits</code></a> value supplied when we register the handler. Let&#39;s do this now in
 <code>init()</code> before <a href="/docs/c/User_Interface/Window_Stack/#window_stack_push" title="window_stack_push" class="link--docs"><code>window_stack_push()</code></a>, using the <a href="/docs/c/Foundation/Event_Service/TickTimerService/#MINUTE_UNIT" title="MINUTE_UNIT" class="link--docs"><code>MINUTE_UNIT</code></a> value to get
 an update every minute change:</p><div class="highlight"><pre><span class="n">tick_timer_service_subscribe</span><span class="p">(</span><span class="n">MINUTE_UNIT</span><span class="p">,</span> <span class="p">(</span><span class="n">TickHandler</span><span class="p">)</span><span class="n">tick_handler</span><span class="p">);</span>
-</pre></div><p>Now that we have subscribed to the <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a>, we can add code to the 
-<code>tick_handler()</code> function to use the time information provided in the 
-<code>tick_time</code> parameter to update the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. The data stored within this 
-structure follows the 
-<a href="http://www.cplusplus.com/reference/ctime/tm/" title="" class="">ctime struct tm format</a>. This 
+</pre></div><p>Now that we have subscribed to the <a href="/docs/c/Foundation/Event_Service/TickTimerService/" title="TickTimerService" class="link--docs"><code>TickTimerService</code></a>, we can add code to the
+<code>tick_handler()</code> function to use the time information provided in the
+<code>tick_time</code> parameter to update the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>. The data stored within this
+structure follows the
+<a href="http://www.cplusplus.com/reference/ctime/tm/" title="" class="">ctime struct tm format</a>. This
 means that we can access the current hour by using <code>tick_time-&gt;tm_hour</code> and the
 current minute by using <code>tick_time-&gt;tm_min</code>, for example. Instead, we will use a
 function called <code>strftime()</code> that uses the <code>tick_time</code> parameter to write a
@@ -206,11 +206,11 @@ relevant <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" cl
   <span class="n">layer_add_child</span><span class="p">(</span><span class="n">window_get_root_layer</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="n">text_layer_get_layer</span><span class="p">(</span><span class="n">g_text_layer</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div><p>Now the watchface should look more like a classic watchface with a larger font
-and centered text:</p><p><img src="/assets/images/blog/tut_2_largetext.png" title="large text" alt="largetext" /></p><h3 id="adding-bitmaps" class="anchor">Adding Bitmaps</h3><p>The next logical way to improve the watchface is to add some complementary
+and centered text:</p><p><img src="/developer.pebble.com/assets/images/blog/tut_2_largetext.png" title="large text" alt="largetext" /></p><h3 id="adding-bitmaps" class="anchor">Adding Bitmaps</h3><p>The next logical way to improve the watchface is to add some complementary
 images. These take the form of <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a>s, and are referenced by a
 <code>RESOURCE_ID</code> specified in CloudPebble Settings or <code>appinfo.json</code> when working
 with the native SDK. The first bitmap we wil add will be a smart border for the
-<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>, shown for you to use below:</p><p><img src="/assets/images/blog/tut_2_frame.png" title="frame" alt="frame" /></p><p>To add this image to our project in CloudPebble, click &quot;Add New&quot; next to
+<a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>, shown for you to use below:</p><p><img src="/developer.pebble.com/assets/images/blog/tut_2_frame.png" title="frame" alt="frame" /></p><p>To add this image to our project in CloudPebble, click &quot;Add New&quot; next to
 Resources, navigate to your stored copy of the image above and give it an ID
 such as &quot;FRAME&quot;, then click Save.</p><p>Once this is done, we can add it to the watchface. The first step is to declare
 two new global items: A <a href="/docs/c/Graphics/Graphics_Types/#GBitmap" title="GBitmap" class="link--docs"><code>GBitmap</code></a> to hold the loaded image and a
@@ -236,7 +236,7 @@ memory in <code>window_unload()</code>:</p><div class="highlight"><pre><span cla
   <span class="n">bitmap_layer_destroy</span><span class="p">(</span><span class="n">g_frame_layer</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div><p>With these steps completed, a re-compile of your project should yield something
-similar to that shown below:</p><p><img src="/assets/images/blog/tut_2_frame_added.png" title="frame added" alt="frameadded" /></p><p>The <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> is now surrounded by a crisp frame border. It&#39;s not amazing,
+similar to that shown below:</p><p><img src="/developer.pebble.com/assets/images/blog/tut_2_frame_added.png" title="frame added" alt="frameadded" /></p><p>The <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> is now surrounded by a crisp frame border. It&#39;s not amazing,
 but it&#39;s the start on a journey to a great watchface!</p><h3 id="conclusion" class="anchor">Conclusion</h3><p>There you have it: turning your simple watchapp into a basic watchface. In
 summary:</p>
 <ol>
@@ -248,12 +248,12 @@ summary:</p>
 </ol>
 <p>From there you can add more images, change the text font and size and more to
 further improve the look of the watchface. In future posts you will learn how to
-use <a href="/docs/c/Foundation/Timer/" title="Timer" class="link--docs"><code>Timer</code></a>s and <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>s to make it even better!</p><h3 id="source-code" class="anchor">Source Code</h3><p>Just like last time, the full source code file can be found 
-<a href="https://gist.github.com/C-D-Lewis/17eb11ab355950595ca2" title="" class="">here</a> and directly 
-imported into CloudPebble 
-<a href="https://cloudpebble.net/ide/gist/17eb11ab355950595ca2" title="" class="">as a new project</a>. If 
-your code doesn&#39;t compile, have a look at this and see where you may have gone 
-wrong. </p><p>Send any feedback or questions to <a href="http://twitter.com/PebbleDev" title="" class="">@PebbleDev</a> or 
+use <a href="/docs/c/Foundation/Timer/" title="Timer" class="link--docs"><code>Timer</code></a>s and <a href="/docs/c/User_Interface/Animation/" title="Animation" class="link--docs"><code>Animation</code></a>s to make it even better!</p><h3 id="source-code" class="anchor">Source Code</h3><p>Just like last time, the full source code file can be found
+<a href="https://gist.github.com/C-D-Lewis/17eb11ab355950595ca2" title="" class="">here</a> and directly
+imported into CloudPebble
+<a href="https://cloudpebble.net/ide/gist/17eb11ab355950595ca2" title="" class="">as a new project</a>. If
+your code doesn&#39;t compile, have a look at this and see where you may have gone
+wrong. </p><p>Send any feedback or questions to <a href="http://twitter.com/PebbleDev" title="" class="">@PebbleDev</a> or
 <a href="http://twitter.com/Chris_DL" title="" class="">@Chris_DL</a>.</p>
 <hr>
 <a id="comments" class="anchor"></a>
@@ -281,253 +281,253 @@ wrong. </p><p>Send any feedback or questions to <a href="http://twitter.com/Pebb
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#your-first-watchface">Your First Watchface</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#previous-tutorial-parts">Previous Tutorial Parts</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#introduction">Introduction</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#getting-started">Getting Started</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#telling-the-time">Telling the Time</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#adding-bitmaps">Adding Bitmaps</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#conclusion">Conclusion</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#source-code">Source Code</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -554,19 +554,19 @@ wrong. </p><p>Send any feedback or questions to <a href="http://twitter.com/Pebb
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

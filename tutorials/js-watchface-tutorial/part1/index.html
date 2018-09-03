@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/tutorials/js-watchface-tutorial/part1/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -100,41 +100,41 @@
 <div id="search__blackout" style="display: none;"></div>
 
   <div class="container">
-  
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="first-steps">First Steps</option>
-          
+
             <option value="watchface-basics">Watchface Basics</option>
-          
+
             <option value="creating-a-digital-watchface">Creating a Digital Watchface</option>
-          
+
             <option value="first-compilation-and-installation">First Compilation and Installation</option>
-          
+
             <option value="congratulations">Congratulations!</option>
-          
+
             <option value="creating-an-analog-watchface">Creating an Analog Watchface</option>
-          
+
             <option value="drawing-the-hands">- Drawing the Hands</option>
-          
+
             <option value="putting-it-all-together">- Putting It All Together</option>
-          
+
             <option value="troubleshooting-and-debugging">Troubleshooting and Debugging</option>
-          
+
             <option value="rocky-js-linter">- Rocky.js Linter</option>
-          
+
             <option value="locating-errors-using-logging">- Locating Errors Using Logging</option>
-          
+
             <option value="i-39-m-still-having-problems">- I&#39;m still having problems!</option>
-          
+
             <option value="conclusion">Conclusion</option>
-          
+
             <option value="what-39-s-next">What&#39;s Next</option>
-          
+
         </select>
       </div>
     </div>
@@ -145,9 +145,9 @@
   <div class="row">
     <div class="col-l-8">
       <h1>Build a Watchface in JavaScript using Rocky.js</h1>
-      
+
       <div class="markdown markdown--staff">
-      
+
       <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
   <p>
     This page contains some instructions that are different if you're using
@@ -159,27 +159,27 @@
   </p>
   <div class="text-center">
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
-      <img src="/assets/images/sdk/cloud.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
       <h4>CloudPebble</h4>
     </a>
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
-      <img src="/assets/images/sdk/sdk-box.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
       <h4>SDK</h4>
     </a>
   </div>
 </div>
 <div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
   <p class="platform-specific" data-sdk-platform="cloudpebble">
-    <img src="/assets/images/sdk/cloud.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
     Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
   </p>
   <p class="platform-specific" data-sdk-platform="local">
-    <img src="/assets/images/sdk/sdk-box.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
     Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
   </p>
 </div>
 
-      
+
       <div class="alert alert--fg-white alert--bg-purple">
   <p>  <strong>Device Compatibility</strong></p><p>  Rocky.js requires Pebble OS v4.x and therefore will not support Pebble Classic
   or Pebble Steel.</p>
@@ -190,7 +190,7 @@ beautiful and feature-rich watchfaces with a modern programming language.</p><p>
 write applications in JavaScript. Unlike Pebble.js, Rocky.js runs natively on
 the watch and is now the only offically supported method for developing
 JavaScript applications for Pebble smartwatches.</p><p>We&#39;re going to start with some basics, then create a simple digital watchface
-and finally create an analog clock which looks just like this:</p><p><img src="/assets/images/tutorials/js-watchface-tutorial/tictoc.png" alt="rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="first-steps" class="anchor">First Steps</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Go to <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> and click
+and finally create an analog clock which looks just like this:</p><p><img src="/developer.pebble.com/assets/images/tutorials/js-watchface-tutorial/tictoc.png" alt="rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><h2 id="first-steps" class="anchor">First Steps</h2><p class="platform-specific" data-sdk-platform="cloudpebble">Go to <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> and click
 &#39;Get Started&#39; to log in using your Pebble account, or create a new one if you do
 not already have one. Once you&#39;ve logged in, click &#39;Create&#39; to create a new
 project. Give your project a suitable name, such as &#39;Tutorial 1&#39; and set the
@@ -297,7 +297,7 @@ information.</p><p>Now install the watchapp and view the logs on the emulator by
 </pre></div>
 </div>
 <h2 id="congratulations" class="anchor">Congratulations!</h2><p>You should see a loading bar as the watchface is loaded, shortly followed by
-your watchface running in the emulator.</p><p><img src="/assets/images/tutorials/js-watchface-tutorial/rocky-time.png" alt="rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Your logs should also be displaying the message we told it to log with
+your watchface running in the emulator.</p><p><img src="/developer.pebble.com/assets/images/tutorials/js-watchface-tutorial/rocky-time.png" alt="rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Your logs should also be displaying the message we told it to log with
 <code>console.log()</code>.</p><div class="highlight no-copy"><pre>Another minute with your Pebble!
 </pre></div>
 <blockquote>
@@ -469,41 +469,41 @@ request weather data from the web.</p><p><a href="/tutorials/js-watchface-tutori
     </div>
     <div class="col-m-4 hidden-s hidden-xs hidden-m">
       <div class="gray-box gray-box--fixed gray-box--scrollspy">
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#first-steps">First Steps</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#watchface-basics">Watchface Basics</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#creating-a-digital-watchface">Creating a Digital Watchface</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#first-compilation-and-installation">First Compilation and Installation</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#congratulations">Congratulations!</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#creating-an-analog-watchface">Creating an Analog Watchface</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#drawing-the-hands">Drawing the Hands</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#putting-it-all-together">Putting It All Together</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#troubleshooting-and-debugging">Troubleshooting and Debugging</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#rocky-js-linter">Rocky.js Linter</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#locating-errors-using-logging">Locating Errors Using Logging</a></li>
-    
+
       <li class="toc__item toc__item--level2"><a href="#i-39-m-still-having-problems">I&#39;m still having problems!</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next</a></li>
-    
+
   </ul>
 
-        
+
       </div>
     </div>
   </div>
@@ -511,19 +511,19 @@ request weather data from the web.</p><p><a href="/tutorials/js-watchface-tutori
 
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

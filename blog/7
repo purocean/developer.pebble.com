@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/7/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,7 +73,7 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 
       <div class="hidden-l">
         <div class="row" style="margin-bottom: 0.5em;">
@@ -97,46 +97,46 @@
 <h2 class="pagesubtitle">A Wristed Development</h2>
 
 <div class="blog-index">
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars3.githubusercontent.com/u/5732010?v=3&s=100" width=80 height=80>
-    
+
     <p>May 13, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/05/13/tips-and-tricks-transparent-images/">Tips and Tricks - Transparent Images</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/chrislewis/">Chris Lewis</a> &middot;
-      
+
       <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
-      
+
     </p>
     <div><p>Ever wondered how to draw transparent images in a Pebble app? This post will
 walk you through the process.</p><p>In this post, we&#39;ll be using a sample image with a transparency component, shown
-below:</p><p><a href="/assets/images/blog/tips-transparency-globe.png" download>
-<img src="/assets/images/blog/tips-transparency-globe.png">
+below:</p><p><a href="/developer.pebble.com/assets/images/blog/tips-transparency-globe.png" download>
+<img src="/developer.pebble.com/assets/images/blog/tips-transparency-globe.png">
 </a></p></div>
     <div class="text-right"><a href="/blog/2015/05/13/tips-and-tricks-transparent-images/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://assets.getpebble.com/api/file/0Z1f9lINTNyGVTuDbT3x/convert?cache=true&fit=crop&w=80&h=80" width="80" height="80"/>
-    
+
     <p>May 08, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/05/08/timeline-challenge-week-1/">Pebble Timeline Challenge Week 1 Winner - Battery+</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
-      
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
     <div><p>On Monday, we announced the first winner of the Timeline Challenge: <a href="https://apps.getpebble.com/applications/55197642d6fa6f2633000092" title="" class="">Battery+</a>.
 Battery+ was created by <a href="https://twitter.com/ericphillips0" title="" class="">Eric Phillips</a>, a
@@ -148,21 +148,21 @@ battery life predictions.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
-    <img src="/assets/images/blog/authors/niharika.png" width=80 height=80>
-    
+
+    <img src="/developer.pebble.com/assets/images/blog/authors/niharika.png" width=80 height=80>
+
     <p>May 07, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/05/07/timeline-challenge-faq/">Timeline Challenge - FAQ</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
-      
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
     <div><p>We hope everyone is as excited about the
 <a href="/blog/2015/04/14/the-timeline-challenge-is-live/" title="" class="">Timeline Challenge</a>
@@ -176,21 +176,21 @@ about the challenge. If we’ve missed anything, fill out our
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
-    <img src="/assets/images/blog/authors/niharika.png" width=80 height=80>
-    
+
+    <img src="/developer.pebble.com/assets/images/blog/authors/niharika.png" width=80 height=80>
+
     <p>Apr 17, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/04/17/timeline-feature-hackawatch/">Timeline Spotlight - Hackawatch</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/niharika/">Niharika Bedekar</a> &middot;
-      
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
     <div><p>Hackathons are packed with tutorials, tech talks, and demos, and it’s simple for
 important activities to sometimes slip through the cracks. However, thanks to
@@ -202,21 +202,21 @@ to notify them about important events.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/1156201?v=3&s=100" width=80 height=80>
-    
+
     <p>Apr 16, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/04/16/Deploying-A-Server-For-Your-Timeline-Enabled-App-With-Heroku/">Deploying A Server For Your Timeline Enabled App With Heroku</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/kirby/">Kirby Kohlmorgen</a> &middot;
-      
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
     <div><p>Pins are a new and intuitive way for your users to interact with your app via
 the Pebble timeline. In a previous <a href="/blog/2015/03/20/Getting-Started-With-Timeline/" title="" class="">blog post</a>
@@ -229,26 +229,26 @@ and <a href="https://www.npmjs.com/package/pebble-api" title="" class="">pebble-
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
-    
+
     <p>Apr 14, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/04/14/the-timeline-challenge-is-live/">The Timeline Challenge is Live!</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/pebble/">Team Pebble</a> &middot;
-      
-      <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>, 
-      
+
+      <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>,
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
     <div><p>In last week’s
-<a href="/blog/2015/04/10/it-is-time-to-put-your-ideas-on-our-timeline/" title="" class="">timeline blog post</a>, 
+<a href="/blog/2015/04/10/it-is-time-to-put-your-ideas-on-our-timeline/" title="" class="">timeline blog post</a>,
 we teased a new competition we’re running. This will be a challenge to see who
 can create the coolest Pebble applications that are optimized for the Pebble
 Time: we’re interested in seeing apps that use the timeline interface as well as
@@ -263,23 +263,23 @@ Times!</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
-    
+
     <p>Apr 10, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/04/10/it-is-time-to-put-your-ideas-on-our-timeline/">It's Time to Put Your Ideas On Our Timeline!</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/pebble/">Team Pebble</a> &middot;
-      
-      <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>, 
-      
+
+      <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>,
+
       <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </p>
     <div><p>For the past few weeks, we’ve been releasing updated elements of our new SDK.
 As many of you know, one of the most important facets of the Pebble Time is the
@@ -292,21 +292,21 @@ also create applications that push pins directly to their users’ Pebbles. </p>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Apr 03, 2015</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2015/04/03/The-Road-To-Pebble-SDK-3.0-In-Ten-Questions/">The Road to Pebble SDK 3.0 in Ten Questions</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p>We launched the first version of our new SDK with support for Pebble Time two
 days into our Kickstarter campaign. Since then, we have updated it every week,
@@ -328,113 +328,113 @@ needed to plan ahead and prepare your apps for the Pebble Time launch.</p></div>
   </div>
 </div>
 
-  
+
   <div class="hidden-s hidden-xs">
     <ul class="pagination clearfix">
       <li><a href="/blog/6">Prev</a></li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/">1</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/2">2</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/3">3</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/4">4</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/5">5</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/6">6</a>
-          
+
         </li>
-      
+
         <li class="active" >
-          
+
           <a href="/blog/7">7</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/8">8</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/9">9</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/10">10</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/11">11</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/12">12</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/13">13</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/14">14</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/15">15</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/16">16</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/17">17</a>
-          
+
         </li>
-      
+
       <li><a href="/blog/8">Next</a></li>
     </ul>
   </div>
@@ -448,75 +448,75 @@ needed to plan ahead and prepare your apps for the Pebble Time launch.</p></div>
           <div class="select-style no-label">
             <select class="js-toc-select">
             <option>JUMP TO PAGE</option>
-              
-                
+
+
                 <option value="/blog/">1</option>
-                
-              
-                
+
+
+
                 <option value="/blog/2">2</option>
-                
-              
-                
+
+
+
                 <option value="/blog/3">3</option>
-                
-              
-                
+
+
+
                 <option value="/blog/4">4</option>
-                
-              
-                
+
+
+
                 <option value="/blog/5">5</option>
-                
-              
-                
+
+
+
                 <option value="/blog/6">6</option>
-                
-              
-                
+
+
+
                 <option value="/blog/7">7</option>
-                
-              
-                
+
+
+
                 <option value="/blog/8">8</option>
-                
-              
-                
+
+
+
                 <option value="/blog/9">9</option>
-                
-              
-                
+
+
+
                 <option value="/blog/10">10</option>
-                
-              
-                
+
+
+
                 <option value="/blog/11">11</option>
-                
-              
-                
+
+
+
                 <option value="/blog/12">12</option>
-                
-              
-                
+
+
+
                 <option value="/blog/13">13</option>
-                
-              
-                
+
+
+
                 <option value="/blog/14">14</option>
-                
-              
-                
+
+
+
                 <option value="/blog/15">15</option>
-                
-              
-                
+
+
+
                 <option value="/blog/16">16</option>
-                
-              
-                
+
+
+
                 <option value="/blog/17">17</option>
-                
-              
+
+
             </select>
           </div>
         </div>
@@ -547,232 +547,232 @@ needed to plan ahead and prepare your apps for the Pebble Time launch.</p></div>
 </div>
 
 
-        
+
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 <strong>All Posts</strong>
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -799,19 +799,19 @@ needed to plan ahead and prepare your apps for the Pebble Time launch.</p></div>
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

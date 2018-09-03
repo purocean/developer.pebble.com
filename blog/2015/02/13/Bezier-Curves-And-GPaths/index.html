@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2015/02/13/Bezier-Curves-And-GPaths/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,23 +73,23 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="why-bezier-curves">Why Bezier Curves?</option>
-          
+
             <option value="drawing-bezier-curves">Drawing Bezier Curves</option>
-          
+
             <option value="optimizing-for-pebble">Optimizing for Pebble</option>
-          
+
             <option value="applying-code-to-gpath">Applying Code to GPath</option>
-          
+
             <option value="conclusion">Conclusion</option>
-          
+
         </select>
       </div>
     </div>
@@ -119,31 +119,31 @@
   <ul class="inline-list inline-list--piped">
     <li>13 February 2015</li>
     <li><a href="/blog/authors/lukasz/">Łukasz Zalewski</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
-      
+
     </li>
     <li><a href="/blog/2015/02/13/Bezier-Curves-And-GPaths/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
-<p><img src="/assets/images/blog/bezier-banner.png"></p>
+<p><img src="/developer.pebble.com/assets/images/blog/bezier-banner.png"></p>
 
 <p>Drawing complex paths requires a lot of manual work on Pebble. Here I&#39;ll show
 you how to do this efficiently and quickly using a Pebble-optimized <a href="/docs/c/Graphics/Drawing_Paths/#GPath" title="GPath" class="link--docs"><code>GPath</code></a>
 algorithm and Bezier curves.</p><h2 id="why-bezier-curves" class="anchor">Why Bezier Curves?</h2><p>Typically, when a developer wants to create curve-based graphics on Pebble he
-has to use prepared bitmaps or complex GPaths (or generate paths with 
-<a href="http://gpathsvg.org/" title="" class="">svg2gpath</a>). Both of those approaches have serious 
+has to use prepared bitmaps or complex GPaths (or generate paths with
+<a href="http://gpathsvg.org/" title="" class="">svg2gpath</a>). Both of those approaches have serious
 downsides: bitmaps require resource space to store, memory to process and
 rotating bitmaps is a complex operation. Detailed GPaths, while fast in
 processing, can take a long time to design without special tools.</p><p>Bezier curves are a very interesting solution, which may seem computationally
 excessive but solves the obstacles of both the previous methods. Because they&#39;re
 so simple to use they are common elements in many graphic systems, primarly
 vector based graphics.</p><h2 id="drawing-bezier-curves" class="anchor">Drawing Bezier Curves</h2><p>The mathematical formula for a Bezier curve can be found on
-<a href="http://en.wikipedia.org/wiki/Composite_B%C3%A9zier_curve" title="" class="">Wikipedia</a>. We can 
+<a href="http://en.wikipedia.org/wiki/Composite_B%C3%A9zier_curve" title="" class="">Wikipedia</a>. We can
 fairly easily turn it into C code, but we have to make a couple of important
 decisions. The formula itself is linear and requires us to decide how many steps
 we want to take in order to draw our Bezier curve. It&#39;s safe to assume that
@@ -174,9 +174,9 @@ if we could dynamically calculate the number of segments needed to create
 perfectly smooth curve? Here&#39;s a method published by Maxim Shermanev which you
 can find out more about on his website:
 <a href="http://www.antigrain.com/research/adaptive_bezier/index.html" title="" class="">www.antigrain.com</a>.</p><p>Below you can see code from his research adapted to work efficiently on the
-Pebble architecture:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">recursive_bezier_fixed</span><span class="p">(</span><span class="kt">int</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="p">,</span> 
-                            <span class="kt">int</span> <span class="n">x2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="p">,</span> 
-                            <span class="kt">int</span> <span class="n">x3</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y3</span><span class="p">,</span> 
+Pebble architecture:</p><div class="highlight"><pre><span class="kt">void</span> <span class="nf">recursive_bezier_fixed</span><span class="p">(</span><span class="kt">int</span> <span class="n">x1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="p">,</span>
+                            <span class="kt">int</span> <span class="n">x2</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="p">,</span>
+                            <span class="kt">int</span> <span class="n">x3</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y3</span><span class="p">,</span>
                             <span class="kt">int</span> <span class="n">x4</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y4</span><span class="p">){</span>
   <span class="c1">// Calculate all the mid-points of the line segments</span>
   <span class="kt">int</span> <span class="n">x12</span>   <span class="o">=</span> <span class="p">(</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
@@ -207,8 +207,8 @@ Pebble architecture:</p><div class="highlight"><pre><span class="kt">void</span>
   <span class="p">}</span>
 
   <span class="c1">// Continue subdivision</span>
-  <span class="n">recursive_bezier_fixed</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x12</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">x123</span><span class="p">,</span> <span class="n">y123</span><span class="p">,</span> <span class="n">x1234</span><span class="p">,</span> <span class="n">y1234</span><span class="p">);</span> 
-  <span class="n">recursive_bezier_fixed</span><span class="p">(</span><span class="n">x1234</span><span class="p">,</span> <span class="n">y1234</span><span class="p">,</span> <span class="n">x234</span><span class="p">,</span> <span class="n">y234</span><span class="p">,</span> <span class="n">x34</span><span class="p">,</span> <span class="n">y34</span><span class="p">,</span> <span class="n">x4</span><span class="p">,</span> <span class="n">y4</span><span class="p">);</span> 
+  <span class="n">recursive_bezier_fixed</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x12</span><span class="p">,</span> <span class="n">y12</span><span class="p">,</span> <span class="n">x123</span><span class="p">,</span> <span class="n">y123</span><span class="p">,</span> <span class="n">x1234</span><span class="p">,</span> <span class="n">y1234</span><span class="p">);</span>
+  <span class="n">recursive_bezier_fixed</span><span class="p">(</span><span class="n">x1234</span><span class="p">,</span> <span class="n">y1234</span><span class="p">,</span> <span class="n">x234</span><span class="p">,</span> <span class="n">y234</span><span class="p">,</span> <span class="n">x34</span><span class="p">,</span> <span class="n">y34</span><span class="p">,</span> <span class="n">x4</span><span class="p">,</span> <span class="n">y4</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span> <span class="nf">bezier_fixed</span><span class="p">(</span><span class="n">GPathBuilder</span> <span class="o">*</span><span class="n">builder</span><span class="p">,</span> <span class="n">GPoint</span> <span class="n">p1</span><span class="p">,</span> <span class="n">GPoint</span> <span class="n">p2</span><span class="p">,</span> <span class="n">GPoint</span> <span class="n">p3</span><span class="p">,</span> <span class="n">GPoint</span> <span class="n">p4</span><span class="p">)</span> <span class="p">{</span>
@@ -242,9 +242,9 @@ degrees. In our case it&#39;s 10 degrees: <code>int32_t m_angle_tolerance =
 </ul>
 <h2 id="applying-code-to-gpath" class="anchor">Applying Code to GPath</h2><p>In order to make it easy for developers, we have prepared the GPathBuilder
 library which will ease the process of creating GPaths out of a few Bezier
-curves and/or lines. The resulting path can already be manipulated with the 
+curves and/or lines. The resulting path can already be manipulated with the
 <a href="/docs/c/group___path_drawing.html#ga1ba79344b9a34432a44af09bed8b00fd" title="" class="">existing APIs</a>. You can find it on the
-<a href="https://github.com/pebble-hacks/gpath-bezier" title="" class="">pebble-hacks Github page</a> along 
+<a href="https://github.com/pebble-hacks/gpath-bezier" title="" class="">pebble-hacks Github page</a> along
 with a simple demo app.</p><p>Usage is extremely simple. Here are the main functions in the API:</p>
 <ul>
 <li><code>GPathBuilder* gpath_builder_create(uint32_t max_points)</code> will create the
@@ -266,7 +266,7 @@ GPathBuilder is not being destroyed in the process and you have to do that
 manually.</li>
 </ul>
 <p>Below is shown a simple shape involving two curves and the code required to
-create the path:</p><p><img src="/assets/images/blog/bezier-result.png" alt="result" class="pebble-screenshot pebble-screenshot--steel-black" /></p><div class="highlight"><pre><span class="c1">// Create GPathBuilder object</span>
+create the path:</p><p><img src="/developer.pebble.com/assets/images/blog/bezier-result.png" alt="result" class="pebble-screenshot pebble-screenshot--steel-black" /></p><div class="highlight"><pre><span class="c1">// Create GPathBuilder object</span>
 <span class="n">GPathBuilder</span> <span class="o">*</span><span class="n">builder</span> <span class="o">=</span> <span class="n">gpath_builder_create</span><span class="p">(</span><span class="n">MAX_POINTS</span><span class="p">);</span>
 
 <span class="c1">// Move to the starting point of the GPath</span>
@@ -292,7 +292,7 @@ create the path:</p><p><img src="/assets/images/blog/bezier-result.png" alt="res
 </pre></div><p>And there you have it, complex GPaths built with a few lines of code.</p><h2 id="conclusion" class="anchor">Conclusion</h2><p>This library should make it easier to create amazing graphics on Pebble and can
 be used in animations as it&#39;s lightweight and fast. Bear in mind that the
 GPathBuilder temporarily uses RAM proportinal to <code>max_points</code> until
-<code>gpath_builder_destroy</code> is called. You can find the example app and library code 
+<code>gpath_builder_destroy</code> is called. You can find the example app and library code
 on the <a href="https://github.com/pebble-hacks/gpath-bezier" title="" class="">pebble-hacks Github page</a>.</p><p>We are also looking forward to this technology being used in online tools such
 as <a href="http://gpathsvg.org/" title="" class="">SVG to Pebble GPath Converter</a> by awesome Pebble
 developer <a href="https://github.com/ardnejar" title="" class="">Rajendra Serber</a>.</p>
@@ -322,247 +322,247 @@ developer <a href="https://github.com/ardnejar" title="" class="">Rajendra Serbe
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#why-bezier-curves">Why Bezier Curves?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#drawing-bezier-curves">Drawing Bezier Curves</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#optimizing-for-pebble">Optimizing for Pebble</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#applying-code-to-gpath">Applying Code to GPath</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 <strong>Beautiful Code</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 <strong>Łukasz Zalewski</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -589,19 +589,19 @@ developer <a href="https://github.com/ardnejar" title="" class="">Rajendra Serbe
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

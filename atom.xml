@@ -8,11 +8,11 @@
   <id>http://developer.getpebble.com/</id>
   <author>
     <name><![CDATA[]]></name>
-    
+
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
+
   <entry>
     <title type="html"><![CDATA[Let’s Keep Making Awesome Happen]]></title>
     <link href="http://developer.getpebble.com/blog/2016/12/06/developer-community-update/"/>
@@ -24,21 +24,21 @@ years. Because of you, the Pebble smartwatch experience was phenomenal for over
 two million users in every corner of the globe. We’re closing a chapter today
 <a href="https://blog.getpebble.com/2016/12/07/fitbit" title="" class="">as Pebble shuts down hardware operations</a>,
 but want you alongside us for
-<a href="https://www.kickstarter.com/projects/597507018/pebble-2-time-2-and-core-an-entirely-new-3g-ultra/posts/1752929" title="" class="">a new adventure with Fitbit</a>.</p><p><img src="/assets/images/blog/2016-12-06-pdr15.jpg" alt="Pebble Developer Retreat 2015" /></p><h2 id="our-achievements" class="anchor">Our Achievements</h2><p>The journey hasn&#39;t always been easy, but together, we’ve shared amazing
+<a href="https://www.kickstarter.com/projects/597507018/pebble-2-time-2-and-core-an-entirely-new-3g-ultra/posts/1752929" title="" class="">a new adventure with Fitbit</a>.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-12-06-pdr15.jpg" alt="Pebble Developer Retreat 2015" /></p><h2 id="our-achievements" class="anchor">Our Achievements</h2><p>The journey hasn&#39;t always been easy, but together, we’ve shared amazing
 experiences, online and in-person. We&#39;re all incredibly honored to have played a
 small part in the ecosystem and community you formed around our pioneering
 wearable platform.</p><p>The Pebble Dev Community has delivered apps and experiences beyond our wildest
 dreams. You’ve published over 15,000 watchfaces and watchapps, 130 companion
 apps, created some awesome libraries and packages, and performed 4.6 million
 builds on CloudPebble! You truly did #MakeAwesomeHappen, and we love you for
-that!</p><p><img src="/assets/images/blog/2016-12-06-02.jpg" alt="Tintin and Snowy" /></p><h2 id="logistics" class="anchor">Logistics</h2><p><strong>In the short term, the Pebble Developer experience remains unchanged.</strong> We’re
+that!</p><p><img src="/developer.pebble.com/assets/images/blog/2016-12-06-02.jpg" alt="Tintin and Snowy" /></p><h2 id="logistics" class="anchor">Logistics</h2><p><strong>In the short term, the Pebble Developer experience remains unchanged.</strong> We’re
 happy to report that our transition to Fitbit gives Pebble Developers an
 exciting opportunity to reach and delight over 50 million users and counting.
 The Pebble SDK, CloudPebble, mobile apps, developer portal, appstore, timeline
 API, dictation service, messaging service, and firmware will all continue to
 operate without interruption. Further down the road, we’ll be working to
 phase out cloud services, providing the ability for the community to take over,
-where possible.</p><h2 id="the-future" class="anchor">The Future</h2><p><img src="/assets/images/blog/2016-12-06-03.jpg" alt="Wrists and Watches" /></p><p>Although this chapter in Pebble’s developer story is closing, our team and ethos
+where possible.</p><h2 id="the-future" class="anchor">The Future</h2><p><img src="/developer.pebble.com/assets/images/blog/2016-12-06-03.jpg" alt="Wrists and Watches" /></p><p>Although this chapter in Pebble’s developer story is closing, our team and ethos
 have found a new, welcoming home at Fitbit. We can’t wait to have you alongside
 us for this next adventure. Third-party Pebble developers have a massive
 opportunity to drive how a Fitbit developer ecosystem will take shape. We hope
@@ -50,9 +50,9 @@ fond developer moments, and favorite photos on
 <a href="https://www.facebook.com/getpebble" title="" class="">Facebook</a>,
 <a href="http://twitter.com/pebbledev" title="" class="">Twitter</a>,
 <a href="http://instagram.com/getpebble" title="" class="">Instagram</a>, and
-<a href="http://www.reddit.com/r/pebble/" title="" class="">Reddit</a> with #pebbleXfitbit.</p><p>Stay awesome!</p><p><img src="/assets/images/blog/2016-12-06-04.jpg" alt="Team Pebble" /></p>]]></content>
+<a href="http://www.reddit.com/r/pebble/" title="" class="">Reddit</a> with #pebbleXfitbit.</p><p>Stay awesome!</p><p><img src="/developer.pebble.com/assets/images/blog/2016-12-06-04.jpg" alt="Team Pebble" /></p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Announcing Pebble SDK 4.3]]></title>
     <link href="http://developer.getpebble.com/blog/2016/11/23/Announcing-Pebble-SDK-4.3/"/>
@@ -151,7 +151,7 @@ read &quot;Wrist&quot; / 0x02)</li>
 changes and fixes that were included in SDK 4.3.</p><p>Let us know on <a href="https://twitter.com/pebbledev/" title="" class="">Twitter</a> if you built something
 cool using the new APIs! We&#39;d love to hear about your experiences with the SDK.</p><p>Happy Hacking!</p><p>Team Pebble</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[4.2-beta4 SDK - Emery Edition!]]></title>
     <link href="http://developer.getpebble.com/blog/2016/10/11/Emery-SDK-Beta/"/>
@@ -160,7 +160,7 @@ cool using the new APIs! We&#39;d love to hear about your experiences with the S
     <content type="html"><![CDATA[<p>We&#39;re incredibly excited to announce the first public beta of the Pebble SDK
 4.2. This is the first time that developers can experience the new &#39;Emery&#39;
 platform which is specifically created for the upcoming
-<a href="https://www.pebble.com/buy-pebble-time-2-smartwatch" title="" class="">Pebble Time 2</a>.</p><p><img src="/assets/images/blog/2016-10-11-intro.jpg" alt="Pebble Time 2" /></p><h2 id="all-about-those-pixels" class="anchor">All About Those Pixels</h2><p>The new display on the <em>Pebble Time 2</em> is almost 53% physically larger, and the
+<a href="https://www.pebble.com/buy-pebble-time-2-smartwatch" title="" class="">Pebble Time 2</a>.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-10-11-intro.jpg" alt="Pebble Time 2" /></p><h2 id="all-about-those-pixels" class="anchor">All About Those Pixels</h2><p>The new display on the <em>Pebble Time 2</em> is almost 53% physically larger, and the
 <a href="https://en.wikipedia.org/wiki/Pixel_density" title="" class="">Pixels per inch</a> (PPI) has been
 increased from 182 PPI to 202 PPI. This is a massive 200x228 pixels, compared to
 144x168 on the <em>Pebble Time Steel</em>, that&#39;s an 88% increase in the total amount
@@ -169,7 +169,7 @@ of pixels!.</p><p>Take a look at our
 further information about the specifications of the Pebble Time 2.</p><p>Watchfaces and watchapps that have not been updated for the Emery platform will
 run in <em>Bezel Mode</em>. This means they will appear centered on screen at their
 original resolution (144x168), but due to the change in PPI, they appear
-slightly smaller.</p><p><img src="/assets/images/blog/2016-10-11-bezel.png" alt="Pebble Time 2 Bezel" />
+slightly smaller.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-10-11-bezel.png" alt="Pebble Time 2 Bezel" />
 <p class="blog__image-text">Left: Pebble Time Steel, Middle: Pebble Time 2 -
 Bezel Mode, Right: Optimized for Pebble Time 2.<br />
 <a href="https://github.com/pebble-examples/concentricity">Concentricity
@@ -177,7 +177,7 @@ Watchface</a></p></p><p>The increased number of pixels would immediately make yo
 just add more elements to your watchface design, but due to the increase in PPI,
 existing elements and fonts may feel slightly smaller than expected when viewed
 on an actual device.</p><p>The image below simulates how the PPI difference makes a bezel mode application
-feel smaller on the Pebble Time 2.</p><p><img src="/assets/images/blog/2016-10-11-dpi-comparison.png" alt="Pebble Time 2 PPI" />
+feel smaller on the Pebble Time 2.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-10-11-dpi-comparison.png" alt="Pebble Time 2 PPI" />
 <p class="blog__image-text">Left: Pebble Time Steel, Right: Pebble Time 2 - Bezel Mode.</p></p><p>We&#39;ve now seen that the increased amount of pixels doesn&#39;t necessarily equate to
 bigger text on our devices, due to the change in PPI, that&#39;s why we&#39;ve created
 the new <a href="/docs/c/preview/User_Interface/Preferences/#preferred_content_size" title="" class="">ContentSize</a>
@@ -188,7 +188,7 @@ Notifications &gt; Text Size</em>.</p><p>The new
 API now exposes this setting to developers, in order for
 them to adapt their application design and layout based on this user preference.</p><p>In the previous section, we saw how the PPI increase on Pebble Time 2 affected
 the relative size of a watchface. In the image below you can see precisely how
-text sizes are affected by the PPI change.</p><p><img src="/assets/images/blog/2016-10-11-contentsize.png" alt="Pebble Time 2 ContentSize" />
+text sizes are affected by the PPI change.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-10-11-contentsize.png" alt="Pebble Time 2 ContentSize" />
 <p class="blog__image-text">Yellow: Pebble Time Steel, Green: Pebble Time 2.</p></p><p>To negate the effects of this reduced font size, the Emery platform uses larger
 fonts by default. Developers can use the
 <a href="/docs/c/preview/User_Interface/Preferences/#preferred_content_size" title="" class="">ContentSize</a>
@@ -240,7 +240,7 @@ developers. Find out more in the Rocky.js
 changes and fixes that were included in SDK 4.2-beta4.</p><p>Let us know on <a href="https://twitter.com/pebbledev/" title="" class="">Twitter</a> if you built something
 cool using the new APIs! We&#39;d love to hear about your experiences with the SDK.</p><p>Happy Hacking!</p><p>Team Pebble</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Ready for Pebble 2]]></title>
     <link href="http://developer.getpebble.com/blog/2016/10/04/ready-for-pebble-2/"/>
@@ -248,19 +248,19 @@ cool using the new APIs! We&#39;d love to hear about your experiences with the S
     <id>http://developer.getpebble.com/blog/2016/10/04/ready-for-pebble-2</id>
     <content type="html"><![CDATA[<p>The latest 4.1 releases of the firmware, mobile apps and SDK bring support for
 the new Pebble 2 smartwatches, which have started appearing on the wrists of
-developers and reviewers around the globe.</p><p><img src="/assets/images/blog/2016-09-27-silk-in-the-wild.jpg" alt="Pebble 2 in the Wild" /></p><p>Pebble 2 smartwatches are on their way to Kickstarter backers, and firmware 4.1
+developers and reviewers around the globe.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-27-silk-in-the-wild.jpg" alt="Pebble 2 in the Wild" /></p><p>Pebble 2 smartwatches are on their way to Kickstarter backers, and firmware 4.1
 will be ready and waiting for them.</p><h2 id="heart-rate-monitor-api" class="anchor">Heart Rate Monitor API</h2><p>The HRM APIs allow allow developers to query the user&#39;s current and historical
 heart rates. We&#39;ve provided a simple to use API which caters for the most common
-use-cases.</p><p><img src="/assets/images/blog/2016-09-27-heart-beat.gif" alt="HRM" class="pebble-screenshot pebble-screenshot--pebble2-black-lime" /></p><p>Find out more in the
+use-cases.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-27-heart-beat.gif" alt="HRM" class="pebble-screenshot pebble-screenshot--pebble2-black-lime" /></p><p>Find out more in the
 <a href="/guides/events-and-services/hrm/"><em>Heart Rate Monitor API guide</em></a>.</p><h2 id="appglance-rest-api" class="anchor">AppGlance REST API</h2><p>The AppGlance REST API enables developers to programmatically set the icon and
 subtitle that appears alongside their app in the launcher. Developers can push
 slices to the their app&#39;s glance using their own backend servers by sending
-HTTPS requests to the timeline endpoint.</p><p><img src="/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif" alt="HRM" class="pebble-screenshot pebble-screenshot--pebble2-white-teal" /></p><p>Find out more about <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a> in the SDK documentation, or read the
+HTTPS requests to the timeline endpoint.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif" alt="HRM" class="pebble-screenshot pebble-screenshot--pebble2-white-teal" /></p><p>Find out more about <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a> in the SDK documentation, or read the
 <a href="/guides/user-interfaces/appglance-rest/"><em>AppGlance REST API guide</em></a>.</p><h2 id="what-39-s-next" class="anchor">What&#39;s Next</h2><p>Check out the <a href="/sdk/changelogs/4.1/" title="" class="">release notes</a> for a full list of changes
 and fixes that were included in SDK 4.1.</p><p>Let us know on <a href="https://twitter.com/pebbledev/" title="" class="">Twitter</a> if you built something
 cool using the new APIs! We&#39;d love to hear about your experiences with the SDK.</p><p>Happy Hacking!</p><p>Team Pebble</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Timeline - The Future of the Past!]]></title>
     <link href="http://developer.getpebble.com/blog/2016/09/06/timeline-the-future-of-the-past/"/>
@@ -287,7 +287,7 @@ via the <a href="https://forums.pebble.com" title="" class="">forums</a>,
 <a href="https://twitter.com/pebbledev" title="" class="">Twitter</a> and
 <a href="http://discord.gg/aRUAYFN" title="" class="">Discord</a>, and we are happy to announce that timeline past
 has returned in the v4.0.1 update. Users who need to access the timeline past
-can now assign it to one of their quick launch buttons.</p><p><img src="/assets/images/blog/2016-09-06-quick-launch.gif" alt="Quick Launch" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>And so, with the reintroduction of timeline past, balanced was restored, and
+can now assign it to one of their quick launch buttons.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-06-quick-launch.gif" alt="Quick Launch" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>And so, with the reintroduction of timeline past, balanced was restored, and
 that was the end of the story. Or was it?</p><h3 id="back-to-the-future" class="anchor">Back to the Future!</h3><p>If you’re the developer of an application which relies upon timeline past, you
 will probably want to inform your users about how they can access timeline past,
 as it will not be enabled by default. Fortunately, there are multiple ways in
@@ -301,12 +301,12 @@ then access timeline past by long pressing UP.</p></blockquote>
 <h4 id="2-display-a-splash-screen" class="anchor">2. Display a Splash Screen</h4><p>Add a splash screen to your application which only runs once, and display a
 message informing users how to enable timeline past. You could use the
 ‘<a href="https://www.npmjs.com/package/@smallstoneapps/about-window" title="" class="">about-window</a>’
-Pebble package for a really quick and easy solution.</p><p><img src="/assets/images/blog/2016-09-06-about-window.png" alt="About Window" class="pebble-screenshot pebble-screenshot--time-white" /></p><h4 id="3-display-a-one-time-notification" class="anchor">3. Display a One-Time Notification</h4><p>Display a
+Pebble package for a really quick and easy solution.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-06-about-window.png" alt="About Window" class="pebble-screenshot pebble-screenshot--time-white" /></p><h4 id="3-display-a-one-time-notification" class="anchor">3. Display a One-Time Notification</h4><p>Display a
 <a href="https://developer.pebble.com/guides/communication/using-pebblekit-js/#showing-a-notification" title="" class="">system notification</a>
 which only fires once, and display a message informing users how to enable
-timeline past.</p><p><img src="/assets/images/blog/2016-09-06-system-notification.png" alt="System Notification" class="pebble-screenshot pebble-screenshot--time-black" /></p><h4 id="4-display-a-timeline-notification" class="anchor">4. Display a Timeline Notification</h4><p>Display a
+timeline past.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-06-system-notification.png" alt="System Notification" class="pebble-screenshot pebble-screenshot--time-black" /></p><h4 id="4-display-a-timeline-notification" class="anchor">4. Display a Timeline Notification</h4><p>Display a
 <a href="https://developer.pebble.com/guides/pebble-timeline/" title="" class="">timeline notification</a>,
-and display a message informing users how to enable timeline past.</p><p><img src="/assets/images/blog/2016-09-06-timeline-notification.png" alt="Timeline Notification" class="pebble-screenshot pebble-screenshot--time-red" /></p><h3 id="the-future-of-the-past" class="anchor">The Future of the Past</h3><p>For now, developers can continue to utilize timeline past, but over time we
+and display a message informing users how to enable timeline past.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-09-06-timeline-notification.png" alt="Timeline Notification" class="pebble-screenshot pebble-screenshot--time-red" /></p><h3 id="the-future-of-the-past" class="anchor">The Future of the Past</h3><p>For now, developers can continue to utilize timeline past, but over time we
 would like to provide a more diverse set of functionality that allows developers
 to surface information to their users. For example, some use cases of timeline
 past may be more appropriate as using an app glance, or timeline quick view
@@ -317,7 +317,7 @@ timeline as we travel further into the future! Let us know via
 <a href="https://forums.pebble.com" title="" class="">the forums</a>,
 <a href="https://twitter.com/pebbledev" title="" class="">Twitter</a> and <a href="http://discord.gg/aRUAYFN" title="" class="">Discord</a>!</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Announcing Pebble SDK 4.0]]></title>
     <link href="http://developer.getpebble.com/blog/2016/08/30/announcing-pebble-sdk4/"/>
@@ -361,7 +361,7 @@ these new 4.0 APIs if you submit them to the appstore <strong>from August 31st
 onwards</strong>.</p><p>Let us know on <a href="https://twitter.com/pebbledev/" title="" class="">Twitter</a> if you build something
 cool using the new APIs! We&#39;d love to hear about your experiences with the SDK.</p><p>Happy Hacking!</p><p>Team Pebble</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Prime Time is Approaching for OS 4.0]]></title>
     <link href="http://developer.getpebble.com/blog/2016/08/19/prime-time-is-approaching-for-os-4.0/"/>
@@ -378,10 +378,10 @@ you can use to your advantage.</p><h2 id="menu-icon-in-the-launcher" class="anch
 their watchapps and watchfaces.</p>
 <div class="pebble-dual-image">
   <div class="panel">
-  <p>  <img src="/assets/images/blog/2016-08-19-pikachu-icon.png" alt="Launcher Icon" /></p>
+  <p>  <img src="/developer.pebble.com/assets/images/blog/2016-08-19-pikachu-icon.png" alt="Launcher Icon" /></p>
   </div>
   <div class="panel">
-  <p>  <img src="/assets/images/blog/2016-08-19-pikachu-launcher.png" alt="Launcher" class="pebble-screenshot pebble-screenshot--time-red" /></p>
+  <p>  <img src="/developer.pebble.com/assets/images/blog/2016-08-19-pikachu-launcher.png" alt="Launcher" class="pebble-screenshot pebble-screenshot--time-red" /></p>
   </div>
 </div>
 
@@ -391,7 +391,7 @@ some subtle gray when rendering it in the launcher, rather than just black
 and white. Transparency will be preserved.</p></blockquote>
 <p>You should add a 25x25 <code>png</code> to the <code>resources.media</code> section of the
 <code>package.json</code> file, and set <code>&quot;menuIcon&quot;: true</code>.
-Please note that icons that are larger will be ignored and 
+Please note that icons that are larger will be ignored and
 your app will have the default icon instead.</p><div class="highlight"><pre><span class="s2">"resources"</span><span class="o">:</span> <span class="p">{</span>
   <span class="s2">"media"</span><span class="o">:</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -409,11 +409,11 @@ examples of the Simplicity watchface. The Pebble on the left is not using the
 <a href="/docs/c/User_Interface/UnobstructedArea/" title="UnobstructedArea" class="link--docs"><code>UnobstructedArea</code></a> API, and the Pebble on the right is.</p>
 <div class="pebble-dual-image">
   <div class="panel">
-  <p>  <img src="/assets/images/blog/2016-08-19-simplicity-std.png" alt="Simplicity" class="pebble-screenshot pebble-screenshot--time-white" /></p>
+  <p>  <img src="/developer.pebble.com/assets/images/blog/2016-08-19-simplicity-std.png" alt="Simplicity" class="pebble-screenshot pebble-screenshot--time-white" /></p>
   <p class="blog__image-text">Watchface not updated</p>
   </div>
   <div class="panel">
-  <p>  <img src="/assets/images/blog/2016-08-19-simplicity-qv.png" alt="Simplicity" class="pebble-screenshot pebble-screenshot--time-white" /></p>
+  <p>  <img src="/developer.pebble.com/assets/images/blog/2016-08-19-simplicity-qv.png" alt="Simplicity" class="pebble-screenshot pebble-screenshot--time-white" /></p>
   <p class="blog__image-text">Respects new 4.0 unobstructed area</p>
   </div>
 </div>
@@ -421,13 +421,13 @@ examples of the Simplicity watchface. The Pebble on the left is not using the
 or hide their layers to achieve an optimal layout while the screen is partially
 obscured. This provides a fantastic experience to your users.</p><p>There&#39;s <a href="/guides/user-interfaces/unobstructed-area/"><em>a dedicated guide</em></a>
 which goes into more detail about the <a href="/docs/c/User_Interface/UnobstructedArea/" title="UnobstructedArea" class="link--docs"><code>UnobstructedArea</code></a> API, it contains
-examples and links to sample implementations.</p><h2 id="appglances" class="anchor">AppGlances</h2><p>While your static app icon and app title from the <code>package.json</code> are being used as the 
+examples and links to sample implementations.</p><h2 id="appglances" class="anchor">AppGlances</h2><p>While your static app icon and app title from the <code>package.json</code> are being used as the
 default to present your app to the user,
 <em>AppGlances</em> allow developers to control this content at runtime and
-to provide meaningful feedback to users directly from the new launcher. 
+to provide meaningful feedback to users directly from the new launcher.
 The API exposes the ability to dynamically change
 the <code>icon</code> and <code>subtitle_template_string</code> text of your application in the
-launcher.</p><p><img src="/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif"
+launcher.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif"
 alt="Updated Launcher" class="pebble-screenshot pebble-screenshot--time-black">
 <p class="blog__image-text">Preview version of 4.0 launcher</p></p><p>Utilizing the <a href="/docs/c/Foundation/App_Glance/" title="App Glance" class="link--docs"><code>App Glance</code></a> API doesn&#39;t need to be difficult. We&#39;ve provided
 guides, examples and sample applications for using the
@@ -451,7 +451,7 @@ that make use of these new 4.0 APIs if you
 submit them to the appstore <strong>from August 31st onwards</strong>.</p><p>Let us know on <a href="https://twitter.com/pebbledev" title="" class="">Twitter</a> if you build something
 cool using the new APIs! We&#39;d love to hear about your experiences with the SDK.</p><p>Happy Hacking!</p><p>Team Pebble</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Introducing Rocky.js Watchfaces!]]></title>
     <link href="http://developer.getpebble.com/blog/2016/08/15/introducing-rockyjs-watchfaces/"/>
@@ -478,7 +478,7 @@ feat of engineering!</p><h2 id="it-39-s-javascript-on-the-freakin-39-watch" clas
   <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">unobstructedHeight</span><span class="p">;</span>
   <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillText</span><span class="p">(</span><span class="s1">'JavaScript\non the watch!'</span><span class="p">,</span> <span class="nx">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
 <span class="p">});</span>
-</pre></div><p><img src="/assets/images/blog/2016-08-16-jotw.png" alt="Rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Right now we&#39;re giving you early access to this game-changing environment to
+</pre></div><p><img src="/developer.pebble.com/assets/images/blog/2016-08-16-jotw.png" alt="Rocky" class="pebble-screenshot pebble-screenshot--time-red" /></p><p>Right now we&#39;re giving you early access to this game-changing environment to
 create watchfaces entirely in JavaScript. Feel free to share your code, to
 install it on the emulator and on your watch (with the upcoming firmware 4.0),
 but please don&#39;t upload apps to the appstore as they will stop working in a
@@ -619,25 +619,25 @@ have feedback or just want to send us some love, we&#39;re in #rockyjs on
 <a href="https://forums.pebble.com/c/development" title="" class="">Pebble developer forums</a>.</p><p>We&#39;re already working on the next update of Rocky.js and your feedback will help
 shape the future!</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Creating Native Companion Apps with JS and Cordova]]></title>
     <link href="http://developer.getpebble.com/blog/2016/07/01/creating-native-companion-apps-with-js-and-cordova/"/>
     <updated>2016-07-01T00:00:00+00:00</updated>
     <id>http://developer.getpebble.com/blog/2016/07/01/creating-native-companion-apps-with-js-and-cordova</id>
-    <content type="html"><![CDATA[<p>Creating companion apps using 
-<a href="/guides/communication/using-pebblekit-android/" title="" class="">PebbleKit Android</a> and 
-<a href="/guides/communication/using-pebblekit-ios/" title="" class="">PebbleKit iOS</a> is a great way to 
-extend the functionality of your Pebble watchfaces and apps, but what if Java 
-or Objective C just isn&#39;t your thing?  What if you love JavaScript? What if 
+    <content type="html"><![CDATA[<p>Creating companion apps using
+<a href="/guides/communication/using-pebblekit-android/" title="" class="">PebbleKit Android</a> and
+<a href="/guides/communication/using-pebblekit-ios/" title="" class="">PebbleKit iOS</a> is a great way to
+extend the functionality of your Pebble watchfaces and apps, but what if Java
+or Objective C just isn&#39;t your thing?  What if you love JavaScript? What if
 you just don&#39;t want to write the same companion app twice?</p><p>Now you don&#39;t have to! Enter <a href="http://cordova.apache.org/" title="" class="">Cordova</a> - an open
 source framework for building cross-platform mobile apps using web technologies
 such as HTML5 and JavaScript.  What does this mean for you?  One framework, and
 one codebase for building Pebble companion apps for iOS and Android!</p><p>Cordova allows developers to create plugins that wrap native functionality such
-as accessing the phone&#39;s contacts, calendar, camera, and other phone APIs. 
+as accessing the phone&#39;s contacts, calendar, camera, and other phone APIs.
 Plugins allow you to interface with these APIs through JavaScript, and use them
-in your Cordova projects.  Needless to say, PebbleKit Android and PebbleKit iOS 
-are now available as a singular 
+in your Cordova projects.  Needless to say, PebbleKit Android and PebbleKit iOS
+are now available as a singular
 <a href="https://www.npmjs.com/package/cordova-plugin-pebblekit" title="" class="">Cordova plugin</a>.</p><p>In this blog post, we&#39;ll look at how to use Cordova to create a companion
 app that allows you to retrieve the next upcoming calendar event for the
 current day.</p><h2 id="setup" class="anchor">Setup</h2><p>The first step will be installing Cordova and creating a new project.
@@ -715,8 +715,8 @@ been omitted in this post.</p></blockquote>
 undefined, since we don&#39;t want to filter out events with specific titles,
 locations, or notes.  The last two parameters are callback functions that will
 be executed when the app has succeeded or failed to fetch calendar data.  Our
-calendarFailureCallback will log a simple message, and our 
-calendarSuccessCallback will sort through the events and find the earliest 
+calendarFailureCallback will log a simple message, and our
+calendarSuccessCallback will sort through the events and find the earliest
 event in the list.</p><div class="highlight"><pre><span class="nx">calendarSuccessCallback</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">events</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">events</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// TODO</span>
@@ -781,13 +781,13 @@ and hosted on
 bug reports, feature requests, and contributions with open arms :).</p><p>And that&#39;s all there is to it!  If you&#39;ve been holding back on writing a
 companion app for your amazing app, now&#39;s the time to try it!</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Introducing Clay - App configuration made easy]]></title>
     <link href="http://developer.getpebble.com/blog/2016/06/24/introducing-clay/"/>
     <updated>2016-06-24T00:00:00+00:00</updated>
     <id>http://developer.getpebble.com/blog/2016/06/24/introducing-clay</id>
-    <content type="html"><![CDATA[<p>It is with great pleasure that I present to you, Clay, a Pebble package that makes it easy to add offline configuration pages to your Pebble apps. All you need to get started is a couple lines of JavaScript and a JSON file; no servers, HTML or CSS required.</p><p><img src="/assets/images/blog/2016-06-24-introducing-clay/clay-example.png" alt="Clay Example" width="421" /></p><h2 id="how-to-get-started" class="anchor">How to get started</h2><p>This post aims to provide high level explanation of how the framework works and how it came to be. Below is a quick overview of how easy it is to make your app configurable with Clay. If you would like to learn how to integrate Clay into your project, read our guide on <a href="/guides/user-interfaces/app-configuration/" title="" class="">app configuration</a> or read the full documentation on the project <a href="https://github.com/pebble/clay#clay" title="" class="">GitHub repository.</a></p><p><strong>1) Install the module via <a href="/guides/pebble-packages/using-packages/" title="" class="">Pebble Packages</a></strong>
+    <content type="html"><![CDATA[<p>It is with great pleasure that I present to you, Clay, a Pebble package that makes it easy to add offline configuration pages to your Pebble apps. All you need to get started is a couple lines of JavaScript and a JSON file; no servers, HTML or CSS required.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-06-24-introducing-clay/clay-example.png" alt="Clay Example" width="421" /></p><h2 id="how-to-get-started" class="anchor">How to get started</h2><p>This post aims to provide high level explanation of how the framework works and how it came to be. Below is a quick overview of how easy it is to make your app configurable with Clay. If you would like to learn how to integrate Clay into your project, read our guide on <a href="/guides/user-interfaces/app-configuration/" title="" class="">app configuration</a> or read the full documentation on the project <a href="https://github.com/pebble/clay#clay" title="" class="">GitHub repository.</a></p><p><strong>1) Install the module via <a href="/guides/pebble-packages/using-packages/" title="" class="">Pebble Packages</a></strong>
  - SDK: <code>$ pebble package install pebble-clay</code>
  - CloudPebble: Add <code>pebble-clay</code>, version <code>^1.0.0</code> to your project dependencies.</p><p><strong>2) Create a configuration file that looks something like:</strong></p><div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span>
@@ -839,7 +839,7 @@ companion app for your amazing app, now&#39;s the time to try it!</p>]]></conten
 </ul>
 <h2 id="how-to-get-involved" class="anchor">How to get involved</h2><p>Clay is open source and welcomes pull requests from anybody. Have a look at the <a href="https://github.com/pebble/clay/blob/master/CONTRIBUTING.md" title="" class="">contributing guide</a> for instructions on how you can help make Clay even better. Regardless of your skill level, if you have any ideas on how Clay could be improved or if you find any bugs, we would love you to <a href="https://github.com/pebble/clay/issues/new" title="" class="">submit an issue on GitHub</a>.</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[A Wild SDK Appears]]></title>
     <link href="http://developer.getpebble.com/blog/2016/06/15/sdk4-preview/"/>
@@ -854,7 +854,7 @@ with the 4.0 user experience.</p><p>In this blog post we’ll dive into the <a h
 how you can use them to create great experiences for your users!</p><h2 id="app-glance-api" class="anchor">App Glance API</h2><p>Let’s start with the App Glance API, which allows applications to present
 information for the launcher to display. The information an application displays
 in the launcher is called an app glance - and the information that is displayed
-at any particular point in time is referred to as an <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="" class=""><code>AppGlanceSlice</code></a>.</p><p><img src="/assets/images/blog/2016-06-15-sdk4-preview/virtual-pet.png" alt="Virtual Pet App" class="pebble-screenshot pebble-screenshot--time-black" /></p><p><code>AppGlanceSlice</code>s have expiration times, which means you can add multiple slices
+at any particular point in time is referred to as an <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="" class=""><code>AppGlanceSlice</code></a>.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-06-15-sdk4-preview/virtual-pet.png" alt="Virtual Pet App" class="pebble-screenshot pebble-screenshot--time-black" /></p><p><code>AppGlanceSlice</code>s have expiration times, which means you can add multiple slices
 at once. Slices will be displayed in the order they are added and removed at
 their specified expiration times.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_update_app_glance</span><span class="p">(</span><span class="n">AppGlanceReloadSession</span> <span class="o">*</span><span class="n">session</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">limit</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// This shouldn't happen, but developers should always ensure they have</span>
@@ -881,9 +881,9 @@ well as a HTTP web API, intended to allow developers to push <code>AppGlanceSlic
 from external web services to their users&#39; smartwatches.</p></blockquote>
 <h2 id="unobstructedarea-api" class="anchor">UnobstructedArea API</h2><p>The <a href="/docs/c/User_Interface/UnobstructedArea/" title="" class=""><code>UnobstructedArea</code></a> API
 allows developers to create watchfaces capable of sensing, and responding to
-Timeline Quick View events. Timeline Quick View is a new feature in SDK 4.0, 
-which displays upcoming and ongoing events on top of the user’s watchface. The 
-functionality added through the <code>UnobstructedArea</code> API allows developers to get 
+Timeline Quick View events. Timeline Quick View is a new feature in SDK 4.0,
+which displays upcoming and ongoing events on top of the user’s watchface. The
+functionality added through the <code>UnobstructedArea</code> API allows developers to get
 the unobstructed bounds of a layer, or subscribe to events related to the
 watchface’s unobstructed area changing.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">int</span> <span class="n">s_offset_top_percent</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
 <span class="k">static</span> <span class="kt">int</span> <span class="n">s_offset_bottom_percent</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
@@ -923,7 +923,7 @@ returns the user to the launcher, or the active watchface. Take a look at our
 <a href="/guides/user-interfaces/app-exit-reason" title="" class="">AppExitReason API Guide</a>,
 and read <a href="/docs/c/Foundation/Exit_Reason" title="" class="">the API docs</a> to learn more.</p><p>This feature enables developers to create &quot;One Click Action&quot; watchapps, that
 perform an action, then immediately return the user to the watchface to create a
-simple, fluid experience.</p><p><img src="/assets/images/blog/2016-06-15-sdk4-preview/uber.gif" alt="Uber App" class="pebble-screenshot pebble-screenshot--time-black" /></p><p>To help get you started thinking about and designing One Click Action apps,
+simple, fluid experience.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-06-15-sdk4-preview/uber.gif" alt="Uber App" class="pebble-screenshot pebble-screenshot--time-black" /></p><p>To help get you started thinking about and designing One Click Action apps,
 we’ve created a <a href="/guides/design-and-interaction/one-click-actions" title="" class="">One Click Action App Guide</a>
 around the relatively minimal example of locking and unlocking your front door
 (with a <a href="https://lockitron.com" title="" class="">Lockitron lock</a>).</p><h2 id="4-0-emulator" class="anchor">4.0 Emulator</h2><p>The SDK 4 preview also includes an update to the emulator, which not only adds
@@ -949,7 +949,7 @@ new functionality.</p><p>Send us a link to something you’ve built on Twitter (
 <a href="https://twitter.com/pebbledev" title="" class="">@pebbledev</a>) and we’ll look at including it in
 an upcoming newsletter (and send some swag your way).</p><p>Happy Hacking!</p><p>Team Pebble</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Introducing Pebble Packages]]></title>
     <link href="http://developer.getpebble.com/blog/2016/06/07/pebble-packages/"/>
@@ -993,7 +993,7 @@ cannot use the package manager.</p><p>For your convenience, we have provided som
 and read our guides on <a href="/guides/pebble-packages/using-packages/" title="" class="">using</a> and
 <a href="/guides/pebble-packages/creating-packages/" title="" class="">creating</a> Pebble Packages.</p><p>I&#39;m looking forward to seeing what you make!</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Time to Expand Our Core Business!!]]></title>
     <link href="http://developer.getpebble.com/blog/2016/05/24/Kickstarter-3/"/>
@@ -1008,7 +1008,7 @@ user and developer experiences look like. We are introducing an entirely new
 class of wearable device, and adding a modern JavaScript SDK that takes
 advantage of the Web APIs JavaScript developers around the world know and love.</p><p>There is a lot to take in, so we’re here to help break down what’s new and
 exciting for our favorite developer community!</p><h2 id="the-smartwatches" class="anchor">The Smartwatches</h2><p>We are introducing two new smartwatches designed to track and improve your
-health, and simplify your life.</p><p><img src="/assets/images/blog/2016-05-24-kickstarter-3/smartwatches.png" alt="Pebble 2, and Time 2" />
+health, and simplify your life.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/smartwatches.png" alt="Pebble 2, and Time 2" />
 <p class="blog__image-text">Pebble 2, and Time 2</p></p><p>Pebble 2 is a take on our classic Pebble that launched the smartwatch market in
 2012. It includes updated hardware with a high contrast black and white display,
 microphone, up to seven days battery life, plus activity, sleep and heart rate
@@ -1117,7 +1117,7 @@ that includes 3D drawings of all our smartwatches!</p>
 </table>
 <h2 id="pebble-core" class="anchor">Pebble Core</h2><p>A lot of people like to call Pebble a ‘smartwatch’ company, but we’ve decided
 it’s <em>Time</em> to prove them wrong, and expand our <em>Core</em> business with an entirely
-new ultra-wearable!</p><p><img src="/assets/images/blog/2016-05-24-kickstarter-3/core.jpg" alt="Pebble Core" />
+new ultra-wearable!</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/core.jpg" alt="Pebble Core" />
 <p class="blog__image-text">Pebble Core</p></p><p>Pebble Core is an entirely new class of wearable device - it features 3G,
 WiFi, Bluetooth, GPS, an accelerometer, two programmable buttons, a headphone
 jack, and a hardware expansion port accessible to developers.</p><p><strong>Oh yeah, and it’s an open platform.</strong></p><p>Pebble Core is built on top of Android, but has the familiar Pebble
@@ -1142,17 +1142,17 @@ they need at a glance, and take quick, simple actions.</p><p>Let’s look at som
 advantage of them as a developer.</p><p>The most obvious change is that we have replaced timeline past with an updated
 Launcher capable of displaying glanceable information through a new AppGlances
 API. To help accommodate the removal of timeline past, we’ve updated the
-behaviour of “Now” pins to allow them to persist into the future.</p><p><img src="/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif" alt="Updated Launcher" class="pebble-screenshot pebble-screenshot--time-black">
+behaviour of “Now” pins to allow them to persist into the future.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/launcher.gif" alt="Updated Launcher" class="pebble-screenshot pebble-screenshot--time-black">
 <p class="blog__image-text">Preview version of updated launcher with AppGlances</p></p><p>Along with the updated launcher, we’re also helping users gain better insight
 into what’s going on right now through a new feature called timeline quick view.
-Timeline Quick View is a small notification displayed on the user’s watchface 
-to let them know what’s happening right now, or coming up soon.</p><p><a href="/assets/images/blog/2016-05-24-kickstarter-3/peek.png" title="" class=""><img src="/assets/images/blog/2016-05-24-kickstarter-3/peek.png" alt="Timeline Quick View" /></a>
-<p class="blog__image-text">Preview version of timeline quick view</p></p><p>The default behaviour for timeline quick view is to simply draw over the bottom 
-of the watchface, however, developers will have access to a new set of APIs to 
-manage how their watchface responds to timeline quick view events. SDK 4.0 will 
-include APIs to find the “unobstructed area” of the display, and to react to 
-timeline quick view being displayed, and hidden. Using these APIs, developers 
-can create watchfaces that respond to timeline quick view, and programmatically 
+Timeline Quick View is a small notification displayed on the user’s watchface
+to let them know what’s happening right now, or coming up soon.</p><p><a href="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/peek.png" title="" class=""><img src="/developer.pebble.com/assets/images/blog/2016-05-24-kickstarter-3/peek.png" alt="Timeline Quick View" /></a>
+<p class="blog__image-text">Preview version of timeline quick view</p></p><p>The default behaviour for timeline quick view is to simply draw over the bottom
+of the watchface, however, developers will have access to a new set of APIs to
+manage how their watchface responds to timeline quick view events. SDK 4.0 will
+include APIs to find the “unobstructed area” of the display, and to react to
+timeline quick view being displayed, and hidden. Using these APIs, developers
+can create watchfaces that respond to timeline quick view, and programmatically
 adjust!</p><p>And of course, you’ll have programmatic access to the heart rate monitor through
 an updated HealthService, capable of providing both real time, and historical
 heart rate information.</p><h2 id="sdk-4-0-the-embedded-javascript-part" class="anchor">SDK 4.0 (The Embedded JavaScript Part)</h2><p>We’ve been hard at work enabling developers to write JavaScript applications
@@ -1189,7 +1189,7 @@ We’re counting on your support to make all of this happen - so go treat yourse
 to some awesome new Pebble products, and help us show the world what wearables
 should look like!</p><p><a href="https://pebble.com/kickstarter">https://pebble.com/kickstarter</a></p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Guest Blog Post - PAL Smartstrap]]></title>
     <link href="http://developer.getpebble.com/blog/2016/05/18/PAL-Smartstrap/"/>
@@ -1200,7 +1200,7 @@ battery extending smartstrap that launched on Kickstarter this week:</em></p><p>
 first GPS and battery Smartstrap for Pebble Time and Pebble Time Steel watches
 is now live! We have been working very closely with Pebble to provide the best
 strap for this amazing community since 2014 and the time (pun intended) is
-finally here to share it with everyone!</p><h2 id="meet-pal" class="anchor">Meet Pal!</h2><p><img src="/assets/images/blog/2016-05-18-PAL-Smartstrap/pal.jpg" alt="Pal Smartstrap" /></p><p>It features a high performance, independent GPS that allows users to track
+finally here to share it with everyone!</p><h2 id="meet-pal" class="anchor">Meet Pal!</h2><p><img src="/developer.pebble.com/assets/images/blog/2016-05-18-PAL-Smartstrap/pal.jpg" alt="Pal Smartstrap" /></p><p>It features a high performance, independent GPS that allows users to track
 speed, distance, elevation, and route for up to 24 hours without the need for a
 Smartphone. Begin your activity as soon as you go out, with no time wasted idly
 waiting for a signal. Pal uses industry leading GPS (Qualcomm SiRF), which
@@ -1221,13 +1221,13 @@ identify what would be of most use to the Pebble community, best practices, and
 gave great feedback which helped us perfect the design. This relationship is not
 unlike the relationship between the Pebble and Pal, both working together in
 harmony to make something unique and great -- which actually helped inspire the
-name Pal!</p><p><img src="/assets/images/blog/2016-05-18-PAL-Smartstrap/concept.png" alt="PAL Concept and Prototype" />
+name Pal!</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-18-PAL-Smartstrap/concept.png" alt="PAL Concept and Prototype" />
 <p class="blog__image-text">Early concept drawing and battery buckle prototype</p></p><h2 id="so-how-does-it-work-exactly" class="anchor">So how does it work exactly?</h2><p>Let’s dive in deeper into the technical specification of the Pal Smartstrap. Pal
 GPS architecture is powered by Qualcomm’s SiRF chipset, this chipset can track
 speed, distance, and elevation as a standalone, offering an impressively fast
 first time signal pickup within three minutes and it will continue to work even
 if it goes indoors for a while, and then comes back outside. PAL also features data
-storage for up to 24 hours of GPS data.</p><p><img src="/assets/images/blog/2016-05-18-PAL-Smartstrap/communication.jpg" alt="GPS Communication" /></p><p>Raw GPS data received from satellites are processed by Pal’s MCU and results are
+storage for up to 24 hours of GPS data.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-18-PAL-Smartstrap/communication.jpg" alt="GPS Communication" /></p><p>Raw GPS data received from satellites are processed by Pal’s MCU and results are
 pumped to Pebble for display and storage - allowing the smartwatch to leverage
 GPS location data without the need to be connected to a mobile phone.</p><p>Per our efficient power management intelligence, Pal’s battery recharges
 Pebble’s battery only when the user manually activates the function or when
@@ -1235,7 +1235,7 @@ Pebble’s battery drops to very low level and triggers auto-charging. Connectin
 pins between the Pal and Pebble are surrounded by soft gasket. This structure
 makes Pal water resistant, but it probably cannot withstand swimming or diving.
 In any case, even if water goes between connecting pins, Pal’s electronic design
-has protection measure and it won’t be damaged.</p><p><img src="/assets/images/blog/2016-05-18-PAL-Smartstrap/exploded-pal.jpg" alt="Exploded View of PAL" /></p><p><strong>Tech Specs:</strong> GNSS support: GPS only TTFF cold fix time: about 40 seconds
+has protection measure and it won’t be damaged.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-18-PAL-Smartstrap/exploded-pal.jpg" alt="Exploded View of PAL" /></p><p><strong>Tech Specs:</strong> GNSS support: GPS only TTFF cold fix time: about 40 seconds
 under open sky. Location fix time can be accelerated by AGPS (working in
 progress with Qualcomm) Location hot fix: within 10 seconds. Certification
 planned to be done upon campaign success and product launch: CE, FCC, IC Battery
@@ -1261,7 +1261,7 @@ from you and potentially support your development. Contacts us here:
 us out and support us at
 <a href="https://www.kickstarter.com/projects/655382546/pal-strap-gps-and-extended-battery-strap-for-pebbl" title="" class="">kickstarter.com/projects/655382546/pal-strap-gps-and-extended-battery-strap-for-pebbl</a></p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Pebble.js Support for Chalk!]]></title>
     <link href="http://developer.getpebble.com/blog/2016/05/16/Pebble-JS-Round/"/>
@@ -1274,7 +1274,7 @@ support the Chalk platform (Pebble Time Round). This update is available in
 your browser with no setup!</p><p>Supporting Chalk required a ton of bug crushing to become compatible with the
 new 3.0 style status bar, changes to accommodate reduced memory on the 3.x
 Aplite platform, adding new features such as text flow and paging, and making it
-easier to target multiple platforms by adding a feature detection API.</p><p><img src="/assets/images/blog/2016-05-13-pebble-js-round/pebblejs.png" alt="Pebble.js Screenshots" />
+easier to target multiple platforms by adding a feature detection API.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-13-pebble-js-round/pebblejs.png" alt="Pebble.js Screenshots" />
 <p class="blog__image-text">Pebble.js running on all available platforms.</p></p><p>Whether or not you’re targeting the Chalk platform, there are many new features
 for you to explore in this update - and simply recompiling your project with the
 latest version of Pebble.js will update the look and feel through refined
@@ -1315,7 +1315,7 @@ color. <a href="/docs/pebblejs/#using-
 feature" title="" class="">Using Feature</a> will help you understand the new Feature API, how it can be used to
 specify different behaviours and UIs depending on what platform you&#39;re running
 on, and what features it includes.</p><h2 id="cloudpebble" class="anchor">CloudPebble</h2><p>Enabling Chalk support in CloudPebble is simple. Open your project&#39;s &quot;Settings&quot;
-screen, check the &quot;Build Chalk&quot; box, then recompile your project.</p><p><img src="/assets/images/blog/2016-05-13-pebble-js-round/settings.png" alt="CloudPebble Settings Screen" />
+screen, check the &quot;Build Chalk&quot; box, then recompile your project.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-13-pebble-js-round/settings.png" alt="CloudPebble Settings Screen" />
 <p class="blog__image-text">Cloud Pebble Settings Screen.</p></p><p>To run your project on CloudPebble&#39;s Chalk emulator, compile your project, then
 open the &quot;Compilation&quot; sceen, and select &quot;Emulator&quot; then &quot;Chalk.&quot;</p><h2 id="pebble-tool-+-local-sdk" class="anchor">Pebble Tool + Local SDK</h2><p>If you&#39;re using the Pebble Tool and local SDK, you&#39;ll need to merge the <code>master</code>
 branch of the Pebble.js repositoroy into your project, then edit the
@@ -1348,7 +1348,7 @@ by shouting on Twitter to <a href="https://twitter.com/pebbledev" title="" class
 <a href="https://twitter.com/pebble" title="" class="">@Pebble</a> or even myself
 <a href="https://twitter.com/meiguro" title="" class="">@Meiguro</a>.</p><p>Here’s to more exciting weekend coding sessions in the future for both of us!</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Guest Blog Post - Learning C with Pebble, The Book]]></title>
     <link href="http://developer.getpebble.com/blog/2016/05/11/Learning-C-with-Pebble-The-Book/"/>
@@ -1364,7 +1364,7 @@ few are tailored to embedded systems and none are targeted at smartwatches,
 until now, that is.</p><p>Pebble has teamed up with a college professor and a group of Pebble community
 developers to produce <a href="http://pbl.io/cbook" title="" class="">Learning C with Pebble</a>, an online,
 open source textbook that teaches C with examples and projects focused on
-Pebble smartwatches.</p><p><img src="/assets/images/blog/06052015-book-cover.png" alt="book-cover" /><br /></p><p>In order to build apps for Pebble smartwatches, a developer needs to program in
+Pebble smartwatches.</p><p><img src="/developer.pebble.com/assets/images/blog/06052015-book-cover.png" alt="book-cover" /><br /></p><p>In order to build apps for Pebble smartwatches, a developer needs to program in
 one of two languages: JavaScript or C. Of the two, you might choose JavaScript
 for some familiar features, but C might be the better choice since it produces
 apps that run more efficiently and perform with better speed than those written
@@ -1405,13 +1405,13 @@ summer. This is a readable book, packed with examples and code and projects.
 It&#39;s a great way to learn the C programming language on Pebble smartwatches.</p><p>We&#39;d appreciate your feedback, be sure to tweet <a href="https://twitter.com/PebbleDev" title="" class="">@PebbleDev</a> on Twitter or find us on
 <a href="http://discord.gg/aRUAYFN" title="" class="">Discord</a>.</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Guest Blog Post - Pebble Powered Instruments at GrizzHacks]]></title>
     <link href="http://developer.getpebble.com/blog/2016/04/27/jeremy-karbowski-grizzhacks/"/>
     <updated>2016-04-27T00:00:00+00:00</updated>
     <id>http://developer.getpebble.com/blog/2016/04/27/jeremy-karbowski-grizzhacks</id>
-    <content type="html"><![CDATA[<p><em>This is a guest blog post from <a href="https://github.com/jkarbows" title="" class="">Jeremy Karbowski</a>, who created a theremin-like gesture based instrument for the Pebble smartwatch at <a href="http://grizzhacks.com" title="" class="">GrizzHacks 2016</a>.</em></p><p>Hackathons are wonderful. The three I&#39;ve attended thus far have been amazing opportunities to learn new technologies and work with other hackers to bring an idea to life. Hackathons embody some of the pure magical joy of computing that make your eyes light up with new ideas, and they provide an opportunity for participants to work with hardware and resources that they may not have had access to otherwise.</p><p><a href="/assets/images/blog/2016-04-26-pebble-theremin/working_full.png" title="" class=""><img src="/assets/images/blog/2016-04-26-pebble-theremin/working.png" alt="Prototyping" /></a>
+    <content type="html"><![CDATA[<p><em>This is a guest blog post from <a href="https://github.com/jkarbows" title="" class="">Jeremy Karbowski</a>, who created a theremin-like gesture based instrument for the Pebble smartwatch at <a href="http://grizzhacks.com" title="" class="">GrizzHacks 2016</a>.</em></p><p>Hackathons are wonderful. The three I&#39;ve attended thus far have been amazing opportunities to learn new technologies and work with other hackers to bring an idea to life. Hackathons embody some of the pure magical joy of computing that make your eyes light up with new ideas, and they provide an opportunity for participants to work with hardware and resources that they may not have had access to otherwise.</p><p><a href="/developer.pebble.com/assets/images/blog/2016-04-26-pebble-theremin/working_full.png" title="" class=""><img src="/developer.pebble.com/assets/images/blog/2016-04-26-pebble-theremin/working.png" alt="Prototyping" /></a>
 <p class="blog__image-text">Working on the prototype during GrizzHacks</p></p><p>When I showed up to GrizzHacks I had no idea what I wanted to make, but I knew I wanted to explore some of the new hardware that was provided by the organizers, and the Pebble smartwatch and <a href="https://www.myo.com/" title="" class="">Myo armband</a> immediately stuck out as bursting with potential. I remembered a project from a past hackathon that used the Myo wristband to control a string of colored lights based on the user’s movement, and was impressed by the expressive potential that gesture-based input suggested. I wanted to explore that.</p><p>Our minds simultaneously inhabit physical and virtual spaces, switching between the two constantly throughout the day. Using movement and gesture-based technology for control draws these spaces closer together, providing a stronger connection between the two worlds and enabling expressive and emotional interactions with virtual spaces through technology.</p><p>One of the best ways to translate and express emotion is through music, and I realized that with the gesture recognition of the Myo and the accelerometer packed inside of the Pebble I could create an instrument that allowed for musical expression through the motion of the device in a way similar to the <a href="https://en.wikipedia.org/wiki/Theremin" title="" class="">theremin</a>.</p><p>Now that I had my idea, I just needed to build it. I created a system to stream hardware sensor data to a Node.js server and a web front-end that listeners can connect to from anywhere in the world. Here, streaming sensor data is converted to synthesizer modulations done in-browser by a web audio synth. Movements on different axes were meant to control different parameters of the synthesizer, such as frequency and amplitude. Pebble made this task a dream - the hardware worked beautifully, and I was able to transfer accelerometer data over a websocket connection with ease.</p><div class="highlight"><pre><span class="c1">// Simplified Pebble JS code</span>
 <span class="kd">var</span> <span class="nx">UI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ui'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">Accel</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ui/accel'</span><span class="p">);</span>
@@ -1424,17 +1424,17 @@ It&#39;s a great way to learn the C programming language on Pebble smartwatches.
 <span class="nx">ws</span><span class="p">.</span><span class="nx">onclose</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">Accel</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* do nothing */</span> <span class="p">});</span>
 <span class="p">};</span>
-</pre></div><p>After ~20 hours of fiddling with server configurations and synth modules I had a working prototype. A few tweaks to the sensitivity/responsiveness (that feel much better in newer builds) and it was ready to present. Things weren’t perfect, but such is the nature of a hackathon. Larger and excited motions would cause synthesizer values to fluctuate wildly, creating an audio stream that sounded something like a dial-up connection. As a result, I believe I may have the honor of saying that I&#39;m the first person to perform dial-up on stage. The positive response was amazing, the crowd loved it. So much so that I hurried off-stage in a rush of excitement and thanks, forgetting to speak to the very real future of the project.</p><p><a href="/assets/images/blog/2016-04-26-pebble-theremin/demoing_full.png" title="" class=""><img src="/assets/images/blog/2016-04-26-pebble-theremin/demoing.png" alt="Live Demo" /></a>
-<p class="blog__image-text">Demoing the instrument to a live audience</p></p><p>Work has begun on expanding the project. The web app design makes it trivial to connect multiple users all playing separate instruments, enabling multi-user performances with each participant playing remotely from anywhere in the world. The viewer end of the interface is modeled as a visualization of a garden, with viewers represented as flowers in the garden and performers as bouncing balls of light. Viewers can chat through a common interface, help shape the current performance through their interaction, as well as record, play back, and share performances.</p><p><a href="/assets/images/blog/2016-04-26-pebble-theremin/testing_full.png" title="" class=""><img src="/assets/images/blog/2016-04-26-pebble-theremin/testing.png" alt="Test Interface" /></a>
+</pre></div><p>After ~20 hours of fiddling with server configurations and synth modules I had a working prototype. A few tweaks to the sensitivity/responsiveness (that feel much better in newer builds) and it was ready to present. Things weren’t perfect, but such is the nature of a hackathon. Larger and excited motions would cause synthesizer values to fluctuate wildly, creating an audio stream that sounded something like a dial-up connection. As a result, I believe I may have the honor of saying that I&#39;m the first person to perform dial-up on stage. The positive response was amazing, the crowd loved it. So much so that I hurried off-stage in a rush of excitement and thanks, forgetting to speak to the very real future of the project.</p><p><a href="/developer.pebble.com/assets/images/blog/2016-04-26-pebble-theremin/demoing_full.png" title="" class=""><img src="/developer.pebble.com/assets/images/blog/2016-04-26-pebble-theremin/demoing.png" alt="Live Demo" /></a>
+<p class="blog__image-text">Demoing the instrument to a live audience</p></p><p>Work has begun on expanding the project. The web app design makes it trivial to connect multiple users all playing separate instruments, enabling multi-user performances with each participant playing remotely from anywhere in the world. The viewer end of the interface is modeled as a visualization of a garden, with viewers represented as flowers in the garden and performers as bouncing balls of light. Viewers can chat through a common interface, help shape the current performance through their interaction, as well as record, play back, and share performances.</p><p><a href="/developer.pebble.com/assets/images/blog/2016-04-26-pebble-theremin/testing_full.png" title="" class=""><img src="/developer.pebble.com/assets/images/blog/2016-04-26-pebble-theremin/testing.png" alt="Test Interface" /></a>
 <p class="blog__image-text">Garden&#39;s demo interface</p></p><p>Development has begun on a new instrument interface powered by an Android application. The app works similarly to the interface created for the Pebble - streaming sensor data from the phone to the web app, with additional concerns and design changes due to the weight of the phone and the addition of a touch screen. The differences in the two will make for two distinctly different instruments with similarly intuitive styles of control, enabling users to join together for collaborative, physically-based musical performances.</p><p>Huge thanks to the people at Pebble for their great piece of wearable tech and for being all-around awesome. This couldn’t have happened without their awesome documentation and support. I&#39;m incredibly excited for the future of this project. It’s been a blast to work on so far, and I hope you&#39;ll join me later this summer when the new version of the site goes live for testing! If you’re interested, you can find more information about the project (including it’s source) on <a href="https://hackaday.io/project/10876-garden" title="" class="">hackaday.io</a>  and follow me on Twitter <a href="https://twitter.com/JeremyKarbowski" title="" class="">@JeremyKarbowski</a> where I occasionally post about the projects I’m working on.</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Guest Blog Post - Introducing KiezelPay!]]></title>
     <link href="http://developer.getpebble.com/blog/2016/04/06/KiezelPay/"/>
     <updated>2016-04-06T00:00:00+00:00</updated>
     <id>http://developer.getpebble.com/blog/2016/04/06/KiezelPay</id>
-    <content type="html"><![CDATA[<p><em>This is a guest blog post from <a href="https://www.kiezelwatchfaces.com/" title="" class="">Kiezel&#39;s</a> Kristof (in Belgium) and Jaron (in the US), who recently opened their KiezelPay payments platform to all Pebble developers! We&#39;re super excited to see how it will be used and adopted! You can find a list of KiezelPay Powered <a href="https://apps.getpebble.com/en_US/collection/kiezelpay/watchapps" title="" class="">watchapps</a> and <a href="https://apps.getpebble.com/en_US/collection/kiezelpay/watchfaces" title="" class="">watchfaces</a> in Pebble&#39;s appstore.</em></p><p><a href="https://kiezelpay.com" title="" class="">KiezelPay</a> was designed to help developers sell their apps and watchfaces for the Pebble smartwatch as easily, securely, and globally as possible. We learned a lot when we created a payment system for our Kiezel Watchfaces, and we wanted to improve that system and open it to all developers!</p><p><strong>We strongly believe you deserve to get paid.</strong></p><p>As a team we felt that bringing a solid payment system to the Pebble ecosystem would not only increase developer interest but also bring a much greater quality of apps and watchfaces to Pebble users.</p><h2 id="how-does-it-work" class="anchor">How Does it Work?</h2><p>KiezelPay apps have 3 possible statuses - unlicensed, trial, and licensed.</p><p>When the app is compiled with the trial setting enabled, it will check its status on our server as soon as the KiezelPay library is initialized for the first time after a clean install - otherwise, the app will check its status when told to do so by the developer (e.g. <a href="http://apps.getpebble.com/en_US/application/54e69569ad38b6399f000017" title="" class="">PinyWings</a> checks for the app&#39;s status after the first level, allowing users to play the first level before purchasing the game).</p><p><a href="/assets/images/blog/2016-04-05-kiezelpay/kiezelpay.png" title="" class=""><img src="/assets/images/blog/2016-04-05-kiezelpay/kiezelpay.png" alt="KiezelPay Flow" /></a></p><p>The diagram above describes the flow of communication between the Pebble app and the KiezelPay servers, including what it looks like when the optional &#39;trial&#39; and &#39;periodic rechecks after purchase&#39; features are enabled.</p><h2 id="why-use-kiezelpay" class="anchor">Why Use KiezelPay?</h2><p>KiezelPay is secure, simple to integrate, and jam packed with features like trial based apps and watchfaces, discount/promo codes, a day-­to-­day sales dashboard, worldwide transactions, and handles international taxes with ease!</p><h3 id="security" class="anchor">Security</h3><p>The first thing that comes to mind when thinking about a payment system is security. Whatever solution we created, we knew it had to be difficult to manipulate the system into giving away free usage of the app, and that the payments should be performed in a secure and trustworthy environment.</p><p>We ensure that all vital information and critical security checks happen in the application&#39;s C code, and that all communication with the KiezelPay servers use checksums, app secrets, and <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce" title="" class="">nonces</a> to help secure the system.</p><p><em>We put a lot of effort into securing our platform, and if you would like to learn more we invite you to contact us at <a href="mailto:support@kiezelpay.com" title="" class="">support@kiezelpay.com</a>.</em></p><h3 id="taxes-legal" class="anchor">Taxes/Legal</h3><p>International tax laws are becoming increasingly difficult to handle. Many governments have noticed that the digital goods sector is growing rapidly, and they are losing a lot of money because foreign companies can sell their digital goods with easy without having to pay local sales tax.</p><p>For these reasons, the EU recently changed their digital goods tax system, which now requires everyone to charge VAT to anyone from the EU buying digital goods from them, regardless of where the company/person selling those goods is located, and regardless of the amount sold... and many more countries are either following suit, or creating new tax requirements for digital goods of their own.</p><p>Trying to stay on top of tax requirements is an insurmountable burden for a single developer that just wants to make a few bucks selling their apps. At KiezelPay, we have spent an enormous amount of time with international accountants and lawyers to ensure we&#39;re compliant with current international taxes and laws - not only for accepting payments, but getting the developer paid legally and correctly in a timely manner.</p><h3 id="ease-of-integration" class="anchor">Ease of Integration</h3><p>Pebble goes to great lengths to make their development platform accessible to new and experienced developers alike, and we wanted to ensure our platform was the same. An average developer should be able to setup KiezelPay and integrate it into their app in about an hour.</p><p>Once a developer creates a product in KiezelPay, they can download a pre-built watchface that includes the KiezelPay integration that has been configured for the product they just setup!</p><h3 id="features" class="anchor">Features</h3><p>Our KiezelPay platform currently offers you the following features:</p>
+    <content type="html"><![CDATA[<p><em>This is a guest blog post from <a href="https://www.kiezelwatchfaces.com/" title="" class="">Kiezel&#39;s</a> Kristof (in Belgium) and Jaron (in the US), who recently opened their KiezelPay payments platform to all Pebble developers! We&#39;re super excited to see how it will be used and adopted! You can find a list of KiezelPay Powered <a href="https://apps.getpebble.com/en_US/collection/kiezelpay/watchapps" title="" class="">watchapps</a> and <a href="https://apps.getpebble.com/en_US/collection/kiezelpay/watchfaces" title="" class="">watchfaces</a> in Pebble&#39;s appstore.</em></p><p><a href="https://kiezelpay.com" title="" class="">KiezelPay</a> was designed to help developers sell their apps and watchfaces for the Pebble smartwatch as easily, securely, and globally as possible. We learned a lot when we created a payment system for our Kiezel Watchfaces, and we wanted to improve that system and open it to all developers!</p><p><strong>We strongly believe you deserve to get paid.</strong></p><p>As a team we felt that bringing a solid payment system to the Pebble ecosystem would not only increase developer interest but also bring a much greater quality of apps and watchfaces to Pebble users.</p><h2 id="how-does-it-work" class="anchor">How Does it Work?</h2><p>KiezelPay apps have 3 possible statuses - unlicensed, trial, and licensed.</p><p>When the app is compiled with the trial setting enabled, it will check its status on our server as soon as the KiezelPay library is initialized for the first time after a clean install - otherwise, the app will check its status when told to do so by the developer (e.g. <a href="http://apps.getpebble.com/en_US/application/54e69569ad38b6399f000017" title="" class="">PinyWings</a> checks for the app&#39;s status after the first level, allowing users to play the first level before purchasing the game).</p><p><a href="/developer.pebble.com/assets/images/blog/2016-04-05-kiezelpay/kiezelpay.png" title="" class=""><img src="/developer.pebble.com/assets/images/blog/2016-04-05-kiezelpay/kiezelpay.png" alt="KiezelPay Flow" /></a></p><p>The diagram above describes the flow of communication between the Pebble app and the KiezelPay servers, including what it looks like when the optional &#39;trial&#39; and &#39;periodic rechecks after purchase&#39; features are enabled.</p><h2 id="why-use-kiezelpay" class="anchor">Why Use KiezelPay?</h2><p>KiezelPay is secure, simple to integrate, and jam packed with features like trial based apps and watchfaces, discount/promo codes, a day-­to-­day sales dashboard, worldwide transactions, and handles international taxes with ease!</p><h3 id="security" class="anchor">Security</h3><p>The first thing that comes to mind when thinking about a payment system is security. Whatever solution we created, we knew it had to be difficult to manipulate the system into giving away free usage of the app, and that the payments should be performed in a secure and trustworthy environment.</p><p>We ensure that all vital information and critical security checks happen in the application&#39;s C code, and that all communication with the KiezelPay servers use checksums, app secrets, and <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce" title="" class="">nonces</a> to help secure the system.</p><p><em>We put a lot of effort into securing our platform, and if you would like to learn more we invite you to contact us at <a href="mailto:support@kiezelpay.com" title="" class="">support@kiezelpay.com</a>.</em></p><h3 id="taxes-legal" class="anchor">Taxes/Legal</h3><p>International tax laws are becoming increasingly difficult to handle. Many governments have noticed that the digital goods sector is growing rapidly, and they are losing a lot of money because foreign companies can sell their digital goods with easy without having to pay local sales tax.</p><p>For these reasons, the EU recently changed their digital goods tax system, which now requires everyone to charge VAT to anyone from the EU buying digital goods from them, regardless of where the company/person selling those goods is located, and regardless of the amount sold... and many more countries are either following suit, or creating new tax requirements for digital goods of their own.</p><p>Trying to stay on top of tax requirements is an insurmountable burden for a single developer that just wants to make a few bucks selling their apps. At KiezelPay, we have spent an enormous amount of time with international accountants and lawyers to ensure we&#39;re compliant with current international taxes and laws - not only for accepting payments, but getting the developer paid legally and correctly in a timely manner.</p><h3 id="ease-of-integration" class="anchor">Ease of Integration</h3><p>Pebble goes to great lengths to make their development platform accessible to new and experienced developers alike, and we wanted to ensure our platform was the same. An average developer should be able to setup KiezelPay and integrate it into their app in about an hour.</p><p>Once a developer creates a product in KiezelPay, they can download a pre-built watchface that includes the KiezelPay integration that has been configured for the product they just setup!</p><h3 id="features" class="anchor">Features</h3><p>Our KiezelPay platform currently offers you the following features:</p>
 <ul>
 <li><strong>Trial usage</strong>: You, as the developer, can choose if you want to allow users to test your app before purchasing by having a trial period. With a simple setting in your KiezelPay account, you can enable/disable trials, and define how long they last. After the trial is expired, the user will be required to purchase to continue.</li>
 <li><strong>Discounts</strong>: Want to reward that user that helped you hunt down a hard to find bug with a free license or have a holiday specific pricing? No problem! Our system allows you to create all kinds of discounts for every situation: percentage based or fixed amount, one time valid or during a specific period in time, with code or for anyone that purchases, etc.</li>
@@ -1454,17 +1454,17 @@ apps/faces</li>
 </ul>
 <p>KiezelPay is officially now live and open to all developers to sign up for free. To sign up visit our site at <a href="https://kiezelpay.com" title="" class="">KiezelPay.com</a>, and join the <a href="https://discord.gg/zbqrxh8" title="" class="">KiezelPay Discord server</a>.</p><p>We hope you enjoy what we’ve created!</p><p>Kristof Verpoorten &amp; Jaron Pulver</p><p>KiezelPay LLC</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Developer Relations Team Update]]></title>
     <link href="http://developer.getpebble.com/blog/2016/03/29/developer-relations-team-update/"/>
     <updated>2016-03-29T00:00:00+00:00</updated>
     <id>http://developer.getpebble.com/blog/2016/03/29/developer-relations-team-update</id>
-    <content type="html"><![CDATA[<p>If you have been following Pebble in the news, you have likely seen that there have been some recent changes to the Pebble Team. We wanted to take a moment to acknowledge the #awesome work that has gone into getting our developer program to where it is today, and introduce you to the (somewhat) new faces of Pebble&#39;s Developer Relations team!</p><p><img src="/assets/images/blog/developer-relations-team-update/retreat.jpg" alt="2015 Developer Retreat" />
-<p class="blog__image-text">The 2015 Developer Retreat - Bringing the Pebble Dev Team together with the Pebble Community!</p></p><p>The Developer Relations team is responsible for overseeing Pebble&#39;s developer program, managing documentation and events, listening to and advocating for our community&#39;s needs, and creating a safe, welcoming and empowered community of Pebble developers. It&#39;s a big job - and we are incredibly lucky and grateful to be able to continue the work of the brilliant and compassionate team that came before us!</p><p>And now to introduce you to the (somewhat) new faces of Developer Relation: Cat and Jon!</p><p><img src="/assets/images/blog/developer-relations-team-update/faces.png" alt="Cat and Jon" />
+    <content type="html"><![CDATA[<p>If you have been following Pebble in the news, you have likely seen that there have been some recent changes to the Pebble Team. We wanted to take a moment to acknowledge the #awesome work that has gone into getting our developer program to where it is today, and introduce you to the (somewhat) new faces of Pebble&#39;s Developer Relations team!</p><p><img src="/developer.pebble.com/assets/images/blog/developer-relations-team-update/retreat.jpg" alt="2015 Developer Retreat" />
+<p class="blog__image-text">The 2015 Developer Retreat - Bringing the Pebble Dev Team together with the Pebble Community!</p></p><p>The Developer Relations team is responsible for overseeing Pebble&#39;s developer program, managing documentation and events, listening to and advocating for our community&#39;s needs, and creating a safe, welcoming and empowered community of Pebble developers. It&#39;s a big job - and we are incredibly lucky and grateful to be able to continue the work of the brilliant and compassionate team that came before us!</p><p>And now to introduce you to the (somewhat) new faces of Developer Relation: Cat and Jon!</p><p><img src="/developer.pebble.com/assets/images/blog/developer-relations-team-update/faces.png" alt="Cat and Jon" />
 <p class="blog__image-text">Cat &amp; Jon (with special guest appearance by Jess the dog)</p></p><p>Cat Haines joined Pebble in October 2015, and has been helping with a lot of the behind the scenes work for Pebble&#39;s Developer Relations team. Cat enjoys tinkering with hardware and JavaScript (so naturally she&#39;s excited about <a href="https://github.com/pebble/rockyjs" title="" class="">Rocky</a>), crafting, and trying her best to keep a variety of house plants alive. You can follow her antics on <a href="https://twitter.com/_cathaines" title="" class="">Twitter</a>, <a href="https://github.com/cat-haines" title="" class="">GitHub</a>, and her <a href="http://cathaines.com" title="" class="">personal blog</a>.</p><p>Jon Barlow joined Pebble in September 2015. He is a champion Kickstarter backer and has been a longstanding community member and forum moderator. You may remember him from such apps as <a href="https://apps.getpebble.com/en_US/application/52b231c2b70e1c159500009b" title="" class="">91 Dub</a> and <a href="https://apps.getpebble.com/en_US/application/55a4b474e6f909512b0000a5" title="" class="">The Day Today</a>. Jon has spent many years volunteering and helping people within the Pebble community and is looking forward to continuing this role as his day job. Jon works for Pebble remotely from the UK and you can find him on <a href="https://twitter.com/orviwan" title="" class="">Twitter</a> and <a href="https://github.com/orviwan" title="" class="">GitHub</a>.</p><p>We have some exciting updates in the works - including introductions to some of the other well know (and loved) developer facing teams at Pebble. We can&#39;t wait to share what&#39;s coming up - so stay tuned, and if you have any questions, you can always find Cat (@cat) or Jon (@orviwan) on Pebble&#39;s Slack channel.</p><p>Happy Hacking!</p>]]></content>
   </entry>
-  
+
   <entry>
     <title type="html"><![CDATA[Don't Panic - We're Here to Guide You]]></title>
     <link href="http://developer.getpebble.com/blog/2016/03/09/Dont-Panic-We-Are-Here-To-Guide-You/"/>
@@ -1489,7 +1489,7 @@ the concepts new developers struggle with the most.</p></li>
 you take your apps to the next level by introducing concepts such as creating
 low power apps and watchfaces, and suggestions on how to organize larger
 projects.</p></li>
-<li><p>We’ve created guides around 
+<li><p>We’ve created guides around
 <a href="/guides/appstore-publishing" title="" class=""><em>Appstore Publishing</em></a> to help you get your hard
 work into the hands (onto the wrists?) of others.</p></li>
 <li><p>We’ve added new guides for <a href="/guides/tools-and-resources/cloudpebble/"><em>CloudPebble</em></a>,
@@ -1524,5 +1524,5 @@ missing or broken, but if it is be sure to tweet
 <a href="https://twitter.com/PebbleDev" title="" class="">@PebbleDev</a> on Twitter or find me in our
 <a href="http://discord.gg/aRUAYFN" title="" class="">Discord</a> group.</p>]]></content>
   </entry>
-  
+
 </feed>

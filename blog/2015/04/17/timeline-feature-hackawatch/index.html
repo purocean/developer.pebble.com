@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2015/04/17/timeline-feature-hackawatch/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,21 +73,21 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="q-amp-a-with-the-hackawatch-team">Q&amp;A with the Hackawatch Team</option>
-          
+
             <option value="future-steps">Future Steps</option>
-          
+
             <option value="inspired-to-start-hacking-on-pebble">Inspired to Start Hacking on Pebble?</option>
-          
+
             <option value="want-to-hang-out-with-pebble">Want to Hang Out with Pebble?</option>
-          
+
         </select>
       </div>
     </div>
@@ -117,18 +117,18 @@
   <ul class="inline-list inline-list--piped">
     <li>17 April 2015</li>
     <li><a href="/blog/authors/niharika/">Niharika Bedekar</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </li>
     <li><a href="/blog/2015/04/17/timeline-feature-hackawatch/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
-<p><img src="/assets/images/blog/hackawatch.png"></p>
+<p><img src="/developer.pebble.com/assets/images/blog/hackawatch.png"></p>
 
 <p>Hackathons are packed with tutorials, tech talks, and demos, and it’s simple for
 important activities to sometimes slip through the cracks. However, thanks to
@@ -145,7 +145,7 @@ important events during the hackathon on their timeline.</li>
 <li><strong>Why</strong>: The team is going to be organizing their own hackathon during the fall of
 2015, Desert Hacks, and thought it would be a useful application to have in place
 during their event.</li>
-<li><strong>How</strong>: Using the <a href="/guides/" title="" class="">guides</a>, <a href="/docs/" title="" class="">documentation</a>, and 
+<li><strong>How</strong>: Using the <a href="/guides/" title="" class="">guides</a>, <a href="/docs/" title="" class="">documentation</a>, and
 <a href="/blog/2015/03/20/Getting-Started-With-Timeline/" title="" class="">blog posts</a> online!</li>
 </ol>
 <h2 id="q-amp-a-with-the-hackawatch-team" class="anchor">Q&amp;A with the Hackawatch Team</h2><p>We recently talked to these first time Pebble hackers, and got their story.</p><p><strong>How did you get started with your project?</strong></p><p>When we started setting up the project and needed to learn more about developing
@@ -159,36 +159,36 @@ examples.</p><p><strong>Why did you decide to use the timeline interface?</stron
  thought it would be great to build something we would be using ourselves in just
  a couple months. Not to mention, we also thought it would be the best thing to
 hack on since it&#39;s one of the newest API features and something that all Pebble
-watches would have eventually anyway.</p><p><strong>Which frameworks did you use for your project?</strong></p><p>I used the native SDK emulator on my MacBook Pro to test out the app as we were 
-developing it, and we used PebbleKit JS running on the user&#39;s phone to retrieve 
-the user&#39;s timeline token as well as our own NodeJS API. Further, we would send 
-HTTP requests to our API, sending along the user&#39;s timeline token and their 
-preferences for what they wanted to subscribe to so we could use the 
-<a href="https://www.npmjs.com/package/pebble-api" title="" class="">pebble-api-node module</a> on our end.</p><p>Also, when I was working on implementing the 
-<a href="https://www.npmjs.com/package/pebble-api" title="" class="">pebble-api-node module</a> in our backend, 
-I also found some missing API functionality.  At the hackathon, I was able to add 
-the functionality (deleting user pins) with appropriate tests and submitted a pull 
-request, which got merged in shortly after the event!</p><p><strong>What was the hardest part about making the app?</strong> </p><p>I&#39;d say the hardest part about developing the app was ramping up on the Pebble C 
-library for creating the user interface on the Pebble, because it was a new API for 
-us and none of us had any prior experience writing C.  Again, to combat that, we 
+watches would have eventually anyway.</p><p><strong>Which frameworks did you use for your project?</strong></p><p>I used the native SDK emulator on my MacBook Pro to test out the app as we were
+developing it, and we used PebbleKit JS running on the user&#39;s phone to retrieve
+the user&#39;s timeline token as well as our own NodeJS API. Further, we would send
+HTTP requests to our API, sending along the user&#39;s timeline token and their
+preferences for what they wanted to subscribe to so we could use the
+<a href="https://www.npmjs.com/package/pebble-api" title="" class="">pebble-api-node module</a> on our end.</p><p>Also, when I was working on implementing the
+<a href="https://www.npmjs.com/package/pebble-api" title="" class="">pebble-api-node module</a> in our backend,
+I also found some missing API functionality.  At the hackathon, I was able to add
+the functionality (deleting user pins) with appropriate tests and submitted a pull
+request, which got merged in shortly after the event!</p><p><strong>What was the hardest part about making the app?</strong> </p><p>I&#39;d say the hardest part about developing the app was ramping up on the Pebble C
+library for creating the user interface on the Pebble, because it was a new API for
+us and none of us had any prior experience writing C.  Again, to combat that, we
 looked at the available documentation and examples, and also got help from the Pebble
- Engineers that were on site throughout the hackathon (they were awesome!).</p><p><strong>What was your favorite part about making the app?</strong></p><p>I’d say the best part about developing this app would be gaining experience developing 
-on Pebble&#39;s newest API.  This is the next big move for the company and for the people 
-that own these watches, and being able to be a part of that and show what we can make 
-with the new functionality is really amazing.</p><h2 id="future-steps" class="anchor">Future Steps</h2><p>Hackathon organizers, take note! The story hasn’t ended here for Hackawatch. The team 
-is going to continue adding functionality to their app: soon, they want to have an 
-RSVP action for certain activities or tech talks. Their ultimate goal is to make it 
-as easy as possible for any other hackathon organizers to fork the project into their 
-own repo and adapt it for their event. </p><h2 id="inspired-to-start-hacking-on-pebble" class="anchor">Inspired to Start Hacking on Pebble?</h2><p>Follow the Hackawatch team’s lead and hack your heart out! We have tons of 
-<a href="/guides/" title="" class="">guides</a> and <a href="/docs/" title="" class="">documentation</a> online that are perfect for first 
-time hackers. If you want to share your project, enter it into the 
-<a href="/blog/2015/04/14/the-timeline-challenge-is-live/" title="" class="">Timeline Challenge</a>! 
-For the next twelve weeks, we’re going to be giving out free Pebble Times, swag, and 
+ Engineers that were on site throughout the hackathon (they were awesome!).</p><p><strong>What was your favorite part about making the app?</strong></p><p>I’d say the best part about developing this app would be gaining experience developing
+on Pebble&#39;s newest API.  This is the next big move for the company and for the people
+that own these watches, and being able to be a part of that and show what we can make
+with the new functionality is really amazing.</p><h2 id="future-steps" class="anchor">Future Steps</h2><p>Hackathon organizers, take note! The story hasn’t ended here for Hackawatch. The team
+is going to continue adding functionality to their app: soon, they want to have an
+RSVP action for certain activities or tech talks. Their ultimate goal is to make it
+as easy as possible for any other hackathon organizers to fork the project into their
+own repo and adapt it for their event. </p><h2 id="inspired-to-start-hacking-on-pebble" class="anchor">Inspired to Start Hacking on Pebble?</h2><p>Follow the Hackawatch team’s lead and hack your heart out! We have tons of
+<a href="/guides/" title="" class="">guides</a> and <a href="/docs/" title="" class="">documentation</a> online that are perfect for first
+time hackers. If you want to share your project, enter it into the
+<a href="/blog/2015/04/14/the-timeline-challenge-is-live/" title="" class="">Timeline Challenge</a>!
+For the next twelve weeks, we’re going to be giving out free Pebble Times, swag, and
 prizes, so fire up <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> and hack away! </p><h2 id="want-to-hang-out-with-pebble" class="anchor">Want to Hang Out with Pebble?</h2><p>If you’re going to be in San Francisco next week, come to our
- <a href="http://www.meetup.com/PebbleSF/events/221717043/" title="" class="">Meetup</a>! We’ll be talking 
-specifically about timeline and all the cool features that come with it. Otherwise, 
-keep an eye on our <a href="/community/events/" title="" class="">Events</a> page to figure out where we’ll be 
-soon. We have a busy few months coming up, and want to see as many Pebblers as 
+ <a href="http://www.meetup.com/PebbleSF/events/221717043/" title="" class="">Meetup</a>! We’ll be talking
+specifically about timeline and all the cool features that come with it. Otherwise,
+keep an eye on our <a href="/community/events/" title="" class="">Events</a> page to figure out where we’ll be
+soon. We have a busy few months coming up, and want to see as many Pebblers as
 possible. We can’t wait to meet you! </p>
 <hr>
 <a id="comments" class="anchor"></a>
@@ -216,245 +216,245 @@ possible. We can’t wait to meet you! </p>
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#q-amp-a-with-the-hackawatch-team">Q&amp;A with the Hackawatch Team</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#future-steps">Future Steps</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#inspired-to-start-hacking-on-pebble">Inspired to Start Hacking on Pebble?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#want-to-hang-out-with-pebble">Want to Hang Out with Pebble?</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 <strong>Timeline</strong>
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 <strong>Niharika Bedekar</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -481,19 +481,19 @@ possible. We can’t wait to meet you! </p>
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

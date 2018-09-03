@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2016/05/18/PAL-Smartstrap/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,23 +73,23 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="meet-pal">Meet Pal!</option>
-          
+
             <option value="how-did-we-get-started-on-this-journey">How Did We Get Started On This Journey?</option>
-          
+
             <option value="so-how-does-it-work-exactly">So how does it work exactly?</option>
-          
+
             <option value="design">Design</option>
-          
+
             <option value="open-platform">Open Platform</option>
-          
+
         </select>
       </div>
     </div>
@@ -119,14 +119,14 @@
   <ul class="inline-list inline-list--piped">
     <li>18 May 2016</li>
     <li><a href="/blog/authors/pebble/">Team Pebble</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/at-the-pub/">At the Pub</a>
-      
+
     </li>
     <li><a href="/blog/2016/05/18/PAL-Smartstrap/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
@@ -135,7 +135,7 @@ battery extending smartstrap that launched on Kickstarter this week:</em></p><p>
 first GPS and battery Smartstrap for Pebble Time and Pebble Time Steel watches
 is now live! We have been working very closely with Pebble to provide the best
 strap for this amazing community since 2014 and the time (pun intended) is
-finally here to share it with everyone!</p><h2 id="meet-pal" class="anchor">Meet Pal!</h2><p><img src="/assets/images/blog/2016-05-18-PAL-Smartstrap/pal.jpg" alt="Pal Smartstrap" /></p><p>It features a high performance, independent GPS that allows users to track
+finally here to share it with everyone!</p><h2 id="meet-pal" class="anchor">Meet Pal!</h2><p><img src="/developer.pebble.com/assets/images/blog/2016-05-18-PAL-Smartstrap/pal.jpg" alt="Pal Smartstrap" /></p><p>It features a high performance, independent GPS that allows users to track
 speed, distance, elevation, and route for up to 24 hours without the need for a
 Smartphone. Begin your activity as soon as you go out, with no time wasted idly
 waiting for a signal. Pal uses industry leading GPS (Qualcomm SiRF), which
@@ -156,13 +156,13 @@ identify what would be of most use to the Pebble community, best practices, and
 gave great feedback which helped us perfect the design. This relationship is not
 unlike the relationship between the Pebble and Pal, both working together in
 harmony to make something unique and great -- which actually helped inspire the
-name Pal!</p><p><img src="/assets/images/blog/2016-05-18-PAL-Smartstrap/concept.png" alt="PAL Concept and Prototype" />
+name Pal!</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-18-PAL-Smartstrap/concept.png" alt="PAL Concept and Prototype" />
 <p class="blog__image-text">Early concept drawing and battery buckle prototype</p></p><h2 id="so-how-does-it-work-exactly" class="anchor">So how does it work exactly?</h2><p>Let’s dive in deeper into the technical specification of the Pal Smartstrap. Pal
 GPS architecture is powered by Qualcomm’s SiRF chipset, this chipset can track
 speed, distance, and elevation as a standalone, offering an impressively fast
 first time signal pickup within three minutes and it will continue to work even
 if it goes indoors for a while, and then comes back outside. PAL also features data
-storage for up to 24 hours of GPS data.</p><p><img src="/assets/images/blog/2016-05-18-PAL-Smartstrap/communication.jpg" alt="GPS Communication" /></p><p>Raw GPS data received from satellites are processed by Pal’s MCU and results are
+storage for up to 24 hours of GPS data.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-18-PAL-Smartstrap/communication.jpg" alt="GPS Communication" /></p><p>Raw GPS data received from satellites are processed by Pal’s MCU and results are
 pumped to Pebble for display and storage - allowing the smartwatch to leverage
 GPS location data without the need to be connected to a mobile phone.</p><p>Per our efficient power management intelligence, Pal’s battery recharges
 Pebble’s battery only when the user manually activates the function or when
@@ -170,7 +170,7 @@ Pebble’s battery drops to very low level and triggers auto-charging. Connectin
 pins between the Pal and Pebble are surrounded by soft gasket. This structure
 makes Pal water resistant, but it probably cannot withstand swimming or diving.
 In any case, even if water goes between connecting pins, Pal’s electronic design
-has protection measure and it won’t be damaged.</p><p><img src="/assets/images/blog/2016-05-18-PAL-Smartstrap/exploded-pal.jpg" alt="Exploded View of PAL" /></p><p><strong>Tech Specs:</strong> GNSS support: GPS only TTFF cold fix time: about 40 seconds
+has protection measure and it won’t be damaged.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-05-18-PAL-Smartstrap/exploded-pal.jpg" alt="Exploded View of PAL" /></p><p><strong>Tech Specs:</strong> GNSS support: GPS only TTFF cold fix time: about 40 seconds
 under open sky. Location fix time can be accelerated by AGPS (working in
 progress with Qualcomm) Location hot fix: within 10 seconds. Certification
 planned to be done upon campaign success and product launch: CE, FCC, IC Battery
@@ -221,247 +221,247 @@ us out and support us at
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#meet-pal">Meet Pal!</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#how-did-we-get-started-on-this-journey">How Did We Get Started On This Journey?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#so-how-does-it-work-exactly">So how does it work exactly?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#design">Design</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#open-platform">Open Platform</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 <strong>At the Pub</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 <strong>Team Pebble</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -488,19 +488,19 @@ us out and support us at
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2014/07/02/Watch-analytics-with-strap/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,31 +73,31 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="1-create-an-app-on-the-strap-dashboard">1) Create an app on the Strap dashboard.</option>
-          
+
             <option value="2-make-note-of-your-app-id">2) Make note of your app ID.</option>
-          
+
             <option value="3-download-the-strap-metrics-pebble-sdk-from-github">3) Download the Strap Metrics Pebble SDK from Github.</option>
-          
+
             <option value="4-add-the-c-source-to-your-project">4) Add the C source to your project.</option>
-          
+
             <option value="5-add-the-js-api-to-your-javascript-code">5) Add the JS API to your JavaScript code</option>
-          
+
             <option value="6-add-the-appmessage-event-handler-to-your-javascript-code">6) Add the AppMessage event handler to your JavaScript code</option>
-          
+
             <option value="7-add-the-c-api-to-your-c-code">7) Add the C API to your C code</option>
-          
+
             <option value="8-initialize-strap-in-your-c-code">8) Initialize Strap in your C code</option>
-          
+
             <option value="9-add-strap-api-calls-to-track-events-optional-but-recommended">9) Add Strap API calls to track events (optional, but recommended)</option>
-          
+
         </select>
       </div>
     </div>
@@ -127,14 +127,14 @@
   <ul class="inline-list inline-list--piped">
     <li>02 July 2014</li>
     <li><a href="/blog/authors/alex/">Alex Lin</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/at-the-pub/">At the Pub</a>
-      
+
     </li>
     <li><a href="/blog/2014/07/02/Watch-analytics-with-strap/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
@@ -163,13 +163,13 @@ Pebble app for <a href="http://www.what3words.com" title="" class="">What3Words<
 lets you share your precise location in just three words. This is a fairly
 typical Pebble JS app - it communicates via AppMessage and AppSync to interact
 with the REST service provided by What3Words.</p><p>Note: If you have a companion app for iOS or Android, we&#39;ve got you covered! We
-have 
-<a href="https://github.com/strap/strap_sdk_pebble/tree/master/companion" title="" class="">quick start guides</a> 
+have
+<a href="https://github.com/strap/strap_sdk_pebble/tree/master/companion" title="" class="">quick start guides</a>
 for those platforms on our developer portal.</p><p>Before you get started, signup for an account at
 <a href="https://www.straphq.com/register">https://www.straphq.com/register</a> - it&#39;s free without limits during our public
-beta!</p><h5 id="1-create-an-app-on-the-strap-dashboard" class="anchor">1) Create an app on the Strap dashboard.</h5><p><img src="/assets/images/blog/strap1.png" alt="1" /></p><h5 id="2-make-note-of-your-app-id" class="anchor">2) Make note of your app ID.</h5><p><img src="/assets/images/blog/strap2.png" alt="2" /></p><h5 id="3-download-the-strap-metrics-pebble-sdk-from-github" class="anchor">3) <a href="https://github.com/strap/strap_sdk_pebble" title="" class="">Download the Strap Metrics Pebble SDK from Github.</a></h5><h5 id="4-add-the-c-source-to-your-project" class="anchor">4) Add the C source to your project.</h5><p><em>The easy way:</em></p><p>Run this from the &quot;src&quot; directory:</p><div class="highlight"><pre><span class="vg">curl</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="vg">pebble</span><span class="o">-</span><span class="vg">install</span><span class="o">.</span><span class="vg">straphq</span><span class="o">.</span><span class="vg">com</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="vg">sh</span>
+beta!</p><h5 id="1-create-an-app-on-the-strap-dashboard" class="anchor">1) Create an app on the Strap dashboard.</h5><p><img src="/developer.pebble.com/assets/images/blog/strap1.png" alt="1" /></p><h5 id="2-make-note-of-your-app-id" class="anchor">2) Make note of your app ID.</h5><p><img src="/developer.pebble.com/assets/images/blog/strap2.png" alt="2" /></p><h5 id="3-download-the-strap-metrics-pebble-sdk-from-github" class="anchor">3) <a href="https://github.com/strap/strap_sdk_pebble" title="" class="">Download the Strap Metrics Pebble SDK from Github.</a></h5><h5 id="4-add-the-c-source-to-your-project" class="anchor">4) Add the C source to your project.</h5><p><em>The easy way:</em></p><p>Run this from the &quot;src&quot; directory:</p><div class="highlight"><pre><span class="vg">curl</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="vg">pebble</span><span class="o">-</span><span class="vg">install</span><span class="o">.</span><span class="vg">straphq</span><span class="o">.</span><span class="vg">com</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="vg">sh</span>
 </pre></div><p><em>Or manually:</em></p><p>Copy /src/c to a &quot;strap&quot; directory in your project. </p><h5 id="5-add-the-js-api-to-your-javascript-code" class="anchor">5) Add the JS API to your JavaScript code</h5><p>In the SDK you&#39;ll find a sample pebble-js-app.js which contains the API. Copy
-the API portion of the code to the top of your js file.</p><p><img src="/assets/images/blog/strap3.png" alt="3" /></p><h5 id="6-add-the-appmessage-event-handler-to-your-javascript-code" class="anchor">6) Add the AppMessage event handler to your JavaScript code</h5><p>Also in the sample pebble-js-app.js is an AppMessage event handler block. If you
+the API portion of the code to the top of your js file.</p><p><img src="/developer.pebble.com/assets/images/blog/strap3.png" alt="3" /></p><h5 id="6-add-the-appmessage-event-handler-to-your-javascript-code" class="anchor">6) Add the AppMessage event handler to your JavaScript code</h5><p>Also in the sample pebble-js-app.js is an AppMessage event handler block. If you
 already have an AppMessage event handler, just copy the relevant Strap portion
 into it. Make sure you change the app_id to the one you created in Step 1.
 Pebble.addEventListener(&quot;appmessage&quot;),</p><div class="highlight"><pre><span class="vg">Pebble</span><span class="o">.</span><span class="vg">addEventListener</span><span class="p">(</span><span class="s2">"appmessage"</span><span class="p">,</span>
@@ -280,255 +280,255 @@ community support portal at <a href="http://strap.uservoice.com">http://strap.us
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#1-create-an-app-on-the-strap-dashboard">1) Create an app on the Strap dashboard.</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#2-make-note-of-your-app-id">2) Make note of your app ID.</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#3-download-the-strap-metrics-pebble-sdk-from-github">3) Download the Strap Metrics Pebble SDK from Github.</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#4-add-the-c-source-to-your-project">4) Add the C source to your project.</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#5-add-the-js-api-to-your-javascript-code">5) Add the JS API to your JavaScript code</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#6-add-the-appmessage-event-handler-to-your-javascript-code">6) Add the AppMessage event handler to your JavaScript code</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#7-add-the-c-api-to-your-c-code">7) Add the C API to your C code</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#8-initialize-strap-in-your-c-code">8) Initialize Strap in your C code</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#9-add-strap-api-calls-to-track-events-optional-but-recommended">9) Add Strap API calls to track events (optional, but recommended)</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 <strong>At the Pub</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 <strong>Alex Lin</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -555,19 +555,19 @@ community support portal at <a href="http://strap.uservoice.com">http://strap.us
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

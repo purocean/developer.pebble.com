@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/11/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,7 +73,7 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 
       <div class="hidden-l">
         <div class="row" style="margin-bottom: 0.5em;">
@@ -97,23 +97,23 @@
 <h2 class="pagesubtitle">A Wristed Development</h2>
 
 <div class="blog-index">
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
-    
+
     <p>Aug 08, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/08/08/CloudPebble-Graphical-UI-Editor/">CloudPebble Graphical UI Editor</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
-      
-      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
-      
+
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>,
+
       <a href="/blog/tags/cloudpebble/">CloudPebble</a>
-      
+
     </p>
     <div><p>Today we&#39;re adding a new feature to <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a> that will make it easier than
 ever to build your watchfaces and watchapps! The new UI Editor will let you
@@ -123,21 +123,21 @@ generated C to build anything you like.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/8052313?v=3&s=100" width=80 height=80>
-    
+
     <p>Jul 21, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/07/21/Pebble-XDA-Challenge/">XDA Forums - Pebble Developer Challenge</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/katherine/">Katherine McAuliffe</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p>Can you #MakeAwesomeHappen? Your app idea could win a Pebble and a trip to our
 2nd Annual Pebble Developer Retreat in Mountain View, CA!</p><p>The XDA - Pebble Developer Challenge is a 3-week competition - your opportunity
@@ -151,21 +151,21 @@ Pebble Steel.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
-    <img src="/assets/images/blog/authors/alex-lin.jpeg" width=80 height=80>
-    
+
+    <img src="/developer.pebble.com/assets/images/blog/authors/alex-lin.jpeg" width=80 height=80>
+
     <p>Jul 02, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/07/02/Watch-analytics-with-strap/">Watch Analytics with Strap</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/alex/">Alex Lin</a> &middot;
-      
+
       <a href="/blog/tags/at-the-pub/">At the Pub</a>
-      
+
     </p>
     <div><blockquote>
 <p>We&#39;d like to share a blog post from our friends at
@@ -185,21 +185,21 @@ Android.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
-    <img src="/assets/images/blog/authors/alex-lin.jpeg" width=80 height=80>
-    
+
+    <img src="/developer.pebble.com/assets/images/blog/authors/alex-lin.jpeg" width=80 height=80>
+
     <p>Jun 19, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/06/19/Create-your-own-api-with-KimonoLabs/">Create Your Own Api With Kimono</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/alex/">Alex Lin</a> &middot;
-      
+
       <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
-      
+
     </p>
     <div><p>We&#39;d like to share with you a blog post written by our friends at KimonoLabs.
 Their service allows you to build a JSON API from any website. In this guest-
@@ -209,19 +209,19 @@ minutes! This was originally posted here (<a href="http://blog.kimonolabs.com/">
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
-    
+
     <p>Jun 18, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/06/18/Your-First-Watchface/">Pebble SDK Tutorial (Part 2)</a></h3>
     <p class="blog-index__tags">
       Chris Lewis &middot;
-      
+
     </p>
     <div>This is the second in a series of articles aimed at helping developers new and
 experienced begin creating their own watchapps. In this section we will be
@@ -233,21 +233,21 @@ improve the aesthetics of our watchface.
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
-    
+
     <p>Jun 12, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/06/12/Android-Beta-Channel/">Android for Pebble Beta Channel</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/ryan/">Ryan Case</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p><em>And what rough beast, its hour come round at last, slouches towards the Play
 Store to be born?</em></p><p>Sign up for the Pebble Android
@@ -263,19 +263,19 @@ to the beta channel.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
-    
+
     <p>Jun 10, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/06/10/Pebble-SDK-Tutorial-1/">Pebble SDK Tutorial (Part 1)</a></h3>
     <p class="blog-index__tags">
       Chris Lewis &middot;
-      
+
     </p>
     <div>This is the first in a series of articles that will hopefully help newcomers
 and seasoned programmers alike begin to flex their creative muscles and make
@@ -286,139 +286,139 @@ made videos you can watch to help you get started.
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars2.githubusercontent.com/u/33967?v=3&s=100" width=80 height=80>
-    
+
     <p>May 23, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/05/23/FreeRTOS-Modifications-From-Pebble/">FreeRTOS™ Code Revisions from Pebble</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/brad/">Brad Murray</a> &middot;
-      
+
       <a href="/blog/tags/down-the-rabbit-hole/">Down the Rabbit Hole</a>
-      
+
     </p>
     <div><p>Today Pebble is releasing its recent modifications to the FreeRTOS project.
 Pebble has made a few minor changes to FreeRTOS to enable its new sandboxed
 application environment for PebbleOS 2.0 as well as to make Pebble easier to
-monitor and debug.</p><p>The changes are available 
+monitor and debug.</p><p>The changes are available
 <a href="http://assets.getpebble.com.s3-website-us-east-1.amazonaws.com/dev-portal/FreeRTOS-8.0.0-Pebble.tar.gz" title="" class="">as a tarball</a>
 .</p><p>Read on to learn more about the changes and why they were made.</p></div>
     <div class="text-right"><a href="/blog/2014/05/23/FreeRTOS-Modifications-From-Pebble/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
   <div class="hidden-s hidden-xs">
     <ul class="pagination clearfix">
       <li><a href="/blog/10">Prev</a></li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/">1</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/2">2</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/3">3</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/4">4</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/5">5</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/6">6</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/7">7</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/8">8</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/9">9</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/10">10</a>
-          
+
         </li>
-      
+
         <li class="active" >
-          
+
           <a href="/blog/11">11</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/12">12</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/13">13</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/14">14</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/15">15</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/16">16</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/17">17</a>
-          
+
         </li>
-      
+
       <li><a href="/blog/12">Next</a></li>
     </ul>
   </div>
@@ -432,75 +432,75 @@ monitor and debug.</p><p>The changes are available
           <div class="select-style no-label">
             <select class="js-toc-select">
             <option>JUMP TO PAGE</option>
-              
-                
+
+
                 <option value="/blog/">1</option>
-                
-              
-                
+
+
+
                 <option value="/blog/2">2</option>
-                
-              
-                
+
+
+
                 <option value="/blog/3">3</option>
-                
-              
-                
+
+
+
                 <option value="/blog/4">4</option>
-                
-              
-                
+
+
+
                 <option value="/blog/5">5</option>
-                
-              
-                
+
+
+
                 <option value="/blog/6">6</option>
-                
-              
-                
+
+
+
                 <option value="/blog/7">7</option>
-                
-              
-                
+
+
+
                 <option value="/blog/8">8</option>
-                
-              
-                
+
+
+
                 <option value="/blog/9">9</option>
-                
-              
-                
+
+
+
                 <option value="/blog/10">10</option>
-                
-              
-                
+
+
+
                 <option value="/blog/11">11</option>
-                
-              
-                
+
+
+
                 <option value="/blog/12">12</option>
-                
-              
-                
+
+
+
                 <option value="/blog/13">13</option>
-                
-              
-                
+
+
+
                 <option value="/blog/14">14</option>
-                
-              
-                
+
+
+
                 <option value="/blog/15">15</option>
-                
-              
-                
+
+
+
                 <option value="/blog/16">16</option>
-                
-              
-                
+
+
+
                 <option value="/blog/17">17</option>
-                
-              
+
+
             </select>
           </div>
         </div>
@@ -531,232 +531,232 @@ monitor and debug.</p><p>The changes are available
 </div>
 
 
-        
+
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 <strong>All Posts</strong>
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -783,19 +783,19 @@ monitor and debug.</p><p>The changes are available
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2013/07/26/Screenshot-Barcodes-Tutorials-And-Mao/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,25 +73,25 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="taking-screenshots-of-pebble-apps">Taking screenshots of Pebble apps</option>
-          
+
             <option value="twitter-facebook-and-more-on-the-wrist">Twitter, Facebook and more on the wrist</option>
-          
+
             <option value="wear-your-barcode">Wear your barcode</option>
-          
+
             <option value="tutorials">Tutorials</option>
-          
+
             <option value="dev-challenge">Dev Challenge</option>
-          
+
             <option value="coming-up-next-week">Coming up next week</option>
-          
+
         </select>
       </div>
     </div>
@@ -121,21 +121,21 @@
   <ul class="inline-list inline-list--piped">
     <li>26 July 2013</li>
     <li><a href="/blog/authors/thomas/">Thomas Sarlandie</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>
-      
+
     </li>
     <li><a href="/blog/2013/07/26/Screenshot-Barcodes-Tutorials-And-Mao/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
 <p>It seems the summer days are only increasing the energy of Pebble developers! There were lots of new watchfaces <a href="https://forums.getpebble.com/categories/watchapp-directory" title="" class="">announced on the forums</a> this week. It&#39;s getting hard to try all of them!</p><p>Watchfaces are a very visible part of the work they are doing but they are also inventing new ways to use the Pebble SDK. Featured this week: how to take screenshots of your apps, getting facebook and twitter on your wrist (for iOS and Android), wearing barcodes and paying your respect to an old Chinese custom!</p><h2 id="taking-screenshots-of-pebble-apps" class="anchor">Taking screenshots of Pebble apps</h2><p>The current SDK offers no easy way to make screenshots of your applications and most developers have resolved to either take pictures of their watch or mockup their interface in <a href="https://forums.getpebble.com/discussion/4557/how-can-i-take-a-screenshot-of-a-pebble-watch-face" title="" class="">Photoshop</a> or with <a href="http://blog.gazler.com/blog/2013/01/30/writing-your-first-pebble-watchface/" title="" class="">HTML Canvas</a>.</p><p>This was not good enough for <a href="https://github.com/epatel/" title="" class="">Edward</a> who decided to hack around the SDK a little bit (we will forgive you this time!) and wrote a <a href="https://github.com/epatel/pblindex/blob/capture/src/pblcapture.c" title="" class="">small library</a> that developers can embed in an existing app to export screen captures.</p><p>The captures are received on an iPhone by his companion app and for those of you using httpebble, he has <a href="https://github.com/epatel/httpebble-ios" title="" class="">even made a fork</a> of httpebble that includes screen capturing and sharing.</p><p>Here is a little demo:</p><p><div class="embed embed--youtube"><div class="video-wrapper"><iframe width="640" height="360" frameborder="0" allowfullscreen src="//www.youtube.com/embed/DbfBWviuO0w?rel=0" ></iframe></div></div></p><p>Pretty awesome!</p><h2 id="twitter-facebook-and-more-on-the-wrist" class="anchor">Twitter, Facebook and more on the wrist</h2><p><a href="http://www.mybucketz.com/" title="" class="">Mybucketz</a> is a free service to aggregate all your social medias. <a href="https://forums.getpebble.com/discussion/6694/watch-app-mybucketz-lets-you-see-your-facebook-and-twitter-feeds-on-your-wrist-httpebble#latest" title="" class="">Al took the time</a> to write <a href="http://www.mypebblefaces.com/view?fID=5074&aName=mybucketz&pageTitle=Facebook%2FTwitter+Feed+%28mybucketz%29&auID=6107" title="" class="">a mybucketz watch application</a> that works on Android and iOS (with httpebble) and allows you to get all your timelines on your wrist.</p><p><img src="http://media.tumblr.com/6a78dd497fb864285b9456dcf2d65dae/tumblr_inline_mqd83aDvMs1qz4rgp.jpg" alt="Mybucketz screenshot" /></p><h2 id="wear-your-barcode" class="anchor">Wear your barcode</h2><p>We already knew that you could load your <a href="https://twitter.com/nickdube/status/331835268728512512" title="" class="">starbucks card</a>  in a watchface and use it to pay for drinks at Starbucks. This has also been <a href="http://www.modaco.com/topic/363454-turn-your-pebble-into-a-tesco-clubcard-with-a-custom-watchface/" title="" class="">reported to work</a> at Tesco in the UK. </p><p>So far the <a href="http://www.reddit.com/r/pebble/comments/1dze2a/grocery_store_loyalty_card_on_pebble/" title="" class="">technique used</a> involved generating an image online and creating a new watchface with that image embedded (thanks to <a href="http://www.watchface-generator.de/">http://www.watchface-generator.de/</a> for example).</p><p>This is now getting even easier thanks to <a href="https://forums.getpebble.com/profile/1181/frethop" title="" class="">frethop</a> <em>Wear Your Barcode</em> watchface. It is available on <a href="http://www.mypebblefaces.com/view?fID=5165&aName=frethop&pageTitle=WYB%3A+Wear+Your+Barcode&auID=1336" title="" class="">mypebblefaces.com</a> and works with a companion <a href="https://play.google.com/store/apps/details?id=com.kabestin.android.wristbarcode.view&hl=en" title="" class="">Android app</a>: It supports carrying several barcodes in one watchface and you can save existing barcodes by scanning them with your phone.</p><p>So what barcode will you wear? Let us know in the comments!</p><h2 id="tutorials" class="anchor">Tutorials</h2><p>Still dreaming about developing for Pebble? This week brought more tutorials to help you get started!</p><p><a href="http://www.theregister.co.uk/2013/07/18/how_to_write_apps_for_the_pebble_smartwatch/" title="" class="">This three page tutorial on The Register</a> is a great way to discover the SDK. It covers how to do some basic graphics on Pebble, using the buttons and pushing your app to the watch. By the end of this tutorial, you will have a nice bouncing ball type of app, like demonstrated in this video:</p><p><div class="embed embed--youtube"><div class="video-wrapper"><iframe width="640" height="360" frameborder="0" allowfullscreen src="//www.youtube.com/embed/UARniPjApZ0?rel=0" ></iframe></div></div></p><p>If you want to dive deeper in the SDK, <a href="http://twitter.com/Chris_DL" title="" class="">Chris</a> has just published <a href="http://ninedof.wordpress.com/2013/07/21/pebble-watch-face-sdk-7-scrolllayers/" title="" class="">part 7</a> of his SDK Tutorial, covering <code>ScrollLayers</code>. If you missed them, the first part provided a good primer of basic C and the following posts cover different APIs of the SDK: installation, building a first watch face, animations, fonts and two-way communications.</p><h2 id="dev-challenge" class="anchor">Dev Challenge</h2><p>When you are done reading those tutorials, you might want to give this <a href="http://www.reddit.com/r/pebble/comments/1imaq5/dev_challenge_chairman_mao_watch_for_pebble" title="" class="">developer challenge</a> a try!</p><p>The goal is to create a watchface that reproduces a classic Mao watch:</p>
 <blockquote>
 <p>If you have ever visited China, an almost essential souvenir is the infamous Chairman Mao watch. The watch features a picture of Chairman Mao and his hand waves as it runs. It defininitely falls into the so-tacky-it&#39;s-awesome camp, and is a &quot;communist kitsch&quot; must have! The other thing about the watches is that, being cheaply made in China, they are also almost guaranteed to break after a few days of use....</p></blockquote>
-<p><img src="/assets/images/blog/maowatch.gif" alt="Mao watch" /></p><h2 id="coming-up-next-week" class="anchor">Coming up next week</h2><p>We cannot wait to see what new cool apps will come over the next week, make sure to let us know about your creations!</p>
+<p><img src="/developer.pebble.com/assets/images/blog/maowatch.gif" alt="Mao watch" /></p><h2 id="coming-up-next-week" class="anchor">Coming up next week</h2><p>We cannot wait to see what new cool apps will come over the next week, make sure to let us know about your creations!</p>
 <hr>
 <a id="comments" class="anchor"></a>
 <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/blog/2013/07/26/Screenshot-Barcodes-Tutorials-And-Mao/">
@@ -162,249 +162,249 @@
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#taking-screenshots-of-pebble-apps">Taking screenshots of Pebble apps</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#twitter-facebook-and-more-on-the-wrist">Twitter, Facebook and more on the wrist</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#wear-your-barcode">Wear your barcode</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#tutorials">Tutorials</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#dev-challenge">Dev Challenge</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#coming-up-next-week">Coming up next week</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 <strong>#makeawesomehappen</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 <strong>Thomas Sarlandie</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -431,19 +431,19 @@
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

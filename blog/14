@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/14/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,7 +73,7 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 
       <div class="hidden-l">
         <div class="row" style="margin-bottom: 0.5em;">
@@ -97,105 +97,105 @@
 <h2 class="pagesubtitle">A Wristed Development</h2>
 
 <div class="blog-index">
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Feb 19, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/02/19/Android-Beta10/">Android Beta10</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p><strong>Update:</strong> <a href="/blog/2014/03/03/android-beta11/" title="" class="">A new version is available</a>.</p><p>Dear Developers,</p><p>We just published Pebble Android 2.0 Beta 10. We are getting close to a final release and you can help by testing this build on your devices.</p></div>
     <div class="text-right"><a href="/blog/2014/02/19/Android-Beta10/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Feb 10, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/02/10/New-Android-Beta/">New Android Beta</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p><strong>Update:</strong> <a href="/blog/2014/03/03/android-beta11/" title="" class="">A new version is available</a>.</p><p>We just released a new version of Pebble Android 2.0 Beta with the Pebble appstore.</p></div>
     <div class="text-right"><a href="/blog/2014/02/10/New-Android-Beta/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Feb 03, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/02/03/Android-appstore-beta/">Android appstore beta</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p><strong>Update:</strong> <a href="/blog/2014/03/03/android-beta11/" title="" class="">A new version is available</a>.</p><p>This morning <a href="/blog/2014/02/03/pebble-appstore-is-live/" title="" class="">we released the Pebble appstore for iOS</a>. We love Android and feature parity is extremely important for us. We are releasing today a beta of the Pebble Android mobile app that includes the Pebble appstore to all developers.</p></div>
     <div class="text-right"><a href="/blog/2014/02/03/Android-appstore-beta/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Feb 03, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/02/03/Pebble-appstore-is-live/">Pebble appstore is live!</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p>This is a big day for Pebble developers and the wearable ecosystem in general! Almost one year after the first version of Pebble SDK, this morning we have released a new version of the Pebble iOS app including the Pebble appstore. For the first time in the history of wearable computing, users can browse and download third party apps: <strong>your apps</strong>.</p><p>This is an important milestone. First and foremost we want to thank you for your journey with us. In just 3 months since the first beta of SDK 2 you have blown us away with your talent and creativity!</p></div>
     <div class="text-right"><a href="/blog/2014/02/03/Pebble-appstore-is-live/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/318582?v=1&s=100" width=80 height=80>
-    
+
     <p>Jan 31, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/01/31/Appstore-Tips/">Tips for Appstore Success</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/cherie/">Cherie Williams</a> &middot;
-      
+
       <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
-      
+
     </p>
     <div><p>If you have already published an app, or are planning on publishing an app,
 here are some tips for a successful appstore launch.</p></div>
@@ -203,176 +203,176 @@ here are some tips for a successful appstore launch.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Jan 23, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/01/23/Pebble-SDK-BETA7/">Pebble SDK 2.0 BETA7</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p>Attention developers! Pebble SDK 2.0 BETA7 <a href="/sdk/download" title="" class="">just landed on the developer site</a>! Go get it now and <a href="/sdk/changelogs/2.0-BETA7" title="" class="">do read the release notice</a>. iOS users will need to delete any existing Pebble app before they can upgrade.</p></div>
     <div class="text-right"><a href="/blog/2014/01/23/Pebble-SDK-BETA7/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Jan 17, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/01/17/Pebble-SDK-BETA6/">Pebble SDK 2.0 BETA6 - Season Finale?</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p>Another week and another release of Pebble SDK 2.0. In this version you will find that the iOS application now includes the Pebble appstore and will give you a chance to see how your application looks and feels with the new store. If you had a 1.x application, you should also make sure that the automatic upgrade works properly for your app.</p></div>
     <div class="text-right"><a href="/blog/2014/01/17/Pebble-SDK-BETA6/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Jan 12, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/01/12/Using-JSHint-For-Pebble-Development/">Using JSHint for Pebble Development</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
-      
+
     </p>
     <div><p>In our post on <a href="/blog/2013/12/20/pebble-javascript-tips-and-tricks/" title="" class="">JavaScript Tips and Tricks</a> we strongly recommended the use of JSLint or <a href="http://www.jshint.com/" title="" class="">JSHint</a> to help you detect JavaScript problems at compile time.</p><p>We believe JSHint can really increase the quality of your code and we will probably enforce JSHint correct-ness for all the apps on the appstore very soon. In this post we show you how to setup jshint and integrate it in your Pebble development process.</p></div>
     <div class="text-right"><a href="/blog/2014/01/12/Using-JSHint-For-Pebble-Development/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
   <div class="hidden-s hidden-xs">
     <ul class="pagination clearfix">
       <li><a href="/blog/13">Prev</a></li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/">1</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/2">2</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/3">3</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/4">4</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/5">5</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/6">6</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/7">7</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/8">8</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/9">9</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/10">10</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/11">11</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/12">12</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/13">13</a>
-          
+
         </li>
-      
+
         <li class="active" >
-          
+
           <a href="/blog/14">14</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/15">15</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/16">16</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/17">17</a>
-          
+
         </li>
-      
+
       <li><a href="/blog/15">Next</a></li>
     </ul>
   </div>
@@ -386,75 +386,75 @@ here are some tips for a successful appstore launch.</p></div>
           <div class="select-style no-label">
             <select class="js-toc-select">
             <option>JUMP TO PAGE</option>
-              
-                
+
+
                 <option value="/blog/">1</option>
-                
-              
-                
+
+
+
                 <option value="/blog/2">2</option>
-                
-              
-                
+
+
+
                 <option value="/blog/3">3</option>
-                
-              
-                
+
+
+
                 <option value="/blog/4">4</option>
-                
-              
-                
+
+
+
                 <option value="/blog/5">5</option>
-                
-              
-                
+
+
+
                 <option value="/blog/6">6</option>
-                
-              
-                
+
+
+
                 <option value="/blog/7">7</option>
-                
-              
-                
+
+
+
                 <option value="/blog/8">8</option>
-                
-              
-                
+
+
+
                 <option value="/blog/9">9</option>
-                
-              
-                
+
+
+
                 <option value="/blog/10">10</option>
-                
-              
-                
+
+
+
                 <option value="/blog/11">11</option>
-                
-              
-                
+
+
+
                 <option value="/blog/12">12</option>
-                
-              
-                
+
+
+
                 <option value="/blog/13">13</option>
-                
-              
-                
+
+
+
                 <option value="/blog/14">14</option>
-                
-              
-                
+
+
+
                 <option value="/blog/15">15</option>
-                
-              
-                
+
+
+
                 <option value="/blog/16">16</option>
-                
-              
-                
+
+
+
                 <option value="/blog/17">17</option>
-                
-              
+
+
             </select>
           </div>
         </div>
@@ -485,232 +485,232 @@ here are some tips for a successful appstore launch.</p></div>
 </div>
 
 
-        
+
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 <strong>All Posts</strong>
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -737,19 +737,19 @@ here are some tips for a successful appstore launch.</p></div>
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

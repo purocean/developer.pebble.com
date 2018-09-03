@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2015/01/30/Development-Of-The-Pebble-Emulator/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,53 +73,53 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="interacting-with-the-emulator">Interacting With the Emulator</option>
-          
+
             <option value="the-gdb-socket">The GDB Socket</option>
-          
+
             <option value="the-console-socket">The Console Socket</option>
-          
+
             <option value="the-qemu-channel-socket">The QEMU Channel Socket</option>
-          
+
             <option value="bluetooth-traffic">Bluetooth Traffic</option>
-          
+
             <option value="accelerometer-data">Accelerometer Data</option>
-          
+
             <option value="compass-data">Compass Data</option>
-          
+
             <option value="battery-level">Battery Level</option>
-          
+
             <option value="taps">Taps</option>
-          
+
             <option value="button-presses">Button Presses</option>
-          
+
             <option value="device-emulation">Device Emulation</option>
-          
+
             <option value="qemu-devices">QEMU Devices</option>
-          
+
             <option value="pebble-structure">Pebble Structure</option>
-          
+
             <option value="device-specifics">Device Specifics</option>
-          
+
             <option value="real-time-clock">Real Time Clock</option>
-          
+
             <option value="uart-performance">UART Performance</option>
-          
+
             <option value="cpu-emulation-issues">CPU Emulation Issues</option>
-          
+
             <option value="window-dressing">Window Dressing</option>
-          
+
             <option value="future-work">Future Work</option>
-          
+
             <option value="more-information">More Information</option>
-          
+
         </select>
       </div>
     </div>
@@ -149,14 +149,14 @@
   <ul class="inline-list inline-list--piped">
     <li>30 January 2015</li>
     <li>Ron Marianetti</li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/down-the-rabbit-hole/">Down the Rabbit Hole</a>
-      
+
     </li>
     <li><a href="/blog/2015/01/30/Development-Of-The-Pebble-Emulator/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
@@ -166,13 +166,13 @@ at Pebble to develop a Pebble emulator based on the QEMU project (QEMU, short
 for Quick EMUlator, is a generic, open source machine emulator and virtualizer).</p>
 <blockquote>
 <p>This post is part 1 of 2, and covers the development of the Pebble QEMU
-emulator itself. Read 
-<a href="/blog/2015/01/30/Pebble-Emulator-JavaScript-Simulation/" title="" class=""><em>Pebble Emulator 2/2 - JavaScript and CloudPebble</em></a> 
+emulator itself. Read
+<a href="/blog/2015/01/30/Pebble-Emulator-JavaScript-Simulation/" title="" class=""><em>Pebble Emulator 2/2 - JavaScript and CloudPebble</em></a>
 for more information on PebbleKit JS emulation and
 embedding the emulator in CloudPebble.</p></blockquote>
 <p>An early implementation of this emulator was used internally at Pebble over a
-year ago and was mentioned in a previous article published in April, 2014, 
-<a href="http://appdevelopermagazine.com/1313/2014/4/14/How-Pebble-Converted-135,070-Customized-Watchfaces-For-Pebble-OS-v2.0/" title="" class=""><em>How Pebble Converted 135,070 Customized Watchfaces for Pebble OS v2.0.</em></a> 
+year ago and was mentioned in a previous article published in April, 2014,
+<a href="http://appdevelopermagazine.com/1313/2014/4/14/How-Pebble-Converted-135,070-Customized-Watchfaces-For-Pebble-OS-v2.0/" title="" class=""><em>How Pebble Converted 135,070 Customized Watchfaces for Pebble OS v2.0.</em></a>
 However, it had languished due to lack of attention, and somewhere along the
 line changes made to the firmware had broke it altogether.</p><p>An emulator has many benefits, not only for outside developers but also for the
 internal team:</p>
@@ -529,7 +529,7 @@ great improvement for example to show a status area around this window with
 clickable buttons. The status area could display helpful debugging information.</p><p>There is a lot of potential for enhanced debugging and profiling tools. Imagine
 a way to get a trace of the last <em>N</em> instructions that were executed before a
 crash, or improved ways to profile execution and see where performance can be
-improved or power savings realized.</p><h2 id="more-information" class="anchor">More Information</h2><p>Continue reading <a href="/blog/2015/01/30/Pebble-Emulator-JavaScript-Simulation/" title="" class=""><em>Pebble Emulator 2/2 - JavaScript and CloudPebble</em></a> 
+improved or power savings realized.</p><h2 id="more-information" class="anchor">More Information</h2><p>Continue reading <a href="/blog/2015/01/30/Pebble-Emulator-JavaScript-Simulation/" title="" class=""><em>Pebble Emulator 2/2 - JavaScript and CloudPebble</em></a>
 for more information on PebbleKit JS emulation and embedding the emulator in
 CloudPebble.</p>
 <hr>
@@ -558,277 +558,277 @@ CloudPebble.</p>
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#interacting-with-the-emulator">Interacting With the Emulator</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-gdb-socket">The GDB Socket</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-console-socket">The Console Socket</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-qemu-channel-socket">The QEMU Channel Socket</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#bluetooth-traffic">Bluetooth Traffic</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#accelerometer-data">Accelerometer Data</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#compass-data">Compass Data</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#battery-level">Battery Level</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#taps">Taps</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#button-presses">Button Presses</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#device-emulation">Device Emulation</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#qemu-devices">QEMU Devices</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#pebble-structure">Pebble Structure</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#device-specifics">Device Specifics</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#real-time-clock">Real Time Clock</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#uart-performance">UART Performance</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#cpu-emulation-issues">CPU Emulation Issues</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#window-dressing">Window Dressing</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#future-work">Future Work</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#more-information">More Information</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 <strong>Down the Rabbit Hole</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -855,19 +855,19 @@ CloudPebble.</p>
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

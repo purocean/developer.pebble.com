@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2015/11/10/Nuance-Brings-Pebble-The-Freedom-Of-Speech/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,23 +73,23 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="the-pebble-dictation-process">The Pebble Dictation Process</option>
-          
+
             <option value="but-how-does-it-actually-work">But How Does It Actually Work?</option>
-          
+
             <option value="about-the-dictation-api">About the Dictation API</option>
-          
+
             <option value="voice-enabled-watchapps">Voice-enabled Watchapps</option>
-          
+
             <option value="final-thoughts">Final Thoughts</option>
-          
+
         </select>
       </div>
     </div>
@@ -119,14 +119,14 @@
   <ul class="inline-list inline-list--piped">
     <li>10 November 2015</li>
     <li><a href="/blog/authors/jonb/">Jon Barlow</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </li>
     <li><a href="/blog/2015/11/10/Nuance-Brings-Pebble-The-Freedom-Of-Speech/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
@@ -162,8 +162,8 @@ voice. The stages in the image below illustrate:</p><p>a. The system prepares it
 <li><p>Once the process has completed, the registered callback method is fired and
 the watchapp can deal with the response.</p></li>
 </ol>
-<p><img src="/assets/images/blog/dictation-flow.png" alt="dictation-flow" /></p><h2 id="but-how-does-it-actually-work" class="anchor">But How Does It Actually Work?</h2><p>Let’s take a closer look at what’s happening behind the scenes to see what’s
-really going on.</p><p><img src="/assets/images/blog/dictation-recognizer.png" alt="dictation-recognizer" /></p>
+<p><img src="/developer.pebble.com/assets/images/blog/dictation-flow.png" alt="dictation-flow" /></p><h2 id="but-how-does-it-actually-work" class="anchor">But How Does It Actually Work?</h2><p>Let’s take a closer look at what’s happening behind the scenes to see what’s
+really going on.</p><p><img src="/developer.pebble.com/assets/images/blog/dictation-recognizer.png" alt="dictation-recognizer" /></p>
 <ol>
 <li><p>To capture audio, Pebble Time (including Time Steel and Time Round) has a
 single <a href="https://en.wikipedia.org/wiki/Microelectromechanical_systems" title="" class="">MEMS</a>
@@ -226,8 +226,8 @@ on each item.</p></li>
 (iOS) has been updated to give users voice controlled music playback, create
 reminders and even create tweets by using their voice.</p></li>
 </ul>
-<h2 id="final-thoughts" class="anchor">Final Thoughts</h2><p>Why not also checkout this video of Andrew Stapleton (Embedded Developer) as he 
-deep dives into the internals of the Pebble Dictation API during his presentation 
+<h2 id="final-thoughts" class="anchor">Final Thoughts</h2><p>Why not also checkout this video of Andrew Stapleton (Embedded Developer) as he
+deep dives into the internals of the Pebble Dictation API during his presentation
 at the <a href="/community/events/developer-retreat-2015/" title="" class="">Pebble Developer Retreat 2015</a>.</p><p><div class="embed embed--youtube"><div class="video-wrapper"><iframe width="640" height="360" frameborder="0" allowfullscreen src="//www.youtube.com/embed/D-8Ng24RXwo?rel=0" ></iframe></div></div></p><p>We hope you’ve seen how flexible and easy it is to use the new Dictation API,
 and perhaps it will inspire you to integrate voice into your own application or
 watchface - if you create a voice enabled watchapp, let us know by tweeting
@@ -264,247 +264,247 @@ also have a very friendly and helpful Pebble community on Discord; why not
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-pebble-dictation-process">The Pebble Dictation Process</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#but-how-does-it-actually-work">But How Does It Actually Work?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#about-the-dictation-api">About the Dictation API</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#voice-enabled-watchapps">Voice-enabled Watchapps</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#final-thoughts">Final Thoughts</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 <strong>Freshly Baked</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 <strong>Jon Barlow</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -531,19 +531,19 @@ also have a very friendly and helpful Pebble community on Discord; why not
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

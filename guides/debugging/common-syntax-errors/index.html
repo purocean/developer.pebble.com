@@ -5,19 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Common Syntax Errors // Pebble Developers</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Details of common problems encountered when writing C apps for Pebble, and how 
+  <meta name="description" content="Details of common problems encountered when writing C apps for Pebble, and how
 to resolve them.
 ">
   <link rel="canonical" href="http://developer.getpebble.com/guides/debugging/common-syntax-errors/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -36,7 +36,7 @@ to resolve them.
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -71,205 +71,205 @@ to resolve them.
       <li class="section-menu__item">
         <a href="/guides/toc/">Table of Contents</a>
       </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/app-resources/">
-            
+
             App Resources
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/appstore-publishing/">
-            
+
             Appstore Publishing
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/best-practices/">
-            
+
             Best Practices
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/communication/">
-            
+
             Communication
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item open">
           <a href="/guides/debugging/">
-            
+
             Debugging
           </a>
-          
+
             <ul>
-            
-            
-            
-              
+
+
+
+
                 <li class="section-menu__subitem">
                   <a href="/guides/debugging/common-runtime-errors/"><span>Common Runtime Errors</span></a>
                 </li>
-              
-            
-              
+
+
+
                 <li class="section-menu__subitem active">
                   <a href="/guides/debugging/common-syntax-errors/"><span>Common Syntax Errors</span></a>
                 </li>
-              
-            
-              
-            
-              
+
+
+
+
+
                 <li class="section-menu__subitem">
                   <a href="/guides/debugging/debugging-with-app-logs/"><span>Debugging with App Logs</span></a>
                 </li>
-              
-            
-              
+
+
+
                 <li class="section-menu__subitem">
                   <a href="/guides/debugging/debugging-with-gdb/"><span>Debugging with GDB</span></a>
                 </li>
-              
-            
-            
+
+
+
             </ul>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/design-and-interaction/">
-            
+
             Design and Interaction
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/events-and-services/">
-            
+
             Events and Services
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/graphics-and-animations/">
-            
+
             Graphics and Animations
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/migration/">
-            
+
             Migrating Older Apps
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/pebble-packages/">
-            
+
             Pebble Packages
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/pebble-timeline/">
-            
+
             Pebble Timeline
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/rocky-js/">
-            
+
             Rocky.js
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/smartstraps/">
-            
+
             Smartstraps
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/tools-and-resources/">
-            
+
             Tools and Resources
           </a>
-          
+
         </li>
-      
-        
-        
-        
+
+
+
+
         <li class="section-menu__item">
           <a href="/guides/user-interfaces/">
-            
+
             User Interfaces
           </a>
-          
+
         </li>
-      
+
     </ul>
   </div>
 </div><!-- sidebar__wrapper -->
@@ -282,21 +282,21 @@ to resolve them.
 <div id="search__blackout" style="display: none;"></div>
 
   <div class="container">
-    
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="undeclared-variables">Undeclared Variables</option>
-          
+
             <option value="undeclared-functions">Undeclared Functions</option>
-          
+
             <option value="too-few-arguments">Too Few Arguments</option>
-          
+
             <option value="incorrect-callback-implementations">Incorrect Callback Implementations</option>
-          
+
         </select>
       </div>
     </div>
@@ -307,12 +307,12 @@ to resolve them.
 <div class="row">
   <div class="col-l-8 col-m-12">
     <h1 class="pagetitle">Common Syntax Errors</h1>
-    
-<!-- 
-    
+
+<!--
+
  -->
     <div class="markdown markdown--staff">
-    
+
     <p>If a developer is relatively new to writing Pebble apps (or new to the C
 language in general), there may be times when problems with an app&#39;s code will
 cause compilation errors. Some types of errors with the code itself can be
@@ -334,7 +334,7 @@ If it is needed only for this function, declare it before the offending line
 (here line <code>33</code>).</p><h3 id="undeclared-functions" class="anchor">Undeclared Functions</h3><p>Another variant of the above problem can occur when declaring new functions in a
 code file. Due to the nature of C compilation, any function a
 developer attempts to call must have been previously encountered by the compiler
-in order to be visible. This can be done through 
+in order to be visible. This can be done through
 <a href="http://en.wikipedia.org/wiki/Forward_declaration" title="" class="">forward declaration</a>.</p><p>For example, the code segment below will not compile:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">window_load</span><span class="p">(</span><span class="n">Window</span> <span class="o">*</span><span class="n">window</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">my_function</span><span class="p">();</span>
 <span class="p">}</span>
@@ -413,54 +413,54 @@ does not match that which is expected:</p><div class="highlight no-copy"><pre>..
 </pre></div><p>To fix this, double check that the implementation provided has the same return
 type and argument list as specified in the API documentation.</p>
     </div>
-    
+
     <a id="comments" class="anchor"></a>
     <div id="disqus_thread" aria-live="polite" data-post-url="https://developer.getpebble.com/guides/debugging/common-syntax-errors/">
       You need JavaScript enabled to read and post comments.
     </div>
-    
-    
+
+
   </div>
-  
+
     <div class="col-m-4 hidden-s hidden-xs hidden-m">
       <div class="gray-box gray-box--fixed gray-box--scrollspy">
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#undeclared-variables">Undeclared Variables</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#undeclared-functions">Undeclared Functions</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#too-few-arguments">Too Few Arguments</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#incorrect-callback-implementations">Incorrect Callback Implementations</a></li>
-    
+
   </ul>
 
-        
-        
+
+
       </div>
     </div>
-  
+
 </div>
 
   </div>
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

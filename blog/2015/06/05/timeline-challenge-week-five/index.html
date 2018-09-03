@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2015/06/05/timeline-challenge-week-five/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,19 +73,19 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="q-amp-a-with-ronny">Q&amp;A with Ronny</option>
-          
+
             <option value="seven-weeks-left">Seven Weeks Left!</option>
-          
+
             <option value="past-winners">Past Winners</option>
-          
+
         </select>
       </div>
     </div>
@@ -115,29 +115,29 @@
   <ul class="inline-list inline-list--piped">
     <li>05 June 2015</li>
     <li><a href="/blog/authors/niharika/">Niharika Bedekar</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/timeline/">Timeline</a>
-      
+
     </li>
     <li><a href="/blog/2015/06/05/timeline-challenge-week-five/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
-<p><img src="/assets/images/blog/flightsbanner.png"></p>
+<p><img src="/developer.pebble.com/assets/images/blog/flightsbanner.png"></p>
 
-<p>We&#39;ve all been there at some point: you&#39;ve just sprinted through the airport, 
-rushed through security, and ended up breathless at your gate just to find out 
-that your flight has been delayed for two hours. Well, with 
+<p>We&#39;ve all been there at some point: you&#39;ve just sprinted through the airport,
+rushed through security, and ended up breathless at your gate just to find out
+that your flight has been delayed for two hours. Well, with
 <a href="https://apps.getpebble.com/en_US/application/555a8efcae067d58f800004d" title="" class="">Flights</a>
-on your wrist, you&#39;ll never miss another flight notification again! </p><p>Get real time notifications about your flight status right on your wrist: just 
-last week, one of us from Team Pebble enjoyed live updates about a delayed 
-flight. Flights informs you of delays, terminal and gate numbers, baggage claim 
-location, local arrival time, and much more! After you connect the app with 
-<a href="https://www.tripit.com/" title="" class="">TripIt</a> or add your individual flights manually, sit 
-back and let the app figure out the details for you. </p><p>Ronny Carr devoted his last few weeks to this app, and was able to use a variety 
+on your wrist, you&#39;ll never miss another flight notification again! </p><p>Get real time notifications about your flight status right on your wrist: just
+last week, one of us from Team Pebble enjoyed live updates about a delayed
+flight. Flights informs you of delays, terminal and gate numbers, baggage claim
+location, local arrival time, and much more! After you connect the app with
+<a href="https://www.tripit.com/" title="" class="">TripIt</a> or add your individual flights manually, sit
+back and let the app figure out the details for you. </p><p>Ronny Carr devoted his last few weeks to this app, and was able to use a variety
 of Pebble features and external APIs in his application. </p>
 <ul>
 <li>The <a href="/sdk/" title="" class="">Pebble C SDK</a></li>
@@ -148,39 +148,39 @@ for instant launches</li>
 <li><a href="/docs/c/Foundation/Launch_Reason/#APP_LAUNCH_TIMELINE_ACTION" title="APP_LAUNCH_TIMELINE_ACTION" class="link--docs">Timeline app Launch Reason</a> </li>
 <li>The <a href="http://www.kayak.com/" title="" class="">Kayak</a> API</li>
 </ul>
-<p>Below, Ronny tells us a little bit about himself, and why he decided to join 
-the Pebble developer community. </p><h3 id="q-amp-a-with-ronny" class="anchor">Q&amp;A with Ronny</h3><p><strong>Why did you decide to become a Pebble developer?</strong></p><p>I bought my first Pebble just this past November, opted for the Steel. 
-Immediately fell in love with every aspect of the experience. It’s hard to 
-ignore the lively developer community that surrounds the Pebble. As a developer 
-myself, the interest was pretty high in creating my own watch face. Selenia was 
+<p>Below, Ronny tells us a little bit about himself, and why he decided to join
+the Pebble developer community. </p><h3 id="q-amp-a-with-ronny" class="anchor">Q&amp;A with Ronny</h3><p><strong>Why did you decide to become a Pebble developer?</strong></p><p>I bought my first Pebble just this past November, opted for the Steel.
+Immediately fell in love with every aspect of the experience. It’s hard to
+ignore the lively developer community that surrounds the Pebble. As a developer
+myself, the interest was pretty high in creating my own watch face. Selenia was
 my first go at programming in C, and to my delight, a success! After that, I had
-the confidence to start working on an app to keep tabs on the status of my 
-SmartThings controlled apartment. Dwelling came to fruition within a couple of 
-days and only fueled the development fire further. Flights was started the next 
-day.</p><p><strong>Why Flights?</strong></p><p>I wanted to take full advantage of the timeline with my next app. Honestly, I 
-had looked through the list of timeline icons about 100 times and the cute 
-little airplane kept jumping out at me. I knew this was one of the most obvious 
-uses of the timeline, and really wanted to bring it to life. I love traveling 
-and I love data, win win.</p><p><strong>Could you tell us a little bit about the creation of Flights?</strong></p><p>Flights has been a focus for a couple of weeks now. A few all nighters, and 
+the confidence to start working on an app to keep tabs on the status of my
+SmartThings controlled apartment. Dwelling came to fruition within a couple of
+days and only fueled the development fire further. Flights was started the next
+day.</p><p><strong>Why Flights?</strong></p><p>I wanted to take full advantage of the timeline with my next app. Honestly, I
+had looked through the list of timeline icons about 100 times and the cute
+little airplane kept jumping out at me. I knew this was one of the most obvious
+uses of the timeline, and really wanted to bring it to life. I love traveling
+and I love data, win win.</p><p><strong>Could you tell us a little bit about the creation of Flights?</strong></p><p>Flights has been a focus for a couple of weeks now. A few all nighters, and
 maybe an hour or two at the office ;). At first the challenge was finding a data
-source, basically two exist and they are not free. A major focus from the 
-beginning was to limit the API hits as much as possible by storing the flight 
-data and updating it on a schedule. I worked on one small aspect at a time, 
-nothing was connected and certainly didn’t work. Slowly connecting the pieces 
-together and building out the data was the most involved portion. With only a 
-limited idea of what I wanted out of the app, most decisions were made while 
-coding. Every corner rounded pretty much led to another &quot;oh yeah, that&quot; kind of 
-moment. The most rewarding point during development was the first time I sent a 
-pin to my timeline with real flight data. I couldn’t stop smiling.</p><p><strong>What were some of the challenges you faced during the development process?</strong></p><p>Developing Flights was, a challenge to say the least. One of the biggest 
-differences in personal projects and work projects, there’s no team of 10+ 
-people working on all the different aspects of development. As a developer it’s 
-sometimes hard to stand back and see the larger picture of a project, which is 
+source, basically two exist and they are not free. A major focus from the
+beginning was to limit the API hits as much as possible by storing the flight
+data and updating it on a schedule. I worked on one small aspect at a time,
+nothing was connected and certainly didn’t work. Slowly connecting the pieces
+together and building out the data was the most involved portion. With only a
+limited idea of what I wanted out of the app, most decisions were made while
+coding. Every corner rounded pretty much led to another &quot;oh yeah, that&quot; kind of
+moment. The most rewarding point during development was the first time I sent a
+pin to my timeline with real flight data. I couldn’t stop smiling.</p><p><strong>What were some of the challenges you faced during the development process?</strong></p><p>Developing Flights was, a challenge to say the least. One of the biggest
+differences in personal projects and work projects, there’s no team of 10+
+people working on all the different aspects of development. As a developer it’s
+sometimes hard to stand back and see the larger picture of a project, which is
 why we are handed PSDs and specs.</p><p><strong>Is there anything else you’d like to share?</strong></p><p>I’ve continued making improvements to Flights with no plans to stop. I’ve got a
-few great things in the works and am excited to get them out for everyone to 
-enjoy. A full Flights app is also planned, and is in early development. With a 
-great set of tools, an amazing community, and incredible support, I can only 
-look forward to my next project for the Pebble.</p><h3 id="seven-weeks-left" class="anchor">Seven Weeks Left!</h3><p>With a little under 2 months left in the challenge, we encourage you to dive 
-right in. Take a look at our previous winners below, fire up 
+few great things in the works and am excited to get them out for everyone to
+enjoy. A full Flights app is also planned, and is in early development. With a
+great set of tools, an amazing community, and incredible support, I can only
+look forward to my next project for the Pebble.</p><h3 id="seven-weeks-left" class="anchor">Seven Weeks Left!</h3><p>With a little under 2 months left in the challenge, we encourage you to dive
+right in. Take a look at our previous winners below, fire up
 <a href="https://cloudpebble.net/" title="" class="">CloudPebble</a>, and show us what you&#39;ve got! We&#39;ve got
 a fabulous set of prizes waiting for you: don&#39;t miss out!</p><h3 id="past-winners" class="anchor">Past Winners</h3>
 <ul>
@@ -216,243 +216,243 @@ a fabulous set of prizes waiting for you: don&#39;t miss out!</p><h3 id="past-wi
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#q-amp-a-with-ronny">Q&amp;A with Ronny</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#seven-weeks-left">Seven Weeks Left!</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#past-winners">Past Winners</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 <strong>Timeline</strong>
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 <strong>Niharika Bedekar</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -479,19 +479,19 @@ a fabulous set of prizes waiting for you: don&#39;t miss out!</p><h3 id="past-wi
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

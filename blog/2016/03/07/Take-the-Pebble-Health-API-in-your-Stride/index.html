@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2016/03/07/Take-the-Pebble-Health-API-in-your-Stride/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,33 +73,33 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="background">Background</option>
-          
+
             <option value="what-health-data-is-available">What health data is available?</option>
-          
+
             <option value="querying-the-health-data">Querying the health data</option>
-          
+
             <option value="building-a-stride-clone">Building a Stride clone</option>
-          
+
             <option value="step-1-building-the-basic-watchface">Step 1 - Building the basic watchface</option>
-          
+
             <option value="step-2-add-the-step-count-amp-icon">Step 2 - Add the step count &amp; icon</option>
-          
+
             <option value="step-3-add-the-progress-indicators-and-progress-bar">Step 3 - Add the progress indicators and progress bar</option>
-          
+
             <option value="step-4-add-the-average-step-indicator">Step 4 - Add the average step indicator</option>
-          
+
             <option value="the-finished-product">The finished product</option>
-          
+
             <option value="final-thoughts">Final thoughts</option>
-          
+
         </select>
       </div>
     </div>
@@ -129,14 +129,14 @@
   <ul class="inline-list inline-list--piped">
     <li>07 March 2016</li>
     <li><a href="/blog/authors/jonb/">Jon Barlow</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </li>
     <li><a href="/blog/2016/03/07/Take-the-Pebble-Health-API-in-your-Stride/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
@@ -169,9 +169,9 @@ walked, in meters.</li>
 sleeping.</li>
 <li><code>HealthMetricSleepRestfulSeconds</code> - The number of sleep
 seconds in the &#39;restful&#39; or deep sleep state.</li>
-<li><code>HealthMetricActiveKCalories</code> - The number of kcal 
+<li><code>HealthMetricActiveKCalories</code> - The number of kcal
 (Calories) burned while active.</li>
-<li><code>HealthMetricRestingKCalories</code> - The number of kcal 
+<li><code>HealthMetricRestingKCalories</code> - The number of kcal
 (Calories) burned while resting due to resting metabolism.</li>
 </ul>
 <h2 id="querying-the-health-data" class="anchor">Querying the health data</h2><p>There are a few important things you need to do before you actually attempt to
@@ -185,7 +185,7 @@ be accessing their health data. If you don’t do this and attempt to access a
 health api, your app will be terminated.</li>
 <li>Check if the user has enabled Pebble Health in the Pebble Health app settings
 and that there is any health data available. This is done by checking the
-<a href="https://developer.pebble.com/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask" title="" class=""><code>HealthServiceAccessibilityMask</code></a> 
+<a href="https://developer.pebble.com/docs/c/Foundation/Event_Service/HealthService/#HealthServiceAccessibilityMask" title="" class=""><code>HealthServiceAccessibilityMask</code></a>
 using <a href="https://developer.pebble.com/docs/c/Foundation/Event_Service/HealthService/#health_service_metric_accessible" title="" class=""><code>health_service_metric_accessible()</code></a>.</li>
 </ol>
 <p>Here is a basic example of the steps you should take before attempting to access
@@ -194,9 +194,9 @@ health data:</p><div class="highlight"><pre><span class="c1">// Between midnight
 <span class="kt">time_t</span> <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
 
 <span class="c1">// Check step count data is actually available</span>
-<span class="kt">bool</span> <span class="n">any_data_available</span> <span class="o">=</span> <span class="n">HealthServiceAccessibilityMaskAvailable</span> <span class="o">&amp;</span> 
+<span class="kt">bool</span> <span class="n">any_data_available</span> <span class="o">=</span> <span class="n">HealthServiceAccessibilityMaskAvailable</span> <span class="o">&amp;</span>
    <span class="n">health_service_metric_accessible</span><span class="p">(</span><span class="n">HealthMetricStepCount</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
-</pre></div><h2 id="building-a-stride-clone" class="anchor">Building a Stride clone</h2><p><img src="/assets/images/blog/2016-03-07-image03.png" alt="stride" />
+</pre></div><h2 id="building-a-stride-clone" class="anchor">Building a Stride clone</h2><p><img src="/developer.pebble.com/assets/images/blog/2016-03-07-image03.png" alt="stride" />
 <p style="text-align: center; font-size: 0.9em;">Stride by Pebble</p></p><p>The Stride watchface displays the current time and your current step count for
 today. Around the edge of the screen it displays a bar which is your progress
 towards your average daily step count. The yellow line shows your daily average
@@ -207,9 +207,9 @@ highlight this, all of the blue elements turn green.</p><p>We&#39;re going to br
 see what&#39;s going on. I&#39;m going to cheat slightly to keep the examples short.
 Specifically we&#39;ll use emojis instead of the shoe icon, we won&#39;t be displaying
 the am/pm indicator and we’ll only be drawing circular progress bars on all
-platforms.</p><h2 id="step-1-building-the-basic-watchface" class="anchor">Step 1 - Building the basic watchface</h2><p><img src="/assets/images/blog/2016-03-07-image00.png" alt="strider-step1" /></p><p>We&#39;ll start by creating a fairly typical structure of a watchface. We
+platforms.</p><h2 id="step-1-building-the-basic-watchface" class="anchor">Step 1 - Building the basic watchface</h2><p><img src="/developer.pebble.com/assets/images/blog/2016-03-07-image00.png" alt="strider-step1" /></p><p>We&#39;ll start by creating a fairly typical structure of a watchface. We
 initialise a new <code>Window</code>, add a <code>TextLayer</code> to display the time, then set up a
-tick handler to update the time every minute.</p><p><a href="https://github.com/pebble-examples/strider-watchface/tree/step1/src/Strider.c" title="" class="">View the source code</a></p><h2 id="step-2-add-the-step-count-amp-icon" class="anchor">Step 2 - Add the step count &amp; icon</h2><p><img src="/assets/images/blog/2016-03-07-image07.png" alt="strider-step2" /></p><p>Now we need to add a new <code>TextLayer</code> to display our step count and emoji. We&#39;re
+tick handler to update the time every minute.</p><p><a href="https://github.com/pebble-examples/strider-watchface/tree/step1/src/Strider.c" title="" class="">View the source code</a></p><h2 id="step-2-add-the-step-count-amp-icon" class="anchor">Step 2 - Add the step count &amp; icon</h2><p><img src="/developer.pebble.com/assets/images/blog/2016-03-07-image07.png" alt="strider-step2" /></p><p>Now we need to add a new <code>TextLayer</code> to display our step count and emoji. We&#39;re
 going to need to query the HealthService API to retrieve:</p>
 <ul>
 <li>The current step count for today.</li>
@@ -221,7 +221,7 @@ going to need to query the HealthService API to retrieve:</p>
 event to trigger an update for the other data. This event will probably trigger
 multiple times per minute, so if you’re looking to conserve energy, you could
 manually update the data. Stride also changes the color of the text and icon if
-the user has exceeded their average step count, so we&#39;ll do that too.</p><p><a href="https://github.com/pebble-examples/strider-watchface/tree/step2/src/Strider.c" title="" class="">View the source code</a></p><h2 id="step-3-add-the-progress-indicators-and-progress-bar" class="anchor">Step 3 - Add the progress indicators and progress bar</h2><p><img src="/assets/images/blog/2016-03-07-image04.png" alt="strider-step3" /></p><p>We’re going to create 2 new layers, one for the grey progress indicator dots
+the user has exceeded their average step count, so we&#39;ll do that too.</p><p><a href="https://github.com/pebble-examples/strider-watchface/tree/step2/src/Strider.c" title="" class="">View the source code</a></p><h2 id="step-3-add-the-progress-indicators-and-progress-bar" class="anchor">Step 3 - Add the progress indicators and progress bar</h2><p><img src="/developer.pebble.com/assets/images/blog/2016-03-07-image04.png" alt="strider-step3" /></p><p>We’re going to create 2 new layers, one for the grey progress indicator dots
 and the other for the progress bar. To simplify the example, we’re just dealing
 with a circular indicator. If you want to see how Stride actually draws
 rectangularly, checkout the <a href="https://github.com/pebble-examples/health-watchface" title="" class="">health-watchface on Github</a>.</p><p>The dots layer update procedure calculates the coordinates for each point using
@@ -230,12 +230,12 @@ and then draws a circle at that point, for each dot. The progress layer update
 procedure uses <a href="https://developer.pebble.com/docs/c/Graphics/Drawing_Primitives/#graphics_fill_radial" title="" class=""><code>graphics_fill_radial()</code></a>
 which can fill a circle from a start and end angle, we’re using a narrow inset
 thickness so that the circle is just drawn as a ring.</p><p>We also need to redraw the progress layer when the step count changes, but all
-we need to do is mark the layer dirty.</p><p><a href="https://github.com/pebble-examples/strider-watchface/tree/step3/src/Strider.c" title="" class="">View the source code</a></p><h2 id="step-4-add-the-average-step-indicator" class="anchor">Step 4 - Add the average step indicator</h2><p><img src="/assets/images/blog/2016-03-07-image01.png" alt="strider-step4" /></p><p>The final thing we’re going to add is an indicator to show your average daily
+we need to do is mark the layer dirty.</p><p><a href="https://github.com/pebble-examples/strider-watchface/tree/step3/src/Strider.c" title="" class="">View the source code</a></p><h2 id="step-4-add-the-average-step-indicator" class="anchor">Step 4 - Add the average step indicator</h2><p><img src="/developer.pebble.com/assets/images/blog/2016-03-07-image01.png" alt="strider-step4" /></p><p>The final thing we’re going to add is an indicator to show your average daily
 steps for this time of day. We’ve already calculated the average, and we’re
 going to use <a href="https://developer.pebble.com/docs/c/Graphics/Drawing_Primitives/#graphics_fill_radial" title="" class=""><code>graphics_fill_radial()</code></a>
 again but this time it’s just to draw a yellow line. We’ll need to add another
 new layer and update procedure to handle the drawing of the line.</p><p>We also need to redraw the new layer when the step average value changes, but
-again, all we need to do is mark the layer dirty.</p><p><a href="https://github.com/pebble-examples/strider-watchface" title="" class="">View the complete source code</a></p><h2 id="the-finished-product" class="anchor">The finished product</h2><p><img src="/assets/images/blog/2016-03-07-image05.jpg" alt="strider-step2b" />
+again, all we need to do is mark the layer dirty.</p><p><a href="https://github.com/pebble-examples/strider-watchface" title="" class="">View the complete source code</a></p><h2 id="the-finished-product" class="anchor">The finished product</h2><p><img src="/developer.pebble.com/assets/images/blog/2016-03-07-image05.jpg" alt="strider-step2b" />
 <p style="text-align: center; font-size: 0.9em;">Strider watchface</p></p><h2 id="final-thoughts" class="anchor">Final thoughts</h2><p>I’ve really only scratched the surface of the HealthService API, but hopefully
 you’re now sufficiently excited to build something awesome! We’d really love to
 see how you use it, and If you create a health enabled watchapp or watchface,
@@ -267,257 +267,257 @@ don’t forget to let us know on <a href="http://twitter.com/pebbledev" title=""
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#background">Background</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-health-data-is-available">What health data is available?</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#querying-the-health-data">Querying the health data</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#building-a-stride-clone">Building a Stride clone</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#step-1-building-the-basic-watchface">Step 1 - Building the basic watchface</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#step-2-add-the-step-count-amp-icon">Step 2 - Add the step count &amp; icon</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#step-3-add-the-progress-indicators-and-progress-bar">Step 3 - Add the progress indicators and progress bar</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#step-4-add-the-average-step-indicator">Step 4 - Add the average step indicator</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#the-finished-product">The finished product</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#final-thoughts">Final thoughts</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 <strong>Freshly Baked</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 <strong>Jon Barlow</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -544,19 +544,19 @@ don’t forget to let us know on <a href="http://twitter.com/pebbledev" title=""
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

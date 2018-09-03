@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/12/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,7 +73,7 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 
       <div class="hidden-l">
         <div class="row" style="margin-bottom: 0.5em;">
@@ -97,73 +97,73 @@
 <h2 class="pagesubtitle">A Wristed Development</h2>
 
 <div class="blog-index">
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/318582?v=1&s=100" width=80 height=80>
-    
+
     <p>May 15, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/05/15/Pebble-2.1-Released/">Pebble Updates, MakerFaire & MakingAwesomeHappen</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/cherie/">Cherie Williams</a> &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
-    <div><p>Last week, we released both the 2.1 Pebble firmware, as well as the 2.1 Pebble 
-SDK. Please make sure you have the latest version of the SDK (2.1.1) -- the 
-latest update is available from the 
+    <div><p>Last week, we released both the 2.1 Pebble firmware, as well as the 2.1 Pebble
+SDK. Please make sure you have the latest version of the SDK (2.1.1) -- the
+latest update is available from the
 <a href="/sdk/" title="" class="">developer site</a>.</p></div>
     <div class="text-right"><a href="/blog/2014/05/15/Pebble-2.1-Released/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
-    
+
     <p>Apr 30, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/04/30/Learn-to-Program-My-Pebble/">Learning to Program Your Pebble</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/tom/">Tom Maremaa</a> &middot;
-      
+
       <a href="/blog/tags/at-the-pub/">At the Pub</a>
-      
+
     </p>
-    <div><p>Where can you find a good tutorial on how to program your Pebble? That question 
-pops up frequently among readers on Pebble Developer Forums. Fortunately, a 
-Pebble developer has provided the answer. In the Pebble community, Chris Lewis, 
-a UK-based developer, has produced, beginning with Pebble SDK 1.x and recently 
-with SDK 2.0, that essential tutorial for newbies coming to the platform on his 
-blog: 
+    <div><p>Where can you find a good tutorial on how to program your Pebble? That question
+pops up frequently among readers on Pebble Developer Forums. Fortunately, a
+Pebble developer has provided the answer. In the Pebble community, Chris Lewis,
+a UK-based developer, has produced, beginning with Pebble SDK 1.x and recently
+with SDK 2.0, that essential tutorial for newbies coming to the platform on his
+blog:
 <a href="http://ninedof.wordpress.com/pebble-sdk-tutorial/" title="" class=""> —try { work(); } finally { code(); }</a>
 . You may want to check it out!</p></div>
     <div class="text-right"><a href="/blog/2014/04/30/Learn-to-Program-My-Pebble/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
-    <img src="/assets/images/blog/authors/alex-lin.jpeg" width=80 height=80>
-    
+
+    <img src="/developer.pebble.com/assets/images/blog/authors/alex-lin.jpeg" width=80 height=80>
+
     <p>Apr 22, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/04/22/JS-Bundling/">Bundling Javascript for Pebble Apps</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/alex/">Alex Lin</a> &middot;
-      
+
       <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
-      
+
     </p>
     <div><blockquote>
 <p><em>Updated Apr 23rd</em>: &quot;COMING SOON&quot; bug is fixed.</p><p><em>Updated May 14th</em>: We will now make most updates available right away. Your
@@ -179,23 +179,23 @@ we thought we would summarize the key points in a blog post.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
-    
+
     <p>Apr 14, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/04/14/API-documentation-in-CloudPebble/">API documentation now inside CloudPebble</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
-      
-      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
-      
+
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>,
+
       <a href="/blog/tags/cloudpebble/">CloudPebble</a>
-      
+
     </p>
     <div><p>To help make your Pebble development experience even better, CloudPebble can now display the API
 documentation for any function directly in the editor view.</p></div>
@@ -203,44 +203,44 @@ documentation for any function directly in the editor view.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Apr 12, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/04/12/Space-Apps-Challenge-2014/">Space Apps 2014</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/makeawesomehappen/">#makeawesomehappen</a>
-      
+
     </p>
     <div><p>Space Apps 2014 is taking place this weekend (April 12th/13th) and we are very happy to be a partner of this event. This year, the challenges <a href="https://2014.spaceappschallenge.org/challenge/space-wearables-fashion-designer-astronauts/" title="" class="">include a Wearable category</a> but we do not doubt that Pebble will find its way in a lot of the other challenges as well!</p></div>
     <div class="text-right"><a href="/blog/2014/04/12/Space-Apps-Challenge-2014/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/110792?v=3&s=100" width=80 height=80>
-    
+
     <p>Apr 04, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/04/04/Easier-app-deployment-from-Cloudpebble/">Easier app deployment from CloudPebble</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/katharine/">Katharine Berry</a> &middot;
-      
-      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>, 
-      
+
+      <a href="/blog/tags/freshly-baked/">Freshly Baked</a>,
+
       <a href="/blog/tags/cloudpebble/">CloudPebble</a>
-      
+
     </p>
     <div><p>We now have an even easier way for you to deploy apps to your watches! No longer will you
 have to launch the app, turn on the development server, and type in your IP address. Instead, you
@@ -249,42 +249,42 @@ now simply need to select your phone from a list.</p></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars0.githubusercontent.com/u/1048268?v=1&s=100" width=80 height=80>
-    
+
     <p>Mar 28, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/03/28/Finalists-of-the-Pebble-App-Challenge/">Finalists Of The Pebble App Challenge</a></h3>
     <p class="blog-index__tags">
        &middot;
-      
+
       <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </p>
     <div><p><strong>UPDATE:</strong> The next round of Pebble App Challenge voting—narrowing down our 16 finalists—has been postponed for now. We will update the voting schedule after <a href="https://forums.getpebble.com/discussion/12296/issue-pebble-ios-app-v2-1-updated-31-mar-crashing/p1" title="" class="">a recent issue with the iOS Pebble app</a> has been resolved.</p><p>The public has spoken! The Top16 finalists for the Pebble App Challenge have been selected!</p></div>
     <div class="text-right"><a href="/blog/2014/03/28/Finalists-of-the-Pebble-App-Challenge/">Read More &rarr;</a></div>
   </div>
 </div>
 
-  
+
     <div class="blog-index__post clearfix">
   <div class="pull blog-index__meta visible-m visible-l">
-    
+
     <img src="https://avatars1.githubusercontent.com/u/779005?v=3&s=100" width=80 height=80>
-    
+
     <p>Mar 28, 2014</p>
   </div>
   <div class="blog-index__body">
     <h3><a href="/blog/2014/03/28/Build-a-Watchface/">Build a Watchface</a></h3>
     <p class="blog-index__tags">
       <a href="/blog/authors/thomas/">Thomas Sarlandie</a> &middot;
-      
+
       <a href="/blog/tags/beautiful-code/">Beautiful Code</a>
-      
+
     </p>
     <div><p>In this video we walk you through your first Pebble Watchface.</p><p>Learn how to:</p>
 <ul>
@@ -299,113 +299,113 @@ now simply need to select your phone from a list.</p></div>
   </div>
 </div>
 
-  
+
   <div class="hidden-s hidden-xs">
     <ul class="pagination clearfix">
       <li><a href="/blog/11">Prev</a></li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/">1</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/2">2</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/3">3</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/4">4</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/5">5</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/6">6</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/7">7</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/8">8</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/9">9</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/10">10</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/11">11</a>
-          
+
         </li>
-      
+
         <li class="active" >
-          
+
           <a href="/blog/12">12</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/13">13</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/14">14</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/15">15</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/16">16</a>
-          
+
         </li>
-      
+
         <li class="" >
-          
+
           <a href="/blog/17">17</a>
-          
+
         </li>
-      
+
       <li><a href="/blog/13">Next</a></li>
     </ul>
   </div>
@@ -419,75 +419,75 @@ now simply need to select your phone from a list.</p></div>
           <div class="select-style no-label">
             <select class="js-toc-select">
             <option>JUMP TO PAGE</option>
-              
-                
+
+
                 <option value="/blog/">1</option>
-                
-              
-                
+
+
+
                 <option value="/blog/2">2</option>
-                
-              
-                
+
+
+
                 <option value="/blog/3">3</option>
-                
-              
-                
+
+
+
                 <option value="/blog/4">4</option>
-                
-              
-                
+
+
+
                 <option value="/blog/5">5</option>
-                
-              
-                
+
+
+
                 <option value="/blog/6">6</option>
-                
-              
-                
+
+
+
                 <option value="/blog/7">7</option>
-                
-              
-                
+
+
+
                 <option value="/blog/8">8</option>
-                
-              
-                
+
+
+
                 <option value="/blog/9">9</option>
-                
-              
-                
+
+
+
                 <option value="/blog/10">10</option>
-                
-              
-                
+
+
+
                 <option value="/blog/11">11</option>
-                
-              
-                
+
+
+
                 <option value="/blog/12">12</option>
-                
-              
-                
+
+
+
                 <option value="/blog/13">13</option>
-                
-              
-                
+
+
+
                 <option value="/blog/14">14</option>
-                
-              
-                
+
+
+
                 <option value="/blog/15">15</option>
-                
-              
-                
+
+
+
                 <option value="/blog/16">16</option>
-                
-              
-                
+
+
+
                 <option value="/blog/17">17</option>
-                
-              
+
+
             </select>
           </div>
         </div>
@@ -518,232 +518,232 @@ now simply need to select your phone from a list.</p></div>
 </div>
 
 
-        
+
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 <strong>All Posts</strong>
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 Freshly Baked
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 Cat Haines
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -770,19 +770,19 @@ now simply need to select your phone from a list.</p></div>
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

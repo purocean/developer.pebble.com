@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/tutorials/watchface-tutorial/part3/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -100,27 +100,27 @@
 <div id="search__blackout" style="display: none;"></div>
 
   <div class="container">
-  
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="preparing-the-watchface-layout">Preparing the Watchface Layout</option>
-          
+
             <option value="preparing-appmessage">Preparing AppMessage</option>
-          
+
             <option value="preparing-pebblekit-js">Preparing PebbleKit JS</option>
-          
+
             <option value="getting-weather-information">Getting Weather Information</option>
-          
+
             <option value="showing-weather-on-pebble">Showing Weather on Pebble</option>
-          
+
             <option value="conclusion">Conclusion</option>
-          
+
             <option value="what-39-s-next">What&#39;s Next?</option>
-          
+
         </select>
       </div>
     </div>
@@ -131,9 +131,9 @@
   <div class="row">
     <div class="col-l-8">
       <h1>Adding Web Content</h1>
-      
+
       <div class="markdown markdown--staff">
-      
+
       <div class="alert alert--bg-lightblue platform-choice platform-choice--large platform-choice--hidden">
   <p>
     This page contains some instructions that are different if you're using
@@ -145,27 +145,27 @@
   </p>
   <div class="text-center">
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="cloudpebble">
-      <img src="/assets/images/sdk/cloud.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
       <h4>CloudPebble</h4>
     </a>
     <a href="javascript:void();" class="platform-choice--link js-platform-choice" data-sdk-platform="local">
-      <img src="/assets/images/sdk/sdk-box.svg">
+      <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
       <h4>SDK</h4>
     </a>
   </div>
 </div>
 <div class="alert alert--bg-lightblue platform-choice platform-choice--small platform-choice--hidden">
   <p class="platform-specific" data-sdk-platform="cloudpebble">
-    <img src="/assets/images/sdk/cloud.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/cloud.svg">
     Showing instructions for CloudPebble. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="local">Not using CloudPebble?</a>
   </p>
   <p class="platform-specific" data-sdk-platform="local">
-    <img src="/assets/images/sdk/sdk-box.svg">
+    <img src="/developer.pebble.com/assets/images/sdk/sdk-box.svg">
     Showing instructions for the SDK. <a href="javascript: void();" class="js-platform-choice" data-sdk-platform="cloudpebble">Using CloudPebble?</a>
   </p>
 </div>
 
-      
+
       <p>In the previous tutorial parts, we created a simple watchface to tell the time
 and then improved it with a custom font and background bitmap. There&#39;s a lot you
 can do with those elements, such as add more bitmaps, an extra <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a>
@@ -178,11 +178,11 @@ the phone&#39;s location services and storage. It even allows you to display a
 configuration screen to give users options over how they want your watchface or
 app to look and run.</p><p>By the end of this tutorial we will arrive at a watchface like the one below, in
 all its customized glory:</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/3-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/3-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/3-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/3-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/3-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/3-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <p>To continue from the last part, you can either modify your existing Pebble
 project or create a new one, using the code from that project&#39;s main <code>.c</code> file
-as a starting template. For reference, that should look 
-<a href="https://gist.github.com/pebble-gists/d216d9e0b840ed296539" title="" class="">something like this</a>. </p><p class="platform-specific" data-sdk-platform="cloudpebble">You can create a new CloudPebble project from this template by 
+as a starting template. For reference, that should look
+<a href="https://gist.github.com/pebble-gists/d216d9e0b840ed296539" title="" class="">something like this</a>. </p><p class="platform-specific" data-sdk-platform="cloudpebble">You can create a new CloudPebble project from this template by
 <a href="https://cloudpebble.net/ide/gist/d216d9e0b840ed296539" title="" class="">clicking here</a>.</p><h2 id="preparing-the-watchface-layout" class="anchor">Preparing the Watchface Layout</h2><p>The content we will be fetching will be the current weather conditions and
 temperature from <a href="http://openweathermap.org" title="" class="">OpenWeatherMap</a>. We will need a new
 <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> to show this extra content. Let&#39;s do that now at the top of the C
@@ -233,7 +233,7 @@ as for everything else:</p><div class="highlight"><pre><span class="c1">// Destr
 <span class="n">text_layer_destroy</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">);</span>
 <span class="n">fonts_unload_custom_font</span><span class="p">(</span><span class="n">s_weather_font</span><span class="p">);</span>
 </pre></div><p>After compiling and installing, your watchface should look something like this:</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/3-loading~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/3-loading~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/3-loading~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/3-loading~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/3-loading~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/3-loading~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <h2 id="preparing-appmessage" class="anchor">Preparing AppMessage</h2><p>The primary method of communication for all Pebble watchapps and watchfaces is
 the <a href="/docs/c/Foundation/AppMessage/" title="AppMessage" class="link--docs"><code>AppMessage</code></a> API. This allows the construction of key-value dictionaries
 for transmission between the watch and connected phone. The standard procedure
@@ -253,7 +253,7 @@ signature for <a href="/docs/c/Foundation/AppMessage/#AppMessageInboxReceived" t
 <span class="p">}</span>
 </pre></div><p>We will also create and register three other callbacks so we can see all
 outcomes and any errors that may occur, such as dropped messages. These are
-reported with calls to <a href="/docs/c/Foundation/Logging/#app_log" title="app_log" class="link--docs"><code>APP_LOG</code></a> for now, but more detail 
+reported with calls to <a href="/docs/c/Foundation/Logging/#app_log" title="app_log" class="link--docs"><code>APP_LOG</code></a> for now, but more detail
 <a href="http://stackoverflow.com/questions/21150193/logging-enums-on-the-pebble-watch" title="" class="">can be gotten from them</a>:</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">inbox_dropped_callback</span><span class="p">(</span><span class="n">AppMessageResult</span> <span class="n">reason</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">APP_LOG</span><span class="p">(</span><span class="n">APP_LOG_LEVEL_ERROR</span><span class="p">,</span> <span class="s">"Message dropped!"</span><span class="p">);</span>
 <span class="p">}</span>
@@ -282,19 +282,19 @@ the inbox and outbox size (in bytes):</p><div class="highlight"><pre><span class
 <span class="n">app_message_open</span><span class="p">(</span><span class="n">inbox_size</span><span class="p">,</span> <span class="n">outbox_size</span><span class="p">);</span>
 </pre></div>
 <blockquote>
-<p>Read 
-<a href="/guides/pebble-apps/communications/appmessage/#buffer-sizes" title="" class=""><em>Buffer Sizes</em></a> 
+<p>Read
+<a href="/guides/pebble-apps/communications/appmessage/#buffer-sizes" title="" class=""><em>Buffer Sizes</em></a>
 to learn about using correct buffer sizes for your app.</p></blockquote>
 <h2 id="preparing-pebblekit-js" class="anchor">Preparing PebbleKit JS</h2><p>The weather data itself will be downloaded by the JavaScript component of the
 watchface, and runs on the connected phone whenever the watchface is opened. </p><p class="platform-specific" data-sdk-platform="cloudpebble">To begin using PebbleKit JS, click &#39;Add New&#39; in the CloudPebble editor,
 next to &#39;Source Files&#39;. Select &#39;JavaScript file&#39; and choose a file name.
-CloudPebble allows any normally valid file name, such as <code>weather.js</code>.</p><p class="platform-specific" data-sdk-platform="local">To begin using PebbleKit JS, add a new file to your project at 
+CloudPebble allows any normally valid file name, such as <code>weather.js</code>.</p><p class="platform-specific" data-sdk-platform="local">To begin using PebbleKit JS, add a new file to your project at
 <code>src/pkjs/index.js</code> to contain your JavaScript code.</p><p>To get off to a quick start, we will provide a basic template for using the
 PebbleKit JS SDK. This template features two basic event listeners. One is for
 the &#39;ready&#39; event, which fires when the JS environment on the phone is first
 available after launch. The second is for the &#39;appmessage&#39; event, which fires
 when an AppMessage is sent from the watch to the phone.</p><p>This template is shown below for you to start your JS file:</p><div class="highlight"><pre><span class="c1">// Listen for when the watchface is opened</span>
-<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> 
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span>
   <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'PebbleKit JS ready!'</span><span class="p">);</span>
   <span class="p">}</span>
@@ -304,7 +304,7 @@ when an AppMessage is sent from the watch to the phone.</p><p>This template is s
 <span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'appmessage'</span><span class="p">,</span>
   <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'AppMessage received!'</span><span class="p">);</span>
-  <span class="p">}</span>                     
+  <span class="p">}</span>
 <span class="p">);</span>
 </pre></div><p>After compiling and installing the watchface, open the app logs.</p><p class="platform-specific" data-sdk-platform="cloudpebble">Click the &#39;View Logs&#39; button on the confirmation dialogue or the
 &#39;Compilation&#39; screen if it was already dismissed.</p><p class="platform-specific" data-sdk-platform="local">You can listen for app logs by running <code>pebble logs</code>, supplying your
@@ -321,8 +321,8 @@ phone&#39;s IP address with the <code>--phone</code> switch. For example:</p>
 <p>You should see a message matching that set to appear using <code>console.log()</code> in
 the JS console in the snippet above! This is where any information sent using
 <a href="/docs/c/Foundation/Logging/#app_log" title="app_log" class="link--docs"><code>APP_LOG</code></a> in the C file or <code>console.log()</code> in the JS file will be shown, and
-is very useful for debugging!</p><h2 id="getting-weather-information" class="anchor">Getting Weather Information</h2><p>To download weather information from 
-<a href="http://openweathermap.org" title="" class="">OpenWeatherMap.org</a>, we will perform three steps in 
+is very useful for debugging!</p><h2 id="getting-weather-information" class="anchor">Getting Weather Information</h2><p>To download weather information from
+<a href="http://openweathermap.org" title="" class="">OpenWeatherMap.org</a>, we will perform three steps in
 our JS file:</p>
 <ol>
 <li>Request the user&#39;s location from the phone.</li>
@@ -361,7 +361,7 @@ the data:</p><div class="highlight"><pre><span class="kd">function</span> <span 
 <span class="p">}</span>
 
 <span class="c1">// Listen for when the watchface is opened</span>
-<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span> 
+<span class="nx">Pebble</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'ready'</span><span class="p">,</span>
   <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'PebbleKit JS ready!'</span><span class="p">);</span>
 
@@ -390,7 +390,7 @@ contains the coordinates supplied by <code>getCurrentPosition()</code>, the lati
 longitude encoded at the end:</p>
 <div class="alert alert--bg-purple alert--fg-white">
   <b>API KEY REQUIRED</b>
-  <p>As of October 2015, an API key is required to fetch OpenWeatherMap data. 
+  <p>As of October 2015, an API key is required to fetch OpenWeatherMap data.
     These can be freely obtained from <a href="http://openweathermap.org/appid">OpenWeatherMap.org</a>.</p>
 </div>
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">'http://api.openweathermap.org/data/2.5/weather?lat='</span> <span class="o">+</span>
@@ -403,7 +403,7 @@ readability, and the full code snippet is shown below:</p><div class="highlight"
       <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span> <span class="o">+</span> <span class="s1">'&amp;lon='</span> <span class="o">+</span> <span class="nx">pos</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span> <span class="o">+</span> <span class="s1">'&amp;appid='</span> <span class="o">+</span> <span class="nx">myAPIKey</span><span class="p">;</span>
 
   <span class="c1">// Send request to OpenWeatherMap</span>
-  <span class="nx">xhrRequest</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">,</span> 
+  <span class="nx">xhrRequest</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">,</span>
     <span class="kd">function</span><span class="p">(</span><span class="nx">responseText</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// responseText contains a JSON object with weather info</span>
       <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">responseText</span><span class="p">);</span>
@@ -413,17 +413,17 @@ readability, and the full code snippet is shown below:</p><div class="highlight"
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Temperature is '</span> <span class="o">+</span> <span class="nx">temperature</span><span class="p">);</span>
 
       <span class="c1">// Conditions</span>
-      <span class="kd">var</span> <span class="nx">conditions</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">weather</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">main</span><span class="p">;</span>      
+      <span class="kd">var</span> <span class="nx">conditions</span> <span class="o">=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">weather</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">main</span><span class="p">;</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Conditions are '</span> <span class="o">+</span> <span class="nx">conditions</span><span class="p">);</span>
-    <span class="p">}</span>      
+    <span class="p">}</span>
   <span class="p">);</span>
 <span class="p">}</span>
 </pre></div><p>Thus when the location is successfully obtained, <code>xhrRequest()</code> is called. When
 the response arrives, the JSON object is parsed and the temperature and weather
 conditions obtained. To discover the structure of the JSON object we can use
 <code>console.log(responseText)</code> to see its contents.</p><p>To see how we arrived at some of the statements above, such as
-<code>json.weather[0].main</code>, here is an 
-<a href="https://gist.github.com/pebble-gists/216e6d5a0f0bd2328509#file-example-response-json" title="" class="">example response</a> 
+<code>json.weather[0].main</code>, here is an
+<a href="https://gist.github.com/pebble-gists/216e6d5a0f0bd2328509#file-example-response-json" title="" class="">example response</a>
 for London, UK. We can see that by following the JSON structure from our
 variable called <code>json</code> (which represents the root of the structure) we can
 access any of the data items. So to get the wind speed we would access
@@ -463,7 +463,7 @@ from the watch to achieve this:</p><div class="highlight"><pre><span class="c1">
   <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'AppMessage received!'</span><span class="p">);</span>
     <span class="nx">getWeather</span><span class="p">();</span>
-  <span class="p">}</span>                     
+  <span class="p">}</span>
 <span class="p">);</span>
 </pre></div><p>The final step on the Pebble side is to act on the information received from
 PebbleKit JS and show the weather data in the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="link--docs"><code>TextLayer</code></a> we created for this
@@ -497,7 +497,7 @@ the <a href="/docs/c/User_Interface/Layers/TextLayer/" title="TextLayer" class="
 <span class="n">text_layer_set_text</span><span class="p">(</span><span class="n">s_weather_layer</span><span class="p">,</span> <span class="n">weather_layer_buffer</span><span class="p">);</span>
 </pre></div><p>After re-compiling and re-installing you should be presented with a watchface
 that looks similar to the one shown below:</p>
-<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/assets/images/getting-started/watchface-tutorial/3-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/assets/images/getting-started/watchface-tutorial/3-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/assets/images/getting-started/watchface-tutorial/3-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
+<div class="screenshot-viewer"><div class="screenshot-viewer__tabs js-screenshot-tabs"><h4 data-platform="aplite">aplite</h4><h4 data-platform="basalt">basalt</h4><h4 data-platform="chalk">chalk</h4></div><div class="screenshot-viewer__screenshots"><div class="screenshot-viewer__platform" data-platform="aplite"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/3-final~aplite.png" class="pebble-screenshot pebble-screenshot--steel-black" /></div><div class="screenshot-viewer__platform" data-platform="basalt"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/3-final~basalt.png" class="pebble-screenshot pebble-screenshot--time-red" /></div><div class="screenshot-viewer__platform" data-platform="chalk"><img src="/developer.pebble.com/assets/images/getting-started/watchface-tutorial/3-final~chalk.png" class="pebble-screenshot pebble-screenshot--time-round-rosegold-14" /></div></div></div>
 <p class="platform-specific" data-sdk-platform="cloudpebble">Remember, if the text is too large for the screen, you can reduce the font
 size in the &#39;Resources&#39; section of the CloudPebble editor. Don&#39;t forget to
 change the constants in the <code>.c</code> file to match the new &#39;Identifier&#39;.</p><p class="platform-specific" data-sdk-platform="local">Remember, if the text is too large for the screen, you can reduce the font
@@ -539,27 +539,27 @@ demonstrate how to add a battery bar to your watchface.</p><p><a href="/tutorial
     </div>
     <div class="col-m-4 hidden-s hidden-xs hidden-m">
       <div class="gray-box gray-box--fixed gray-box--scrollspy">
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#preparing-the-watchface-layout">Preparing the Watchface Layout</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#preparing-appmessage">Preparing AppMessage</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#preparing-pebblekit-js">Preparing PebbleKit JS</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#getting-weather-information">Getting Weather Information</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#showing-weather-on-pebble">Showing Weather on Pebble</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#conclusion">Conclusion</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#what-39-s-next">What&#39;s Next?</a></li>
-    
+
   </ul>
 
-        
+
       </div>
     </div>
   </div>
@@ -567,19 +567,19 @@ demonstrate how to add a battery bar to your watchface.</p><p><a href="/tutorial
 
 </div>
 
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>

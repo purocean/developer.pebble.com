@@ -9,13 +9,13 @@
   <link rel="canonical" href="http://developer.getpebble.com/blog/2016/06/15/sdk4-preview/">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
-  <link href="/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
-  <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
-  
+  <link href="/developer.pebble.com/assets/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" id="favicon">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/main.css">
+
   <noscript>
-  <link rel="stylesheet" type="text/css" href="/assets/css/noscript.css">
+  <link rel="stylesheet" type="text/css" href="/developer.pebble.com/assets/css/noscript.css">
   </noscript>
-  
+
   <script type="text/javascript" >
     var _rollbarConfig = {
       accessToken: 'e1ecd52de5ba46c88e9f6f346a954c62',
@@ -34,7 +34,7 @@
     ga('create', 'UA-30638158-4', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
 </head>
 <body class="">
   <div class="mmenu__wrapper">
@@ -73,25 +73,25 @@
   <div class="container">
   <div class="row">
     <div class="col-l-8">
-      
+
 <div class="visible-m visible-s visible-xs row">
   <div class="col-xs-12">
     <div class="form__group">
       <div class="select-style no-label">
         <select class="js-toc-select">
-          
+
             <option value="app-glance-api">App Glance API</option>
-          
+
             <option value="unobstructedarea-api">UnobstructedArea API</option>
-          
+
             <option value="appexitreason-api">AppExitReason API</option>
-          
+
             <option value="4-0-emulator">4.0 Emulator</option>
-          
+
             <option value="whats-next">What’s Next</option>
-          
+
             <option value="show-us-what-you-make">Show Us What You Make</option>
-          
+
         </select>
       </div>
     </div>
@@ -121,14 +121,14 @@
   <ul class="inline-list inline-list--piped">
     <li>15 June 2016</li>
     <li><a href="/blog/authors/cat/">Cat Haines</a></li>
-    
+
     <li>
-      
+
         <a href="/blog/tags/freshly-baked/">Freshly Baked</a>
-      
+
     </li>
     <li><a href="/blog/2016/06/15/sdk4-preview/#comments">Comments</a></li>
-    
+
   </ul>
 </div>
 
@@ -141,7 +141,7 @@ with the 4.0 user experience.</p><p>In this blog post we’ll dive into the <a h
 how you can use them to create great experiences for your users!</p><h2 id="app-glance-api" class="anchor">App Glance API</h2><p>Let’s start with the App Glance API, which allows applications to present
 information for the launcher to display. The information an application displays
 in the launcher is called an app glance - and the information that is displayed
-at any particular point in time is referred to as an <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="" class=""><code>AppGlanceSlice</code></a>.</p><p><img src="/assets/images/blog/2016-06-15-sdk4-preview/virtual-pet.png" alt="Virtual Pet App" class="pebble-screenshot pebble-screenshot--time-black" /></p><p><code>AppGlanceSlice</code>s have expiration times, which means you can add multiple slices
+at any particular point in time is referred to as an <a href="/docs/c/Foundation/App_Glance/#AppGlanceSlice" title="" class=""><code>AppGlanceSlice</code></a>.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-06-15-sdk4-preview/virtual-pet.png" alt="Virtual Pet App" class="pebble-screenshot pebble-screenshot--time-black" /></p><p><code>AppGlanceSlice</code>s have expiration times, which means you can add multiple slices
 at once. Slices will be displayed in the order they are added and removed at
 their specified expiration times.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">prv_update_app_glance</span><span class="p">(</span><span class="n">AppGlanceReloadSession</span> <span class="o">*</span><span class="n">session</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">limit</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// This shouldn't happen, but developers should always ensure they have</span>
@@ -168,9 +168,9 @@ well as a HTTP web API, intended to allow developers to push <code>AppGlanceSlic
 from external web services to their users&#39; smartwatches.</p></blockquote>
 <h2 id="unobstructedarea-api" class="anchor">UnobstructedArea API</h2><p>The <a href="/docs/c/User_Interface/UnobstructedArea/" title="" class=""><code>UnobstructedArea</code></a> API
 allows developers to create watchfaces capable of sensing, and responding to
-Timeline Quick View events. Timeline Quick View is a new feature in SDK 4.0, 
-which displays upcoming and ongoing events on top of the user’s watchface. The 
-functionality added through the <code>UnobstructedArea</code> API allows developers to get 
+Timeline Quick View events. Timeline Quick View is a new feature in SDK 4.0,
+which displays upcoming and ongoing events on top of the user’s watchface. The
+functionality added through the <code>UnobstructedArea</code> API allows developers to get
 the unobstructed bounds of a layer, or subscribe to events related to the
 watchface’s unobstructed area changing.</p><div class="highlight"><pre><span class="k">static</span> <span class="kt">int</span> <span class="n">s_offset_top_percent</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
 <span class="k">static</span> <span class="kt">int</span> <span class="n">s_offset_bottom_percent</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
@@ -210,7 +210,7 @@ returns the user to the launcher, or the active watchface. Take a look at our
 <a href="/guides/user-interfaces/app-exit-reason" title="" class="">AppExitReason API Guide</a>,
 and read <a href="/docs/c/Foundation/Exit_Reason" title="" class="">the API docs</a> to learn more.</p><p>This feature enables developers to create &quot;One Click Action&quot; watchapps, that
 perform an action, then immediately return the user to the watchface to create a
-simple, fluid experience.</p><p><img src="/assets/images/blog/2016-06-15-sdk4-preview/uber.gif" alt="Uber App" class="pebble-screenshot pebble-screenshot--time-black" /></p><p>To help get you started thinking about and designing One Click Action apps,
+simple, fluid experience.</p><p><img src="/developer.pebble.com/assets/images/blog/2016-06-15-sdk4-preview/uber.gif" alt="Uber App" class="pebble-screenshot pebble-screenshot--time-black" /></p><p>To help get you started thinking about and designing One Click Action apps,
 we’ve created a <a href="/guides/design-and-interaction/one-click-actions" title="" class="">One Click Action App Guide</a>
 around the relatively minimal example of locking and unlocking your front door
 (with a <a href="https://lockitron.com" title="" class="">Lockitron lock</a>).</p><h2 id="4-0-emulator" class="anchor">4.0 Emulator</h2><p>The SDK 4 preview also includes an update to the emulator, which not only adds
@@ -261,249 +261,249 @@ an upcoming newsletter (and send some swag your way).</p><p>Happy Hacking!</p><p
 </div>
 
 
-        
+
   <h3>Overview</h3>
   <ul class="toc">
-    
+
       <li class="toc__item toc__item--level1"><a href="#app-glance-api">App Glance API</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#unobstructedarea-api">UnobstructedArea API</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#appexitreason-api">AppExitReason API</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#4-0-emulator">4.0 Emulator</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#whats-next">What’s Next</a></li>
-    
+
       <li class="toc__item toc__item--level1"><a href="#show-us-what-you-make">Show Us What You Make</a></li>
-    
+
   </ul>
 
         <h3>Categories</h3>
         <ul>
             <li>
               <a href="/blog/">
-                
+
                 All Posts
-                
+
               </a>
             </li>
-            
-            
+
+
             <li>
               <a href="/blog/tags/makeawesomehappen/">
-                
+
                 #makeawesomehappen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/at-the-pub/">
-                
+
                 At the Pub
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/beautiful-code/">
-                
+
                 Beautiful Code
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/cloudpebble/">
-                
+
                 CloudPebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/down-the-rabbit-hole/">
-                
+
                 Down the Rabbit Hole
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/freshly-baked/">
-                
+
                 <strong>Freshly Baked</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/tags/timeline/">
-                
+
                 Timeline
-                
+
               </a>
             </li>
-          
+
         </ul>
 
         <h3>Authors</h3>
         <ul>
-          
-          
+
+
             <li>
               <a href="/blog/authors/thomas/">
-                
+
                 Thomas Sarlandie
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/niharika/">
-                
+
                 Niharika Bedekar
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katharine/">
-                
+
                 Katharine Berry
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/jonb/">
-                
+
                 Jon Barlow
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cherie/">
-                
+
                 Cherie Williams
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/chrislewis/">
-                
+
                 Chris Lewis
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/pebble/">
-                
+
                 Team Pebble
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/katherine/">
-                
+
                 Katherine McAuliffe
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/cat/">
-                
+
                 <strong>Cat Haines</strong>
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alex/">
-                
+
                 Alex Lin
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/kirby/">
-                
+
                 Kirby Kohlmorgen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/brad/">
-                
+
                 Brad Murray
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/alexey/">
-                
+
                 Alexey Komissarouk
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/lukasz/">
-                
+
                 Łukasz Zalewski
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/tom/">
-                
+
                 Tom Maremaa
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/ryan/">
-                
+
                 Ryan Case
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/rperryng/">
-                
+
                 Ryan Perry-Nguyen
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/keegan/">
-                
+
                 Keegan Lillo
-                
+
               </a>
             </li>
-          
+
             <li>
               <a href="/blog/authors/meiguro/">
-                
+
                 Meiguro
-                
+
               </a>
             </li>
-          
+
         </ul>
       </div>
     </div>
@@ -530,19 +530,19 @@ an upcoming newsletter (and send some swag your way).</p><p>Happy Hacking!</p><p
 </div>
 
 </div>
-    
+
   </div>
   <script type="text/javascript">
     var searchPrimary = '';
   </script>
-  
-  <script type="text/javascript" src="/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
-  
-  <script type="text/javascript" src="/assets/js/templates.js"></script>
-  <script type="text/javascript" src="/assets/js/app.js"></script>
-  <script type="text/javascript" src="/assets/js/search.js"></script>
-  <script type="text/javascript" src="/assets/js/quicksearch.js"></script>
-  <script type="text/javascript" src="/assets/js/disqus.js"></script>
-  
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/libs-ce98da7b5eecc97f976a3cad8e665a31.js"></script>
+
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/templates.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/app.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/search.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/quicksearch.js"></script>
+  <script type="text/javascript" src="/developer.pebble.com/assets/js/disqus.js"></script>
+
 </body>
 </html>
